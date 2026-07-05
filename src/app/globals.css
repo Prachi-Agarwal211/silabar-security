@@ -36,18 +36,12 @@
   --red-500: #CC2222;
   --red-600: #A31B1B;
   --red-700: #7A1414;
-
-
-
-  /* Success */
-  --success-400: #4ADE80;
-  --success-500: #22C55E;
 }
 
 @theme {
   /* Fonts */
   --font-display: 'DM Serif Display', Georgia, serif;
-  --font-body: 'Source Sans 3', 'Source Sans Pro', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
 
   /* Base palette */
   --color-midnight-950: var(--midnight-950);
@@ -82,12 +76,6 @@
   --color-red-500: var(--red-500);
   --color-red-600: var(--red-600);
   --color-red-700: var(--red-700);
-
-
-
-  /* Success */
-  --color-success-400: var(--success-400);
-  --color-success-500: var(--success-500);
 }
 
 /* === Lenis Smooth Scroll === */
@@ -115,6 +103,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* === Grain Overlay === */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 256px;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-weight: 400;
@@ -123,41 +124,12 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
 }
 
-/* === SplitType Line Overflow Fix (scoped to SplitType wrappers) === */
+/* === SplitType Line Overflow Fix === */
 .line-mask .line {
   overflow: hidden;
 }
 
-/* === Gradient Utility Classes === */
-
-/* Mesh gradient — organic, premium texture for dark backgrounds */
-.gradient-mesh {
-  background:
-    radial-gradient(ellipse at 10% 15%, rgba(3, 31, 48, 0.8) 0%, transparent 50%),
-    radial-gradient(ellipse at 90% 85%, rgba(66, 99, 140, 0.2) 0%, transparent 45%),
-    radial-gradient(ellipse at 50% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 60%),
-    linear-gradient(180deg, var(--midnight-900) 0%, var(--midnight-950) 100%);
-}
-
-/* Gold glow — for CTA / stats sections */
-.gradient-gold-glow {
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(212, 175, 55, 0.14) 0%, transparent 50%),
-    radial-gradient(ellipse at 20% 80%, rgba(212, 175, 55, 0.06) 0%, transparent 40%),
-    radial-gradient(ellipse at 80% 80%, rgba(212, 175, 55, 0.06) 0%, transparent 40%),
-    var(--midnight-800);
-}
-
-/* Naval depth — secondary dark section */
-.gradient-naval {
-  background:
-    radial-gradient(ellipse at 25% 40%, rgba(3, 31, 48, 0.7) 0%, transparent 55%),
-    radial-gradient(ellipse at 80% 20%, rgba(66, 99, 140, 0.15) 0%, transparent 40%),
-    radial-gradient(ellipse at 50% 90%, rgba(212, 175, 55, 0.03) 0%, transparent 45%),
-    var(--midnight-900);
-}
-
-/* Glassmorphism panel */
+/* === Glassmorphism panel === */
 .glass {
   background: rgba(6, 8, 16, 0.65);
   backdrop-filter: blur(20px) saturate(1.2);
@@ -165,33 +137,6 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid rgba(212, 175, 55, 0.12);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(212, 175, 55, 0.05);
 }
-
-
-
-/* Premium gold gradient button */
-.btn-gold {
-  background: linear-gradient(135deg, var(--gold-400) 0%, var(--gold-600) 100%);
-  color: var(--midnight-950);
-  transition: all 0.3s ease;
-}
-.btn-gold:hover {
-  background: linear-gradient(135deg, var(--gold-300) 0%, var(--gold-500) 100%);
-  box-shadow: 0 0 30px rgba(212, 175, 55, 0.25);
-}
-
-/* Outlined gold button */
-.btn-outline {
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  color: var(--horizon-200);
-  transition: all 0.3s ease;
-}
-.btn-outline:hover {
-  border-color: var(--gold-400);
-  color: var(--gold-400);
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
-}
-
-
 
 /* === ScrollyHero Layers === */
 .scrolly-hero {
@@ -267,7 +212,7 @@ h1, h2, h3, h4, h5, h6 {
   transform: scaleX(0);
 }
 
-/* === Service Card Hover === */
+/* === Service Card === */
 .service-card {
   position: relative;
   overflow: hidden;
@@ -366,91 +311,7 @@ h1, h2, h3, h4, h5, h6 {
   will-change: transform, opacity;
 }
 
-/* === Red Glow — breach/threat sections === */
-.gradient-red-glow {
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(204, 34, 34, 0.18) 0%, transparent 50%),
-    radial-gradient(ellipse at 20% 80%, rgba(204, 34, 34, 0.06) 0%, transparent 40%),
-    radial-gradient(ellipse at 80% 80%, rgba(204, 34, 34, 0.06) 0%, transparent 40%),
-    var(--midnight-800);
-}
-
-/* === Shield Gradient — red-to-gold diagonal === */
-.gradient-shield {
-  background: linear-gradient(135deg, var(--red-500) 0%, var(--gold-400) 50%, var(--red-600) 100%);
-}
-
-/* === Floating Particles === */
-@keyframes float-up {
-  0% { transform: translateY(0) scale(1); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
-}
-
-@keyframes float-drift {
-  0% { transform: translate(0, 0); }
-  25% { transform: translate(10px, -15px); }
-  50% { transform: translate(-5px, -30px); }
-  75% { transform: translate(8px, -45px); }
-  100% { transform: translate(0, -60px); }
-}
-
-.particle {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.particle-gold {
-  background: var(--gold-400);
-  box-shadow: 0 0 6px rgba(212, 175, 55, 0.6);
-}
-
-.particle-red {
-  background: var(--red-500);
-  box-shadow: 0 0 6px rgba(204, 34, 34, 0.6);
-}
-
-/* === Text Glow / Shimmer === */
-@keyframes text-glow-pulse {
-  0%, 100% { text-shadow: 0 0 20px rgba(212, 175, 55, 0.3), 0 0 40px rgba(212, 175, 55, 0.1); }
-  50% { text-shadow: 0 0 30px rgba(212, 175, 55, 0.5), 0 0 60px rgba(212, 175, 55, 0.2); }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-
-.text-glow {
-  animation: text-glow-pulse 3s ease-in-out infinite;
-}
-
-.text-shimmer {
-  background: linear-gradient(
-    90deg,
-    var(--horizon-50) 0%,
-    var(--gold-300) 25%,
-    var(--horizon-50) 50%,
-    var(--gold-300) 75%,
-    var(--horizon-50) 100%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 4s linear infinite;
-}
-
-/* === Magnetic Button (GSAP owns the transform) === */
-.magnetic-btn {
-  position: relative;
-}
-
-/* === Enhanced Button Glow === */
+/* === Gold Button Glow === */
 .btn-gold-glow {
   background: linear-gradient(135deg, var(--gold-400) 0%, var(--gold-600) 100%);
   color: var(--midnight-950);
@@ -463,27 +324,6 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(-1px);
 }
 
-.btn-red-glow {
-  border: 1px solid rgba(204, 34, 34, 0.4);
-  color: var(--horizon-100);
-  transition: all 0.3s ease;
-}
-.btn-red-glow:hover {
-  border-color: var(--red-500);
-  color: var(--red-400);
-  box-shadow: 0 0 30px rgba(204, 34, 34, 0.15);
-}
-
-/* === Shield Border Glow (for logo container) === */
-@keyframes shield-pulse {
-  0%, 100% { box-shadow: 0 0 15px rgba(204, 34, 34, 0.2), 0 0 30px rgba(212, 175, 55, 0.1); }
-  50% { box-shadow: 0 0 25px rgba(204, 34, 34, 0.35), 0 0 50px rgba(212, 175, 55, 0.15); }
-}
-
-.shield-glow {
-  animation: shield-pulse 3s ease-in-out infinite;
-}
-
 /* === Reduced Motion === */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -494,5 +334,4 @@ h1, h2, h3, h4, h5, h6 {
   }
   .text-shimmer { animation: none; -webkit-text-fill-color: var(--horizon-50); }
   .text-glow { animation: none; }
-  .shield-glow { animation: none; }
 }

@@ -6,7 +6,7 @@ export const SITE = {
   phone: '+91 98765 43210',
   phoneTel: 'tel:+919876543210',
   email: 'info@silbarsecurity.com',
-  tagline: "India's Premier Physical Security & Facility Management",
+  tagline: 'Professional Security. Zero Compromise.',
 } as const
 
 export const STATS = [
@@ -14,9 +14,4 @@ export const STATS = [
   { value: 96, suffix: '%', label: 'Satisfaction', prefix: '' },
   { value: 5000, suffix: '+', label: 'Guards Deployed', prefix: '' },
   { value: 98, suffix: '%', label: 'Reliability', prefix: '' },
-] as const
-
-export const HERO_STATS = [
-  { label: 'ANNUAL LOSSES IN INDIA', value: '₹47,000 Cr' },
-  { label: 'UNSECURED PREMISES', value: '73%' },
 ] as const
