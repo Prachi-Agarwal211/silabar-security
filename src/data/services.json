@@ -1,0 +1,44 @@
+[
+  {
+    "slug": "security-guards",
+    "title": "Security Guards",
+    "description": "Trained, vetted, and professional security personnel for comprehensive protection of your premises.",
+    "features": ["Armed & Unarmed Options", "24/7 Coverage", "Real-time Reporting", "Body-worn Cameras"],
+    "icon": "shield"
+  },
+  {
+    "slug": "vehicle-patrol",
+    "title": "Vehicle Patrol",
+    "description": "Randomized patrol routes with GPS-tracked vehicles for maximum deterrence and rapid response.",
+    "features": ["GPS Tracked", "Randomized Routes", "Photo Reports", "Rapid Response"],
+    "icon": "car"
+  },
+  {
+    "slug": "cctv-surveillance",
+    "title": "CCTV Surveillance",
+    "description": "Advanced monitoring systems with AI-powered detection and 24/7 control room operations.",
+    "features": ["AI Detection", "24/7 Monitoring", "Cloud Storage", "Mobile Access"],
+    "icon": "camera"
+  },
+  {
+    "slug": "access-control",
+    "title": "Access Control",
+    "description": "Biometric and card-based access management systems for controlled entry and exit points.",
+    "features": ["Biometric Systems", "Card Access", "Visitor Management", "Audit Trails"],
+    "icon": "key"
+  },
+  {
+    "slug": "facility-management",
+    "title": "Facility Management",
+    "description": "End-to-end facility maintenance including housekeeping, pest control, and utility management.",
+    "features": ["Housekeeping", "Pest Control", "Maintenance", "Utility Management"],
+    "icon": "building"
+  },
+  {
+    "slug": "event-security",
+    "title": "Event Security",
+    "description": "Specialized security for conferences, concerts, weddings, and large-scale public gatherings.",
+    "features": ["Crowd Management", "VIP Protection", "Entry Screening", "Emergency Response"],
+    "icon": "calendar"
+  }
+]
