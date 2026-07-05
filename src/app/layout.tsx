@@ -1,22 +1,23 @@
 import type { Metadata } from 'next'
-import { DM_Serif_Display, Inter } from 'next/font/google'
+import { Space_Grotesk, Manrope } from 'next/font/google'
 import './globals.css'
 import { SmoothScrollProvider } from '@/providers/smooth-scroll'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import OrganizationSchema from '@/components/seo/OrganizationSchema'
 
-const dmSerifDisplay = DM_Serif_Display({
-  weight: '400',
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
+  weight: ['400', '500', '600', '700'],
 })
 
-const inter = Inter({
+const manrope = Manrope({
   subsets: ['latin'],
   variable: '--font-body',
   display: 'swap',
+  weight: ['400', '500', '600', '700'],
 })
 
 export const metadata: Metadata = {
@@ -38,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${dmSerifDisplay.variable} ${inter.variable}`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${manrope.variable}`}>
       <body>
         <OrganizationSchema />
         <SmoothScrollProvider>

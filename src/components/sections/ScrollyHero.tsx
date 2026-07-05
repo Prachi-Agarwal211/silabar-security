@@ -9,10 +9,10 @@ import { SITE, STATS } from '@/lib/constants'
 import { Shield, Cctv, Siren, KeyRound, Flame } from 'lucide-react'
 
 const services = [
-  { name: 'Guard Services', icon: Shield, color: '#D4AF37' },
-  { name: 'CCTV Surveillance', icon: Cctv, color: '#42638C' },
-  { name: 'Vehicle Patrol', icon: Siren, color: '#B8941E' },
-  { name: 'Access Control', icon: KeyRound, color: '#2E4A6B' },
+  { name: 'Guard Services', icon: Shield, color: '#A78BFA' },
+  { name: 'CCTV Surveillance', icon: Cctv, color: '#22D3EE' },
+  { name: 'Vehicle Patrol', icon: Siren, color: '#D4AF37' },
+  { name: 'Access Control', icon: KeyRound, color: '#8B5CF6' },
   { name: 'Fire Safety', icon: Flame, color: '#CC2222' },
 ]
 
@@ -30,7 +30,6 @@ const mapDots = [
 function MobileHero() {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      {/* Background image */}
       <Image
         src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=1200&q=80"
         alt=""
@@ -39,27 +38,33 @@ function MobileHero() {
         priority
         sizes="100vw"
       />
-      {/* Dark overlay with mesh gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-midnight-950/80 via-midnight-950/70 to-midnight-950/90" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_30%,rgba(212,175,55,0.08)_0%,transparent_60%)]" />
-      <div className="absolute inset-0 dot-grid opacity-20" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_30%,rgba(139,92,246,0.1)_0%,transparent_60%)]" />
+      <div className="absolute inset-0 dot-grid opacity-15" />
 
-      <div className="relative z-10 flex flex-col items-center text-center px-6">
-        <div className="relative mb-6 h-20 w-20 overflow-hidden border border-gold-400/25 bg-midnight-900/60 backdrop-blur-sm">
-          <Image src="/logo.png" alt="Silbar Security" fill className="object-contain p-1.5" sizes="80px" />
+      <div className="relative z-10 flex flex-col items-start text-left px-6 max-w-lg">
+        <div className="mb-6 block-purple px-3 py-1 text-[10px] font-bold tracking-[0.2em] uppercase">
+          Veteran-Led Security
         </div>
-        <h1 className="mb-2 font-display text-[clamp(2.5rem,10vw,4rem)] gradient-text-hero">SILBAR</h1>
-        <h1 className="mb-4 font-display text-[clamp(2.5rem,10vw,4rem)] gradient-text-hero">SECURITY</h1>
-        <div className="mb-4 h-px w-20 bg-gradient-to-r from-transparent via-gold-400/50 to-transparent" />
-        <p className="mb-2 text-sm tracking-[0.15em] text-gold-400">Professional Security. Zero Compromise.</p>
+        <div className="relative mb-5 h-16 w-16 overflow-hidden border border-white/10 bg-midnight-900/60 backdrop-blur-sm">
+          <Image src="/logo.png" alt="Silbar Security" fill className="object-contain p-1.5" sizes="64px" />
+        </div>
+        <h1 className="mb-1 font-display text-[clamp(2.5rem,10vw,4rem)] font-bold leading-[0.9] text-horizon-50">
+          SILBAR
+        </h1>
+        <h1 className="mb-4 font-display text-[clamp(2.5rem,10vw,4rem)] font-bold leading-[0.9] text-horizon-50">
+          SECURITY
+        </h1>
+        <div className="mb-4 h-[2px] w-12 bg-purple-500" />
+        <p className="mb-2 text-sm font-semibold tracking-tight text-purple-400">Professional Security. Zero Compromise.</p>
         <p className="mb-8 max-w-sm text-xs leading-relaxed text-horizon-300">
           50+ cities. 5000+ guards. 24/7 monitoring. PSARA licensed.
         </p>
         <div className="flex flex-col gap-3 w-full max-w-xs">
-          <a href="/contact" className="btn-gold-glow inline-flex h-13 items-center justify-center px-8 text-sm font-bold tracking-[0.05em]">
+          <a href="/contact" className="btn-gold-glow inline-flex h-12 items-center justify-center px-8 text-sm font-bold tracking-[0.02em]">
             Get Free Assessment
           </a>
-          <a href={SITE.phoneTel} className="inline-flex h-13 items-center justify-center border border-red-500/30 px-8 text-sm font-bold tracking-[0.05em] text-horizon-100 transition-colors hover:border-red-500 hover:text-red-400 hover:shadow-[0_0_30px_rgba(204,34,34,0.15)]">
+          <a href={SITE.phoneTel} className="btn-purple inline-flex h-12 items-center justify-center px-8 text-sm font-bold tracking-[0.02em]">
             Call: {SITE.phone}
           </a>
         </div>
@@ -317,25 +322,19 @@ export default function ScrollyHero() {
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-midnight-950/60 via-midnight-950/40 to-midnight-950/80" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,rgba(212,175,55,0.1)_0%,transparent_60%)]" />
-          <h1 className="phase-7-text relative z-10 font-display text-[clamp(5rem,15vw,12rem)] gradient-text-hero leading-none">
-            CONTROL<span className="text-gold-400">.</span>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,rgba(139,92,246,0.08)_0%,transparent_60%)]" />
+          <h1 className="phase-7-text relative z-10 font-display text-[clamp(5rem,15vw,12rem)] font-bold leading-none text-horizon-50">
+            CONTROL<span className="text-purple-400">.</span>
           </h1>
-          <div className="relative z-10 mt-6 h-px w-32 bg-gradient-to-r from-transparent via-gold-400/50 to-transparent" />
-          <p className="phase-7-tagline relative z-10 mt-6 max-w-xl text-center text-lg text-horizon-200">
+          <div className="relative z-10 mt-6 h-[2px] w-24 bg-gradient-to-r from-purple-500 to-gold-400" />
+          <p className="phase-7-tagline relative z-10 mt-5 max-w-xl text-center text-lg font-medium text-horizon-200">
             Your Property. Our Watch.
           </p>
-          <div className="cta-block relative z-10 mt-10 flex flex-col items-center gap-4 sm:flex-row">
-            <a
-              href="/contact"
-              className="pointer-events-auto btn-gold-glow inline-flex h-14 items-center px-10 text-sm font-bold tracking-[0.05em]"
-            >
+          <div className="cta-block relative z-10 mt-8 flex flex-col items-center gap-3 sm:flex-row">
+            <a href="/contact" className="pointer-events-auto btn-gold-glow inline-flex h-12 items-center px-8 text-sm font-bold tracking-[0.02em]">
               Get Security Assessment
             </a>
-            <a
-              href={SITE.phoneTel}
-              className="pointer-events-auto inline-flex h-14 items-center px-10 border border-red-500/30 text-sm font-bold tracking-[0.05em] text-horizon-100 transition-all hover:border-red-500 hover:text-red-400 hover:shadow-[0_0_30px_rgba(204,34,34,0.15)]"
-            >
+            <a href={SITE.phoneTel} className="pointer-events-auto btn-purple inline-flex h-12 items-center px-8 text-sm font-bold tracking-[0.02em]">
               Call: {SITE.phone}
             </a>
           </div>

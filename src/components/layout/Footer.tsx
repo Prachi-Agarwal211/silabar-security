@@ -18,41 +18,37 @@ const locations = [
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-gold-400/10" role="contentinfo">
-      <div className="absolute inset-0 bg-[#050710]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_20%,rgba(3,31,48,0.4)_0%,transparent_55%)] pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_80%,rgba(212,175,55,0.03)_0%,transparent_50%)] pointer-events-none" />
-      <div className="absolute inset-0 dot-grid opacity-20 pointer-events-none" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-400/15 to-transparent" />
+    <footer className="relative overflow-hidden border-t border-white/5" role="contentinfo">
+      <div className="absolute inset-0 bg-[#06060A]" />
+      <div className="absolute inset-0 dot-grid opacity-15 pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/20 to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-[1440px] px-[clamp(1.5rem,5vw,6rem)] py-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <div className="mb-6 flex items-center gap-3">
-              <div className="relative h-12 w-12 overflow-hidden border border-gold-400/30 bg-midnight-900">
-                <Image src="/logo.png" alt="Silbar Security Logo" fill className="object-contain" sizes="48px" />
+            <div className="mb-5 flex items-center gap-3">
+              <div className="relative h-10 w-10 overflow-hidden border border-white/10 bg-midnight-900">
+                <Image src="/logo.png" alt="Silbar Security Logo" fill className="object-contain" sizes="40px" />
               </div>
               <div className="flex flex-col">
-                <span className="font-display text-sm tracking-[0.15em] text-horizon-100">SILBAR</span>
-                <span className="text-[0.6rem] tracking-[0.25em] text-horizon-400">SECURITY</span>
+                <span className="font-display text-sm font-bold tracking-tight text-horizon-100">SILBAR</span>
+                <span className="text-[0.55rem] font-semibold tracking-[0.2em] text-purple-400">SECURITY</span>
               </div>
             </div>
-            <p className="mb-6 text-sm leading-relaxed text-horizon-400">
+            <p className="mb-5 text-sm leading-relaxed text-horizon-400">
               Veteran-led security company. Protecting people, property, and peace of mind across 50+ Indian cities. PSARA licensed. ISO 9001:2015 certified.
             </p>
-            <div className="flex gap-4">
-              <a href={SITE.phoneTel} className="text-sm text-gold-400 transition-colors hover:text-gold-300">
-                {SITE.phone}
-              </a>
-            </div>
+            <a href={SITE.phoneTel} className="text-sm font-semibold text-purple-400 transition-colors hover:text-purple-300">
+              {SITE.phone}
+            </a>
           </div>
 
           <div>
-            <h3 className="mb-6 text-xs font-semibold tracking-[0.2em] text-horizon-100">SERVICES</h3>
-            <ul className="space-y-3">
+            <h3 className="mb-5 text-xs font-bold tracking-[0.15em] text-horizon-100 uppercase">Services</h3>
+            <ul className="space-y-2.5">
               {services.map((service) => (
                 <li key={service.href}>
-                  <Link href={service.href} className="text-sm text-horizon-400 transition-colors hover:text-gold-400">
+                  <Link href={service.href} className="text-sm text-horizon-400 transition-colors hover:text-purple-400">
                     {service.label}
                   </Link>
                 </li>
@@ -61,8 +57,8 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-6 text-xs font-semibold tracking-[0.2em] text-horizon-100">LOCATIONS</h3>
-            <ul className="space-y-3">
+            <h3 className="mb-5 text-xs font-bold tracking-[0.15em] text-horizon-100 uppercase">Locations</h3>
+            <ul className="space-y-2.5">
               {locations.map((loc) => (
                 <li key={loc}>
                   <span className="text-sm text-horizon-400">{loc}</span>
@@ -72,21 +68,21 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-6 text-xs font-semibold tracking-[0.2em] text-horizon-100">CONTACT</h3>
-            <div className="space-y-4 text-sm">
+            <h3 className="mb-5 text-xs font-bold tracking-[0.15em] text-horizon-100 uppercase">Contact</h3>
+            <div className="space-y-3.5 text-sm">
               <p>
-                <span className="block text-horizon-100">Head Office</span>
+                <span className="block text-horizon-100 font-medium">Head Office</span>
                 <span className="text-horizon-400">New Delhi, India</span>
               </p>
               <p>
-                <span className="block text-horizon-100">Email</span>
-                <a href="mailto:info@silbarsecurity.com" className="text-gold-400 transition-colors hover:text-gold-300">
+                <span className="block text-horizon-100 font-medium">Email</span>
+                <a href="mailto:info@silbarsecurity.com" className="text-purple-400 transition-colors hover:text-purple-300">
                   info@silbarsecurity.com
                 </a>
               </p>
               <p>
-                <span className="block text-horizon-100">Phone</span>
-                <a href={SITE.phoneTel} className="text-gold-400 transition-colors hover:text-gold-300">
+                <span className="block text-horizon-100 font-medium">Phone</span>
+                <a href={SITE.phoneTel} className="text-purple-400 transition-colors hover:text-purple-300">
                   {SITE.phone}
                 </a>
               </p>
@@ -94,16 +90,16 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 border-t border-gold-400/10 pt-8">
+        <div className="mt-14 border-t border-white/5 pt-8">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <p className="text-xs text-horizon-400">
+            <p className="text-xs text-horizon-500">
               &copy; {new Date().getFullYear()} Silbar Security. All rights reserved.
             </p>
             <div className="flex gap-6">
-              <Link href="/privacy" className="text-xs text-horizon-400 transition-colors hover:text-horizon-200">
+              <Link href="/privacy" className="text-xs text-horizon-500 transition-colors hover:text-horizon-300">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="text-xs text-horizon-400 transition-colors hover:text-horizon-200">
+              <Link href="/terms" className="text-xs text-horizon-500 transition-colors hover:text-horizon-300">
                 Terms of Service
               </Link>
             </div>

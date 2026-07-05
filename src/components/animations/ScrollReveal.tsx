@@ -17,7 +17,7 @@ export default function ScrollReveal({
   className = '',
   direction = 'up',
   delay = 0,
-  duration = 1,
+  duration = 0.7,
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null)
 
@@ -26,8 +26,8 @@ export default function ScrollReveal({
     if (!el) return
 
     const fromVars = {
-      y: direction === 'up' ? 60 : direction === 'down' ? -60 : 0,
-      x: direction === 'left' ? 60 : direction === 'right' ? -60 : 0,
+      y: direction === 'up' ? 40 : direction === 'down' ? -40 : 0,
+      x: direction === 'left' ? 40 : direction === 'right' ? -40 : 0,
       opacity: 0,
     }
 
@@ -38,7 +38,7 @@ export default function ScrollReveal({
       ease: 'power3.out',
       scrollTrigger: {
         trigger: el,
-        start: 'top 85%',
+        start: 'top 88%',
         once: true,
       },
     })
