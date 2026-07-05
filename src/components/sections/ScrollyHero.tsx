@@ -4,6 +4,7 @@ import Image from 'next/image'
 
 import { useGSAP } from '@gsap/react'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
+import { SplitText } from 'gsap/SplitText'
 import Counter from '@/components/animations/Counter'
 import { SITE, STATS } from '@/lib/constants'
 import { Shield, Cctv, Siren, KeyRound, Flame } from 'lucide-react'
@@ -28,8 +29,29 @@ const mapDots = [
 ]
 
 function MobileHero() {
+  const heroRef = useRef<HTMLDivElement>(null)
+
+  useGSAP(() => {
+    if (!heroRef.current) return
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReduced) return
+
+    const split1 = SplitText.create(heroRef.current.querySelector('.hero-line-1'), { type: 'chars' })
+    const split2 = SplitText.create(heroRef.current.querySelector('.hero-line-2'), { type: 'chars' })
+
+    gsap.set([...split1.chars, ...split2.chars], { yPercent: 110, opacity: 0 })
+    gsap.to(split1.chars, {
+      yPercent: 0, opacity: 1, duration: 0.8, stagger: 0.03, delay: 0.3, ease: 'expo.out',
+    })
+    gsap.to(split2.chars, {
+      yPercent: 0, opacity: 1, duration: 0.8, stagger: 0.03, delay: 0.5, ease: 'expo.out',
+    })
+
+    return () => { split1.revert(); split2.revert() }
+  }, { scope: heroRef })
+
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+    <section ref={heroRef} className="relative flex min-h-screen items-center justify-center overflow-hidden">
       <Image
         src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=1200&q=80"
         alt=""
@@ -50,10 +72,10 @@ function MobileHero() {
           <Image src="/logo.png" alt="Silbar Security" fill className="object-contain p-1.5" sizes="64px" />
         </div>
         <h1 className="mb-1 font-display text-[clamp(2.5rem,10vw,4rem)] font-bold leading-[0.9] text-horizon-50">
-          SILBAR
+          <span className="hero-line-1 inline-block overflow-hidden">SILBAR</span>
         </h1>
         <h1 className="mb-4 font-display text-[clamp(2.5rem,10vw,4rem)] font-bold leading-[0.9] text-horizon-50">
-          SECURITY
+          <span className="hero-line-2 inline-block overflow-hidden">SECURITY</span>
         </h1>
         <div className="mb-4 h-[2px] w-12 bg-purple-500" />
         <p className="mb-2 text-sm font-semibold tracking-tight text-purple-400">Professional Security. Zero Compromise.</p>

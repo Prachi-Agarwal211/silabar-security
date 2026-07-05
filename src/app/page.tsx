@@ -4,6 +4,10 @@ import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import Counter from '@/components/animations/Counter'
+import Marquee from '@/components/animations/Marquee'
+import OrganicDivider from '@/components/animations/OrganicDivider'
+import FloatingElements from '@/components/animations/FloatingElements'
+import MagneticButton from '@/components/animations/MagneticButton'
 import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema'
 import { SITE, STATS } from '@/lib/constants'
 import services from '@/data/services.json'
@@ -15,6 +19,13 @@ import {
 } from 'lucide-react'
 
 const ScrollyHero = dynamic(() => import('@/components/sections/ScrollyHero'), { ssr: false })
+
+const marqueeItems = [
+  'Security Guards', 'Vehicle Patrol', 'CCTV Surveillance',
+  'Access Control', 'Fire Safety', 'Event Security',
+  'Facility Management', 'Executive Protection',
+  'Night Patrol', 'Crowd Management',
+]
 
 const serviceIcons: Record<string, LucideIcon> = {
   shield: Shield, car: Siren, camera: Cctv, key: KeyRound,
@@ -54,7 +65,13 @@ export default function Home() {
   return (
     <>
       <LocalBusinessSchema />
+      <FloatingElements />
       <ScrollyHero />
+
+      {/* ===== MARQUEE — Infinite services ticker ===== */}
+      <div className="relative overflow-hidden border-y border-white/5 bg-midnight-950 py-5">
+        <Marquee items={marqueeItems} speed={25} />
+      </div>
 
       {/* ===== SERVICES — Asymmetric 2-col: text left, cards right ===== */}
       <section className="mesh-services relative overflow-hidden py-[clamp(5rem,12vh,10rem)]">
@@ -123,6 +140,8 @@ export default function Home() {
         </div>
       </section>
 
+      <OrganicDivider variant="wave" color="#0D0D14" />
+
       {/* ===== STATS — Solid gold block ===== */}
       <section className="mesh-stats relative overflow-hidden py-20 md:py-24">
         <div className="relative z-10 mx-auto max-w-[1440px] px-[clamp(1.5rem,5vw,6rem)]">
@@ -140,6 +159,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <OrganicDivider variant="diagonal" color="#0A0A10" />
 
       {/* ===== INDUSTRIES — Asymmetric grid ===== */}
       <section className="mesh-industries relative overflow-hidden py-[clamp(5rem,12vh,10rem)]">
@@ -189,6 +210,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <OrganicDivider variant="jagged" color="#08080E" />
 
       {/* ===== WHY CHOOSE US — Left border accent ===== */}
       <section className="mesh-whyus relative overflow-hidden py-[clamp(5rem,12vh,10rem)]">
@@ -249,17 +272,26 @@ export default function Home() {
                 Our team analyzes your security needs and delivers a customized plan within 24 hours. No obligation.
               </p>
               <div className="flex flex-col gap-3 sm:flex-row">
-                <a href="/contact" className="btn-gold-glow inline-flex h-12 items-center justify-center px-8 text-sm font-bold tracking-[0.02em]">
-                  Get Assessment
-                </a>
-                <a href={SITE.phoneTel} className="btn-purple inline-flex h-12 items-center justify-center px-8 text-sm font-bold tracking-[0.02em]">
-                  Call: {SITE.phone}
-                </a>
+                <MagneticButton href="/contact" strength={0.2}>
+                  <span className="btn-gold-glow inline-flex h-12 items-center justify-center px-8 text-sm font-bold tracking-[0.02em]">
+                    Get Assessment
+                  </span>
+                </MagneticButton>
+                <MagneticButton href={SITE.phoneTel} strength={0.2}>
+                  <span className="btn-purple inline-flex h-12 items-center justify-center px-8 text-sm font-bold tracking-[0.02em]">
+                    Call: {SITE.phone}
+                  </span>
+                </MagneticButton>
               </div>
             </div>
           </ScrollReveal>
         </div>
       </section>
+
+      {/* ===== BOTTOM MARQUEE — Bookend ticker ===== */}
+      <div className="relative overflow-hidden border-y border-white/5 bg-midnight-950 py-5">
+        <Marquee items={marqueeItems} speed={20} direction="right" />
+      </div>
     </>
   )
 }
