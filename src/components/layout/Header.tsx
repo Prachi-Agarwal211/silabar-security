@@ -33,8 +33,8 @@ export default function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? 'bg-midnight-950/95 backdrop-blur-xl border-b border-gold-400/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)]'
-            : 'bg-midnight-950/70 backdrop-blur-md'
+            ? 'bg-midnight-950/80 backdrop-blur-xl border-b border-gold-400/8 shadow-[0_4px_40px_rgba(0,0,0,0.5)]'
+            : 'bg-midnight-950/50 backdrop-blur-md'
         }`}
         role="banner"
       >

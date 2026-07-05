@@ -19,9 +19,11 @@ const locations = [
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-gold-400/10" role="contentinfo">
-      <div className="absolute inset-0 bg-midnight-950" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(3,31,48,0.2),transparent_60%)] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-400/10 to-transparent" />
+      <div className="absolute inset-0 bg-[#050710]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_20%,rgba(3,31,48,0.4)_0%,transparent_55%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_80%,rgba(212,175,55,0.03)_0%,transparent_50%)] pointer-events-none" />
+      <div className="absolute inset-0 dot-grid opacity-20 pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-400/15 to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-[1440px] px-[clamp(1.5rem,5vw,6rem)] py-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
