@@ -14,16 +14,16 @@ const MARQUEE_ITEMS = [
 ]
 
 const SERVICES = [
-  { icon: Shield, title: 'Guarding Services', desc: 'Armed and unarmed guards, lady guards, supervisors, bouncers, and bodyguards for comprehensive on-site protection.' },
-  { icon: Building2, title: 'Corporate & Industrial Security', desc: 'Complete security solutions for commercial, industrial, and residential facilities across India.' },
-  { icon: Users, title: 'Event & VIP/VVIP Protection', desc: 'Escort and patrolling services for events, VIPs, and dignitaries with layered security protocols.' },
-  { icon: Landmark, title: 'Bank & ATM Security', desc: 'Cash van and bullion escort services with armed protection for secure financial transport.' },
-  { icon: Camera, title: 'Electronic Surveillance', desc: 'CCTV installation, access control systems, fire alarms, GPS tracking, and intruder detection.' },
-  { icon: Search, title: 'Risk Assessment & Audits', desc: 'Security audits, disaster management, and crisis management consultancy for your business.' },
-  { icon: Wrench, title: 'Facility Management', desc: 'Full-spectrum facility management services including maintenance, housekeeping, and operations.' },
-  { icon: GraduationCap, title: 'Security Training', desc: 'PSARA-compliant training centres for security personnel with certified curriculum.' },
-  { icon: TrendingUp, title: 'Skill Development', desc: 'Manpower solutions and skill development programs to build a trained security workforce.' },
-  { icon: FileText, title: 'KYC Verifications', desc: 'Background checks and KYC verification services for employee and vendor screening.' },
+  { icon: Shield, title: 'Manned Guarding', desc: 'Armed guards, unarmed guards, lady guards, supervisors, and bouncers. PSARA-licensed, uniformed, and trained for every industry.' },
+  { icon: Building2, title: 'Industrial Security', desc: 'Perimeter control, access management, and shift supervision for factories, warehouses, logistics hubs, and manufacturing plants.' },
+  { icon: Users, title: 'Event & VIP Security', desc: 'Crowd management, entry-exit control, VIP escort, and VVIP protection for corporate events, concerts, and government functions.' },
+  { icon: Landmark, title: 'Bank & ATM Security', desc: 'Cash-in-transit, bullion escort, and armed ATM guard services under strict compliance with RBI and banking security norms.' },
+  { icon: Camera, title: 'Electronic Surveillance', desc: 'CCTV design, installation, remote monitoring, access control, fire alarms, and GPS vehicle tracking for complete site visibility.' },
+  { icon: Search, title: 'Risk Assessment', desc: 'Security audits, vulnerability assessments, disaster management planning, and crisis response consultancy for your facility.' },
+  { icon: Wrench, title: 'Facility Management', desc: 'Housekeeping, maintenance, pantry services, and operations management. One vendor, complete facility coverage.' },
+  { icon: GraduationCap, title: 'Security Training', desc: 'PSARA-certified training for security personnel. Weapons handling, first aid, fire safety, and soft skills — all under one roof.' },
+  { icon: TrendingUp, title: 'Manpower Solutions', desc: 'Trained manpower deployment for security, facility, and support roles. Payroll, compliance, and staffing handled end-to-end.' },
+  { icon: FileText, title: 'KYC & Background Checks', desc: 'Pre-employment verification, address checks, criminal record screening, and KYC documentation for vendor and employee onboarding.' },
 ]
 
 export default function ScrollExperience() {
@@ -80,20 +80,32 @@ export default function ScrollExperience() {
 
     video.play().catch(() => {})
 
-    const dockRect = dock.getBoundingClientRect()
-    const vw = window.innerWidth
-    const vh = window.innerHeight
-    const scaleX = dockRect.width / vw
-    const scaleY = dockRect.height / vh
-    const targetScale = Math.min(scaleX, scaleY)
-    const tx = (dockRect.left + dockRect.width / 2) - vw / 2
-    const ty = (dockRect.top + dockRect.height / 2) - vh / 2
+    // Defer rect measurement until after first paint — ensures layout has settled.
+    // invalidateOnRefresh on the ScrollTrigger also re-measures on resize.
+    const measureAndInit = () => {
+      const dockRect = dock.getBoundingClientRect()
+      const vw = window.innerWidth
+      const vh = window.innerHeight
 
-    // The strip must scale up enough that once rotated 90° it covers the full
-    // viewport diagonal from its own center, with a safety margin.
-    const barHeight = marqueeBar.getBoundingClientRect().height || 60
-    const diagonal = Math.sqrt(vw * vw + vh * vh)
-    const wipeScale = (diagonal / barHeight) * 1.2
+      // Guard: if dock hasn't laid out yet, skip (invalidateOnRefresh will retry)
+      if (dockRect.width === 0) return
+
+      const scaleX = dockRect.width / vw
+      const scaleY = dockRect.height / vh
+      const targetScale = Math.min(scaleX, scaleY)
+      const tx = (dockRect.left + dockRect.width / 2) - vw / 2
+      const ty = (dockRect.top + dockRect.height / 2) - vh / 2
+
+      const barHeight = marqueeBar.getBoundingClientRect().height || 60
+      const diagonal = Math.sqrt(vw * vw + vh * vh)
+      const wipeScale = (diagonal / barHeight) * 1.2
+
+      return { targetScale, tx, ty, wipeScale }
+    }
+
+    const measurements = measureAndInit()
+    if (!measurements) return
+    const { targetScale, tx, ty, wipeScale } = measurements
 
     const mm = gsap.matchMedia()
 
@@ -225,8 +237,8 @@ export default function ScrollExperience() {
       <div ref={overlayRef} className="hero-overlay" />
 
       <div className="hero-tagline">
-        <span ref={tagline1Ref} className="tagline-line">Professional Security Wasn&apos;t Available...</span>
-        <span ref={tagline2Ref} className="tagline-line">So We Fixed It.®</span>
+        <span ref={tagline1Ref} className="tagline-line">Protecting India.</span>
+        <span ref={tagline2Ref} className="tagline-line">Since Day One.®</span>
       </div>
 
       <div ref={scrollIndRef} className="scroll-indicator">
@@ -249,25 +261,26 @@ export default function ScrollExperience() {
           <div>
             <div ref={trustEyebrowRef} className="trust-eyebrow">
               <span className="trust-eyebrow__rule" />
-              SILBAR SECURITY
+              SILBAR SECURITY SERVICES
             </div>
 
             <h2 ref={trustHeadingRef} className="trust-heading-light">
-              FOUNDED BY<br />
-              <span className="trust-heading-light__outline">LAW ENFORCEMENT.®</span>
+              SECURITY YOU<br />
+              <span className="trust-heading-light__outline">CAN TRUST.®</span>
             </h2>
 
             <span ref={trustDividerRef} className="trust-divider" />
 
             <p ref={trustSubcopyRef} className="trust-subcopy">
-              ISO 9001:2015 &amp; PSARA-2005 CERTIFIED<br />7,000+ LICENSED OFFICERS
+              ISO 9001:2015 &amp; PSARA-2005 CERTIFIED<br />
+              7,000+ LICENSED OFFICERS · PAN INDIA
             </p>
 
             <div ref={trustCaptionRef} className="trust-caption">
               <span className="trust-caption__bracket" />
               <span className="trust-caption__number">01</span>
               <span className="trust-caption__text">
-                TRUSTED SECURITY SERVICES<br />ACROSS PAN INDIA.
+                JAIPUR · DELHI · AHMEDABAD<br />AND 200+ CITIES.
               </span>
             </div>
           </div>
@@ -305,13 +318,13 @@ export default function ScrollExperience() {
       <div ref={servicesContentRef} className="services-scroll-content">
         <div className="services-inner">
           <div ref={servicesHeadingRef} className="services-header">
-            <span className="services-eyebrow">SILBAR SECURITY</span>
+            <span className="services-eyebrow">WHAT WE DO</span>
             <h2 className="services-title">
-              OUR <span className="services-title--outline">SERVICES</span>
+              10 <span className="services-title--outline">VERTICALS.</span>
             </h2>
             <span className="services-divider" />
             <p className="services-subcopy">
-              END-TO-END SECURITY SOLUTIONS<br />ACROSS 10 SERVICE VERTICALS.
+              COMPLETE SECURITY & FACILITY MANAGEMENT<br />FOR INDIA'S TOP ENTERPRISES.
             </p>
           </div>
 

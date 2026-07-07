@@ -1,53 +1,131 @@
+import Link from 'next/link'
+import { Phone, Mail, MapPin, Shield } from 'lucide-react'
+
+const SERVICES_LINKS = [
+  { label: 'Manned Guarding', href: '/services/manned-guarding' },
+  { label: 'Industrial Security', href: '/services/industrial-security' },
+  { label: 'Event Security', href: '/services/event-security' },
+  { label: 'Bank & ATM Security', href: '/services/bank-atm-security' },
+  { label: 'Electronic Surveillance', href: '/services/electronic-surveillance' },
+  { label: 'Facility Management', href: '/services/facility-management' },
+]
+
+const INDUSTRIES_LINKS = [
+  { label: 'Manufacturing', href: '/industries/manufacturing' },
+  { label: 'Hospitals', href: '/industries/hospitals' },
+  { label: 'Hotels & Hospitality', href: '/industries/hotels' },
+  { label: 'Warehouses', href: '/industries/warehouses' },
+  { label: 'Banks & BFSI', href: '/industries/banks' },
+  { label: 'Corporate Offices', href: '/industries/corporate' },
+]
+
+const COMPANY_LINKS = [
+  { label: 'About Silbar', href: '/about' },
+  { label: 'Why Silbar', href: '/about#why-silbar' },
+  { label: 'Certifications', href: '/about#certifications' },
+  { label: 'Careers', href: '/careers' },
+  { label: 'Contact', href: '/contact' },
+  { label: 'Get Quote', href: '/contact#quote' },
+]
+
 export default function Footer() {
+  const year = new Date().getFullYear()
+
   return (
-    <footer className="site-footer">
+    <footer className="site-footer" id="contact">
+      {/* Trust badges row */}
+      <div className="footer-trust-row">
+        <div className="footer-trust-badge">
+          <Shield size={14} className="footer-trust-badge__icon" />
+          ISO 9001:2015 Certified
+        </div>
+        <div className="footer-trust-badge">
+          <Shield size={14} className="footer-trust-badge__icon" />
+          PSARA-2005 Licensed
+        </div>
+        <div className="footer-trust-badge">
+          <Shield size={14} className="footer-trust-badge__icon" />
+          MSME Registered
+        </div>
+        <div className="footer-trust-badge">
+          <Shield size={14} className="footer-trust-badge__icon" />
+          7,000+ Officers
+        </div>
+      </div>
+
       <div className="footer-grid">
-        <div>
+        {/* Brand column */}
+        <div className="footer-brand-col">
           <div className="footer-brand">Silbar Security</div>
           <p className="footer-tagline">
-            Professional Security Wasn't Available...<br />So We Fixed It.®
+            India's most trusted PSARA-licensed security services company.
+            Founded by law enforcement professionals for uncompromising protection.
           </p>
+          <div className="footer-contact-list">
+            <a href="tel:+919352303333" className="footer-contact-item">
+              <Phone size={14} />
+              +91 93523 03333
+            </a>
+            <a href="tel:+911412223334" className="footer-contact-item">
+              <Phone size={14} />
+              +91-141 222 3334
+            </a>
+            <a href="mailto:info@silbarsecurity.in" className="footer-contact-item">
+              <Mail size={14} />
+              info@silbarsecurity.in
+            </a>
+            <span className="footer-contact-item footer-contact-item--location">
+              <MapPin size={14} />
+              Jaipur · Delhi · Ahmedabad · PAN India
+            </span>
+          </div>
         </div>
 
+        {/* Services column */}
         <div>
           <div className="footer-heading">Services</div>
           <ul className="footer-links">
-            <li><a href="#services" className="footer-link">Guarding Services</a></li>
-            <li><a href="#services" className="footer-link">Event Security</a></li>
-            <li><a href="#services" className="footer-link">Electronic Surveillance</a></li>
-            <li><a href="#services" className="footer-link">Risk Assessment</a></li>
-            <li><a href="#services" className="footer-link">Facility Management</a></li>
+            {SERVICES_LINKS.map(({ label, href }) => (
+              <li key={label}>
+                <Link href={href} className="footer-link">{label}</Link>
+              </li>
+            ))}
           </ul>
         </div>
 
+        {/* Industries column */}
+        <div>
+          <div className="footer-heading">Industries</div>
+          <ul className="footer-links">
+            {INDUSTRIES_LINKS.map(({ label, href }) => (
+              <li key={label}>
+                <Link href={href} className="footer-link">{label}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Company column */}
         <div>
           <div className="footer-heading">Company</div>
           <ul className="footer-links">
-            <li><a href="#about" className="footer-link">About Us</a></li>
-            <li><a href="#contact" className="footer-link">Contact</a></li>
-            <li><a href="#industries" className="footer-link">Industries</a></li>
-            <li><a href="#quote" className="footer-link">Get Quote</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <div className="footer-heading">Contact</div>
-          <ul className="footer-links">
-            <li><a href="tel:+919352303333" className="footer-link">+91 93523 03333</a></li>
-            <li><a href="tel:+911412223334" className="footer-link">+91-141222 3334</a></li>
-            <li><a href="mailto:info@silbarsecurity.in" className="footer-link">info@silbarsecurity.in</a></li>
-            <li><span className="footer-link">Jaipur | Delhi | Ahmedabad | PAN India</span></li>
+            {COMPANY_LINKS.map(({ label, href }) => (
+              <li key={label}>
+                <Link href={href} className="footer-link">{label}</Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
 
       <div className="footer-bottom">
         <span className="footer-copyright">
-          © {new Date().getFullYear()} Silbar Security Services Pvt. Ltd. All rights reserved.
+          © {year} Silbar Security Services Pvt. Ltd. All rights reserved.
         </span>
-        <span className="footer-copyright">
-          ISO 9001:2015 &amp; PSARA-2005 Certified
-        </span>
+        <div className="footer-legal-links">
+          <Link href="/privacy-policy" className="footer-legal-link">Privacy Policy</Link>
+          <Link href="/terms" className="footer-legal-link">Terms of Use</Link>
+        </div>
       </div>
     </footer>
   )
