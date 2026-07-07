@@ -84,12 +84,24 @@ body {
   z-index: 0;
 }
 
+/* Warm gradient crossfade layer — starts at opacity 0, fades in over the dark
+   base in Act 2. Separate element because GSAP cannot tween CSS gradients directly. */
+.scroll-bg-warm {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 10%, #FAF6EC 0%, transparent 60%),
+    linear-gradient(135deg, #F3EDE0 0%, #E8DCC5 55%, #D9C79E 100%);
+}
+
 .trust-scroll-content {
   position: absolute;
   inset: 0;
   opacity: 0;
   pointer-events: none;
-  z-index: 3;
+  z-index: 4;
 }
 
 /* ============================================
@@ -178,7 +190,7 @@ body {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-  z-index: 5;
+  z-index: 1;
   border-radius: 0;
   will-change: transform;
 }
@@ -201,7 +213,7 @@ body {
     rgba(10, 10, 10, 0.35) 30%,
     transparent 55%
   );
-  z-index: 1;
+  z-index: 2;
   pointer-events: none;
 }
 
@@ -214,7 +226,7 @@ body {
   bottom: 8vh;
   left: 0;
   right: 0;
-  z-index: 2;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -253,7 +265,7 @@ body {
   bottom: 2vh;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -477,7 +489,7 @@ body {
   background: radial-gradient(circle, rgba(212, 175, 55, 0.5), transparent 70%);
   filter: blur(40px);
   pointer-events: none;
-  z-index: 1;
+  z-index: 3;
 }
 
 .trust-card-light__overlay {
@@ -485,7 +497,7 @@ body {
   inset: 0;
   background: linear-gradient(135deg, rgba(191, 149, 63, 0.12), transparent 55%);
   pointer-events: none;
-  z-index: 1;
+  z-index: 3;
 }
 
 /* ============================================
@@ -493,7 +505,11 @@ body {
    ============================================ */
 
 .trust-marquee-bar {
-  position: relative;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
   display: flex;
   align-items: center;
   gap: 1.5rem;
@@ -501,6 +517,9 @@ body {
   padding: 0.9rem clamp(1.5rem, 4vw, 3rem);
   background: var(--color-midnight);
   border-top-left-radius: 20px;
+  opacity: 0;
+  transform-origin: 50% 50%;
+  will-change: transform;
 }
 
 .trust-marquee-bar::before {
@@ -577,11 +596,12 @@ body {
   inset: 0;
   opacity: 0;
   pointer-events: none;
-  z-index: 4;
+  z-index: 6;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: clamp(2rem, 5vh, 4rem) clamp(1.5rem, 5vw, 6rem);
+  background: var(--color-midnight);
 }
 
 .services-inner {
@@ -602,7 +622,7 @@ body {
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-horizon-700);
+  color: rgba(244, 241, 234, 0.65);
   margin-bottom: 0.75rem;
 }
 
@@ -612,20 +632,20 @@ body {
   font-weight: 800;
   line-height: 0.98;
   letter-spacing: -0.02em;
-  color: var(--color-midnight);
+  color: var(--color-cream);
   text-transform: uppercase;
   margin-bottom: 1rem;
 }
 
 .services-title--outline {
   color: transparent;
-  -webkit-text-stroke: 1.5px var(--color-midnight);
-  text-stroke: 1.5px var(--color-midnight);
+  -webkit-text-stroke: 1.5px var(--color-cream);
+  text-stroke: 1.5px var(--color-cream);
 }
 
 @supports not (-webkit-text-stroke: 1px black) {
   .services-title--outline {
-    color: var(--color-midnight);
+    color: var(--color-cream);
     opacity: 0.35;
   }
 }
@@ -644,7 +664,7 @@ body {
   font-weight: 600;
   letter-spacing: 0.08em;
   line-height: 1.7;
-  color: var(--color-horizon-700);
+  color: rgba(244, 241, 234, 0.65);
   text-transform: uppercase;
 }
 
@@ -665,7 +685,7 @@ body {
 .service-card {
   position: relative;
   padding: clamp(1.25rem, 2vw, 1.75rem);
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(191, 149, 63, 0.15);
   border-radius: 16px;
   transition: border-color 0.3s var(--ease-smooth), box-shadow 0.3s var(--ease-smooth);
@@ -693,7 +713,7 @@ body {
   font-size: clamp(0.95rem, 1.2vw, 1.1rem);
   font-weight: 700;
   letter-spacing: 0.02em;
-  color: var(--color-midnight);
+  color: var(--color-cream);
   margin-bottom: 0.5rem;
 }
 
@@ -702,7 +722,7 @@ body {
   font-size: 0.75rem;
   font-weight: 500;
   line-height: 1.6;
-  color: var(--color-horizon-600);
+  color: rgba(244, 241, 234, 0.6);
 }
 
 .service-card__number {

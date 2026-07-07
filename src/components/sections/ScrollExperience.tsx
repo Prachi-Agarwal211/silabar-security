@@ -29,6 +29,7 @@ const SERVICES = [
 export default function ScrollExperience() {
   const wrapperRef = useRef<HTMLDivElement>(null)
   const bgRef = useRef<HTMLDivElement>(null)
+  const bgWarmRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
   const overlayRef = useRef<HTMLDivElement>(null)
   const tagline1Ref = useRef<HTMLSpanElement>(null)
@@ -40,6 +41,10 @@ export default function ScrollExperience() {
   const trustEyebrowRef = useRef<HTMLDivElement>(null)
   const trustSubcopyRef = useRef<HTMLParagraphElement>(null)
   const trustCaptionRef = useRef<HTMLDivElement>(null)
+  // The marquee bar is a TOP-LEVEL sibling of trustContent (not nested inside it).
+  // CSS opacity is multiplicative: if trustContent fades to 0, anything inside
+  // also disappears regardless of its own opacity. The wipe only works because
+  // this element lives OUTSIDE the faded trustContent tree.
   const marqueeBarRef = useRef<HTMLDivElement>(null)
   const servicesContentRef = useRef<HTMLDivElement>(null)
   const servicesHeadingRef = useRef<HTMLHeadingElement>(null)
@@ -48,6 +53,7 @@ export default function ScrollExperience() {
   useEffect(() => {
     const wrapper = wrapperRef.current
     const bg = bgRef.current
+    const bgWarm = bgWarmRef.current
     const video = videoRef.current
     const overlay = overlayRef.current
     const line1 = tagline1Ref.current
@@ -66,7 +72,7 @@ export default function ScrollExperience() {
     const dock = document.getElementById('morph-video-dock')
 
     if (
-      !wrapper || !bg || !video || !overlay || !line1 || !line2 || !scrollInd ||
+      !wrapper || !bg || !bgWarm || !video || !overlay || !line1 || !line2 || !scrollInd ||
       !trustContent || !trustHeading || !trustDivider || !trustEyebrow ||
       !trustSubcopy || !trustCaption || !marqueeBar || !dock ||
       !servicesContent || !servicesHeading || !servicesGrid
@@ -83,6 +89,12 @@ export default function ScrollExperience() {
     const tx = (dockRect.left + dockRect.width / 2) - vw / 2
     const ty = (dockRect.top + dockRect.height / 2) - vh / 2
 
+    // The strip must scale up enough that once rotated 90° it covers the full
+    // viewport diagonal from its own center, with a safety margin.
+    const barHeight = marqueeBar.getBoundingClientRect().height || 60
+    const diagonal = Math.sqrt(vw * vw + vh * vh)
+    const wipeScale = (diagonal / barHeight) * 1.2
+
     const mm = gsap.matchMedia()
 
     mm.add('(prefers-reduced-motion: no-preference)', () => {
@@ -90,7 +102,7 @@ export default function ScrollExperience() {
         scrollTrigger: {
           trigger: wrapper,
           start: 'top top',
-          end: '+=400%',
+          end: '+=550%',
           scrub: 1,
           pin: true,
           anticipatePin: 1,
@@ -99,78 +111,98 @@ export default function ScrollExperience() {
       })
 
       // ══════════════════════════════════════════
-      // SECTION 1: Hero → Trust (0 → 0.35)
+      // ACT 1 — HERO (0 → 0.22)
       // ══════════════════════════════════════════
 
-      // Phase 1 (0→0.1): Hero text already visible — overlay + scroll indicator fade in
-      tl.fromTo(overlay, { opacity: 0 }, { opacity: 1, duration: 0.08, ease: 'power2.out' }, 0)
-      tl.fromTo(scrollInd, { opacity: 0 }, { opacity: 1, duration: 0.06, ease: 'power2.out' }, 0.05)
+      // Overlay and scroll indicator reveal
+      tl.fromTo(overlay, { opacity: 0 }, { opacity: 1, duration: 0.05, ease: 'power2.out' }, 0)
+      tl.fromTo(scrollInd, { opacity: 0 }, { opacity: 1, duration: 0.04, ease: 'power2.out' }, 0.03)
 
-      // Phase 2 (0.1→0.3): Background dark→cream, hero fades out
-      tl.to(bg, { backgroundColor: '#F0EBE1', duration: 0.2, ease: 'power2.inOut' }, 0.1)
-      tl.to([line1, line2], { y: -40, opacity: 0, duration: 0.1, ease: 'power2.in' }, 0.12)
-      tl.to(overlay, { opacity: 0, duration: 0.1, ease: 'power2.in' }, 0.12)
-      tl.to(scrollInd, { opacity: 0, duration: 0.06, ease: 'power2.in' }, 0.12)
+      // Hero text lifts out as the warm background starts crossfading in
+      tl.to([line1, line2], { y: -40, opacity: 0, duration: 0.08, ease: 'power2.in' }, 0.09)
+      tl.to(overlay, { opacity: 0, duration: 0.08, ease: 'power2.in' }, 0.10)
+      tl.to(scrollInd, { opacity: 0, duration: 0.05, ease: 'power2.in' }, 0.10)
 
-      // Phase 3 (0.15→0.45): Video morphs fullscreen → card
+      // Warm gradient layer crossfades in — gradients can't be tweened directly by
+      // GSAP's color parser, so we fade a second absolutely-positioned layer
+      // instead of animating backgroundColor on the base layer.
+      tl.fromTo(bgWarm, { opacity: 0 }, { opacity: 1, duration: 0.22, ease: 'power2.inOut' }, 0.08)
+
+      // ══════════════════════════════════════════
+      // ACT 2 — TRUST: video docks, tilted strip appears (0.10 → 0.55)
+      // ══════════════════════════════════════════
+
+      // Video morphs from fullscreen down to card position via scale/translate —
+      // direct transform tween, no Flip, no transform-containing-block issues.
       tl.to(video, {
         scale: targetScale,
         x: tx,
         y: ty,
         borderRadius: 28,
         ease: 'power2.inOut',
-        duration: 0.3,
-      }, 0.15)
+        duration: 0.24,
+      }, 0.10)
 
-      // Phase 4 (0.25→0.5): Trust content fades in
-      tl.to(trustContent, { opacity: 1, duration: 0.1, ease: 'power2.out' }, 0.25)
+      // Trust copy reveals sequentially
+      tl.to(trustContent, { opacity: 1, duration: 0.08, ease: 'power2.out' }, 0.20)
       tl.fromTo(trustEyebrow,
         { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.08, ease: 'power3.out' }, 0.28)
+        { opacity: 1, y: 0, duration: 0.06, ease: 'power3.out' }, 0.22)
       tl.fromTo(trustHeading,
         { opacity: 0, y: 35 },
-        { opacity: 1, y: 0, duration: 0.1, ease: 'power3.out' }, 0.3)
+        { opacity: 1, y: 0, duration: 0.08, ease: 'power3.out' }, 0.24)
       tl.fromTo(trustDivider,
         { scaleX: 0, transformOrigin: 'left' },
-        { scaleX: 1, duration: 0.06, ease: 'power2.out' }, 0.34)
+        { scaleX: 1, duration: 0.05, ease: 'power2.out' }, 0.29)
       tl.fromTo(trustSubcopy,
         { opacity: 0, y: 12 },
-        { opacity: 1, y: 0, duration: 0.06, ease: 'power3.out' }, 0.36)
+        { opacity: 1, y: 0, duration: 0.05, ease: 'power3.out' }, 0.30)
       tl.fromTo(trustCaption,
         { opacity: 0, x: -12 },
-        { opacity: 1, x: 0, duration: 0.06, ease: 'power3.out' }, 0.38)
+        { opacity: 1, x: 0, duration: 0.05, ease: 'power3.out' }, 0.32)
 
-      // Phase 5 (0.38→0.5): Marquee bar slides in
+      // The tilted strip slides in from the right ALREADY at its final -4° tilt,
+      // giving the impression of a diagonal banner cutting across the composition.
       tl.fromTo(marqueeBar,
-        { x: '100%', opacity: 0 },
-        { x: '0%', opacity: 1, duration: 0.12, ease: 'power2.out' }, 0.38)
+        { x: '100%', opacity: 0, rotate: 0 },
+        { x: '0%', opacity: 1, rotate: -4, duration: 0.10, ease: 'power2.out' }, 0.30)
+
+      // 0.40 → 0.55 is an intentional HOLD — nothing new animates. The user reads
+      // the trust copy while the video keeps playing. Trust the hold; do not fill it.
 
       // ══════════════════════════════════════════
-      // SECTION 2: Trust → Services (0.5 → 0.75)
+      // ACT 3 — THE ZOOM-THROUGH WIPE → SERVICES (0.55 → 1.0)
       // ══════════════════════════════════════════
 
-      // Phase 6 (0.5→0.6): Trust content fades out
-      tl.to(trustContent, { opacity: 0, y: -30, duration: 0.1, ease: 'power2.in' }, 0.5)
-      tl.to(marqueeBar, { x: '-100%', opacity: 0, duration: 0.1, ease: 'power2.in' }, 0.5)
+      // Trust text and video fade out together — only the strip remains visible.
+      tl.to(trustContent, { opacity: 0, y: -20, duration: 0.10, ease: 'power2.in' }, 0.55)
+      tl.to(video, { opacity: 0, duration: 0.10, ease: 'power2.in' }, 0.55)
 
-      // Phase 7 (0.55→0.7): Services content fades in
-      tl.to(servicesContent, { opacity: 1, duration: 0.1, ease: 'power2.out' }, 0.55)
+      // The strip un-tilts (rotate back to 0°), then rotates to vertical (90°),
+      // then scales up from its own center until it swallows the full viewport.
+      // The un-tilt → rotate → zoom is one compound tween so it reads as one
+      // fluid motion, not three separate beats.
+      tl.to(marqueeBar, {
+        rotate: 90,
+        scale: wipeScale,
+        duration: 0.28,
+        ease: 'power2.in',
+      }, 0.62)
+
+      // Services crossfades in once the dark strip has comfortably covered the screen.
+      tl.to(servicesContent, { opacity: 1, duration: 0.10, ease: 'power2.out' }, 0.80)
       tl.fromTo(servicesHeading,
         { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 0.1, ease: 'power3.out' }, 0.58)
+        { opacity: 1, y: 0, duration: 0.08, ease: 'power3.out' }, 0.82)
 
-      // Phase 8 (0.62→0.75): Service cards stagger in
       const cards = servicesGrid.querySelectorAll('.service-card')
       tl.fromTo(cards,
         { opacity: 0, y: 30, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.12, ease: 'power3.out', stagger: 0.02 }, 0.62)
+        { opacity: 1, y: 0, scale: 1, duration: 0.14, ease: 'power3.out', stagger: 0.015 }, 0.87)
 
-      // ══════════════════════════════════════════
-      // SECTION 3: Settle (0.75 → 1.0)
-      // ══════════════════════════════════════════
-
-      // Phase 9 (0.75→0.9): Subtle polish
-      tl.to(servicesHeading, { y: -6, duration: 0.15, ease: 'none' }, 0.75)
+      // Post-pin cleanup: the bar is position:fixed so it doesn't scroll away.
+      // Fade it out before the pin releases so it never overlaps the footer.
+      tl.to(marqueeBar, { opacity: 0, duration: 0.04, ease: 'none' }, 0.95)
 
       return () => tl.kill()
     })
@@ -180,37 +212,28 @@ export default function ScrollExperience() {
 
   return (
     <div ref={wrapperRef} className="scroll-wrapper">
-      {/* Background layer — dark → cream */}
+      {/* Base dark background */}
       <div ref={bgRef} className="scroll-bg" />
+      {/* Warm gradient layer — crossfades in over the dark base in Act 2 */}
+      <div ref={bgWarmRef} className="scroll-bg-warm" />
 
-      {/* Video — position: fixed, morphs via transform:scale */}
-      <video
-        ref={videoRef}
-        className="morph-video"
-        autoPlay
-        muted
-        loop
-        playsInline
-      >
+      {/* Video — position: fixed, morphs via transform:scale throughout */}
+      <video ref={videoRef} className="morph-video" autoPlay muted loop playsInline>
         <source src="/hero.mp4" type="video/mp4" />
       </video>
 
-      {/* Hero overlay */}
       <div ref={overlayRef} className="hero-overlay" />
 
-      {/* Hero tagline */}
       <div className="hero-tagline">
-        <span ref={tagline1Ref} className="tagline-line">Professional Security Wasn't Available...</span>
+        <span ref={tagline1Ref} className="tagline-line">Professional Security Wasn&apos;t Available...</span>
         <span ref={tagline2Ref} className="tagline-line">So We Fixed It.®</span>
       </div>
 
-      {/* Scroll indicator */}
       <div ref={scrollIndRef} className="scroll-indicator">
         <span className="scroll-indicator__text">Scroll</span>
         <span className="scroll-indicator__line" />
       </div>
 
-      {/* Flare lines */}
       <div className="flare-line flare-line--tl" />
       <div className="flare-line flare-line--center" />
       <div className="flare-line flare-line--br" />
@@ -249,30 +272,36 @@ export default function ScrollExperience() {
             </div>
           </div>
 
+          {/* Empty dock slot — its computed rect is the video morph target.
+              id="morph-video-dock" is read by useEffect via getElementById; keep stable. */}
           <div id="morph-video-dock" className="trust-card-light">
             <div className="trust-card-light__glow" />
             <div className="trust-card-light__overlay" />
           </div>
         </div>
-
-        <div ref={marqueeBarRef} className="trust-marquee-bar">
-          <div className="trust-marquee-bar__icon">
-            <ShieldCheck size={16} strokeWidth={1.75} />
-          </div>
-          <div className="marquee marquee--dark">
-            <div className="marquee__track">
-              {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
-                <span key={i} className="marquee__item marquee__item--accent">
-                  {item}<span className="marquee__dot" />
-                </span>
-              ))}
-            </div>
-          </div>
-          <ChevronsRight size={20} className="trust-marquee-bar__arrow" />
-        </div>
       </div>
 
-      {/* ── Services content ── */}
+      {/* ── The strip — TOP-LEVEL sibling, NOT inside trustContent.
+          This is not optional: opacity is multiplicative in the DOM tree.
+          trustContent fades to 0 in Act 3; anything nested inside it would
+          disappear too, making the wipe impossible. ── */}
+      <div ref={marqueeBarRef} className="trust-marquee-bar">
+        <div className="trust-marquee-bar__icon">
+          <ShieldCheck size={16} strokeWidth={1.75} />
+        </div>
+        <div className="marquee marquee--dark">
+          <div className="marquee__track">
+            {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
+              <span key={i} className="marquee__item marquee__item--accent">
+                {item}<span className="marquee__dot" />
+              </span>
+            ))}
+          </div>
+        </div>
+        <ChevronsRight size={20} className="trust-marquee-bar__arrow" />
+      </div>
+
+      {/* ── Services content — dark theme, arrives on top of the zoomed strip ── */}
       <div ref={servicesContentRef} className="services-scroll-content">
         <div className="services-inner">
           <div ref={servicesHeadingRef} className="services-header">
