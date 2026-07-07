@@ -38,9 +38,10 @@ export default function Header() {
       <Link href="/" className="hero-logo">Silbar Security</Link>
       <nav className="hero-nav">
         <a href="#services" className="hero-nav-link">Services</a>
+        <a href="#industries" className="hero-nav-link">Industries</a>
         <a href="#about" className="hero-nav-link">About</a>
         <a href="#contact" className="hero-nav-link">Contact</a>
-        <a href="#contact" className="hero-nav-cta">Get Assessment</a>
+        <a href="#quote" className="hero-nav-cta">Get Quote</a>
       </nav>
     </header>
   )

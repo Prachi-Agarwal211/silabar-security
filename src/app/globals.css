@@ -68,6 +68,31 @@ body {
 }
 
 /* ============================================
+   Scroll Wrapper — single pinned container
+   ============================================ */
+
+.scroll-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.scroll-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--color-midnight);
+  z-index: 0;
+}
+
+.trust-scroll-content {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* ============================================
    Hero Header — transparent over video
    ============================================ */
 
@@ -143,16 +168,24 @@ body {
 }
 
 /* ============================================
-   Fullscreen Video
+   Fullscreen Video — position: fixed throughout
    ============================================ */
 
-.hero-video {
+.morph-video {
   position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   object-fit: cover;
-  z-index: -1;
+  z-index: 5;
+  border-radius: 0;
+  will-change: transform;
+}
+
+/* ponytail: video sits on top of the dock — play button redundant, hide it */
+#morph-video-dock .trust-card__play {
+  display: none;
 }
 
 /* ============================================
@@ -160,7 +193,7 @@ body {
    ============================================ */
 
 .hero-overlay {
-  position: fixed;
+  position: absolute;
   inset: 0;
   background: linear-gradient(
     to top,
@@ -168,7 +201,7 @@ body {
     rgba(10, 10, 10, 0.35) 30%,
     transparent 55%
   );
-  z-index: 0;
+  z-index: 1;
   pointer-events: none;
 }
 
@@ -177,11 +210,11 @@ body {
    ============================================ */
 
 .hero-tagline {
-  position: fixed;
+  position: absolute;
   bottom: 8vh;
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -199,8 +232,6 @@ body {
   letter-spacing: -0.03em;
   color: var(--color-cream);
   text-transform: uppercase;
-  clip-path: inset(0 0 100% 0);
-  opacity: 0;
 }
 
 .tagline-line.is-visible {
@@ -218,7 +249,7 @@ body {
    ============================================ */
 
 .scroll-indicator {
-  position: fixed;
+  position: absolute;
   bottom: 2vh;
   left: 50%;
   transform: translateX(-50%);
@@ -435,6 +466,8 @@ body {
   box-shadow: 0 30px 80px -20px rgba(191, 149, 63, 0.35);
 }
 
+
+
 .trust-card-light__glow {
   position: absolute;
   top: -20%;
@@ -503,30 +536,6 @@ body {
   flex: 1;
 }
 
-/* ============================================
-   Morph Video — shared element, hero ⟷ card
-   ============================================ */
-
-.morph-video {
-  object-fit: cover;
-  z-index: 5;
-}
-
-.morph-video.is-hero-docked {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 0;
-}
-
-#morph-video-dock .morph-video:not(.is-hero-docked) {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
 .trust-card__play {
   position: absolute;
   top: 50%;
@@ -557,6 +566,154 @@ body {
   border-width: 8px 0 8px 14px;
   border-color: transparent transparent transparent var(--color-midnight);
   margin-left: 3px;
+}
+
+/* ============================================
+   Services Content — layered on top, starts hidden
+   ============================================ */
+
+.services-scroll-content {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(2rem, 5vh, 4rem) clamp(1.5rem, 5vw, 6rem);
+}
+
+.services-inner {
+  width: 100%;
+  max-width: 1400px;
+}
+
+.services-header {
+  margin-bottom: clamp(2rem, 4vh, 3rem);
+}
+
+.services-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-horizon-700);
+  margin-bottom: 0.75rem;
+}
+
+.services-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--color-midnight);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.services-title--outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-midnight);
+  text-stroke: 1.5px var(--color-midnight);
+}
+
+@supports not (-webkit-text-stroke: 1px black) {
+  .services-title--outline {
+    color: var(--color-midnight);
+    opacity: 0.35;
+  }
+}
+
+.services-divider {
+  display: block;
+  width: 72px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-gold-dark), var(--color-gold-light));
+  margin-bottom: 1rem;
+}
+
+.services-subcopy {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.7;
+  color: var(--color-horizon-700);
+  text-transform: uppercase;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+@media (max-width: 900px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .services-grid { grid-template-columns: 1fr; }
+}
+
+.service-card {
+  position: relative;
+  padding: clamp(1.25rem, 2vw, 1.75rem);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(191, 149, 63, 0.15);
+  border-radius: 16px;
+  transition: border-color 0.3s var(--ease-smooth), box-shadow 0.3s var(--ease-smooth);
+}
+
+.service-card:hover {
+  border-color: rgba(191, 149, 63, 0.4);
+  box-shadow: 0 8px 32px -8px rgba(191, 149, 63, 0.2);
+}
+
+.service-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(191, 149, 63, 0.3);
+  border-radius: 12px;
+  color: var(--color-gold);
+  margin-bottom: 1rem;
+}
+
+.service-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--color-midnight);
+  margin-bottom: 0.5rem;
+}
+
+.service-card__desc {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--color-horizon-600);
+}
+
+.service-card__number {
+  position: absolute;
+  top: clamp(1rem, 1.5vw, 1.25rem);
+  right: clamp(1rem, 1.5vw, 1.25rem);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  opacity: 0.5;
 }
 
 /* ============================================
@@ -659,7 +816,7 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   opacity: 0.03;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 100;
   mix-blend-mode: overlay;
 }
 
