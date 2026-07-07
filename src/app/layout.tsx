@@ -1,36 +1,34 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Space_Grotesk, Manrope } from 'next/font/google'
 import './globals.css'
-import { SmoothScrollProvider } from '@/providers/smooth-scroll'
-import Header from '@/components/layout/Header'
-import Footer from '@/components/layout/Footer'
-import OrganizationSchema from '@/components/seo/OrganizationSchema'
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
-  variable: '--font-display',
+  variable: '--font-space-grotesk',
   display: 'swap',
-  weight: ['400', '500', '600', '700'],
+  weight: ['300', '400', '500', '600', '700'],
 })
 
 const manrope = Manrope({
   subsets: ['latin'],
-  variable: '--font-body',
+  variable: '--font-manrope',
   display: 'swap',
-  weight: ['400', '500', '600', '700'],
+  weight: ['300', '400', '500', '600', '700'],
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://silbarsecurity.com'),
-  title: 'Silbar Security | Professional Security Services India',
-  description: 'Veteran-led security guards, vehicle patrol, CCTV surveillance, access control, and facility management across 50+ cities in India. PSARA licensed. ISO 9001:2015 certified.',
-  keywords: ['security services India', 'security guards', 'facility management', 'CCTV surveillance', 'vehicle patrol', 'access control', 'PSARA licensed security'],
-  openGraph: {
-    title: 'Silbar Security | Professional Security Services India',
-    description: 'Veteran-led security across 50+ Indian cities. PSARA licensed. ISO certified.',
-    type: 'website',
-    locale: 'en_IN',
+  title: 'Silbar Security',
+  description: 'Professional security services — zero compromise.',
+  icons: {
+    icon: '/favicon.ico',
   },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+  themeColor: '#0a0a0a',
 }
 
 export default function RootLayout({
@@ -41,12 +39,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${manrope.variable}`}>
       <body>
-        <OrganizationSchema />
-        <SmoothScrollProvider>
-          <Header />
-          <main id="main-content">{children}</main>
-          <Footer />
-        </SmoothScrollProvider>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[9999] focus:bg-gold focus:text-midnight focus:px-4 focus:py-2 focus:font-body focus:font-semibold"
+        >
+          Skip to content
+        </a>
+        {children}
       </body>
     </html>
   )

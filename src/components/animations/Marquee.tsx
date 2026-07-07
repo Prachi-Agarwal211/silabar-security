@@ -1,71 +1,34 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
 interface MarqueeProps {
   items: string[]
   speed?: number
-  direction?: 'left' | 'right'
   className?: string
+  accent?: boolean
 }
 
-export default function Marquee({ items, speed = 30, direction = 'left', className = '' }: MarqueeProps) {
-  const trackRef = useRef<HTMLDivElement>(null)
-  const innerRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const track = trackRef.current
-    const inner = innerRef.current
-    if (!track || !inner) return
-
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReduced) return
-
-    const halfWidth = inner.scrollWidth / 2
-    const duration = halfWidth / speed
-
-    const tween = gsap.to(inner, {
-      x: direction === 'left' ? -halfWidth : halfWidth,
-      duration,
-      ease: 'none',
-      repeat: -1,
-    })
-
-    // Pause on hover
-    const pause = () => tween.pause()
-    const resume = () => tween.resume()
-    track.addEventListener('mouseenter', pause)
-    track.addEventListener('mouseleave', resume)
-
-    return () => {
-      tween.kill()
-      track.removeEventListener('mouseenter', pause)
-      track.removeEventListener('mouseleave', resume)
-    }
-  }, [items, speed, direction])
+export default function Marquee({
+  items,
+  speed = 30,
+  className = '',
+  accent = false,
+}: MarqueeProps) {
+  const duplicated = [...items, ...items]
 
   return (
-    <div
-      ref={trackRef}
-      className={`relative overflow-hidden ${className}`}
-      aria-hidden="true"
-    >
+    <div className={`marquee ${className}`}>
       <div
-        ref={innerRef}
-        className="flex w-max gap-0"
+        className="marquee__track"
+        style={{ animationDuration: `${speed}s` }}
       >
-        {[...items, ...items, ...items, ...items].map((item, i) => (
-          <div
+        {duplicated.map((item, i) => (
+          <span
             key={i}
-            className="flex items-center gap-6 px-6 whitespace-nowrap"
+            className={`marquee__item ${accent ? 'marquee__item--accent' : ''}`}
           >
-            <span className="text-sm font-bold tracking-[0.15em] uppercase text-horizon-400/40">
-              {item}
-            </span>
-            <span className="text-purple-500/40 text-xs">&#9670;</span>
-          </div>
+            <span className="marquee__dot" />
+            {item}
+          </span>
         ))}
       </div>
     </div>

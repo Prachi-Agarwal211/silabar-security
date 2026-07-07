@@ -1,51 +1,62 @@
 'use client'
 
-import { useRef } from 'react'
-import { useGSAP } from '@gsap/react'
+import { useRef, useEffect } from 'react'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 
 interface CounterProps {
-  end: number
+  from?: number
+  to: number
+  duration?: number
   suffix?: string
   prefix?: string
-  duration?: number
   className?: string
 }
 
 export default function Counter({
-  end,
+  from = 0,
+  to,
+  duration = 2,
   suffix = '',
   prefix = '',
-  duration = 2,
   className = '',
 }: CounterProps) {
   const ref = useRef<HTMLSpanElement>(null)
-  const countRef = useRef({ value: 0 })
 
-  useGSAP(() => {
+  useEffect(() => {
     const el = ref.current
     if (!el) return
 
-    gsap.to(countRef.current, {
-      value: end,
+    const obj = { value: from }
+
+    gsap.to(obj, {
+      value: to,
       duration,
       ease: 'power2.out',
-      onUpdate: () => {
-        if (el) {
-          el.textContent = `${prefix}${Math.round(countRef.current.value)}${suffix}`
-        }
-      },
       scrollTrigger: {
         trigger: el,
         start: 'top 85%',
-        once: true,
+        toggleActions: 'play none none none',
+      },
+      onUpdate: () => {
+        el.textContent = `${prefix}${Math.round(obj.value)}${suffix}`
+      },
+      // ponytail: spring overshoot at end
+      onComplete: () => {
+        gsap.fromTo(el,
+          { scale: 1.15 },
+          { scale: 1, duration: 0.5, ease: 'elastic.out(1, 0.3)' },
+        )
       },
     })
-  }, { scope: ref, dependencies: [end, suffix, prefix, duration] })
+
+    return () => {
+      ScrollTrigger.getAll().forEach(t => t.kill())
+    }
+  }, [from, to, duration, suffix, prefix])
 
   return (
-    <span ref={ref} className={className}>
-      {prefix}0{suffix}
+    <span ref={ref} className={`inline-block ${className}`}>
+      {prefix}{from}{suffix}
     </span>
   )
 }

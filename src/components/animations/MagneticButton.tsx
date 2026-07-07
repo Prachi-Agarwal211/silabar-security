@@ -1,79 +1,49 @@
 'use client'
 
-import { useRef } from 'react'
-import { useGSAP } from '@gsap/react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
+import { useRef, useState } from 'react'
 
 interface MagneticButtonProps {
   children: React.ReactNode
+  intensity?: number
   className?: string
-  strength?: number
-  href?: string
 }
 
 export default function MagneticButton({
   children,
+  intensity = 0.3,
   className = '',
-  strength = 0.3,
-  href,
 }: MagneticButtonProps) {
-  const btnRef = useRef<HTMLAnchorElement | HTMLButtonElement>(null)
-  const innerRef = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLDivElement>(null)
+  const [transform, setTransform] = useState('translate(0, 0) scale(1)')
 
-  useGSAP(() => {
-    const btn = btnRef.current
-    const inner = innerRef.current
-    if (!btn || !inner) return
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!ref.current) return
+    const rect = ref.current.getBoundingClientRect()
+    const centerX = rect.left + rect.width / 2
+    const centerY = rect.top + rect.height / 2
+    const deltaX = (e.clientX - centerX) * intensity
+    const deltaY = (e.clientY - centerY) * intensity
 
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReduced) return
+    // ponytail: warp effect — non-uniform scale based on distance
+    const dist = Math.sqrt(deltaX * deltaX + deltaY * deltaY)
+    const warp = 1 + dist * 0.001
 
-    const handleMove = (evt: Event) => {
-      const e = evt as MouseEvent
-      const rect = btn.getBoundingClientRect()
-      const x = e.clientX - rect.left - rect.width / 2
-      const y = e.clientY - rect.top - rect.height / 2
-      gsap.to(inner, {
-        x: x * strength,
-        y: y * strength,
-        duration: 0.3,
-        ease: 'power2.out',
-      })
-    }
+    setTransform(`translate(${deltaX}px, ${deltaY}px) scale(${warp})`)
+  }
 
-    const handleLeave = () => {
-      gsap.to(inner, {
-        x: 0,
-        y: 0,
-        duration: 0.5,
-        ease: 'elastic.out(1, 0.5)',
-      })
-    }
-
-    btn.addEventListener('mousemove', handleMove)
-    btn.addEventListener('mouseleave', handleLeave)
-
-    return () => {
-      btn.removeEventListener('mousemove', handleMove)
-      btn.removeEventListener('mouseleave', handleLeave)
-    }
-  })
-
-  const Tag = href ? 'a' : 'button'
-  const extraProps = href ? { href } : {}
+  const handleMouseLeave = () => {
+    setTransform('translate(0, 0) scale(1)')
+  }
 
   return (
-    <Tag
-      ref={btnRef as never}
-      className={`relative inline-block ${className}`}
-      {...extraProps}
+    <div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className={`inline-block transition-transform duration-200 ease-out ${className}`}
+      style={{ transform, willChange: 'transform' }}
     >
-      <div ref={innerRef} className="relative z-10">
-        {children}
-      </div>
-    </Tag>
+      {children}
+    </div>
   )
 }

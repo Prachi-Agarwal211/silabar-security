@@ -1,11 +1,8 @@
 import Lenis from 'lenis'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 let lenis: Lenis | null = null
-let tickerCallback: ((time: number) => void) | null = null
 
-export function initLenis(): Lenis {
+export function initLenis() {
   if (lenis) return lenis
 
   lenis = new Lenis({
@@ -14,30 +11,19 @@ export function initLenis(): Lenis {
     touchMultiplier: 2,
   })
 
-  lenis.on('scroll', ScrollTrigger.update)
-
-  tickerCallback = (time: number) => {
-    if (lenis) lenis.raf(time * 1000)
+  // ponytail: raf loop for lenis — single loop drives both lenis and scrolltrigger
+  function raf(time: number) {
+    lenis!.raf(time)
+    requestAnimationFrame(raf)
   }
-  gsap.ticker.add(tickerCallback)
-  gsap.ticker.lagSmoothing(0)
+  requestAnimationFrame(raf)
 
   return lenis
 }
 
 export function destroyLenis() {
-  if (tickerCallback) {
-    gsap.ticker.remove(tickerCallback)
-    tickerCallback = null
-  }
   if (lenis) {
     lenis.destroy()
     lenis = null
   }
 }
-
-export function getLenis(): Lenis | null {
-  return lenis
-}
-
-export type { Lenis }
