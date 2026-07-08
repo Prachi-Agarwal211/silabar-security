@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { SERVICES } from '@/data/services'
 import { ArrowRight } from 'lucide-react'
+import RadialServices from '@/components/sections/RadialServices'
 
 export const metadata: Metadata = {
   title: 'Security Services — 10 Verticals for Every Industry',
@@ -13,17 +14,7 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <main className="services-page" id="main-content">
-      <section className="services-page-hero">
-        <span className="page-eyebrow">WHAT WE DO</span>
-        <h1 className="services-page-title">
-          10 SECURITY<br />
-          <span className="services-page-title--outline">VERTICALS.</span>
-        </h1>
-        <p className="services-page-subtitle">
-          End-to-end security and facility management for India's enterprises.
-          PSARA licensed. ISO certified.
-        </p>
-      </section>
+      <RadialServices services={SERVICES} />
 
       <section className="services-page-grid-section">
         <div className="services-page-grid">

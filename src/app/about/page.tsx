@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
 import { Shield, Award, CheckCircle } from 'lucide-react'
+import ScrollReveal from '@/components/animations/ScrollReveal'
+import Counter from '@/components/animations/Counter'
+import SplitTextReveal from '@/components/animations/SplitTextReveal'
 
 export const metadata: Metadata = {
   title: 'About Silbar Security — Founded by Law Enforcement',
@@ -38,37 +41,48 @@ export default function AboutPage() {
     <main className="about-page" id="main-content">
 
       <section className="about-hero">
-        <div className="about-hero__inner">
+        <ScrollReveal className="about-hero__inner">
           <span className="page-eyebrow">ABOUT US</span>
           <h1 className="about-title">
-            NOT JUST SECURITY.<br />
-            <span className="about-title--outline">A COMMITMENT.</span>
+            <SplitTextReveal text="NOT JUST SECURITY." />
+            <br />
+            <span className="about-title--outline">
+              <SplitTextReveal text="A COMMITMENT." delay={0.2} />
+            </span>
           </h1>
           <p className="about-subtitle">
             Silbar Security Services was built by people who dedicated their careers
             to protecting others — and still do, every single day.
           </p>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* Stats */}
       <section className="about-stats">
         <div className="about-stats__grid">
-          {STATS.map(({ number, label }) => (
-            <div key={label} className="about-stat">
-              <span className="about-stat__number">{number}</span>
-              <span className="about-stat__label">{label}</span>
-            </div>
-          ))}
+          {STATS.map(({ number, label }) => {
+            const numValue = parseInt(number.replace(/\D/g, ''))
+            const prefix = number.includes('+') ? '+' : ''
+            return (
+              <ScrollReveal key={label} className="about-stat">
+                <span className="about-stat__number">
+                  <Counter to={numValue} suffix={prefix} />
+                </span>
+                <span className="about-stat__label">{label}</span>
+              </ScrollReveal>
+            )
+          })}
         </div>
       </section>
 
       {/* Story */}
       <section className="about-story" id="our-story">
         <div className="about-story__inner">
-          <div className="about-story__text">
+          <ScrollReveal className="about-story__text">
             <span className="page-eyebrow">OUR STORY</span>
-            <h2 className="about-story__title">Founded by Law Enforcement</h2>
+            <h2 className="about-story__title">
+              <SplitTextReveal text="Founded by Law Enforcement" />
+            </h2>
             <p className="about-story__body">
               Silbar Security Services was established by professionals with deep roots in
               law enforcement and defence. We saw firsthand the gap between what Indian
@@ -81,21 +95,23 @@ export default function AboutPage() {
               gets a dedicated account manager, monthly MIS reports, and a 24-hour replacement
               guarantee. That's not industry standard. That's our standard.
             </p>
-          </div>
-          <div className="about-story__image-block">
+          </ScrollReveal>
+          <ScrollReveal delay={0.2} className="about-story__image-block">
             <div className="about-story__image-placeholder">
               <Shield size={48} className="about-story__shield-icon" />
               <span className="about-story__image-label">Est. 2008 · Jaipur, Rajasthan</span>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Why Silbar */}
       <section className="about-why" id="why-silbar">
-        <div className="about-why__inner">
+        <ScrollReveal className="about-why__inner">
           <span className="page-eyebrow">WHY SILBAR</span>
-          <h2 className="about-why__title">The Silbar Difference</h2>
+          <h2 className="about-why__title">
+            <SplitTextReveal text="The Silbar Difference" />
+          </h2>
           <div className="about-why__grid">
             {WHY_SILBAR.map((point) => (
               <div key={point} className="about-why__point">
@@ -104,23 +120,25 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* Certifications */}
       <section className="about-certs" id="certifications">
         <div className="about-certs__inner">
           <span className="page-eyebrow">CERTIFICATIONS</span>
-          <h2 className="about-certs__title">Licensed. Certified. Compliant.</h2>
+          <h2 className="about-certs__title">
+            <SplitTextReveal text="Licensed. Certified. Compliant." />
+          </h2>
           <div className="about-certs__grid">
-            {CERTIFICATIONS.map(({ name, desc }) => (
-              <div key={name} className="about-cert-card">
+            {CERTIFICATIONS.map(({ name, desc }, i) => (
+              <ScrollReveal key={name} delay={i * 0.1} className="about-cert-card">
                 <div className="about-cert-card__badge">
                   <Award size={20} />
                   {name}
                 </div>
                 <p className="about-cert-card__desc">{desc}</p>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>

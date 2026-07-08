@@ -13,6 +13,9 @@ const ScrollExperience = dynamic(
   { ssr: false }
 )
 
+import { SERVICES } from '@/data/services'
+import RadialServices from '@/components/sections/RadialServices'
+
 // WhatsApp icon inline SVG (no extra package dependency)
 function WhatsAppIcon() {
   return (
@@ -28,9 +31,10 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="relative w-full grain-overlay" id="main-content">
+    <main className="relative w-full" id="main-content">
       <Header />
       <ScrollExperience />
+      <RadialServices services={SERVICES} />
       <Footer />
 
       {/* Sticky CTAs — WhatsApp + Get Quote */}

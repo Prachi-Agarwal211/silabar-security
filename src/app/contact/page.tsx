@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
 import { Phone, Mail, MapPin, Clock, Shield } from 'lucide-react'
+import ScrollReveal from '@/components/animations/ScrollReveal'
+import SplitTextReveal from '@/components/animations/SplitTextReveal'
+import MagneticButton from '@/components/animations/MagneticButton'
 
 export const metadata: Metadata = {
   title: 'Contact Us — Get a Free Security Quote',
@@ -12,24 +15,27 @@ export default function ContactPage() {
   return (
     <main className="contact-page" id="main-content">
       <section className="contact-hero">
-        <div className="contact-hero__inner">
+        <ScrollReveal className="contact-hero__inner">
           <span className="contact-eyebrow">GET IN TOUCH</span>
           <h1 className="contact-title">
-            REQUEST A<br />
-            <span className="contact-title--outline">FREE QUOTE</span>
+            <SplitTextReveal text="REQUEST A" />
+            <br />
+            <span className="contact-title--outline">
+              <SplitTextReveal text="FREE QUOTE" delay={0.2} />
+            </span>
           </h1>
           <p className="contact-subtitle">
             Tell us about your facility. Our security consultants will
             respond within 2 business hours.
           </p>
-        </div>
+        </ScrollReveal>
       </section>
 
       <section className="contact-body">
         <div className="contact-body__inner">
 
           {/* Contact cards */}
-          <div className="contact-cards">
+          <ScrollReveal delay={0.2} className="contact-cards">
             <a href="tel:+919352303333" className="contact-card">
               <div className="contact-card__icon"><Phone size={20} /></div>
               <div className="contact-card__label">CALL US DIRECTLY</div>
@@ -59,10 +65,11 @@ export default function ContactPage() {
               <div className="contact-card__value">Instant Quote</div>
               <div className="contact-card__note">Available 24/7</div>
             </a>
-          </div>
+          </ScrollReveal>
 
           {/* Lead form */}
-          <form
+          <ScrollReveal delay={0.4}>
+            <form
             className="contact-form"
             id="quote-form"
             action="https://formspree.io/f/YOUR_FORM_ID"
@@ -125,17 +132,20 @@ export default function ContactPage() {
               />
             </div>
 
-            <button type="submit" className="contact-form__submit">
-              Request Free Quote
-            </button>
+            <MagneticButton>
+              <button type="submit" className="contact-form__submit">
+                Request Free Quote
+              </button>
+            </MagneticButton>
 
             <p className="contact-form__note">
               <Shield size={12} /> No spam. Your information is confidential and used only to contact you about your security requirements.
             </p>
           </form>
+          </ScrollReveal>
 
           {/* Office locations */}
-          <div className="contact-offices">
+          <ScrollReveal delay={0.6} className="contact-offices">
             <h2 className="contact-offices__title">Our Offices</h2>
             <div className="contact-offices__grid">
               {[
@@ -155,7 +165,7 @@ export default function ContactPage() {
                 </div>
               ))}
             </div>
-          </div>
+          </ScrollReveal>
 
         </div>
       </section>
