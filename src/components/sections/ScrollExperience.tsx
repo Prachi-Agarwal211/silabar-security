@@ -104,7 +104,7 @@ export default function ScrollExperience() {
         scrollTrigger: {
           trigger: wrapper,
           start: 'top top',
-          end: '+=400%', // Reduced from 550% since we removed Act 3 (services)
+          end: '+=320%', // Tightened from 400% for faster scroll feel — do not go below 280% or Act 3's wipe snaps instead of gliding
           scrub: 1,
           pin: true,
           anticipatePin: 1,

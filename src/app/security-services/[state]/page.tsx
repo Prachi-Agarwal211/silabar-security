@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { STATES } from '@/data/locations'
 import { SERVICES } from '@/data/services'
 import { ArrowRight, Phone, MapPin } from 'lucide-react'
+import ScrollReveal from '@/components/animations/ScrollReveal'
+import SplitTextReveal from '@/components/animations/SplitTextReveal'
 
 export const revalidate = 86400 // ISR — revalidate once per day
 
@@ -112,48 +114,58 @@ export default async function StateSEOPage({
       <main className="seo-page" id="main-content">
 
         <section className="seo-page-hero">
-          <nav className="breadcrumb" aria-label="Breadcrumb">
-            <Link href="/" className="breadcrumb__link">Home</Link>
-            <span className="breadcrumb__sep">›</span>
-            <span className="breadcrumb__current">Security Services in {location.name}</span>
-          </nav>
-          <h1 className="seo-page-title">
-            Security Guard Services<br />in {location.name}
-          </h1>
-          <p className="seo-page-subtitle">
-            PSARA-licensed, ISO 9001:2015 certified security services across
-            all {location.districts} districts of {location.name}.
-            Serving {location.majorCities.join(', ')} and beyond.
-          </p>
-          <div className="seo-page-ctas">
-            <a href="tel:+919352303333" className="service-detail-cta service-detail-cta--primary">
-              <Phone size={16} /> Call Now
-            </a>
-            <Link href="/contact" className="service-detail-cta service-detail-cta--secondary">
-              Get Free Quote <ArrowRight size={16} />
-            </Link>
-          </div>
+          <ScrollReveal>
+            <nav className="breadcrumb" aria-label="Breadcrumb">
+              <Link href="/" className="breadcrumb__link">Home</Link>
+              <span className="breadcrumb__sep">›</span>
+              <span className="breadcrumb__current">Security Services in {location.name}</span>
+            </nav>
+            <h1 className="seo-page-title">
+              <SplitTextReveal text={`Security Guard Services in ${location.name}`} mode="words" />
+            </h1>
+            <p className="seo-page-subtitle">
+              PSARA-licensed, ISO 9001:2015 certified security services across
+              all {location.districts} districts of {location.name}.
+              Serving {location.majorCities.join(', ')} and beyond.
+            </p>
+            <div className="service-detail-ctas">
+              <a href="tel:+919352303333" className="service-detail-cta service-detail-cta--primary">
+                <Phone size={16} /> Call Now
+              </a>
+              <a
+                href={`https://wa.me/919352303333?text=Hello%20Silbar%20Security%2C%20I%20need%20security%20services%20in%20${encodeURIComponent(location.name)}.`}
+                className="service-detail-cta service-detail-cta--secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp Us
+              </a>
+            </div>
+          </ScrollReveal>
         </section>
 
         {/* Services in this state */}
         <section className="seo-services-section">
           <div className="service-detail-section-inner">
-            <h2 className="service-detail-section-title">
-              Our Services in {location.name}
-            </h2>
+            <ScrollReveal>
+              <h2 className="service-detail-section-title">
+                Our Services in {location.name}
+              </h2>
+            </ScrollReveal>
             <div className="seo-services-grid">
-              {SERVICES.map((service) => (
-                <Link
-                  key={service.slug}
-                  href={`/services/${service.slug}`}
-                  className="seo-service-link"
-                >
-                  <span className="seo-service-link__title">{service.shortTitle}</span>
-                  <span className="seo-service-link__location">
-                    <MapPin size={11} /> {location.name}
-                  </span>
-                  <ArrowRight size={13} />
-                </Link>
+              {SERVICES.map((service, i) => (
+                <ScrollReveal key={service.slug} delay={i * 0.03}>
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="seo-service-link"
+                  >
+                    <span className="seo-service-link__title">{service.shortTitle}</span>
+                    <span className="seo-service-link__location">
+                      <MapPin size={11} /> {location.name}
+                    </span>
+                    <ArrowRight size={13} />
+                  </Link>
+                </ScrollReveal>
               ))}
             </div>
           </div>
@@ -162,14 +174,18 @@ export default async function StateSEOPage({
         {/* Cities in this state */}
         <section className="seo-cities-section">
           <div className="service-detail-section-inner">
-            <h2 className="service-detail-section-title">
-              Cities We Serve in {location.name}
-            </h2>
+            <ScrollReveal>
+              <h2 className="service-detail-section-title">
+                Cities We Serve in {location.name}
+              </h2>
+            </ScrollReveal>
             <div className="seo-cities-grid">
-              {location.majorCities.map((city) => (
-                <span key={city} className="seo-city-tag">
-                  <MapPin size={12} /> {city}
-                </span>
+              {location.majorCities.map((city, i) => (
+                <ScrollReveal key={city} delay={i * 0.03}>
+                  <span className="seo-city-tag">
+                    <MapPin size={12} /> {city}
+                  </span>
+                </ScrollReveal>
               ))}
             </div>
             <p className="seo-cities-note">
@@ -182,9 +198,11 @@ export default async function StateSEOPage({
         {/* About Silbar in this state */}
         <section className="seo-about-section">
           <div className="service-detail-section-inner">
-            <h2 className="service-detail-section-title">
-              About Silbar Security in {location.name}
-            </h2>
+            <ScrollReveal>
+              <h2 className="service-detail-section-title">
+                About Silbar Security in {location.name}
+              </h2>
+            </ScrollReveal>
             <div className="seo-about-content">
               <p>
                 Silbar Security Services is a PSARA-licensed private security agency
@@ -211,9 +229,11 @@ export default async function StateSEOPage({
         {/* FAQ */}
         <section className="service-detail-faq">
           <div className="service-detail-section-inner">
-            <h2 className="service-detail-section-title">
-              FAQs — Security Services in {location.name}
-            </h2>
+            <ScrollReveal>
+              <h2 className="service-detail-section-title">
+                FAQs — Security Services in {location.name}
+              </h2>
+            </ScrollReveal>
             <div className="service-detail-faq-list">
               {[
                 {
@@ -236,6 +256,28 @@ export default async function StateSEOPage({
               ))}
             </div>
           </div>
+        </section>
+
+        <section className="service-detail-bottom-cta">
+          <ScrollReveal>
+            <h2 className="service-detail-bottom-cta__title">Need Security in {location.name}?</h2>
+            <p className="service-detail-bottom-cta__sub">
+              Get a customized security quote for your facility in {location.name}. Free consultation.
+            </p>
+            <div className="service-detail-ctas" style={{ justifyContent: 'center' }}>
+              <a href="tel:+919352303333" className="service-detail-cta service-detail-cta--primary">
+                <Phone size={16} /> Call +91 93523 03333
+              </a>
+              <a
+                href={`https://wa.me/919352303333?text=Hello%20Silbar%20Security%2C%20I%20need%20a%20quote%20for%20security%20services%20in%20${encodeURIComponent(location.name)}.`}
+                className="service-detail-cta service-detail-cta--secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp Us
+              </a>
+            </div>
+          </ScrollReveal>
         </section>
 
       </main>

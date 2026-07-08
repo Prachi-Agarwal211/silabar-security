@@ -68,9 +68,14 @@ export default function Header() {
             <Phone size={14} strokeWidth={1.75} />
             +91 93523 03333
           </a>
-          <Link href="/contact" className="hero-nav-cta">
-            Get Quote
-          </Link>
+          <a
+            href="https://wa.me/919352303333?text=Hello%20Silbar%20Security%2C%20I%20need%20a%20quote%20for%20security%20services."
+            className="hero-nav-cta"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WhatsApp Us
+          </a>
         </nav>
 
         {/* Mobile hamburger */}
@@ -107,13 +112,15 @@ export default function Header() {
           >
             <Phone size={16} /> +91 93523 03333
           </a>
-          <Link
-            href="/contact"
+          <a
+            href="https://wa.me/919352303333?text=Hello%20Silbar%20Security%2C%20I%20need%20a%20quote%20for%20security%20services."
             className="mobile-nav__cta"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}
           >
-            Get Free Quote
-          </Link>
+            WhatsApp Us
+          </a>
         </nav>
       </div>
     </>

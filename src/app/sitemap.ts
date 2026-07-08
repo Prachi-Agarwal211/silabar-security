@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 import { SERVICE_SLUGS } from '@/data/services'
 import { INDUSTRY_SLUGS } from '@/data/industries'
-import { STATES, CITIES } from '@/data/locations'
+import { STATES } from '@/data/locations'
 
 const BASE_URL = 'https://www.silbarsecurity.in'
 
@@ -41,13 +41,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  // City SEO pages
-  const cityPages = CITIES.map((city) => ({
-    url: `${BASE_URL}/security-services/city/${city.slug}`,
-    lastModified: now,
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }))
-
-  return [...corePages, ...servicePages, ...industryPages, ...statePages, ...cityPages]
+  return [...corePages, ...servicePages, ...industryPages, ...statePages]
 }

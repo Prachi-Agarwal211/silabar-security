@@ -363,6 +363,74 @@ export const SERVICES: Service[] = [
       areaServed: 'India',
     },
   },
+  {
+    slug: 'fire-life-safety',
+    title: 'Fire & Life Safety Services',
+    shortTitle: 'Fire & Life Safety',
+    description:
+      'Fire safety audits, fire-fighting equipment maintenance, and trained fire warden deployment for factories, warehouses, hospitals, and high-occupancy buildings across India.',
+    longDescription:
+      'Silbar Security provides on-ground fire and life safety services that go beyond the classroom drills covered in our training programs — fire risk audits, fire extinguisher and hydrant system maintenance, fire warden deployment on every shift, and evacuation route planning for factories, warehouses, hospitals, hotels, and multi-tenant commercial buildings. Our teams work alongside your existing fire-fighting infrastructure and local fire NOC requirements to keep your facility compliant and genuinely prepared, not just paper-certified.',
+    features: [
+      'Fire risk assessment and audits',
+      'Fire extinguisher and hydrant system checks',
+      'Trained fire warden deployment per shift',
+      'Evacuation route planning and signage review',
+      'Fire NOC compliance support',
+      'Mock drill scheduling and reporting',
+      'Integration with existing building fire systems',
+    ],
+    industries: ['Manufacturing', 'Warehouses', 'Hospitals', 'Hotels', 'IT Parks', 'Data Centers'],
+    faqs: [
+      {
+        q: 'Do you provide fire wardens as a standalone service, or only with security guards?',
+        a: 'Both. We can deploy fire wardens as a standalone service integrated with your existing team, or combine it with our manned guarding contracts for a single point of accountability.',
+      },
+      {
+        q: 'Can you help with fire NOC compliance for a new facility?',
+        a: 'Yes. Our team can review your current fire safety setup against local fire department NOC requirements and flag gaps before your inspection.',
+      },
+    ],
+    schema: {
+      name: 'Fire & Life Safety Services',
+      serviceType: 'SecurityService',
+      areaServed: 'India',
+    },
+  },
+  {
+    slug: 'mobile-patrol-quick-response',
+    title: 'Mobile Patrol & Quick Response Services',
+    shortTitle: 'Mobile Patrol',
+    description:
+      'Randomized mobile patrol visits and rapid-response teams for multi-site facilities, residential societies, and properties that need deterrence between fixed guard shifts.',
+    longDescription:
+      'For clients who don\'t need a guard stationed 24/7 at every location — multi-site retail chains, residential societies, ATMs, and seasonal facilities — Silbar Security runs scheduled and randomized mobile patrol visits, backed by a quick-response team that can reach any covered site within a committed response window if an alarm or distress call comes in. Patrol logs, timestamps, and site photos are shared with facility managers after every visit for full accountability.',
+    features: [
+      'Scheduled and randomized patrol visits',
+      'Rapid-response team for alarm callouts',
+      'Multi-site route planning',
+      'Patrol logs with timestamps and photos',
+      'Coverage between fixed guard shifts',
+      'Ideal for residential societies and retail chains',
+      'Coordinated with local police liaison where applicable',
+    ],
+    industries: ['Residential Societies', 'Retail', 'Banks', 'ATMs', 'Corporate'],
+    faqs: [
+      {
+        q: 'How often do patrol visits happen?',
+        a: 'Frequency is set per client based on risk assessment — typically every 2 to 4 hours, with intentionally randomized timing so visits aren\'t predictable.',
+      },
+      {
+        q: 'What is your response time for an alarm or distress call?',
+        a: 'Response windows are agreed per site during onboarding based on your location and our nearest patrol team — we\'ll confirm a specific committed time for your facility during the site survey.',
+      },
+    ],
+    schema: {
+      name: 'Mobile Patrol & Quick Response Services',
+      serviceType: 'SecurityService',
+      areaServed: 'India',
+    },
+  },
 ]
 
 export const SERVICE_SLUGS = SERVICES.map((s) => s.slug)

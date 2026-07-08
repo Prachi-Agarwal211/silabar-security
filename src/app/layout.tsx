@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
-import { Space_Grotesk, Manrope } from 'next/font/google'
+import { Space_Grotesk, Manrope, Oswald } from 'next/font/google'
 import './globals.css'
+import NavigationWrapper from '@/components/layout/NavigationWrapper'
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -16,7 +17,15 @@ const manrope = Manrope({
   weight: ['300', '400', '500', '600', '700'],
 })
 
+const oswald = Oswald({
+  subsets: ['latin'],
+  variable: '--font-oswald',
+  display: 'swap',
+  weight: ['400', '500', '600', '700'],
+})
+
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.silbarsecurity.in'),
   title: {
     default: 'Silbar Security Services | PSARA-Licensed Security Agency India',
     template: '%s | Silbar Security Services',
@@ -79,7 +88,7 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.png',
   },
   verification: {
-    google: 'YOUR_GOOGLE_SEARCH_CONSOLE_TOKEN',
+    google: 'REAL_TOKEN_HERE',
   },
 }
 
@@ -96,7 +105,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${manrope.variable}`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${manrope.variable} ${oswald.variable}`}>
       <body>
         <a
           href="#main-content"
@@ -125,11 +134,11 @@ export default function RootLayout({
                 'ISO 9001:2015 & PSARA-2005 certified private security agency with 7,000+ licensed officers. Manned guarding, electronic surveillance, facility management, VIP protection across PAN India.',
               telephone: '+91-9352303333',
               email: 'info@silbarsecurity.in',
-              foundingDate: '2008',
+              foundingDate: '2005',
               numberOfEmployees: { '@type': 'QuantitativeValue', value: 7000 },
               address: {
                 '@type': 'PostalAddress',
-                streetAddress: 'Head Office Address',
+                streetAddress: '208, 2nd Floor, Samod Tower, Sansar Chand Road',
                 addressLocality: 'Jaipur',
                 addressRegion: 'Rajasthan',
                 postalCode: '302001',
@@ -148,6 +157,22 @@ export default function RootLayout({
                 'https://www.linkedin.com/company/silbar-security',
                 'https://www.facebook.com/silbarsecurity',
               ],
+              actionableFeedbackPolicy: 'https://www.silbarsecurity.in/contact',
+              correctionsPolicy: 'https://www.silbarsecurity.in/contact',
+              ethicsPolicy: 'https://www.silbarsecurity.in/about',
+              diversityPolicy: 'https://www.silbarsecurity.in/about',
+              knowsAbout: [
+                'Security Guard Services India',
+                'PSARA Licensed Security Agency',
+                'Manned Guarding Services',
+                'Industrial Security',
+                'Electronic Surveillance',
+                'Facility Management',
+                'Event Security',
+                'Bank ATM Security',
+                'Fire Life Safety',
+                'Mobile Patrol Security',
+              ],
               hasCredential: [
                 {
                   '@type': 'EducationalOccupationalCredential',
@@ -165,7 +190,50 @@ export default function RootLayout({
             }),
           }}
         />
-        {children}
+        {/* WebSite + SearchAction + Speakable schema — GEO-optimized */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              '@id': 'https://www.silbarsecurity.in/#website',
+              url: 'https://www.silbarsecurity.in',
+              name: 'Silbar Security Services',
+              description:
+                'PSARA-licensed private security agency in India. Manned guarding, CCTV, facility management, event security.',
+              potentialAction: {
+                '@type': 'SearchAction',
+                target: {
+                  '@type': 'EntryPoint',
+                  urlTemplate: 'https://www.silbarsecurity.in/search?q={search_term_string}',
+                },
+                'query-input': 'required name=search_term_string',
+              },
+              speakable: {
+                '@type': 'SpeakableSpecification',
+                cssSelector: ['.seo-page-title', '.seo-page-subtitle', '.service-detail-section-title', '.service-detail-faq-q'],
+              },
+            }),
+          }}
+        />
+        {/* BreadcrumbList schema — default home */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.silbarsecurity.in' },
+                { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://www.silbarsecurity.in/services' },
+                { '@type': 'ListItem', position: 3, name: 'Industries', item: 'https://www.silbarsecurity.in/industries' },
+                { '@type': 'ListItem', position: 4, name: 'Contact', item: 'https://www.silbarsecurity.in/contact' },
+              ],
+            }),
+          }}
+        />
+        <NavigationWrapper>{children}</NavigationWrapper>
       </body>
     </html>
   )

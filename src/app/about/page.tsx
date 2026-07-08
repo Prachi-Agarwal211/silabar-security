@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import { Shield, Award, CheckCircle } from 'lucide-react'
+import Link from 'next/link'
+import { Shield, Award, CheckCircle, Phone } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import Counter from '@/components/animations/Counter'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
@@ -42,6 +43,11 @@ export default function AboutPage() {
 
       <section className="about-hero">
         <ScrollReveal className="about-hero__inner">
+          <nav className="breadcrumb" aria-label="Breadcrumb">
+            <Link href="/" className="breadcrumb__link">Home</Link>
+            <span className="breadcrumb__sep">›</span>
+            <span className="breadcrumb__current">About</span>
+          </nav>
           <span className="page-eyebrow">ABOUT US</span>
           <h1 className="about-title">
             <SplitTextReveal text="NOT JUST SECURITY." />
@@ -144,6 +150,26 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Bottom CTA */}
+      <section className="service-detail-bottom-cta">
+        <h2 className="service-detail-bottom-cta__title">Ready to Work with India&apos;s Trusted Security Force?</h2>
+        <p className="service-detail-bottom-cta__sub">
+          Join 500+ enterprise clients who trust Silbar Security for their protection needs.
+        </p>
+        <div className="service-detail-ctas" style={{ justifyContent: 'center' }}>
+          <a href="tel:+919352303333" className="service-detail-cta service-detail-cta--primary">
+            <Phone size={16} /> Call Now
+          </a>
+          <a
+            href="https://wa.me/919352303333?text=Hello%20Silbar%20Security%2C%20I%27d%20like%20to%20know%20more%20about%20your%20services."
+            className="service-detail-cta service-detail-cta--secondary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WhatsApp Us
+          </a>
+        </div>
+      </section>
     </main>
   )
 }

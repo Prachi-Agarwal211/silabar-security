@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { INDUSTRIES, INDUSTRY_SLUGS } from '@/data/industries'
 import { SERVICES } from '@/data/services'
 import { CheckCircle, ArrowRight, AlertTriangle, Phone } from 'lucide-react'
+import ScrollReveal from '@/components/animations/ScrollReveal'
+import SplitTextReveal from '@/components/animations/SplitTextReveal'
 
 export async function generateStaticParams() {
   return INDUSTRY_SLUGS.map((slug) => ({ slug }))
@@ -67,32 +69,46 @@ export default async function IndustryPage({
       <main className="industry-detail-page" id="main-content">
 
         <section className="industry-detail-hero">
-          <nav className="breadcrumb" aria-label="Breadcrumb">
-            <Link href="/" className="breadcrumb__link">Home</Link>
-            <span className="breadcrumb__sep">›</span>
-            <Link href="/industries" className="breadcrumb__link">Industries</Link>
-            <span className="breadcrumb__sep">›</span>
-            <span className="breadcrumb__current">{industry.shortTitle}</span>
-          </nav>
-          <h1 className="industry-detail-title">{industry.title}</h1>
-          <p className="industry-detail-subtitle">{industry.description}</p>
-          <div className="service-detail-ctas">
-            <a href="tel:+919352303333" className="service-detail-cta service-detail-cta--primary">
-              <Phone size={16} /> Get Quote
-            </a>
-          </div>
+          <ScrollReveal>
+            <nav className="breadcrumb" aria-label="Breadcrumb">
+              <Link href="/" className="breadcrumb__link">Home</Link>
+              <span className="breadcrumb__sep">›</span>
+              <Link href="/industries" className="breadcrumb__link">Industries</Link>
+              <span className="breadcrumb__sep">›</span>
+              <span className="breadcrumb__current">{industry.shortTitle}</span>
+            </nav>
+            <h1 className="industry-detail-title">
+              <SplitTextReveal text={industry.title} mode="words" />
+            </h1>
+            <p className="industry-detail-subtitle">{industry.description}</p>
+            <div className="service-detail-ctas">
+              <a href="tel:+919352303333" className="service-detail-cta service-detail-cta--primary">
+                <Phone size={16} /> Call Now
+              </a>
+              <a
+                href="https://wa.me/919352303333?text=Hello%20Silbar%20Security%2C%20I%20need%20a%20security%20quote%20for%20my%20facility."
+                className="service-detail-cta service-detail-cta--secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp Us
+              </a>
+            </div>
+          </ScrollReveal>
         </section>
 
         {/* Challenges */}
         <section className="industry-challenges">
           <div className="service-detail-section-inner">
-            <h2 className="service-detail-section-title">Security Challenges</h2>
+            <ScrollReveal>
+              <h2 className="service-detail-section-title">Security Challenges</h2>
+            </ScrollReveal>
             <div className="industry-challenges-list">
-              {industry.challenges.map((c) => (
-                <div key={c} className="industry-challenge-item">
+              {industry.challenges.map((c, i) => (
+                <ScrollReveal key={c} delay={i * 0.05} className="industry-challenge-item">
                   <AlertTriangle size={15} className="industry-challenge-item__icon" />
                   <span>{c}</span>
-                </div>
+                </ScrollReveal>
               ))}
             </div>
           </div>
@@ -101,13 +117,15 @@ export default async function IndustryPage({
         {/* Solutions */}
         <section className="industry-solutions">
           <div className="service-detail-section-inner">
-            <h2 className="service-detail-section-title">Our Solutions</h2>
+            <ScrollReveal>
+              <h2 className="service-detail-section-title">Our Solutions</h2>
+            </ScrollReveal>
             <div className="service-detail-features-grid">
-              {industry.solutions.map((s) => (
-                <div key={s} className="service-detail-feature">
+              {industry.solutions.map((s, i) => (
+                <ScrollReveal key={s} delay={i * 0.04} className="service-detail-feature">
                   <CheckCircle size={16} className="service-detail-feature__icon" />
                   <span>{s}</span>
-                </div>
+                </ScrollReveal>
               ))}
             </div>
           </div>
@@ -116,12 +134,16 @@ export default async function IndustryPage({
         {/* Related Services */}
         <section className="industry-related-services">
           <div className="service-detail-section-inner">
-            <h2 className="service-detail-section-title">Services for {industry.shortTitle}</h2>
+            <ScrollReveal>
+              <h2 className="service-detail-section-title">Services for {industry.shortTitle}</h2>
+            </ScrollReveal>
             <div className="industry-services-grid">
-              {relatedServices.map((service) => (
-                <Link key={service.slug} href={`/services/${service.slug}`} className="industry-service-link">
-                  {service.shortTitle} <ArrowRight size={14} />
-                </Link>
+              {relatedServices.map((service, i) => (
+                <ScrollReveal key={service.slug} delay={i * 0.04}>
+                  <Link href={`/services/${service.slug}`} className="industry-service-link">
+                    {service.shortTitle} <ArrowRight size={14} />
+                  </Link>
+                </ScrollReveal>
               ))}
             </div>
           </div>
@@ -130,16 +152,42 @@ export default async function IndustryPage({
         {/* FAQ */}
         <section className="service-detail-faq">
           <div className="service-detail-section-inner">
-            <h2 className="service-detail-section-title">FAQs</h2>
+            <ScrollReveal>
+              <h2 className="service-detail-section-title">FAQs</h2>
+            </ScrollReveal>
             <div className="service-detail-faq-list">
-              {industry.faqs.map(({ q, a }) => (
-                <details key={q} className="service-detail-faq-item">
-                  <summary className="service-detail-faq-q">{q}</summary>
-                  <p className="service-detail-faq-a">{a}</p>
-                </details>
+              {industry.faqs.map(({ q, a }, i) => (
+                <ScrollReveal key={q} delay={i * 0.05}>
+                  <details className="service-detail-faq-item">
+                    <summary className="service-detail-faq-q">{q}</summary>
+                    <p className="service-detail-faq-a">{a}</p>
+                  </details>
+                </ScrollReveal>
               ))}
             </div>
           </div>
+        </section>
+
+        <section className="service-detail-bottom-cta">
+          <ScrollReveal>
+            <h2 className="service-detail-bottom-cta__title">Secure Your {industry.shortTitle} Facility</h2>
+            <p className="service-detail-bottom-cta__sub">
+              Get a customized security plan for your facility. Free consultation and site assessment.
+            </p>
+            <div className="service-detail-ctas" style={{ justifyContent: 'center' }}>
+              <a href="tel:+919352303333" className="service-detail-cta service-detail-cta--primary">
+                <Phone size={16} /> Call +91 93523 03333
+              </a>
+              <a
+                href="https://wa.me/919352303333"
+                className="service-detail-cta service-detail-cta--secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp Us
+              </a>
+            </div>
+          </ScrollReveal>
         </section>
 
       </main>

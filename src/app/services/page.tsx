@@ -1,11 +1,9 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { SERVICES } from '@/data/services'
-import { ArrowRight } from 'lucide-react'
-import RadialServices from '@/components/sections/RadialServices'
+import ServicesGrid from '@/components/sections/ServicesGrid'
 
 export const metadata: Metadata = {
-  title: 'Security Services — 10 Verticals for Every Industry',
+  title: 'Security Services — 12 Verticals for Every Industry',
   description:
     'Silbar Security offers manned guarding, industrial security, event security, bank & ATM security, CCTV surveillance, facility management, and more. PSARA-licensed. PAN India.',
   alternates: { canonical: 'https://www.silbarsecurity.in/services' },
@@ -14,30 +12,7 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <main className="services-page" id="main-content">
-      <RadialServices services={SERVICES} />
-
-      <section className="services-page-grid-section">
-        <div className="services-page-grid">
-          {SERVICES.map((service) => (
-            <Link
-              key={service.slug}
-              href={`/services/${service.slug}`}
-              className="service-page-card"
-            >
-              <div className="service-page-card__header">
-                <h2 className="service-page-card__title">{service.shortTitle}</h2>
-                <ArrowRight size={18} className="service-page-card__arrow" />
-              </div>
-              <p className="service-page-card__desc">{service.description}</p>
-              <div className="service-page-card__industries">
-                {service.industries.slice(0, 3).map((ind) => (
-                  <span key={ind} className="service-page-card__tag">{ind}</span>
-                ))}
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
+      <ServicesGrid services={SERVICES} />
     </main>
   )
 }

@@ -1,23 +1,18 @@
 import Link from 'next/link'
 import { Phone, Mail, MapPin, Shield } from 'lucide-react'
 
-const SERVICES_LINKS = [
-  { label: 'Manned Guarding', href: '/services/manned-guarding' },
-  { label: 'Industrial Security', href: '/services/industrial-security' },
-  { label: 'Event Security', href: '/services/event-security' },
-  { label: 'Bank & ATM Security', href: '/services/bank-atm-security' },
-  { label: 'Electronic Surveillance', href: '/services/electronic-surveillance' },
-  { label: 'Facility Management', href: '/services/facility-management' },
-]
+import { SERVICES } from '@/data/services'
+import { INDUSTRIES } from '@/data/industries'
 
-const INDUSTRIES_LINKS = [
-  { label: 'Manufacturing', href: '/industries/manufacturing' },
-  { label: 'Hospitals', href: '/industries/hospitals' },
-  { label: 'Hotels & Hospitality', href: '/industries/hotels' },
-  { label: 'Warehouses', href: '/industries/warehouses' },
-  { label: 'Banks & BFSI', href: '/industries/banks' },
-  { label: 'Corporate Offices', href: '/industries/corporate' },
-]
+const SERVICES_LINKS = SERVICES.map(s => ({
+  label: s.shortTitle,
+  href: `/services/${s.slug}`,
+}))
+
+const INDUSTRIES_LINKS = INDUSTRIES.map(i => ({
+  label: i.shortTitle || i.title,
+  href: `/industries/${i.slug}`,
+}))
 
 const COMPANY_LINKS = [
   { label: 'About Silbar', href: '/about' },
@@ -25,7 +20,6 @@ const COMPANY_LINKS = [
   { label: 'Certifications', href: '/about#certifications' },
   { label: 'Careers', href: '/careers' },
   { label: 'Contact', href: '/contact' },
-  { label: 'Get Quote', href: '/contact#quote' },
 ]
 
 export default function Footer() {
@@ -114,6 +108,16 @@ export default function Footer() {
                 <Link href={href} className="footer-link">{label}</Link>
               </li>
             ))}
+            <li>
+              <a
+                href="https://wa.me/919352303333?text=Hello%20Silbar%20Security%2C%20I%20need%20a%20quote%20for%20security%20services."
+                className="footer-link footer-link--whatsapp"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp Us
+              </a>
+            </li>
           </ul>
         </div>
       </div>
