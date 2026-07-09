@@ -12,6 +12,7 @@ export interface Service {
     serviceType: string
     areaServed: string
   }
+  icon: string
 }
 
 export const SERVICES: Service[] = [
@@ -19,6 +20,7 @@ export const SERVICES: Service[] = [
     slug: 'manned-guarding',
     title: 'Manned Guarding Services',
     shortTitle: 'Manned Guarding',
+    icon: 'user-check',
     description:
       'PSARA-licensed armed and unarmed security guards for factories, offices, hospitals, residential societies, and commercial properties across India.',
     longDescription:
@@ -61,6 +63,7 @@ export const SERVICES: Service[] = [
     slug: 'industrial-security',
     title: 'Industrial & Factory Security Services',
     shortTitle: 'Industrial Security',
+    icon: 'factory',
     description:
       'Comprehensive security solutions for manufacturing plants, factories, warehouses, and logistics facilities. Perimeter control, access management, and shift supervision.',
     longDescription:
@@ -95,6 +98,7 @@ export const SERVICES: Service[] = [
     slug: 'event-security',
     title: 'Event & VIP Security Services',
     shortTitle: 'Event Security',
+    icon: 'users',
     description:
       'Professional crowd management, VIP escort, and VVIP protection for corporate events, conferences, concerts, exhibitions, and government functions.',
     longDescription:
@@ -129,6 +133,7 @@ export const SERVICES: Service[] = [
     slug: 'bank-atm-security',
     title: 'Bank & ATM Security Services',
     shortTitle: 'Bank & ATM Security',
+    icon: 'landmark',
     description:
       'Cash-in-transit, bullion escort, and armed ATM guard services. Strict compliance with RBI security guidelines and banking sector protocols.',
     longDescription:
@@ -163,6 +168,7 @@ export const SERVICES: Service[] = [
     slug: 'electronic-surveillance',
     title: 'Electronic Surveillance & CCTV Services',
     shortTitle: 'Electronic Surveillance',
+    icon: 'camera',
     description:
       'CCTV installation, remote monitoring, access control, fire alarm systems, GPS vehicle tracking, and integrated security technology solutions.',
     longDescription:
@@ -197,6 +203,7 @@ export const SERVICES: Service[] = [
     slug: 'risk-assessment',
     title: 'Security Risk Assessment & Audit Services',
     shortTitle: 'Risk Assessment',
+    icon: 'clipboard-check',
     description:
       'Professional security audits, vulnerability assessments, disaster management planning, and crisis response consultancy for enterprises.',
     longDescription:
@@ -231,6 +238,7 @@ export const SERVICES: Service[] = [
     slug: 'facility-management',
     title: 'Facility Management Services',
     shortTitle: 'Facility Management',
+    icon: 'building-2',
     description:
       'Integrated facility management including housekeeping, maintenance, pantry services, and operations support. One vendor, complete facility coverage.',
     longDescription:
@@ -265,6 +273,7 @@ export const SERVICES: Service[] = [
     slug: 'security-training',
     title: 'Security Training & Certification',
     shortTitle: 'Security Training',
+    icon: 'graduation-cap',
     description:
       'PSARA-certified security training for guards, supervisors, and corporate security teams. Weapons handling, first aid, fire safety, and soft skills.',
     longDescription:
@@ -299,6 +308,7 @@ export const SERVICES: Service[] = [
     slug: 'manpower-solutions',
     title: 'Security Manpower Solutions',
     shortTitle: 'Manpower Solutions',
+    icon: 'users-round',
     description:
       'End-to-end manpower deployment for security, facility, and support roles with payroll, compliance, and statutory management handled by Silbar.',
     longDescription:
@@ -333,6 +343,7 @@ export const SERVICES: Service[] = [
     slug: 'kyc-background-checks',
     title: 'KYC & Employee Background Verification',
     shortTitle: 'Background Checks',
+    icon: 'file-search',
     description:
       'Pre-employment verification, address checks, criminal record screening, and KYC documentation for vendor and employee onboarding.',
     longDescription:
@@ -367,6 +378,7 @@ export const SERVICES: Service[] = [
     slug: 'fire-life-safety',
     title: 'Fire & Life Safety Services',
     shortTitle: 'Fire & Life Safety',
+    icon: 'flame',
     description:
       'Fire safety audits, fire-fighting equipment maintenance, and trained fire warden deployment for factories, warehouses, hospitals, and high-occupancy buildings across India.',
     longDescription:
@@ -401,6 +413,7 @@ export const SERVICES: Service[] = [
     slug: 'mobile-patrol-quick-response',
     title: 'Mobile Patrol & Quick Response Services',
     shortTitle: 'Mobile Patrol',
+    icon: 'car',
     description:
       'Randomized mobile patrol visits and rapid-response teams for multi-site facilities, residential societies, and properties that need deterrence between fixed guard shifts.',
     longDescription:

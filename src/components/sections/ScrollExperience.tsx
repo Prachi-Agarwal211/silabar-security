@@ -1,8 +1,8 @@
 'use client'
 
 import { useRef, useEffect } from 'react'
-import { gsap } from '@/lib/gsap'
-import { ShieldCheck, ChevronsRight } from 'lucide-react'
+import { gsap, ScrollTrigger } from '@/lib/gsap'
+import { ShieldCheck, ChevronsRight, Shield, Maximize2 } from 'lucide-react'
 import SplitTextReveal from '../animations/SplitTextReveal'
 
 const MARQUEE_ITEMS = [
@@ -54,30 +54,28 @@ export default function ScrollExperience() {
 
     video.play().catch(() => {})
 
-    // Defer rect measurement until after first paint — ensures layout has settled.
-    const measureAndInit = () => {
+    // ── Live measurement functions (re-evaluated by ScrollTrigger on every refresh) ──
+    const getVideoTarget = () => {
       const dockRect = dock.getBoundingClientRect()
       const vw = window.innerWidth
       const vh = window.innerHeight
-
-      if (dockRect.width === 0) return
-
+      if (dockRect.width === 0) return { scale: 1, x: 0, y: 0 }
       const scaleX = dockRect.width / vw
       const scaleY = dockRect.height / vh
-      const targetScale = Math.min(scaleX, scaleY)
-      const tx = (dockRect.left + dockRect.width / 2) - vw / 2
-      const ty = (dockRect.top + dockRect.height / 2) - vh / 2
-
-      const barHeight = marqueeBar.getBoundingClientRect().height || 60
-      const diagonal = Math.sqrt(vw * vw + vh * vh)
-      const wipeScale = (diagonal / barHeight) * 1.2
-
-      return { targetScale, tx, ty, wipeScale }
+      return {
+        scale: Math.min(scaleX, scaleY),
+        x: (dockRect.left + dockRect.width / 2) - vw / 2,
+        y: (dockRect.top + dockRect.height / 2) - vh / 2,
+      }
     }
 
-    const measurements = measureAndInit()
-    if (!measurements) return
-    const { targetScale, tx, ty, wipeScale } = measurements
+    const getWipeScale = () => {
+      const vw = window.innerWidth
+      const vh = window.innerHeight
+      const barHeight = marqueeBar.getBoundingClientRect().height || 60
+      const diagonal = Math.sqrt(vw * vw + vh * vh)
+      return Math.max((diagonal / barHeight) * 1.8, 25)
+    }
 
     const mm = gsap.matchMedia()
 
@@ -89,8 +87,8 @@ export default function ScrollExperience() {
       const laserLines = document.querySelector('.laser-lines-container')
 
       const loadTl = gsap.timeline()
-      loadTl.fromTo(leftPanel, 
-        { x: '-100%' }, 
+      loadTl.fromTo(leftPanel,
+        { x: '-100%' },
         { x: '0%', duration: 1.2, ease: 'expo.out' }, 0.2
       )
       loadTl.fromTo(overlay, { opacity: 0 }, { opacity: 1, duration: 1 }, 0)
@@ -104,7 +102,7 @@ export default function ScrollExperience() {
         scrollTrigger: {
           trigger: wrapper,
           start: 'top top',
-          end: '+=320%', // Tightened from 400% for faster scroll feel — do not go below 280% or Act 3's wipe snaps instead of gliding
+          end: '+=320%',
           scrub: 1,
           pin: true,
           anticipatePin: 1,
@@ -116,30 +114,25 @@ export default function ScrollExperience() {
       // ACT 1 — HERO EXITS (0 → 0.22)
       // ══════════════════════════════════════════
 
-      // Fade out hero elements
       tl.to(leftPanel, { x: '-100%', duration: 0.15, ease: 'power2.in' }, 0.05)
       tl.to(scrollCue, { opacity: 0, duration: 0.05, ease: 'power2.in' }, 0.05)
       tl.to(laserLines, { opacity: 0, duration: 0.08, ease: 'power2.in' }, 0.05)
       tl.to(overlay, { opacity: 0, duration: 0.08, ease: 'power2.in' }, 0.10)
-
-      // Warm gradient layer crossfades in
       tl.fromTo(bgWarm, { opacity: 0 }, { opacity: 1, duration: 0.22, ease: 'power2.inOut' }, 0.08)
 
       // ══════════════════════════════════════════
       // ACT 2 — TRUST: video docks, tilted strip appears (0.10 → 0.55)
       // ══════════════════════════════════════════
 
-      // Video morphs from fullscreen down to card position via scale/translate
       tl.to(video, {
-        scale: targetScale,
-        x: tx,
-        y: ty,
+        scale: () => getVideoTarget().scale,
+        x: () => getVideoTarget().x,
+        y: () => getVideoTarget().y,
         borderRadius: 28,
         ease: 'power2.inOut',
         duration: 0.24,
       }, 0.10)
 
-      // Trust copy reveals sequentially
       tl.to(trustContent, { opacity: 1, duration: 0.08, ease: 'power2.out' }, 0.20)
       tl.fromTo(trustEyebrow,
         { opacity: 0, y: 20 },
@@ -157,36 +150,42 @@ export default function ScrollExperience() {
         { opacity: 0, x: -12 },
         { opacity: 1, x: 0, duration: 0.05, ease: 'power3.out' }, 0.32)
 
-      // The tilted strip slides in from the right ALREADY at its final -4° tilt
       tl.fromTo(marqueeBar,
         { x: '100%', opacity: 0, rotate: 0 },
         { x: '0%', opacity: 1, rotate: -4, duration: 0.10, ease: 'power2.out' }, 0.30)
-
-      // 0.40 → 0.55 is an intentional HOLD — nothing new animates.
 
       // ══════════════════════════════════════════
       // ACT 3 — THE ZOOM-THROUGH WIPE (0.55 → 1.0)
       // ══════════════════════════════════════════
 
-      // Trust text and video fade out together — only the strip remains visible.
       tl.to(trustContent, { opacity: 0, y: -20, duration: 0.10, ease: 'power2.in' }, 0.55)
       tl.to(video, { opacity: 0, duration: 0.10, ease: 'power2.in' }, 0.55)
 
-      // The strip un-tilts (rotate back to 0°), then rotates to vertical (90°),
-      // then scales up from its own center until it swallows the full viewport.
       tl.to(marqueeBar, {
         rotate: 90,
-        scale: wipeScale,
-        duration: 0.3, // Increased duration slightly
+        scale: () => getWipeScale(),
+        duration: 0.3,
         ease: 'power2.in',
       }, 0.62)
 
-      // Note: We don't fade out the marqueeBar at the end. It stays fully opaque (black)
-      // so when the pin releases, the user seamlessly scrolls into the dark services section below.
+      // ── Re-run ScrollTrigger's measurements on resize / font / video load ──
+      const refresh = () => ScrollTrigger.refresh()
+      let resizeTimer: ReturnType<typeof setTimeout> | undefined
+      const debouncedRefresh = () => {
+        clearTimeout(resizeTimer)
+        resizeTimer = setTimeout(refresh, 200)
+      }
+      window.addEventListener('resize', debouncedRefresh)
+      video.addEventListener('loadedmetadata', refresh, { once: true })
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(refresh)
+      }
 
       return () => {
         loadTl.kill()
         tl.kill()
+        window.removeEventListener('resize', debouncedRefresh)
+        video.removeEventListener('loadedmetadata', refresh)
       }
     })
 
@@ -217,25 +216,23 @@ export default function ScrollExperience() {
       </div>
 
       <div className="hero-left-panel">
-        {/* ── Vertical text rails — thin left column ── */}
-        <div className="hero-left-rails">
-          <div className="vertical-text-wrapper">
-            <p className="text-vertical text-micro is-dimmed">EST. 2005</p>
-            <p className="text-vertical text-micro is-bright text-tracking-wide">
-              INDIA'S PREMIER SECURITY FORCE
-            </p>
-            <p className="text-vertical text-micro is-dimmed">INTEGRATED PROTECTION</p>
-            <p className="text-vertical text-micro is-dimmed">UNCOMPROMISING SAFETY</p>
-          </div>
+        <div className="hero-tagline-stack">
+          <p className="text-vertical text-micro is-dimmed">UNCOMPROMISED SAFETY</p>
+          <p className="text-vertical text-micro is-dimmed">INTEGRATED PROTECTION</p>
         </div>
 
-        {/* ── Red laser divider line ── */}
+        <div className="vertical-text-wrapper">
+          <p className="text-vertical text-micro is-dimmed">EST. 2005</p>
+          <p className="text-vertical text-micro is-bright text-tracking-wide">
+            INDIA'S PREMIER SECURITY FORCE
+          </p>
+        </div>
+
         <div className="hero-vertical-laser-line">
           <div className="laser-dot-origin" />
         </div>
         <div className="hero-horizontal-laser-line" />
 
-        {/* ── Main content: wordmark + tagline + trust badges ── */}
         <div className="hero-badge-container">
           <div className="text-hero-wordmark">
             <span className="word-thin">
@@ -245,21 +242,15 @@ export default function ScrollExperience() {
               <SplitTextReveal text="SECURITY" mode="chars" delay={0.6} />
             </span>
           </div>
-
-          <p className="hero-tagline">
-            India's premier security force — law-enforcement grade personnel with integrated surveillance &amp; technology.
-          </p>
-
-          <div className="hero-trust-micro">
-            <span>ISO 9001:2015</span>
-            <span className="hero-trust-sep">·</span>
-            <span>PSARA-2005</span>
-            <span className="hero-trust-sep">·</span>
-            <span>7,000+ Officers</span>
+          <div className="shield-logo-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '1rem' }}>
+            <Shield size={16} className="hero-badge-icon" strokeWidth={2} />
           </div>
         </div>
 
-        {/* Scroll Cue */}
+        <p className="hero-bottom-tagline">
+          PROTECTED BEYOND EXPECTATION.
+        </p>
+
         <div ref={scrollCueRef} className="scroll-cue-ring">
           <div className="scroll-cue-dot" />
         </div>
@@ -308,6 +299,17 @@ export default function ScrollExperience() {
           {/* Empty dock slot — its computed rect is the video morph target.
               id="morph-video-dock" is read by useEffect via getElementById; keep stable. */}
           <div id="morph-video-dock" className="trust-card-light">
+            <div className="trust-card-light__frame">
+              <span className="trust-card-light__expand" aria-hidden="true">
+                <Maximize2 size={14} />
+              </span>
+              <div className="trust-card-light__dots" aria-hidden="true">
+                <span className="trust-card-light__dot" />
+                <span className="trust-card-light__dot" />
+                <span className="trust-card-light__dot" />
+                <span className="trust-card-light__dot trust-card-light__dot--active" />
+              </div>
+            </div>
             <div className="trust-card-light__glow" />
             <div className="trust-card-light__overlay" />
           </div>

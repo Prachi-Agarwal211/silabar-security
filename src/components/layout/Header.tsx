@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { Menu, X, Phone } from 'lucide-react'
 
 const NAV_LINKS = [
@@ -12,6 +13,7 @@ const NAV_LINKS = [
 ]
 
 export default function Header() {
+  const pathname = usePathname()
   const [hidden, setHidden] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const lastScrollY = useRef(0)
@@ -48,7 +50,7 @@ export default function Header() {
 
   return (
     <>
-      <header className={`hero-header ${hidden ? 'hero-header--hidden' : ''}`}>
+      <header className={`hero-header${hidden ? ' hero-header--hidden' : ''}${pathname !== '/' ? ' hero-header--solid' : ''}`}>
         <Link href="/" className="hero-logo" onClick={() => setMenuOpen(false)}>
           Silbar Security
         </Link>
