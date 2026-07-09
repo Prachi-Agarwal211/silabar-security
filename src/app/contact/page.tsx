@@ -3,18 +3,51 @@ import Link from 'next/link'
 import { Phone, Mail, MapPin, Clock, MessageCircle } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
-
+import { CONTACT } from '@/lib/config'
+import { ogMetadata } from '@/lib/metadata'
 
 export const metadata: Metadata = {
   title: 'Contact Us — Call or WhatsApp Silbar Security',
   description:
-    'Contact Silbar Security Services for a free security consultation and quote. Call +91 93523 03333 or email info@silbarsecurity.in. Offices in Jaipur, Delhi, and Ahmedabad.',
-  alternates: { canonical: 'https://www.silbarsecurity.in/contact' },
+    'Contact Silbar Security Services for a free security consultation and quote. Call ' + CONTACT.phone + ' or email ' + CONTACT.email + '. Offices in Jaipur, Delhi, and Ahmedabad.',
+  ...ogMetadata('Contact Us — Call or WhatsApp Silbar Security', 'Contact Silbar Security Services for a free security consultation and quote. Call ' + CONTACT.phone + ' or email ' + CONTACT.email + '. Offices in Jaipur, Delhi, and Ahmedabad.', '/contact'),
 }
 
 export default function ContactPage() {
   return (
     <main className="contact-page" id="main-content">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'ContactPage',
+            name: 'Contact Silbar Security Services',
+            description: 'Contact Silbar Security Services for a free security consultation and quote.',
+          })
+        }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'LocalBusiness',
+            name: 'Silbar Security Services Pvt. Ltd.',
+            telephone: '+91-9352303333',
+            email: CONTACT.email,
+            address: {
+              '@type': 'PostalAddress',
+              streetAddress: '208, 2nd Floor, Samod Tower, Sansar Chand Road',
+              addressLocality: 'Jaipur',
+              addressRegion: 'Rajasthan',
+              postalCode: '302001',
+              addressCountry: 'IN',
+            },
+            contactPoint: {
+              '@type': 'ContactPoint',
+              telephone: '+91-9352303333',
+              contactType: 'customer service',
+              areaServed: 'IN',
+              availableLanguage: ['English', 'Hindi'],
+            },
+          })
+        }} />
       <section className="contact-hero">
         <ScrollReveal className="contact-hero__inner">
           <nav className="breadcrumb" aria-label="Breadcrumb">
@@ -42,26 +75,26 @@ export default function ContactPage() {
 
           {/* Contact cards */}
           <ScrollReveal delay={0.2} className="contact-cards">
-            <a href="tel:+919352303333" className="contact-card">
+            <a href={`tel:${CONTACT.phoneRaw}`} className="contact-card">
               <div className="contact-card__icon"><Phone size={20} /></div>
               <div className="contact-card__label">CALL US DIRECTLY</div>
-              <div className="contact-card__value">+91 93523 03333</div>
+              <div className="contact-card__value">{CONTACT.phone}</div>
               <div className="contact-card__note">Mon–Sat, 9AM–7PM IST</div>
             </a>
-            <a href="tel:+911412223334" className="contact-card">
+            <a href={`tel:${CONTACT.landlineRaw}`} className="contact-card">
               <div className="contact-card__icon"><Phone size={20} /></div>
               <div className="contact-card__label">LANDLINE</div>
-              <div className="contact-card__value">+91-141 222 3334</div>
+              <div className="contact-card__value">{CONTACT.landline}</div>
               <div className="contact-card__note">Jaipur Head Office</div>
             </a>
-            <a href="mailto:info@silbarsecurity.in" className="contact-card">
+            <a href={`mailto:${CONTACT.email}`} className="contact-card">
               <div className="contact-card__icon"><Mail size={20} /></div>
               <div className="contact-card__label">EMAIL US</div>
-              <div className="contact-card__value">info@silbarsecurity.in</div>
+              <div className="contact-card__value">{CONTACT.email}</div>
               <div className="contact-card__note">Response within 4 hours</div>
             </a>
             <a
-              href="https://wa.me/919352303333"
+              href={CONTACT.whatsapp.url}
               className="contact-card contact-card--whatsapp"
               target="_blank"
               rel="noopener noreferrer"
@@ -82,7 +115,7 @@ export default function ContactPage() {
               </p>
               <div className="contact-form__ctas">
                 <a 
-                  href="https://wa.me/919352303333?text=Hello%20Silbar%20Security%2C%20I%20need%20a%20quote%20for%20security%20services."
+                  href={CONTACT.whatsapp.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="contact-card--whatsapp-btn"
@@ -90,7 +123,7 @@ export default function ContactPage() {
                   <MessageCircle size={20} /> Get Instant Quote via WhatsApp
                 </a>
                 <a 
-                  href="tel:+919352303333"
+                  href={`tel:${CONTACT.phoneRaw}`}
                   className="contact-card--call-btn"
                 >
                   <Phone size={20} /> Call Now

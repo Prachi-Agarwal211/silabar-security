@@ -3,6 +3,10 @@ import { gsap, ScrollTrigger } from './gsap'
 
 let lenis: Lenis | null = null
 
+const tickerCallback = (time: number) => {
+  if (lenis) lenis.raf(time * 1000)
+}
+
 export function initLenis() {
   if (lenis) return lenis
 
@@ -16,9 +20,7 @@ export function initLenis() {
   lenis.on('scroll', ScrollTrigger.update)
 
   // Drive Lenis from GSAP ticker (not its own RAF)
-  gsap.ticker.add((time) => {
-    lenis!.raf(time * 1000)
-  })
+  gsap.ticker.add(tickerCallback)
   gsap.ticker.lagSmoothing(0)
 
   return lenis
@@ -26,6 +28,7 @@ export function initLenis() {
 
 export function destroyLenis() {
   if (lenis) {
+    gsap.ticker.remove(tickerCallback)
     lenis.destroy()
     lenis = null
   }

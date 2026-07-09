@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { Phone } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
+import { CONTACT } from '@/lib/config'
+import { ogMetadata } from '@/lib/metadata'
 
 const POSTS = [
   {
@@ -745,8 +747,7 @@ export async function generateMetadata({
   return {
     title: `${post.title} | Silbar Security Blog`,
     description: post.excerpt,
-    alternates: { canonical: `https://www.silbarsecurity.in/blog/${slug}` },
-    openGraph: { title: post.title, description: post.excerpt },
+    ...ogMetadata(`${post.title} | Silbar Security Blog`, post.excerpt, `/blog/${slug}`),
   }
 }
 
@@ -817,12 +818,12 @@ export default async function BlogPostPage({
             <p className="service-detail-bottom-cta__sub">
               Our security consultants are ready to help. Call us for a free facility assessment.
             </p>
-            <div className="service-detail-ctas" style={{ justifyContent: 'center' }}>
-              <a href="tel:+919352303333" className="service-detail-cta service-detail-cta--primary">
-                <Phone size={16} /> Call +91 93523 03333
+            <div className="service-detail-ctas service-detail-ctas--centered">
+              <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--primary">
+                <Phone size={16} /> Call {CONTACT.phone}
               </a>
               <a
-                href="https://wa.me/919352303333"
+                href={CONTACT.whatsapp.url}
                 className="service-detail-cta service-detail-cta--secondary"
                 target="_blank"
                 rel="noopener noreferrer"

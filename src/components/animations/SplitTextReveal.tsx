@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useEffect } from 'react'
-import { gsap, ScrollTrigger } from '@/lib/gsap'
+import { gsap } from '@/lib/gsap'
 
 interface SplitTextRevealProps {
   text: string
@@ -25,31 +25,40 @@ export default function SplitTextReveal({
     const targets = container.querySelectorAll(`.split-${mode}`)
     if (!targets.length) return
 
-    // ponytail: random variance per character for hand-animated feel
-    targets.forEach((target, i) => {
-      const randomDelay = delay + i * 0.03 + (Math.random() - 0.5) * 0.02
-      gsap.fromTo(target,
-        { opacity: 0, y: 30, rotateX: -80, filter: 'blur(4px)' },
-        {
-          opacity: 1,
-          y: 0,
-          rotateX: 0,
-          filter: 'blur(0px)',
-          duration: 0.5,
-          delay: randomDelay,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: container,
-            start: 'top 85%',
-            toggleActions: 'play none none none',
-          },
-        },
-      )
+    const mm = gsap.matchMedia()
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      const anims: gsap.core.Tween[] = []
+      targets.forEach((target, i) => {
+        const randomDelay = delay + i * 0.03 + (Math.random() - 0.5) * 0.02
+        anims.push(
+          gsap.fromTo(target,
+            { opacity: 0, y: 30, rotateX: -80 },
+            {
+              opacity: 1,
+              y: 0,
+              rotateX: 0,
+              duration: 0.5,
+              delay: randomDelay,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: container,
+                start: 'top 85%',
+                toggleActions: 'play none none none',
+              },
+            },
+          )
+        )
+      })
+
+      return () => {
+        anims.forEach(a => {
+          a.scrollTrigger?.kill()
+          a.kill()
+        })
+      }
     })
 
-    return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill())
-    }
+    return () => mm.revert()
   }, [delay, mode, text])
 
   const renderSplit = () => {

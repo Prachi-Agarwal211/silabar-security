@@ -6,6 +6,8 @@ import { SERVICES } from '@/data/services'
 import { ArrowRight, Phone, MapPin } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
+import { CONTACT } from '@/lib/config'
+import { ogMetadata } from '@/lib/metadata'
 
 export const revalidate = 86400 // ISR — revalidate once per day
 
@@ -28,10 +30,7 @@ export async function generateMetadata({
   return {
     title,
     description,
-    alternates: {
-      canonical: `https://www.silbarsecurity.in/security-services/${state}`,
-    },
-    openGraph: { title, description },
+    ...ogMetadata(title, description, `/security-services/${state}`),
   }
 }
 
@@ -51,8 +50,8 @@ export default async function StateSEOPage({
     name: `Silbar Security Services — ${location.name}`,
     description: `PSARA-licensed security services in ${location.name}`,
     url: 'https://www.silbarsecurity.in',
-    telephone: '+919352303333',
-    email: 'info@silbarsecurity.in',
+    telephone: CONTACT.phoneRaw,
+    email: CONTACT.email,
     address: {
       '@type': 'PostalAddress',
       addressRegion: location.name,
@@ -129,11 +128,11 @@ export default async function StateSEOPage({
               Serving {location.majorCities.join(', ')} and beyond.
             </p>
             <div className="service-detail-ctas">
-              <a href="tel:+919352303333" className="service-detail-cta service-detail-cta--primary">
+              <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--primary">
                 <Phone size={16} /> Call Now
               </a>
               <a
-                href={`https://wa.me/919352303333?text=Hello%20Silbar%20Security%2C%20I%20need%20security%20services%20in%20${encodeURIComponent(location.name)}.`}
+                href={`https://wa.me/${CONTACT.whatsapp.number}?text=Hello%20Silbar%20Security%2C%20I%20need%20security%20services%20in%20${encodeURIComponent(location.name)}.`}
                 className="service-detail-cta service-detail-cta--secondary"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -189,7 +188,7 @@ export default async function StateSEOPage({
               ))}
             </div>
             <p className="seo-cities-note">
-              Don't see your city? We deploy across all {location.districts} districts of {location.name}.
+              Don&apos;t see your city? We deploy across all {location.districts} districts of {location.name}.
               <Link href="/contact" className="seo-cities-link"> Contact us for your location.</Link>
             </p>
           </div>
@@ -213,7 +212,7 @@ export default async function StateSEOPage({
               </p>
               <p>
                 All our security personnel deployed in {location.name} are licensed
-                under the state's PSARA Controlling Authority, background verified,
+                 under the state&apos;s PSARA Controlling Authority, background verified,
                 and covered under full statutory compliance including ESI, PF, and
                 minimum wages as mandated by {location.name} state labour laws.
               </p>
@@ -264,12 +263,12 @@ export default async function StateSEOPage({
             <p className="service-detail-bottom-cta__sub">
               Get a customized security quote for your facility in {location.name}. Free consultation.
             </p>
-            <div className="service-detail-ctas" style={{ justifyContent: 'center' }}>
-              <a href="tel:+919352303333" className="service-detail-cta service-detail-cta--primary">
-                <Phone size={16} /> Call +91 93523 03333
+            <div className="service-detail-ctas service-detail-ctas--centered">
+              <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--primary">
+                <Phone size={16} /> Call {CONTACT.phone}
               </a>
               <a
-                href={`https://wa.me/919352303333?text=Hello%20Silbar%20Security%2C%20I%20need%20a%20quote%20for%20security%20services%20in%20${encodeURIComponent(location.name)}.`}
+                href={`https://wa.me/${CONTACT.whatsapp.number}?text=Hello%20Silbar%20Security%2C%20I%20need%20a%20quote%20for%20security%20services%20in%20${encodeURIComponent(location.name)}.`}
                 className="service-detail-cta service-detail-cta--secondary"
                 target="_blank"
                 rel="noopener noreferrer"

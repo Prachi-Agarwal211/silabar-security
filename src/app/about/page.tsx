@@ -4,12 +4,14 @@ import { Shield, Award, CheckCircle, Phone } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import Counter from '@/components/animations/Counter'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
+import { CONTACT } from '@/lib/config'
+import { ogMetadata } from '@/lib/metadata'
 
 export const metadata: Metadata = {
-  title: 'About Silbar Security — Founded by Law Enforcement',
+  title: 'About Silbar Security — PSARA-Licensed & ISO-Certified',
   description:
-    'Silbar Security Services was founded by law enforcement professionals. ISO 9001:2015 & PSARA-2005 certified. 7,000+ licensed officers across PAN India.',
-  alternates: { canonical: 'https://www.silbarsecurity.in/about' },
+    'Silbar Security Services — ISO 9001:2015 & PSARA-2005 certified. 7,000+ licensed officers. Manned guarding, electronic surveillance, facility management across PAN India.',
+  ...ogMetadata('About Silbar Security — PSARA-Licensed & ISO-Certified', 'Silbar Security Services — ISO 9001:2015 & PSARA-2005 certified. 7,000+ licensed officers. Manned guarding, electronic surveillance, facility management across PAN India.', '/about'),
 }
 
 const STATS = [
@@ -27,7 +29,7 @@ const CERTIFICATIONS = [
 ]
 
 const WHY_SILBAR = [
-  'Founded by retired law enforcement and defence professionals',
+  'Founded by experienced security and risk management professionals',
   'PSARA licensed across multiple Indian states',
   'ISO 9001:2015 certified quality management',
   'Full statutory compliance — ESI, PF, Gratuity, Minimum Wages',
@@ -40,7 +42,16 @@ const WHY_SILBAR = [
 export default function AboutPage() {
   return (
     <main className="about-page" id="main-content">
-
+        <script type="application/ld+json" dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'AboutPage',
+            name: 'About Silbar Security Services',
+            description: 'PSARA-licensed, ISO 9001:2015 certified security agency. Founded by security professionals.',
+            mainContentOfPage: { '@type': 'WebPageElement' },
+            primaryImageOfPage: '/og-image.jpg',
+          })
+        }} />
       <section className="about-hero">
         <ScrollReveal className="about-hero__inner">
           <nav className="breadcrumb" aria-label="Breadcrumb">
@@ -87,19 +98,21 @@ export default function AboutPage() {
           <ScrollReveal className="about-story__text">
             <span className="page-eyebrow">OUR STORY</span>
             <h2 className="about-story__title">
-              <SplitTextReveal text="Founded by Law Enforcement" />
+              <SplitTextReveal text="Built by Security Professionals" />
+
+
             </h2>
             <p className="about-story__body">
-              Silbar Security Services was established by professionals with deep roots in
-              law enforcement and defence. We saw firsthand the gap between what Indian
-              enterprises needed from private security and what was being delivered: under-trained
-              guards, non-compliant agencies, and no accountability.
+              Silbar Security Services was built on decades of combined experience in
+              security management, risk assessment, and personnel training. We saw firsthand
+              the gap between what Indian enterprises needed from private security and what was
+              being delivered: under-trained guards, non-compliant agencies, and no accountability.
             </p>
             <p className="about-story__body">
               We built Silbar to be different. Every guard we deploy is PSARA-trained,
               background verified, and covered under full statutory compliance. Every client
               gets a dedicated account manager, monthly MIS reports, and a 24-hour replacement
-              guarantee. That's not industry standard. That's our standard.
+              guarantee. That&apos;s not industry standard. That&apos;s our standard.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.2} className="about-story__image-block">
@@ -115,7 +128,7 @@ export default function AboutPage() {
       <section className="about-timeline" id="timeline">
         <div className="about-timeline__inner">
           <ScrollReveal>
-            <span className="page-eyebrow" style={{ display: 'flex', justifyContent: 'center' }}>MILESTONES</span>
+            <span className="page-eyebrow page-eyebrow--centered">MILESTONES</span>
             <h2 className="about-timeline__title">
               <SplitTextReveal text="Our Journey" />
             </h2>
@@ -123,7 +136,7 @@ export default function AboutPage() {
           
           <div className="timeline-container">
             {[
-              { year: '2005', title: 'The Foundation', desc: 'Silbar Security established in Jaipur by retired law enforcement professionals.' },
+              { year: '2008', title: 'The Foundation', desc: 'Silbar Security established in Jaipur by experienced security professionals.' },
               { year: '2012', title: 'PSARA Compliance', desc: 'Expanded operations across Rajasthan, becoming one of the first fully PSARA-compliant agencies.' },
               { year: '2016', title: 'ISO Certification', desc: 'Achieved ISO 9001:2015 certification for Quality Management Systems.' },
               { year: '2024', title: 'PAN India Presence', desc: 'Now protecting 500+ enterprise clients with a force of 7,000+ licensed officers.' }
@@ -185,12 +198,12 @@ export default function AboutPage() {
         <p className="service-detail-bottom-cta__sub">
           Join 500+ enterprise clients who trust Silbar Security for their protection needs.
         </p>
-        <div className="service-detail-ctas" style={{ justifyContent: 'center' }}>
-          <a href="tel:+919352303333" className="service-detail-cta service-detail-cta--primary">
+        <div className="service-detail-ctas service-detail-ctas--centered">
+          <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--primary">
             <Phone size={16} /> Call Now
           </a>
           <a
-            href="https://wa.me/919352303333?text=Hello%20Silbar%20Security%2C%20I%27d%20like%20to%20know%20more%20about%20your%20services."
+            href={CONTACT.whatsapp.url}
             className="service-detail-cta service-detail-cta--secondary"
             target="_blank"
             rel="noopener noreferrer"

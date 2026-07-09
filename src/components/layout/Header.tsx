@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X, Phone } from 'lucide-react'
+import { CONTACT } from '@/lib/config'
 
 const NAV_LINKS = [
   { label: 'Services', href: '/services' },
@@ -42,10 +43,25 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Lock body scroll when menu open
+  const navRef = useRef<HTMLDivElement>(null)
+
+  // Lock body scroll when menu open + Escape key
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMenuOpen(false)
+    }
+    if (menuOpen) window.addEventListener('keydown', handleKey)
+    return () => {
+      document.body.style.overflow = ''
+      window.removeEventListener('keydown', handleKey)
+    }
+  }, [menuOpen])
+
+  // Return focus to hamburger on close
+  const hamburgerRef = useRef<HTMLButtonElement>(null)
+  useEffect(() => {
+    if (!menuOpen) hamburgerRef.current?.focus()
   }, [menuOpen])
 
   return (
@@ -63,15 +79,15 @@ export default function Header() {
             </Link>
           ))}
           <a
-            href="tel:+919352303333"
+            href={`tel:${CONTACT.phoneRaw}`}
             className="hero-nav-link hero-nav-link--phone"
             aria-label="Call Silbar Security"
           >
             <Phone size={14} strokeWidth={1.75} />
-            +91 93523 03333
+            {CONTACT.phone}
           </a>
           <a
-            href="https://wa.me/919352303333?text=Hello%20Silbar%20Security%2C%20I%20need%20a%20quote%20for%20security%20services."
+            href={CONTACT.whatsapp.url}
             className="hero-nav-cta"
             target="_blank"
             rel="noopener noreferrer"
@@ -82,10 +98,12 @@ export default function Header() {
 
         {/* Mobile hamburger */}
         <button
+          ref={hamburgerRef}
           className="hero-nav-hamburger"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
+          aria-controls="mobile-nav-drawer"
         >
           {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
@@ -93,6 +111,8 @@ export default function Header() {
 
       {/* Mobile drawer */}
       <div
+        id="mobile-nav-drawer"
+        ref={navRef}
         className={`mobile-nav ${menuOpen ? 'mobile-nav--open' : ''}`}
         aria-hidden={!menuOpen}
       >
@@ -108,14 +128,14 @@ export default function Header() {
             </Link>
           ))}
           <a
-            href="tel:+919352303333"
+            href={`tel:${CONTACT.phoneRaw}`}
             className="mobile-nav__link mobile-nav__link--phone"
             onClick={() => setMenuOpen(false)}
           >
-            <Phone size={16} /> +91 93523 03333
+            <Phone size={16} /> {CONTACT.phone}
           </a>
           <a
-            href="https://wa.me/919352303333?text=Hello%20Silbar%20Security%2C%20I%20need%20a%20quote%20for%20security%20services."
+            href={CONTACT.whatsapp.url}
             className="mobile-nav__cta"
             target="_blank"
             rel="noopener noreferrer"

@@ -181,6 +181,10 @@ export default function ScrollExperience() {
         document.fonts.ready.then(refresh)
       }
 
+      // First-paint safety net — SSR-enabled hero uses server-rendered
+      // markup, so re-measure once after hydration settles
+      requestAnimationFrame(() => ScrollTrigger.refresh())
+
       return () => {
         loadTl.kill()
         tl.kill()
@@ -224,7 +228,7 @@ export default function ScrollExperience() {
         <div className="vertical-text-wrapper">
           <p className="text-vertical text-micro is-dimmed">EST. 2005</p>
           <p className="text-vertical text-micro is-bright text-tracking-wide">
-            INDIA'S PREMIER SECURITY FORCE
+            INDIA&apos;S PREMIER SECURITY FORCE
           </p>
         </div>
 
@@ -234,14 +238,14 @@ export default function ScrollExperience() {
         <div className="hero-horizontal-laser-line" />
 
         <div className="hero-badge-container">
-          <div className="text-hero-wordmark">
+          <h1 className="text-hero-wordmark">
             <span className="word-thin">
               <SplitTextReveal text="SILBAR" mode="chars" delay={0.4} />
             </span>
             <span className="word-bold">
               <SplitTextReveal text="SECURITY" mode="chars" delay={0.6} />
             </span>
-          </div>
+          </h1>
           <div className="shield-logo-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '1rem' }}>
             <Shield size={16} className="hero-badge-icon" strokeWidth={2} />
           </div>

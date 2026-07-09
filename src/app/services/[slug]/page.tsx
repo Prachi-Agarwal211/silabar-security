@@ -5,6 +5,8 @@ import { SERVICES, SERVICE_SLUGS } from '@/data/services'
 import { CheckCircle, Phone } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
+import { CONTACT } from '@/lib/config'
+import { ogMetadata } from '@/lib/metadata'
 
 export async function generateStaticParams() {
   return SERVICE_SLUGS.map((slug) => ({ slug }))
@@ -22,13 +24,7 @@ export async function generateMetadata({
   return {
     title: `${service.title} in India | Silbar Security`,
     description: service.description,
-    alternates: {
-      canonical: `https://www.silbarsecurity.in/services/${slug}`,
-    },
-    openGraph: {
-      title: `${service.title} | Silbar Security Services`,
-      description: service.description,
-    },
+    ...ogMetadata(`${service.title} in India | Silbar Security`, service.description, `/services/${slug}`),
   }
 }
 
@@ -101,11 +97,11 @@ export default async function ServicePage({
             </h1>
             <p className="service-detail-subtitle">{service.longDescription}</p>
             <div className="service-detail-ctas">
-              <a href="tel:+919352303333" className="service-detail-cta service-detail-cta--primary">
+              <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--primary">
                 <Phone size={16} /> Call Now
               </a>
               <a
-                href={`https://wa.me/919352303333?text=Hello%20Silbar%20Security%2C%20I%20need%20a%20quote%20for%20${encodeURIComponent(service.shortTitle)}.`}
+                href={`https://wa.me/${CONTACT.whatsapp.number}?text=Hello%20Silbar%20Security%2C%20I%20need%20a%20quote%20for%20${encodeURIComponent(service.shortTitle)}.`}
                 className="service-detail-cta service-detail-cta--secondary"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -122,7 +118,7 @@ export default async function ServicePage({
             <section className="service-detail-features">
               <div className="service-detail-section-inner">
                 <ScrollReveal>
-                  <h2 className="service-detail-section-title">What's Included</h2>
+                  <h2 className="service-detail-section-title">What&apos;s Included</h2>
                 </ScrollReveal>
                 <div className="service-detail-features-grid">
                   {service.features.map((f, i) => (
@@ -181,11 +177,11 @@ export default async function ServicePage({
                   customized quote within 24 hours.
                 </p>
                 <div className="service-detail-ctas">
-                  <a href="tel:+919352303333" className="service-detail-cta service-detail-cta--primary">
+                  <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--primary">
                     <Phone size={16} /> Call Now
                   </a>
                   <a
-                    href={`https://wa.me/919352303333?text=Hello%20Silbar%20Security%2C%20I%20need%20a%20quote%20for%20${encodeURIComponent(service.shortTitle)}.`}
+                    href={`https://wa.me/${CONTACT.whatsapp.number}?text=Hello%20Silbar%20Security%2C%20I%20need%20a%20quote%20for%20${encodeURIComponent(service.shortTitle)}.`}
                     className="service-detail-cta service-detail-cta--secondary"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -208,12 +204,12 @@ export default async function ServicePage({
               Our security consultants will assess your facility and provide a
               customized quote within 24 hours.
             </p>
-            <div className="service-detail-ctas" style={{ justifyContent: 'center' }}>
-              <a href="tel:+919352303333" className="service-detail-cta service-detail-cta--primary">
+            <div className="service-detail-ctas service-detail-ctas--centered">
+              <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--primary">
                 <Phone size={16} /> Call Now
               </a>
               <a
-                href={`https://wa.me/919352303333?text=Hello%20Silbar%20Security%2C%20I%20need%20a%20quote%20for%20${encodeURIComponent(service.shortTitle)}.`}
+                href={`https://wa.me/${CONTACT.whatsapp.number}?text=Hello%20Silbar%20Security%2C%20I%20need%20a%20quote%20for%20${encodeURIComponent(service.shortTitle)}.`}
                 className="service-detail-cta service-detail-cta--secondary"
                 target="_blank"
                 rel="noopener noreferrer"

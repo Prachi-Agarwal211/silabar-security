@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Phone, Mail, MapPin, Shield } from 'lucide-react'
+import { CONTACT } from '@/lib/config'
 
 import { SERVICES } from '@/data/services'
 import { INDUSTRIES } from '@/data/industries'
@@ -52,21 +53,21 @@ export default function Footer() {
         <div className="footer-brand-col">
           <div className="footer-brand">Silbar Security</div>
           <p className="footer-tagline">
-            India's most trusted PSARA-licensed security services company.
+            India&apos;s most trusted PSARA-licensed security services company.
             Founded by law enforcement professionals for uncompromising protection.
           </p>
           <div className="footer-contact-list">
             <a href="tel:+919352303333" className="footer-contact-item">
               <Phone size={14} />
-              +91 93523 03333
+              {CONTACT.phone}
             </a>
             <a href="tel:+911412223334" className="footer-contact-item">
               <Phone size={14} />
               +91-141 222 3334
             </a>
-            <a href="mailto:info@silbarsecurity.in" className="footer-contact-item">
+            <a href={`mailto:${CONTACT.email}`} className="footer-contact-item">
               <Mail size={14} />
-              info@silbarsecurity.in
+              {CONTACT.email}
             </a>
             <span className="footer-contact-item footer-contact-item--location">
               <MapPin size={14} />

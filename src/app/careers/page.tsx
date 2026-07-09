@@ -3,16 +3,14 @@ import Link from 'next/link'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import { Phone, Mail, CheckCircle } from 'lucide-react'
+import { CONTACT } from '@/lib/config'
+import { ogMetadata } from '@/lib/metadata'
 
 export const metadata: Metadata = {
   title: 'Careers — Join India\'s Most Trusted Security Team | Silbar Security',
   description:
     'Build your career with Silbar Security Services. We hire security guards, supervisors, account managers, and corporate staff across PAN India. PSARA-trained. Growth guaranteed.',
-  alternates: { canonical: 'https://www.silbarsecurity.in/careers' },
-  openGraph: {
-    title: 'Careers at Silbar Security Services',
-    description: 'Join 7,000+ professionals protecting India. PSARA-trained, compliance-first, growth-driven.',
-  },
+  ...ogMetadata('Careers — Join India\'s Most Trusted Security Team | Silbar Security', 'Build your career with Silbar Security Services. We hire security guards, supervisors, account managers, and corporate staff across PAN India. PSARA-trained. Growth guaranteed.', '/careers'),
 }
 
 const WHY_JOIN = [
@@ -60,6 +58,30 @@ const OPENINGS = [
 export default function CareersPage() {
   return (
     <main className="contact-page" id="main-content">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'JobPosting',
+            title: 'Security Guard (Armed & Unarmed)',
+            description: 'PSARA-licensed security guards for corporate offices, factories, hospitals, and residential societies.',
+            datePosted: '2026-07-01',
+            employmentType: 'FULL_TIME',
+            hiringOrganization: {
+              '@type': 'Organization',
+              name: 'Silbar Security Services Pvt. Ltd.',
+              sameAs: 'https://www.silbarsecurity.in',
+            },
+            jobLocation: {
+              '@type': 'Place',
+              address: {
+                '@type': 'PostalAddress',
+                addressLocality: 'Jaipur',
+                addressRegion: 'Rajasthan',
+                addressCountry: 'IN',
+              },
+            },
+          })
+        }} />
       <section className="page-hero page-hero--short">
         <ScrollReveal>
           <nav className="breadcrumb" aria-label="Breadcrumb">
@@ -82,7 +104,7 @@ export default function CareersPage() {
         </ScrollReveal>
       </section>
 
-      <section className="service-detail-features" style={{ paddingTop: '4rem' }}>
+      <section className="service-detail-features service-detail-features--padded">
         <div className="service-detail-section-inner">
           <h2 className="service-detail-section-title">Why Join Silbar?</h2>
           <div className="service-detail-features-grid">
@@ -96,7 +118,7 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section className="service-detail-section-inner" style={{ paddingTop: '0' }}>
+      <section className="service-detail-section-inner service-detail-section-inner--no-padding">
         <h2 className="service-detail-section-title">Current Openings</h2>
         <div className="job-cards">
           {OPENINGS.map((job) => (
@@ -114,11 +136,11 @@ export default function CareersPage() {
         <p className="service-detail-bottom-cta__sub">
           We&apos;re always looking for talented professionals. Send your resume and we&apos;ll reach out.
         </p>
-        <div className="service-detail-ctas" style={{ justifyContent: 'center' }}>
-          <a href="mailto:info@silbarsecurity.in" className="service-detail-cta service-detail-cta--primary">
+        <div className="service-detail-ctas service-detail-ctas--centered">
+          <a href={`mailto:${CONTACT.email}`} className="service-detail-cta service-detail-cta--primary">
             <Mail size={16} /> Email Your Resume
           </a>
-          <a href="tel:+919352303333" className="service-detail-cta service-detail-cta--secondary">
+          <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--secondary">
             <Phone size={16} /> Call HR
           </a>
         </div>

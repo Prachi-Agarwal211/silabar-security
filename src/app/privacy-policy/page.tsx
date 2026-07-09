@@ -2,12 +2,14 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
+import { CONTACT } from '@/lib/config'
 import { Phone } from 'lucide-react'
+import { ogMetadata } from '@/lib/metadata'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | Silbar Security Services',
   description: 'Privacy Policy for Silbar Security Services Pvt. Ltd. Learn how we collect, use, and protect your personal information.',
-  alternates: { canonical: 'https://www.silbarsecurity.in/privacy-policy' },
+  ...ogMetadata('Privacy Policy | Silbar Security Services', 'Privacy Policy for Silbar Security Services Pvt. Ltd. Learn how we collect, use, and protect your personal information.', '/privacy-policy'),
 }
 
 const sections = [
@@ -37,7 +39,7 @@ const sections = [
   },
   {
     title: 'Your Rights',
-    content: 'You have the right to: access your personal information held by us, request correction of inaccurate or incomplete data, request deletion of your data (subject to legal retention requirements), withdraw consent for marketing communications at any time, and request a copy of your data in a portable format. To exercise any of these rights, contact us at info@silbarsecurity.in.',
+    content: 'You have the right to: access your personal information held by us, request correction of inaccurate or incomplete data, request deletion of your data (subject to legal retention requirements), withdraw consent for marketing communications at any time, and request a copy of your data in a portable format. To exercise any of these rights, contact us at ' + CONTACT.email + '.',
   },
   {
     title: 'Cookies',
@@ -53,7 +55,7 @@ const sections = [
   },
   {
     title: 'Contact Us',
-    content: 'For questions about this Privacy Policy or to exercise your data rights, contact us at: info@silbarsecurity.in, +91 93523 03333, or 208, 2nd Floor, Samod Tower, Sansar Chand Road, Jaipur — 302001, Rajasthan, India.',
+    content: 'For questions about this Privacy Policy or to exercise your data rights, contact us at: ' + CONTACT.email + ', ' + CONTACT.phone + ', or 208, 2nd Floor, Samod Tower, Sansar Chand Road, Jaipur — 302001, Rajasthan, India.',
   },
 ]
 
@@ -95,11 +97,11 @@ export default function PrivacyPolicyPage() {
         <p className="service-detail-bottom-cta__sub">
           Contact us anytime — we are here to help.
         </p>
-        <div className="service-detail-ctas" style={{ justifyContent: 'center' }}>
-          <a href="tel:+919352303333" className="service-detail-cta service-detail-cta--primary">
-            <Phone size={16} /> Call +91 93523 03333
+        <div className="service-detail-ctas service-detail-ctas--centered">
+          <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--primary">
+            <Phone size={16} /> Call {CONTACT.phone}
           </a>
-          <a href="mailto:info@silbarsecurity.in" className="service-detail-cta service-detail-cta--secondary">
+          <a href={`mailto:${CONTACT.email}`} className="service-detail-cta service-detail-cta--secondary">
             Email Us
           </a>
         </div>

@@ -6,6 +6,8 @@ import { SERVICES } from '@/data/services'
 import { CheckCircle, ArrowRight, AlertTriangle, Phone } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
+import { CONTACT } from '@/lib/config'
+import { ogMetadata } from '@/lib/metadata'
 
 export async function generateStaticParams() {
   return INDUSTRY_SLUGS.map((slug) => ({ slug }))
@@ -22,7 +24,7 @@ export async function generateMetadata({
   return {
     title: `${industry.title} | Silbar Security`,
     description: industry.description,
-    alternates: { canonical: `https://www.silbarsecurity.in/industries/${slug}` },
+    ...ogMetadata(`${industry.title} | Silbar Security`, industry.description, `/industries/${slug}`),
   }
 }
 
@@ -82,7 +84,7 @@ export default async function IndustryPage({
             </h1>
             <p className="industry-detail-subtitle">{industry.description}</p>
             <div className="service-detail-ctas">
-              <a href="tel:+919352303333" className="service-detail-cta service-detail-cta--primary">
+              <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--primary">
                 <Phone size={16} /> Call Now
               </a>
               <a
@@ -180,11 +182,11 @@ export default async function IndustryPage({
                   Get a customized security plan. Free consultation and site assessment.
                 </p>
                 <div className="service-detail-ctas">
-                  <a href="tel:+919352303333" className="service-detail-cta service-detail-cta--primary">
+                  <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--primary">
                     <Phone size={16} /> Call Now
                   </a>
                   <a
-                    href="https://wa.me/919352303333?text=Hello%20Silbar%20Security%2C%20I%20need%20a%20security%20quote%20for%20my%20facility."
+href={CONTACT.whatsapp.url}
                     className="service-detail-cta service-detail-cta--secondary"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -203,12 +205,12 @@ export default async function IndustryPage({
             <p className="service-detail-bottom-cta__sub">
               Get a customized security plan for your facility. Free consultation and site assessment.
             </p>
-            <div className="service-detail-ctas" style={{ justifyContent: 'center' }}>
-              <a href="tel:+919352303333" className="service-detail-cta service-detail-cta--primary">
-                <Phone size={16} /> Call +91 93523 03333
+            <div className="service-detail-ctas service-detail-ctas--centered">
+              <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--primary">
+                <Phone size={16} /> Call {CONTACT.phone}
               </a>
               <a
-                href="https://wa.me/919352303333"
+                href={CONTACT.whatsapp.url}
                 className="service-detail-cta service-detail-cta--secondary"
                 target="_blank"
                 rel="noopener noreferrer"

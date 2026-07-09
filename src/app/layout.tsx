@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from 'next'
-import { Space_Grotesk, Manrope, Oswald } from 'next/font/google'
+import { Space_Grotesk, Manrope } from 'next/font/google'
 import './globals.css'
 import NavigationWrapper from '@/components/layout/NavigationWrapper'
+import DynamicBreadcrumbSchema from '@/components/seo/DynamicBreadcrumbSchema'
+import { CONTACT } from '@/lib/config'
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -15,13 +17,6 @@ const manrope = Manrope({
   variable: '--font-manrope',
   display: 'swap',
   weight: ['300', '400', '500', '600', '700'],
-})
-
-const oswald = Oswald({
-  subsets: ['latin'],
-  variable: '--font-oswald',
-  display: 'swap',
-  weight: ['400', '500', '600', '700'],
 })
 
 export const metadata: Metadata = {
@@ -88,7 +83,7 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.png',
   },
   verification: {
-    google: 'REAL_TOKEN_HERE',
+    google: process.env.GOOGLE_VERIFICATION || '',
   },
 }
 
@@ -105,8 +100,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${manrope.variable} ${oswald.variable}`}>
+    <html lang="en-IN" className={`${spaceGrotesk.variable} ${manrope.variable}`}>
       <body>
+        <meta charSet="utf-8" />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[9999] focus:bg-gold focus:text-midnight focus:px-4 focus:py-2 focus:font-body focus:font-semibold"
@@ -133,7 +129,7 @@ export default function RootLayout({
               description:
                 'ISO 9001:2015 & PSARA-2005 certified private security agency with 7,000+ licensed officers. Manned guarding, electronic surveillance, facility management, VIP protection across PAN India.',
               telephone: '+91-9352303333',
-              email: 'info@silbarsecurity.in',
+              email: CONTACT.email,
               foundingDate: '2005',
               numberOfEmployees: { '@type': 'QuantitativeValue', value: 7000 },
               address: {
@@ -217,22 +213,7 @@ export default function RootLayout({
             }),
           }}
         />
-        {/* BreadcrumbList schema — default home */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'BreadcrumbList',
-              itemListElement: [
-                { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.silbarsecurity.in' },
-                { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://www.silbarsecurity.in/services' },
-                { '@type': 'ListItem', position: 3, name: 'Industries', item: 'https://www.silbarsecurity.in/industries' },
-                { '@type': 'ListItem', position: 4, name: 'Contact', item: 'https://www.silbarsecurity.in/contact' },
-              ],
-            }),
-          }}
-        />
+        <DynamicBreadcrumbSchema />
         <NavigationWrapper>{children}</NavigationWrapper>
       </body>
     </html>

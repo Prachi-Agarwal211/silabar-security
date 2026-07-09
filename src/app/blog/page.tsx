@@ -3,11 +3,13 @@ import Link from 'next/link'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import { Calendar, Clock, ArrowRight } from 'lucide-react'
+import { CONTACT } from '@/lib/config'
+import { ogMetadata } from '@/lib/metadata'
 
 export const metadata: Metadata = {
   title: 'Security Blog — Insights & Tips | Silbar Security',
   description: 'Expert insights on security services, PSARA compliance, safety tips, and industry trends. Silbar Security\'s official blog for Indian businesses.',
-  alternates: { canonical: 'https://www.silbarsecurity.in/blog' },
+  ...ogMetadata('Security Blog — Insights & Tips | Silbar Security', 'Expert insights on security services, PSARA compliance, safety tips, and industry trends. Silbar Security\'s official blog for Indian businesses.', '/blog'),
 }
 
 const POSTS = [
@@ -90,7 +92,7 @@ export default function BlogPage() {
                 <ArrowRight size={18} className="service-page-card__arrow" />
               </div>
               <p className="blog-card__excerpt">{post.excerpt}</p>
-              <div className="blog-card__meta" style={{ marginTop: '1rem' }}>
+              <div className="blog-card__meta blog-card__meta--spaced">
                 <span className="tag-chip"><Calendar size={11} /> {post.date}</span>
                 <span className="tag-chip"><Clock size={11} /> {post.readTime}</span>
                 <span className="tag-chip">{post.category}</span>
@@ -105,12 +107,12 @@ export default function BlogPage() {
         <p className="service-detail-bottom-cta__sub">
           Our security consultants are ready to assess your facility and provide a customized solution.
         </p>
-        <div className="service-detail-ctas" style={{ justifyContent: 'center' }}>
-          <a href="tel:+919352303333" className="service-detail-cta service-detail-cta--primary">
-            Call +91 93523 03333
+        <div className="service-detail-ctas service-detail-ctas--centered">
+          <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--primary">
+            Call {CONTACT.phone}
           </a>
           <a
-            href="https://wa.me/919352303333"
+            href={CONTACT.whatsapp.url}
             className="service-detail-cta service-detail-cta--secondary"
             target="_blank"
             rel="noopener noreferrer"

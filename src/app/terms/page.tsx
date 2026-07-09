@@ -2,12 +2,14 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
+import { CONTACT } from '@/lib/config'
 import { Phone } from 'lucide-react'
+import { ogMetadata } from '@/lib/metadata'
 
 export const metadata: Metadata = {
   title: 'Terms of Use | Silbar Security Services',
   description: 'Terms of Use for Silbar Security Services Pvt. Ltd. Please read these terms carefully before using our website or services.',
-  alternates: { canonical: 'https://www.silbarsecurity.in/terms' },
+  ...ogMetadata('Terms of Use | Silbar Security Services', 'Terms of Use for Silbar Security Services Pvt. Ltd. Please read these terms carefully before using our website or services.', '/terms'),
 }
 
 const sections = [
@@ -53,7 +55,7 @@ const sections = [
   },
   {
     title: 'Contact',
-    content: 'For questions about these Terms of Use, contact us at: info@silbarsecurity.in, +91 93523 03333, or 208, 2nd Floor, Samod Tower, Sansar Chand Road, Jaipur — 302001, Rajasthan, India.',
+    content: 'For questions about these Terms of Use, contact us at: ' + CONTACT.email + ', ' + CONTACT.phone + ', or 208, 2nd Floor, Samod Tower, Sansar Chand Road, Jaipur — 302001, Rajasthan, India.',
   },
 ]
 
@@ -95,11 +97,11 @@ export default function TermsPage() {
         <p className="service-detail-bottom-cta__sub">
           Call us for clarification on any of these terms.
         </p>
-        <div className="service-detail-ctas" style={{ justifyContent: 'center' }}>
-          <a href="tel:+919352303333" className="service-detail-cta service-detail-cta--primary">
-            <Phone size={16} /> Call +91 93523 03333
+        <div className="service-detail-ctas service-detail-ctas--centered">
+          <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--primary">
+            <Phone size={16} /> Call {CONTACT.phone}
           </a>
-          <a href="mailto:info@silbarsecurity.in" className="service-detail-cta service-detail-cta--secondary">
+          <a href={`mailto:${CONTACT.email}`} className="service-detail-cta service-detail-cta--secondary">
             Email Us
           </a>
         </div>

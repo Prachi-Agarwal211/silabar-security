@@ -4,28 +4,30 @@ import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import { INDUSTRIES } from '@/data/industries'
 import { ArrowRight, Phone, Building2, Factory, Heart, Hotel, Warehouse, GraduationCap, ShoppingBag, Landmark, Server, Car, Globe, Home } from 'lucide-react'
+import { CONTACT } from '@/lib/config'
+import { ogMetadata } from '@/lib/metadata'
 
 export const metadata: Metadata = {
   title: 'Industries We Serve — Security for Every Sector',
   description:
     'Silbar Security provides specialized security solutions for manufacturing, hospitals, hotels, warehouses, banks, corporate offices, data centres, government, and more.',
-  alternates: { canonical: 'https://www.silbarsecurity.in/industries' },
+  ...ogMetadata('Industries We Serve — Security for Every Sector', 'Silbar Security provides specialized security solutions for manufacturing, hospitals, hotels, warehouses, banks, corporate offices, data centres, government, and more.', '/industries'),
 }
 
 // Icon map for industries
 const INDUSTRY_ICONS: Record<string, React.ElementType> = {
   'manufacturing': Factory,
-  'hospitals-healthcare': Heart,
-  'hotels-hospitality': Hotel,
-  'warehouses-logistics': Warehouse,
-  'banks-financial': Landmark,
-  'corporate-offices': Building2,
-  'educational-institutions': GraduationCap,
-  'retail-malls': ShoppingBag,
-  'data-centres': Server,
-  'automotive': Car,
+  'hospitals': Heart,
+  'hotels': Hotel,
+  'warehouses': Warehouse,
+  'banks': Landmark,
+  'corporate': Building2,
+  'education': GraduationCap,
+  'retail': ShoppingBag,
+  'data-centers': Server,
   'government': Globe,
   'residential': Home,
+  'infrastructure': Car,
 }
 const DEFAULT_ICON = Building2
 
@@ -48,13 +50,13 @@ export default function IndustriesPage() {
             </span>
           </h1>
           <p className="industries-subtitle">
-            Every industry has unique security challenges. We've built specialised teams for each one — trained, certified, and deployed with zero compromise.
+            Every industry has unique security challenges. We&apos;ve built specialised teams for each one — trained, certified, and deployed with zero compromise.
           </p>
         </ScrollReveal>
       </section>
 
       {/* Industries grid — styled like services panels */}
-      <section className="services-comic-section" style={{ paddingTop: 'clamp(3rem, 6vw, 5rem)' }}>
+      <section className="services-comic-section services-comic-section--padded">
         <div className="services-comic-header">
           <div className="services-comic-eyebrow">Sectors We Cover</div>
           <h2 className="services-comic-heading">
@@ -105,12 +107,12 @@ export default function IndustriesPage() {
         <p className="service-detail-bottom-cta__sub">
           Every industry has unique risks. Let our consultants design a tailored solution for your facility.
         </p>
-        <div className="service-detail-ctas" style={{ justifyContent: 'center' }}>
-          <a href="tel:+919352303333" className="service-detail-cta service-detail-cta--primary">
+        <div className="service-detail-ctas service-detail-ctas--centered">
+          <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--primary">
             <Phone size={16} /> Call Now
           </a>
           <a
-            href="https://wa.me/919352303333?text=Hello%20Silbar%20Security%2C%20I%20need%20security%20for%20my%20industry."
+            href={CONTACT.whatsapp.url}
             className="service-detail-cta service-detail-cta--secondary"
             target="_blank"
             rel="noopener noreferrer"

@@ -3,15 +3,14 @@
 import { useEffect } from 'react'
 import dynamic from 'next/dynamic'
 
-import { initLenis } from '@/lib/lenis'
+import { initLenis, destroyLenis } from '@/lib/lenis'
 
-// Lazy load the heavy animation — SSR disabled since it uses GSAP + browser APIs
 const ScrollExperience = dynamic(
-  () => import('@/components/sections/ScrollExperience'),
-  { ssr: false }
+  () => import('@/components/sections/ScrollExperience')
 )
 
 import { SERVICES } from '@/data/services'
+import { CONTACT } from '@/lib/config'
 import ServicesGrid from '@/components/sections/ServicesGrid'
 
 // WhatsApp icon inline SVG (no extra package dependency)
@@ -26,6 +25,7 @@ function WhatsAppIcon() {
 export default function HomePageClient() {
   useEffect(() => {
     initLenis()
+    return () => destroyLenis()
   }, [])
 
   return (
@@ -36,14 +36,14 @@ export default function HomePageClient() {
       {/* Sticky CTAs — WhatsApp + Call */}
       <div className="sticky-cta" aria-label="Quick contact options">
         <a
-          href="tel:+919352303333"
+          href={`tel:${CONTACT.phoneRaw}`}
           className="sticky-cta__call"
           id="sticky-call-btn"
         >
           Call Now
         </a>
         <a
-          href="https://wa.me/919352303333?text=Hello%20Silbar%20Security%2C%20I%20need%20a%20quote%20for%20security%20services."
+          href={CONTACT.whatsapp.url}
           className="sticky-cta__whatsapp"
           target="_blank"
           rel="noopener noreferrer"

@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useEffect } from 'react'
-import { gsap, ScrollTrigger } from '@/lib/gsap'
+import { gsap } from '@/lib/gsap'
 
 interface CounterProps {
   from?: number
@@ -26,9 +26,14 @@ export default function Counter({
     const el = ref.current
     if (!el) return
 
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.textContent = `${prefix}${to}${suffix}`
+      return
+    }
+
     const obj = { value: from }
 
-    gsap.to(obj, {
+    const anim = gsap.to(obj, {
       value: to,
       duration,
       ease: 'power2.out',
@@ -50,7 +55,8 @@ export default function Counter({
     })
 
     return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill())
+      anim.scrollTrigger?.kill()
+      anim.kill()
     }
   }, [from, to, duration, suffix, prefix])
 

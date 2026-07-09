@@ -22,7 +22,7 @@ export const STATES: StateLocation[] = [
   { slug: 'gujarat', name: 'Gujarat', capital: 'Gandhinagar', majorCities: ['Ahmedabad', 'Surat', 'Vadodara', 'Rajkot', 'Gandhinagar'], districts: 33, population: '70 million' },
   { slug: 'maharashtra', name: 'Maharashtra', capital: 'Mumbai', majorCities: ['Mumbai', 'Pune', 'Nagpur', 'Nashik', 'Thane'], districts: 36, population: '124 million' },
   { slug: 'uttar-pradesh', name: 'Uttar Pradesh', capital: 'Lucknow', majorCities: ['Lucknow', 'Kanpur', 'Agra', 'Varanasi', 'Noida'], districts: 75, population: '240 million' },
-  { slug: 'haryana', name: 'Haryana', capital: 'Chandigarh', majorCities: ['Gurugram', 'Faridabad', 'Hisar', 'Rohtak', 'Ambala'], districts: 22, population: '29 million' },
+  { slug: 'haryana', name: 'Haryana', capital: 'Chandigarh', majorCities: ['Gurugram', 'Faridabad', 'Hisar', 'Rohtak', 'Ambala', 'Panipat', 'Karnal'], districts: 22, population: '29 million' },
   { slug: 'karnataka', name: 'Karnataka', capital: 'Bengaluru', majorCities: ['Bengaluru', 'Mysuru', 'Hubli', 'Mangaluru', 'Belagavi'], districts: 31, population: '67 million' },
   { slug: 'tamil-nadu', name: 'Tamil Nadu', capital: 'Chennai', majorCities: ['Chennai', 'Coimbatore', 'Madurai', 'Tiruchirappalli', 'Salem'], districts: 38, population: '77 million' },
   { slug: 'telangana', name: 'Telangana', capital: 'Hyderabad', majorCities: ['Hyderabad', 'Warangal', 'Karimnagar', 'Nizamabad'], districts: 33, population: '39 million' },

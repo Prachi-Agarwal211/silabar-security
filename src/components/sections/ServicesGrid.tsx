@@ -103,7 +103,7 @@ export default function ServicesGrid({ services }: ServicesGridProps) {
             itemListElement: displayServices.map((service, index) => ({
               '@type': 'ListItem',
               position: index + 1,
-              url: `https://silbarsecurity.in/services/${service.slug}`,
+              url: `https://www.silbarsecurity.in/services/${service.slug}`,
               name: service.title,
             })),
           }),

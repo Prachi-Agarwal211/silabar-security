@@ -1,0 +1,27 @@
+// Business contact information — single source of truth
+
+export const CONTACT = {
+  phone: '+91 93523 03333',
+  phoneRaw: '919352303333',
+  email: 'info@silbarsecurity.in',
+  address: {
+    line1: '208, 2nd Floor, Samod Tower',
+    line2: 'Sansar Chand Road, Jaipur — 302001',
+    state: 'Rajasthan',
+    country: 'India',
+  },
+  whatsapp: {
+    number: '+919352303333',
+    message: 'Hello%20Silbar%20Security%20-%20I%20need%20a%20security%20quote',
+    url: 'https://wa.me/919352303333?text=Hello%20Silbar%20Security%20-%20I%20need%20a%20security%20quote',
+  },
+  hours: '24/7',
+  social: {
+    facebook: 'https://facebook.com/silbarsecurity',
+    instagram: 'https://instagram.com/silbarsecurity',
+    linkedin: 'https://linkedin.com/company/silbar-security',
+  },
+  offices: ['Jaipur', 'Delhi', 'Ahmedabad'] as const,
+  landline: '+91-141 222 3334',
+  landlineRaw: '911412223334',
+} as const

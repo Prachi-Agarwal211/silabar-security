@@ -1,8 +1,5 @@
-'use client'
-import dynamic from 'next/dynamic'
-
-const Header = dynamic(() => import('./Header'), { ssr: false })
-const Footer = dynamic(() => import('./Footer'), { ssr: false })
+import Header from './Header'
+import Footer from './Footer'
 
 export default function NavigationWrapper({ children }: { children: React.ReactNode }) {
   return (
