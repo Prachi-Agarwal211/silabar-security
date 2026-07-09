@@ -3,10 +3,12 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X, Phone } from 'lucide-react'
+import { Home, Menu, X, Phone, Shield } from 'lucide-react'
+import { MagneticButton } from '@/components/ui/MagneticButton'
 import { CONTACT } from '@/lib/config'
 
 const NAV_LINKS = [
+  { label: 'Home', href: '/', icon: Home },
   { label: 'Services', href: '/services' },
   { label: 'Industries', href: '/industries' },
   { label: 'About', href: '/about' },
@@ -16,9 +18,12 @@ const NAV_LINKS = [
 export default function Header() {
   const pathname = usePathname()
   const [hidden, setHidden] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
   const [menuOpen, setMenuOpen] = useState(false)
   const lastScrollY = useRef(0)
   const ticking = useRef(false)
+  const wasMenuOpen = useRef(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +31,12 @@ export default function Header() {
         requestAnimationFrame(() => {
           const currentY = window.scrollY
           const direction = currentY > lastScrollY.current ? 'down' : 'up'
+          
+          setScrolled(currentY > 50)
+          
+          const totalScroll = document.documentElement.scrollHeight - window.innerHeight
+          setScrollProgress(totalScroll > 0 ? (currentY / totalScroll) * 100 : 0)
+
           if (direction === 'down' && currentY > 100) {
             setHidden(true)
             setMenuOpen(false)
@@ -61,21 +72,32 @@ export default function Header() {
   // Return focus to hamburger on close
   const hamburgerRef = useRef<HTMLButtonElement>(null)
   useEffect(() => {
-    if (!menuOpen) hamburgerRef.current?.focus()
+    if (wasMenuOpen.current && !menuOpen) hamburgerRef.current?.focus()
+    wasMenuOpen.current = menuOpen
   }, [menuOpen])
+
+  const isActive = (href: string) =>
+    href === '/' ? pathname === '/' : pathname.startsWith(href)
 
   return (
     <>
-      <header className={`hero-header${hidden ? ' hero-header--hidden' : ''}${pathname !== '/' ? ' hero-header--solid' : ''}`}>
+      <header className={`hero-header glass-header${hidden ? ' hero-header--hidden' : ''}${scrolled ? ' hero-header--scrolled' : ''}${pathname !== '/' ? ' hero-header--solid' : ''}`}>
         <Link href="/" className="hero-logo" onClick={() => setMenuOpen(false)}>
+          <Shield className="hero-logo__icon" size={24} strokeWidth={2} />
           Silbar Security
         </Link>
 
         {/* Desktop nav */}
         <nav className="hero-nav" aria-label="Primary navigation">
-          {NAV_LINKS.map(({ label, href }) => (
-            <Link key={label} href={href} className="hero-nav-link">
-              {label}
+          {NAV_LINKS.map(({ label, href, icon: Icon }) => (
+            <Link
+              key={label}
+              href={href}
+              className={`hero-nav-link${href === '/' ? ' hero-nav-link--home' : ''}${isActive(href) ? ' hero-nav-link--active' : ''}`}
+              aria-current={isActive(href) ? 'page' : undefined}
+            >
+              {Icon ? <Icon size={14} strokeWidth={1.8} aria-hidden="true" /> : null}
+              <span>{label}</span>
             </Link>
           ))}
           <a
@@ -86,14 +108,16 @@ export default function Header() {
             <Phone size={14} strokeWidth={1.75} />
             {CONTACT.phone}
           </a>
-          <a
+          <MagneticButton
+            as="a"
             href={CONTACT.whatsapp.url}
             className="hero-nav-cta"
             target="_blank"
             rel="noopener noreferrer"
+            strength={0.2}
           >
             WhatsApp Us
-          </a>
+          </MagneticButton>
         </nav>
 
         {/* Mobile hamburger */}
@@ -107,6 +131,13 @@ export default function Header() {
         >
           {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
+
+        {/* Scroll Progress Bar */}
+        <div 
+          className="scroll-progress" 
+          style={{ width: `${scrollProgress}%` }}
+          aria-hidden="true" 
+        />
       </header>
 
       {/* Mobile drawer */}
@@ -117,13 +148,15 @@ export default function Header() {
         aria-hidden={!menuOpen}
       >
         <nav className="mobile-nav__links" aria-label="Mobile navigation">
-          {NAV_LINKS.map(({ label, href }) => (
+          {NAV_LINKS.map(({ label, href, icon: Icon }) => (
             <Link
               key={label}
               href={href}
-              className="mobile-nav__link"
+              className={`mobile-nav__link${isActive(href) ? ' mobile-nav__link--active' : ''}`}
+              aria-current={isActive(href) ? 'page' : undefined}
               onClick={() => setMenuOpen(false)}
             >
+              {Icon ? <Icon size={18} strokeWidth={1.8} aria-hidden="true" /> : null}
               {label}
             </Link>
           ))}

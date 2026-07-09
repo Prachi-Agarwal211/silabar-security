@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { CITIES, STATES } from '@/data/locations'
 import { SERVICES } from '@/data/services'
+import { GEO_COORDINATES } from '@/lib/geo-coordinates'
 import { Phone, MapPin } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
@@ -59,6 +60,20 @@ export default async function CitySEOPage({
       addressRegion: city.state,
       addressCountry: 'IN',
     },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: GEO_COORDINATES[slug]?.lat || 20.5937,
+      longitude: GEO_COORDINATES[slug]?.lng || 78.9629,
+    },
+    image: 'https://www.silbarsecurity.in/og-image.jpg',
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        opens: '09:00',
+        closes: '18:00',
+      }
+    ],
     areaServed: [
       { '@type': 'City', name: city.name },
       ...nearbyCities.map((c) => ({ '@type': 'City', name: c })),
@@ -176,7 +191,7 @@ export default async function CitySEOPage({
                 {nearbyCities.map((c, i) => (
                   <ScrollReveal key={c} delay={i * 0.04}>
                     <Link
-                      href={`/security-services/${city.stateSlug}`}
+                      href={`/security-services/city/${c.toLowerCase().replace(/\\s+/g, '-')}`}
                       className="seo-city-tag seo-city-tag--link"
                     >
                       <MapPin size={12} /> {c}

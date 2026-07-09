@@ -4,6 +4,8 @@ import { useRef, useEffect } from 'react'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 import { ShieldCheck, ChevronsRight, Shield, Maximize2 } from 'lucide-react'
 import SplitTextReveal from '../animations/SplitTextReveal'
+import { HeroParticles } from '../home/HeroParticles'
+import { GradientText } from '../ui/GradientText'
 
 const MARQUEE_ITEMS = [
   'Armed Guards',
@@ -198,8 +200,8 @@ export default function ScrollExperience() {
 
   return (
     <div ref={wrapperRef} className="scroll-wrapper">
-      {/* Base dark background */}
-      <div ref={bgRef} className="scroll-bg" />
+      {/* Base dark background with animated mesh */}
+      <div ref={bgRef} className="scroll-bg mesh-bg-animated" />
       {/* Warm gradient layer — crossfades in over the dark base in Act 2 */}
       <div ref={bgWarmRef} className="scroll-bg-warm" />
 
@@ -210,6 +212,7 @@ export default function ScrollExperience() {
           <source src="/hero.mp4" type="video/mp4" />
         </video>
         <div ref={overlayRef} className="hero-overlay" />
+        <HeroParticles />
         
         <div className="laser-lines-container">
           <svg width="100%" height="100%" preserveAspectRatio="none">
@@ -238,14 +241,14 @@ export default function ScrollExperience() {
         <div className="hero-horizontal-laser-line" />
 
         <div className="hero-badge-container">
-          <h1 className="text-hero-wordmark">
+          <GradientText as="h1" className="text-hero-wordmark">
             <span className="word-thin">
               <SplitTextReveal text="SILBAR" mode="chars" delay={0.4} />
             </span>
             <span className="word-bold">
               <SplitTextReveal text="SECURITY" mode="chars" delay={0.6} />
             </span>
-          </h1>
+          </GradientText>
           <div className="shield-logo-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '1rem' }}>
             <Shield size={16} className="hero-badge-icon" strokeWidth={2} />
           </div>

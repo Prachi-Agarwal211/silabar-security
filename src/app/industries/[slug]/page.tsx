@@ -107,11 +107,11 @@ export default async function IndustryPage({
                 <ScrollReveal>
                   <h2 className="service-detail-section-title">Security Challenges</h2>
                 </ScrollReveal>
-                <div className="industry-challenges-list">
+                <div className="bento-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>
                   {industry.challenges.map((c, i) => (
-                    <ScrollReveal key={c} delay={i * 0.05} className="industry-challenge-item">
-                      <AlertTriangle size={15} className="industry-challenge-item__icon" />
-                      <span>{c}</span>
+                    <ScrollReveal key={c} delay={i * 0.05} className="bento-cell glass-panel" style={{ padding: '1.5rem', flexDirection: 'row', alignItems: 'flex-start', gap: '1rem' }}>
+                      <AlertTriangle size={20} className="industry-challenge-item__icon" style={{ flexShrink: 0, marginTop: '2px', color: 'var(--color-red)' }} />
+                      <span style={{ fontSize: '0.95rem', lineHeight: 1.6 }}>{c}</span>
                     </ScrollReveal>
                   ))}
                 </div>
@@ -124,11 +124,11 @@ export default async function IndustryPage({
                 <ScrollReveal>
                   <h2 className="service-detail-section-title">Our Solutions</h2>
                 </ScrollReveal>
-                <div className="service-detail-features-grid">
+                <div className="bento-grid">
                   {industry.solutions.map((s, i) => (
-                    <ScrollReveal key={s} delay={i * 0.04} className="service-detail-feature">
-                      <CheckCircle size={16} className="service-detail-feature__icon" />
-                      <span>{s}</span>
+                    <ScrollReveal key={s} delay={i * 0.04} className="bento-cell glass-panel" style={{ padding: '1.5rem', flexDirection: 'row', alignItems: 'flex-start', gap: '1rem' }}>
+                      <CheckCircle size={20} className="service-detail-feature__icon" style={{ flexShrink: 0, marginTop: '2px' }} />
+                      <span style={{ fontSize: '0.95rem', lineHeight: 1.6 }}>{s}</span>
                     </ScrollReveal>
                   ))}
                 </div>
@@ -141,11 +141,11 @@ export default async function IndustryPage({
                 <ScrollReveal>
                   <h2 className="service-detail-section-title">Services for {industry.shortTitle}</h2>
                 </ScrollReveal>
-                <div className="industry-services-grid">
+                <div className="bento-grid">
                   {relatedServices.map((service, i) => (
-                    <ScrollReveal key={service.slug} delay={i * 0.04}>
-                      <Link href={`/services/${service.slug}`} className="industry-service-link">
-                        {service.shortTitle} <ArrowRight size={14} />
+                    <ScrollReveal key={service.slug} delay={i * 0.04} className="bento-cell glass-panel" style={{ padding: '1.5rem', justifyContent: 'center' }}>
+                      <Link href={`/services/${service.slug}`} className="industry-service-link" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 600, color: 'var(--color-gold)' }}>
+                        {service.shortTitle} <ArrowRight size={16} />
                       </Link>
                     </ScrollReveal>
                   ))}
@@ -176,12 +176,12 @@ export default async function IndustryPage({
           {/* Sidebar */}
           <aside className="detail-sidebar">
             <ScrollReveal>
-              <div className="sticky-contact-card">
+              <div className="sticky-contact-card glass-panel" style={{ padding: '2.5rem' }}>
                 <h3 className="sticky-contact-card__title">Secure Your {industry.shortTitle} Facility</h3>
-                <p className="sticky-contact-card__desc">
+                <p className="sticky-contact-card__desc" style={{ color: 'rgba(244, 241, 234, 0.85)' }}>
                   Get a customized security plan. Free consultation and site assessment.
                 </p>
-                <div className="service-detail-ctas">
+                <div className="service-detail-ctas" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                   <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--primary">
                     <Phone size={16} /> Call Now
                   </a>

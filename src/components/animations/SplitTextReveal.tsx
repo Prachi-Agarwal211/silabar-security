@@ -32,14 +32,16 @@ export default function SplitTextReveal({
         const randomDelay = delay + i * 0.03 + (Math.random() - 0.5) * 0.02
         anims.push(
           gsap.fromTo(target,
-            { opacity: 0, y: 30, rotateX: -80 },
+            { opacity: 0, y: 30, rotateX: -90, scale: 0.95, filter: 'blur(8px)' },
             {
               opacity: 1,
               y: 0,
               rotateX: 0,
-              duration: 0.5,
+              scale: 1,
+              filter: 'blur(0px)',
+              duration: 1.0,
               delay: randomDelay,
-              ease: 'power3.out',
+              ease: 'expo.out',
               scrollTrigger: {
                 trigger: container,
                 start: 'top 85%',

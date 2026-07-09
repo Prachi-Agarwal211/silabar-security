@@ -760,10 +760,10 @@ export default async function BlogPostPage({
   const post = POSTS.find((p) => p.slug === slug)
   if (!post) notFound()
 
-  const articleSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: post.title,
+    const articleSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: post.title,
     description: post.excerpt,
     datePublished: post.date,
     author: { '@type': 'Organization', name: 'Silbar Security Services Pvt. Ltd.' },
@@ -791,7 +791,7 @@ export default async function BlogPostPage({
           </ScrollReveal>
         </section>
 
-        <section className="legal-content" style={{ paddingTop: '2rem' }}>
+        <section className="legal-content glass-panel" style={{ padding: 'clamp(2rem, 5vw, 4rem)', maxWidth: '900px', margin: '0 auto 4rem' }}>
           <ScrollReveal>
             {post.content.split('\n').map((line, i) => {
             if (line.startsWith('## ')) {

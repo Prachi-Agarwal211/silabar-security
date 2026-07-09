@@ -102,6 +102,7 @@ export default function RootLayout({
   return (
     <html lang="en-IN" className={`${spaceGrotesk.variable} ${manrope.variable}`}>
       <body>
+        <div className="noise-animated" aria-hidden="true" />
         <meta charSet="utf-8" />
         <a
           href="#main-content"
@@ -140,12 +141,26 @@ export default function RootLayout({
                 postalCode: '302001',
                 addressCountry: 'IN',
               },
+              foundingPlace: {
+                '@type': 'Place',
+                address: {
+                  '@type': 'PostalAddress',
+                  addressLocality: 'Jaipur',
+                  addressRegion: 'Rajasthan',
+                  addressCountry: 'IN'
+                }
+              },
               contactPoint: [
                 {
                   '@type': 'ContactPoint',
                   telephone: '+91-9352303333',
                   contactType: 'customer service',
-                  areaServed: 'IN',
+                  areaServed: [
+                    'Rajasthan', 'Delhi', 'Gujarat', 'Maharashtra', 'Karnataka', 
+                    'Haryana', 'Uttar Pradesh', 'Punjab', 'Madhya Pradesh', 'Bihar', 
+                    'West Bengal', 'Odisha', 'Andhra Pradesh', 'Telangana', 'Tamil Nadu', 
+                    'Kerala', 'Assam', 'Jharkhand', 'Chhattisgarh', 'Uttarakhand', 'Himachal Pradesh'
+                  ],
                   availableLanguage: ['English', 'Hindi'],
                 },
               ],

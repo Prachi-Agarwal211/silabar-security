@@ -18,6 +18,18 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <main className="services-page" id="main-content">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          itemListElement: SERVICES.map((service, i) => ({
+            '@type': 'ListItem',
+            position: i + 1,
+            url: `https://www.silbarsecurity.in/services/${service.slug}`,
+            name: service.shortTitle,
+          }))
+        })
+      }} />
       {/* Page Hero */}
       <section className="services-page-hero">
         <ScrollReveal>
@@ -35,7 +47,7 @@ export default function ServicesPage() {
             </span>
           </h1>
           <p className="services-page-subtitle">
-            From manned guarding to electronic surveillance — fully integrated, PSARA-licensed, 24/7 operational. One agency, every security need.
+            <strong>Bottom Line Up Front:</strong> Silbar Security offers 12 specialized security verticals including manned guarding, electronic CCTV surveillance, facility management, and event security. All services are PSARA-licensed, ISO 9001:2015 certified, and available 24/7 across PAN India.
           </p>
           <div className="service-detail-ctas service-detail-ctas--top-margin">
             <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--primary">

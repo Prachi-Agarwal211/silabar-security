@@ -2,6 +2,15 @@
 
 import { useEffect } from 'react'
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
+import {
+  ArrowRight,
+  Building2,
+  ClipboardCheck,
+  MapPin,
+  Radio,
+  ShieldCheck,
+} from 'lucide-react'
 
 import { initLenis, destroyLenis } from '@/lib/lenis'
 
@@ -12,6 +21,37 @@ const ScrollExperience = dynamic(
 import { SERVICES } from '@/data/services'
 import { CONTACT } from '@/lib/config'
 import ServicesGrid from '@/components/sections/ServicesGrid'
+import ScrollReveal from '@/components/animations/ScrollReveal'
+
+const COMMAND_SIGNALS = [
+  {
+    icon: ShieldCheck,
+    label: 'PSARA guard force',
+    value: '7,000+',
+    text: 'Licensed officers, supervisors, lady guards, armed guards, and response teams for regulated deployments.',
+  },
+  {
+    icon: MapPin,
+    label: 'City coverage',
+    value: '200+',
+    text: 'Rapid deployment across Rajasthan, Delhi NCR, Gujarat, Maharashtra, Karnataka, and high-growth corridors.',
+  },
+  {
+    icon: ClipboardCheck,
+    label: 'Compliance stack',
+    value: 'ISO + ESI/PF',
+    text: 'Training records, statutory files, attendance, replacement, and monthly MIS managed through one agency.',
+  },
+]
+
+const COVERAGE_POINTS = [
+  'Jaipur HQ',
+  'Delhi NCR',
+  'Ahmedabad',
+  'Mumbai',
+  'Bengaluru',
+  'PAN India',
+]
 
 // WhatsApp icon inline SVG (no extra package dependency)
 function WhatsAppIcon() {
@@ -32,6 +72,85 @@ export default function HomePageClient() {
     <main className="relative w-full" id="main-content">
       <ScrollExperience />
       <ServicesGrid services={SERVICES} />
+
+      <section className="home-command-section" aria-labelledby="home-command-title">
+        <div className="home-command-grid">
+          <ScrollReveal className="home-command-copy">
+            <span className="home-section-kicker">Operations command</span>
+            <h2 id="home-command-title" className="home-section-title">
+              Security that moves before risk does.
+            </h2>
+            <p className="home-section-copy">
+              Silbar combines trained manpower, field supervision, electronic surveillance,
+              fire life safety, and compliance reporting into one operating system for
+              factories, hospitals, hotels, banks, residential societies, and enterprise sites.
+            </p>
+            <div className="home-command-actions">
+              <Link href="/services" className="home-command-link">
+                Explore services <ArrowRight size={15} aria-hidden="true" />
+              </Link>
+              <Link href="/contact" className="home-command-link home-command-link--muted">
+                Request assessment
+              </Link>
+            </div>
+          </ScrollReveal>
+
+          <div className="home-command-panels">
+            {COMMAND_SIGNALS.map(({ icon: Icon, label, value, text }, index) => (
+              <ScrollReveal key={label} delay={index * 0.08} className="home-command-card glass-card">
+                <span className="home-command-card__icon" aria-hidden="true">
+                  <Icon size={22} strokeWidth={1.7} />
+                </span>
+                <span className="home-command-card__label">{label}</span>
+                <strong className="home-command-card__value">{value}</strong>
+                <span className="home-command-card__text">{text}</span>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="home-coverage-section" aria-labelledby="home-coverage-title">
+        <div className="home-coverage-map" aria-hidden="true">
+          <span className="home-coverage-map__scan" />
+          {COVERAGE_POINTS.map((point, index) => (
+            <span
+              key={point}
+              className={`home-coverage-pin home-coverage-pin--${index + 1}`}
+            />
+          ))}
+        </div>
+        <ScrollReveal className="home-coverage-copy glass-panel" style={{ padding: '2rem' }}>
+          <span className="home-section-kicker">Local SEO, real operations</span>
+          <h2 id="home-coverage-title" className="home-section-title">
+            Built for city-specific security demand.
+          </h2>
+          <p className="home-section-copy">
+            Local buyers search by city, service, and urgency. The site supports
+            state and city landing pages while the business promise stays consistent:
+            PSARA-licensed guards, verified manpower, fast replacement, and clean
+            documentation.
+          </p>
+          <div className="home-coverage-tags">
+            {COVERAGE_POINTS.map((point) => (
+              <span key={point}>
+                <Building2 size={13} aria-hidden="true" />
+                {point}
+              </span>
+            ))}
+          </div>
+        </ScrollReveal>
+      </section>
+
+      <section className="home-response-strip" aria-label="Security response process">
+        {['Assess', 'Deploy', 'Monitor', 'Report'].map((step, index) => (
+          <ScrollReveal key={step} delay={index * 0.06} className="home-response-step">
+            <Radio size={16} aria-hidden="true" />
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <strong>{step}</strong>
+          </ScrollReveal>
+        ))}
+      </section>
 
       {/* Sticky CTAs — WhatsApp + Call */}
       <div className="sticky-cta" aria-label="Quick contact options">

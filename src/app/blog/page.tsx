@@ -53,11 +53,136 @@ const POSTS = [
     readTime: '6 min',
     category: 'Industry',
   },
+  {
+    title: 'Industrial Security in India: Protecting Factories and Manufacturing Plants',
+    excerpt: 'Comprehensive guide to industrial security for factories and manufacturing units across India.',
+    slug: 'industrial-security-factory-guide',
+    date: 'July 2026',
+    readTime: '7 min',
+    category: 'Industrial',
+  },
+  {
+    title: 'Event Security Management: Complete Guide for Indian Events',
+    excerpt: 'From weddings to corporate conferences, learn how professional event security works in India.',
+    slug: 'event-security-management-india',
+    date: 'July 2026',
+    readTime: '6 min',
+    category: 'Event Security',
+  },
+  {
+    title: 'VIP Protection Services in India: Executive Protection Guide',
+    excerpt: 'Professional close protection services for business leaders, celebrities, and high-net-worth individuals.',
+    slug: 'vip-protection-services-india',
+    date: 'June 2026',
+    readTime: '8 min',
+    category: 'VIP Protection',
+  },
+  {
+    title: 'Bank and ATM Security: Protecting Financial Infrastructure in India',
+    excerpt: 'Critical security measures for banks, ATMs, and financial institutions across India.',
+    slug: 'bank-atm-security-india',
+    date: 'June 2026',
+    readTime: '6 min',
+    category: 'Banking',
+  },
+  {
+    title: 'Construction Site Security: Protecting Materials, Equipment, and Workers',
+    excerpt: 'How to secure construction sites against theft, vandalism, and safety hazards.',
+    slug: 'construction-site-security-india',
+    date: 'June 2026',
+    readTime: '7 min',
+    category: 'Construction',
+  },
+  {
+    title: 'School and College Security: Protecting Students and Staff in India',
+    excerpt: 'Essential security measures for educational institutions from entry management to emergency response.',
+    slug: 'school-college-security-india',
+    date: 'May 2026',
+    readTime: '7 min',
+    category: 'Education',
+  },
+  {
+    title: 'Shopping Mall Security: Crowd Management and Retail Protection',
+    excerpt: 'Comprehensive security strategies for shopping malls, retail stores, and commercial complexes.',
+    slug: 'shopping-mall-security',
+    date: 'May 2026',
+    readTime: '6 min',
+    category: 'Retail',
+  },
+  {
+    title: 'Fire Life Safety Management: Prevention, Detection, and Response',
+    excerpt: 'Essential fire life safety measures every Indian business needs, from prevention to emergency evacuation.',
+    slug: 'fire-life-safety-management',
+    date: 'May 2026',
+    readTime: '8 min',
+    category: 'Fire Safety',
+  },
+  {
+    title: 'Why 24/7 Security Matters: The Cost of Gaps in Coverage',
+    excerpt: 'Why gaps in security coverage cost businesses more than continuous protection.',
+    slug: 'why-247-security-important',
+    date: 'April 2026',
+    readTime: '5 min',
+    category: 'Security Basics',
+  },
+  {
+    title: 'Corporate Office Security: Best Practices for Modern Workplaces',
+    excerpt: 'How to secure your corporate office without compromising employee experience and productivity.',
+    slug: 'corporate-office-security',
+    date: 'April 2026',
+    readTime: '6 min',
+    category: 'Corporate',
+  },
+  {
+    title: 'Security Guard License in India: PSARA License Procedure Explained',
+    excerpt: 'Step-by-step guide to getting a PSARA license for security agencies and guards in India.',
+    slug: 'security-guard-license-procedure',
+    date: 'April 2026',
+    readTime: '7 min',
+    category: 'Compliance',
+  },
+  {
+    title: 'Residential Security: Protecting Homes and Apartment Complexes',
+    excerpt: 'Security solutions for residential societies, gated communities, and individual homes.',
+    slug: 'residential-security-services',
+    date: 'April 2026',
+    readTime: '6 min',
+    category: 'Residential',
+  },
+  {
+    title: 'Security Guard Training Standards in India: PSARA Curriculum Explained',
+    excerpt: 'What goes into professional security guard training? The complete PSARA training curriculum breakdown.',
+    slug: 'security-guard-training-standards',
+    date: 'March 2026',
+    readTime: '8 min',
+    category: 'Training',
+  },
+  {
+    title: 'Hotel Security Management: Guest Safety and Property Protection',
+    excerpt: 'Complete guide to hotel security, from guest safety to crowd management in hospitality venues.',
+    slug: 'hotel-security-management',
+    date: 'March 2026',
+    readTime: '7 min',
+    category: 'Hospitality',
+  },
 ]
 
 export default function BlogPage() {
   return (
     <main className="contact-page" id="main-content">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          itemListElement: POSTS.map((post, i) => ({
+            '@type': 'ListItem',
+            position: i + 1,
+            url: `https://www.silbarsecurity.in/blog/${post.slug}`,
+            name: post.title,
+            description: post.excerpt,
+          }))
+        })
+      }} />
       <section className="page-hero page-hero--short">
         <ScrollReveal>
           <nav className="breadcrumb" aria-label="Breadcrumb">
@@ -79,25 +204,26 @@ export default function BlogPage() {
         </ScrollReveal>
       </section>
 
-      <section className="service-detail-section-inner">
-        <div className="seo-services-grid">
-          {POSTS.map((post) => (
-            <Link
-              key={post.slug}
-              href={`/blog/${post.slug}`}
-              className="blog-card"
-            >
-              <div className="service-page-card__header">
-                <h2 className="blog-card__title">{post.title}</h2>
-                <ArrowRight size={18} className="service-page-card__arrow" />
-              </div>
-              <p className="blog-card__excerpt">{post.excerpt}</p>
-              <div className="blog-card__meta blog-card__meta--spaced">
-                <span className="tag-chip"><Calendar size={11} /> {post.date}</span>
-                <span className="tag-chip"><Clock size={11} /> {post.readTime}</span>
-                <span className="tag-chip">{post.category}</span>
-              </div>
-            </Link>
+      <section className="service-detail-section-inner" style={{ paddingTop: '2rem', paddingBottom: '6rem' }}>
+        <div className="bento-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
+          {POSTS.map((post, i) => (
+            <ScrollReveal key={post.slug} delay={i * 0.05} className="bento-cell glass-panel">
+              <Link
+                href={`/blog/${post.slug}`}
+                style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', height: '100%' }}
+              >
+                <div className="service-page-card__header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
+                  <h2 className="blog-card__title" style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--color-cream)', lineHeight: 1.3, paddingRight: '1rem' }}>{post.title}</h2>
+                  <ArrowRight size={24} style={{ color: 'var(--color-gold)', flexShrink: 0 }} />
+                </div>
+                <p className="blog-card__excerpt" style={{ color: 'rgba(244, 241, 234, 0.85)', lineHeight: 1.6, flexGrow: 1, marginBottom: '2rem' }}>{post.excerpt}</p>
+                <div className="blog-card__meta" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', fontSize: '0.8rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'rgba(244, 241, 234, 0.5)' }}>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}><Calendar size={12} /> {post.date}</span>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}><Clock size={12} /> {post.readTime}</span>
+                  <span style={{ color: 'var(--color-gold)' }}>{post.category}</span>
+                </div>
+              </Link>
+            </ScrollReveal>
           ))}
         </div>
       </section>

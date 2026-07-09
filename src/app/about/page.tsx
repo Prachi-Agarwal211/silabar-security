@@ -4,6 +4,9 @@ import { Shield, Award, CheckCircle, Phone } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import Counter from '@/components/animations/Counter'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
+import { GlassCard } from '@/components/ui/GlassCard'
+import { GradientText } from '@/components/ui/GradientText'
+import { MagneticButton } from '@/components/ui/MagneticButton'
 import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
 
@@ -60,32 +63,31 @@ export default function AboutPage() {
             <span className="breadcrumb__current">About</span>
           </nav>
           <span className="page-eyebrow">ABOUT US</span>
-          <h1 className="about-title">
+          <GradientText as="h1" className="about-title">
             <SplitTextReveal text="NOT JUST SECURITY." />
             <br />
             <span className="about-title--outline">
               <SplitTextReveal text="A COMMITMENT." delay={0.2} />
             </span>
-          </h1>
+          </GradientText>
           <p className="about-subtitle">
-            Silbar Security Services was built by people who dedicated their careers
-            to protecting others — and still do, every single day.
+            <strong>Bottom Line Up Front:</strong> Silbar Security Services is an ISO 9001:2015 and PSARA-2005 certified private security agency in India, established in 2005. Headquartered in Jaipur, we provide manned guarding, electronic surveillance, and facility management across 200+ cities with 7,000+ licensed security personnel.
           </p>
         </ScrollReveal>
       </section>
 
-      {/* Stats */}
-      <section className="about-stats">
-        <div className="about-stats__grid">
-          {STATS.map(({ number, label }) => {
+      {/* Stats - Bento Grid */}
+      <section className="about-stats" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 clamp(1.5rem, 5vw, 6rem)' }}>
+        <div className="bento-grid">
+          {STATS.map(({ number, label }, i) => {
             const numValue = parseInt(number.replace(/\D/g, ''))
             const prefix = number.includes('+') ? '+' : ''
             return (
-              <ScrollReveal key={label} className="about-stat">
-                <span className="about-stat__number">
+              <ScrollReveal key={label} delay={i * 0.1} className="bento-cell glass-panel" style={{ alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
+                <span className="about-stat__number" style={{ fontSize: '3rem', fontWeight: 700, color: 'var(--color-gold)' }}>
                   <Counter to={numValue} suffix={prefix} />
                 </span>
-                <span className="about-stat__label">{label}</span>
+                <span className="about-stat__label" style={{ marginTop: '0.5rem', fontWeight: 500, letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.85rem', opacity: 0.8 }}>{label}</span>
               </ScrollReveal>
             )
           })}
@@ -118,7 +120,7 @@ export default function AboutPage() {
           <ScrollReveal delay={0.2} className="about-story__image-block">
             <div className="about-story__image-placeholder">
               <Shield size={48} className="about-story__shield-icon" />
-              <span className="about-story__image-label">Est. 2008 · Jaipur, Rajasthan</span>
+              <span className="about-story__image-label">Est. 2005 · Jaipur, Rajasthan</span>
             </div>
           </ScrollReveal>
         </div>
@@ -136,14 +138,14 @@ export default function AboutPage() {
           
           <div className="timeline-container">
             {[
-              { year: '2008', title: 'The Foundation', desc: 'Silbar Security established in Jaipur by experienced security professionals.' },
+              { year: '2005', title: 'The Foundation', desc: 'Silbar Security established in Jaipur by experienced security professionals.' },
               { year: '2012', title: 'PSARA Compliance', desc: 'Expanded operations across Rajasthan, becoming one of the first fully PSARA-compliant agencies.' },
               { year: '2016', title: 'ISO Certification', desc: 'Achieved ISO 9001:2015 certification for Quality Management Systems.' },
               { year: '2024', title: 'PAN India Presence', desc: 'Now protecting 500+ enterprise clients with a force of 7,000+ licensed officers.' }
             ].map((item, i) => (
               <ScrollReveal key={item.year} delay={i * 0.1} className="timeline-item">
                 <div className="timeline-item__year">{item.year}</div>
-                <div className="timeline-item__content">
+                <div className="timeline-item__content glass-panel" style={{ padding: '1.5rem', borderRadius: '12px', marginTop: '1rem' }}>
                   <h3 className="timeline-item__title">{item.title}</h3>
                   <p className="timeline-item__desc">{item.desc}</p>
                 </div>
@@ -153,39 +155,43 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Why Silbar */}
-      <section className="about-why" id="why-silbar">
+      {/* Why Silbar - Bento Grid */}
+      <section className="about-why" id="why-silbar" style={{ maxWidth: '1200px', margin: '0 auto', padding: 'clamp(4rem, 8vh, 6rem) clamp(1.5rem, 5vw, 6rem)' }}>
         <ScrollReveal className="about-why__inner">
           <span className="page-eyebrow">WHY SILBAR</span>
-          <h2 className="about-why__title">
+          <GradientText as="h2" className="about-why__title" style={{ marginBottom: '3rem' }}>
             <SplitTextReveal text="The Silbar Difference" />
-          </h2>
-          <div className="about-why__grid">
-            {WHY_SILBAR.map((point) => (
-              <div key={point} className="about-why__point">
-                <CheckCircle size={16} className="about-why__check" />
-                <span>{point}</span>
-              </div>
+          </GradientText>
+          <div className="bento-grid">
+            {WHY_SILBAR.map((point, i) => (
+              <ScrollReveal key={point} delay={i * 0.05} style={{ display: 'flex' }}>
+                <GlassCard className="bento-cell bento-cell--wide" tilt={true} opacity={0.03} borderOpacity={0.15} style={{ flexDirection: 'row', alignItems: 'center', gap: '1rem', padding: '1.5rem 2rem', width: '100%' }}>
+                  <CheckCircle size={24} className="about-why__check" style={{ color: 'var(--color-gold)', flexShrink: 0 }} />
+                  <span style={{ fontSize: '1.1rem', fontWeight: 500, lineHeight: 1.4 }}>{point}</span>
+                </GlassCard>
+              </ScrollReveal>
             ))}
           </div>
         </ScrollReveal>
       </section>
 
-      {/* Certifications */}
-      <section className="about-certs" id="certifications">
+      {/* Certifications - Bento Grid */}
+      <section className="about-certs" id="certifications" style={{ maxWidth: '1200px', margin: '0 auto', padding: 'clamp(2rem, 4vh, 4rem) clamp(1.5rem, 5vw, 6rem) clamp(6rem, 12vh, 10rem)' }}>
         <div className="about-certs__inner">
           <span className="page-eyebrow">CERTIFICATIONS</span>
-          <h2 className="about-certs__title">
+          <GradientText as="h2" className="about-certs__title" style={{ marginBottom: '3rem' }}>
             <SplitTextReveal text="Licensed. Certified. Compliant." />
-          </h2>
-          <div className="about-certs__grid">
+          </GradientText>
+          <div className="bento-grid">
             {CERTIFICATIONS.map(({ name, desc }, i) => (
-              <ScrollReveal key={name} delay={i * 0.1} className="about-cert-card">
-                <div className="about-cert-card__badge">
-                  <Award size={20} />
-                  {name}
-                </div>
-                <p className="about-cert-card__desc">{desc}</p>
+              <ScrollReveal key={name} delay={i * 0.1} style={{ display: 'flex' }}>
+                <GlassCard className="bento-cell" tilt={true} opacity={0.03} borderOpacity={0.15} style={{ width: '100%' }}>
+                  <div className="about-cert-card__badge" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '1.25rem', fontWeight: 700, color: 'var(--color-gold)', marginBottom: '1rem' }}>
+                    <Award size={28} />
+                    {name}
+                  </div>
+                  <p className="about-cert-card__desc" style={{ color: 'rgba(244, 241, 234, 0.85)', lineHeight: 1.6 }}>{desc}</p>
+                </GlassCard>
               </ScrollReveal>
             ))}
           </div>
@@ -199,17 +205,18 @@ export default function AboutPage() {
           Join 500+ enterprise clients who trust Silbar Security for their protection needs.
         </p>
         <div className="service-detail-ctas service-detail-ctas--centered">
-          <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--primary">
+          <MagneticButton as="a" href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--primary">
             <Phone size={16} /> Call Now
-          </a>
-          <a
+          </MagneticButton>
+          <MagneticButton
+            as="a"
             href={CONTACT.whatsapp.url}
             className="service-detail-cta service-detail-cta--secondary"
             target="_blank"
             rel="noopener noreferrer"
           >
             WhatsApp Us
-          </a>
+          </MagneticButton>
         </div>
       </section>
     </main>

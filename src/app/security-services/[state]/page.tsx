@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { STATES } from '@/data/locations'
 import { SERVICES } from '@/data/services'
+import { GEO_COORDINATES } from '@/lib/geo-coordinates'
 import { ArrowRight, Phone, MapPin } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
@@ -57,6 +58,20 @@ export default async function StateSEOPage({
       addressRegion: location.name,
       addressCountry: 'IN',
     },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: GEO_COORDINATES[location.capital.toLowerCase().replace(/\\s+/g, '-')]?.lat || 20.5937,
+      longitude: GEO_COORDINATES[location.capital.toLowerCase().replace(/\\s+/g, '-')]?.lng || 78.9629,
+    },
+    image: 'https://www.silbarsecurity.in/og-image.jpg',
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        opens: '09:00',
+        closes: '18:00',
+      }
+    ],
     areaServed: {
       '@type': 'State',
       name: location.name,
@@ -181,9 +196,9 @@ export default async function StateSEOPage({
             <div className="seo-cities-grid">
               {location.majorCities.map((city, i) => (
                 <ScrollReveal key={city} delay={i * 0.03}>
-                  <span className="seo-city-tag">
+                  <Link href={`/security-services/city/${city.toLowerCase().replace(/\\s+/g, '-')}`} className="seo-city-tag">
                     <MapPin size={12} /> {city}
-                  </span>
+                  </Link>
                 </ScrollReveal>
               ))}
             </div>

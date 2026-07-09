@@ -1,13 +1,13 @@
 'use client'
 
 import { useRef, useEffect, useMemo } from 'react'
-import Link from 'next/link'
 import {
   UserCheck, Factory, Users, Landmark, Camera, ClipboardCheck,
   Building2, GraduationCap, UsersRound, FileSearch, Flame, Car, ShieldHalf,
 } from 'lucide-react'
 import { gsap } from '@/lib/gsap'
 import type { Service } from '@/data/services'
+import { GlassCard } from '../ui/GlassCard'
 
 const ICON_MAP: Record<string, React.ElementType> = {
   'user-check': UserCheck,
@@ -57,10 +57,13 @@ export default function ServicesGrid({ services }: ServicesGridProps) {
     const Icon = ICON_MAP[service.icon] || ShieldHalf
     const numeral = String(index + 1).padStart(2, '0')
     return (
-      <Link
+      <GlassCard
         href={`/services/${service.slug}`}
         key={service.slug}
         className={`services-split-item services-split-item--${side}`}
+        tilt={true}
+        opacity={0.02}
+        borderOpacity={0.08}
       >
         <span className="services-split-item__icon">
           <Icon size={22} strokeWidth={1.75} />
@@ -70,7 +73,7 @@ export default function ServicesGrid({ services }: ServicesGridProps) {
           <span className="services-split-item__title">{service.shortTitle || service.title}</span>
           <span className="services-split-item__desc">{service.description}</span>
         </span>
-      </Link>
+      </GlassCard>
     )
   }
 
@@ -79,6 +82,16 @@ export default function ServicesGrid({ services }: ServicesGridProps) {
       <div className="services-split-corner services-split-corner--tl" aria-hidden="true" />
       <div className="services-split-corner services-split-corner--tr" aria-hidden="true" />
       <div className="services-split-corner services-split-corner--bl" aria-hidden="true" />
+
+      <div className="services-split-intro">
+        <span>Integrated protection verticals</span>
+        <h2>One accountable security partner for every site layer.</h2>
+        <p>
+          Choose a single service or combine manpower, surveillance, audits,
+          fire safety, facility operations, and background verification into a
+          managed security program.
+        </p>
+      </div>
 
       <div className="services-split-grid">
         <div className="services-split-col services-split-col--left">

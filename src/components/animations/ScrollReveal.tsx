@@ -8,6 +8,7 @@ interface ScrollRevealProps {
   direction?: 'up' | 'down' | 'left' | 'right'
   delay?: number
   className?: string
+  style?: React.CSSProperties
 }
 
 export default function ScrollReveal({
@@ -15,6 +16,7 @@ export default function ScrollReveal({
   direction = 'up',
   delay = 0,
   className = '',
+  style,
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null)
 
@@ -27,7 +29,7 @@ export default function ScrollReveal({
       // ponytail: random variance for organic feel
       const randomDelay = delay + (Math.random() - 0.5) * 0.04
 
-      const fromVars: Record<string, unknown> = { opacity: 0 }
+      const fromVars: Record<string, unknown> = { opacity: 0, filter: 'blur(8px)' }
       if (direction === 'up') fromVars.y = 60
       else if (direction === 'down') fromVars.y = -60
       else if (direction === 'left') fromVars.x = 60
@@ -35,9 +37,9 @@ export default function ScrollReveal({
 
       const anim = gsap.from(el, {
         ...fromVars,
-        duration: 0.8,
+        duration: 1.2,
         delay: randomDelay,
-        ease: 'power3.out',
+        ease: 'expo.out',
         scrollTrigger: {
           trigger: el,
           start: 'top 85%',
@@ -55,7 +57,7 @@ export default function ScrollReveal({
   }, [delay, direction])
 
   return (
-    <div ref={ref} className={className}>
+    <div ref={ref} className={className} style={style}>
       {children}
     </div>
   )

@@ -5,6 +5,7 @@ import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
+import { GEO_COORDINATES } from '@/lib/geo-coordinates'
 
 export const metadata: Metadata = {
   title: 'Contact Us — Call or WhatsApp Silbar Security',
@@ -25,28 +26,57 @@ export default function ContactPage() {
           })
         }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'LocalBusiness',
-            name: 'Silbar Security Services Pvt. Ltd.',
-            telephone: '+91-9352303333',
-            email: CONTACT.email,
-            address: {
-              '@type': 'PostalAddress',
-              streetAddress: '208, 2nd Floor, Samod Tower, Sansar Chand Road',
-              addressLocality: 'Jaipur',
-              addressRegion: 'Rajasthan',
-              postalCode: '302001',
-              addressCountry: 'IN',
+          __html: JSON.stringify([
+            {
+              '@context': 'https://schema.org',
+              '@type': 'LocalBusiness',
+              name: 'Silbar Security Services Pvt. Ltd. (HQ)',
+              image: 'https://www.silbarsecurity.in/og-image.jpg',
+              telephone: CONTACT.phoneRaw,
+              email: CONTACT.email,
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: '208, 2nd Floor, Samod Tower, Sansar Chand Road',
+                addressLocality: 'Jaipur',
+                addressRegion: 'Rajasthan',
+                postalCode: '302001',
+                addressCountry: 'IN',
+              },
+              geo: {
+                '@type': 'GeoCoordinates',
+                latitude: GEO_COORDINATES['jaipur-hq']?.lat || 26.9124,
+                longitude: GEO_COORDINATES['jaipur-hq']?.lng || 75.7873,
+              },
+              openingHoursSpecification: [ { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'], opens: '09:00', closes: '19:00' } ],
+              contactPoint: {
+                '@type': 'ContactPoint',
+                telephone: '+91-9352303333',
+                contactType: 'customer service',
+                areaServed: 'IN',
+                availableLanguage: ['English', 'Hindi'],
+              },
             },
-            contactPoint: {
-              '@type': 'ContactPoint',
-              telephone: '+91-9352303333',
-              contactType: 'customer service',
-              areaServed: 'IN',
-              availableLanguage: ['English', 'Hindi'],
+            {
+              '@context': 'https://schema.org',
+              '@type': 'LocalBusiness',
+              name: 'Silbar Security Services — Delhi NCR',
+              image: 'https://www.silbarsecurity.in/og-image.jpg',
+              telephone: CONTACT.phoneRaw,
+              address: { '@type': 'PostalAddress', addressLocality: 'New Delhi', addressRegion: 'Delhi', addressCountry: 'IN' },
+              geo: { '@type': 'GeoCoordinates', latitude: GEO_COORDINATES['delhi-office']?.lat || 28.6139, longitude: GEO_COORDINATES['delhi-office']?.lng || 77.2090 },
+              openingHoursSpecification: [ { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'], opens: '09:00', closes: '19:00' } ]
             },
-          })
+            {
+              '@context': 'https://schema.org',
+              '@type': 'LocalBusiness',
+              name: 'Silbar Security Services — Ahmedabad',
+              image: 'https://www.silbarsecurity.in/og-image.jpg',
+              telephone: CONTACT.phoneRaw,
+              address: { '@type': 'PostalAddress', addressLocality: 'Ahmedabad', addressRegion: 'Gujarat', addressCountry: 'IN' },
+              geo: { '@type': 'GeoCoordinates', latitude: GEO_COORDINATES['ahmedabad-office']?.lat || 23.0225, longitude: GEO_COORDINATES['ahmedabad-office']?.lng || 72.5714 },
+              openingHoursSpecification: [ { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'], opens: '09:00', closes: '19:00' } ]
+            }
+          ])
         }} />
       <section className="contact-hero">
         <ScrollReveal className="contact-hero__inner">
@@ -74,37 +104,40 @@ export default function ContactPage() {
         <div className="contact-body__inner">
 
           {/* Contact cards */}
-          <ScrollReveal delay={0.2} className="contact-cards">
-            <a href={`tel:${CONTACT.phoneRaw}`} className="contact-card">
-              <div className="contact-card__icon"><Phone size={20} /></div>
-              <div className="contact-card__label">CALL US DIRECTLY</div>
-              <div className="contact-card__value">{CONTACT.phone}</div>
-              <div className="contact-card__note">Mon–Sat, 9AM–7PM IST</div>
-            </a>
-            <a href={`tel:${CONTACT.landlineRaw}`} className="contact-card">
-              <div className="contact-card__icon"><Phone size={20} /></div>
-              <div className="contact-card__label">LANDLINE</div>
-              <div className="contact-card__value">{CONTACT.landline}</div>
-              <div className="contact-card__note">Jaipur Head Office</div>
-            </a>
-            <a href={`mailto:${CONTACT.email}`} className="contact-card">
-              <div className="contact-card__icon"><Mail size={20} /></div>
-              <div className="contact-card__label">EMAIL US</div>
-              <div className="contact-card__value">{CONTACT.email}</div>
-              <div className="contact-card__note">Response within 4 hours</div>
-            </a>
-            <a
-              href={CONTACT.whatsapp.url}
-              className="contact-card contact-card--whatsapp"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div className="contact-card__icon"><MessageCircle size={20} /></div>
-              <div className="contact-card__label">WHATSAPP</div>
-              <div className="contact-card__value">Instant Quote</div>
-              <div className="contact-card__note">Available 24/7</div>
-            </a>
-          </ScrollReveal>
+          <div className="bento-grid" style={{ marginBottom: '4rem' }}>
+            <ScrollReveal delay={0.2} className="bento-cell glass-panel">
+              <a href={`tel:${CONTACT.phoneRaw}`} style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', height: '100%' }}>
+                <div style={{ color: 'var(--color-gold)', marginBottom: '1rem' }}><Phone size={28} /></div>
+                <div style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.1em', opacity: 0.6, marginBottom: '0.5rem' }}>CALL US DIRECTLY</div>
+                <div style={{ fontSize: '1.5rem', fontWeight: 500, marginBottom: '0.25rem' }}>{CONTACT.phone}</div>
+                <div style={{ fontSize: '0.85rem', opacity: 0.5 }}>Mon–Sat, 9AM–7PM IST</div>
+              </a>
+            </ScrollReveal>
+            <ScrollReveal delay={0.3} className="bento-cell glass-panel">
+              <a href={`tel:${CONTACT.landlineRaw}`} style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', height: '100%' }}>
+                <div style={{ color: 'var(--color-gold)', marginBottom: '1rem' }}><Phone size={28} /></div>
+                <div style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.1em', opacity: 0.6, marginBottom: '0.5rem' }}>LANDLINE</div>
+                <div style={{ fontSize: '1.5rem', fontWeight: 500, marginBottom: '0.25rem' }}>{CONTACT.landline}</div>
+                <div style={{ fontSize: '0.85rem', opacity: 0.5 }}>Jaipur Head Office</div>
+              </a>
+            </ScrollReveal>
+            <ScrollReveal delay={0.4} className="bento-cell glass-panel">
+              <a href={`mailto:${CONTACT.email}`} style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', height: '100%' }}>
+                <div style={{ color: 'var(--color-gold)', marginBottom: '1rem' }}><Mail size={28} /></div>
+                <div style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.1em', opacity: 0.6, marginBottom: '0.5rem' }}>EMAIL US</div>
+                <div style={{ fontSize: '1.25rem', fontWeight: 500, marginBottom: '0.25rem' }}>{CONTACT.email}</div>
+                <div style={{ fontSize: '0.85rem', opacity: 0.5 }}>Response within 4 hours</div>
+              </a>
+            </ScrollReveal>
+            <ScrollReveal delay={0.5} className="bento-cell glass-panel" style={{ background: 'linear-gradient(135deg, rgba(37, 211, 102, 0.1) 0%, rgba(37, 211, 102, 0.02) 100%)', borderColor: 'rgba(37, 211, 102, 0.2)' }}>
+              <a href={CONTACT.whatsapp.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', height: '100%' }}>
+                <div style={{ color: '#25D366', marginBottom: '1rem' }}><MessageCircle size={28} /></div>
+                <div style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.1em', color: '#25D366', opacity: 0.8, marginBottom: '0.5rem' }}>WHATSAPP</div>
+                <div style={{ fontSize: '1.5rem', fontWeight: 500, marginBottom: '0.25rem' }}>Instant Quote</div>
+                <div style={{ fontSize: '0.85rem', opacity: 0.5 }}>Available 24/7</div>
+              </a>
+            </ScrollReveal>
+          </div>
 
           {/* Lead form */}
           <ScrollReveal delay={0.4}>
@@ -134,21 +167,21 @@ export default function ContactPage() {
 
           {/* Office locations */}
           <ScrollReveal delay={0.6} className="contact-offices">
-            <h2 className="contact-offices__title">Our Offices</h2>
-            <div className="contact-offices__grid">
+            <h2 className="contact-offices__title" style={{ marginTop: '4rem', marginBottom: '2rem', fontFamily: 'var(--font-display)', fontSize: '2rem' }}>Our Offices</h2>
+            <div className="bento-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
               {[
                 { city: 'Jaipur (HQ)', address: '208, 2nd Floor, Samod Tower, Sansar Chand Road, Jaipur — 302001' },
                 { city: 'Delhi NCR', address: 'Corporate Office, New Delhi — 110001' },
                 { city: 'Ahmedabad', address: 'Ahmedabad, Gujarat — 380001' },
               ].map(({ city, address }) => (
-                <div key={city} className="contact-office">
-                  <div className="contact-office__city">
-                    <MapPin size={14} className="contact-office__icon" />
+                <div key={city} className="bento-cell glass-panel" style={{ padding: '2rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-gold)', fontSize: '1.25rem', fontWeight: 600, marginBottom: '1rem' }}>
+                    <MapPin size={20} />
                     {city}
                   </div>
-                  <p className="contact-office__address">{address}</p>
-                  <div className="contact-office__hours">
-                    <Clock size={12} /> Mon–Sat: 9:00 AM – 7:00 PM
+                  <p style={{ opacity: 0.8, lineHeight: 1.6, marginBottom: '1.5rem', flexGrow: 1 }}>{address}</p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', opacity: 0.5 }}>
+                    <Clock size={14} /> Mon–Sat: 9:00 AM – 7:00 PM
                   </div>
                 </div>
               ))}

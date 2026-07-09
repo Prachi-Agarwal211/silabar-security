@@ -3,6 +3,7 @@ import Link from 'next/link'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import { INDUSTRIES } from '@/data/industries'
+import { GlassCard } from '@/components/ui/GlassCard'
 import { ArrowRight, Phone, Building2, Factory, Heart, Hotel, Warehouse, GraduationCap, ShoppingBag, Landmark, Server, Car, Globe, Home } from 'lucide-react'
 import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
@@ -34,6 +35,18 @@ const DEFAULT_ICON = Building2
 export default function IndustriesPage() {
   return (
     <main className="industries-page" id="main-content">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          itemListElement: INDUSTRIES.map((industry, i) => ({
+            '@type': 'ListItem',
+            position: i + 1,
+            url: `https://www.silbarsecurity.in/industries/${industry.slug}`,
+            name: industry.shortTitle || industry.title,
+          }))
+        })
+      }} />
       <section className="industries-hero">
         <ScrollReveal className="industries-hero__inner">
           <nav className="breadcrumb" aria-label="Breadcrumb">
@@ -50,7 +63,7 @@ export default function IndustriesPage() {
             </span>
           </h1>
           <p className="industries-subtitle">
-            Every industry has unique security challenges. We&apos;ve built specialised teams for each one — trained, certified, and deployed with zero compromise.
+            <strong>Bottom Line Up Front:</strong> Silbar Security provides specialized, PSARA-compliant security solutions tailored to 12 distinct industries in India, including manufacturing, healthcare, hospitality, banking, and data centers. Our teams are industry-certified and deployed with zero compromise on statutory compliance.
           </p>
         </ScrollReveal>
       </section>
@@ -77,11 +90,13 @@ export default function IndustriesPage() {
                 'panel-span-1x1', 'panel-span-1x1', 'panel-span-2x1',
               ]
               return (
-                <ScrollReveal key={industry.slug} delay={i * 0.04}>
-                  <Link
+                <ScrollReveal key={industry.slug} delay={i * 0.04} style={{ display: 'flex', height: '100%' }}>
+                  <GlassCard
                     href={`/industries/${industry.slug}`}
                     className={`services-comic-panel ${spanClasses[i] || 'panel-span-1x1'} ${isInverted ? 'is-inverted' : ''}`}
-                    style={{ display: 'flex', height: '100%' }}
+                    tilt={true}
+                    opacity={0.03}
+                    borderOpacity={0.15}
                   >
                     <div className="services-comic-numeral">{numeral}</div>
                     <div className="services-comic-icon">
@@ -94,7 +109,7 @@ export default function IndustriesPage() {
                         Explore <ArrowRight size={12} />
                       </span>
                     </div>
-                  </Link>
+                  </GlassCard>
                 </ScrollReveal>
               )
             })}
