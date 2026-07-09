@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from 'react'
 import { gsap } from '@/lib/gsap'
-import { ShieldCheck, ChevronsRight, Shield } from 'lucide-react'
+import { ShieldCheck, ChevronsRight } from 'lucide-react'
 import SplitTextReveal from '../animations/SplitTextReveal'
 
 const MARQUEE_ITEMS = [
@@ -181,8 +181,8 @@ export default function ScrollExperience() {
         ease: 'power2.in',
       }, 0.62)
 
-      // Note: We don't fade out the marqueeBar at the end anymore. It stays fully opaque (black)
-      // so when the pin releases, the user seamlessly scrolls into the dark RadialServices section.
+      // Note: We don't fade out the marqueeBar at the end. It stays fully opaque (black)
+      // so when the pin releases, the user seamlessly scrolls into the dark services section below.
 
       return () => {
         loadTl.kill()
@@ -217,18 +217,25 @@ export default function ScrollExperience() {
       </div>
 
       <div className="hero-left-panel">
-        <div className="vertical-text-wrapper">
-          <p className="text-vertical text-micro is-dimmed">EST. 2005</p>
-          <p className="text-vertical text-micro is-bright text-tracking-wide">
-            INDIA'S PREMIER SECURITY FORCE
-          </p>
+        {/* ── Vertical text rails — thin left column ── */}
+        <div className="hero-left-rails">
+          <div className="vertical-text-wrapper">
+            <p className="text-vertical text-micro is-dimmed">EST. 2005</p>
+            <p className="text-vertical text-micro is-bright text-tracking-wide">
+              INDIA'S PREMIER SECURITY FORCE
+            </p>
+            <p className="text-vertical text-micro is-dimmed">INTEGRATED PROTECTION</p>
+            <p className="text-vertical text-micro is-dimmed">UNCOMPROMISING SAFETY</p>
+          </div>
         </div>
 
+        {/* ── Red laser divider line ── */}
         <div className="hero-vertical-laser-line">
           <div className="laser-dot-origin" />
         </div>
         <div className="hero-horizontal-laser-line" />
 
+        {/* ── Main content: wordmark + tagline + trust badges ── */}
         <div className="hero-badge-container">
           <div className="text-hero-wordmark">
             <span className="word-thin">
@@ -238,8 +245,17 @@ export default function ScrollExperience() {
               <SplitTextReveal text="SECURITY" mode="chars" delay={0.6} />
             </span>
           </div>
-          <div className="shield-logo-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '1rem' }}>
-            <Shield size={16} className="hero-badge-icon" strokeWidth={2} />
+
+          <p className="hero-tagline">
+            India's premier security force — law-enforcement grade personnel with integrated surveillance &amp; technology.
+          </p>
+
+          <div className="hero-trust-micro">
+            <span>ISO 9001:2015</span>
+            <span className="hero-trust-sep">·</span>
+            <span>PSARA-2005</span>
+            <span className="hero-trust-sep">·</span>
+            <span>7,000+ Officers</span>
           </div>
         </div>
 
@@ -253,7 +269,7 @@ export default function ScrollExperience() {
       <div className="flare-line flare-line--center" />
       <div className="flare-line flare-line--br" />
 
-      {/* ── Trust content ── */}
+      {/* ── Trust content (Act 2: "SECURITY YOU CAN TRUST") ── */}
       <div ref={trustContentRef} className="trust-scroll-content">
         <div className="trust-dot-grid" />
         <div className="trust-left-rail">
@@ -276,7 +292,8 @@ export default function ScrollExperience() {
 
             <p ref={trustSubcopyRef} className="trust-subcopy">
               ISO 9001:2015 &amp; PSARA-2005 CERTIFIED<br />
-              7,000+ LICENSED OFFICERS · PAN INDIA
+              7,000+ LICENSED OFFICERS · PAN INDIA<br />
+              INTEGRATED · RELIABLE · 24/7
             </p>
 
             <div ref={trustCaptionRef} className="trust-caption">
@@ -297,7 +314,8 @@ export default function ScrollExperience() {
         </div>
       </div>
 
-      {/* ── The strip — TOP-LEVEL sibling ── */}
+      {/* ── The strip — TOP-LEVEL sibling.
+          This black strip wipe should visually lead into the services-comic-section below ── */}
       <div ref={marqueeBarRef} className="trust-marquee-bar">
         <div className="trust-marquee-bar__icon">
           <ShieldCheck size={16} strokeWidth={1.75} />

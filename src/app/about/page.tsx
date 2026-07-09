@@ -111,6 +111,35 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Timeline */}
+      <section className="about-timeline" id="timeline">
+        <div className="about-timeline__inner">
+          <ScrollReveal>
+            <span className="page-eyebrow" style={{ display: 'flex', justifyContent: 'center' }}>MILESTONES</span>
+            <h2 className="about-timeline__title">
+              <SplitTextReveal text="Our Journey" />
+            </h2>
+          </ScrollReveal>
+          
+          <div className="timeline-container">
+            {[
+              { year: '2005', title: 'The Foundation', desc: 'Silbar Security established in Jaipur by retired law enforcement professionals.' },
+              { year: '2012', title: 'PSARA Compliance', desc: 'Expanded operations across Rajasthan, becoming one of the first fully PSARA-compliant agencies.' },
+              { year: '2016', title: 'ISO Certification', desc: 'Achieved ISO 9001:2015 certification for Quality Management Systems.' },
+              { year: '2024', title: 'PAN India Presence', desc: 'Now protecting 500+ enterprise clients with a force of 7,000+ licensed officers.' }
+            ].map((item, i) => (
+              <ScrollReveal key={item.year} delay={i * 0.1} className="timeline-item">
+                <div className="timeline-item__year">{item.year}</div>
+                <div className="timeline-item__content">
+                  <h3 className="timeline-item__title">{item.title}</h3>
+                  <p className="timeline-item__desc">{item.desc}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Why Silbar */}
       <section className="about-why" id="why-silbar">
         <ScrollReveal className="about-why__inner">

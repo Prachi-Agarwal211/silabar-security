@@ -3,7 +3,7 @@ import Link from 'next/link'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import { INDUSTRIES } from '@/data/industries'
-import { ArrowRight, Phone } from 'lucide-react'
+import { ArrowRight, Phone, Building2, Factory, Heart, Hotel, Warehouse, GraduationCap, ShoppingBag, Landmark, Server, Car, Globe, Home } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Industries We Serve — Security for Every Sector',
@@ -11,6 +11,23 @@ export const metadata: Metadata = {
     'Silbar Security provides specialized security solutions for manufacturing, hospitals, hotels, warehouses, banks, corporate offices, data centres, government, and more.',
   alternates: { canonical: 'https://www.silbarsecurity.in/industries' },
 }
+
+// Icon map for industries
+const INDUSTRY_ICONS: Record<string, React.ElementType> = {
+  'manufacturing': Factory,
+  'hospitals-healthcare': Heart,
+  'hotels-hospitality': Hotel,
+  'warehouses-logistics': Warehouse,
+  'banks-financial': Landmark,
+  'corporate-offices': Building2,
+  'educational-institutions': GraduationCap,
+  'retail-malls': ShoppingBag,
+  'data-centres': Server,
+  'automotive': Car,
+  'government': Globe,
+  'residential': Home,
+}
+const DEFAULT_ICON = Building2
 
 export default function IndustriesPage() {
   return (
@@ -31,35 +48,62 @@ export default function IndustriesPage() {
             </span>
           </h1>
           <p className="industries-subtitle">
-            Every industry has unique security challenges. We've solved them.
+            Every industry has unique security challenges. We've built specialised teams for each one — trained, certified, and deployed with zero compromise.
           </p>
         </ScrollReveal>
       </section>
 
-      <section className="industries-grid-section">
-        <div className="industries-grid">
-          {INDUSTRIES.map((industry, i) => (
-            <ScrollReveal key={industry.slug} delay={i * 0.05} className="industry-card-wrapper">
-              <Link
-                href={`/industries/${industry.slug}`}
-                className="industry-card"
-                style={{ height: '100%' }}
-              >
-                <h2 className="industry-card__title">{industry.shortTitle}</h2>
-                <p className="industry-card__desc">{industry.description.slice(0, 100)}...</p>
-                <span className="industry-card__cta">
-                  Learn More <ArrowRight size={14} />
-                </span>
-              </Link>
-            </ScrollReveal>
-            ))}
+      {/* Industries grid — styled like services panels */}
+      <section className="services-comic-section" style={{ paddingTop: 'clamp(3rem, 6vw, 5rem)' }}>
+        <div className="services-comic-header">
+          <div className="services-comic-eyebrow">Sectors We Cover</div>
+          <h2 className="services-comic-heading">
+            INDUSTRY{' '}
+            <span className="outline">EXPERTISE.</span>
+          </h2>
+        </div>
+        <div className="services-comic-container">
+          <div className="services-comic-grid">
+            {INDUSTRIES.map((industry, i) => {
+              const Icon = INDUSTRY_ICONS[industry.slug] || DEFAULT_ICON
+              const isInverted = [1, 4, 8].includes(i)
+              const numeral = String(i + 1).padStart(2, '0')
+              const spanClasses = [
+                'panel-span-2x2', 'panel-span-1x1', 'panel-span-1x1',
+                'panel-span-2x1', 'panel-span-1x1', 'panel-span-1x1',
+                'panel-span-2x1', 'panel-span-1x1', 'panel-span-1x1',
+                'panel-span-1x1', 'panel-span-1x1', 'panel-span-2x1',
+              ]
+              return (
+                <ScrollReveal key={industry.slug} delay={i * 0.04}>
+                  <Link
+                    href={`/industries/${industry.slug}`}
+                    className={`services-comic-panel ${spanClasses[i] || 'panel-span-1x1'} ${isInverted ? 'is-inverted' : ''}`}
+                    style={{ display: 'flex', height: '100%' }}
+                  >
+                    <div className="services-comic-numeral">{numeral}</div>
+                    <div className="services-comic-icon">
+                      <Icon size={18} strokeWidth={1.75} />
+                    </div>
+                    <div className="services-comic-content">
+                      <h2 className="services-comic-title">{industry.shortTitle || industry.title}</h2>
+                      <p className="services-comic-desc">{industry.description?.slice(0, 110)}…</p>
+                      <span className="services-comic-arrow">
+                        Explore <ArrowRight size={12} />
+                      </span>
+                    </div>
+                  </Link>
+                </ScrollReveal>
+              )
+            })}
+          </div>
         </div>
       </section>
 
       <section className="service-detail-bottom-cta">
         <h2 className="service-detail-bottom-cta__title">Need Industry-Specific Security?</h2>
         <p className="service-detail-bottom-cta__sub">
-          Every industry has unique risks. Let our security consultants design a tailored solution for your facility.
+          Every industry has unique risks. Let our consultants design a tailored solution for your facility.
         </p>
         <div className="service-detail-ctas" style={{ justifyContent: 'center' }}>
           <a href="tel:+919352303333" className="service-detail-cta service-detail-cta--primary">
