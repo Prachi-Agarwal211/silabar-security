@@ -26,7 +26,7 @@ import ScrollReveal from '@/components/animations/ScrollReveal'
 const COMMAND_SIGNALS = [
   {
     icon: ShieldCheck,
-    label: 'PSARA guard force',
+    label: 'Security force',
     value: '7,000+',
     text: 'Licensed officers, supervisors, lady guards, armed guards, and response teams for regulated deployments.',
   },
@@ -128,7 +128,7 @@ export default function HomePageClient() {
           <p className="home-section-copy">
             Local buyers search by city, service, and urgency. The site supports
             state and city landing pages while the business promise stays consistent:
-            PSARA-licensed guards, verified manpower, fast replacement, and clean
+            Professionally trained guards, verified manpower, fast replacement, and clean
             documentation.
           </p>
           <div className="home-coverage-tags">

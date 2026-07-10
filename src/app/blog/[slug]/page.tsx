@@ -4,40 +4,11 @@ import Link from 'next/link'
 import { Phone } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
+import PageHero from '@/components/layout/PageHero'
 import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
 
 const POSTS = [
-  {
-    slug: 'psara-compliance-guide-2026',
-    title: 'PSARA Compliance 2026: Complete Guide for Indian Businesses',
-    excerpt: 'Everything you need to know about PSARA 2005 compliance for private security agencies in India.',
-    content: `The Private Security Agencies Regulation Act (PSARA) 2005 governs every private security agency operating in India. If your business hires security guards or contracts with a security agency, understanding PSARA compliance is essential.
-
-## What is PSARA?
-
-PSARA is a central act that establishes the legal framework for licensing and regulating private security agencies in India. Each state's Controlling Authority — typically a senior IPS officer in the Home Department — administers licensing.
-
-## Key Requirements
-
-1. **Licensing**: Every security agency must hold a valid PSARA license for each state where they operate
-2. **Training**: Guards must complete minimum 160 hours of training (100 hours classroom + 60 hours field)
-3. **Verification**: All guards undergo police verification and background checks before deployment
-4. **Identity Cards**: Every guard must carry a PSARA-compliant photo ID card
-5. **Record Keeping**: Agencies must maintain training records, deployment history, and incident reports for 7+ years
-
-## Why PSARA Compliance Matters
-
-- Legal mandate — operating without a license is a punishable offense
-- Client confidence — licensed agencies are preferred by corporate and government clients
-- Insurance compliance — many policies require documented security assessments
-- Employee welfare — PSARA mandates ESI, PF, and minimum wage compliance
-
-Silbar Security Services holds valid PSARA licenses across multiple Indian states, ensuring full compliance for every deployment.`,
-    date: 'July 2026',
-    readTime: '8 min',
-    category: 'Compliance',
-  },
   {
     slug: 'security-services-jaipur-guide',
     title: 'Security Services in Jaipur: Complete Business Guide',
@@ -47,7 +18,7 @@ Silbar Security Services holds valid PSARA licenses across multiple Indian state
 ## Types of Security Services Available in Jaipur
 
 ### Manned Guarding
-Armed and unarmed security guards for factories, offices, banks, and residential complexes. Silbar Security deploys PSARA-trained guards across all areas of Jaipur including Sitapura Industrial Area, Vishwakarma Industrial Area, and Mahindra World City.
+Armed and unarmed security guards for factories, offices, banks, and residential complexes. Silbar Security deploys professionally trained guards across all areas of Jaipur including Sitapura Industrial Area, Vishwakarma Industrial Area, and Mahindra World City.
 
 ### Electronic Surveillance
 CCTV installation and remote monitoring for homes and businesses. Modern systems include AI-powered video analytics and mobile app access.
@@ -57,13 +28,13 @@ Weddings, conferences, and political rallies require crowd management and access
 
 ## How to Choose a Security Agency in Jaipur
 
-1. **Verify PSARA License** — Confirm the agency's license with the Rajasthan Controlling Authority
-2. **Check Guard Training** — Guards must complete PSARA-mandated 160-hour training
+1. **Verify License** — Confirm the agency's credentials with the state authorities
+2. **Check Guard Training** — Guards must complete comprehensive training programs
 3. **Review Compliance** — Ensure ESI, PF, and gratuity compliance for all deployed staff
 4. **Ask About Replacement** — A 24-hour replacement guarantee is industry best practice
 5. **Visit Deployed Sites** — Speak with existing clients about their experience
 
-Silbar Security, headquartered in Jaipur, meets all these criteria with 7,000+ licensed officers serving 200+ cities.`,
+Silbar Security, headquartered in Jaipur, meets all these criteria with 7,000+ professionals serving 200+ cities.`,
     date: 'July 2026',
     readTime: '6 min',
     category: 'City Guide',
@@ -74,11 +45,11 @@ Silbar Security, headquartered in Jaipur, meets all these criteria with 7,000+ l
     excerpt: 'Before you sign a security contract, ask these 7 questions.',
     content: `Choosing the right security agency is one of the most important decisions a business can make. Here are 7 questions to ask before signing a contract.
 
-## 1. Are You PSARA Licensed?
-Verify their PSARA license for your state. Operating without a license is illegal under PSARA 2005.
+## 1. Are You Properly Licensed?
+Verify the agency's credentials for your state. Operating without proper licensing is illegal.
 
 ## 2. What Training Do Your Guards Receive?
-PSARA mandates 160 hours of training. Ask about their training curriculum and certification process.
+Ask about their training curriculum and certification process. Professional agencies invest heavily in guard training.
 
 ## 3. Are Your Guards Background Verified?
 Every guard should undergo police verification and identity authentication before deployment.
@@ -95,7 +66,7 @@ Speak with existing clients in similar industries about their experience.
 ## 7. What Technology Do You Use?
 Modern agencies use GPS tracking, digital attendance, CCTV monitoring, and incident reporting apps.
 
-Silbar Security scores on all 7 counts with PSARA licensing across multiple states, 7,000+ trained officers, 24-hour replacement guarantee, and full compliance management.`,
+Silbar Security scores on all 7 counts with 7,000+ trained officers, 24-hour replacement guarantee, and full compliance management.`,
     date: 'June 2026',
     readTime: '5 min',
     category: 'Guide',
@@ -183,7 +154,7 @@ Gate passes for all materials leaving the premises, random vehicle inspections, 
 Fire extinguishers at all hazard points, sprinkler systems in storage areas, trained fire wardens on every shift, and regular fire drills.
 
 ## Compliance Requirements
-Industrial security in India must comply with Factory Act 1948, state-specific rules, and PSARA regulations. Silbar Security provides PSARA-licensed guards trained in industrial security protocols.
+Industrial security in India must comply with Factory Act 1948 and state-specific rules. Silbar Security provides guards trained in industrial security protocols.
 
 Our guards undergo specialized training in material movement control, fire response, and emergency evacuation procedures specific to industrial environments.`,
     date: 'July 2026',
@@ -253,8 +224,8 @@ Armored vehicles, secure convoy protocols, and GPS tracking ensure safe transpor
 ### Residence Security
 The principal's home is secured with CCTV, access control systems, and 24/7 guard presence. Family members are also included in the security plan.
 
-## PSARA Compliance for VIP Protection
-All VIP protection personnel must hold valid PSARA licenses. Silbar Security's close protection teams are PSARA-licensed and trained in advanced security protocols.`,
+## Compliance for VIP Protection
+All VIP protection personnel undergo rigorous background verification and training. Silbar Security's close protection teams are trained in advanced security protocols.`,
     date: 'June 2026',
     readTime: '8 min',
     category: 'VIP Protection',
@@ -362,7 +333,7 @@ Regular fire drills, earthquake evacuation drills, and lockdown drills for secur
 GPS tracking on school buses, attendant on every bus, and parent notification systems for pickup/drop-off.
 
 ## Regulatory Framework
-The National Commission for Protection of Child Rights (NCPCR) has issued guidelines for school safety. Silbar Security provides PSARA-licensed guards trained in child protection protocols.`,
+The National Commission for Protection of Child Rights (NCPCR) has issued guidelines for school safety. Silbar Security provides guards trained in child protection protocols.`,
     date: 'May 2026',
     readTime: '7 min',
     category: 'Education',
@@ -533,53 +504,6 @@ Silbar Security provides corporate security services for offices in Jaipur, Delh
     category: 'Corporate',
   },
   {
-    slug: 'security-guard-license-procedure',
-    title: 'Security Guard License in India: PSARA License Procedure Explained',
-    excerpt: 'Step-by-step guide to getting a PSARA license for security agencies and guards in India.',
-    content: `Understanding the PSARA licensing procedure is essential for any security agency operating in India. Here's a complete guide.
-
-## PSARA License for Security Agencies
-
-### Eligibility
-- Company registered under Companies Act or partnership firm
-- Directors/shareholders must be Indian citizens
-- No criminal convictions for directors
-- Minimum capital requirements (varies by state)
-
-### Application Process
-
-1. **State Application**: Apply to the Controlling Authority of the state(s) where you operate
-2. **Documentation**: Company registration, director IDs, address proof, police clearance certificates
-3. **Verification**: Police verification of all directors and key personnel
-4. **Training Certification**: Proof of training infrastructure and curriculum
-5. **License Fee**: Pay the prescribed fee for each state
-
-### Timeline
-The PSARA application process typically takes 3-6 months from application to license issuance.
-
-## PSARA License for Security Guards
-
-### Eligibility
-- Indian citizen aged 18-65
-- Minimum Class 8 education (varies by state)
-- Physical fitness certification
-- No criminal record
-
-### Training Requirements
-
-PSARA mandates 160 hours of training:
-- **100 hours classroom**: Legal aspects, access control, report writing, fire safety, first aid
-- **60 hours field training**: Practical deployment, weapon handling, patrol procedures
-
-### License Validity
-PSARA licenses are typically valid for 5 years, renewable upon application.
-
-Silbar Security holds valid PSARA licenses across multiple states and all 7,000+ guards are fully PSARA-trained and licensed.`,
-    date: 'April 2026',
-    readTime: '7 min',
-    category: 'Compliance',
-  },
-  {
     slug: 'residential-security-services',
     title: 'Residential Security: Protecting Homes and Apartment Complexes',
     excerpt: 'Security solutions for residential societies, gated communities, and individual homes.',
@@ -619,73 +543,6 @@ Silbar Security provides residential security services across Jaipur, Delhi, and
     date: 'April 2026',
     readTime: '6 min',
     category: 'Residential',
-  },
-  {
-    slug: 'security-guard-training-standards',
-    title: 'Security Guard Training Standards in India: PSARA Curriculum Explained',
-    excerpt: 'What goes into professional security guard training? The complete PSARA training curriculum breakdown.',
-    content: `Security guard training in India is governed by PSARA 2005, which mandates a comprehensive 160-hour training program. Here's what the curriculum covers.
-
-## PSARA Training Curriculum
-
-### Module 1: Legal Framework (20 hours)
-- PSARA 2005 Act and Rules
-- Indian Penal Code basics
-- Criminal Procedure Code relevant sections
-- Evidence Act fundamentals
-- Rights and duties of security guards
-
-### Module 2: Access Control (20 hours)
-- Visitor management procedures
-- Vehicle inspection protocols
-- Bag checking techniques
-- Identification document verification
-- Entry register management
-
-### Module 3: Fire Safety (20 hours)
-- Fire prevention principles
-- Types of fire extinguishers
-- Fire extinguisher operation
-- Evacuation procedures
-- Fire drill coordination
-
-### Module 4: First Aid & Medical Response (15 hours)
-- Basic first aid
-- CPR and rescue breathing
-- Handling medical emergencies
-- Coordination with ambulance services
-
-### Module 5: Communication & Report Writing (15 hours)
-- Radio communication protocols
-- Incident report writing
-- Daily log maintenance
-- Verbal de-escalation techniques
-
-### Module 6: Patrol Procedures (20 hours)
-- Patrol routes and scheduling
-- Observation techniques
-- Suspicious behavior detection
-- Night patrol best practices
-
-### Module 7: Weapon Training (15 hours) — for armed guards
-- Weapon safety and handling
-- Firing range practice
-- Weapon maintenance
-- Use of force guidelines
-
-### Module 8: Customer Service (15 hours)
-- Professional demeanor
-- Communication with clients and visitors
-- Handling complaints
-- Emergency response coordination
-
-### Field Training (60 hours)
-Practical deployment under supervision of experienced guards.
-
-Silbar Security's training program exceeds PSARA requirements, with additional modules on technology, cybersecurity awareness, and specialized industry protocols.`,
-    date: 'March 2026',
-    readTime: '8 min',
-    category: 'Training',
   },
   {
     slug: 'hotel-security-management',
@@ -775,8 +632,11 @@ export default async function BlogPostPage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
 
       <main className="blog-page" id="main-content">
-        <section className="page-hero page-hero--short">
-          <ScrollReveal>
+        <PageHero
+          eyebrow={`${post.category} — ${post.date} · ${post.readTime}`}
+          title={<SplitTextReveal text={post.title} mode="words" />}
+          size="compact"
+          topContent={
             <nav className="breadcrumb" aria-label="Breadcrumb">
               <Link href="/" className="breadcrumb__link">Home</Link>
               <span className="breadcrumb__sep">›</span>
@@ -784,12 +644,8 @@ export default async function BlogPostPage({
               <span className="breadcrumb__sep">›</span>
               <span className="breadcrumb__current">{post.title}</span>
             </nav>
-            <span className="contact-eyebrow">{post.category} — {post.date} · {post.readTime}</span>
-            <h1 className="contact-title contact-title--blog">
-              <SplitTextReveal text={post.title} mode="words" />
-            </h1>
-          </ScrollReveal>
-        </section>
+          }
+        />
 
         <section className="legal-content glass-panel legal-content--blog">
           <ScrollReveal>

@@ -5,6 +5,7 @@ import { SERVICES, SERVICE_SLUGS } from '@/data/services'
 import { CheckCircle, Phone } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
+import PageHero from '@/components/layout/PageHero'
 import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
 
@@ -83,8 +84,12 @@ export default async function ServicePage({
       <main className="service-detail-page" id="main-content">
 
         {/* Hero */}
-        <section className="service-detail-hero">
-          <ScrollReveal className="service-detail-hero__inner">
+        <PageHero
+          eyebrow={service.shortTitle}
+          title={<SplitTextReveal text={service.title} mode="words" />}
+          subtitle={service.longDescription}
+          size="tall"
+          topContent={
             <nav className="breadcrumb" aria-label="Breadcrumb">
               <Link href="/" className="breadcrumb__link">Home</Link>
               <span className="breadcrumb__sep">›</span>
@@ -92,10 +97,8 @@ export default async function ServicePage({
               <span className="breadcrumb__sep">›</span>
               <span className="breadcrumb__current">{service.shortTitle}</span>
             </nav>
-            <h1 className="service-detail-title">
-              <SplitTextReveal text={service.title} mode="words" />
-            </h1>
-            <p className="service-detail-subtitle">{service.longDescription}</p>
+          }
+          bottomContent={
             <div className="service-detail-ctas">
               <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--primary">
                 <Phone size={16} /> Call Now
@@ -109,8 +112,8 @@ export default async function ServicePage({
                 WhatsApp Us
               </a>
             </div>
-          </ScrollReveal>
-        </section>
+          }
+        />
 
         <div className="detail-layout-container">
           <div className="detail-main-content">

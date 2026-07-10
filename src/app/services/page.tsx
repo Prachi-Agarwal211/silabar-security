@@ -3,16 +3,16 @@ import Link from 'next/link'
 import { Phone } from 'lucide-react'
 import { SERVICES } from '@/data/services'
 import ServicesGrid from '@/components/sections/ServicesGrid'
-import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
+import PageHero from '@/components/layout/PageHero'
 import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
 
 export const metadata: Metadata = {
   title: 'Security Services — 12 Verticals for Every Industry',
   description:
-    'Silbar Security offers manned guarding, industrial security, event security, bank & ATM security, CCTV surveillance, facility management, and more. PSARA-licensed. PAN India.',
-  ...ogMetadata('Security Services — 12 Verticals for Every Industry', 'Silbar Security offers manned guarding, industrial security, event security, bank & ATM security, CCTV surveillance, facility management, and more. PSARA-licensed. PAN India.', '/services'),
+    'Silbar Security offers manned guarding, industrial security, event security, bank & ATM security, CCTV surveillance, facility management, and more. ISO 9001:2015 certified. PAN India.',
+  ...ogMetadata('Security Services — 12 Verticals for Every Industry', 'Silbar Security offers manned guarding, industrial security, event security, bank & ATM security, CCTV surveillance, facility management, and more. ISO 9001:2015 certified. PAN India.', '/services'),
 }
 
 export default function ServicesPage() {
@@ -31,24 +31,30 @@ export default function ServicesPage() {
         })
       }} />
       {/* Page Hero */}
-      <section className="services-page-hero">
-        <ScrollReveal>
+      {/* Page Hero */}
+      <PageHero
+        eyebrow="OUR SERVICES"
+        title={
+          <>
+            <SplitTextReveal text="12 SECURITY" />
+            <br />
+            <span className="page-hero-title--outline">
+              <SplitTextReveal text="VERTICALS." delay={0.2} />
+            </span>
+          </>
+        }
+        subtitle={
+          <>Silbar Security offers 12 specialized security verticals including manned guarding, electronic CCTV surveillance, facility management, and event security. All services are ISO 9001:2015 certified and available 24/7 across PAN India.</>
+        }
+        size="compact"
+        topContent={
           <nav className="breadcrumb" aria-label="Breadcrumb">
             <Link href="/" className="breadcrumb__link">Home</Link>
             <span className="breadcrumb__sep">›</span>
             <span className="breadcrumb__current">Services</span>
           </nav>
-          <span className="page-eyebrow">OUR SERVICES</span>
-          <h1 className="services-page-title">
-            <SplitTextReveal text="12 SECURITY" />
-            <br />
-            <span className="services-page-title--outline">
-              <SplitTextReveal text="VERTICALS." delay={0.2} />
-            </span>
-          </h1>
-          <p className="services-page-subtitle">
-            <strong>Bottom Line Up Front:</strong> Silbar Security offers 12 specialized security verticals including manned guarding, electronic CCTV surveillance, facility management, and event security. All services are PSARA-licensed, ISO 9001:2015 certified, and available 24/7 across PAN India.
-          </p>
+        }
+        bottomContent={
           <div className="service-detail-ctas service-detail-ctas--top-margin">
             <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--primary">
               <Phone size={16} /> Get a Quote
@@ -62,8 +68,8 @@ export default function ServicesPage() {
               WhatsApp Us
             </a>
           </div>
-        </ScrollReveal>
-      </section>
+        }
+      />
 
       {/* Services Grid (inherits dark theme from homepage) */}
       <ServicesGrid services={SERVICES} />

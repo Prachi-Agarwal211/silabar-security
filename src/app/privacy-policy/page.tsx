@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
+import PageHero from '@/components/layout/PageHero'
 import { CONTACT } from '@/lib/config'
 import { Phone } from 'lucide-react'
 import { ogMetadata } from '@/lib/metadata'
@@ -62,26 +62,27 @@ const sections = [
 export default function PrivacyPolicyPage() {
   return (
     <main className="legal-page" id="main-content">
-      <section className="page-hero page-hero--short">
-        <ScrollReveal>
+      <PageHero
+        eyebrow="LEGAL"
+        title={
+          <>
+            <SplitTextReveal text="PRIVACY" />
+            <br />
+            <span className="page-hero-title--outline">
+              <SplitTextReveal text="POLICY" delay={0.2} />
+            </span>
+          </>
+        }
+        subtitle={<>Last updated: July 2026. Your privacy matters to us.</>}
+        size="compact"
+        topContent={
           <nav className="breadcrumb" aria-label="Breadcrumb">
             <Link href="/" className="breadcrumb__link">Home</Link>
             <span className="breadcrumb__sep">›</span>
             <span className="breadcrumb__current">Privacy Policy</span>
           </nav>
-          <span className="contact-eyebrow">LEGAL</span>
-          <h1 className="contact-title">
-            <SplitTextReveal text="PRIVACY" />
-            <br />
-            <span className="contact-title--outline">
-              <SplitTextReveal text="POLICY" delay={0.2} />
-            </span>
-          </h1>
-          <p className="contact-subtitle">
-            Last updated: July 2026. Your privacy matters to us.
-          </p>
-        </ScrollReveal>
-      </section>
+        }
+      />
 
       <section className="legal-content">
         {sections.map(({ title, content }) => (

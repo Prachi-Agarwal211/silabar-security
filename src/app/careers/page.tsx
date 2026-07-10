@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
+import PageHero from '@/components/layout/PageHero'
 import { Phone, Mail, CheckCircle } from 'lucide-react'
 import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
@@ -9,12 +10,12 @@ import { ogMetadata } from '@/lib/metadata'
 export const metadata: Metadata = {
   title: 'Careers — Join India\'s Most Trusted Security Team | Silbar Security',
   description:
-    'Build your career with Silbar Security Services. We hire security guards, supervisors, account managers, and corporate staff across PAN India. PSARA-trained. Growth guaranteed.',
-  ...ogMetadata('Careers — Join India\'s Most Trusted Security Team | Silbar Security', 'Build your career with Silbar Security Services. We hire security guards, supervisors, account managers, and corporate staff across PAN India. PSARA-trained. Growth guaranteed.', '/careers'),
+    'Build your career with Silbar Security Services. We hire security guards, supervisors, account managers, and corporate staff across PAN India. Professional training. Growth guaranteed.',
+  ...ogMetadata('Careers — Join India\'s Most Trusted Security Team | Silbar Security', 'Build your career with Silbar Security Services. We hire security guards, supervisors, account managers, and corporate staff across PAN India. Professional training. Growth guaranteed.', '/careers'),
 }
 
 const WHY_JOIN = [
-  'PSARA-certified training and certification',
+  'Professional training at our 3-acre training center',
   'On-time salary with ESI, PF, and statutory benefits',
   'Career growth from guard to supervisor to manager',
   '24/7 insurance coverage for all deployed personnel',
@@ -27,7 +28,7 @@ const OPENINGS = [
     title: 'Security Guard (Armed & Unarmed)',
     type: 'Full-time',
     locations: 'Jaipur, Delhi, Mumbai, Ahmedabad, Bengaluru',
-    description: 'PSARA-licensed security guards for corporate offices, factories, hospitals, and residential societies.',
+    description: 'Trained security guards for corporate offices, factories, hospitals, and residential societies.',
   },
   {
     title: 'Security Supervisor',
@@ -82,27 +83,29 @@ export default function CareersPage() {
             },
           })))
         }} />
-      <section className="page-hero page-hero--short">
-        <ScrollReveal>
+      <PageHero
+        eyebrow="JOIN THE FORCE"
+        title={
+          <>
+            <SplitTextReveal text="CAREERS AT" />
+            <br />
+            <span className="page-hero-title--outline">
+              <SplitTextReveal text="SILBAR SECURITY" delay={0.2} />
+            </span>
+          </>
+        }
+        subtitle={
+          <>Be part of India&apos;s trusted security force. 7,000+ professionals. 200+ cities. One standard.</>
+        }
+        size="compact"
+        topContent={
           <nav className="breadcrumb" aria-label="Breadcrumb">
             <Link href="/" className="breadcrumb__link">Home</Link>
             <span className="breadcrumb__sep">›</span>
             <span className="breadcrumb__current">Careers</span>
           </nav>
-          <span className="contact-eyebrow">JOIN THE FORCE</span>
-          <h1 className="contact-title">
-            <SplitTextReveal text="CAREERS AT" />
-            <br />
-            <span className="contact-title--outline">
-              <SplitTextReveal text="SILBAR SECURITY" delay={0.2} />
-            </span>
-          </h1>
-          <p className="contact-subtitle">
-            Be part of India&apos;s most trusted PSARA-licensed security force. 
-            7,000+ professionals. 200+ cities. One standard.
-          </p>
-        </ScrollReveal>
-      </section>
+        }
+      />
 
       <section className="service-detail-features service-detail-features--padded">
         <div className="service-detail-section-inner service-detail-section-inner--no-padding">

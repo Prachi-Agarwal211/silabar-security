@@ -37,7 +37,7 @@ export default function Footer() {
         </div>
         <div className="footer-trust-badge">
           <Shield size={14} className="footer-trust-badge__icon" />
-          PSARA-2005 Licensed
+          Licensed &amp; Insured
         </div>
         <div className="footer-trust-badge">
           <Shield size={14} className="footer-trust-badge__icon" />
@@ -45,7 +45,7 @@ export default function Footer() {
         </div>
         <div className="footer-trust-badge">
           <Shield size={14} className="footer-trust-badge__icon" />
-          7,000+ Officers
+          7,000+ Professionals
         </div>
       </div>
 
@@ -54,8 +54,8 @@ export default function Footer() {
         <div className="footer-brand-col">
           <div className="footer-brand">Silbar Security</div>
           <p className="footer-tagline">
-            India&apos;s most trusted PSARA-licensed security services company.
-            Founded by law enforcement professionals for uncompromising protection.
+            India&apos;s trusted security services company.
+            Founded by security professionals for uncompromising protection.
           </p>
           <div className="footer-contact-list">
             <a href="tel:+919352303333" className="footer-contact-item">

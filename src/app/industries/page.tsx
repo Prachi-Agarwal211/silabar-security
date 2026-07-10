@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
+import PageHero from '@/components/layout/PageHero'
 import { INDUSTRIES } from '@/data/industries'
 import { GlassCard } from '@/components/ui/GlassCard'
 import { ArrowRight, Phone, Building2, Factory, Heart, Hotel, Warehouse, GraduationCap, ShoppingBag, Landmark, Server, Car, Globe, Home } from 'lucide-react'
@@ -47,26 +48,29 @@ export default function IndustriesPage() {
           }))
         })
       }} />
-      <section className="industries-hero">
-        <ScrollReveal className="industries-hero__inner">
+      <PageHero
+        eyebrow="WHERE WE OPERATE"
+        title={
+          <>
+            <SplitTextReveal text="12 INDUSTRIES." />
+            <br />
+            <span className="page-hero-title--outline">
+              <SplitTextReveal text="ONE STANDARD." delay={0.2} />
+            </span>
+          </>
+        }
+        subtitle={
+          <>Silbar Security provides specialized security solutions tailored to 12 distinct industries in India, including manufacturing, healthcare, hospitality, banking, and data centers. Our teams are industry-trained and deployed with full statutory compliance.</>
+        }
+        size="tall"
+        topContent={
           <nav className="breadcrumb" aria-label="Breadcrumb">
             <Link href="/" className="breadcrumb__link">Home</Link>
             <span className="breadcrumb__sep">›</span>
             <span className="breadcrumb__current">Industries</span>
           </nav>
-          <span className="page-eyebrow">WHERE WE OPERATE</span>
-          <h1 className="industries-title">
-            <SplitTextReveal text="12 INDUSTRIES." />
-            <br />
-            <span className="industries-title--outline">
-              <SplitTextReveal text="ONE STANDARD." delay={0.2} />
-            </span>
-          </h1>
-          <p className="industries-subtitle">
-            <strong>Bottom Line Up Front:</strong> Silbar Security provides specialized, PSARA-compliant security solutions tailored to 12 distinct industries in India, including manufacturing, healthcare, hospitality, banking, and data centers. Our teams are industry-certified and deployed with zero compromise on statutory compliance.
-          </p>
-        </ScrollReveal>
-      </section>
+        }
+      />
 
       {/* Industries grid — styled like services panels */}
       <section className="services-comic-section services-comic-section--padded">

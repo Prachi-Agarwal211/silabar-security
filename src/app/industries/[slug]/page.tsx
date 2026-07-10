@@ -6,6 +6,7 @@ import { SERVICES } from '@/data/services'
 import { CheckCircle, ArrowRight, AlertTriangle, Phone } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
+import PageHero from '@/components/layout/PageHero'
 import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
 
@@ -70,8 +71,12 @@ export default async function IndustryPage({
 
       <main className="industry-detail-page" id="main-content">
 
-        <section className="industry-detail-hero">
-          <ScrollReveal>
+        <PageHero
+          eyebrow={industry.shortTitle}
+          title={<SplitTextReveal text={industry.title} mode="words" />}
+          subtitle={industry.description}
+          size="tall"
+          topContent={
             <nav className="breadcrumb" aria-label="Breadcrumb">
               <Link href="/" className="breadcrumb__link">Home</Link>
               <span className="breadcrumb__sep">›</span>
@@ -79,10 +84,8 @@ export default async function IndustryPage({
               <span className="breadcrumb__sep">›</span>
               <span className="breadcrumb__current">{industry.shortTitle}</span>
             </nav>
-            <h1 className="industry-detail-title">
-              <SplitTextReveal text={industry.title} mode="words" />
-            </h1>
-            <p className="industry-detail-subtitle">{industry.description}</p>
+          }
+          bottomContent={
             <div className="service-detail-ctas">
               <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--primary">
                 <Phone size={16} /> Call Now
@@ -96,8 +99,8 @@ export default async function IndustryPage({
                 WhatsApp Us
               </a>
             </div>
-          </ScrollReveal>
-        </section>
+          }
+        />
 
         <div className="detail-layout-container">
           <div className="detail-main-content">

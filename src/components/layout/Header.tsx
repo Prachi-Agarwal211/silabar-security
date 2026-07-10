@@ -19,6 +19,7 @@ export default function Header() {
   const pathname = usePathname()
   const [hidden, setHidden] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [transparent, setTransparent] = useState(true)
   const [scrollProgress, setScrollProgress] = useState(0)
   const [menuOpen, setMenuOpen] = useState(false)
   const lastScrollY = useRef(0)
@@ -26,6 +27,11 @@ export default function Header() {
   const wasMenuOpen = useRef(false)
 
   useEffect(() => {
+    const setInitialTransparent = () => {
+      if (pathname === '/') setTransparent(window.scrollY < window.innerHeight)
+    }
+    setInitialTransparent()
+
     const handleScroll = () => {
       if (!ticking.current) {
         requestAnimationFrame(() => {
@@ -33,6 +39,7 @@ export default function Header() {
           const direction = currentY > lastScrollY.current ? 'down' : 'up'
           
           setScrolled(currentY > 50)
+          if (pathname === '/') setTransparent(currentY < window.innerHeight)
           
           const totalScroll = document.documentElement.scrollHeight - window.innerHeight
           setScrollProgress(totalScroll > 0 ? (currentY / totalScroll) * 100 : 0)
@@ -81,7 +88,7 @@ export default function Header() {
 
   return (
     <>
-      <header className={`hero-header glass-header${hidden ? ' hero-header--hidden' : ''}${scrolled ? ' hero-header--scrolled' : ''}${pathname !== '/' ? ' hero-header--solid' : ''}`}>
+      <header className={`hero-header glass-header${hidden ? ' hero-header--hidden' : ''}${scrolled ? ' hero-header--scrolled' : ''}${pathname !== '/' || !transparent ? ' hero-header--solid' : ''}${transparent && pathname === '/' ? ' hero-header--transparent' : ''}`}>
         <Link href="/" className="hero-logo" onClick={() => setMenuOpen(false)}>
           <Shield className="hero-logo__icon" size={24} strokeWidth={2} />
           Silbar Security

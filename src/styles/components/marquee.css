@@ -18,6 +18,7 @@
   opacity: 0;
   transform-origin: 50% 50%;
   will-change: transform;
+  pointer-events: none;
   transition: opacity 0.3s ease;
 }
 

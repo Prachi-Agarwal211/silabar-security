@@ -7,6 +7,7 @@ import { GEO_COORDINATES } from '@/lib/geo-coordinates'
 import { Phone, MapPin } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
+import PageHero from '@/components/layout/PageHero'
 import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
 
@@ -121,8 +122,17 @@ export default async function CitySEOPage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       <main className="seo-page" id="main-content">
-        <section className="seo-page-hero">
-          <ScrollReveal>
+        <PageHero
+          title={<SplitTextReveal text={`Security Services in ${city.name}`} mode="words" />}
+          subtitle={
+            <>
+              PSARA-licensed security guard services in {city.name}, {city.state}. 
+              Manned guarding, CCTV surveillance, event security, and facility management. 
+              {state ? ` Covering all ${state.districts} districts of ${state.name}.` : ''}
+            </>
+          }
+          size="tall"
+          topContent={
             <nav className="breadcrumb" aria-label="Breadcrumb">
               <Link href="/" className="breadcrumb__link">Home</Link>
               <span className="breadcrumb__sep">›</span>
@@ -130,14 +140,8 @@ export default async function CitySEOPage({
               <span className="breadcrumb__sep">›</span>
               <span className="breadcrumb__current">{city.name}</span>
             </nav>
-            <h1 className="seo-page-title">
-              <SplitTextReveal text={`Security Services in ${city.name}`} mode="words" />
-            </h1>
-            <p className="seo-page-subtitle">
-              PSARA-licensed security guard services in {city.name}, {city.state}. 
-              Manned guarding, CCTV surveillance, event security, and facility management. 
-              {state ? ` Covering all ${state.districts} districts of ${state.name}.` : ''}
-            </p>
+          }
+          bottomContent={
             <div className="service-detail-ctas">
               <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--primary">
                 <Phone size={16} /> Call Now
@@ -151,8 +155,8 @@ export default async function CitySEOPage({
                 WhatsApp Us
               </a>
             </div>
-          </ScrollReveal>
-        </section>
+          }
+        />
 
         <section className="seo-services-section">
           <div className="service-detail-section-inner">

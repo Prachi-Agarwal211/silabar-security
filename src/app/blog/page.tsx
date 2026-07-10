@@ -2,28 +2,21 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
+import PageHero from '@/components/layout/PageHero'
 import { Calendar, Clock, ArrowRight } from 'lucide-react'
 import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
 
 export const metadata: Metadata = {
   title: 'Security Blog — Insights & Tips | Silbar Security',
-  description: 'Expert insights on security services, PSARA compliance, safety tips, and industry trends. Silbar Security\'s official blog for Indian businesses.',
-  ...ogMetadata('Security Blog — Insights & Tips | Silbar Security', 'Expert insights on security services, PSARA compliance, safety tips, and industry trends. Silbar Security\'s official blog for Indian businesses.', '/blog'),
+  description: 'Expert insights on security services, safety tips, and industry trends. Silbar Security\'s official blog for Indian businesses.',
+  ...ogMetadata('Security Blog — Insights & Tips | Silbar Security', 'Expert insights on security services, safety tips, and industry trends. Silbar Security\'s official blog for Indian businesses.', '/blog'),
 }
 
 const POSTS = [
   {
-    title: 'PSARA Compliance 2026: Complete Guide for Indian Businesses',
-    excerpt: 'Everything you need to know about PSARA 2005 compliance for private security agencies in India. Training requirements, licensing process, and audit preparation.',
-    slug: 'psara-compliance-guide-2026',
-    date: 'July 2026',
-    readTime: '8 min',
-    category: 'Compliance',
-  },
-  {
     title: 'Security Services in Jaipur: Complete Business Guide',
-    excerpt: 'Comprehensive guide to security guard services in Jaipur. Types of guards, pricing, PSARA requirements, and how to choose the right security agency.',
+    excerpt: 'Comprehensive guide to security guard services in Jaipur. Types of guards, pricing, and how to choose the right security agency.',
     slug: 'security-services-jaipur-guide',
     date: 'July 2026',
     readTime: '6 min',
@@ -31,7 +24,7 @@ const POSTS = [
   },
   {
     title: 'How to Choose a Security Agency in India: 7 Critical Questions',
-    excerpt: 'Before you sign a security contract, ask these 7 questions. From PSARA licensing to guard training to replacement guarantees.',
+    excerpt: 'Before you sign a security contract, ask these 7 questions. From guard training to replacement guarantees.',
     slug: 'how-to-choose-security-agency-india',
     date: 'June 2026',
     readTime: '5 min',
@@ -47,7 +40,7 @@ const POSTS = [
   },
   {
     title: 'Hospital Security Challenges and Best Practices in India',
-    excerpt: 'Indian hospitals face unique security challenges. Learn how PSARA-trained guards, CCTV, and access control create safer healthcare environments.',
+    excerpt: 'Indian hospitals face unique security challenges. Learn how professional guards, CCTV, and access control create safer healthcare environments.',
     slug: 'hospital-security-india',
     date: 'May 2026',
     readTime: '6 min',
@@ -134,28 +127,12 @@ const POSTS = [
     category: 'Corporate',
   },
   {
-    title: 'Security Guard License in India: PSARA License Procedure Explained',
-    excerpt: 'Step-by-step guide to getting a PSARA license for security agencies and guards in India.',
-    slug: 'security-guard-license-procedure',
-    date: 'April 2026',
-    readTime: '7 min',
-    category: 'Compliance',
-  },
-  {
     title: 'Residential Security: Protecting Homes and Apartment Complexes',
     excerpt: 'Security solutions for residential societies, gated communities, and individual homes.',
     slug: 'residential-security-services',
     date: 'April 2026',
     readTime: '6 min',
     category: 'Residential',
-  },
-  {
-    title: 'Security Guard Training Standards in India: PSARA Curriculum Explained',
-    excerpt: 'What goes into professional security guard training? The complete PSARA training curriculum breakdown.',
-    slug: 'security-guard-training-standards',
-    date: 'March 2026',
-    readTime: '8 min',
-    category: 'Training',
   },
   {
     title: 'Hotel Security Management: Guest Safety and Property Protection',
@@ -183,26 +160,29 @@ export default function BlogPage() {
           }))
         })
       }} />
-      <section className="page-hero page-hero--short">
-        <ScrollReveal>
+      <PageHero
+        eyebrow="KNOWLEDGE HUB"
+        title={
+          <>
+            <SplitTextReveal text="SECURITY" />
+            <br />
+            <span className="page-hero-title--outline">
+              <SplitTextReveal text="INSIGHTS" delay={0.2} />
+            </span>
+          </>
+        }
+        subtitle={
+          <>Expert advice on security services, compliance, safety tips, and industry trends for Indian businesses.</>
+        }
+        size="compact"
+        topContent={
           <nav className="breadcrumb" aria-label="Breadcrumb">
             <Link href="/" className="breadcrumb__link">Home</Link>
             <span className="breadcrumb__sep">›</span>
             <span className="breadcrumb__current">Blog</span>
           </nav>
-          <span className="contact-eyebrow">KNOWLEDGE HUB</span>
-          <h1 className="contact-title">
-            <SplitTextReveal text="SECURITY" />
-            <br />
-            <span className="contact-title--outline">
-              <SplitTextReveal text="INSIGHTS" delay={0.2} />
-            </span>
-          </h1>
-          <p className="contact-subtitle">
-            Expert advice on security services, compliance, safety tips, and industry trends for Indian businesses.
-          </p>
-        </ScrollReveal>
-      </section>
+        }
+      />
 
       <section className="service-detail-section-inner blog-listing-section">
         <div className="blog-grid">

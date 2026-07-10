@@ -7,6 +7,7 @@ import { GEO_COORDINATES } from '@/lib/geo-coordinates'
 import { ArrowRight, Phone, MapPin } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
+import PageHero from '@/components/layout/PageHero'
 import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
 
@@ -26,7 +27,7 @@ export async function generateMetadata({
   if (!location) return {}
 
   const title = `Security Guard Services in ${location.name} | Silbar Security`
-  const description = `PSARA-licensed security guard services in ${location.name}. Silbar Security provides manned guarding, industrial security, CCTV surveillance, and facility management across ${location.majorCities.slice(0, 3).join(', ')} and all of ${location.name}.`
+  const description = `ISO 9001:2015 certified security guard services in ${location.name}. Silbar Security provides manned guarding, industrial security, CCTV surveillance, and facility management across ${location.majorCities.slice(0, 3).join(', ')} and all of ${location.name}.`
 
   return {
     title,
@@ -49,7 +50,7 @@ export default async function StateSEOPage({
     '@type': 'LocalBusiness',
     '@id': `https://www.silbarsecurity.in/security-services/${state}`,
     name: `Silbar Security Services — ${location.name}`,
-    description: `PSARA-licensed security services in ${location.name}`,
+    description: `Security services in ${location.name}`,
     url: 'https://www.silbarsecurity.in',
     telephone: CONTACT.phoneRaw,
     email: CONTACT.email,
@@ -127,21 +128,24 @@ export default async function StateSEOPage({
 
       <main className="seo-page" id="main-content">
 
-        <section className="seo-page-hero">
-          <ScrollReveal>
+        <PageHero
+          title={<SplitTextReveal text={`Security Guard Services in ${location.name}`} mode="words" />}
+          subtitle={
+            <>
+              PSARA-licensed, ISO 9001:2015 certified security services across
+              all {location.districts} districts of {location.name}.
+              Serving {location.majorCities.join(', ')} and beyond.
+            </>
+          }
+          size="tall"
+          topContent={
             <nav className="breadcrumb" aria-label="Breadcrumb">
               <Link href="/" className="breadcrumb__link">Home</Link>
               <span className="breadcrumb__sep">›</span>
               <span className="breadcrumb__current">Security Services in {location.name}</span>
             </nav>
-            <h1 className="seo-page-title">
-              <SplitTextReveal text={`Security Guard Services in ${location.name}`} mode="words" />
-            </h1>
-            <p className="seo-page-subtitle">
-              PSARA-licensed, ISO 9001:2015 certified security services across
-              all {location.districts} districts of {location.name}.
-              Serving {location.majorCities.join(', ')} and beyond.
-            </p>
+          }
+          bottomContent={
             <div className="service-detail-ctas">
               <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--primary">
                 <Phone size={16} /> Call Now
@@ -155,8 +159,8 @@ export default async function StateSEOPage({
                 WhatsApp Us
               </a>
             </div>
-          </ScrollReveal>
-        </section>
+          }
+        />
 
         {/* Services in this state */}
         <section className="seo-services-section">

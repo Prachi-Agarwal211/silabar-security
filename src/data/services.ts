@@ -22,23 +22,23 @@ export const SERVICES: Service[] = [
     shortTitle: 'Manned Guarding',
     icon: 'user-check',
     description:
-      'PSARA-licensed armed and unarmed security guards for factories, offices, hospitals, residential societies, and commercial properties across India.',
+      'Professional armed and unarmed security guards for factories, offices, hospitals, residential societies, and commercial properties across India.',
     longDescription:
-      'Silbar Security deploys over 7,000 PSARA-licensed security personnel across India. Our guards are uniformed, trained in access control, first aid, fire safety, and emergency response. We deploy armed guards, unarmed guards, lady guards, supervisors, and bodyguards based on client risk assessment. All personnel undergo background verification and are covered under ESI, PF, and statutory compliance.',
+      'Silbar Security deploys over 7,000 security personnel across India. Our guards are uniformed, trained in access control, first aid, fire safety, and emergency response. We deploy armed guards, unarmed guards, lady guards, supervisors, and bodyguards based on client risk assessment. All personnel undergo background verification and are covered under ESI, PF, and statutory compliance.',
     features: [
       'Armed & unarmed security guards',
       'Lady guards for gender-sensitive environments',
       'Supervisors and shift managers',
       'Bodyguards and personal protection officers',
       'Patrolling and access control',
-      'PSARA-licensed, background verified',
+      'Background verified, professionally trained',
       'Full statutory compliance (ESI, PF, Gratuity)',
     ],
     industries: ['Manufacturing', 'Hospitals', 'Hotels', 'Warehouses', 'Banks', 'Corporate', 'Residential', 'Retail'],
     faqs: [
       {
-        q: 'Are your security guards PSARA licensed?',
-        a: 'Yes. All our security personnel are licensed under the Private Security Agencies Regulation Act (PSARA) 2005. We hold valid PSARA licenses across multiple states in India.',
+        q: 'Are your security guards licensed and trained?',
+        a: 'Yes. All our security personnel are professionally trained, background-verified, and covered under full statutory compliance including ESI, PF, and insurance.',
       },
       {
         q: 'Do you provide armed security guards?',
@@ -46,7 +46,7 @@ export const SERVICES: Service[] = [
       },
       {
         q: 'What training do your guards receive?',
-        a: 'All guards complete PSARA-mandated training including unarmed combat, first aid, fire safety, access control, crowd management, and emergency response protocols.',
+        a: 'All guards complete rigorous training including unarmed combat, first aid, fire safety, access control, crowd management, and emergency response protocols at our dedicated training center.',
       },
       {
         q: 'Can you deploy lady guards?',
@@ -224,7 +224,7 @@ export const SERVICES: Service[] = [
         a: 'A standard facility audit takes 2–5 business days depending on the size of the premises. We deliver a written report within 7 working days of the audit.',
       },
       {
-        q: 'Is a security audit mandatory for PSARA compliance?',
+        q: 'Is a security audit mandatory for our industry?',
         a: 'While not mandated for all facilities, many insurance policies and enterprise contracts require documented security assessments. We provide audit reports suitable for compliance documentation.',
       },
     ],
@@ -275,11 +275,11 @@ export const SERVICES: Service[] = [
     shortTitle: 'Security Training',
     icon: 'graduation-cap',
     description:
-      'PSARA-certified security training for guards, supervisors, and corporate security teams. Weapons handling, first aid, fire safety, and soft skills.',
+      'Professional security training for guards, supervisors, and corporate security teams. Weapons handling, first aid, fire safety, and soft skills.',
     longDescription:
-      'Quality security starts with quality training. Silbar Security operates PSARA-compliant training centers where security personnel receive certified instruction in unarmed combat, weapons handling (for armed guards), first aid and CPR, fire safety and evacuation, access control procedures, report writing, and professional conduct. We also offer in-house training programs for corporate security teams.',
+      'Quality security starts with quality training. Silbar Security operates a dedicated 3-acre training center where security personnel receive certified instruction in unarmed combat, weapons handling (for armed guards), first aid and CPR, fire safety and evacuation, access control procedures, report writing, and professional conduct. We also offer in-house training programs for corporate security teams.',
     features: [
-      'PSARA-mandated security training',
+      'Comprehensive security training',
       'Weapons handling and safety',
       'First aid and CPR certification',
       'Fire safety and evacuation drills',
@@ -291,7 +291,7 @@ export const SERVICES: Service[] = [
     faqs: [
       {
         q: 'Do you provide training certificates?',
-        a: 'Yes. All trainees receive PSARA-compliant training completion certificates. We maintain training records for audit and compliance purposes.',
+        a: 'Yes. All trainees receive training completion certificates. We maintain training records for audit and compliance purposes.',
       },
       {
         q: 'Can you train our existing security team?',

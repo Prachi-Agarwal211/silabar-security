@@ -22,14 +22,14 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.silbarsecurity.in'),
   title: {
-    default: 'Silbar Security Services | PSARA-Licensed Security Agency India',
+    default: 'Silbar Security Services | Trusted Security Agency India',
     template: '%s | Silbar Security Services',
   },
   description:
-    'Silbar Security Services Pvt. Ltd. — ISO 9001:2015 & PSARA-2005 certified security agency with 7,000+ licensed officers. Manned guarding, electronic surveillance, facility management, and VIP protection across PAN India.',
+    'Silbar Security Services Pvt. Ltd. — ISO 9001:2015 certified security agency with 7,000+ professionals. Manned guarding, electronic surveillance, facility management, and VIP protection across PAN India.',
   keywords: [
     'security agency India',
-    'PSARA licensed security company',
+    'security company India',
     'manned guarding services',
     'industrial security Rajasthan',
     'security guard company Jaipur',
@@ -56,9 +56,9 @@ export const metadata: Metadata = {
     locale: 'en_IN',
     url: 'https://www.silbarsecurity.in',
     siteName: 'Silbar Security Services',
-    title: 'Silbar Security Services | PSARA-Licensed Security Agency India',
+    title: 'Silbar Security Services | Trusted Security Agency India',
     description:
-      'ISO 9001:2015 & PSARA-2005 certified. 7,000+ licensed officers. Manned guarding, VIP protection, surveillance, and facility management across India.',
+      'ISO 9001:2015 certified. 7,000+ professionals. Manned guarding, VIP protection, surveillance, and facility management across India.',
     images: [
       {
         url: '/og-image.jpg',
@@ -70,9 +70,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Silbar Security Services | PSARA-Licensed Security Agency India',
+    title: 'Silbar Security Services | Trusted Security Agency India',
     description:
-      'ISO certified. 7,000+ officers. Security services across PAN India.',
+      'ISO 9001:2015 certified. 7,000+ professionals. Security services across PAN India.',
     images: ['/og-image.jpg'],
   },
   alternates: {
@@ -128,7 +128,7 @@ export default function RootLayout({
                 height: 60,
               },
               description:
-                'ISO 9001:2015 & PSARA-2005 certified private security agency with 7,000+ licensed officers. Manned guarding, electronic surveillance, facility management, VIP protection across PAN India.',
+                'ISO 9001:2015 certified private security agency with 7,000+ professionals. Manned guarding, electronic surveillance, facility management, VIP protection across PAN India.',
               telephone: '+91-9352303333',
               email: CONTACT.email,
               foundingDate: '2005',
@@ -174,7 +174,7 @@ export default function RootLayout({
               diversityPolicy: 'https://www.silbarsecurity.in/about',
               knowsAbout: [
                 'Security Guard Services India',
-                'PSARA Licensed Security Agency',
+                'Private Security Agency India',
                 'Manned Guarding Services',
                 'Industrial Security',
                 'Electronic Surveillance',
@@ -185,12 +185,6 @@ export default function RootLayout({
                 'Mobile Patrol Security',
               ],
               hasCredential: [
-                {
-                  '@type': 'EducationalOccupationalCredential',
-                  credentialCategory: 'license',
-                  name: 'PSARA License',
-                  recognizedBy: { '@type': 'Organization', name: 'Government of India' },
-                },
                 {
                   '@type': 'EducationalOccupationalCredential',
                   credentialCategory: 'certification',
@@ -212,7 +206,7 @@ export default function RootLayout({
               url: 'https://www.silbarsecurity.in',
               name: 'Silbar Security Services',
               description:
-                'PSARA-licensed private security agency in India. Manned guarding, CCTV, facility management, event security.',
+                'Private security agency in India. Manned guarding, CCTV, facility management, event security.',
               potentialAction: {
                 '@type': 'SearchAction',
                 target: {

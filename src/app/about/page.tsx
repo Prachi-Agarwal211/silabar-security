@@ -7,34 +7,35 @@ import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import { GlassCard } from '@/components/ui/GlassCard'
 import { GradientText } from '@/components/ui/GradientText'
 import { MagneticButton } from '@/components/ui/MagneticButton'
+import PageHero from '@/components/layout/PageHero'
 import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
 
 export const metadata: Metadata = {
-  title: 'About Silbar Security — PSARA-Licensed & ISO-Certified',
+  title: 'About Silbar Security — ISO 9001:2015 Certified Security Agency',
   description:
-    'Silbar Security Services — ISO 9001:2015 & PSARA-2005 certified. 7,000+ licensed officers. Manned guarding, electronic surveillance, facility management across PAN India.',
-  ...ogMetadata('About Silbar Security — PSARA-Licensed & ISO-Certified', 'Silbar Security Services — ISO 9001:2015 & PSARA-2005 certified. 7,000+ licensed officers. Manned guarding, electronic surveillance, facility management across PAN India.', '/about'),
+    'Silbar Security Services — ISO 9001:2015 certified. 7,000+ professionals. Manned guarding, electronic surveillance, facility management across PAN India.',
+  ...ogMetadata('About Silbar Security — ISO 9001:2015 Certified Security Agency', 'Silbar Security Services — ISO 9001:2015 certified. 7,000+ professionals. Manned guarding, electronic surveillance, facility management across PAN India.', '/about'),
 }
 
 const STATS = [
-  { number: '7,000+', label: 'Licensed Security Officers' },
+  { number: '7,000+', label: 'Security Professionals' },
   { number: '200+', label: 'Cities Served' },
   { number: '15+', label: 'Years of Experience' },
   { number: '500+', label: 'Enterprise Clients' },
 ]
 
 const CERTIFICATIONS = [
-  { name: 'PSARA 2005', desc: 'Licensed under Private Security Agencies Regulation Act across multiple states' },
   { name: 'ISO 9001:2015', desc: 'Quality Management System certified for security service delivery' },
+  { name: '3-Acre Training Center', desc: 'Dedicated training facility with modern equipment and certified instructors' },
   { name: 'MSME Registered', desc: 'Registered with Ministry of Micro, Small & Medium Enterprises' },
   { name: 'GST Compliant', desc: 'Fully GST registered and compliant for all service invoicing' },
 ]
 
 const WHY_SILBAR = [
   'Founded by experienced security and risk management professionals',
-  'PSARA licensed across multiple Indian states',
-  'ISO 9001:2015 certified quality management',
+  'ISO 9001:2015 certified quality management across all operations',
+  'Dedicated 3-acre training center for security personnel',
   'Full statutory compliance — ESI, PF, Gratuity, Minimum Wages',
   '24-hour guard replacement guarantee',
   'Dedicated account manager for every client',
@@ -50,31 +51,34 @@ export default function AboutPage() {
             '@context': 'https://schema.org',
             '@type': 'AboutPage',
             name: 'About Silbar Security Services',
-            description: 'PSARA-licensed, ISO 9001:2015 certified security agency. Founded by security professionals.',
+            description: 'ISO 9001:2015 certified security agency. Founded by security professionals.',
             mainContentOfPage: { '@type': 'WebPageElement' },
             primaryImageOfPage: '/og-image.jpg',
           })
         }} />
-      <section className="about-hero">
-        <ScrollReveal className="about-hero__inner">
+      <PageHero
+        eyebrow="ABOUT US"
+        title={
+          <>
+            <SplitTextReveal text="NOT JUST SECURITY." />
+            <br />
+            <span className="page-hero-title--outline">
+              <SplitTextReveal text="A COMMITMENT." delay={0.2} />
+            </span>
+          </>
+        }
+        subtitle={
+          <>Silbar Security Services is an ISO 9001:2015 certified private security agency in India, established in 2005. Headquartered in Jaipur, we provide manned guarding, electronic surveillance, and facility management across 200+ cities with 7,000+ trained security professionals.</>
+        }
+        size="tall"
+        topContent={
           <nav className="breadcrumb" aria-label="Breadcrumb">
             <Link href="/" className="breadcrumb__link">Home</Link>
             <span className="breadcrumb__sep">›</span>
             <span className="breadcrumb__current">About</span>
           </nav>
-          <span className="page-eyebrow">ABOUT US</span>
-          <GradientText as="h1" className="about-title">
-            <SplitTextReveal text="NOT JUST SECURITY." />
-            <br />
-            <span className="about-title--outline">
-              <SplitTextReveal text="A COMMITMENT." delay={0.2} />
-            </span>
-          </GradientText>
-          <p className="about-subtitle">
-            <strong>Bottom Line Up Front:</strong> Silbar Security Services is an ISO 9001:2015 and PSARA-2005 certified private security agency in India, established in 2005. Headquartered in Jaipur, we provide manned guarding, electronic surveillance, and facility management across 200+ cities with 7,000+ licensed security personnel.
-          </p>
-        </ScrollReveal>
-      </section>
+        }
+      />
 
       {/* Stats - Bento Grid */}
       <section className="about-stats">
@@ -111,7 +115,7 @@ export default function AboutPage() {
               being delivered: under-trained guards, non-compliant agencies, and no accountability.
             </p>
             <p className="about-story__body">
-              We built Silbar to be different. Every guard we deploy is PSARA-trained,
+              We built Silbar to be different. Every guard we deploy is professionally trained,
               background verified, and covered under full statutory compliance. Every client
               gets a dedicated account manager, monthly MIS reports, and a 24-hour replacement
               guarantee. That&apos;s not industry standard. That&apos;s our standard.
@@ -139,7 +143,7 @@ export default function AboutPage() {
           <div className="timeline-container">
             {[
               { year: '2005', title: 'The Foundation', desc: 'Silbar Security established in Jaipur by experienced security professionals.' },
-              { year: '2012', title: 'PSARA Compliance', desc: 'Expanded operations across Rajasthan, becoming one of the first fully PSARA-compliant agencies.' },
+              { year: '2012', title: 'Regional Expansion', desc: 'Expanded operations across Rajasthan, building a PAN India deployment network.' },
               { year: '2016', title: 'ISO Certification', desc: 'Achieved ISO 9001:2015 certification for Quality Management Systems.' },
               { year: '2024', title: 'PAN India Presence', desc: 'Now protecting 500+ enterprise clients with a force of 7,000+ licensed officers.' }
             ].map((item, i) => (

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Phone, Mail, MapPin, Clock, MessageCircle } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
+import PageHero from '@/components/layout/PageHero'
 import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
 import { GEO_COORDINATES } from '@/lib/geo-coordinates'
@@ -78,27 +79,29 @@ export default function ContactPage() {
             }
           ])
         }} />
-      <section className="contact-hero">
-        <ScrollReveal className="contact-hero__inner">
+      <PageHero
+        eyebrow="GET IN TOUCH"
+        title={
+          <>
+            <SplitTextReveal text="REQUEST A" />
+            <br />
+            <span className="page-hero-title--outline">
+              <SplitTextReveal text="FREE QUOTE" delay={0.2} />
+            </span>
+          </>
+        }
+        subtitle={
+          <>Tell us about your facility. Our security consultants will respond within 2 business hours.</>
+        }
+        size="compact"
+        topContent={
           <nav className="breadcrumb" aria-label="Breadcrumb">
             <Link href="/" className="breadcrumb__link">Home</Link>
             <span className="breadcrumb__sep">›</span>
             <span className="breadcrumb__current">Contact</span>
           </nav>
-          <span className="contact-eyebrow">GET IN TOUCH</span>
-          <h1 className="contact-title">
-            <SplitTextReveal text="REQUEST A" />
-            <br />
-            <span className="contact-title--outline">
-              <SplitTextReveal text="FREE QUOTE" delay={0.2} />
-            </span>
-          </h1>
-          <p className="contact-subtitle">
-            Tell us about your facility. Our security consultants will
-            respond within 2 business hours.
-          </p>
-        </ScrollReveal>
-      </section>
+        }
+      />
 
       <section className="contact-body">
         <div className="contact-body__inner">

@@ -4,7 +4,6 @@ import { useRef, useEffect } from 'react'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 import { ShieldCheck, ChevronsRight, Shield, Maximize2 } from 'lucide-react'
 import SplitTextReveal from '../animations/SplitTextReveal'
-import { GradientText } from '../ui/GradientText'
 
 const MARQUEE_ITEMS = [
   'Armed Guards',
@@ -72,8 +71,6 @@ export default function ScrollExperience() {
     }
 
 
-
-    ScrollTrigger.normalizeScroll(true)
 
     const mm = gsap.matchMedia()
 
@@ -267,14 +264,14 @@ export default function ScrollExperience() {
         <div className="hero-horizontal-laser-line" />
 
         <div className="hero-badge-container">
-          <GradientText as="h1" className="text-hero-wordmark">
+          <h1 className="text-hero-wordmark">
             <span className="word-thin">
               <SplitTextReveal text="SILBAR" mode="chars" delay={0.4} />
             </span>
             <span className="word-bold">
               <SplitTextReveal text="SECURITY" mode="chars" delay={0.6} />
             </span>
-          </GradientText>
+          </h1>
           <div className="shield-logo-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '1rem' }}>
             <Shield size={16} className="hero-badge-icon" strokeWidth={2} />
           </div>
@@ -315,8 +312,8 @@ export default function ScrollExperience() {
             <span ref={trustDividerRef} className="trust-divider" />
 
             <p ref={trustSubcopyRef} className="trust-subcopy">
-              ISO 9001:2015 &amp; PSARA-2005 CERTIFIED<br />
-              7,000+ LICENSED OFFICERS · PAN INDIA<br />
+              ISO 9001:2015 CERTIFIED<br />
+              7,000+ PROFESSIONALS · PAN INDIA<br />
               INTEGRATED · RELIABLE · 24/7
             </p>
 
@@ -350,7 +347,7 @@ export default function ScrollExperience() {
       </div>
 
       {/* ── The strip — TOP-LEVEL sibling.
-          This black strip wipe should visually lead into the services-comic-section below ── */}
+          This black strip wipe visually leads into the services-split-section below ── */}
       <div ref={marqueeBarRef} className="trust-marquee-bar">
         <div className="trust-marquee-bar__icon">
           <ShieldCheck size={16} strokeWidth={1.75} />
