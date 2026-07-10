@@ -57,7 +57,7 @@ const OPENINGS = [
 
 export default function CareersPage() {
   return (
-    <main className="contact-page" id="main-content">
+    <main className="careers-page" id="main-content">
         <script type="application/ld+json" dangerouslySetInnerHTML={{
           __html: JSON.stringify(OPENINGS.map(job => ({
             '@context': 'https://schema.org',
@@ -104,28 +104,28 @@ export default function CareersPage() {
         </ScrollReveal>
       </section>
 
-      <section className="service-detail-features service-detail-features--padded" style={{ maxWidth: '1200px', margin: '0 auto', padding: 'clamp(2rem, 4vh, 4rem) clamp(1.5rem, 5vw, 6rem)' }}>
-        <div className="service-detail-section-inner" style={{ padding: 0 }}>
-          <h2 className="service-detail-section-title" style={{ marginBottom: '3rem' }}>Why Join Silbar?</h2>
+      <section className="service-detail-features service-detail-features--padded">
+        <div className="service-detail-section-inner service-detail-section-inner--no-padding">
+          <h2 className="service-detail-section-title service-detail-section-title--mb">Why Join Silbar?</h2>
           <div className="bento-grid">
             {WHY_JOIN.map((point, i) => (
-              <ScrollReveal key={point} delay={i * 0.05} className="bento-cell glass-panel bento-cell--wide" style={{ flexDirection: 'row', alignItems: 'center', gap: '1rem', padding: '1.5rem 2rem' }}>
-                <CheckCircle size={24} className="service-detail-feature__icon" style={{ color: 'var(--color-gold)', flexShrink: 0 }} />
-                <span style={{ fontSize: '1.1rem', fontWeight: 500, lineHeight: 1.4 }}>{point}</span>
+              <ScrollReveal key={point} delay={i * 0.05} className="bento-cell glass-panel bento-cell--wide benefit-item">
+                <CheckCircle size={24} className="service-detail-feature__icon" />
+                <span className="benefit-item__text">{point}</span>
               </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="service-detail-section-inner" style={{ paddingTop: '4rem', paddingBottom: '6rem' }}>
-        <h2 className="service-detail-section-title" style={{ marginBottom: '3rem' }}>Current Openings</h2>
-        <div className="bento-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
+      <section className="service-detail-section-inner openings-section">
+        <h2 className="service-detail-section-title service-detail-section-title--mb">Current Openings</h2>
+        <div className="openings-grid">
           {OPENINGS.map((job, i) => (
             <ScrollReveal key={job.title} delay={i * 0.1} className="bento-cell glass-panel">
-              <h3 className="job-card__title" style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--color-cream)', marginBottom: '0.5rem' }}>{job.title}</h3>
-              <p className="job-card__meta" style={{ color: 'var(--color-gold)', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>{job.type} — {job.locations}</p>
-              <p className="job-card__desc" style={{ color: 'rgba(244, 241, 234, 0.85)', lineHeight: 1.6 }}>{job.description}</p>
+              <h3 className="job-card__title">{job.title}</h3>
+              <p className="job-card__meta">{job.type} — {job.locations}</p>
+              <p className="job-card__desc">{job.description}</p>
             </ScrollReveal>
           ))}
         </div>

@@ -29,11 +29,14 @@ export default function ScrollReveal({
       // ponytail: random variance for organic feel
       const randomDelay = delay + (Math.random() - 0.5) * 0.04
 
+      // ponytail: reduce distance on mobile for snappier feel
+      const isMobile = window.innerWidth < 768
+      const distance = isMobile ? 30 : 60
       const fromVars: Record<string, unknown> = { opacity: 0, filter: 'blur(8px)' }
-      if (direction === 'up') fromVars.y = 60
-      else if (direction === 'down') fromVars.y = -60
-      else if (direction === 'left') fromVars.x = 60
-      else if (direction === 'right') fromVars.x = -60
+      if (direction === 'up') fromVars.y = distance
+      else if (direction === 'down') fromVars.y = -distance
+      else if (direction === 'left') fromVars.x = distance
+      else if (direction === 'right') fromVars.x = -distance
 
       const anim = gsap.from(el, {
         ...fromVars,

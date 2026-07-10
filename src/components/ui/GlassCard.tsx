@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import Link from 'next/link'
 
 interface GlassCardProps {
@@ -29,45 +29,98 @@ export function GlassCard({
   style,
   ...props
 }: GlassCardProps) {
-  const ref = useRef<HTMLElement>(null)
-  const [rotation, setRotation] = useState({ x: 0, y: 0 })
+  const outerRef = useRef<HTMLElement>(null)
+  const innerRef = useRef<HTMLDivElement>(null)
+
+  const [isTouchDevice] = useState(() =>
+    typeof window !== 'undefined' && !window.matchMedia('(hover: hover) and (pointer: fine)').matches
+  )
+  const effectiveTilt = tilt && !isTouchDevice
 
   const Component = as || (href ? Link : 'div')
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
-    if (!tilt || !ref.current) return
-    const rect = ref.current.getBoundingClientRect()
-    const x = (e.clientX - rect.left) / rect.width - 0.5
-    const y = (e.clientY - rect.top) / rect.height - 0.5
-    setRotation({ x: -y * 10, y: x * 10 })
-  }
+  useEffect(() => {
+    if (!effectiveTilt || !innerRef.current || !outerRef.current) return;
 
-  const handleMouseLeave = () => {
-    if (tilt) setRotation({ x: 0, y: 0 })
-  }
+    const inner = innerRef.current;
+    const outer = outerRef.current;
+    
+    let animationFrameId: number;
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+
+    const lerp = (start: number, end: number, factor: number) => {
+      return start + (end - start) * factor;
+    };
+
+    const updateTransform = () => {
+      currentX = lerp(currentX, targetX, 0.15);
+      currentY = lerp(currentY, targetY, 0.15);
+      
+      inner.style.transform = `perspective(1000px) rotateX(${currentX}deg) rotateY(${currentY}deg)`;
+      
+      if (Math.abs(targetX - currentX) > 0.01 || Math.abs(targetY - currentY) > 0.01) {
+        animationFrameId = requestAnimationFrame(updateTransform);
+      } else {
+        inner.style.transform = (targetX === 0 && targetY === 0) ? 'none' : inner.style.transform;
+      }
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = outer.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      targetX = -y * 10;
+      targetY = x * 10;
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = requestAnimationFrame(updateTransform);
+    };
+
+    const handleMouseLeave = () => {
+      targetX = 0;
+      targetY = 0;
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = requestAnimationFrame(updateTransform);
+    };
+
+    outer.addEventListener('mousemove', handleMouseMove);
+    outer.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      outer.removeEventListener('mousemove', handleMouseMove);
+      outer.removeEventListener('mouseleave', handleMouseLeave);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [effectiveTilt]);
 
   return (
     <Component
-      ref={ref}
+      ref={outerRef}
       href={href}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className={`glass-card ${className}`}
+      className={className}
       style={{
         ...style,
-        background: `rgba(255, 255, 255, ${opacity})`,
-        backdropFilter: `blur(${blur})`,
-        WebkitBackdropFilter: `blur(${blur})`,
-        border: `1px solid rgba(191, 149, 63, ${borderOpacity})`,
-        borderRadius: '12px',
-        transform: tilt ? `perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)` : 'none',
-        transition: (rotation.x === 0 && rotation.y === 0) 
-          ? 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.3s, background 0.3s' 
-          : 'border-color 0.3s, background 0.3s',
       }}
       {...props}
     >
-      {children}
+      <div 
+        ref={innerRef}
+        className="glass-card"
+        style={{
+          width: '100%',
+          height: '100%',
+          background: `rgba(255, 255, 255, ${opacity})`,
+          backdropFilter: `blur(${blur})`,
+          WebkitBackdropFilter: `blur(${blur})`,
+          border: `1px solid rgba(191, 149, 63, ${borderOpacity})`,
+          borderRadius: '12px',
+          transition: 'border-color 0.3s, background 0.3s, box-shadow 0.3s',
+        }}
+      >
+        {children}
+      </div>
     </Component>
   )
 }

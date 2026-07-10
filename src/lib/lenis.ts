@@ -10,10 +10,12 @@ const tickerCallback = (time: number) => {
 export function initLenis() {
   if (lenis) return lenis
 
+  // ponytail: shorter duration on mobile for snappier scroll
+  const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches
   lenis = new Lenis({
-    duration: 1.2,
+    duration: isMobile ? 0.8 : 1.2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    touchMultiplier: 2,
+    touchMultiplier: isMobile ? 1.5 : 2,
   })
 
   // Sync Lenis → ScrollTrigger

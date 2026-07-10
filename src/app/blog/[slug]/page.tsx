@@ -774,10 +774,10 @@ export default async function BlogPostPage({
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
 
-      <main className="contact-page" id="main-content">
+      <main className="blog-page" id="main-content">
         <section className="page-hero page-hero--short">
           <ScrollReveal>
-            <nav className="breadcrumb" aria-label="Breadcrumb" style={{ marginBottom: '1rem' }}>
+            <nav className="breadcrumb" aria-label="Breadcrumb">
               <Link href="/" className="breadcrumb__link">Home</Link>
               <span className="breadcrumb__sep">›</span>
               <Link href="/blog" className="breadcrumb__link">Blog</Link>
@@ -785,13 +785,13 @@ export default async function BlogPostPage({
               <span className="breadcrumb__current">{post.title}</span>
             </nav>
             <span className="contact-eyebrow">{post.category} — {post.date} · {post.readTime}</span>
-            <h1 className="contact-title" style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)' }}>
+            <h1 className="contact-title contact-title--blog">
               <SplitTextReveal text={post.title} mode="words" />
             </h1>
           </ScrollReveal>
         </section>
 
-        <section className="legal-content glass-panel" style={{ padding: 'clamp(2rem, 5vw, 4rem)', maxWidth: '900px', margin: '0 auto 4rem' }}>
+        <section className="legal-content glass-panel legal-content--blog">
           <ScrollReveal>
             {post.content.split('\n').map((line, i) => {
             if (line.startsWith('## ')) {

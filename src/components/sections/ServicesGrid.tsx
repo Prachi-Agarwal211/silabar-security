@@ -39,7 +39,7 @@ export default function ServicesGrid({ services }: ServicesGridProps) {
     const mm = gsap.matchMedia()
 
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      const items = sectionRef.current!.querySelectorAll('.services-split-item')
+      const items = sectionRef.current!.querySelectorAll('.services-split-item-wrap')
       const tl = gsap.timeline({
         scrollTrigger: { trigger: sectionRef.current, start: 'top 70%' },
       })
@@ -57,23 +57,24 @@ export default function ServicesGrid({ services }: ServicesGridProps) {
     const Icon = ICON_MAP[service.icon] || ShieldHalf
     const numeral = String(index + 1).padStart(2, '0')
     return (
-      <GlassCard
-        href={`/services/${service.slug}`}
-        key={service.slug}
-        className={`services-split-item services-split-item--${side}`}
-        tilt={true}
-        opacity={0.02}
-        borderOpacity={0.08}
-      >
-        <span className="services-split-item__icon">
-          <Icon size={22} strokeWidth={1.75} />
-        </span>
-        <span className="services-split-item__body">
-          <span className="services-split-item__number">{numeral}</span>
-          <span className="services-split-item__title">{service.shortTitle || service.title}</span>
-          <span className="services-split-item__desc">{service.description}</span>
-        </span>
-      </GlassCard>
+      <div className="services-split-item-wrap" key={service.slug}>
+        <GlassCard
+          href={`/services/${service.slug}`}
+          className={`services-split-item services-split-item--${side}`}
+          tilt={true}
+          opacity={0.02}
+          borderOpacity={0.08}
+        >
+          <span className="services-split-item__icon">
+            <Icon size={22} strokeWidth={1.75} />
+          </span>
+          <span className="services-split-item__body">
+            <span className="services-split-item__number">{numeral}</span>
+            <span className="services-split-item__title">{service.shortTitle || service.title}</span>
+            <span className="services-split-item__desc">{service.description}</span>
+          </span>
+        </GlassCard>
+      </div>
     )
   }
 

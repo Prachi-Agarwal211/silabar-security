@@ -1,0 +1,124 @@
+/* ============================================
+   Industry Detail Pages — additional styles
+   ============================================ */
+.industry-detail-page {
+  min-height: 100vh;
+}
+
+.industry-detail-hero {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(7rem, 14vh, 10rem) clamp(1.5rem, 5vw, 6rem) clamp(3rem, 6vh, 5rem);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.industry-detail-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--color-cream);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.industry-detail-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  line-height: 1.75;
+  color: rgba(244, 241, 234, 0.6);
+  max-width: 680px;
+  margin-bottom: 2rem;
+}
+
+.industry-challenges {
+  background: rgba(204, 34, 34, 0.02);
+  border-top: 1px solid rgba(204, 34, 34, 0.06);
+}
+
+.industry-challenges-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 680px;
+}
+
+.industry-challenge-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(204, 34, 34, 0.04);
+  border: 1px solid rgba(204, 34, 34, 0.08);
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: rgba(244, 241, 234, 0.7);
+  line-height: 1.5;
+}
+
+.industry-challenge-item__icon {
+  color: rgba(204, 34, 34, 0.6);
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.industry-services-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.industry-service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5em 1.2em;
+  border: 1px solid rgba(191, 149, 63, 0.2);
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-cream);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.industry-service-link:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+  background: rgba(191, 149, 63, 0.04);
+}
+
+.industry-solutions {
+  background: rgba(191, 149, 63, 0.02);
+}
+
+.industry-related-services {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+@media (max-width: 768px) {
+  .industry-detail-hero {
+    padding: clamp(5rem, 10vh, 7rem) 1.25rem clamp(2rem, 4vh, 3rem);
+  }
+}
+
+/* ============================================
+   Utility classes — replaces inline styles
+   ============================================ */
+.bento-cell--challenge,
+.bento-cell--solution {
+  padding: 1.5rem;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.bento-cell--service-link {
+  padding: 1.5rem;
+  justify-content: center;
+}

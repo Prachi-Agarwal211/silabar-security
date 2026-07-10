@@ -77,17 +77,17 @@ export default function AboutPage() {
       </section>
 
       {/* Stats - Bento Grid */}
-      <section className="about-stats" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 clamp(1.5rem, 5vw, 6rem)' }}>
+      <section className="about-stats">
         <div className="bento-grid">
           {STATS.map(({ number, label }, i) => {
             const numValue = parseInt(number.replace(/\D/g, ''))
             const prefix = number.includes('+') ? '+' : ''
             return (
-              <ScrollReveal key={label} delay={i * 0.1} className="bento-cell glass-panel" style={{ alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
-                <span className="about-stat__number" style={{ fontSize: '3rem', fontWeight: 700, color: 'var(--color-gold)' }}>
+              <ScrollReveal key={label} delay={i * 0.1} className="bento-cell glass-panel bento-cell--stat">
+                <span className="about-stat__number">
                   <Counter to={numValue} suffix={prefix} />
                 </span>
-                <span className="about-stat__label" style={{ marginTop: '0.5rem', fontWeight: 500, letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.85rem', opacity: 0.8 }}>{label}</span>
+                <span className="about-stat__label">{label}</span>
               </ScrollReveal>
             )
           })}
@@ -156,18 +156,18 @@ export default function AboutPage() {
       </section>
 
       {/* Why Silbar - Bento Grid */}
-      <section className="about-why" id="why-silbar" style={{ maxWidth: '1200px', margin: '0 auto', padding: 'clamp(4rem, 8vh, 6rem) clamp(1.5rem, 5vw, 6rem)' }}>
+      <section className="about-why" id="why-silbar">
         <ScrollReveal className="about-why__inner">
           <span className="page-eyebrow">WHY SILBAR</span>
-          <GradientText as="h2" className="about-why__title" style={{ marginBottom: '3rem' }}>
+          <GradientText as="h2" className="about-why__title service-detail-section-title--mb">
             <SplitTextReveal text="The Silbar Difference" />
           </GradientText>
           <div className="bento-grid">
             {WHY_SILBAR.map((point, i) => (
-              <ScrollReveal key={point} delay={i * 0.05} style={{ display: 'flex' }}>
-                <GlassCard className="bento-cell bento-cell--wide" tilt={true} opacity={0.03} borderOpacity={0.15} style={{ flexDirection: 'row', alignItems: 'center', gap: '1rem', padding: '1.5rem 2rem', width: '100%' }}>
-                  <CheckCircle size={24} className="about-why__check" style={{ color: 'var(--color-gold)', flexShrink: 0 }} />
-                  <span style={{ fontSize: '1.1rem', fontWeight: 500, lineHeight: 1.4 }}>{point}</span>
+              <ScrollReveal key={point} delay={i * 0.05} className="bento-cell--wide">
+                <GlassCard className="bento-cell bento-cell--check-item" tilt={true} opacity={0.03} borderOpacity={0.15}>
+                  <CheckCircle size={24} className="about-why__check" />
+                  <span className="check-item__text">{point}</span>
                 </GlassCard>
               </ScrollReveal>
             ))}
@@ -176,21 +176,21 @@ export default function AboutPage() {
       </section>
 
       {/* Certifications - Bento Grid */}
-      <section className="about-certs" id="certifications" style={{ maxWidth: '1200px', margin: '0 auto', padding: 'clamp(2rem, 4vh, 4rem) clamp(1.5rem, 5vw, 6rem) clamp(6rem, 12vh, 10rem)' }}>
+      <section className="about-certs" id="certifications">
         <div className="about-certs__inner">
           <span className="page-eyebrow">CERTIFICATIONS</span>
-          <GradientText as="h2" className="about-certs__title" style={{ marginBottom: '3rem' }}>
+          <GradientText as="h2" className="about-certs__title service-detail-section-title--mb">
             <SplitTextReveal text="Licensed. Certified. Compliant." />
           </GradientText>
           <div className="bento-grid">
             {CERTIFICATIONS.map(({ name, desc }, i) => (
               <ScrollReveal key={name} delay={i * 0.1} style={{ display: 'flex' }}>
-                <GlassCard className="bento-cell" tilt={true} opacity={0.03} borderOpacity={0.15} style={{ width: '100%' }}>
-                  <div className="about-cert-card__badge" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '1.25rem', fontWeight: 700, color: 'var(--color-gold)', marginBottom: '1rem' }}>
+                <GlassCard className="bento-cell about-cert-card" tilt={true} opacity={0.03} borderOpacity={0.15}>
+                  <div className="about-cert-card__badge">
                     <Award size={28} />
                     {name}
                   </div>
-                  <p className="about-cert-card__desc" style={{ color: 'rgba(244, 241, 234, 0.85)', lineHeight: 1.6 }}>{desc}</p>
+                  <p className="about-cert-card__desc">{desc}</p>
                 </GlassCard>
               </ScrollReveal>
             ))}

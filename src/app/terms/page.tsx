@@ -61,7 +61,7 @@ const sections = [
 
 export default function TermsPage() {
   return (
-    <main className="contact-page" id="main-content">
+    <main className="legal-page" id="main-content">
       <section className="page-hero page-hero--short">
         <ScrollReveal>
           <nav className="breadcrumb" aria-label="Breadcrumb">

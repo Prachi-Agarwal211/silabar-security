@@ -169,7 +169,7 @@ const POSTS = [
 
 export default function BlogPage() {
   return (
-    <main className="contact-page" id="main-content">
+    <main className="blog-page" id="main-content">
       <script type="application/ld+json" dangerouslySetInnerHTML={{
         __html: JSON.stringify({
           '@context': 'https://schema.org',
@@ -204,23 +204,20 @@ export default function BlogPage() {
         </ScrollReveal>
       </section>
 
-      <section className="service-detail-section-inner" style={{ paddingTop: '2rem', paddingBottom: '6rem' }}>
-        <div className="bento-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
+      <section className="service-detail-section-inner blog-listing-section">
+        <div className="blog-grid">
           {POSTS.map((post, i) => (
             <ScrollReveal key={post.slug} delay={i * 0.05} className="bento-cell glass-panel">
-              <Link
-                href={`/blog/${post.slug}`}
-                style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', height: '100%' }}
-              >
-                <div className="service-page-card__header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
-                  <h2 className="blog-card__title" style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--color-cream)', lineHeight: 1.3, paddingRight: '1rem' }}>{post.title}</h2>
-                  <ArrowRight size={24} style={{ color: 'var(--color-gold)', flexShrink: 0 }} />
+              <Link href={`/blog/${post.slug}`} className="blog-card__link">
+                <div className="blog-card__header">
+                  <h2 className="blog-card__title">{post.title}</h2>
+                  <ArrowRight size={24} className="blog-card__arrow" />
                 </div>
-                <p className="blog-card__excerpt" style={{ color: 'rgba(244, 241, 234, 0.85)', lineHeight: 1.6, flexGrow: 1, marginBottom: '2rem' }}>{post.excerpt}</p>
-                <div className="blog-card__meta" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', fontSize: '0.8rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'rgba(244, 241, 234, 0.5)' }}>
-                  <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}><Calendar size={12} /> {post.date}</span>
-                  <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}><Clock size={12} /> {post.readTime}</span>
-                  <span style={{ color: 'var(--color-gold)' }}>{post.category}</span>
+                <p className="blog-card__excerpt">{post.excerpt}</p>
+                <div className="blog-card__meta">
+                  <span className="blog-card__meta-item"><Calendar size={12} /> {post.date}</span>
+                  <span className="blog-card__meta-item"><Clock size={12} /> {post.readTime}</span>
+                  <span className="blog-card__meta-cat">{post.category}</span>
                 </div>
               </Link>
             </ScrollReveal>

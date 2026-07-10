@@ -122,9 +122,9 @@ export default async function ServicePage({
                 </ScrollReveal>
                 <div className="bento-grid">
                   {service.features.map((f, i) => (
-                    <ScrollReveal key={f} delay={i * 0.04} className="bento-cell glass-panel" style={{ padding: '1.5rem', flexDirection: 'row', alignItems: 'flex-start', gap: '1rem' }}>
-                      <CheckCircle size={20} className="service-detail-feature__icon" style={{ flexShrink: 0, marginTop: '2px' }} />
-                      <span style={{ fontSize: '0.95rem', lineHeight: 1.6 }}>{f}</span>
+                    <ScrollReveal key={f} delay={i * 0.04} className="bento-cell glass-panel bento-cell--feature">
+                      <CheckCircle size={20} className="service-detail-feature__icon" />
+                      <span className="bento-cell__text">{f}</span>
                     </ScrollReveal>
                   ))}
                 </div>
@@ -170,13 +170,13 @@ export default async function ServicePage({
           {/* Sidebar */}
           <aside className="detail-sidebar">
             <ScrollReveal>
-              <div className="sticky-contact-card glass-panel" style={{ padding: '2.5rem' }}>
+              <div className="sticky-contact-card glass-panel">
                 <h3 className="sticky-contact-card__title">Secure Your Operations</h3>
-                <p className="sticky-contact-card__desc" style={{ color: 'rgba(244, 241, 234, 0.85)' }}>
+                <p className="sticky-contact-card__desc">
                   Our security consultants will assess your facility and provide a
                   customized quote within 24 hours.
                 </p>
-                <div className="service-detail-ctas" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <div className="service-detail-ctas service-detail-ctas--stacked">
                   <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--primary">
                     <Phone size={16} /> Call Now
                   </a>

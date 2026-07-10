@@ -104,37 +104,37 @@ export default function ContactPage() {
         <div className="contact-body__inner">
 
           {/* Contact cards */}
-          <div className="bento-grid" style={{ marginBottom: '4rem' }}>
+          <div className="bento-grid contact-cards-grid">
             <ScrollReveal delay={0.2} className="bento-cell glass-panel">
-              <a href={`tel:${CONTACT.phoneRaw}`} style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', height: '100%' }}>
-                <div style={{ color: 'var(--color-gold)', marginBottom: '1rem' }}><Phone size={28} /></div>
-                <div style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.1em', opacity: 0.6, marginBottom: '0.5rem' }}>CALL US DIRECTLY</div>
-                <div style={{ fontSize: '1.5rem', fontWeight: 500, marginBottom: '0.25rem' }}>{CONTACT.phone}</div>
-                <div style={{ fontSize: '0.85rem', opacity: 0.5 }}>Mon–Sat, 9AM–7PM IST</div>
+              <a href={`tel:${CONTACT.phoneRaw}`} className="contact-card__inner">
+                <div className="contact-card__icon-wrap"><Phone size={28} /></div>
+                <div className="contact-card__label">CALL US DIRECTLY</div>
+                <div className="contact-card__value">{CONTACT.phone}</div>
+                <div className="contact-card__note">Mon–Sat, 9AM–7PM IST</div>
               </a>
             </ScrollReveal>
             <ScrollReveal delay={0.3} className="bento-cell glass-panel">
-              <a href={`tel:${CONTACT.landlineRaw}`} style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', height: '100%' }}>
-                <div style={{ color: 'var(--color-gold)', marginBottom: '1rem' }}><Phone size={28} /></div>
-                <div style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.1em', opacity: 0.6, marginBottom: '0.5rem' }}>LANDLINE</div>
-                <div style={{ fontSize: '1.5rem', fontWeight: 500, marginBottom: '0.25rem' }}>{CONTACT.landline}</div>
-                <div style={{ fontSize: '0.85rem', opacity: 0.5 }}>Jaipur Head Office</div>
+              <a href={`tel:${CONTACT.landlineRaw}`} className="contact-card__inner">
+                <div className="contact-card__icon-wrap"><Phone size={28} /></div>
+                <div className="contact-card__label">LANDLINE</div>
+                <div className="contact-card__value">{CONTACT.landline}</div>
+                <div className="contact-card__note">Jaipur Head Office</div>
               </a>
             </ScrollReveal>
             <ScrollReveal delay={0.4} className="bento-cell glass-panel">
-              <a href={`mailto:${CONTACT.email}`} style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', height: '100%' }}>
-                <div style={{ color: 'var(--color-gold)', marginBottom: '1rem' }}><Mail size={28} /></div>
-                <div style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.1em', opacity: 0.6, marginBottom: '0.5rem' }}>EMAIL US</div>
-                <div style={{ fontSize: '1.25rem', fontWeight: 500, marginBottom: '0.25rem' }}>{CONTACT.email}</div>
-                <div style={{ fontSize: '0.85rem', opacity: 0.5 }}>Response within 4 hours</div>
+              <a href={`mailto:${CONTACT.email}`} className="contact-card__inner">
+                <div className="contact-card__icon-wrap"><Mail size={28} /></div>
+                <div className="contact-card__label">EMAIL US</div>
+                <div className="contact-card__value">{CONTACT.email}</div>
+                <div className="contact-card__note">Response within 4 hours</div>
               </a>
             </ScrollReveal>
-            <ScrollReveal delay={0.5} className="bento-cell glass-panel" style={{ background: 'linear-gradient(135deg, rgba(37, 211, 102, 0.1) 0%, rgba(37, 211, 102, 0.02) 100%)', borderColor: 'rgba(37, 211, 102, 0.2)' }}>
-              <a href={CONTACT.whatsapp.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', height: '100%' }}>
-                <div style={{ color: '#25D366', marginBottom: '1rem' }}><MessageCircle size={28} /></div>
-                <div style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.1em', color: '#25D366', opacity: 0.8, marginBottom: '0.5rem' }}>WHATSAPP</div>
-                <div style={{ fontSize: '1.5rem', fontWeight: 500, marginBottom: '0.25rem' }}>Instant Quote</div>
-                <div style={{ fontSize: '0.85rem', opacity: 0.5 }}>Available 24/7</div>
+            <ScrollReveal delay={0.5} className="bento-cell glass-panel bento-cell--whatsapp">
+              <a href={CONTACT.whatsapp.url} target="_blank" rel="noopener noreferrer" className="contact-card__inner">
+                <div className="contact-card__icon-wrap--whatsapp"><MessageCircle size={28} /></div>
+                <div className="contact-card__label--whatsapp">WHATSAPP</div>
+                <div className="contact-card__value">Instant Quote</div>
+                <div className="contact-card__note">Available 24/7</div>
               </a>
             </ScrollReveal>
           </div>
@@ -167,20 +167,20 @@ export default function ContactPage() {
 
           {/* Office locations */}
           <ScrollReveal delay={0.6} className="contact-offices">
-            <h2 className="contact-offices__title" style={{ marginTop: '4rem', marginBottom: '2rem', fontFamily: 'var(--font-display)', fontSize: '2rem' }}>Our Offices</h2>
-            <div className="bento-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+            <h2 className="contact-offices__title">Our Offices</h2>
+            <div className="contact-offices-grid">
               {[
                 { city: 'Jaipur (HQ)', address: '208, 2nd Floor, Samod Tower, Sansar Chand Road, Jaipur — 302001' },
                 { city: 'Delhi NCR', address: 'Corporate Office, New Delhi — 110001' },
                 { city: 'Ahmedabad', address: 'Ahmedabad, Gujarat — 380001' },
               ].map(({ city, address }) => (
-                <div key={city} className="bento-cell glass-panel" style={{ padding: '2rem' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-gold)', fontSize: '1.25rem', fontWeight: 600, marginBottom: '1rem' }}>
+                <div key={city} className="bento-cell glass-panel office-card">
+                  <div className="office-card__header">
                     <MapPin size={20} />
                     {city}
                   </div>
-                  <p style={{ opacity: 0.8, lineHeight: 1.6, marginBottom: '1.5rem', flexGrow: 1 }}>{address}</p>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', opacity: 0.5 }}>
+                  <p className="office-card__address">{address}</p>
+                  <div className="office-card__hours">
                     <Clock size={14} /> Mon–Sat: 9:00 AM – 7:00 PM
                   </div>
                 </div>

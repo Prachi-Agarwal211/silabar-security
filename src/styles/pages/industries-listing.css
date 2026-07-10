@@ -1,0 +1,12 @@
+/* Industries listing — shared with services listing hero */
+.industries-hero {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(6rem, 12vh, 10rem) clamp(1.5rem, 5vw, 6rem) clamp(3rem, 6vh, 5rem);
+}
+
+@media (max-width: 768px) {
+  .industries-hero {
+    padding: clamp(5rem, 10vh, 7rem) 1.25rem clamp(2rem, 4vh, 3.5rem);
+  }
+}

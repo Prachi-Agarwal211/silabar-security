@@ -1,0 +1,23 @@
+/* ============================================
+   Breadcrumb — used across all inner pages
+   ============================================ */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(244, 241, 234, 0.4);
+  margin-bottom: 1.5rem;
+}
+.breadcrumb__link {
+  color: rgba(244, 241, 234, 0.45);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.breadcrumb__link:hover { color: var(--color-gold); }
+.breadcrumb__sep { opacity: 0.3; }
+.breadcrumb__current { color: var(--color-gold); opacity: 0.75; }

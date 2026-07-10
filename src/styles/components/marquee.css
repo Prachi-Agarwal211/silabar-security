@@ -1,0 +1,125 @@
+/* ============================================
+   Bottom marquee bar — separate black strip
+   ============================================ */
+
+.trust-marquee-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  padding: 0.9rem clamp(1.5rem, 4vw, 3rem);
+  background: var(--color-midnight);
+  border-top-left-radius: 20px;
+  opacity: 0;
+  transform-origin: 50% 50%;
+  will-change: transform;
+  transition: opacity 0.3s ease;
+}
+
+.trust-marquee-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+}
+
+.trust-marquee-bar__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(191, 149, 63, 0.4);
+  border-radius: 8px;
+  color: var(--color-gold);
+  flex-shrink: 0;
+}
+
+.trust-marquee-bar__arrow {
+  color: var(--color-gold);
+  flex-shrink: 0;
+}
+
+.marquee--dark {
+  border: none;
+  padding: 0;
+  flex: 1;
+}
+
+.trust-card__play:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  background-color: var(--color-gold-light);
+}
+
+.trust-card__play::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 8px 0 8px 14px;
+  border-color: transparent transparent transparent var(--color-midnight);
+  margin-left: 3px;
+}
+
+/* ============================================
+   Marquee Ticker
+   ============================================ */
+
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  border-top: 1px solid rgba(191, 149, 63, 0.15);
+  border-bottom: 1px solid rgba(191, 149, 63, 0.15);
+  padding: clamp(0.75rem, 1.5vw, 1.25rem) 0;
+}
+
+.marquee__track {
+  display: flex;
+  animation: marqueeScroll 30s linear infinite;
+  width: max-content;
+}
+
+.marquee__track:hover {
+  animation-play-state: paused;
+}
+
+.marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 clamp(1.5rem, 3vw, 3rem);
+  font-family: var(--font-display);
+  font-size: clamp(0.85rem, 1.2vw, 1.1rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-horizon-500);
+  flex-shrink: 0;
+}
+
+.marquee__item--accent {
+  color: var(--color-gold);
+}
+
+.marquee__dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  opacity: 0.5;
+}
+
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}

@@ -1,0 +1,237 @@
+/* ============================================
+   Site Footer
+   ============================================ */
+.site-footer {
+  background: #050505;
+  border-top: 1px solid rgba(191, 149, 63, 0.18);
+  position: relative;
+  z-index: 8;
+}
+
+/* Top gold accent line */
+.site-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), var(--color-gold-light), var(--color-gold), transparent);
+  opacity: 0.5;
+}
+
+/* Trust badge row */
+.footer-trust-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  padding: 1.25rem clamp(1.5rem, 5vw, 5rem);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.footer-trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(244, 241, 234, 0.45);
+  background: rgba(191, 149, 63, 0.08);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+}
+
+.footer-trust-badge__icon {
+  color: var(--color-gold);
+  opacity: 0.7;
+}
+
+/* Main grid */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(3rem, 6vh, 5rem) clamp(1.5rem, 5vw, 5rem);
+}
+
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2.5rem 1.25rem;
+  }
+  .footer-trust-row {
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+  }
+}
+
+/* Brand column */
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-cream);
+  margin-bottom: 0.75rem;
+}
+
+.footer-tagline {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: var(--color-horizon-400);
+  margin-bottom: 1.5rem;
+  max-width: 300px;
+}
+
+/* Contact list in footer brand column */
+.footer-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.footer-contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: rgba(244, 241, 234, 0.55);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-contact-item:hover {
+  color: var(--color-gold);
+}
+
+.footer-contact-item--location {
+  cursor: default;
+}
+
+/* Link columns */
+.footer-heading {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 1rem;
+  opacity: 0.85;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.footer-link {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: rgba(244, 241, 234, 0.45);
+  text-decoration: none;
+  transition: color 0.2s var(--ease-smooth), padding-left 0.2s var(--ease-smooth);
+}
+
+.footer-link:hover {
+  color: var(--color-cream);
+  padding-left: 4px;
+}
+
+.footer-link--whatsapp {
+  color: var(--color-whatsapp) !important;
+  opacity: 0.8;
+}
+
+.footer-link--whatsapp:hover {
+  opacity: 1;
+  padding-left: 0 !important;
+}
+
+/* Bottom bar */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.25rem clamp(1.5rem, 5vw, 5rem);
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.footer-copyright {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: var(--color-horizon-400);
+}
+
+.footer-legal-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-legal-link {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: var(--color-horizon-400);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-legal-link:hover {
+  color: var(--color-gold);
+}
+
+@media (max-width: 640px) {
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 1.25rem;
+  }
+}
+
+/* Footer Red Glass Treatment — matches hero panel aesthetic */
+.footer-glass-red {
+  background: linear-gradient(105deg, rgba(8, 2, 2, 0.98) 0%, rgba(30, 5, 5, 0.92) 60%, rgba(50, 8, 8, 0.6) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid rgba(255, 30, 30, 0.35);
+  box-shadow: inset 0 1px 10px rgba(255, 20, 20, 0.12), 0 -4px 40px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.footer-glass-red::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(180deg, rgba(204, 34, 34, 0.06), transparent);
+  pointer-events: none;
+}

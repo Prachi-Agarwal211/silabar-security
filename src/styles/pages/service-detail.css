@@ -1,0 +1,434 @@
+/* ============================================
+   Service Detail Pages
+   ============================================ */
+
+/* Page wrapper */
+.service-detail-page {
+  min-height: 100vh;
+}
+
+/* Hero section */
+.service-detail-hero {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(7rem, 14vh, 10rem) clamp(1.5rem, 5vw, 6rem) clamp(3rem, 6vh, 5rem);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.service-detail-hero__inner {
+  max-width: 860px;
+}
+
+.service-detail-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--color-cream);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.service-detail-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  line-height: 1.75;
+  color: rgba(244, 241, 234, 0.6);
+  max-width: 680px;
+  margin-bottom: 2rem;
+}
+
+/* CTAs row */
+.service-detail-ctas {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.service-detail-ctas--centered { justify-content: center; }
+.service-detail-ctas--stacked { display: flex; flex-direction: column; gap: 1rem; }
+
+.service-detail-ctas--top-margin { margin-top: 2rem; }
+
+.service-detail-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8em 1.8em;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: transform 0.2s var(--ease-smooth), box-shadow 0.2s var(--ease-smooth), opacity 0.2s;
+}
+
+.service-detail-cta--primary {
+  background: var(--color-gold);
+  color: var(--color-midnight);
+}
+
+.service-detail-cta--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(191, 149, 63, 0.3);
+}
+
+.service-detail-cta--secondary {
+  background: var(--color-whatsapp);
+  color: #fff;
+}
+
+.service-detail-cta--secondary:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+}
+
+/* Inner content sections */
+.service-detail-section-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(3rem, 6vh, 5rem) clamp(1.5rem, 5vw, 6rem);
+}
+
+.service-detail-section-inner--no-padding { padding-top: 0; }
+
+.service-detail-features--padded { padding-top: 4rem; }
+
+.service-detail-faq {
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Section heading */
+.service-detail-section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--color-cream);
+  margin-bottom: 2rem;
+}
+
+/* Features grid */
+.service-detail-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.75rem;
+}
+
+.service-detail-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(191, 149, 63, 0.08);
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: rgba(244, 241, 234, 0.75);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.service-detail-feature:hover {
+  border-color: rgba(191, 149, 63, 0.2);
+  background: rgba(255,255,255,0.04);
+}
+
+.service-detail-feature__icon {
+  color: var(--color-gold);
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+/* Industry tags */
+.service-detail-industries-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.service-detail-industry-tag {
+  display: inline-block;
+  padding: 0.45em 1.1em;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-cream);
+  border: 1px solid rgba(191, 149, 63, 0.2);
+  border-radius: 4px;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.service-detail-industry-tag:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+/* FAQ Accordion — uses native <details>/<summary> */
+.service-detail-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 800px;
+}
+
+.service-detail-faq-item {
+  border: 1px solid rgba(191, 149, 63, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.02);
+  transition: border-color 0.2s;
+}
+
+.service-detail-faq-item[open] {
+  border-color: rgba(191, 149, 63, 0.25);
+  background: rgba(255,255,255,0.035);
+}
+
+.service-detail-faq-q {
+  padding: 1.1rem 1.25rem;
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--color-cream);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  letter-spacing: 0.01em;
+}
+
+.service-detail-faq-q::-webkit-details-marker {
+  display: none;
+}
+
+.service-detail-faq-q::after {
+  content: '+';
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: var(--color-gold);
+  transition: transform 0.3s var(--ease-smooth);
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+
+.service-detail-faq-item[open] .service-detail-faq-q::after {
+  transform: rotate(45deg);
+}
+
+.service-detail-faq-a {
+  padding: 0 1.25rem 1.25rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: rgba(244, 241, 234, 0.6);
+  margin: 0;
+}
+
+/* Bottom CTA block */
+.service-detail-bottom-cta {
+  text-align: center;
+  padding: clamp(4rem, 8vh, 7rem) clamp(1.5rem, 5vw, 6rem);
+  background: linear-gradient(180deg, transparent, rgba(191, 149, 63, 0.04) 50%, transparent);
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.service-detail-bottom-cta__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--color-cream);
+  margin-bottom: 0.75rem;
+}
+
+.service-detail-bottom-cta__sub {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: rgba(244, 241, 234, 0.5);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================
+   Detail Pages — Sidebar Layout
+   ============================================ */
+.detail-layout-container {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(3rem, 6vh, 5rem) clamp(1.5rem, 5vw, 6rem);
+}
+
+.detail-main-content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 6vh, 5rem);
+}
+
+.detail-sidebar {
+  position: relative;
+}
+
+.sticky-contact-card {
+  position: sticky;
+  top: 100px;
+  background: rgba(191, 149, 63, 0.03);
+  border: 1px solid rgba(191, 149, 63, 0.15);
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.sticky-contact-card__title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-cream);
+  text-transform: uppercase;
+}
+
+.sticky-contact-card__desc {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: rgba(244, 241, 234, 0.6);
+  line-height: 1.6;
+}
+
+.sticky-contact-card .service-detail-ctas {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.sticky-contact-card .service-detail-cta {
+  justify-content: center;
+}
+
+@media (max-width: 1024px) {
+  .detail-layout-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .sticky-contact-card {
+    position: static;
+  }
+}
+
+/* Override inner sections when inside layout container */
+.detail-layout-container .service-detail-section-inner {
+  padding: 0;
+  max-width: 100%;
+}
+.detail-layout-container .service-detail-features,
+.detail-layout-container .service-detail-industries,
+.detail-layout-container .service-detail-faq,
+.detail-layout-container .industry-challenges,
+.detail-layout-container .industry-solutions,
+.detail-layout-container .industry-related-services {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+/* ============================================
+   Mobile responsive — service & industry detail
+   ============================================ */
+@media (max-width: 768px) {
+  .service-detail-hero {
+    padding: clamp(5rem, 10vh, 7rem) 1.25rem clamp(2rem, 4vh, 3rem);
+  }
+
+.service-detail-section-inner {
+    padding: clamp(2rem, 4vh, 3.5rem) 1.25rem;
+  }
+
+.service-detail-features-grid {
+    grid-template-columns: 1fr;
+  }
+
+.service-detail-bottom-cta {
+    padding: clamp(3rem, 6vh, 5rem) 1.25rem;
+  }
+
+.service-detail-ctas {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+.service-detail-cta {
+    justify-content: center;
+  }
+}
+
+/* ============================================
+   Bento Grid — used for features, challenges, solutions
+   ============================================ */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.75rem;
+}
+
+.bento-cell {
+  display: flex;
+}
+
+.bento-cell--wide {
+  grid-column: span 2;
+}
+
+@media (max-width: 640px) {
+  .bento-cell--wide {
+    grid-column: span 1;
+  }
+}
+
+/* Section background alternation for detail pages */
+.service-detail-features {
+  background: rgba(191, 149, 63, 0.02);
+  border-top: 1px solid rgba(191, 149, 63, 0.06);
+  border-bottom: 1px solid rgba(191, 149, 63, 0.06);
+}
+
+.service-detail-industries {
+  background: rgba(204, 34, 34, 0.015);
+}
+
+/* ============================================
+   Utility classes — replaces inline styles
+   ============================================ */
+.bento-cell--feature {
+  padding: 1.5rem;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.bento-cell__text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(244, 241, 234, 0.8);
+}
+
+.sticky-contact-card__desc {
+  color: rgba(244, 241, 234, 0.85);
+}

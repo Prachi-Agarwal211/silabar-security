@@ -4,7 +4,6 @@ import { useRef, useEffect } from 'react'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 import { ShieldCheck, ChevronsRight, Shield, Maximize2 } from 'lucide-react'
 import SplitTextReveal from '../animations/SplitTextReveal'
-import { HeroParticles } from '../home/HeroParticles'
 import { GradientText } from '../ui/GradientText'
 
 const MARQUEE_ITEMS = [
@@ -64,27 +63,21 @@ export default function ScrollExperience() {
       if (dockRect.width === 0) return { scale: 1, x: 0, y: 0 }
       const scaleX = dockRect.width / vw
       const scaleY = dockRect.height / vh
+      const isPortraitDock = dockRect.height > dockRect.width
       return {
-        scale: Math.min(scaleX, scaleY),
+        scale: isPortraitDock ? Math.max(scaleX, scaleY) : Math.min(scaleX, scaleY),
         x: (dockRect.left + dockRect.width / 2) - vw / 2,
         y: (dockRect.top + dockRect.height / 2) - vh / 2,
       }
     }
 
-    const getWipeScale = () => {
-      const vw = window.innerWidth
-      const vh = window.innerHeight
-      const barHeight = marqueeBar.getBoundingClientRect().height || 60
-      const diagonal = Math.sqrt(vw * vw + vh * vh)
-      return Math.max((diagonal / barHeight) * 1.8, 25)
-    }
+
+
+    ScrollTrigger.normalizeScroll(true)
 
     const mm = gsap.matchMedia()
 
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      // ══════════════════════════════════════════
-      // LOAD-IN SEQUENCE (Non-scrubbed)
-      // ══════════════════════════════════════════
       const leftPanel = document.querySelector('.hero-left-panel')
       const laserLines = document.querySelector('.laser-lines-container')
 
@@ -100,75 +93,111 @@ export default function ScrollExperience() {
       // ══════════════════════════════════════════
       // PINNED SCROLL SEQUENCE
       // ══════════════════════════════════════════
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: wrapper,
-          start: 'top top',
-          end: '+=320%',
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-        },
+      const scrollMm = gsap.matchMedia()
+
+      // Desktop Timeline (Morphs video into dock)
+      const buildDesktopTl = () => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: wrapper,
+            start: 'top top',
+            end: '+=320%',
+            scrub: 1,
+            pin: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+          },
+        })
+
+        // ACT 1 — HERO EXITS (0 → 0.22)
+        tl.to(leftPanel, { x: '-100%', duration: 0.15, ease: 'power2.in' }, 0.05)
+        tl.to(scrollCue, { opacity: 0, duration: 0.05, ease: 'power2.in' }, 0.05)
+        tl.to(laserLines, { opacity: 0, duration: 0.08, ease: 'power2.in' }, 0.05)
+        tl.to(overlay, { opacity: 0, duration: 0.08, ease: 'power2.in' }, 0.10)
+        tl.fromTo(bgWarm, { opacity: 0 }, { opacity: 1, duration: 0.22, ease: 'power2.inOut' }, 0.08)
+
+        // ACT 2 — TRUST: video docks, marquee appears (0.10 → 0.55)
+        tl.to(video, {
+          scale: () => getVideoTarget().scale,
+          x: () => getVideoTarget().x,
+          y: () => getVideoTarget().y,
+          borderRadius: 28,
+          ease: 'power2.inOut',
+          duration: 0.24,
+        }, 0.10)
+
+        tl.to(trustContent, { opacity: 1, duration: 0.08, ease: 'power2.out' }, 0.20)
+        tl.fromTo(trustEyebrow, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.06, ease: 'power3.out' }, 0.22)
+        tl.fromTo(trustHeading, { opacity: 0, y: 35 }, { opacity: 1, y: 0, duration: 0.08, ease: 'power3.out' }, 0.24)
+        tl.fromTo(trustDivider, { scaleX: 0, transformOrigin: 'left' }, { scaleX: 1, duration: 0.05, ease: 'power2.out' }, 0.29)
+        tl.fromTo(trustSubcopy, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.05, ease: 'power3.out' }, 0.30)
+        tl.fromTo(trustCaption, { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.05, ease: 'power3.out' }, 0.32)
+
+        tl.fromTo(marqueeBar,
+          { x: '100%', opacity: 0, rotate: 0 },
+          { x: '0%', opacity: 1, rotate: -4, duration: 0.10, ease: 'power2.out' }, 0.30)
+
+        // ACT 3 — CLEAN FADE OUT (0.55 → 1.0)
+        tl.to(trustContent, { opacity: 0, y: -20, duration: 0.10, ease: 'power2.in' }, 0.55)
+        tl.to(video, { opacity: 0, duration: 0.10, ease: 'power2.in' }, 0.55)
+        
+        // Remove massive wipe, just fade out marquee smoothly
+        tl.to(marqueeBar, { opacity: 0, y: -50, duration: 0.15, ease: 'power2.in' }, 0.62)
+
+        return tl
+      }
+
+      // Mobile Timeline (Simple Crossfade, NO Morphing)
+      const buildMobileTl = () => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: wrapper,
+            start: 'top top',
+            end: '+=250%', // slightly shorter scroll distance on mobile
+            scrub: 0.5,
+            pin: true,
+            anticipatePin: 1,
+          },
+        })
+
+        // ACT 1 — FADE OUT HERO
+        tl.to(leftPanel, { opacity: 0, y: -20, duration: 0.15, ease: 'power2.in' }, 0.05)
+        tl.to(scrollCue, { opacity: 0, duration: 0.05 }, 0.05)
+        tl.to(overlay, { opacity: 0, duration: 0.08 }, 0.10)
+        tl.fromTo(bgWarm, { opacity: 0 }, { opacity: 1, duration: 0.22, ease: 'power2.inOut' }, 0.08)
+        
+        // FADE VIDEO OUT INSTEAD OF MORPHING
+        tl.to(video, { opacity: 0, duration: 0.2 }, 0.10)
+
+        // ACT 2 — FADE IN TRUST
+        tl.to(trustContent, { opacity: 1, duration: 0.15, ease: 'power2.out' }, 0.20)
+        tl.fromTo(trustEyebrow, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.1 }, 0.22)
+        tl.fromTo(trustHeading, { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.1 }, 0.24)
+        tl.fromTo(trustDivider, { scaleX: 0, transformOrigin: 'left' }, { scaleX: 1, duration: 0.1 }, 0.29)
+        tl.fromTo(trustSubcopy, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.1 }, 0.30)
+        tl.fromTo(trustCaption, { opacity: 0 }, { opacity: 1, duration: 0.1 }, 0.32)
+
+        // Bring in marquee flat on mobile
+        tl.fromTo(marqueeBar,
+          { x: '100%', opacity: 0 },
+          { x: '0%', opacity: 1, duration: 0.15, ease: 'power2.out' }, 0.30)
+
+        // ACT 3 — CLEAN FADE OUT
+        tl.to(trustContent, { opacity: 0, y: -20, duration: 0.15, ease: 'power2.in' }, 0.60)
+        tl.to(marqueeBar, { opacity: 0, y: -30, duration: 0.15, ease: 'power2.in' }, 0.65)
+
+        return tl
+      }
+
+      scrollMm.add('(min-width: 768px)', () => {
+        const tl = buildDesktopTl()
+        return () => { tl.kill() }
       })
 
-      // ══════════════════════════════════════════
-      // ACT 1 — HERO EXITS (0 → 0.22)
-      // ══════════════════════════════════════════
-
-      tl.to(leftPanel, { x: '-100%', duration: 0.15, ease: 'power2.in' }, 0.05)
-      tl.to(scrollCue, { opacity: 0, duration: 0.05, ease: 'power2.in' }, 0.05)
-      tl.to(laserLines, { opacity: 0, duration: 0.08, ease: 'power2.in' }, 0.05)
-      tl.to(overlay, { opacity: 0, duration: 0.08, ease: 'power2.in' }, 0.10)
-      tl.fromTo(bgWarm, { opacity: 0 }, { opacity: 1, duration: 0.22, ease: 'power2.inOut' }, 0.08)
-
-      // ══════════════════════════════════════════
-      // ACT 2 — TRUST: video docks, tilted strip appears (0.10 → 0.55)
-      // ══════════════════════════════════════════
-
-      tl.to(video, {
-        scale: () => getVideoTarget().scale,
-        x: () => getVideoTarget().x,
-        y: () => getVideoTarget().y,
-        borderRadius: 28,
-        ease: 'power2.inOut',
-        duration: 0.24,
-      }, 0.10)
-
-      tl.to(trustContent, { opacity: 1, duration: 0.08, ease: 'power2.out' }, 0.20)
-      tl.fromTo(trustEyebrow,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.06, ease: 'power3.out' }, 0.22)
-      tl.fromTo(trustHeading,
-        { opacity: 0, y: 35 },
-        { opacity: 1, y: 0, duration: 0.08, ease: 'power3.out' }, 0.24)
-      tl.fromTo(trustDivider,
-        { scaleX: 0, transformOrigin: 'left' },
-        { scaleX: 1, duration: 0.05, ease: 'power2.out' }, 0.29)
-      tl.fromTo(trustSubcopy,
-        { opacity: 0, y: 12 },
-        { opacity: 1, y: 0, duration: 0.05, ease: 'power3.out' }, 0.30)
-      tl.fromTo(trustCaption,
-        { opacity: 0, x: -12 },
-        { opacity: 1, x: 0, duration: 0.05, ease: 'power3.out' }, 0.32)
-
-      tl.fromTo(marqueeBar,
-        { x: '100%', opacity: 0, rotate: 0 },
-        { x: '0%', opacity: 1, rotate: -4, duration: 0.10, ease: 'power2.out' }, 0.30)
-
-      // ══════════════════════════════════════════
-      // ACT 3 — THE ZOOM-THROUGH WIPE (0.55 → 1.0)
-      // ══════════════════════════════════════════
-
-      tl.to(trustContent, { opacity: 0, y: -20, duration: 0.10, ease: 'power2.in' }, 0.55)
-      tl.to(video, { opacity: 0, duration: 0.10, ease: 'power2.in' }, 0.55)
-
-      tl.to(marqueeBar, {
-        rotate: 90,
-        scale: () => getWipeScale(),
-        duration: 0.3,
-        ease: 'power2.in',
-      }, 0.62)
+      scrollMm.add('(max-width: 767px)', () => {
+        const tl = buildMobileTl()
+        return () => { tl.kill() }
+      })
 
       // ── Re-run ScrollTrigger's measurements on resize / font / video load ──
       const refresh = () => ScrollTrigger.refresh()
@@ -183,13 +212,11 @@ export default function ScrollExperience() {
         document.fonts.ready.then(refresh)
       }
 
-      // First-paint safety net — SSR-enabled hero uses server-rendered
-      // markup, so re-measure once after hydration settles
       requestAnimationFrame(() => ScrollTrigger.refresh())
 
       return () => {
         loadTl.kill()
-        tl.kill()
+        scrollMm.revert()
         window.removeEventListener('resize', debouncedRefresh)
         video.removeEventListener('loadedmetadata', refresh)
       }
@@ -212,7 +239,6 @@ export default function ScrollExperience() {
           <source src="/hero.mp4" type="video/mp4" />
         </video>
         <div ref={overlayRef} className="hero-overlay" />
-        <HeroParticles />
         
         <div className="laser-lines-container">
           <svg width="100%" height="100%" preserveAspectRatio="none">

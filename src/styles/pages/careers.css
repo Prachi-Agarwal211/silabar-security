@@ -1,0 +1,178 @@
+/* ============================================
+   Job Card (careers page)
+   Replaces inline styles on job listings
+   ============================================ */
+.job-card {
+  background: rgba(191, 149, 63, 0.05);
+  border: 1px solid rgba(191, 149, 63, 0.15);
+  border-radius: 4px;
+  padding: 1.5rem;
+}
+
+.job-card__title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-cream);
+  margin-bottom: 0.25rem;
+}
+
+.job-card__meta {
+  font-size: 0.8rem;
+  color: var(--color-gold);
+  margin-bottom: 0.75rem;
+}
+
+.job-card__desc {
+  font-size: 0.85rem;
+  color: rgba(244, 241, 234, 0.65);
+  line-height: 1.5;
+}
+
+/* ============================================
+   Blog Card (blog listing)
+   Replaces inline styles on blog index cards
+   ============================================ */
+.blog-card {
+  background: rgba(191, 149, 63, 0.04);
+  border: 1px solid rgba(191, 149, 63, 0.12);
+  border-radius: 4px;
+  padding: 1.5rem;
+  text-decoration: none;
+  display: block;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.blog-card:hover {
+  border-color: rgba(191, 149, 63, 0.35);
+  background: rgba(191, 149, 63, 0.07);
+}
+
+.blog-card__title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-cream);
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+}
+
+/* ============================================
+   Benefit items — replaces inline styles
+   ============================================ */
+.benefit-item {
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+}
+
+.benefit-item__text {
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.openings-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+.openings-section {
+  padding-top: 4rem;
+  padding-bottom: 6rem;
+}
+
+.openings-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.service-detail-section-title--mb {
+  margin-bottom: 3rem;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.blog-card__link {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.blog-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.blog-card__meta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(244, 241, 234, 0.5);
+}
+
+.blog-card__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-cream);
+  line-height: 1.3;
+  padding-right: 1rem;
+}
+
+.blog-listing-section {
+  padding-top: 2rem;
+  padding-bottom: 6rem;
+}
+
+.blog-card__excerpt {
+  color: rgba(244, 241, 234, 0.85);
+  line-height: 1.6;
+  flex-grow: 1;
+  margin-bottom: 2rem;
+}
+
+.blog-card__arrow {
+  color: var(--color-gold);
+  flex-shrink: 0;
+}
+
+.blog-card__meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.blog-card__meta-cat {
+  color: var(--color-gold);
+}
+
+/* Blog single post */
+.legal-content--blog {
+  padding: clamp(2rem, 5vw, 4rem);
+  max-width: 900px;
+  margin: 0 auto 4rem;
+}
+
+.contact-title--blog {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+}

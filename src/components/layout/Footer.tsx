@@ -5,6 +5,7 @@ import { CONTACT } from '@/lib/config'
 import { SERVICES } from '@/data/services'
 import { INDUSTRIES } from '@/data/industries'
 
+
 const SERVICES_LINKS = SERVICES.map(s => ({
   label: s.shortTitle,
   href: `/services/${s.slug}`,
@@ -27,7 +28,7 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="site-footer" id="contact">
+    <footer className="site-footer footer-glass-red" id="contact">
       {/* Trust badges row */}
       <div className="footer-trust-row">
         <div className="footer-trust-badge">

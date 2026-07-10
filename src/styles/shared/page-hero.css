@@ -1,0 +1,114 @@
+/* ============================================
+   Unified Page Hero (replaces .contact-hero reuse)
+   ============================================ */
+.page-hero {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(2rem, 5vh, 4rem) clamp(1.5rem, 5vw, 6rem) clamp(3rem, 6vh, 5rem);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.page-hero--short {
+  padding-bottom: clamp(1.5rem, 3vh, 2.5rem);
+}
+
+/* ============================================
+   Page Eyebrow utility
+   ============================================ */
+.page-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 1.25rem;
+}
+.page-eyebrow--centered {
+  justify-content: center;
+  width: 100%;
+}
+.page-eyebrow--centered::before {
+  display: none;
+}
+
+.page-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--color-gold);
+  opacity: 0.6;
+}
+
+/* Shared page layout hero selectors */
+.contact-hero,
+.about-hero,
+.seo-page-hero,
+.industry-detail-hero {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(2rem, 5vh, 4rem) clamp(1.5rem, 5vw, 6rem) clamp(3rem, 6vh, 5rem);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ============================================
+   Shared Page Layout
+   ============================================ */
+
+/* All inner pages share a dark background */
+.contact-page,
+.about-page,
+.services-page,
+.service-detail-page,
+.industries-page,
+.industry-detail-page,
+.seo-page,
+.careers-page,
+.blog-page,
+.legal-page {
+  min-height: 100dvh;
+  background: var(--color-midnight);
+  color: var(--color-cream);
+  padding-top: clamp(5rem, 10vh, 8rem); /* clear the fixed header */
+}
+
+/* Shared page titles */
+.contact-title,
+.about-title,
+.services-page-title,
+.industries-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--color-cream);
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.contact-title--outline,
+.about-title--outline,
+.services-page-title--outline,
+.industries-title--outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-cream);
+}
+
+.contact-eyebrow,
+.contact-subtitle,
+.about-subtitle,
+.services-page-subtitle,
+.industries-subtitle {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: rgba(244, 241, 234, 0.65);
+  line-height: 1.7;
+  max-width: 560px;
+}
+
+.contact-eyebrow { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-gold); display: block; margin-bottom: 1rem; }
