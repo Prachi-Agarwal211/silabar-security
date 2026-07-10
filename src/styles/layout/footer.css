@@ -267,14 +267,4 @@
   pointer-events: none;
 }
 
-/* Add red gradient overlay like hero */
-.footer-glass-red::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 60px;
-  background: linear-gradient(180deg, rgba(204, 34, 34, 0.06), transparent);
-  pointer-events: none;
-}
+
