@@ -89,6 +89,93 @@
   border-bottom: none !important;
 }
 
+/* Header adaptation for light-background pages (About, Industries) */
+.about-page .hero-header--solid,
+.industries-page .hero-header--solid,
+.industry-detail-page .hero-header--solid,
+.contact-page .hero-header--solid,
+.service-detail-page .hero-header--solid,
+.seo-page .hero-header--solid,
+.careers-page .hero-header--solid,
+.blog-page .hero-header--solid,
+.legal-page .hero-header--solid {
+  background: rgba(250, 248, 244, 0.85);
+  border-bottom-color: rgba(140, 31, 50, 0.15);
+}
+
+.about-page .hero-logo,
+.industries-page .hero-logo,
+.industry-detail-page .hero-logo,
+.contact-page .hero-logo,
+.service-detail-page .hero-logo,
+.seo-page .hero-logo,
+.careers-page .hero-logo,
+.blog-page .hero-logo,
+.legal-page .hero-logo {
+  color: var(--color-paper-ink);
+}
+
+.about-page .hero-logo__icon,
+.industries-page .hero-logo__icon,
+.industry-detail-page .hero-logo__icon,
+.contact-page .hero-logo__icon,
+.service-detail-page .hero-logo__icon,
+.seo-page .hero-logo__icon,
+.careers-page .hero-logo__icon,
+.blog-page .hero-logo__icon,
+.legal-page .hero-logo__icon {
+  color: var(--color-cherry);
+}
+
+.about-page .hero-nav-link,
+.industries-page .hero-nav-link,
+.industry-detail-page .hero-nav-link,
+.contact-page .hero-nav-link,
+.service-detail-page .hero-nav-link,
+.seo-page .hero-nav-link,
+.careers-page .hero-nav-link,
+.blog-page .hero-nav-link,
+.legal-page .hero-nav-link {
+  color: var(--color-paper-ink);
+}
+
+.about-page .hero-nav-link:hover,
+.industries-page .hero-nav-link:hover,
+.industry-detail-page .hero-nav-link:hover,
+.contact-page .hero-nav-link:hover,
+.service-detail-page .hero-nav-link:hover,
+.seo-page .hero-nav-link:hover,
+.careers-page .hero-nav-link:hover,
+.blog-page .hero-nav-link:hover,
+.legal-page .hero-nav-link:hover {
+  color: var(--color-cherry);
+}
+
+.about-page .hero-nav-cta,
+.industries-page .hero-nav-cta,
+.industry-detail-page .hero-nav-cta,
+.contact-page .hero-nav-cta,
+.service-detail-page .hero-nav-cta,
+.seo-page .hero-nav-cta,
+.careers-page .hero-nav-cta,
+.blog-page .hero-nav-cta,
+.legal-page .hero-nav-cta {
+  background: var(--color-cherry);
+  color: var(--color-cream);
+}
+
+.about-page .hero-nav-cta:hover,
+.industries-page .hero-nav-cta:hover,
+.industry-detail-page .hero-nav-cta:hover,
+.contact-page .hero-nav-cta:hover,
+.service-detail-page .hero-nav-cta:hover,
+.seo-page .hero-nav-cta:hover,
+.careers-page .hero-nav-cta:hover,
+.blog-page .hero-nav-cta:hover,
+.legal-page .hero-nav-cta:hover {
+  background: var(--color-cherry-bright);
+}
+
 .hero-logo {
   display: flex;
   align-items: center;
@@ -277,7 +364,13 @@
   object-fit: cover;
   z-index: 5;
   border-radius: 0;
-  will-change: transform, border-radius, opacity;
+  will-change: transform, opacity;
+}
+
+@media (max-width: 767px) {
+  .morph-video {
+    object-fit: contain;
+  }
 }
 
 /* ============================================
@@ -456,7 +549,7 @@ opacity: 1;
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-image: var(--noise-texture);
   opacity: 0.025;
   pointer-events: none;
 }

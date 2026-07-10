@@ -25,7 +25,7 @@
   font-weight: 800;
   line-height: 0.95;
   letter-spacing: -0.03em;
-  color: var(--color-cream);
+  color: var(--color-paper-ink);
   text-transform: uppercase;
   margin-bottom: 1.5rem;
 }
@@ -34,7 +34,7 @@
   font-family: var(--font-body);
   font-size: clamp(0.85rem, 1.2vw, 1rem);
   line-height: 1.75;
-  color: rgba(244, 241, 234, 0.6);
+  color: var(--color-horizon-600);
   max-width: 680px;
   margin-bottom: 2rem;
 }
@@ -109,7 +109,7 @@
   font-weight: 800;
   letter-spacing: -0.02em;
   text-transform: uppercase;
-  color: var(--color-cream);
+  color: var(--color-paper-ink);
   margin-bottom: 2rem;
 }
 
@@ -125,19 +125,19 @@
   align-items: flex-start;
   gap: 0.75rem;
   padding: 1rem 1.25rem;
-  background: rgba(255,255,255,0.025);
-  border: 1px solid rgba(191, 149, 63, 0.08);
+  background: rgba(140, 31, 50, 0.03);
+  border: 1px solid rgba(140, 31, 50, 0.08);
   border-radius: 8px;
   font-family: var(--font-body);
   font-size: 0.85rem;
   line-height: 1.5;
-  color: rgba(244, 241, 234, 0.75);
+  color: var(--color-horizon-700);
   transition: border-color 0.2s, background 0.2s;
 }
 
 .service-detail-feature:hover {
-  border-color: rgba(191, 149, 63, 0.2);
-  background: rgba(255,255,255,0.04);
+  border-color: rgba(140, 31, 50, 0.2);
+  background: rgba(140, 31, 50, 0.05);
 }
 
 .service-detail-feature__icon {
@@ -198,7 +198,7 @@
   font-family: var(--font-display);
   font-size: 0.92rem;
   font-weight: 700;
-  color: var(--color-cream);
+  color: var(--color-paper-ink);
   cursor: pointer;
   list-style: none;
   display: flex;
@@ -231,7 +231,7 @@
   font-family: var(--font-body);
   font-size: 0.85rem;
   line-height: 1.7;
-  color: rgba(244, 241, 234, 0.6);
+  color: var(--color-horizon-600);
   margin: 0;
 }
 
@@ -249,14 +249,14 @@
   font-weight: 800;
   letter-spacing: -0.02em;
   text-transform: uppercase;
-  color: var(--color-cream);
+  color: var(--color-paper-ink);
   margin-bottom: 0.75rem;
 }
 
 .service-detail-bottom-cta__sub {
   font-family: var(--font-body);
   font-size: 0.9rem;
-  color: rgba(244, 241, 234, 0.5);
+  color: var(--color-horizon-500);
   line-height: 1.6;
   margin-bottom: 2rem;
   max-width: 520px;
@@ -289,8 +289,8 @@
 .sticky-contact-card {
   position: sticky;
   top: 100px;
-  background: rgba(191, 149, 63, 0.03);
-  border: 1px solid rgba(191, 149, 63, 0.15);
+  background: var(--color-paper);
+  border: 1px solid rgba(140, 31, 50, 0.15);
   border-radius: 12px;
   padding: 2rem 1.5rem;
   display: flex;
@@ -303,14 +303,14 @@
   font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 800;
-  color: var(--color-cream);
+  color: var(--color-paper-ink);
   text-transform: uppercase;
 }
 
 .sticky-contact-card__desc {
   font-family: var(--font-body);
   font-size: 0.85rem;
-  color: rgba(244, 241, 234, 0.6);
+  color: var(--color-horizon-600);
   line-height: 1.6;
 }
 
@@ -426,7 +426,7 @@
 .bento-cell__text {
   font-size: 0.95rem;
   line-height: 1.6;
-  color: rgba(244, 241, 234, 0.8);
+  color: var(--color-horizon-700);
 }
 
 .sticky-contact-card__desc {

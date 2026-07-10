@@ -26,10 +26,10 @@ const STATS = [
 ]
 
 const CERTIFICATIONS = [
+  { name: 'PSARA 2005 Licensed', desc: 'Fully licensed under the Private Security Agencies Regulation Act, compliant with all state Controlling Authority requirements' },
   { name: 'ISO 9001:2015', desc: 'Quality Management System certified for security service delivery' },
   { name: '3-Acre Training Center', desc: 'Dedicated training facility with modern equipment and certified instructors' },
   { name: 'MSME Registered', desc: 'Registered with Ministry of Micro, Small & Medium Enterprises' },
-  { name: 'GST Compliant', desc: 'Fully GST registered and compliant for all service invoicing' },
 ]
 
 const WHY_SILBAR = [
@@ -82,20 +82,20 @@ export default function AboutPage() {
 
       {/* Stats - Bento Grid */}
       <section className="about-stats">
-        <div className="bento-grid">
-          {STATS.map(({ number, label }, i) => {
+        <ScrollReveal className="bento-grid">
+          {STATS.map(({ number, label }) => {
             const numValue = parseInt(number.replace(/\D/g, ''))
             const prefix = number.includes('+') ? '+' : ''
             return (
-              <ScrollReveal key={label} delay={i * 0.1} className="bento-cell glass-panel bento-cell--stat">
+              <div key={label} className="bento-cell glass-panel bento-cell--stat">
                 <span className="about-stat__number">
                   <Counter to={numValue} suffix={prefix} />
                 </span>
                 <span className="about-stat__label">{label}</span>
-              </ScrollReveal>
+              </div>
             )
           })}
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* Story */}
@@ -140,22 +140,22 @@ export default function AboutPage() {
             </h2>
           </ScrollReveal>
           
-          <div className="timeline-container">
+          <ScrollReveal className="timeline-container">
             {[
               { year: '2005', title: 'The Foundation', desc: 'Silbar Security established in Jaipur by experienced security professionals.' },
               { year: '2012', title: 'Regional Expansion', desc: 'Expanded operations across Rajasthan, building a PAN India deployment network.' },
               { year: '2016', title: 'ISO Certification', desc: 'Achieved ISO 9001:2015 certification for Quality Management Systems.' },
               { year: '2024', title: 'PAN India Presence', desc: 'Now protecting 500+ enterprise clients with a force of 7,000+ licensed officers.' }
-            ].map((item, i) => (
-              <ScrollReveal key={item.year} delay={i * 0.1} className="timeline-item">
+            ].map((item) => (
+              <div key={item.year} className="timeline-item">
                 <div className="timeline-item__year">{item.year}</div>
                 <div className="timeline-item__content glass-panel" style={{ padding: '1.5rem', borderRadius: '12px', marginTop: '1rem' }}>
                   <h3 className="timeline-item__title">{item.title}</h3>
                   <p className="timeline-item__desc">{item.desc}</p>
                 </div>
-              </ScrollReveal>
+              </div>
             ))}
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -167,13 +167,13 @@ export default function AboutPage() {
             <SplitTextReveal text="The Silbar Difference" />
           </GradientText>
           <div className="bento-grid">
-            {WHY_SILBAR.map((point, i) => (
-              <ScrollReveal key={point} delay={i * 0.05} className="bento-cell--wide">
+            {WHY_SILBAR.map((point) => (
+              <div key={point} className="bento-cell--wide">
                 <GlassCard className="bento-cell bento-cell--check-item" tilt={true} opacity={0.03} borderOpacity={0.15}>
                   <CheckCircle size={24} className="about-why__check" />
                   <span className="check-item__text">{point}</span>
                 </GlassCard>
-              </ScrollReveal>
+              </div>
             ))}
           </div>
         </ScrollReveal>
@@ -186,9 +186,9 @@ export default function AboutPage() {
           <GradientText as="h2" className="about-certs__title service-detail-section-title--mb">
             <SplitTextReveal text="Licensed. Certified. Compliant." />
           </GradientText>
-          <div className="bento-grid">
-            {CERTIFICATIONS.map(({ name, desc }, i) => (
-              <ScrollReveal key={name} delay={i * 0.1} style={{ display: 'flex' }}>
+          <ScrollReveal className="bento-grid">
+            {CERTIFICATIONS.map(({ name, desc }) => (
+              <div key={name} style={{ display: 'flex' }}>
                 <GlassCard className="bento-cell about-cert-card" tilt={true} opacity={0.03} borderOpacity={0.15}>
                   <div className="about-cert-card__badge">
                     <Award size={28} />
@@ -196,9 +196,9 @@ export default function AboutPage() {
                   </div>
                   <p className="about-cert-card__desc">{desc}</p>
                 </GlassCard>
-              </ScrollReveal>
+              </div>
             ))}
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 

@@ -1,14 +1,14 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Home, Menu, X, Phone, Shield } from 'lucide-react'
+import { Menu, X, Phone, Shield } from 'lucide-react'
 import { MagneticButton } from '@/components/ui/MagneticButton'
 import { CONTACT } from '@/lib/config'
 
 const NAV_LINKS = [
-  { label: 'Home', href: '/', icon: Home },
+  { label: 'Home', href: '/' },
   { label: 'Services', href: '/services' },
   { label: 'Industries', href: '/industries' },
   { label: 'About', href: '/about' },
@@ -17,18 +17,27 @@ const NAV_LINKS = [
 
 export default function Header() {
   const pathname = usePathname()
-  const [hidden, setHidden] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  const [transparent, setTransparent] = useState(true)
-  const [scrollProgress, setScrollProgress] = useState(0)
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [state, setState] = useState({
+    hidden: false,
+    scrolled: false,
+    transparent: true,
+    menuOpen: false,
+  })
+  const scrollProgressRef = useRef(0)
+  const scrollProgressElRef = useRef<HTMLDivElement>(null)
   const lastScrollY = useRef(0)
   const ticking = useRef(false)
   const wasMenuOpen = useRef(false)
 
+  const setMenuOpen = useCallback((open: boolean) => {
+    setState(prev => ({ ...prev, menuOpen: open }))
+  }, [])
+
   useEffect(() => {
     const setInitialTransparent = () => {
-      if (pathname === '/') setTransparent(window.scrollY < window.innerHeight)
+      if (pathname === '/') {
+        setState(prev => ({ ...prev, transparent: window.scrollY < window.innerHeight }))
+      }
     }
     setInitialTransparent()
 
@@ -37,19 +46,28 @@ export default function Header() {
         requestAnimationFrame(() => {
           const currentY = window.scrollY
           const direction = currentY > lastScrollY.current ? 'down' : 'up'
-          
-          setScrolled(currentY > 50)
-          if (pathname === '/') setTransparent(currentY < window.innerHeight)
-          
-          const totalScroll = document.documentElement.scrollHeight - window.innerHeight
-          setScrollProgress(totalScroll > 0 ? (currentY / totalScroll) * 100 : 0)
 
-          if (direction === 'down' && currentY > 100) {
-            setHidden(true)
-            setMenuOpen(false)
-          } else if (direction === 'up') {
-            setHidden(false)
+          const totalScroll = document.documentElement.scrollHeight - window.innerHeight
+          const progress = totalScroll > 0 ? (currentY / totalScroll) * 100 : 0
+          scrollProgressRef.current = progress
+          if (scrollProgressElRef.current) {
+            scrollProgressElRef.current.style.width = `${progress}%`
           }
+
+          let newHidden = false
+          let newMenuOpen = false
+          if (direction === 'down' && currentY > 100) {
+            newHidden = true
+            newMenuOpen = false
+          }
+
+          setState(prev => ({
+            hidden: newHidden,
+            scrolled: currentY > 50,
+            transparent: pathname === '/' ? currentY < window.innerHeight : prev.transparent,
+            menuOpen: newMenuOpen,
+          }))
+
           lastScrollY.current = currentY
           ticking.current = false
         })
@@ -59,32 +77,34 @@ export default function Header() {
 
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [pathname])
 
   const navRef = useRef<HTMLDivElement>(null)
 
   // Lock body scroll when menu open + Escape key
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    document.body.style.overflow = state.menuOpen ? 'hidden' : ''
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setMenuOpen(false)
     }
-    if (menuOpen) window.addEventListener('keydown', handleKey)
+    if (state.menuOpen) window.addEventListener('keydown', handleKey)
     return () => {
       document.body.style.overflow = ''
       window.removeEventListener('keydown', handleKey)
     }
-  }, [menuOpen])
+  }, [state.menuOpen, setMenuOpen])
 
   // Return focus to hamburger on close
   const hamburgerRef = useRef<HTMLButtonElement>(null)
   useEffect(() => {
-    if (wasMenuOpen.current && !menuOpen) hamburgerRef.current?.focus()
-    wasMenuOpen.current = menuOpen
-  }, [menuOpen])
+    if (wasMenuOpen.current && !state.menuOpen) hamburgerRef.current?.focus()
+    wasMenuOpen.current = state.menuOpen
+  }, [state.menuOpen])
 
   const isActive = (href: string) =>
     href === '/' ? pathname === '/' : pathname.startsWith(href)
+
+  const { hidden, scrolled, transparent, menuOpen } = state
 
   return (
     <>
@@ -96,15 +116,14 @@ export default function Header() {
 
         {/* Desktop nav */}
         <nav className="hero-nav" aria-label="Primary navigation">
-          {NAV_LINKS.map(({ label, href, icon: Icon }) => (
+          {NAV_LINKS.map(({ label, href }) => (
             <Link
               key={label}
               href={href}
-              className={`hero-nav-link${href === '/' ? ' hero-nav-link--home' : ''}${isActive(href) ? ' hero-nav-link--active' : ''}`}
+              className={`hero-nav-link${isActive(href) ? ' hero-nav-link--active' : ''}`}
               aria-current={isActive(href) ? 'page' : undefined}
             >
-              {Icon ? <Icon size={14} strokeWidth={1.8} aria-hidden="true" /> : null}
-              <span>{label}</span>
+              {label}
             </Link>
           ))}
           <a
@@ -139,11 +158,11 @@ export default function Header() {
           {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
 
-        {/* Scroll Progress Bar */}
-        <div 
-          className="scroll-progress" 
-          style={{ width: `${scrollProgress}%` }}
-          aria-hidden="true" 
+        {/* Scroll Progress Bar — updated via ref, no state */}
+        <div
+          ref={scrollProgressElRef}
+          className="scroll-progress"
+          aria-hidden="true"
         />
       </header>
 
@@ -155,7 +174,7 @@ export default function Header() {
         aria-hidden={!menuOpen}
       >
         <nav className="mobile-nav__links" aria-label="Mobile navigation">
-          {NAV_LINKS.map(({ label, href, icon: Icon }) => (
+          {NAV_LINKS.map(({ label, href }) => (
             <Link
               key={label}
               href={href}
@@ -163,7 +182,6 @@ export default function Header() {
               aria-current={isActive(href) ? 'page' : undefined}
               onClick={() => setMenuOpen(false)}
             >
-              {Icon ? <Icon size={18} strokeWidth={1.8} aria-hidden="true" /> : null}
               {label}
             </Link>
           ))}

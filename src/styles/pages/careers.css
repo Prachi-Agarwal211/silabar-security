@@ -13,7 +13,7 @@
   font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--color-cream);
+  color: var(--color-paper-ink);
   margin-bottom: 0.25rem;
 }
 
@@ -25,7 +25,7 @@
 
 .job-card__desc {
   font-size: 0.85rem;
-  color: rgba(244, 241, 234, 0.65);
+  color: var(--color-horizon-600);
   line-height: 1.5;
 }
 
@@ -52,7 +52,7 @@
   font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--color-cream);
+  color: var(--color-paper-ink);
   margin-bottom: 0.4rem;
   line-height: 1.3;
 }
@@ -128,13 +128,13 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: rgba(244, 241, 234, 0.5);
+  color: var(--color-horizon-500);
 }
 
 .blog-card__title {
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--color-cream);
+  color: var(--color-paper-ink);
   line-height: 1.3;
   padding-right: 1rem;
 }
@@ -145,7 +145,7 @@
 }
 
 .blog-card__excerpt {
-  color: rgba(244, 241, 234, 0.85);
+  color: var(--color-horizon-600);
   line-height: 1.6;
   flex-grow: 1;
   margin-bottom: 2rem;

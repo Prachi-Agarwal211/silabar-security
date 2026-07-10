@@ -110,14 +110,14 @@ export default async function IndustryPage({
                 <ScrollReveal>
                   <h2 className="service-detail-section-title">Security Challenges</h2>
                 </ScrollReveal>
-                <div className="bento-grid">
-                  {industry.challenges.map((c, i) => (
-                    <ScrollReveal key={c} delay={i * 0.05} className="bento-cell glass-panel bento-cell--challenge">
+                <ScrollReveal className="bento-grid">
+                  {industry.challenges.map((c) => (
+                    <div key={c} className="bento-cell glass-panel bento-cell--challenge">
                       <AlertTriangle size={20} className="industry-challenge-item__icon" />
                       <span className="bento-cell__text">{c}</span>
-                    </ScrollReveal>
+                    </div>
                   ))}
-                </div>
+                </ScrollReveal>
               </div>
             </section>
 
@@ -127,14 +127,14 @@ export default async function IndustryPage({
                 <ScrollReveal>
                   <h2 className="service-detail-section-title">Our Solutions</h2>
                 </ScrollReveal>
-                <div className="bento-grid">
-                  {industry.solutions.map((s, i) => (
-                    <ScrollReveal key={s} delay={i * 0.04} className="bento-cell glass-panel bento-cell--solution">
+                <ScrollReveal className="bento-grid">
+                  {industry.solutions.map((s) => (
+                    <div key={s} className="bento-cell glass-panel bento-cell--solution">
                       <CheckCircle size={20} className="service-detail-feature__icon" />
                       <span className="bento-cell__text">{s}</span>
-                    </ScrollReveal>
+                    </div>
                   ))}
-                </div>
+                </ScrollReveal>
               </div>
             </section>
 
@@ -144,15 +144,15 @@ export default async function IndustryPage({
                 <ScrollReveal>
                   <h2 className="service-detail-section-title">Services for {industry.shortTitle}</h2>
                 </ScrollReveal>
-                <div className="bento-grid">
-                  {relatedServices.map((service, i) => (
-                    <ScrollReveal key={service.slug} delay={i * 0.04} className="bento-cell glass-panel bento-cell--service-link">
+                <ScrollReveal className="bento-grid">
+                  {relatedServices.map((service) => (
+                    <div key={service.slug} className="bento-cell glass-panel bento-cell--service-link">
                       <Link href={`/services/${service.slug}`} className="industry-service-link">
                         {service.shortTitle} <ArrowRight size={16} />
                       </Link>
-                    </ScrollReveal>
+                    </div>
                   ))}
-                </div>
+                </ScrollReveal>
               </div>
             </section>
 
@@ -162,16 +162,14 @@ export default async function IndustryPage({
                 <ScrollReveal>
                   <h2 className="service-detail-section-title">FAQs</h2>
                 </ScrollReveal>
-                <div className="service-detail-faq-list">
-                  {industry.faqs.map(({ q, a }, i) => (
-                    <ScrollReveal key={q} delay={i * 0.05}>
-                      <details className="service-detail-faq-item">
-                        <summary className="service-detail-faq-q">{q}</summary>
-                        <p className="service-detail-faq-a">{a}</p>
-                      </details>
-                    </ScrollReveal>
+                <ScrollReveal className="service-detail-faq-list">
+                  {industry.faqs.map(({ q, a }) => (
+                    <details key={q} className="service-detail-faq-item">
+                      <summary className="service-detail-faq-q">{q}</summary>
+                      <p className="service-detail-faq-a">{a}</p>
+                    </details>
                   ))}
-                </div>
+                </ScrollReveal>
               </div>
             </section>
           </div>

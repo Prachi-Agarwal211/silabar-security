@@ -69,7 +69,7 @@
   font-size: clamp(1.8rem, 3vw, 2.5rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: var(--color-cream);
+  color: var(--color-paper-ink);
   text-transform: uppercase;
   margin-bottom: 1.5rem;
 }
@@ -78,7 +78,7 @@
   font-family: var(--font-body);
   font-size: 0.9rem;
   line-height: 1.8;
-  color: rgba(244, 241, 234, 0.65);
+  color: var(--color-horizon-600);
   margin-bottom: 1rem;
 }
 
@@ -98,7 +98,7 @@
 .about-story__image-label {
   font-family: var(--font-body);
   font-size: 0.75rem;
-  color: rgba(244, 241, 234, 0.35);
+  color: var(--color-horizon-400);
   letter-spacing: 0.06em;
 }
 
@@ -166,7 +166,7 @@
 }
 
 .about-cert-card__desc {
-  color: rgba(244, 241, 234, 0.85);
+  color: var(--color-horizon-600);
   line-height: 1.6;
 }
 

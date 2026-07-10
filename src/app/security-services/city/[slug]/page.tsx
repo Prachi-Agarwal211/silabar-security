@@ -25,7 +25,7 @@ export async function generateMetadata({
   if (!city) return {}
 
   const title = `Security Services in ${city.name} | Silbar Security`
-  const description = `PSARA-licensed security guards in ${city.name}, ${city.state}. Silbar Security provides manned guarding, CCTV, event security, and facility management across ${city.name}. Call ${CONTACT.phone}.`
+  const description = `Professional security guards in ${city.name}, ${city.state}. Silbar Security provides manned guarding, CCTV, event security, and facility management across ${city.name}. Call ${CONTACT.phone}.`
 
   return {
     title,
@@ -51,7 +51,7 @@ export default async function CitySEOPage({
     '@type': 'LocalBusiness',
     '@id': `https://www.silbarsecurity.in/security-services/city/${slug}`,
     name: `Silbar Security Services — ${city.name}`,
-    description: `PSARA-licensed security services in ${city.name}, ${city.state}`,
+    description: `Professional security services in ${city.name}, ${city.state}`,
     url: 'https://www.silbarsecurity.in',
     telephone: CONTACT.phoneRaw,
     email: CONTACT.email,
@@ -95,8 +95,8 @@ export default async function CitySEOPage({
     mainEntity: [
       {
         '@type': 'Question',
-        name: `Are your security guards in ${city.name} PSARA licensed?`,
-        acceptedAnswer: { '@type': 'Answer', text: `Yes. All Silbar Security guards deployed in ${city.name} are fully licensed under PSARA 2005 by the state Controlling Authority.` },
+        name: `Are your security guards in ${city.name} fully licensed?`,
+        acceptedAnswer: { '@type': 'Answer', text: `Yes. All Silbar Security guards deployed in ${city.name} are fully licensed, background verified, and compliant with all state regulations.` },
       },
       {
         '@type': 'Question',
@@ -126,8 +126,8 @@ export default async function CitySEOPage({
           title={<SplitTextReveal text={`Security Services in ${city.name}`} mode="words" />}
           subtitle={
             <>
-              PSARA-licensed security guard services in {city.name}, {city.state}. 
-              Manned guarding, CCTV surveillance, event security, and facility management. 
+              Professional security guard services in {city.name}, {city.state}.
+              Manned guarding, CCTV surveillance, event security, and facility management.
               {state ? ` Covering all ${state.districts} districts of ${state.name}.` : ''}
             </>
           }
@@ -216,20 +216,20 @@ export default async function CitySEOPage({
             </ScrollReveal>
             <div className="seo-about-content">
               <p>
-                Silbar Security Services provides professional, PSARA-licensed security solutions 
-                to businesses and organizations in {city.name}, {city.state}. Our team of trained 
-                security personnel, supervisors, and account managers serves manufacturing plants, 
+                Silbar Security Services provides professional security solutions
+                to businesses and organizations in {city.name}, {city.state}. Our team of trained
+                security personnel, supervisors, and account managers serves manufacturing plants,
                 corporate offices, hospitals, hotels, banks, and residential societies across the city.
               </p>
               <p>
-                All guards deployed in {city.name} undergo PSARA-mandated training, background 
-                verification, and are covered under full statutory compliance (ESI, PF, Gratuity). 
-                We provide armed and unarmed guards, CCTV surveillance systems, access control 
+                Every guard deployed in {city.name} is professionally trained, background
+                verified, and covered under full statutory compliance (ESI, PF, Gratuity).
+                We provide armed and unarmed guards, CCTV surveillance systems, access control
                 management, and 24/7 remote monitoring for facilities in {city.name}.
               </p>
               <p>
-                With a population of {city.population} and growing, {city.name} demands professional 
-                security services. Silbar Security meets that need with {state ? `deployments across all ${state.districts} districts of ${state.name}` : 'PAN India coverage'}, 
+                With a population of {city.population} and growing, {city.name} demands professional
+                security services. Silbar Security meets that need with {state ? `deployments across all ${state.districts} districts of ${state.name}` : 'PAN India coverage'},
                 dedicated account management, and a 24-hour guard replacement guarantee.
               </p>
             </div>

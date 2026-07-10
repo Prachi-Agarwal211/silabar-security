@@ -132,7 +132,7 @@ export default async function StateSEOPage({
           title={<SplitTextReveal text={`Security Guard Services in ${location.name}`} mode="words" />}
           subtitle={
             <>
-              PSARA-licensed, ISO 9001:2015 certified security services across
+              Trained, verified security professionals across
               all {location.districts} districts of {location.name}.
               Serving {location.majorCities.join(', ')} and beyond.
             </>
@@ -223,22 +223,22 @@ export default async function StateSEOPage({
             </ScrollReveal>
             <div className="seo-about-content">
               <p>
-                Silbar Security Services is a PSARA-licensed private security agency
-                operating in {location.name}. We provide manned guarding, industrial
-                security, electronic surveillance, and facility management for
-                manufacturing companies, hospitals, hotels, warehouses, banks, and
-                residential societies across {location.name}.
+                Silbar Security Services provides professional security solutions
+                across {location.name}. We deploy trained guards, industrial
+                security teams, electronic surveillance systems, and facility management
+                for manufacturing companies, hospitals, hotels, warehouses, banks, and
+                residential societies.
               </p>
               <p>
-                All our security personnel deployed in {location.name} are licensed
-                 under the state&apos;s PSARA Controlling Authority, background verified,
+                Every guard we deploy is background verified, professionally trained,
                 and covered under full statutory compliance including ESI, PF, and
-                minimum wages as mandated by {location.name} state labour laws.
+                minimum wages. Our 24-hour replacement guarantee ensures zero downtime
+                at your facility.
               </p>
               <p>
                 Our {location.capital}-based operations team manages deployments
                 across {location.districts} districts with rapid deployment capability
-                and dedicated account management for every client.
+                and a dedicated account manager for every client.
               </p>
             </div>
           </div>
@@ -255,8 +255,8 @@ export default async function StateSEOPage({
             <div className="service-detail-faq-list">
               {[
                 {
-                  q: `Are Silbar Security guards PSARA licensed in ${location.name}?`,
-                  a: `Yes. All Silbar Security guards deployed in ${location.name} are licensed under PSARA 2005 by the state's Controlling Authority.`,
+                  q: `Are Silbar Security guards fully licensed in ${location.name}?`,
+                  a: `Yes. All Silbar Security guards deployed in ${location.name} are fully licensed and compliant with state regulations, background verified, and covered under statutory requirements.`,
                 },
                 {
                   q: `Which cities in ${location.name} does Silbar Security serve?`,

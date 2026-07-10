@@ -20,7 +20,7 @@ const ScrollExperience = dynamic(
 
 import { SERVICES } from '@/data/services'
 import { CONTACT } from '@/lib/config'
-import ServicesGrid from '@/components/sections/ServicesGrid'
+const ServicesGrid = dynamic(() => import('@/components/sections/ServicesGrid'))
 import ScrollReveal from '@/components/animations/ScrollReveal'
 
 const COMMAND_SIGNALS = [

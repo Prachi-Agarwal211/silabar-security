@@ -50,8 +50,8 @@
 }
 
 .contact-card--call-btn {
-  background: var(--color-midnight);
-  color: var(--color-cream);
+  background: var(--color-cherry);
+  color: var(--color-paper);
 }
 
 .contact-card--whatsapp-btn:hover,
@@ -75,8 +75,8 @@
 
 .contact-card {
   padding: 1.5rem;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(191, 149, 63, 0.12);
+  background: var(--color-paper);
+  border: 1px solid rgba(140, 31, 50, 0.12);
   border-radius: 12px;
   text-decoration: none;
   display: flex;
@@ -92,7 +92,7 @@
 
 .contact-card__icon { color: var(--color-gold); }
 .contact-card__label { font-family: var(--font-body); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-horizon-500); }
-.contact-card__value { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; color: var(--color-cream); }
+.contact-card__value { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; color: var(--color-paper-ink); }
 .contact-card__note { font-family: var(--font-body); font-size: 0.72rem; color: var(--color-horizon-600); }
 
 /* Contact form */
@@ -108,7 +108,7 @@
   font-family: var(--font-display);
   font-size: clamp(1.2rem, 2vw, 1.75rem);
   font-weight: 700;
-  color: var(--color-cream);
+  color: var(--color-paper-ink);
   text-transform: uppercase;
   margin-bottom: 1.5rem;
 }
@@ -125,12 +125,12 @@
   font-family: var(--font-display);
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--color-cream);
+  color: var(--color-paper-ink);
   margin-bottom: 0.5rem;
 }
 
 .contact-office__icon { color: var(--color-gold); }
-.contact-office__address { font-family: var(--font-body); font-size: 0.78rem; color: rgba(244,241,234,0.55); line-height: 1.5; margin-bottom: 0.5rem; }
+.contact-office__address { font-family: var(--font-body); font-size: 0.78rem; color: var(--color-horizon-600); line-height: 1.5; margin-bottom: 0.5rem; }
 .contact-office__hours { display: flex; align-items: center; gap: 0.3rem; font-family: var(--font-body); font-size: 0.7rem; color: var(--color-horizon-500); }
 
 /* ============================================
@@ -172,7 +172,7 @@
   font-size: 1.5rem;
   font-weight: 500;
   margin-bottom: 0.25rem;
-  color: var(--color-cream);
+  color: var(--color-paper-ink);
 }
 
 .contact-card__note {

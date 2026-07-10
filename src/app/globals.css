@@ -1,29 +1,38 @@
 @import "tailwindcss";
 
-@import "../styles/tokens.css";
-@import "../styles/reset.css";
-@import "../styles/utilities.css";
-@import "../styles/animations.css";
+@layer base, components, utilities;
 
-@import "../styles/layout/footer.css";
+@layer base {
+  @import "../styles/tokens.css";
+  @import "../styles/reset.css";
+}
 
-@import "../styles/components/marquee.css";
-@import "../styles/components/breadcrumb.css";
+@layer utilities {
+  @import "../styles/utilities.css";
+  @import "../styles/animations.css";
+}
 
-@import "../styles/sections/hero.css";
-@import "../styles/sections/trust.css";
-@import "../styles/sections/services-home.css";
-@import "../styles/sections/home-sections.css";
-@import "../styles/sections/services-comic.css";
-
-@import "../styles/pages/about.css";
-@import "../styles/pages/contact.css";
-@import "../styles/pages/service-detail.css";
-@import "../styles/pages/industry-detail.css";
-@import "../styles/pages/industries-listing.css";
-@import "../styles/pages/services-listing.css";
-@import "../styles/pages/seo-pages.css";
-@import "../styles/pages/careers.css";
-@import "../styles/pages/legal.css";
-
-@import "../styles/shared/page-hero.css";
+@layer components {
+  @import "../styles/layout/footer.css";
+  
+  @import "../styles/components/marquee.css";
+  @import "../styles/components/breadcrumb.css";
+  
+  @import "../styles/sections/hero.css";
+  @import "../styles/sections/trust.css";
+  @import "../styles/sections/services-home.css";
+  @import "../styles/sections/home-sections.css";
+  @import "../styles/sections/services-comic.css";
+  
+  @import "../styles/pages/about.css";
+  @import "../styles/pages/contact.css";
+  @import "../styles/pages/service-detail.css";
+  @import "../styles/pages/industry-detail.css";
+  @import "../styles/pages/industries-listing.css";
+  @import "../styles/pages/services-listing.css";
+  @import "../styles/pages/seo-pages.css";
+  @import "../styles/pages/careers.css";
+  @import "../styles/pages/legal.css";
+  
+  @import "../styles/shared/page-hero.css";
+}

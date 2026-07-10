@@ -174,73 +174,15 @@
   border-radius: 28px;
   overflow: hidden;
   background: transparent;
-  box-shadow: 0 30px 80px -20px rgba(191, 149, 63, 0.35);
+  border: none;
+  box-shadow: none;
 }
 
-.trust-card-light__glow {
-  position: absolute;
-  top: -20%;
-  right: -15%;
-  width: 60%;
-  height: 60%;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.5), transparent 70%);
-  filter: blur(40px);
-  pointer-events: none;
-  z-index: 3;
-}
-
-.trust-card-light__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(191, 149, 63, 0.12), transparent 55%);
-  pointer-events: none;
-  z-index: 3;
-}
-
-.trust-card-light {
-  border: 1px solid rgba(191, 149, 63, 0.25);
-  background: linear-gradient(160deg, rgba(232, 223, 200, 0.4), rgba(250, 248, 244, 0.15));
-}
-
-.trust-card-light__frame {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  pointer-events: none;
-}
-
-.trust-card-light__expand {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(20, 16, 13, 0.55);
-  color: var(--color-paper);
-  backdrop-filter: blur(6px);
-}
-
+/* Hide ALL decorative elements */
+.trust-card-light__frame,
+.trust-card-light__glow,
+.trust-card-light__overlay,
+.trust-card-light__expand,
 .trust-card-light__dots {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  display: flex;
-  gap: 0.35rem;
-}
-
-.trust-card-light__dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: rgba(250, 248, 244, 0.35);
-}
-
-.trust-card-light__dot--active {
-  width: 16px;
-  border-radius: 3px;
-  background: var(--color-gold);
+  display: none !important;
 }

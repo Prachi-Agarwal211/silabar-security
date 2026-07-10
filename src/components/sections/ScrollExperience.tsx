@@ -1,7 +1,8 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
+import { useGSAP } from '@gsap/react'
 import { ShieldCheck, ChevronsRight, Shield, Maximize2 } from 'lucide-react'
 import SplitTextReveal from '../animations/SplitTextReveal'
 
@@ -30,7 +31,7 @@ export default function ScrollExperience() {
   const trustCaptionRef = useRef<HTMLDivElement>(null)
   const marqueeBarRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
+  useGSAP(() => {
     const wrapper = wrapperRef.current
     const bg = bgRef.current
     const bgWarm = bgWarmRef.current
@@ -60,11 +61,19 @@ export default function ScrollExperience() {
       const vw = window.innerWidth
       const vh = window.innerHeight
       if (dockRect.width === 0) return { scale: 1, x: 0, y: 0 }
-      const scaleX = dockRect.width / vw
-      const scaleY = dockRect.height / vh
-      const isPortraitDock = dockRect.height > dockRect.width
+      
+      let scale = 1
+      if (vw < 768) {
+        scale = Math.min(dockRect.width / vw, dockRect.height / vh) * 0.9
+      } else {
+        const scaleX = dockRect.width / vw
+        const scaleY = dockRect.height / vh
+        const isPortraitDock = dockRect.height > dockRect.width
+        scale = isPortraitDock ? Math.max(scaleX, scaleY) : Math.min(scaleX, scaleY)
+      }
+      
       return {
-        scale: isPortraitDock ? Math.max(scaleX, scaleY) : Math.min(scaleX, scaleY),
+        scale,
         x: (dockRect.left + dockRect.width / 2) - vw / 2,
         y: (dockRect.top + dockRect.height / 2) - vh / 2,
       }
@@ -118,10 +127,11 @@ export default function ScrollExperience() {
           scale: () => getVideoTarget().scale,
           x: () => getVideoTarget().x,
           y: () => getVideoTarget().y,
-          borderRadius: 28,
           ease: 'power2.inOut',
           duration: 0.24,
         }, 0.10)
+        // border-radius set once at dock completion (not scrubbed — avoids per-frame repaint)
+        tl.set(video, { borderRadius: 28 }, 0.34)
 
         tl.to(trustContent, { opacity: 1, duration: 0.08, ease: 'power2.out' }, 0.20)
         tl.fromTo(trustEyebrow, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.06, ease: 'power3.out' }, 0.22)
@@ -134,12 +144,25 @@ export default function ScrollExperience() {
           { x: '100%', opacity: 0, rotate: 0 },
           { x: '0%', opacity: 1, rotate: -4, duration: 0.10, ease: 'power2.out' }, 0.30)
 
-        // ACT 3 — CLEAN FADE OUT (0.55 → 1.0)
+        // ACT 3 — SMOOTH FADE OUT INTO SERVICES (0.55 → 1.0)
         tl.to(trustContent, { opacity: 0, y: -20, duration: 0.10, ease: 'power2.in' }, 0.55)
         tl.to(video, { opacity: 0, duration: 0.10, ease: 'power2.in' }, 0.55)
-        
-        // Remove massive wipe, just fade out marquee smoothly
-        tl.to(marqueeBar, { opacity: 0, y: -50, duration: 0.15, ease: 'power2.in' }, 0.62)
+
+        // Marquee fades out smoothly and moves up into services
+        tl.to(marqueeBar, {
+          opacity: 0,
+          y: -100,
+          scale: 0.95,
+          duration: 0.20,
+          ease: 'power2.in'
+        }, 0.60)
+
+        // Warm background fades to match services section
+        tl.to(bgWarm, {
+          opacity: 0,
+          duration: 0.15,
+          ease: 'power2.in'
+        }, 0.70)
 
         return tl
       }
@@ -163,8 +186,15 @@ export default function ScrollExperience() {
         tl.to(overlay, { opacity: 0, duration: 0.08 }, 0.10)
         tl.fromTo(bgWarm, { opacity: 0 }, { opacity: 1, duration: 0.22, ease: 'power2.inOut' }, 0.08)
         
-        // FADE VIDEO OUT INSTEAD OF MORPHING
-        tl.to(video, { opacity: 0, duration: 0.2 }, 0.10)
+        // Scale video to fit dock:
+        tl.to(video, {
+          scale: () => getVideoTarget().scale,
+          x: () => getVideoTarget().x,
+          y: () => getVideoTarget().y,
+          borderRadius: 28,
+          duration: 0.24,
+          ease: 'power2.inOut'
+        }, 0.10)
 
         // ACT 2 — FADE IN TRUST
         tl.to(trustContent, { opacity: 1, duration: 0.15, ease: 'power2.out' }, 0.20)
@@ -181,19 +211,18 @@ export default function ScrollExperience() {
 
         // ACT 3 — CLEAN FADE OUT
         tl.to(trustContent, { opacity: 0, y: -20, duration: 0.15, ease: 'power2.in' }, 0.60)
+        tl.to(video, { opacity: 0, duration: 0.15, ease: 'power2.in' }, 0.60)
         tl.to(marqueeBar, { opacity: 0, y: -30, duration: 0.15, ease: 'power2.in' }, 0.65)
 
         return tl
       }
 
       scrollMm.add('(min-width: 768px)', () => {
-        const tl = buildDesktopTl()
-        return () => { tl.kill() }
+        buildDesktopTl()
       })
 
       scrollMm.add('(max-width: 767px)', () => {
-        const tl = buildMobileTl()
-        return () => { tl.kill() }
+        buildMobileTl()
       })
 
       // ── Re-run ScrollTrigger's measurements on resize / font / video load ──
@@ -212,15 +241,11 @@ export default function ScrollExperience() {
       requestAnimationFrame(() => ScrollTrigger.refresh())
 
       return () => {
-        loadTl.kill()
-        scrollMm.revert()
         window.removeEventListener('resize', debouncedRefresh)
         video.removeEventListener('loadedmetadata', refresh)
       }
     })
-
-    return () => mm.revert()
-  }, [])
+  }, { scope: wrapperRef })
 
   return (
     <div ref={wrapperRef} className="scroll-wrapper">
@@ -233,7 +258,8 @@ export default function ScrollExperience() {
       <div className="hero-right-zone">
         {/* Video — position: fixed relative to viewport since wrapper is pinned */}
         <video ref={videoRef} className="morph-video" autoPlay muted loop playsInline>
-          <source src="/hero.mp4" type="video/mp4" />
+          <source src="/hero-720p.mp4" type="video/mp4" media="(max-width: 767px)" />
+          <source src="/hero-1080p.mp4" type="video/mp4" />
         </video>
         <div ref={overlayRef} className="hero-overlay" />
         

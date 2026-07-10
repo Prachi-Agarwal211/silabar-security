@@ -125,9 +125,14 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <span className="footer-copyright">
-          © {year} Silbar Security Services Pvt. Ltd. All rights reserved.
-        </span>
+        <div className="footer-bottom-left">
+          <span className="footer-copyright">
+            © {year} Silbar Security Services Pvt. Ltd. All rights reserved.
+          </span>
+          <span className="footer-developer">
+            Developed &amp; Managed by <a href="https://reverbex.com" target="_blank" rel="noopener noreferrer">Reverbex Technologies</a>
+          </span>
+        </div>
         <div className="footer-legal-links">
           <Link href="/privacy-policy" className="footer-legal-link">Privacy Policy</Link>
           <Link href="/terms" className="footer-legal-link">Terms of Use</Link>

@@ -111,13 +111,10 @@ export function GlassCard({
         style={{
           width: '100%',
           height: '100%',
-          background: `rgba(255, 255, 255, ${opacity})`,
-          backdropFilter: `blur(${blur})`,
-          WebkitBackdropFilter: `blur(${blur})`,
-          border: `1px solid rgba(191, 149, 63, ${borderOpacity})`,
-          borderRadius: '12px',
-          transition: 'border-color 0.3s, background 0.3s, box-shadow 0.3s',
-        }}
+          '--glass-opacity': opacity,
+          '--glass-blur': blur,
+          '--glass-border-opacity': borderOpacity,
+        } as React.CSSProperties}
       >
         {children}
       </div>

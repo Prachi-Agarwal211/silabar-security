@@ -1,7 +1,8 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import { gsap } from '@/lib/gsap'
+import { useGSAP } from '@gsap/react'
 
 interface CounterProps {
   from?: number
@@ -22,7 +23,7 @@ export default function Counter({
 }: CounterProps) {
   const ref = useRef<HTMLSpanElement>(null)
 
-  useEffect(() => {
+  useGSAP(() => {
     const el = ref.current
     if (!el) return
 
@@ -32,8 +33,9 @@ export default function Counter({
     }
 
     const obj = { value: from }
+    el.textContent = `${prefix}${from}${suffix}`
 
-    const anim = gsap.to(obj, {
+    gsap.to(obj, {
       value: to,
       duration,
       ease: 'power2.out',
@@ -53,16 +55,11 @@ export default function Counter({
         )
       },
     })
-
-    return () => {
-      anim.scrollTrigger?.kill()
-      anim.kill()
-    }
-  }, [from, to, duration, suffix, prefix])
+  }, { scope: ref, dependencies: [from, to, duration, suffix, prefix] })
 
   return (
     <span ref={ref} className={`inline-block ${className}`}>
-      {prefix}{from}{suffix}
+      {prefix}{to}{suffix}
     </span>
   )
 }

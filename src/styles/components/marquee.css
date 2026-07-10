@@ -3,7 +3,7 @@
    ============================================ */
 
 .trust-marquee-bar {
-  position: fixed;
+  position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
@@ -17,7 +17,7 @@
   border-top-left-radius: 20px;
   opacity: 0;
   transform-origin: 50% 50%;
-  will-change: transform;
+  will-change: transform, opacity;
   pointer-events: none;
   transition: opacity 0.3s ease;
 }

@@ -1,7 +1,8 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import { gsap } from '@/lib/gsap'
+import { useGSAP } from '@gsap/react'
 
 interface ScrollRevealProps {
   children: React.ReactNode
@@ -20,15 +21,12 @@ export default function ScrollReveal({
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
+  useGSAP(() => {
     const el = ref.current
     if (!el) return
 
     const mm = gsap.matchMedia()
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      // ponytail: random variance for organic feel
-      const randomDelay = delay + (Math.random() - 0.5) * 0.04
-
       // ponytail: reduce distance on mobile for snappier feel
       const isMobile = window.innerWidth < 768
       const distance = isMobile ? 30 : 60
@@ -38,10 +36,10 @@ export default function ScrollReveal({
       else if (direction === 'left') fromVars.x = distance
       else if (direction === 'right') fromVars.x = -distance
 
-      const anim = gsap.from(el, {
+      gsap.from(el, {
         ...fromVars,
         duration: 1.2,
-        delay: randomDelay,
+        delay,
         ease: 'expo.out',
         scrollTrigger: {
           trigger: el,
@@ -49,15 +47,10 @@ export default function ScrollReveal({
           toggleActions: 'play none none none',
         },
       })
-
-      return () => {
-        anim.scrollTrigger?.kill()
-        anim.kill()
-      }
     })
 
     return () => mm.revert()
-  }, [delay, direction])
+  }, { scope: ref, dependencies: [delay, direction] })
 
   return (
     <div ref={ref} className={className} style={style}>

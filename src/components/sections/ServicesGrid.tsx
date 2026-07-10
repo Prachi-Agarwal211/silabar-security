@@ -1,11 +1,12 @@
 'use client'
 
-import { useRef, useEffect, useMemo } from 'react'
+import { useRef, useMemo } from 'react'
 import {
   UserCheck, Factory, Users, Landmark, Camera, ClipboardCheck,
   Building2, GraduationCap, UsersRound, FileSearch, Flame, Car, ShieldHalf,
 } from 'lucide-react'
 import { gsap } from '@/lib/gsap'
+import { useGSAP } from '@gsap/react'
 import type { Service } from '@/data/services'
 import { GlassCard } from '../ui/GlassCard'
 
@@ -34,7 +35,7 @@ export default function ServicesGrid({ services }: ServicesGridProps) {
   const leftColumn = displayServices.slice(0, 6)
   const rightColumn = displayServices.slice(6, 12)
 
-  useEffect(() => {
+  useGSAP(() => {
     if (!sectionRef.current) return
     const mm = gsap.matchMedia()
 
@@ -51,7 +52,7 @@ export default function ServicesGrid({ services }: ServicesGridProps) {
     })
 
     return () => mm.revert()
-  }, [])
+  }, { scope: sectionRef })
 
   const renderItem = (service: Service, index: number, side: 'left' | 'right') => {
     const Icon = ICON_MAP[service.icon] || ShieldHalf

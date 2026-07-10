@@ -8,7 +8,7 @@
   padding: 2rem 1.5rem 4rem;
   font-family: var(--font-body);
   line-height: 1.8;
-  color: rgba(244, 241, 234, 0.8);
+  color: var(--color-horizon-700);
   font-size: 1rem;
 }
 
@@ -16,7 +16,7 @@
   font-family: var(--font-display);
   font-size: 1.3rem;
   font-weight: 700;
-  color: var(--color-cream);
+  color: var(--color-paper-ink);
   margin-top: 2rem;
   margin-bottom: 0.75rem;
 }
@@ -25,7 +25,7 @@
   font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--color-gold);
+  color: var(--color-cherry);
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
 }
@@ -49,7 +49,7 @@
 
 .legal-content ul li::before {
   content: '•';
-  color: var(--color-gold);
+  color: var(--color-cherry);
   display: inline-block;
   width: 1rem;
   margin-left: -1rem;
@@ -63,7 +63,7 @@
 
 .legal-content__bullet::before {
   content: '•';
-  color: var(--color-gold);
+  color: var(--color-cherry);
   display: inline-block;
   width: 1rem;
   margin-left: -1rem;

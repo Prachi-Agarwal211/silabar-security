@@ -56,21 +56,32 @@
    Shared Page Layout
    ============================================ */
 
-/* All inner pages share a dark background */
+/* All inner pages default to light background */
 .contact-page,
-.about-page,
 .services-page,
 .service-detail-page,
-.industries-page,
-.industry-detail-page,
 .seo-page,
 .careers-page,
 .blog-page,
 .legal-page {
   min-height: 100dvh;
-  background: var(--color-midnight);
-  color: var(--color-cream);
+  background: var(--color-paper);
+  color: var(--color-paper-ink);
   padding-top: clamp(5rem, 10vh, 8rem); /* clear the fixed header */
+}
+
+/* About & Industries — light gradient treatment */
+.about-page,
+.industries-page,
+.industry-detail-page {
+  min-height: 100dvh;
+  background: linear-gradient(160deg,
+    var(--color-paper) 0%,
+    var(--color-champagne) 45%,
+    var(--color-cherry) 100%
+  );
+  color: var(--color-paper-ink);
+  padding-top: clamp(5rem, 10vh, 8rem);
 }
 
 /* Shared page titles for PageHero */
@@ -80,20 +91,20 @@
   font-weight: 800;
   line-height: 0.95;
   letter-spacing: -0.03em;
-  color: var(--color-cream);
+  color: var(--color-paper-ink);
   text-transform: uppercase;
   margin-bottom: 1.25rem;
 }
 
 .page-hero-title--outline {
   color: transparent;
-  -webkit-text-stroke: 1.5px var(--color-cream);
+  -webkit-text-stroke: 1.5px var(--color-paper-ink);
 }
 
 .page-hero-subtitle {
   font-family: var(--font-body);
   font-size: 0.9rem;
-  color: rgba(244, 241, 234, 0.65);
+  color: var(--color-horizon-600);
   line-height: 1.7;
   max-width: 560px;
   margin: 0 auto;

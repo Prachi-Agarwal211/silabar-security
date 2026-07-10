@@ -117,7 +117,7 @@
   font-weight: 800;
   line-height: 0.98;
   letter-spacing: -0.03em;
-  color: var(--color-cream);
+  color: var(--color-paper-ink);
   text-transform: uppercase;
   margin-bottom: 1.5rem;
 }
@@ -127,7 +127,7 @@
   font-family: var(--font-body);
   font-size: clamp(0.9rem, 1.2vw, 1.1rem);
   line-height: 1.7;
-  color: rgba(244, 241, 234, 0.7);
+  color: var(--color-horizon-600);
   max-width: 680px;
   margin-bottom: 2rem;
 }
