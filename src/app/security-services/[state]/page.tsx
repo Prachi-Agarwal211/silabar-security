@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { STATES } from '@/data/locations'
 import { SERVICES } from '@/data/services'
 import { GEO_COORDINATES } from '@/lib/geo-coordinates'
+import { generateStateContent } from '@/lib/seo-content-generator'
 import { ArrowRight, Phone, MapPin } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
@@ -44,6 +45,8 @@ export default async function StateSEOPage({
   const { state } = await params
   const location = STATES.find((s) => s.slug === state)
   if (!location) notFound()
+
+  const uniqueContent = generateStateContent(location)
 
   const localBusinessSchema = {
     '@context': 'https://schema.org',
@@ -222,24 +225,9 @@ export default async function StateSEOPage({
               </h2>
             </ScrollReveal>
             <div className="seo-about-content">
-              <p>
-                Silbar Security Services provides professional security solutions
-                across {location.name}. We deploy trained guards, industrial
-                security teams, electronic surveillance systems, and facility management
-                for manufacturing companies, hospitals, hotels, warehouses, banks, and
-                residential societies.
-              </p>
-              <p>
-                Every guard we deploy is background verified, professionally trained,
-                and covered under full statutory compliance including ESI, PF, and
-                minimum wages. Our 24-hour replacement guarantee ensures zero downtime
-                at your facility.
-              </p>
-              <p>
-                Our {location.capital}-based operations team manages deployments
-                across {location.districts} districts with rapid deployment capability
-                and a dedicated account manager for every client.
-              </p>
+              {uniqueContent.map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
             </div>
           </div>
         </section>

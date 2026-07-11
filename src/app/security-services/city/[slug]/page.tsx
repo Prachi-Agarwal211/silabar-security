@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { CITIES, STATES } from '@/data/locations'
 import { SERVICES } from '@/data/services'
 import { GEO_COORDINATES } from '@/lib/geo-coordinates'
+import { generateCityContent } from '@/lib/seo-content-generator'
 import { Phone, MapPin } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
@@ -45,6 +46,7 @@ export default async function CitySEOPage({
 
   const state = STATES.find((s) => s.slug === city.stateSlug)
   const nearbyCities = state ? state.majorCities.filter((c) => c !== city.name).slice(0, 4) : []
+  const uniqueContent = generateCityContent(city)
 
   const schema = {
     '@context': 'https://schema.org',
@@ -215,23 +217,9 @@ export default async function CitySEOPage({
               </h2>
             </ScrollReveal>
             <div className="seo-about-content">
-              <p>
-                Silbar Security Services provides professional security solutions
-                to businesses and organizations in {city.name}, {city.state}. Our team of trained
-                security personnel, supervisors, and account managers serves manufacturing plants,
-                corporate offices, hospitals, hotels, banks, and residential societies across the city.
-              </p>
-              <p>
-                Every guard deployed in {city.name} is professionally trained, background
-                verified, and covered under full statutory compliance (ESI, PF, Gratuity).
-                We provide armed and unarmed guards, CCTV surveillance systems, access control
-                management, and 24/7 remote monitoring for facilities in {city.name}.
-              </p>
-              <p>
-                With a population of {city.population} and growing, {city.name} demands professional
-                security services. Silbar Security meets that need with {state ? `deployments across all ${state.districts} districts of ${state.name}` : 'PAN India coverage'},
-                dedicated account management, and a 24-hour guard replacement guarantee.
-              </p>
+              {uniqueContent.map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
             </div>
           </div>
         </section>
