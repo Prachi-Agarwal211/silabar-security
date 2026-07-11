@@ -58,27 +58,6 @@
   transition: transform 0.5s var(--ease-smooth), opacity 0.5s var(--ease-smooth), background 0.4s var(--ease-smooth), border-color 0.4s var(--ease-smooth);
 }
 
-.hero-header--transparent {
-  background: transparent !important;
-  border-bottom: 1px solid rgba(250, 248, 244, 0.1) !important;
-  box-shadow: none !important;
-}
-
-.hero-header--transparent .hero-logo {
-  color: var(--color-cream);
-}
-
-.hero-header--transparent .hero-logo__icon {
-  color: var(--color-gold);
-}
-
-.hero-header--transparent .hero-nav-link {
-  color: var(--color-cream);
-}
-
-.hero-header--transparent .hero-nav-link:hover {
-  color: var(--color-gold);
-}
 
 .hero-header--hidden {
   transform: translateY(-100%);

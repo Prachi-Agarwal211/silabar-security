@@ -50,7 +50,7 @@ export default function ScrollExperience() {
             scrollTrigger: {
               trigger: containerRef.current,
               start: 'top top',
-              end: '+=200%', // Pin for 2 viewport heights
+              end: '+=120%', // Pin for 1.2 viewport heights
               scrub: 1, // Smooth scrub
               pin: true,
               pinSpacing: true,
@@ -82,13 +82,13 @@ export default function ScrollExperience() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
-          end: '+=200%',
+          end: '+=120%',
           scrub: 1,
         },
       })
 
       // Initially show text
-      tl.to(textContentRef.current, { opacity: 0, y: -50, duration: 0.3 }, 0.65) // Fade out at 65% scroll
+      tl.to(textContentRef.current, { opacity: 0, y: -50, duration: 0.3 }, 0.45) // Fade out at 45% scroll
 
       // 3. Float up the Trust Badges
       gsap.fromTo(
@@ -116,7 +116,7 @@ export default function ScrollExperience() {
           scrollTrigger: {
             trigger: containerRef.current,
             start: 'top top',
-            end: '+=200%',
+            end: '+=120%',
             scrub: 1,
           },
         }

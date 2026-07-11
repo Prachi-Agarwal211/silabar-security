@@ -37,7 +37,7 @@ export default function Header() {
   useEffect(() => {
     const setInitialTransparent = () => {
       if (pathname === '/') {
-        setState(prev => ({ ...prev, transparent: window.scrollY < window.innerHeight }))
+        setState(prev => ({ ...prev, transparent: window.scrollY < 50 }))
       }
     }
     setInitialTransparent()
@@ -65,7 +65,7 @@ export default function Header() {
           setState(prev => ({
             hidden: newHidden,
             scrolled: currentY > 50,
-            transparent: pathname === '/' ? currentY < window.innerHeight : prev.transparent,
+            transparent: pathname === '/' ? currentY < 50 : prev.transparent,
             menuOpen: newMenuOpen,
           }))
 
