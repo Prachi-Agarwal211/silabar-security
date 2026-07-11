@@ -18,13 +18,16 @@ export default function SplitTextReveal({
   mode = 'chars',
 }: SplitTextRevealProps) {
   const containerRef = useRef<HTMLDivElement>(null)
-  const [isClient, setIsClient] = useState(false)
+  const [effectiveMode, setEffectiveMode] = useState(mode)
 
   useEffect(() => {
-    setIsClient(true)
-  }, [])
-
-  const effectiveMode = isClient && window.innerWidth < 768 ? 'words' : mode
+    const checkMode = () => {
+      setEffectiveMode(window.innerWidth < 768 ? 'words' : mode)
+    }
+    checkMode()
+    window.addEventListener('resize', checkMode)
+    return () => window.removeEventListener('resize', checkMode)
+  }, [mode])
 
   useGSAP(() => {
     const container = containerRef.current

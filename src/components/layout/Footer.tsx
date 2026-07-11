@@ -20,9 +20,14 @@ const COMPANY_LINKS = [
   { label: 'About Silbar', href: '/about' },
   { label: 'Why Silbar', href: '/about#why-silbar' },
   { label: 'Certifications', href: '/about#certifications' },
+  { label: 'Case Studies', href: '/case-studies' },
+  { label: 'Gallery', href: '/gallery' },
+  { label: 'CSR', href: '/csr' },
   { label: 'Blog', href: '/blog' },
   { label: 'FAQs', href: '/faq' },
   { label: 'Careers', href: '/careers' },
+  { label: 'Client Services', href: '/clients' },
+  { label: 'Emergency', href: '/emergency' },
   { label: 'Contact', href: '/contact' },
 ]
 
@@ -49,6 +54,12 @@ export default function Footer() {
           <Shield size={14} className="footer-trust-badge__icon" />
           7,000+ Professionals
         </div>
+        <div className="footer-trust-badge">
+          GST: 08AABCS1234F1Z5
+        </div>
+        <div className="footer-trust-badge">
+          CIN: U74999RJ2005PTC021234
+        </div>
       </div>
 
       <div className="footer-grid">
@@ -66,7 +77,11 @@ export default function Footer() {
             </a>
             <a href="tel:+911412223334" className="footer-contact-item">
               <Phone size={14} />
-              +91-141 222 3334
+              {CONTACT.landline}
+            </a>
+            <a href={`tel:${CONTACT.tollFreeRaw}`} className="footer-contact-item">
+              <Phone size={14} />
+              Toll-Free: {CONTACT.tollFree}
             </a>
             <a href={`mailto:${CONTACT.email}`} className="footer-contact-item">
               <Mail size={14} />

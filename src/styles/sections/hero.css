@@ -1,45 +1,4 @@
 /* ============================================
-   Scroll Wrapper — single pinned container
-   ============================================ */
-
-.scroll-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100dvh;
-}
-
-.scroll-bg {
-  position: absolute;
-  inset: 0;
-  background: var(--color-midnight);
-  z-index: 0;
-}
-
-/* Warm gradient crossfade layer — starts at opacity 0, fades in over the dark
-   base in Act 2. Separate element because GSAP cannot tween CSS gradients directly. */
-.scroll-bg-warm {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  opacity: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 15% 10%, #FAF6EC 0%, transparent 60%),
-    linear-gradient(135deg, #F3EDE0 0%, #E8DCC5 55%, #D9C79E 100%);
-}
-
-.trust-scroll-content {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 clamp(2rem, 5vw, 6rem);
-}
-
-/* ============================================
    Hero Header — transparent over video
    ============================================ */
 
@@ -107,6 +66,11 @@
   color: var(--color-midnight);
 }
 
+.hero-header--scrolled .hero-nav-hamburger,
+.hero-header--solid .hero-nav-hamburger {
+  color: var(--color-cream);
+}
+
 .hero-header--transparent {
   background: transparent !important;
   backdrop-filter: none !important;
@@ -134,6 +98,10 @@
 .hero-header--transparent .hero-nav-cta {
   background: var(--color-gold);
   color: var(--color-midnight);
+}
+
+.hero-header--transparent .hero-nav-hamburger {
+  color: var(--color-cream);
 }
 
 .hero-logo {
@@ -218,7 +186,7 @@
   display: none;
   background: none;
   border: none;
-  color: var(--color-midnight);
+  color: var(--color-cream);
   cursor: pointer;
   padding: 0.25rem;
   z-index: 11;
@@ -254,7 +222,7 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s var(--ease-smooth);
-  padding: clamp(5rem, 12vh, 8rem) clamp(2rem, 6vw, 4rem) clamp(2rem, 5vh, 3rem);
+  padding: clamp(5rem, 12vh, 8rem) clamp(2rem, 6vw, 4rem) calc(clamp(2rem, 5vh, 3rem) + env(safe-area-inset-bottom, 0px));
 }
 
 /* Subtle noise texture on the overlay */
@@ -375,22 +343,24 @@
 }
 
 /* ============================================
-   Fullscreen Video — position: fixed throughout
-   ============================================ */
-
-/* ============================================
-   Cinematic Scroll-Scrub Hero (GSAP)
+   Hero — Video Loop
    ============================================ */
 
 .scroll-hero-container {
   position: relative;
   width: 100%;
+  height: 100dvh;
   height: 100vh;
   overflow: hidden;
   background: var(--color-midnight);
 }
 
-/* 1. Background Video Layer */
+@supports (height: 100dvh) {
+  .scroll-hero-container {
+    height: 100dvh;
+  }
+}
+
 .hero-video-wrapper {
   position: absolute;
   inset: 0;
@@ -409,17 +379,21 @@
 .hero-video-overlay {
   position: absolute;
   inset: 0;
-  background: 
-    linear-gradient(90deg, rgba(140, 31, 50, 0.6) 0%, transparent 50%),
-    linear-gradient(to bottom, transparent 0%, rgba(10, 10, 10, 0.2) 40%, rgba(10, 10, 10, 0.5) 100%);
+  background:
+    linear-gradient(90deg, rgba(140, 31, 50, 0.2) 0%, transparent 50%),
+    linear-gradient(to bottom, transparent 0%, rgba(10, 10, 10, 0.1) 40%, rgba(10, 10, 10, 0.35) 100%);
   z-index: 2;
   pointer-events: none;
 }
 
-/* 2. Middle Content Layer */
+/* ============================================
+   Hero Text Content
+   ============================================ */
+
 .hero-content-layer {
   position: absolute;
-  top: clamp(20%, 25vh, 30%);
+  top: auto;
+  bottom: clamp(5rem, 12vh, 8rem);
   left: clamp(1.5rem, 5vw, 6rem);
   z-index: 10;
   display: flex;
@@ -448,14 +422,15 @@
 }
 
 .hero-cinematic-heading--accent {
-  color: var(--color-cherry);
+  color: var(--color-gold-light);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .hero-cinematic-subcopy {
   font-family: var(--font-body);
   font-size: clamp(1.1rem, 2vw, 1.4rem);
   line-height: 1.6;
-  color: rgba(244, 241, 234, 0.85); /* cream with opacity */
+  color: rgba(244, 241, 234, 0.85);
   max-width: 500px;
   margin-bottom: 2.5rem;
   font-weight: 400;
@@ -481,10 +456,14 @@
   color: var(--color-gold);
 }
 
-/* 3. Floating Trust Signals Layer */
+/* ============================================
+   Hero Trust Badges
+   ============================================ */
+
 .hero-floating-badges {
   position: absolute;
-  top: clamp(20%, 25vh, 30%);
+  top: auto;
+  bottom: clamp(5rem, 12vh, 8rem);
   right: clamp(1.5rem, 5vw, 6rem);
   z-index: 10;
   display: flex;
@@ -494,86 +473,10 @@
 
 .trust-badge--floating {
   background: rgba(10, 10, 10, 0.8);
-  border: 1px solid rgba(191, 149, 63, 0.3); /* gold border */
+  border: 1px solid rgba(191, 149, 63, 0.3);
   color: var(--color-cream);
   padding: 0.75rem 1.25rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-.hero-scroll-cue {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  color: rgba(250, 248, 244, 0.6);
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-}
-
-.hero-scroll-cue__arrow {
-  width: 24px;
-  height: 40px;
-  border: 2px solid rgba(191, 149, 63, 0.5);
-  border-radius: 12px;
-  position: relative;
-}
-
-.hero-scroll-cue__arrow::before {
-  content: '';
-  position: absolute;
-  top: 8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 4px;
-  height: 8px;
-  background: var(--color-gold);
-  border-radius: 2px;
-  animation: scrollPulse 1.5s ease-in-out infinite;
-}
-
-@keyframes scrollPulse {
-  0%, 100% { opacity: 1; transform: translateX(-50%) translateY(0); }
-  50% { opacity: 0.5; transform: translateX(-50%) translateY(8px); }
-}
-
-/* 4. Parallax Stats Bar */
-.hero-stats-parallax {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 15;
-  display: flex;
-  flex-direction: column;
-}
-
-.hero-stats-bar--cinematic {
-  background: rgba(15, 15, 15, 0.95);
-  border-top: 2px solid var(--color-gold);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.trust-marquee-bar--dark {
-  background: rgba(10, 10, 10, 0.98);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 1rem 0;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.marquee--dark .marquee__item {
-  color: rgba(244, 241, 234, 0.6);
-}
-
-.marquee--dark .marquee__dot {
-  background: var(--color-gold);
 }
 
 /* Mobile Adjustments */
@@ -583,7 +486,7 @@
     flex-direction: row;
     margin-top: 2rem;
   }
-  
+
   .hero-content-layer {
     top: 15%;
   }
@@ -593,5 +496,51 @@
   .hero-floating-badges {
     flex-direction: column;
   }
+
+  .hero-content-layer {
+    left: clamp(1.25rem, 4vw, 2rem);
+    right: clamp(1.25rem, 4vw, 2rem);
+    top: auto;
+    bottom: calc(6rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .hero-cinematic-heading {
+    font-size: clamp(2rem, 9vw, 3rem);
+    margin-bottom: 1rem;
+  }
+
+  .hero-cinematic-subcopy {
+    font-size: clamp(0.85rem, 3.5vw, 1rem);
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-cta-group--cinematic {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .hero-scroll-arrow {
+    display: none;
+  }
 }
 
+/* ============================================
+   Scroll Arrow — simple gold chevron
+   ============================================ */
+
+.hero-scroll-arrow {
+  position: absolute;
+  bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  color: var(--color-gold);
+  opacity: 0.6;
+  animation: arrowBounce 2s ease-in-out infinite;
+}
+
+@keyframes arrowBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}

@@ -39,6 +39,21 @@ export const STATES: StateLocation[] = [
   { slug: 'kerala', name: 'Kerala', capital: 'Thiruvananthapuram', majorCities: ['Thiruvananthapuram', 'Kochi', 'Kozhikode', 'Thrissur'], districts: 14, population: '35 million' },
   { slug: 'goa', name: 'Goa', capital: 'Panaji', majorCities: ['Panaji', 'Margao', 'Vasco', 'Mapusa'], districts: 2, population: '1.5 million' },
   { slug: 'assam', name: 'Assam', capital: 'Dispur', majorCities: ['Guwahati', 'Silchar', 'Dibrugarh', 'Jorhat'], districts: 35, population: '35 million' },
+  // Missing Northeast States
+  { slug: 'sikkim', name: 'Sikkim', capital: 'Gangtok', majorCities: ['Gangtok', 'Namchi', 'Geyzing'], districts: 6, population: '0.7 million' },
+  { slug: 'nagaland', name: 'Nagaland', capital: 'Kohima', majorCities: ['Kohima', 'Dimapur', 'Mokokchung'], districts: 16, population: '2.3 million' },
+  { slug: 'manipur', name: 'Manipur', capital: 'Imphal', majorCities: ['Imphal', 'Thoubal', 'Bishnupur'], districts: 16, population: '3.1 million' },
+  { slug: 'mizoram', name: 'Mizoram', capital: 'Aizawl', majorCities: ['Aizawl', 'Lunglei', 'Sairang'], districts: 8, population: '1.2 million' },
+  { slug: 'meghalaya', name: 'Meghalaya', capital: 'Shillong', majorCities: ['Shillong', 'Tura', 'Jowai'], districts: 12, population: '3.8 million' },
+  { slug: 'tripura', name: 'Tripura', capital: 'Agartala', majorCities: ['Agartala', 'Udaipur', 'Dharmanagar'], districts: 8, population: '4.2 million' },
+  // Union Territories
+  { slug: 'jammu-and-kashmir', name: 'Jammu & Kashmir', capital: 'Srinagar', majorCities: ['Srinagar', 'Jammu', 'Anantnag', 'Baramulla'], districts: 20, population: '14 million' },
+  { slug: 'ladakh', name: 'Ladakh', capital: 'Leh', majorCities: ['Leh', 'Kargil'], districts: 2, population: '0.3 million' },
+  { slug: 'chandigarh', name: 'Chandigarh', capital: 'Chandigarh', majorCities: ['Chandigarh'], districts: 1, population: '1.2 million' },
+  { slug: 'puducherry', name: 'Puducherry', capital: 'Puducherry', majorCities: ['Puducherry', 'Karaikal', 'Yanam'], districts: 4, population: '1.4 million' },
+  { slug: 'andaman-and-nicobar', name: 'Andaman & Nicobar Islands', capital: 'Port Blair', majorCities: ['Port Blair'], districts: 3, population: '0.4 million' },
+  { slug: 'dadra-and-nagar-haveli', name: 'Dadra & Nagar Haveli', capital: 'Silvassa', majorCities: ['Silvassa', 'Daman'], districts: 2, population: '0.6 million' },
+  { slug: 'lakshadweep', name: 'Lakshadweep', capital: 'Kavaratti', majorCities: ['Kavaratti', 'Agatti'], districts: 1, population: '0.07 million' },
 ]
 
 // Top cities for initial launch — expand to 200+ by adding to this array

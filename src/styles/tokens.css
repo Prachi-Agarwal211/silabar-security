@@ -15,35 +15,34 @@
   --color-paper: #FAF8F4;
   --color-paper-ink: #14100D;
   --color-cream: #FAF6EC;
-  --color-champagne: #F3EDE0;
   
   /* Brand Accents */
   --color-cherry: #8C1F32;
   --color-cherry-bright: #A62940;
   --color-cherry-deep: #5C1220;
+  --color-cherry-subtle: rgba(140, 31, 50, 0.15);
   --color-gold: #BF953F;
   --color-gold-light: #D4AF37;
   --color-gold-dark: #99742B;
-  --color-whatsapp: #25D366;
 
   /* Glows & Transparency */
   --color-gold-glow: rgba(191, 149, 63, 0.3);
   --color-cherry-glow: rgba(140, 31, 50, 0.3);
   --color-cyan-glow: rgba(0, 240, 255, 0.1);
+  --color-whatsapp: #25D366;
+  --color-whatsapp-dark: #128C7E;
 
   /* Gradient Presets */
   --gradient-cherry: linear-gradient(135deg, #8C1F32 0%, #5C1220 100%);
+  --gradient-cherry-gold: linear-gradient(135deg, #8C1F32 0%, #BF953F 100%);
   --gradient-gold: linear-gradient(90deg, #BF953F 0%, #D4AF37 50%, #BF953F 100%);
   --gradient-dark: linear-gradient(180deg, #0B0E14 0%, #12161F 100%);
   --gradient-mesh: radial-gradient(ellipse at 20% 50%, rgba(191, 149, 63, 0.1) 0%, transparent 50%);
   --color-cream-dark: #E0D8CA;
 
-  --color-paper: #FAF8F4;         /* true white panel background, distinct from --color-cream */
-  --color-paper-ink: #14100D;     /* near-black text used ON --color-paper, not pure #000 */
   --color-champagne: #E8DFC8;     /* pale gold-white for the gold/white-mix zone */
-  --color-whatsapp: #25D366;      /* WhatsApp brand green */
 
---color-horizon-50: #FAFAF9;
+  --color-horizon-50: #FAFAF9;
   --color-horizon-100: #F5F5F4;
   --color-horizon-200: #E7E5E4;
   --color-horizon-300: #D6D3D1;

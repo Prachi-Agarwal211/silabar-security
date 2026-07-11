@@ -15,6 +15,9 @@ import {
   Hotel,
   Globe,
   GraduationCap,
+  Shield,
+  Award,
+  Users,
 } from 'lucide-react'
 
 
@@ -135,7 +138,10 @@ export default function HomePageClient() {
       <ServicesGrid services={SERVICES} />
 
       {/* ─── WHY SILBAR ────────────────────────────────── */}
-      <section className="why-silbar-section section-transition-diagonal" ref={whySilbarRef} aria-labelledby="why-silbar-title">
+      <section className="why-silbar-section" ref={whySilbarRef} aria-labelledby="why-silbar-title">
+        {/* Background image */}
+        <div className="why-silbar-bg" aria-hidden="true" />
+
         <div className="why-silbar-inner">
           {/* Left: copy */}
           <div className="why-silbar-copy">
@@ -148,6 +154,7 @@ export default function HomePageClient() {
               institutions, and communities across India. We combine people, process, and technology
               to deliver unmatched protection.
             </p>
+            <div className="why-silbar-divider" aria-hidden="true" />
             <ul className="why-silbar-checklist" aria-label="Why choose Silbar">
               {WHY_SILBAR_POINTS.map((point) => (
                 <li key={point} className="why-silbar-check-item">
@@ -157,49 +164,71 @@ export default function HomePageClient() {
               ))}
             </ul>
             <div className="cta-pair" style={{ marginTop: '1.75rem' }}>
-              <Link href="/about" className="btn-primary">
+              <Link href="/about" className="btn-primary" style={{ background: 'white', color: '#0B0E14', borderColor: 'white' }}>
                 Our Story <ArrowRight size={14} aria-hidden="true" />
               </Link>
-              <Link href="/contact" className="btn-secondary">
+              <Link href="/contact" className="btn-secondary" style={{ color: 'white', borderColor: 'rgba(255,255,255,0.5)' }}>
                 Request Assessment
               </Link>
             </div>
           </div>
 
-          {/* Right: asymmetric photo mosaic */}
+          {/* Right: mosaic cards */}
           <div className="why-silbar-mosaic" aria-hidden="true">
+            {/* Tile A — EST. 2005 */}
             <div className="why-silbar-tile why-silbar-tile--a">
-              <div className="why-silbar-tile__inner" style={{
-                background: 'linear-gradient(135deg, #1a0a0d 0%, #3d0f1a 100%)'
-              }}>
-                <div className="why-silbar-tile__label">Est. 2005</div>
-              </div>
-            </div>
-            <div className="why-silbar-tile why-silbar-tile--b">
-              <div className="why-silbar-tile__inner" style={{
-                background: 'linear-gradient(135deg, #0a0a12 0%, #141420 100%)'
-              }}>
-                <div className="why-silbar-tile__icon">
-                  <Building2 size={28} color="rgba(212,175,55,0.6)" />
+              <div className="why-silbar-tile__inner why-silbar-tile__inner--dark">
+                <div className="why-silbar-tile__icon-wrap why-silbar-tile__icon-wrap--gold">
+                  <Shield size={32} strokeWidth={1.5} />
                 </div>
-                <div className="why-silbar-tile__label">200+ Cities</div>
+                <div className="why-silbar-tile__content">
+                  <div className="why-silbar-tile__title">EST. 2005</div>
+                  <div className="why-silbar-tile__subtitle">Two decades of trust<br />and commitment</div>
+                </div>
               </div>
             </div>
+
+            {/* Tile B — 200+ CITIES */}
+            <div className="why-silbar-tile why-silbar-tile--b">
+              <div className="why-silbar-tile__inner why-silbar-tile__inner--dark">
+                <div className="why-silbar-tile__icon-wrap why-silbar-tile__icon-wrap--gold">
+                  <Globe size={32} strokeWidth={1.5} />
+                </div>
+                <div className="why-silbar-tile__content">
+                  <div className="why-silbar-tile__title">200+ CITIES</div>
+                  <div className="why-silbar-tile__subtitle">PAN INDIA PRESENCE</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Tile C — ISO 9001:2015 */}
             <div className="why-silbar-tile why-silbar-tile--c">
-              <div className="why-silbar-tile__inner" style={{
-                background: 'linear-gradient(135deg, #8C1F32 0%, #5C1220 100%)'
-              }}>
-                <div className="why-silbar-tile__badge">ISO 9001:2015</div>
+              <div className="why-silbar-tile__inner why-silbar-tile__inner--light">
+                <div className="why-silbar-tile__icon-wrap why-silbar-tile__icon-wrap--cherry">
+                  <Award size={28} strokeWidth={1.5} />
+                </div>
+                <div className="why-silbar-tile__content">
+                  <div className="why-silbar-tile__title why-silbar-tile__title--dark">ISO 9001:2015</div>
+                  <div className="why-silbar-tile__subtitle why-silbar-tile__subtitle--dark">CERTIFIED</div>
+                  <div className="why-silbar-tile__desc">Quality processes.<br />Trusted standards.</div>
+                </div>
               </div>
             </div>
+
+            {/* Tile D — 7,000+ PROFESSIONALS */}
             <div className="why-silbar-tile why-silbar-tile--d">
-              <div className="why-silbar-tile__inner" style={{
-                background: 'linear-gradient(135deg, #14100D 0%, #291e15 100%)'
-              }}>
-                <div className="why-silbar-tile__number">7,000+</div>
-                <div className="why-silbar-tile__label">Professionals</div>
+              <div className="why-silbar-tile__inner why-silbar-tile__inner--light">
+                <div className="why-silbar-tile__icon-wrap why-silbar-tile__icon-wrap--cherry">
+                  <Users size={28} strokeWidth={1.5} />
+                </div>
+                <div className="why-silbar-tile__content">
+                  <div className="why-silbar-tile__number">7,000+</div>
+                  <div className="why-silbar-tile__subtitle why-silbar-tile__subtitle--dark">PROFESSIONALS</div>
+                  <div className="why-silbar-tile__desc">Trained. Equipped.<br />Committed.</div>
+                </div>
               </div>
             </div>
+
             {/* Trusted since badge */}
             <div className="why-silbar-trusted-badge" aria-hidden="true">
               <span className="why-silbar-trusted-text">TRUSTED<br />SINCE<br />2005</span>
@@ -245,6 +274,34 @@ export default function HomePageClient() {
 
       <div className="section-divider-gradient" />
 
+      {/* ─── GOOGLE REVIEWS ─────────────────────────── */}
+      <section className="google-reviews-section" aria-label="Google Reviews">
+        <div className="google-reviews-inner">
+          <div className="google-reviews-badge">
+            <div className="google-reviews-stars">
+              {[1,2,3,4,5].map(i => (
+                <svg key={i} width="20" height="20" viewBox="0 0 24 24" fill={i <= 4 ? 'var(--color-gold)' : 'var(--color-gold)'} stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              ))}
+            </div>
+            <span className="google-reviews-rating">4.8</span>
+            <span className="google-reviews-count">on Google</span>
+          </div>
+          <p className="google-reviews-text">
+            Trusted by <strong>500+</strong> businesses across India. Read what our clients say about us.
+          </p>
+          <a
+            href="https://g.page/r/silbar-security/review"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary"
+          >
+            Review Us on Google
+          </a>
+        </div>
+      </section>
+
       {/* ─── STATS + TESTIMONIAL ───────────────────────── */}
       <section className="stats-testimonial-section section-transition-diagonal" ref={statsRef} aria-labelledby="stats-section-title">
         <div className="stats-testimonial-inner">
@@ -268,17 +325,69 @@ export default function HomePageClient() {
             ))}
           </div>
 
-          {/* Testimonial */}
-          <blockquote className="testimonial-card">
-            <p className="testimonial-card__quote">
-              &ldquo;Silbar&apos;s professionalism, transparency and response times are unmatched.
-              A partner we rely on, every day.&rdquo;
-            </p>
-            <footer className="testimonial-card__attribution">
-              <span className="testimonial-card__name">— Operations Head</span>
-              <span className="testimonial-card__company">Leading Manufacturing Firm</span>
-            </footer>
-          </blockquote>
+          {/* Testimonials */}
+          <div className="testimonials-grid">
+            <blockquote className="testimonial-card">
+              <p className="testimonial-card__quote">
+                &ldquo;Silbar&apos;s professionalism, transparency and response times are unmatched.
+                A partner we rely on, every day.&rdquo;
+              </p>
+              <footer className="testimonial-card__attribution">
+                <span className="testimonial-card__name">— Operations Head</span>
+                <span className="testimonial-card__company">Leading Manufacturing Firm</span>
+              </footer>
+            </blockquote>
+            <blockquote className="testimonial-card">
+              <p className="testimonial-card__quote">
+                &ldquo;We switched to Silbar Security for our 12 factories across Rajasthan.
+                The reduction in security incidents has been remarkable — 90% fewer incidents in the first quarter.&rdquo;
+              </p>
+              <footer className="testimonial-card__attribution">
+                <span className="testimonial-card__name">— VP Facilities</span>
+                <span className="testimonial-card__company">Automobile Manufacturer</span>
+              </footer>
+            </blockquote>
+            <blockquote className="testimonial-card">
+              <p className="testimonial-card__quote">
+                &ldquo;Their electronic surveillance integration with manned guarding gave us
+                complete visibility across 45 retail locations. Truly pan-India capability.&rdquo;
+              </p>
+              <footer className="testimonial-card__attribution">
+                <span className="testimonial-card__name">— Security Director</span>
+                <span className="testimonial-card__company">National Retail Chain</span>
+              </footer>
+            </blockquote>
+            <blockquote className="testimonial-card">
+              <p className="testimonial-card__quote">
+                &ldquo;The Quick Response Team arrived within 15 minutes of our distress call.
+                Silbar&apos;s 24/7 monitoring is genuinely world-class.&rdquo;
+              </p>
+              <footer className="testimonial-card__attribution">
+                <span className="testimonial-card__name">— Facility Manager</span>
+                <span className="testimonial-card__company">IT Park, Bengaluru</span>
+              </footer>
+            </blockquote>
+            <blockquote className="testimonial-card">
+              <p className="testimonial-card__quote">
+                &ldquo;From event security for our 10,000-strong conference to daily office guarding,
+                Silbar handles it all with ISO-certified processes. Highly recommended.&rdquo;
+              </p>
+              <footer className="testimonial-card__attribution">
+                <span className="testimonial-card__name">— CEO</span>
+                <span className="testimonial-card__company">Corporate Events Company</span>
+              </footer>
+            </blockquote>
+            <blockquote className="testimonial-card">
+              <p className="testimonial-card__quote">
+                &ldquo;Their facility management team manages housekeeping, security, and maintenance
+                for our hospital chain. Single vendor, zero compliance headaches.&rdquo;
+              </p>
+              <footer className="testimonial-card__attribution">
+                <span className="testimonial-card__name">— Admin Director</span>
+                <span className="testimonial-card__company">Multi-Specialty Hospital Chain</span>
+              </footer>
+            </blockquote>
+          </div>
         </div>
       </section>
 

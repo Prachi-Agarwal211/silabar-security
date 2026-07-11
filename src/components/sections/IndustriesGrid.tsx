@@ -2,7 +2,7 @@
 
 import { useRef, MouseEvent } from 'react'
 import Link from 'next/link'
-import { ArrowRight, Building2, Factory, Heart, Hotel, Warehouse, GraduationCap, ShoppingBag, Landmark, Server, Car, Globe, Home } from 'lucide-react'
+import { ArrowRight, Building2, Factory, Heart, Hotel, Warehouse, GraduationCap, ShoppingBag, Landmark, Server, Car, Globe, Home, Zap, Shirt, Sun, Flame, Truck } from 'lucide-react'
 import { gsap } from '@/lib/gsap'
 import { useGSAP } from '@gsap/react'
 import type { Industry } from '@/data/industries'
@@ -21,6 +21,13 @@ const INDUSTRY_ICONS: Record<string, React.ElementType> = {
   'government': Globe,
   'residential': Home,
   'infrastructure': Car,
+  'automobile': Car,
+  'pharma': Zap,
+  'textile': Shirt,
+  'solar-plants': Sun,
+  'mining': Flame,
+  'e-commerce': Truck,
+  'commercial-buildings': Building2,
 }
 
 // Industry gradient backgrounds
@@ -37,6 +44,13 @@ const INDUSTRY_GRADIENTS: Record<string, string> = {
   'government':    'linear-gradient(135deg, #100800 0%, #251a00 100%)',
   'residential':   'linear-gradient(135deg, #080d10 0%, #101820 100%)',
   'infrastructure':'linear-gradient(135deg, #0d0808 0%, #201010 100%)',
+  'automobile':    'linear-gradient(135deg, #0a0d12 0%, #152030 100%)',
+  'pharma':        'linear-gradient(135deg, #0a120a 0%, #152a15 100%)',
+  'textile':       'linear-gradient(135deg, #120a10 0%, #2a1520 100%)',
+  'solar-plants':  'linear-gradient(135deg, #12100a 0%, #2a2515 100%)',
+  'mining':        'linear-gradient(135deg, #120a05 0%, #2a1508 100%)',
+  'e-commerce':    'linear-gradient(135deg, #0a0a12 0%, #151530 100%)',
+  'commercial-buildings': 'linear-gradient(135deg, #0d0a0d 0%, #1c151c 100%)',
 }
 
 const DEFAULT_ICON = Building2

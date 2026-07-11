@@ -84,10 +84,9 @@ export default function QueryForm() {
     setIsSubmitting(true)
     
     // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setIsSuccess(true)
-    }, 1500)
+    await new Promise(resolve => setTimeout(resolve, 1500))
+    setIsSubmitting(false)
+    setIsSuccess(true)
   }
 
   if (isSuccess) {

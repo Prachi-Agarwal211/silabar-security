@@ -92,7 +92,7 @@ export default async function IndustryPage({
                 <Phone size={16} /> Call Now
               </a>
               <a
-                href="https://wa.me/919352303333?text=Hello%20Silbar%20Security%2C%20I%20need%20a%20security%20quote%20for%20my%20facility."
+                href={CONTACT.whatsapp.url}
                 className="service-detail-cta service-detail-cta--secondary"
                 target="_blank"
                 rel="noopener noreferrer"

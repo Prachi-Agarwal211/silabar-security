@@ -66,7 +66,7 @@ export default function FAQPage() {
       />
 
       <section style={{ padding: '2rem 1.5rem 5rem 1.5rem', background: 'var(--color-paper)' }}>
-        <div style={{ maxWidth: '900px', margin: '0 auto', background: '#fff', borderRadius: '12px', padding: 'clamp(2rem, 5vw, 4rem)', boxShadow: '0 20px 40px rgba(0,0,0,0.05)', marginTop: '-6rem', position: 'relative', zIndex: 10 }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto', background: 'var(--color-paper)', borderRadius: '12px', padding: 'clamp(2rem, 5vw, 4rem)', boxShadow: '0 20px 40px rgba(0,0,0,0.05)', marginTop: '-6rem', position: 'relative', zIndex: 10 }}>
           
           <ScrollReveal>
             <div style={{ marginBottom: '3rem', textAlign: 'center' }}>

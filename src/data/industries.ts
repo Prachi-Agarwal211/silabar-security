@@ -179,6 +179,90 @@ export const INDUSTRIES: Industry[] = [
       { q: 'Do you coordinate with government security agencies for critical infrastructure?', a: 'Yes. For critical national infrastructure, our teams coordinate with CISF, state police, and local authorities as required by the security framework.' },
     ],
   },
+  {
+    slug: 'automobile',
+    title: 'Automobile & Automotive Security',
+    shortTitle: 'Automobile',
+    description: 'Security for automobile manufacturing plants, showrooms, service centers, and vehicle storage yards. Production line security and finished vehicle protection.',
+    challenges: ['High-value inventory protection', 'Production line continuity', 'Showroom theft prevention', 'Yard security for finished vehicles', 'Shift-based workforce management'],
+    solutions: ['24/7 manufacturing floor security', 'Vehicle yard patrolling', 'Showroom anti-theft systems', 'Access control for production areas', 'Shift supervisor deployment'],
+    services: ['manned-guarding', 'industrial-security', 'electronic-surveillance'],
+    faqs: [
+      { q: 'Do you have experience with automobile manufacturing security?', a: 'Yes. We provide security for automobile plants including production line security, vehicle yard protection, and showroom security across multiple locations.' },
+    ],
+  },
+  {
+    slug: 'pharma',
+    title: 'Pharmaceutical & Pharma Security',
+    shortTitle: 'Pharma',
+    description: 'Security for pharmaceutical manufacturing, warehouses, and R&D facilities. Drug security, controlled substance handling, and GMP compliance.',
+    challenges: ['Controlled substance security', 'GMP compliance requirements', 'R&D facility protection', 'Cold chain security', 'Regulatory audit readiness'],
+    solutions: ['GMP-compliant security teams', 'Controlled substance vault security', 'R&D floor access control', 'Cold chain monitoring support', 'Documentation for regulatory audits'],
+    services: ['manned-guarding', 'electronic-surveillance', 'kyc-background-checks', 'risk-assessment'],
+    faqs: [
+      { q: 'Are your guards trained in pharma security protocols?', a: 'Yes. Our pharma security teams are trained in GMP compliance, controlled substance handling, and pharmaceutical facility security protocols.' },
+    ],
+  },
+  {
+    slug: 'textile',
+    title: 'Textile & Garment Industry Security',
+    shortTitle: 'Textile',
+    description: 'Security for textile mills, garment factories, and export units. Raw material protection, production floor security, and export consignment security.',
+    challenges: ['Raw material theft', 'High-value finished goods', 'Export consignment security', 'Multiple shift management', 'Worker verification'],
+    solutions: ['Gate management with material logging', 'Finished goods warehouse security', 'Export dock security', 'Worker ID verification system', 'Night patrol for mill complexes'],
+    services: ['manned-guarding', 'industrial-security', 'electronic-surveillance'],
+    faqs: [
+      { q: 'Can you secure textile mills with high-value inventory?', a: 'Yes. We provide comprehensive security for textile facilities including raw material yards, production floors, and finished goods warehouses.' },
+    ],
+  },
+  {
+    slug: 'solar-plants',
+    title: 'Solar Plant & Renewable Energy Security',
+    shortTitle: 'Solar Plants',
+    description: 'Security for solar power plants, wind farms, and renewable energy installations. Remote site security with solar-powered surveillance.',
+    challenges: ['Remote location deployment', 'Panel theft prevention', 'Substation security', 'Harsh environment operations', 'Limited infrastructure'],
+    solutions: ['Long-deployment trained guards', 'Solar-powered CCTV towers', 'Perimeter intrusion detection', 'Equipment yard security', 'Emergency response protocols'],
+    services: ['manned-guarding', 'electronic-surveillance', 'risk-assessment'],
+    faqs: [
+      { q: 'Can you secure remote solar installations?', a: 'Yes. We specialize in remote site security with trained long-deployment personnel and solar-powered surveillance systems.' },
+    ],
+  },
+  {
+    slug: 'mining',
+    title: 'Mining & Oil Gas Security',
+    shortTitle: 'Mining & Oil Gas',
+    description: 'Security for mining operations, oil refineries, gas plants, and petroleum facilities. High-risk site security with armed guards.',
+    challenges: ['Extreme remote locations', 'High-value equipment', 'Explosive environment safety', 'Worker safety', 'Regulatory compliance'],
+    solutions: ['Armed perimeter security', 'Equipment yard protection', 'Explosive zone compliance', 'Worker safety monitoring', 'Emergency evacuation planning'],
+    services: ['manned-guarding', 'armed-security', 'electronic-surveillance', 'risk-assessment'],
+    faqs: [
+      { q: 'Do you provide security for oil refineries?', a: 'Yes. Our mining and oil gas security teams are trained in hazardous environment protocols and provide comprehensive security for refineries and processing plants.' },
+    ],
+  },
+  {
+    slug: 'e-commerce',
+    title: 'E-commerce & Fulfillment Center Security',
+    shortTitle: 'E-commerce',
+    description: 'Security for e-commerce warehouses, fulfillment centers, and last-mile delivery hubs. Inventory protection and operations security.',
+    challenges: ['High-volume inventory movement', 'Shift-based operations', 'Last-mile delivery security', 'Returns processing security', 'Peak season scaling'],
+    solutions: ['Warehouse access control', 'Inventory movement monitoring', 'Loading dock security', 'Peak season security scaling', 'Returns area security'],
+    services: ['manned-guarding', 'industrial-security', 'electronic-surveillance'],
+    faqs: [
+      { q: 'Can you scale security for peak e-commerce seasons?', a: 'Yes. We provide scalable security solutions that can ramp up during festive seasons and sales events with pre-trained personnel.' },
+    ],
+  },
+  {
+    slug: 'commercial-buildings',
+    title: 'Commercial Building & Office Security',
+    shortTitle: 'Commercial Buildings',
+    description: 'Security for commercial office buildings, co-working spaces, and business parks. Tenant security, visitor management, and common area protection.',
+    challenges: ['Multi-tenant security', 'Visitor management', 'After-hours security', 'Common area protection', 'Parking management'],
+    solutions: ['Reception and visitor management', 'Access control systems', 'CCTV monitoring', 'After-hours patrol', 'Parking management'],
+    services: ['manned-guarding', 'electronic-surveillance', 'facility-management'],
+    faqs: [
+      { q: 'Do you handle multi-tenant building security?', a: 'Yes. We provide comprehensive security for multi-tenant commercial buildings including tenant access control, visitor management, and shared area security.' },
+    ],
+  },
 ]
 
 export const INDUSTRY_SLUGS = INDUSTRIES.map((i) => i.slug)

@@ -155,14 +155,14 @@ export default function AboutPage() {
         <div className="about-story__inner" style={{ gridTemplateColumns: '1fr 1fr', gap: '4rem' }}>
           <ScrollReveal direction="up">
             <Target size={48} color="var(--color-cherry)" style={{ marginBottom: '1.5rem' }} />
-            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', marginBottom: '1rem', color: 'var(--color-midnight)' }}>Our Mission</h3>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', marginBottom: '1rem', color: 'var(--color-midnight)' }}>Our Mission</h2>
             <p style={{ lineHeight: 1.7, color: 'var(--color-horizon-700)' }}>
               To provide reliable, technology-enabled, and compliance-focused security services that protect people, property, and business operations. We aim to create long-term partnerships by delivering trained manpower, transparent processes, timely documentation, and responsive customer support while maintaining the highest standards of integrity and professionalism.
             </p>
           </ScrollReveal>
           <ScrollReveal direction="up" delay={0.2}>
             <Eye size={48} color="var(--color-cherry)" style={{ marginBottom: '1.5rem' }} />
-            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', marginBottom: '1rem', color: 'var(--color-midnight)' }}>Our Vision</h3>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', marginBottom: '1rem', color: 'var(--color-midnight)' }}>Our Vision</h2>
             <p style={{ lineHeight: 1.7, color: 'var(--color-horizon-700)' }}>
               To become one of the most respected and trusted security guard companies in India, recognized for operational excellence, legal compliance, professionalism, and customer satisfaction. We aspire to build a nationally recognized security brand that consistently delivers value to clients through innovation, accountability, and ethical business practices.
             </p>
@@ -171,7 +171,7 @@ export default function AboutPage() {
       </section>
 
       {/* ─── 6. Leadership Team ─── */}
-      <section className="about-why" id="leadership" style={{ background: '#111' }}>
+      <section className="about-why" id="leadership" style={{ background: 'var(--color-midnight-900)' }}>
         <div className="about-why__inner" style={{ display: 'block', maxWidth: '1000px', margin: '0 auto' }}>
           <ScrollReveal>
             <span className="section-eyebrow section-eyebrow--light">LEADERSHIP</span>

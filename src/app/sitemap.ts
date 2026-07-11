@@ -2,30 +2,9 @@ import { MetadataRoute } from 'next'
 import { SERVICE_SLUGS } from '@/data/services'
 import { INDUSTRY_SLUGS } from '@/data/industries'
 import { STATES, CITIES as ALL_CITIES } from '@/data/locations'
+import { BLOG_POSTS } from '@/data/blog'
 
 const BASE_URL = 'https://www.silbarsecurity.in'
-
-const BLOG_SLUGS = [
-  'psara-compliance-guide-2026',
-  'security-services-jaipur-guide',
-  'how-to-choose-security-agency-india',
-  'manned-guarding-vs-cctv',
-  'hospital-security-india',
-  'industrial-security-factory-guide',
-  'event-security-management-india',
-  'vip-protection-services-india',
-  'bank-atm-security-india',
-  'construction-site-security-india',
-  'school-college-security-india',
-  'shopping-mall-security',
-  'fire-life-safety-management',
-  'why-247-security-important',
-  'corporate-office-security',
-  'security-guard-license-procedure',
-  'residential-security-services',
-  'security-guard-training-standards',
-  'hotel-security-management',
-]
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
@@ -42,6 +21,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/security-services`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.9 },
     { url: `${BASE_URL}/privacy-policy`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.3 },
     { url: `${BASE_URL}/terms`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.3 },
+    { url: `${BASE_URL}/faq`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.5 },
+    { url: `${BASE_URL}/disclaimer`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.3 },
+    { url: `${BASE_URL}/clients`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
+    { url: `${BASE_URL}/case-studies`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.6 },
+    { url: `${BASE_URL}/gallery`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.5 },
+    { url: `${BASE_URL}/csr`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.5 },
+    { url: `${BASE_URL}/emergency`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
   ]
 
   // Service pages
@@ -60,10 +46,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  // Blog posts
-  const blogPages = BLOG_SLUGS.map((slug) => ({
-    url: `${BASE_URL}/blog/${slug}`,
-    lastModified: now,
+  // Blog posts — dynamic from data (not hardcoded)
+  const blogPages = BLOG_POSTS.map((post) => ({
+    url: `${BASE_URL}/blog/${post.slug}`,
+    lastModified: new Date(post.publishedAt),
     changeFrequency: 'monthly' as const,
     priority: 0.6,
   }))

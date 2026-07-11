@@ -10,8 +10,12 @@ const LABEL_MAP: Record<string, string> = {
   'blog': 'Blog',
   'contact': 'Contact',
   'careers': 'Careers',
+  'clients': 'Client Services',
   'privacy-policy': 'Privacy Policy',
   'terms': 'Terms of Use',
+  'security-services': 'Security Services',
+  'disclaimer': 'Disclaimer',
+  'faq': 'FAQs',
 }
 
 export default function DynamicBreadcrumbSchema() {

@@ -12,7 +12,7 @@ export function GradientText({
   children, 
   className = '', 
   as: Component = 'span',
-  gradient = 'linear-gradient(135deg, var(--color-gold), var(--color-gold-light), #fff, var(--color-gold))',
+  gradient = 'linear-gradient(135deg, var(--color-gold), var(--color-gold-light), var(--color-paper), var(--color-gold))',
   style
 }: GradientTextProps) {
   return (

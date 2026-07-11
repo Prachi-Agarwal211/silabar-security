@@ -1,33 +1,55 @@
 /* ============================================
    Home — Why Silbar Section
-   Light cream paper background, 2-column editorial layout
+   Background image with dark overlay, 2-column layout
    ============================================ */
 
 .why-silbar-section {
-  background: 
-    linear-gradient(135deg, rgba(140, 31, 50, 0.95) 0%, rgba(92, 18, 32, 0.98) 100%),
-    var(--noise-texture);
   color: var(--color-cream);
-  padding: clamp(5rem, 10vh, 8rem) 0;
+  padding: clamp(5rem, 10vh, 8rem) 0 clamp(4rem, 8vh, 6rem);
   position: relative;
   overflow: hidden;
+  background: #1a0a0d;
 }
 
-/* Subtle dot-grid texture bottom-right */
+/* Bottom fade to blend with next section */
 .why-silbar-section::after {
   content: '';
   position: absolute;
   bottom: 0;
+  left: 0;
   right: 0;
-  width: 240px;
-  height: 240px;
-  background-image: radial-gradient(circle, var(--color-cherry) 1px, transparent 1px);
-  background-size: 18px 18px;
-  opacity: 0.06;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, rgba(11, 14, 20, 0.8));
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Background image */
+.why-silbar-bg {
+  position: absolute;
+  inset: 0;
+  background: url('/why-silbar-bg.png') center center / cover no-repeat;
+  opacity: 0.7;
+  z-index: 0;
+}
+
+/* Dark overlay on top of image */
+.why-silbar-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    rgba(26, 10, 13, 0.85) 0%,
+    rgba(92, 18, 32, 0.7) 50%,
+    rgba(26, 10, 13, 0.8) 100%
+  );
+  z-index: 1;
   pointer-events: none;
 }
 
 .why-silbar-inner {
+  position: relative;
+  z-index: 2;
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 clamp(1.5rem, 5vw, 4rem);
@@ -51,12 +73,32 @@
   gap: 1rem;
 }
 
+/* Button hover effects on dark background */
+.why-silbar-copy .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+}
+
+.why-silbar-copy .btn-secondary:hover {
+  border-color: white !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  transform: translateY(-2px);
+}
+
 .why-silbar-body {
   font-family: var(--font-body);
   font-size: clamp(0.85rem, 1.1vw, 0.95rem);
   line-height: 1.75;
   color: rgba(250, 248, 244, 0.85);
   max-width: 480px;
+}
+
+/* Gold divider line */
+.why-silbar-divider {
+  width: 40px;
+  height: 2px;
+  background: var(--color-gold);
+  margin: 0.5rem 0;
 }
 
 .why-silbar-checklist {
@@ -66,7 +108,6 @@
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
-  margin-top: 0.5rem;
 }
 
 .why-silbar-check-item {
@@ -80,7 +121,7 @@
 }
 
 .why-silbar-check-icon {
-  color: var(--color-cherry-bright);
+  color: var(--color-gold);
   flex-shrink: 0;
   margin-top: 0.1rem;
 }
@@ -88,14 +129,21 @@
 /* ─── Right Mosaic ─── */
 .why-silbar-mosaic {
   position: relative;
-  height: clamp(380px, 50vh, 520px);
+  height: clamp(420px, 58vh, 580px);
 }
 
 .why-silbar-tile {
   position: absolute;
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.4s var(--ease-smooth), box-shadow 0.4s var(--ease-smooth);
+}
+
+.why-silbar-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
 }
 
 .why-silbar-tile__inner {
@@ -104,101 +152,142 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 1.5rem;
+  padding: 1.75rem;
   position: relative;
 }
 
-/* Tile A — large, top-left, slight rotation */
-.why-silbar-tile--a {
-  top: 0;
-  left: 0;
-  width: 58%;
-  height: 60%;
-  transform: rotate(-1.5deg);
-  z-index: 1;
+.why-silbar-tile__inner--dark {
+  background: linear-gradient(145deg, rgba(35, 18, 25, 0.98) 0%, rgba(18, 10, 14, 1) 100%);
 }
 
-/* Tile B — smaller, top-right */
-.why-silbar-tile--b {
-  top: 5%;
-  right: 0;
-  width: 38%;
-  height: 44%;
-  transform: rotate(2deg);
-  z-index: 2;
+.why-silbar-tile__inner--light {
+  background: linear-gradient(145deg, #FFFFFF 0%, #F5F0EA 100%);
+  border: 1px solid rgba(140, 31, 50, 0.06);
 }
 
-/* Tile C — bottom-left, cherry bg */
-.why-silbar-tile--c {
-  bottom: 0;
-  left: 8%;
-  width: 35%;
-  height: 38%;
-  transform: rotate(1deg);
-  z-index: 3;
+.why-silbar-tile__icon-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
 }
 
-/* Tile D — bottom-right, large */
-.why-silbar-tile--d {
-  bottom: 2%;
-  right: 0;
-  width: 52%;
-  height: 50%;
-  transform: rotate(-1deg);
-  z-index: 2;
+.why-silbar-tile__icon-wrap--gold {
+  background: linear-gradient(135deg, rgba(191, 149, 63, 0.25) 0%, rgba(191, 149, 63, 0.1) 100%);
+  border: 1px solid rgba(191, 149, 63, 0.35);
+  color: var(--color-gold);
 }
 
-.why-silbar-tile__icon {
-  margin-bottom: auto;
+.why-silbar-tile__icon-wrap--cherry {
+  background: linear-gradient(135deg, var(--color-cherry) 0%, var(--color-cherry-deep) 100%);
+  color: white;
 }
 
-.why-silbar-tile__label {
+.why-silbar-tile__content {
+  margin-top: auto;
+}
+
+.why-silbar-tile__title {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-cream);
+  margin-bottom: 0.35rem;
+}
+
+.why-silbar-tile__title--dark {
+  color: var(--color-cherry);
+}
+
+.why-silbar-tile__subtitle {
   font-family: var(--font-body);
-  font-size: 0.72rem;
+  font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(250, 248, 244, 0.6);
+  color: rgba(250, 248, 244, 0.5);
 }
 
-.why-silbar-tile__badge {
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--color-gold-light);
+.why-silbar-tile__subtitle--dark {
+  color: var(--color-cherry);
+  opacity: 0.7;
+}
+
+.why-silbar-tile__desc {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--color-horizon-600);
+  margin-top: 0.6rem;
 }
 
 .why-silbar-tile__number {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
   font-weight: 900;
-  color: var(--color-gold-light);
+  color: var(--color-cherry);
   line-height: 1;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.3rem;
 }
 
-/* Trusted since circular badge */
+/* Tile positions — 2x2 grid with consistent 12px gap */
+.why-silbar-tile--a {
+  top: 0;
+  left: 0;
+  width: calc(50% - 6px);
+  height: calc(50% - 6px);
+  z-index: 1;
+}
+
+.why-silbar-tile--b {
+  top: 0;
+  right: 0;
+  width: calc(50% - 6px);
+  height: calc(50% - 6px);
+  z-index: 2;
+}
+
+.why-silbar-tile--c {
+  bottom: 0;
+  left: 0;
+  width: calc(50% - 6px);
+  height: calc(50% - 6px);
+  z-index: 2;
+}
+
+.why-silbar-tile--d {
+  bottom: 0;
+  right: 0;
+  width: calc(50% - 6px);
+  height: calc(50% - 6px);
+  z-index: 1;
+}
+
+/* Trusted since circular badge — centered at grid intersection */
 .why-silbar-trusted-badge {
   position: absolute;
-  top: 30%;
-  left: 46%;
-  width: 76px;
-  height: 76px;
+  top: calc(50% - 44px);
+  left: calc(50% - 44px);
+  width: 88px;
+  height: 88px;
   border-radius: 50%;
-  background: var(--color-gold);
+  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-dark) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   z-index: 4;
-  box-shadow: 0 8px 30px rgba(191, 149, 63, 0.4);
+  box-shadow: 0 10px 40px rgba(191, 149, 63, 0.5);
+  border: 3px solid rgba(255, 255, 255, 0.25);
 }
 
 .why-silbar-trusted-text {
   font-family: var(--font-display);
-  font-size: 0.55rem;
+  font-size: 0.6rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -206,7 +295,7 @@
   line-height: 1.4;
 }
 
-/* Mobile mosaic: flatten to single stacked column */
+/* Mobile mosaic */
 @media (max-width: 900px) {
   .why-silbar-mosaic {
     height: auto;
@@ -217,15 +306,40 @@
 
   .why-silbar-tile {
     position: static;
-    transform: none !important;
-    width: 100%;
-    height: 140px;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 170px;
   }
 
-  .why-silbar-tile--a { grid-column: span 2; height: 160px; }
+  .why-silbar-tile__inner {
+    padding: 1.25rem;
+  }
+
+  .why-silbar-tile__icon-wrap {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 0.75rem;
+  }
+
+  .why-silbar-tile__icon-wrap svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .why-silbar-tile__number {
+    font-size: 2rem;
+  }
+
+  .why-silbar-tile__title {
+    font-size: 0.95rem;
+  }
 
   .why-silbar-trusted-badge {
     display: none;
+  }
+
+  .why-silbar-bg {
+    opacity: 0.4;
   }
 }
 
@@ -384,18 +498,136 @@
 
 .client-logo-name {
   font-family: var(--font-display);
-  font-size: clamp(0.85rem, 1.5vw, 1.1rem);
-  font-weight: 700;
-  letter-spacing: 0.06em;
+  font-size: clamp(0.75rem, 1vw, 0.9rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-horizon-400);
-  opacity: 0.7;
-  transition: opacity 0.2s;
+  color: var(--color-gold-light);
+  background: var(--color-midnight-900);
+  border: 1px solid rgba(191, 149, 63, 0.2);
+  padding: 0.6em 1.2em;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(191, 149, 63, 0.05);
+  transition: all 0.3s var(--ease-smooth);
 }
 
 .client-logo-name:hover {
-  opacity: 1;
-  color: var(--color-horizon-600);
+  background: var(--color-midnight);
+  border-color: rgba(191, 149, 63, 0.5);
+  box-shadow: 0 4px 20px var(--color-gold-glow), inset 0 0 0 1px rgba(191, 149, 63, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Testimonial Card */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.testimonial-card {
+  border-left: 3px solid var(--color-gold);
+  padding-left: 1.5rem;
+  margin-top: 0;
+}
+
+.testimonial-card__quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: var(--color-paper);
+  font-style: italic;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+.testimonial-card__attribution {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.testimonial-card__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-gold-light);
+  font-size: 0.9rem;
+}
+
+.testimonial-card__company {
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: rgba(250, 248, 244, 0.6);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   Google Reviews Section
+   ============================================ */
+
+.google-reviews-section {
+  background: var(--color-midnight);
+  padding: clamp(3rem, 6vh, 5rem) 0;
+  text-align: center;
+}
+
+.google-reviews-inner {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.google-reviews-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.google-reviews-stars {
+  display: flex;
+  gap: 2px;
+}
+
+.google-reviews-rating {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-gold);
+}
+
+.google-reviews-count {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: rgba(250, 248, 244, 0.6);
+}
+
+.google-reviews-text {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: rgba(250, 248, 244, 0.7);
+  line-height: 1.5;
+}
+
+.google-reviews-text strong {
+  color: var(--color-cream);
 }
 
 /* ============================================

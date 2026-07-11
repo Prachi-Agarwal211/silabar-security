@@ -1,223 +1,170 @@
 /* ============================================
-   Services — Dark Cherry Editorial Section
-   Homepage services section & services page listing
+   Services — Warm Beige + CCTV Background
    ============================================ */
 
-.services-dark-section {
+.sv-section {
   position: relative;
-  background: linear-gradient(160deg, var(--color-cherry-deep) 0%, var(--color-cherry) 50%, #6b1726 100%);
+  background: #F5EFE6;
   padding: clamp(5rem, 10vh, 7rem) 0 clamp(4rem, 8vh, 6rem);
   overflow: hidden;
   z-index: 1;
 }
 
-/* Noise texture overlay */
-.services-dark-noise {
+/* CCTV Camera Image — right side, prominently visible */
+.sv-bg-image {
   position: absolute;
-  inset: 0;
-  background-image: var(--noise-texture);
-  opacity: 0.045;
+  top: -5%;
+  right: -2%;
+  width: 55%;
+  height: 110%;
+  background: url('/03b1e3c7-404d-418d-be71-45122850d256.png') center center / cover no-repeat;
+  opacity: 1;
+  mask-image: linear-gradient(to left, black 50%, rgba(0,0,0,0.6) 70%, transparent 95%);
+  -webkit-mask-image: linear-gradient(to left, black 50%, rgba(0,0,0,0.6) 70%, transparent 95%);
+  z-index: 1;
   pointer-events: none;
-  z-index: 0;
 }
 
-/* Subtle diagonal highlight top-right */
-.services-dark-section::before {
+/* Beige-to-transparent overlay so left side stays clean */
+.sv-section::after {
   content: '';
   position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 70%;
-  height: 200%;
-  background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.06) 0%, transparent 60%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Bottom gold hairline */
-.services-dark-section::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.25), transparent);
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, #F5EFE6 0%, #F5EFE6 30%, rgba(245, 239, 230, 0.8) 60%, transparent 100%);
+  z-index: 2;
+  pointer-events: none;
 }
 
 /* Inner wrapper */
-.services-dark-inner {
+.sv-inner {
   position: relative;
-  z-index: 1;
+  z-index: 3;
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 clamp(1.5rem, 5vw, 4rem);
   display: flex;
   flex-direction: column;
-  gap: clamp(2.5rem, 5vh, 4rem);
+  gap: clamp(2.5rem, 5vh, 3.5rem);
 }
 
 /* ============================================
-   Header row — eyebrow + heading + view-all link
+   Header — Red heading, gold accent
    ============================================ */
 
-.services-dark-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 2rem;
-  flex-wrap: wrap;
+.sv-section-header {
+  max-width: 700px;
 }
 
-.services-dark-header__left {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.services-dark-viewall {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+.sv-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--color-cherry);
   text-transform: uppercase;
-  color: var(--color-gold-light);
-  text-decoration: none;
-  opacity: 0.8;
-  transition: opacity 0.2s var(--ease-smooth), gap 0.2s var(--ease-smooth);
-  white-space: nowrap;
-  flex-shrink: 0;
-  margin-bottom: 0.25rem; /* align with heading baseline */
+  margin-bottom: 1rem;
 }
 
-.services-dark-viewall:hover {
-  opacity: 1;
-  gap: 0.7rem;
+.sv-heading em {
+  font-style: italic;
+  color: var(--color-gold-dark);
+}
+
+.sv-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  line-height: 1.6;
+  color: #6B5E50;
+  max-width: 500px;
 }
 
 /* ============================================
-   5-Card Horizontal Grid
+   5-Card Grid — Pure white cards
    ============================================ */
 
-.services-dark-cards {
+.sv-cards {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: clamp(0.75rem, 1.5vw, 1.25rem);
 }
 
 @media (max-width: 1100px) {
-  .services-dark-cards {
+  .sv-cards {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 700px) {
-  .services-dark-cards {
+  .sv-cards {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (max-width: 420px) {
-  .services-dark-cards {
+  .sv-cards {
     grid-template-columns: 1fr;
   }
 }
 
-.services-dark-card {
-  position: relative;
+.sv-card {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  padding: clamp(1.5rem, 3vh, 2rem) clamp(1.25rem, 2vw, 1.75rem);
-  background: rgba(250, 248, 244, 0.04);
-  border: 1px solid rgba(250, 248, 244, 0.1);
+  padding: clamp(1.25rem, 2.5vh, 1.75rem) clamp(1rem, 2vw, 1.5rem);
+  background: #FFFFFF;
+  border: 1px solid rgba(140, 31, 50, 0.1);
+  border-radius: 10px;
   text-decoration: none;
-  color: var(--color-paper);
-  transition: background 0.3s var(--ease-smooth), border-color 0.3s var(--ease-smooth), transform 0.3s var(--ease-smooth), box-shadow 0.3s var(--ease-smooth);
-  box-shadow: 0 4px 20px rgba(0,0,0,0);
-}
-
-/* Top-left gold accent bar */
-.services-dark-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 32px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--color-gold), transparent);
-  opacity: 0.6;
-  transition: width 0.3s var(--ease-smooth);
+  color: var(--color-paper-ink);
+  transition: transform 0.3s var(--ease-smooth), box-shadow 0.3s var(--ease-smooth), border-color 0.3s var(--ease-smooth);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .services-dark-card:hover {
-    background: linear-gradient(135deg, rgba(250, 248, 244, 0.06) 0%, rgba(212, 175, 55, 0.08) 100%);
-    border-color: rgba(212, 175, 55, 0.6);
-    transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.4), inset 0 0 20px rgba(212, 175, 55, 0.1);
-  }
-
-  .services-dark-card:hover::before {
-    width: 100%;
-    opacity: 0.3;
-  }
-
-  .services-dark-card:hover .services-dark-card__arrow {
-    opacity: 1;
-    transform: translateX(0);
+  .sv-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(140, 31, 50, 0.12);
+    border-color: var(--color-cherry);
   }
 }
 
-@media (hover: none) and (pointer: coarse) {
-  .services-dark-card:active {
-    background: rgba(250, 248, 244, 0.1);
-  }
-}
-
-.services-dark-card__icon {
-  width: 44px;
-  height: 44px;
+.sv-card__icon {
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  border: 1.5px solid rgba(250, 248, 244, 0.25);
+  border: 1.5px solid rgba(140, 31, 50, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-gold-light);
+  color: var(--color-cherry);
   flex-shrink: 0;
   transition: border-color 0.3s var(--ease-smooth), background 0.3s var(--ease-smooth);
 }
 
-.services-dark-card:hover .services-dark-card__icon {
-  border-color: var(--color-gold);
-  background: rgba(212, 175, 55, 0.15);
-  animation: iconPulse 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+.sv-card:hover .sv-card__icon {
+  border-color: var(--color-cherry);
+  background: rgba(140, 31, 50, 0.06);
 }
 
-@keyframes iconPulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.15); }
-  100% { transform: scale(1); }
-}
-
-.services-dark-card__title {
+.sv-card__title {
   font-family: var(--font-display);
-  font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+  font-size: clamp(0.75rem, 1.1vw, 0.9rem);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   line-height: 1.2;
-  color: var(--color-paper);
+  color: var(--color-cherry);
 }
 
-.services-dark-card__desc {
+.sv-card__desc {
   font-family: var(--font-body);
-  font-size: clamp(0.72rem, 0.9vw, 0.82rem);
+  font-size: clamp(0.72rem, 0.85vw, 0.8rem);
   line-height: 1.6;
-  color: rgba(250, 248, 244, 0.65);
+  color: #6B5E50;
   flex-grow: 1;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -225,62 +172,63 @@
   overflow: hidden;
 }
 
-.services-dark-card__arrow {
-  display: inline-flex;
-  align-items: center;
-  color: var(--color-gold-light);
-  opacity: 0;
-  transform: translateX(-6px);
-  transition: opacity 0.25s var(--ease-smooth), transform 0.25s var(--ease-smooth);
-  margin-top: auto;
-}
-
 /* ============================================
-   Tag Pills Row — secondary services
+   Tag Pills — red border, dark text
    ============================================ */
 
-.services-pills-row {
+.sv-pills {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
-  padding-top: 0.5rem;
-  border-top: 1px solid rgba(250, 248, 244, 0.08);
+  gap: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(140, 31, 50, 0.12);
 }
 
-.services-pill {
+.sv-pill {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.45em 1.1em;
+  padding: 0.4em 0.9em;
   font-family: var(--font-body);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 600;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: rgba(250, 248, 244, 0.75);
-  border: 1px solid rgba(250, 248, 244, 0.18);
+  color: var(--color-cherry);
+  border: 1px solid rgba(140, 31, 50, 0.2);
+  border-radius: 4px;
   text-decoration: none;
+  background: rgba(255, 255, 255, 0.6);
   transition: color 0.2s var(--ease-smooth), border-color 0.2s var(--ease-smooth), background 0.2s var(--ease-smooth);
 }
 
-.services-pill:hover {
-  color: var(--color-gold-light);
-  border-color: rgba(212, 175, 55, 0.45);
-  background: rgba(212, 175, 55, 0.06);
+.sv-pill:hover {
+  color: #FFFFFF;
+  border-color: var(--color-cherry);
+  background: var(--color-cherry);
 }
 
 /* ============================================
-   Mobile overrides
+   Mobile
    ============================================ */
 
 @media (max-width: 768px) {
-  .services-dark-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
+  .sv-bg-image {
+    opacity: 0.25;
+    width: 100%;
+    top: 0;
+    right: 0;
+    height: 100%;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
   }
 
-  .services-dark-viewall {
-    margin-bottom: 0;
+  .sv-section::after {
+    width: 100%;
+    background: linear-gradient(to bottom,
+      rgba(245, 239, 230, 0.92) 0%,
+      rgba(245, 239, 230, 0.8) 50%,
+      rgba(245, 239, 230, 0.92) 100%
+    );
   }
 }

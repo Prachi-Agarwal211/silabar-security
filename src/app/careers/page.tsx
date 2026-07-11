@@ -148,6 +148,85 @@ export default function CareersPage() {
           </a>
         </div>
       </section>
+
+      {/* Resume Upload Section */}
+      <section className="service-detail-features service-detail-features--padded" style={{ background: 'var(--color-midnight)' }}>
+        <div className="service-detail-section-inner service-detail-section-inner--no-padding">
+          <h2 className="service-detail-section-title service-detail-section-title--mb">Upload Your Resume</h2>
+          <p className="service-detail-section-sub" style={{ color: 'rgba(250,248,244,0.7)', marginBottom: '2rem', maxWidth: '600px' }}>
+            Submit your resume directly. Our HR team reviews every application within 48 hours.
+          </p>
+          <form className="resume-upload-form" onSubmit={(e) => { e.preventDefault(); alert('Thank you! Your resume has been submitted. Our HR team will contact you within 48 hours.'); }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem', marginBottom: '1rem' }}>
+              <input type="text" placeholder="Full Name *" required className="resume-input" />
+              <input type="email" placeholder="Email Address *" required className="resume-input" />
+              <input type="tel" placeholder="Phone Number *" required className="resume-input" />
+              <select className="resume-input" required>
+                <option value="">Select Desired Position</option>
+                <option>Security Guard</option>
+                <option>Security Supervisor</option>
+                <option>Armed Guard</option>
+                <option>Lady Security Guard</option>
+                <option>Account Manager</option>
+                <option>BDE</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div style={{ marginBottom: '1.5rem' }}>
+              <label className="resume-upload-label">
+                <input type="file" accept=".pdf,.doc,.docx" required className="resume-file-input" />
+                <span className="resume-upload-btn">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  Choose Resume (PDF, DOC, DOCX)
+                </span>
+              </label>
+            </div>
+            <button type="submit" className="service-detail-cta service-detail-cta--primary" style={{ border: 'none', cursor: 'pointer' }}>
+              Submit Application
+            </button>
+          </form>
+        </div>
+      </section>
+
+      {/* Walk-in Interviews */}
+      <section className="service-detail-features service-detail-features--padded">
+        <div className="service-detail-section-inner service-detail-section-inner--no-padding">
+          <h2 className="service-detail-section-title service-detail-section-title--mb">Walk-In Interviews</h2>
+          <div className="bento-grid">
+            {[
+              { city: 'Jaipur (HQ)', address: '208, 2nd Floor, Samod Tower, Sansar Chand Road', time: 'Mon–Sat: 10:00 AM – 4:00 PM', roles: 'All Positions' },
+              { city: 'Delhi NCR', address: 'Corporate Office, New Delhi', time: 'Mon–Fri: 10:00 AM – 3:00 PM', roles: 'Security Guards, Supervisors' },
+              { city: 'Ahmedabad', address: 'Ahmedabad, Gujarat', time: 'Mon–Fri: 11:00 AM – 3:00 PM', roles: 'Security Guards, Armed Guards' },
+            ].map((loc, i) => (
+              <ScrollReveal key={loc.city} delay={i * 0.1} className="bento-cell glass-panel">
+                <h3 style={{ color: 'var(--color-gold-light)', fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.5rem' }}>{loc.city}</h3>
+                <p style={{ color: 'rgba(250,248,244,0.7)', fontSize: '0.85rem', marginBottom: '0.5rem' }}>{loc.address}</p>
+                <p style={{ color: 'var(--color-gold)', fontSize: '0.8rem', fontWeight: 600, marginBottom: '0.25rem' }}>{loc.time}</p>
+                <p style={{ color: 'rgba(250,248,244,0.5)', fontSize: '0.75rem' }}>Positions: {loc.roles}</p>
+              </ScrollReveal>
+            ))}
+          </div>
+          <p style={{ color: 'rgba(250,248,244,0.5)', fontSize: '0.8rem', marginTop: '1.5rem' }}>
+            Bring your resume, Aadhaar card, and previous employment documents. No appointment needed.
+          </p>
+        </div>
+      </section>
+
+      {/* Franchise / Business Partner */}
+      <section className="service-detail-bottom-cta" style={{ background: 'linear-gradient(135deg, var(--color-cherry-deep) 0%, var(--color-cherry) 100%)' }}>
+        <h2 className="service-detail-bottom-cta__title">Franchise & Business Partner</h2>
+        <p className="service-detail-bottom-cta__sub">
+          Partner with India&apos;s fastest-growing security company. We offer franchise opportunities across 200+ cities.
+        </p>
+        <div className="service-detail-ctas service-detail-ctas--centered">
+          <a href="/contact" className="service-detail-cta service-detail-cta--primary">
+            Become a Partner
+          </a>
+          <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--secondary">
+            <Phone size={16} /> Call for Details
+          </a>
+        </div>
+      </section>
     </main>
   )
 }

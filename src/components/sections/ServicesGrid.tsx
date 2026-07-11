@@ -5,7 +5,7 @@ import Link from 'next/link'
 import {
   UserCheck, Camera, ClipboardCheck, Building2, Flame,
   Users, Landmark, FileSearch, Car, GraduationCap, UsersRound, Factory,
-  ArrowRight, ShieldHalf,
+  ArrowRight, ShieldHalf, ShoppingBag,
 } from 'lucide-react'
 import { gsap } from '@/lib/gsap'
 import { useGSAP } from '@gsap/react'
@@ -24,6 +24,8 @@ const ICON_MAP: Record<string, React.ElementType> = {
   'file-search': FileSearch,
   flame: Flame,
   car: Car,
+  'shopping-bag': ShoppingBag,
+  'shield-half': ShieldHalf,
 }
 
 interface ServicesGridProps {
@@ -34,9 +36,7 @@ export default function ServicesGrid({ services }: ServicesGridProps) {
   const sectionRef = useRef<HTMLElement>(null)
   const cardsRef = useRef<HTMLDivElement>(null)
 
-  // Featured 5 — the primary cards in the horizontal row
   const featured = services.slice(0, 5)
-  // Remaining services as tag pills
   const pills = services.slice(5)
 
   useGSAP(() => {
@@ -44,8 +44,7 @@ export default function ServicesGrid({ services }: ServicesGridProps) {
     const mm = gsap.matchMedia()
 
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      // Header reveal
-      const header = sectionRef.current!.querySelector('.services-dark-header')
+      const header = sectionRef.current!.querySelector('.sv-section-header')
       if (header) {
         gsap.fromTo(
           header,
@@ -57,8 +56,7 @@ export default function ServicesGrid({ services }: ServicesGridProps) {
         )
       }
 
-      // Cards — single stagger timeline
-      const cards = cardsRef.current!.querySelectorAll('.services-dark-card')
+      const cards = cardsRef.current!.querySelectorAll('.sv-card')
       gsap.fromTo(
         cards,
         { opacity: 0, y: 40 },
@@ -71,8 +69,7 @@ export default function ServicesGrid({ services }: ServicesGridProps) {
         }
       )
 
-      // Pills row
-      const pillsEl = sectionRef.current!.querySelector('.services-pills-row')
+      const pillsEl = sectionRef.current!.querySelector('.sv-pills')
       if (pillsEl) {
         gsap.fromTo(
           pillsEl,
@@ -89,66 +86,60 @@ export default function ServicesGrid({ services }: ServicesGridProps) {
   }, { scope: sectionRef })
 
   return (
-    <section className="services-dark-section" ref={sectionRef} aria-labelledby="services-dark-heading">
-      {/* Noise texture overlay */}
-      <div className="services-dark-noise" aria-hidden="true" />
+    <section className="sv-section" ref={sectionRef} aria-labelledby="sv-heading">
+      {/* Camera image — right side */}
+      <div className="sv-bg-image" aria-hidden="true" />
 
-      <div className="services-dark-inner">
-        {/* Header row: eyebrow + heading + view-all */}
-        <div className="services-dark-header">
-          <div className="services-dark-header__left">
-            <span className="section-eyebrow section-eyebrow--light">OUR SERVICES</span>
-            <h2 id="services-dark-heading" className="section-heading section-heading--on-dark">
-              Comprehensive Security <em>Solutions</em><br />for Every Need.
-            </h2>
-          </div>
-          <Link href="/services" className="services-dark-viewall" aria-label="View all security services">
-            View All Services <ArrowRight size={14} aria-hidden="true" />
-          </Link>
+      <div className="sv-inner">
+        {/* Header */}
+        <div className="sv-section-header">
+          <span className="section-eyebrow section-eyebrow--red">OUR SERVICES</span>
+          <h2 id="sv-heading" className="sv-heading">
+            COMPREHENSIVE SECURITY <em>SOLUTIONS</em> FOR EVERY NEED.
+          </h2>
+          <p className="sv-subtitle">
+            Delivering trusted, technology-driven, and professional security
+            services tailored to protect what matters most.
+          </p>
         </div>
 
-        {/* 5-card horizontal grid */}
-        <div className="services-dark-cards" ref={cardsRef}>
+        {/* 5 featured cards */}
+        <div className="sv-cards" ref={cardsRef}>
           {featured.map((service) => {
             const Icon = ICON_MAP[service.icon] || ShieldHalf
             return (
               <Link
                 key={service.slug}
                 href={`/services/${service.slug}`}
-                className="services-dark-card"
+                className="sv-card"
                 aria-label={service.title}
               >
-                <span className="services-dark-card__icon" aria-hidden="true">
-                  <Icon size={20} strokeWidth={1.75} />
-                </span>
-                <span className="services-dark-card__title">{service.shortTitle || service.title}</span>
-                <span className="services-dark-card__desc">{service.description}</span>
-                <span className="services-dark-card__arrow" aria-hidden="true">
-                  <ArrowRight size={14} />
-                </span>
+                <div className="sv-card__icon">
+                  <Icon size={22} strokeWidth={1.5} />
+                </div>
+                <h3 className="sv-card__title">{service.shortTitle || service.title}</h3>
+                <p className="sv-card__desc">{service.description}</p>
               </Link>
             )
           })}
         </div>
 
-        {/* Tag pills — secondary services */}
-        {pills.length > 0 && (
-          <div className="services-pills-row" aria-label="Additional services">
-            {pills.map((service) => {
-              const Icon = ICON_MAP[service.icon] || ShieldHalf
-              return (
-                <Link
-                  key={service.slug}
-                  href={`/services/${service.slug}`}
-                  className="services-pill"
-                >
-                  <Icon size={12} strokeWidth={2} aria-hidden="true" />
-                  {service.shortTitle || service.title}
-                </Link>
-              )
-            })}
-          </div>
-        )}
+        {/* Tag pills — all remaining services */}
+        <div className="sv-pills" aria-label="All services">
+          {pills.map((service) => {
+            const Icon = ICON_MAP[service.icon] || ShieldHalf
+            return (
+              <Link
+                key={service.slug}
+                href={`/services/${service.slug}`}
+                className="sv-pill"
+              >
+                <Icon size={12} strokeWidth={2} aria-hidden="true" />
+                {service.shortTitle || service.title}
+              </Link>
+            )
+          })}
+        </div>
       </div>
 
       {/* Schema.org */}

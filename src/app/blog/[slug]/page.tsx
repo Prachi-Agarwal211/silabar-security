@@ -86,7 +86,7 @@ export default async function BlogPostPage({
       />
 
       <section style={{ padding: '0 1.5rem 5rem 1.5rem', background: 'var(--color-paper)' }}>
-        <article style={{ maxWidth: '800px', margin: '0 auto', background: '#fff', borderRadius: '12px', padding: 'clamp(2rem, 5vw, 4rem)', boxShadow: '0 20px 40px rgba(0,0,0,0.05)', marginTop: '-4rem', position: 'relative', zIndex: 10 }}>
+        <article style={{ maxWidth: '800px', margin: '0 auto', background: 'var(--color-paper)', borderRadius: '12px', padding: 'clamp(2rem, 5vw, 4rem)', boxShadow: '0 20px 40px rgba(0,0,0,0.05)', marginTop: '-4rem', position: 'relative', zIndex: 10 }}>
           
           <header style={{ marginBottom: '3rem', paddingBottom: '2rem', borderBottom: '1px solid rgba(191, 149, 63, 0.2)' }}>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.5rem', color: 'rgba(10,10,10,0.6)', fontFamily: 'var(--font-body)', fontSize: '0.9rem', fontWeight: 600 }}>

@@ -14,13 +14,13 @@ export function ogMetadata(title: string, description: string, path: string): Pa
       siteName: SITE_NAME,
       type: 'website',
       locale: 'en_IN',
-      images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Silbar Security Services' }],
+      images: [{ url: `${BASE_URL}/og-image.jpg`, width: 1200, height: 630, alt: 'Silbar Security Services' }],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: ['/og-image.jpg'],
+      images: [`${BASE_URL}/og-image.jpg`],
     },
   }
 }

@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from 'next'
 import { Space_Grotesk, Manrope } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 import NavigationWrapper from '@/components/layout/NavigationWrapper'
 import DynamicBreadcrumbSchema from '@/components/seo/DynamicBreadcrumbSchema'
+import ExitIntentPopup from '@/components/ui/ExitIntentPopup'
 import { CONTACT } from '@/lib/config'
 
 const spaceGrotesk = Space_Grotesk({
@@ -61,7 +63,7 @@ export const metadata: Metadata = {
       'ISO 9001:2015 certified. 7,000+ professionals. Manned guarding, VIP protection, surveillance, and facility management across India.',
     images: [
       {
-        url: '/og-image.jpg',
+        url: 'https://www.silbarsecurity.in/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Silbar Security Services — Protecting India',
@@ -73,7 +75,7 @@ export const metadata: Metadata = {
     title: 'Silbar Security Services | Trusted Security Agency India',
     description:
       'ISO 9001:2015 certified. 7,000+ professionals. Security services across PAN India.',
-    images: ['/og-image.jpg'],
+    images: ['https://www.silbarsecurity.in/og-image.jpg'],
   },
   alternates: {
     canonical: 'https://www.silbarsecurity.in',
@@ -110,7 +112,6 @@ export default function RootLayout({
   return (
     <html lang="en-IN" className={`${spaceGrotesk.variable} ${manrope.variable}`}>
       <body>
-        <meta charSet="utf-8" />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[9999] focus:bg-gold focus:text-midnight focus:px-4 focus:py-2 focus:font-body focus:font-semibold"
@@ -231,6 +232,52 @@ export default function RootLayout({
         />
         <DynamicBreadcrumbSchema />
         <NavigationWrapper>{children}</NavigationWrapper>
+        <ExitIntentPopup />
+
+        {/* Google Analytics 4 */}
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}', {
+                  page_path: window.location.pathname,
+                });
+              `}
+            </Script>
+          </>
+        )}
+
+        {/* Google Tag Manager */}
+        {process.env.NEXT_PUBLIC_GTM_ID && (
+          <Script id="gtm-init" strategy="afterInteractive">
+            {`
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GTM_ID}');
+            `}
+          </Script>
+        )}
+
+        {/* Google Tag Manager (noscript) */}
+        {process.env.NEXT_PUBLIC_GTM_ID && (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}`}
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
+            />
+          </noscript>
+        )}
       </body>
     </html>
   )

@@ -125,31 +125,3 @@
   font-style: italic;
   color: var(--color-gold-light);
 }
-
-/* Breadcrumb separator fix */
-.breadcrumb {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-family: var(--font-body);
-  font-size: 0.72rem;
-  letter-spacing: 0.04em;
-  color: var(--color-horizon-500);
-  margin-bottom: 1rem;
-}
-
-.breadcrumb__link {
-  color: var(--color-cherry);
-  text-decoration: none;
-  opacity: 0.8;
-  transition: opacity 0.2s;
-}
-
-.breadcrumb__link:hover { opacity: 1; }
-
-.breadcrumb__sep { color: var(--color-horizon-400); }
-
-.breadcrumb__current {
-  color: var(--color-horizon-500);
-}
-

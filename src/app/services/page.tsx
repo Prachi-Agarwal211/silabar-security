@@ -8,10 +8,10 @@ import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
 
 export const metadata: Metadata = {
-  title: 'Security Services — 12 Verticals for Every Industry',
+  title: 'Security Services — 35 Verticals for Every Industry',
   description:
     'Silbar Security offers manned guarding, industrial security, event security, bank & ATM security, CCTV surveillance, facility management, and more. ISO 9001:2015 certified. PAN India.',
-  ...ogMetadata('Security Services — 12 Verticals for Every Industry', 'Silbar Security offers manned guarding, industrial security, event security, bank & ATM security, CCTV surveillance, facility management, and more. ISO 9001:2015 certified. PAN India.', '/services'),
+  ...ogMetadata('Security Services — 35 Verticals for Every Industry', 'Silbar Security offers manned guarding, industrial security, event security, bank & ATM security, CCTV surveillance, facility management, and more. ISO 9001:2015 certified. PAN India.', '/services'),
 }
 
 export default function ServicesPage() {
@@ -67,7 +67,7 @@ export default function ServicesPage() {
           {/* Right: geometric collage — CSS only, no images needed */}
           <div className="services-intro-collage" aria-hidden="true">
             <div className="services-collage-card services-collage-card--a">
-              <div className="services-collage-card__num">12</div>
+              <div className="services-collage-card__num">35</div>
               <div className="services-collage-card__label">Security Verticals</div>
             </div>
             <div className="services-collage-card services-collage-card--b">

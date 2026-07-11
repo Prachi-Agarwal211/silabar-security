@@ -15,16 +15,9 @@ export default function GlobalAnimations({ children }: { children: React.ReactNo
     }
   }, [])
 
-  // Basic Page Transition effect - scroll to top and reset Lenis
+  // Basic Page Transition effect - scroll to top
   useEffect(() => {
     window.scrollTo(0, 0)
-    // Add page transition fade-in class to main content if we had one
-    const main = document.getElementById('main-content')
-    if (main) {
-      main.style.animation = 'none'
-      main.offsetHeight // trigger reflow
-      main.style.animation = 'fadeIn 0.5s ease-out forwards'
-    }
   }, [pathname])
 
   return <>{children}</>

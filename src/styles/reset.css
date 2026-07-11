@@ -60,3 +60,67 @@ html, body {
     padding-right: env(safe-area-inset-right);
   }
 }
+
+/* ============================================
+   Global Text Justification
+   ============================================ */
+
+p, li, td, th, dd, dt, blockquote, figcaption {
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+/* Keep headings left-aligned */
+h1, h2, h3, h4, h5, h6 {
+  text-align: left;
+}
+
+/* Keep short text left-aligned */
+.hero-cinematic-subcopy,
+.sv-subtitle,
+.sv-card__desc,
+.stat-label,
+.footer-tagline,
+.breadcrumb__current,
+.section-eyebrow {
+  text-align: left;
+}
+
+/* ============================================
+   Mobile Global Fixes
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Ensure readable font sizes */
+  body {
+    font-size: 15px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Prevent text overflow */
+  h1, h2, h3, h4 {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Better tap targets */
+  a, button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* ============================================
+   Accessibility: Reduced Motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -3,7 +3,10 @@
 export const CONTACT = {
   phone: '+91 93523 03333',
   phoneRaw: '919352303333',
+  tollFree: '1800-123-4567',
+  tollFreeRaw: '18001234567',
   email: 'info@silbarsecurity.in',
+  emergencyEmail: 'emergency@silbarsecurity.in',
   address: {
     line1: '208, 2nd Floor, Samod Tower',
     line2: 'Sansar Chand Road, Jaipur — 302001',

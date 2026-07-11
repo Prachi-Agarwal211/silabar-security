@@ -109,7 +109,7 @@ export default function Header() {
 
   return (
     <>
-      <header className={`hero-header glass-header${hidden ? ' hero-header--hidden' : ''}${scrolled ? ' hero-header--scrolled' : ''}${pathname !== '/' || !transparent ? ' hero-header--solid' : ''}${transparent && pathname === '/' ? ' hero-header--transparent' : ''}`}>
+      <header className={`hero-header${hidden ? ' hero-header--hidden' : ''}${scrolled ? ' hero-header--scrolled' : ''}${pathname !== '/' || !transparent ? ' hero-header--solid' : ''}${transparent && pathname === '/' ? ' hero-header--transparent' : ''}`}>
         <Link href="/" className="hero-logo" onClick={() => setMenuOpen(false)}>
           <Shield className="hero-logo__icon" size={24} strokeWidth={2} />
           Silbar Security

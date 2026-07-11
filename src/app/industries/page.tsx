@@ -45,7 +45,7 @@ export default function IndustriesPage() {
             Solutions Crafted for <em>Every</em> Industry.
           </h1>
           <p className="industries-listing-subtitle">
-            Silbar Security provides specialized security solutions tailored to 12 distinct industries
+            Silbar Security provides specialized security solutions tailored to 19 distinct industries
             across India — from manufacturing floors to hospital corridors, banking halls to data centres.
             Every deployment is industry-trained and fully compliant.
           </p>
