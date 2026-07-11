@@ -5,7 +5,6 @@ import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import {
   ArrowRight,
-  Building2,
   CheckCircle,
   Factory,
   Heart,

@@ -2,16 +2,14 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Phone, Mail, FileText, MapPin, ClipboardCheck, Download } from 'lucide-react'
 import PageHero from '@/components/layout/PageHero'
-import { SplitTextReveal } from '@/components/animations/SplitTextReveal'
+import SplitTextReveal from '@/components/animations/SplitTextReveal'
+import ProposalForm from '@/components/forms/ProposalForm'
+import SurveyForm from '@/components/forms/SurveyForm'
 import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
 
 export const metadata: Metadata = {
-  ...ogMetadata({
-    title: 'Client Services',
-    description: 'Request proposals, site surveys, and instant quotes from Silbar Security. Existing clients can access documents and raise service requests.',
-    url: '/clients',
-  }),
+  ...ogMetadata('Client Services', 'Request proposals, site surveys, and instant quotes from Silbar Security. Existing clients can access documents and raise service requests.', '/clients'),
 }
 
 export default function ClientsPage() {
@@ -52,26 +50,7 @@ export default function ClientsPage() {
               <p style={{ color: 'var(--color-horizon-600)', fontSize: '0.85rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
                 Get a customized security proposal tailored to your facility requirements. Our team will prepare a detailed plan within 48 hours.
               </p>
-              <form onSubmit={(e) => { e.preventDefault(); alert('Thank you! Your proposal request has been submitted. Our team will contact you within 48 hours.'); }}>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                  <input type="text" placeholder="Company Name *" required style={{ padding: '0.75rem 1rem', background: 'rgba(20,16,13,0.04)', border: '1px solid rgba(20,16,13,0.15)', borderRadius: '4px', fontSize: '0.85rem' }} />
-                  <input type="text" placeholder="Contact Person *" required style={{ padding: '0.75rem 1rem', background: 'rgba(20,16,13,0.04)', border: '1px solid rgba(20,16,13,0.15)', borderRadius: '4px', fontSize: '0.85rem' }} />
-                  <input type="email" placeholder="Email *" required style={{ padding: '0.75rem 1rem', background: 'rgba(20,16,13,0.04)', border: '1px solid rgba(20,16,13,0.15)', borderRadius: '4px', fontSize: '0.85rem' }} />
-                  <input type="tel" placeholder="Phone *" required style={{ padding: '0.75rem 1rem', background: 'rgba(20,16,13,0.04)', border: '1px solid rgba(20,16,13,0.15)', borderRadius: '4px', fontSize: '0.85rem' }} />
-                  <select required style={{ padding: '0.75rem 1rem', background: 'rgba(20,16,13,0.04)', border: '1px solid rgba(20,16,13,0.15)', borderRadius: '4px', fontSize: '0.85rem', color: 'var(--color-horizon-600)' }}>
-                    <option value="">Service Required *</option>
-                    <option>Manned Guarding</option>
-                    <option>Armed Security</option>
-                    <option>Electronic Surveillance</option>
-                    <option>Event Security</option>
-                    <option>Facility Management</option>
-                    <option>VIP Protection</option>
-                    <option>Other</option>
-                  </select>
-                  <textarea placeholder="Facility Details (location, size, requirements) *" required rows={3} style={{ padding: '0.75rem 1rem', background: 'rgba(20,16,13,0.04)', border: '1px solid rgba(20,16,13,0.15)', borderRadius: '4px', fontSize: '0.85rem', resize: 'vertical' }} />
-                  <button type="submit" className="btn-primary" style={{ border: 'none', cursor: 'pointer', alignSelf: 'flex-start' }}>Submit Request</button>
-                </div>
-              </form>
+              <ProposalForm />
             </div>
 
             {/* Request Site Survey */}
@@ -83,29 +62,7 @@ export default function ClientsPage() {
               <p style={{ color: 'var(--color-horizon-600)', fontSize: '0.85rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
                 Our security experts will visit your facility for a comprehensive risk assessment and security audit. Free of charge.
               </p>
-              <form onSubmit={(e) => { e.preventDefault(); alert('Thank you! Your site survey request has been submitted. Our team will contact you to schedule the visit.'); }}>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                  <input type="text" placeholder="Company Name *" required style={{ padding: '0.75rem 1rem', background: 'rgba(20,16,13,0.04)', border: '1px solid rgba(20,16,13,0.15)', borderRadius: '4px', fontSize: '0.85rem' }} />
-                  <input type="text" placeholder="Contact Person *" required style={{ padding: '0.75rem 1rem', background: 'rgba(20,16,13,0.04)', border: '1px solid rgba(20,16,13,0.15)', borderRadius: '4px', fontSize: '0.85rem' }} />
-                  <input type="email" placeholder="Email *" required style={{ padding: '0.75rem 1rem', background: 'rgba(20,16,13,0.04)', border: '1px solid rgba(20,16,13,0.15)', borderRadius: '4px', fontSize: '0.85rem' }} />
-                  <input type="tel" placeholder="Phone *" required style={{ padding: '0.75rem 1rem', background: 'rgba(20,16,13,0.04)', border: '1px solid rgba(20,16,13,0.15)', borderRadius: '4px', fontSize: '0.85rem' }} />
-                  <input type="text" placeholder="Facility Address *" required style={{ padding: '0.75rem 1rem', background: 'rgba(20,16,13,0.04)', border: '1px solid rgba(20,16,13,0.15)', borderRadius: '4px', fontSize: '0.85rem' }} />
-                  <select required style={{ padding: '0.75rem 1rem', background: 'rgba(20,16,13,0.04)', border: '1px solid rgba(20,16,13,0.15)', borderRadius: '4px', fontSize: '0.85rem', color: 'var(--color-horizon-600)' }}>
-                    <option value="">Facility Type *</option>
-                    <option>Manufacturing Plant</option>
-                    <option>Warehouse</option>
-                    <option>Corporate Office</option>
-                    <option>Residential Society</option>
-                    <option>Hospital</option>
-                    <option>Hotel</option>
-                    <option>Mall / Retail</option>
-                    <option>Educational Institution</option>
-                    <option>Other</option>
-                  </select>
-                  <input type="text" placeholder="Preferred Date for Survey" style={{ padding: '0.75rem 1rem', background: 'rgba(20,16,13,0.04)', border: '1px solid rgba(20,16,13,0.15)', borderRadius: '4px', fontSize: '0.85rem' }} />
-                  <button type="submit" className="btn-primary" style={{ border: 'none', cursor: 'pointer', alignSelf: 'flex-start' }}>Book Free Survey</button>
-                </div>
-              </form>
+              <SurveyForm />
             </div>
 
             {/* Quick Actions */}

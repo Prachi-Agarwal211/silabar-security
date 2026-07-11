@@ -2,16 +2,18 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Phone, MessageSquare, AlertTriangle } from 'lucide-react'
 import PageHero from '@/components/layout/PageHero'
-import { SplitTextReveal } from '@/components/animations/SplitTextReveal'
+import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import { ogMetadata } from '@/lib/metadata'
 import { CONTACT } from '@/lib/config'
 
 export const metadata: Metadata = {
-  ...ogMetadata({
-    title: 'Emergency Contact',
-    description: '24/7 emergency security contact for Silbar Security clients. Immediate response for security incidents, fire emergencies, and critical situations.',
-    url: '/emergency',
-  }),
+  title: 'Emergency Contact | Silbar Security',
+  description: '24/7 emergency security contact for Silbar Security clients. Immediate response for security incidents, fire emergencies, and critical situations.',
+  ...ogMetadata(
+    'Emergency Contact',
+    '24/7 emergency security contact for Silbar Security clients. Immediate response for security incidents, fire emergencies, and critical situations.',
+    '/emergency'
+  ),
 }
 
 export default function EmergencyPage() {

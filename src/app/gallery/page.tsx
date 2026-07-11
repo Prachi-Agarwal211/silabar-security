@@ -1,15 +1,17 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import PageHero from '@/components/layout/PageHero'
-import { SplitTextReveal } from '@/components/animations/SplitTextReveal'
+import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import { ogMetadata } from '@/lib/metadata'
 
 export const metadata: Metadata = {
-  ...ogMetadata({
-    title: 'Gallery',
-    description: 'Visual gallery of Silbar Security operations, training facilities, team deployments, and events across India.',
-    url: '/gallery',
-  }),
+  title: 'Gallery | Silbar Security',
+  description: 'Visual gallery of Silbar Security operations, training facilities, team deployments, and events across India.',
+  ...ogMetadata(
+    'Gallery',
+    'Visual gallery of Silbar Security operations, training facilities, team deployments, and events across India.',
+    '/gallery'
+  ),
 }
 
 const GALLERY_ITEMS = [

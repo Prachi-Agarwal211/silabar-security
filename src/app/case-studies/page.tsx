@@ -1,15 +1,17 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import PageHero from '@/components/layout/PageHero'
-import { SplitTextReveal } from '@/components/animations/SplitTextReveal'
+import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import { ogMetadata } from '@/lib/metadata'
 
 export const metadata: Metadata = {
-  ...ogMetadata({
-    title: 'Case Studies',
-    description: 'Real-world security solutions delivered by Silbar Security. See how we protect India\'s leading enterprises across manufacturing, healthcare, and corporate sectors.',
-    url: '/case-studies',
-  }),
+  title: 'Case Studies | Silbar Security',
+  description: 'Real-world security solutions delivered by Silbar Security. See how we protect India\'s leading enterprises across manufacturing, healthcare, and corporate sectors.',
+  ...ogMetadata(
+    'Case Studies',
+    'Real-world security solutions delivered by Silbar Security. See how we protect India\'s leading enterprises across manufacturing, healthcare, and corporate sectors.',
+    '/case-studies'
+  ),
 }
 
 const CASE_STUDIES = [

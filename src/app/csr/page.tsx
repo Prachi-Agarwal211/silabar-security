@@ -2,15 +2,17 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Heart, Users, GraduationCap, Shield } from 'lucide-react'
 import PageHero from '@/components/layout/PageHero'
-import { SplitTextReveal } from '@/components/animations/SplitTextReveal'
+import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import { ogMetadata } from '@/lib/metadata'
 
 export const metadata: Metadata = {
-  ...ogMetadata({
-    title: 'Corporate Social Responsibility',
-    description: 'Silbar Security\'s CSR initiatives — community safety programs, security training for youth, and women empowerment through employment.',
-    url: '/csr',
-  }),
+  title: 'Corporate Social Responsibility | Silbar Security',
+  description: 'Silbar Security\'s CSR initiatives — community safety programs, security training for youth, and women empowerment through employment.',
+  ...ogMetadata(
+    'Corporate Social Responsibility',
+    'Silbar Security\'s CSR initiatives — community safety programs, security training for youth, and women empowerment through employment.',
+    '/csr'
+  ),
 }
 
 const CSR_INITIATIVES = [

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
+import ResumeForm from '@/components/forms/ResumeForm'
 import PageHero from '@/components/layout/PageHero'
 import { Phone, Mail, CheckCircle } from 'lucide-react'
 import { CONTACT } from '@/lib/config'
@@ -156,35 +157,7 @@ export default function CareersPage() {
           <p className="service-detail-section-sub" style={{ color: 'rgba(250,248,244,0.7)', marginBottom: '2rem', maxWidth: '600px' }}>
             Submit your resume directly. Our HR team reviews every application within 48 hours.
           </p>
-          <form className="resume-upload-form" onSubmit={(e) => { e.preventDefault(); alert('Thank you! Your resume has been submitted. Our HR team will contact you within 48 hours.'); }}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem', marginBottom: '1rem' }}>
-              <input type="text" placeholder="Full Name *" required className="resume-input" />
-              <input type="email" placeholder="Email Address *" required className="resume-input" />
-              <input type="tel" placeholder="Phone Number *" required className="resume-input" />
-              <select className="resume-input" required>
-                <option value="">Select Desired Position</option>
-                <option>Security Guard</option>
-                <option>Security Supervisor</option>
-                <option>Armed Guard</option>
-                <option>Lady Security Guard</option>
-                <option>Account Manager</option>
-                <option>BDE</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div style={{ marginBottom: '1.5rem' }}>
-              <label className="resume-upload-label">
-                <input type="file" accept=".pdf,.doc,.docx" required className="resume-file-input" />
-                <span className="resume-upload-btn">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                  Choose Resume (PDF, DOC, DOCX)
-                </span>
-              </label>
-            </div>
-            <button type="submit" className="service-detail-cta service-detail-cta--primary" style={{ border: 'none', cursor: 'pointer' }}>
-              Submit Application
-            </button>
-          </form>
+          <ResumeForm />
         </div>
       </section>
 

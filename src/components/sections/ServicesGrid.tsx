@@ -5,7 +5,7 @@ import Link from 'next/link'
 import {
   UserCheck, Camera, ClipboardCheck, Building2, Flame,
   Users, Landmark, FileSearch, Car, GraduationCap, UsersRound, Factory,
-  ArrowRight, ShieldHalf, ShoppingBag,
+  ShieldHalf, ShoppingBag,
 } from 'lucide-react'
 import { gsap } from '@/lib/gsap'
 import { useGSAP } from '@gsap/react'
