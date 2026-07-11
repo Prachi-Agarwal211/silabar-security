@@ -7,24 +7,37 @@
   --noise-texture: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-@theme {  --color-midnight: #0B0E14;
-  --color-midnight-950: #050505;
+@theme {
+  /* --- COLORS --- */
+  /* Midnight Dark Theme */
+  --color-midnight: #0B0E14;
   --color-midnight-900: #12161F;
-  --color-midnight-800: #141414;
+  --color-paper: #FAF8F4;
+  --color-paper-ink: #14100D;
+  --color-cream: #FAF6EC;
+  --color-champagne: #F3EDE0;
+  
+  /* Brand Accents */
+  --color-cherry: #8C1F32;
+  --color-cherry-bright: #A62940;
+  --color-cherry-deep: #5C1220;
   --color-gold: #BF953F;
   --color-gold-light: #D4AF37;
-  --color-gold-dark: #B8941E;
-  --color-cyan: #00F0FF;
-  --color-red: #CC2222;
-  --color-red-light: #E04848;
-  --color-red-dark: #A31A1A;
-  --color-cream: #F0EBE1;
+  --color-gold-dark: #99742B;
+  --color-whatsapp: #25D366;
+
+  /* Glows & Transparency */
+  --color-gold-glow: rgba(191, 149, 63, 0.3);
+  --color-cherry-glow: rgba(140, 31, 50, 0.3);
+  --color-cyan-glow: rgba(0, 240, 255, 0.1);
+
+  /* Gradient Presets */
+  --gradient-cherry: linear-gradient(135deg, #8C1F32 0%, #5C1220 100%);
+  --gradient-gold: linear-gradient(90deg, #BF953F 0%, #D4AF37 50%, #BF953F 100%);
+  --gradient-dark: linear-gradient(180deg, #0B0E14 0%, #12161F 100%);
+  --gradient-mesh: radial-gradient(ellipse at 20% 50%, rgba(191, 149, 63, 0.1) 0%, transparent 50%);
   --color-cream-dark: #E0D8CA;
 
-/* === PHASE 2 ADDITIONS === */
-  --color-cherry: #8C1F32;        /* solid-red-FIELD color — large backgrounds. Desaturated vs --color-red so it doesn't strain eyes at scale */
-  --color-cherry-deep: #5C1220;   /* shadow/depth tone within a cherry panel */
-  --color-cherry-bright: #B3273F; /* the one brighter red — CTAs and hover states only, never a full background */
   --color-paper: #FAF8F4;         /* true white panel background, distinct from --color-cream */
   --color-paper-ink: #14100D;     /* near-black text used ON --color-paper, not pure #000 */
   --color-champagne: #E8DFC8;     /* pale gold-white for the gold/white-mix zone */
@@ -51,4 +64,25 @@
   --ease-organic: cubic-bezier(0.45, 0, 0.15, 1);
   --ease-cinematic: cubic-bezier(0.77, 0, 0.175, 1);
   --ease-fluid: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+:root {
+  /* Fluid Typography */
+  --text-xs: clamp(0.75rem, 0.7rem + 0.2vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.3vw, 1rem);
+  --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.35rem);
+  --text-xl: clamp(1.25rem, 1.1rem + 1vw, 1.6rem);
+  --text-2xl: clamp(1.5rem, 1.3rem + 1.5vw, 2rem);
+  --text-3xl: clamp(1.75rem, 1.5rem + 2vw, 2.5rem);
+  --text-4xl: clamp(2rem, 1.7rem + 3vw, 3.25rem);
+  --text-5xl: clamp(2.5rem, 2rem + 4vw, 4.5rem);
+  --text-6xl: clamp(3rem, 2.5rem + 5vw, 6rem);
+  --text-7xl: clamp(3.5rem, 3rem + 6vw, 7.5rem);
+
+  /* Standard Breakpoints (for reference in CSS) */
+  --bp-sm: 480px;   /* Phone */
+  --bp-md: 768px;   /* Tablet */
+  --bp-lg: 1024px;  /* Desktop */
+  --bp-xl: 1280px;  /* Large Desktop */
 }

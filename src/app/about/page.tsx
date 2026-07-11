@@ -1,226 +1,246 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Shield, Award, CheckCircle, Phone } from 'lucide-react'
+import { Shield, Award, Phone, Play, Target, Eye, Users } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import Counter from '@/components/animations/Counter'
-import SplitTextReveal from '@/components/animations/SplitTextReveal'
-import { GlassCard } from '@/components/ui/GlassCard'
-import { GradientText } from '@/components/ui/GradientText'
 import { MagneticButton } from '@/components/ui/MagneticButton'
-import PageHero from '@/components/layout/PageHero'
+import QueryForm from '@/components/sections/QueryForm'
 import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
 
 export const metadata: Metadata = {
   title: 'About Silbar Security — ISO 9001:2015 Certified Security Agency',
   description:
-    'Silbar Security Services — ISO 9001:2015 certified. 7,000+ professionals. Manned guarding, electronic surveillance, facility management across PAN India.',
-  ...ogMetadata('About Silbar Security — ISO 9001:2015 Certified Security Agency', 'Silbar Security Services — ISO 9001:2015 certified. 7,000+ professionals. Manned guarding, electronic surveillance, facility management across PAN India.', '/about'),
+    'Silbar Security Services — ISO 9001:2015 certified. Founded in 2005. 7,000+ professionals. Manned guarding, electronic surveillance, facility management across PAN India.',
+  ...ogMetadata('About Silbar Security — ISO 9001:2015 Certified Security Agency', 'Silbar Security Services — ISO 9001:2015 certified. Founded in 2005. 7,000+ professionals. Manned guarding, electronic surveillance, facility management across PAN India.', '/about'),
 }
 
 const STATS = [
-  { number: '7,000+', label: 'Security Professionals' },
-  { number: '200+', label: 'Cities Served' },
-  { number: '15+', label: 'Years of Experience' },
-  { number: '500+', label: 'Enterprise Clients' },
+  { number: 22, suffix: '+', label: 'Years of Excellence' },
+  { number: 7000, suffix: '+', label: 'Security Professionals' },
+  { number: 200, suffix: '+', label: 'Cities Served' },
+  { number: 500, suffix: '+', label: 'Enterprise Clients' },
 ]
 
 const CERTIFICATIONS = [
-  { name: 'PSARA 2005 Licensed', desc: 'Fully licensed under the Private Security Agencies Regulation Act, compliant with all state Controlling Authority requirements' },
-  { name: 'ISO 9001:2015', desc: 'Quality Management System certified for security service delivery' },
-  { name: '3-Acre Training Center', desc: 'Dedicated training facility with modern equipment and certified instructors' },
-  { name: 'MSME Registered', desc: 'Registered with Ministry of Micro, Small & Medium Enterprises' },
-]
-
-const WHY_SILBAR = [
-  'Founded by experienced security and risk management professionals',
-  'ISO 9001:2015 certified quality management across all operations',
-  'Dedicated 3-acre training center for security personnel',
-  'Full statutory compliance — ESI, PF, Gratuity, Minimum Wages',
-  '24-hour guard replacement guarantee',
-  'Dedicated account manager for every client',
-  'Monthly performance and compliance reports',
-  'PAN India deployment capability with local expertise',
+  { name: 'ISO 9001:2015', desc: 'Quality Management System' },
+  { name: 'ISO 14001:2015', desc: 'Environmental Management System' },
+  { name: 'ISO 45001:2018', desc: 'Occupational Health & Safety' },
+  { name: 'ISO 27001', desc: 'Information Security Management System' },
+  { name: 'PSARA Licensed', desc: 'Compliant across states' },
+  { name: 'MSME Registered', desc: 'Govt. recognized enterprise' },
+  { name: 'Startup India', desc: 'Recognized emerging business' },
+  { name: 'Statutory Compliant', desc: 'MCA, GST, EPF, ESIC' },
 ]
 
 export default function AboutPage() {
   return (
     <main className="about-page" id="main-content">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'AboutPage',
-            name: 'About Silbar Security Services',
-            description: 'ISO 9001:2015 certified security agency. Founded by security professionals.',
-            mainContentOfPage: { '@type': 'WebPageElement' },
-            primaryImageOfPage: '/og-image.jpg',
-          })
-        }} />
-      <PageHero
-        eyebrow="ABOUT US"
-        title={
-          <>
-            <SplitTextReveal text="NOT JUST SECURITY." />
-            <br />
-            <span className="page-hero-title--outline">
-              <SplitTextReveal text="A COMMITMENT." delay={0.2} />
-            </span>
-          </>
-        }
-        subtitle={
-          <>Silbar Security Services is an ISO 9001:2015 certified private security agency in India, established in 2005. Headquartered in Jaipur, we provide manned guarding, electronic surveillance, and facility management across 200+ cities with 7,000+ trained security professionals.</>
-        }
-        size="tall"
-        topContent={
-          <nav className="breadcrumb" aria-label="Breadcrumb">
-            <Link href="/" className="breadcrumb__link">Home</Link>
-            <span className="breadcrumb__sep">›</span>
-            <span className="breadcrumb__current">About</span>
-          </nav>
-        }
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'AboutPage',
+          name: 'About Silbar Security Services',
+          description: 'ISO 9001:2015 certified security agency. Founded by security professionals.',
+          mainContentOfPage: { '@type': 'WebPageElement' },
+        })
+      }} />
 
-      {/* Stats - Bento Grid */}
-      <section className="about-stats">
-        <ScrollReveal className="bento-grid">
-          {STATS.map(({ number, label }) => {
-            const numValue = parseInt(number.replace(/\D/g, ''))
-            const prefix = number.includes('+') ? '+' : ''
-            return (
-              <div key={label} className="bento-cell glass-panel bento-cell--stat">
-                <span className="about-stat__number">
-                  <Counter to={numValue} suffix={prefix} />
-                </span>
-                <span className="about-stat__label">{label}</span>
-              </div>
-            )
-          })}
-        </ScrollReveal>
+      {/* ─── 1. Hero Section ─── */}
+      <section className="about-intro-block" aria-labelledby="about-page-heading">
+        <div className="about-intro-inner">
+          <div className="about-intro-copy">
+            <nav className="breadcrumb" aria-label="Breadcrumb">
+              <Link href="/" className="breadcrumb__link">Home</Link>
+              <span className="breadcrumb__sep">›</span>
+              <span className="breadcrumb__current">About</span>
+            </nav>
+            <span className="section-eyebrow section-eyebrow--light">ABOUT SILBAR SECURITY</span>
+            <h1 id="about-page-heading" className="section-heading section-heading--on-dark about-intro-h1">
+              Building Trust Through <em>Professional</em> Security & Compliance
+            </h1>
+            <p className="about-intro-body">
+              Silbar Security Services Pvt. Ltd. is one of India&apos;s emerging PAN India security service companies, committed to delivering reliable, compliance-driven, and professional security solutions.
+            </p>
+            <div className="cta-pair" style={{ marginTop: '1.75rem' }}>
+              <MagneticButton
+                as="a"
+                href={`tel:${CONTACT.phoneRaw}`}
+                className="btn-primary btn-primary--on-dark"
+                strength={0.2}
+              >
+                <Phone size={14} aria-hidden="true" /> Request a Quote
+              </MagneticButton>
+            </div>
+          </div>
+          <div className="about-intro-visual" aria-hidden="true">
+            <div className="about-play-circle"><Play size={28} fill="currentColor" /></div>
+            <div className="about-intro-tagline">Est. 2005 · Jaipur, Rajasthan</div>
+            <div className="about-intro-shield"><Shield size={80} strokeWidth={1} /></div>
+          </div>
+        </div>
       </section>
 
-      {/* Story */}
+      {/* ─── 2. Stats Band ─── */}
+      <section className="about-stats" aria-label="Company statistics">
+        <div className="about-stats-inner">
+          {STATS.map(({ number, suffix, label }) => (
+            <div key={label} className="about-stat-item">
+              <span className="about-stat__number"><Counter to={number} suffix={suffix} /></span>
+              <span className="about-stat__label">{label}</span>
+            </div>
+          ))}
+          <div className="about-stat-item">
+            <span className="about-stat__number"><Counter to={100} suffix="+" /></span>
+            <span className="about-stat__label">Experienced Professionals</span>
+          </div>
+          <div className="about-stat-item">
+            <span className="about-stat__number"><Counter to={4} suffix="" /></span>
+            <span className="about-stat__label">ISO Certifications</span>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 3. Compliance Trust Bar ─── */}
+      <section className="about-trust-bar">
+        <div className="about-trust-bar__inner">
+          {CERTIFICATIONS.map(cert => (
+            <div key={cert.name} className="trust-badge">
+              <Award size={16} />
+              <span>{cert.name}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ─── 4. Our Story / Timeline ─── */}
       <section className="about-story" id="our-story">
         <div className="about-story__inner">
           <ScrollReveal className="about-story__text">
-            <span className="page-eyebrow">OUR STORY</span>
-            <h2 className="about-story__title">
-              <SplitTextReveal text="Built by Security Professionals" />
-
-
+            <span className="section-eyebrow section-eyebrow--red">OUR STORY</span>
+            <h2 className="section-heading about-story-heading">
+              A Journey of <em>Excellence.</em>
             </h2>
             <p className="about-story__body">
-              Silbar Security Services was built on decades of combined experience in
-              security management, risk assessment, and personnel training. We saw firsthand
-              the gap between what Indian enterprises needed from private security and what was
-              being delivered: under-trained guards, non-compliant agencies, and no accountability.
+              The journey of Silbar Security Services began in Jaipur, Rajasthan, where Mr. Sonu Singh founded the business with a vision to redefine the standards of the private security industry. Through dedication, industry expertise, and an uncompromising commitment to quality, the organization steadily expanded its capabilities and client base.
             </p>
             <p className="about-story__body">
-              We built Silbar to be different. Every guard we deploy is professionally trained,
-              background verified, and covered under full statutory compliance. Every client
-              gets a dedicated account manager, monthly MIS reports, and a 24-hour replacement
-              guarantee. That&apos;s not industry standard. That&apos;s our standard.
+              In October 2025, the business was incorporated as Silbar Security Services Pvt. Ltd. in partnership with Mr. Nakul Singh Jadaun, marking a significant milestone in its transformation into a professionally managed corporate security organization. Today, we operate from our Corporate Office in Gurugram, managing operations across India.
             </p>
           </ScrollReveal>
-          <ScrollReveal delay={0.2} className="about-story__image-block">
-            <div className="about-story__image-placeholder">
-              <Shield size={48} className="about-story__shield-icon" />
-              <span className="about-story__image-label">Est. 2005 · Jaipur, Rajasthan</span>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
 
-      {/* Timeline */}
-      <section className="about-timeline" id="timeline">
-        <div className="about-timeline__inner">
-          <ScrollReveal>
-            <span className="page-eyebrow page-eyebrow--centered">MILESTONES</span>
-            <h2 className="about-timeline__title">
-              <SplitTextReveal text="Our Journey" />
-            </h2>
-          </ScrollReveal>
-          
-          <ScrollReveal className="timeline-container">
+          <div className="timeline-container">
+            <div className="timeline-line"></div>
             {[
-              { year: '2005', title: 'The Foundation', desc: 'Silbar Security established in Jaipur by experienced security professionals.' },
-              { year: '2012', title: 'Regional Expansion', desc: 'Expanded operations across Rajasthan, building a PAN India deployment network.' },
-              { year: '2016', title: 'ISO Certification', desc: 'Achieved ISO 9001:2015 certification for Quality Management Systems.' },
-              { year: '2024', title: 'PAN India Presence', desc: 'Now protecting 500+ enterprise clients with a force of 7,000+ licensed officers.' }
-            ].map((item) => (
-              <div key={item.year} className="timeline-item">
-                <div className="timeline-item__year">{item.year}</div>
-                <div className="timeline-item__content glass-panel" style={{ padding: '1.5rem', borderRadius: '12px', marginTop: '1rem' }}>
-                  <h3 className="timeline-item__title">{item.title}</h3>
-                  <p className="timeline-item__desc">{item.desc}</p>
+              { year: '2005', title: 'The Foundation', desc: 'Established in Jaipur by Mr. Sonu Singh with a vision to raise industry standards.' },
+              { year: '2025', title: 'Incorporation', desc: 'Incorporated as a Pvt. Ltd. company with Mr. Nakul Singh Jadaun.' },
+              { year: 'Today', title: 'PAN India Presence', desc: 'Operating from Gurugram (Corporate) and New Delhi (Registered) protecting 500+ clients.' }
+            ].map((item, index) => (
+              <ScrollReveal key={item.year} delay={index * 0.15} direction="left">
+                <div className="timeline-item">
+                  <div className="timeline-item__year">{item.year}</div>
+                  <div className="timeline-item__content">
+                    <h3 className="timeline-item__title">{item.title}</h3>
+                    <p className="timeline-item__desc">{item.desc}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* Why Silbar - Bento Grid */}
-      <section className="about-why" id="why-silbar">
-        <ScrollReveal className="about-why__inner">
-          <span className="page-eyebrow">WHY SILBAR</span>
-          <GradientText as="h2" className="about-why__title service-detail-section-title--mb">
-            <SplitTextReveal text="The Silbar Difference" />
-          </GradientText>
-          <div className="bento-grid">
-            {WHY_SILBAR.map((point) => (
-              <div key={point} className="bento-cell--wide">
-                <GlassCard className="bento-cell bento-cell--check-item" tilt={true} opacity={0.03} borderOpacity={0.15}>
-                  <CheckCircle size={24} className="about-why__check" />
-                  <span className="check-item__text">{point}</span>
-                </GlassCard>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
-        </ScrollReveal>
+        </div>
       </section>
 
-      {/* Certifications - Bento Grid */}
-      <section className="about-certs" id="certifications">
-        <div className="about-certs__inner">
-          <span className="page-eyebrow">CERTIFICATIONS</span>
-          <GradientText as="h2" className="about-certs__title service-detail-section-title--mb">
-            <SplitTextReveal text="Licensed. Certified. Compliant." />
-          </GradientText>
-          <ScrollReveal className="bento-grid">
-            {CERTIFICATIONS.map(({ name, desc }) => (
-              <div key={name} style={{ display: 'flex' }}>
-                <GlassCard className="bento-cell about-cert-card" tilt={true} opacity={0.03} borderOpacity={0.15}>
-                  <div className="about-cert-card__badge">
-                    <Award size={28} />
-                    {name}
-                  </div>
-                  <p className="about-cert-card__desc">{desc}</p>
-                </GlassCard>
-              </div>
-            ))}
+      {/* ─── 5. Mission & Vision ─── */}
+      <section className="about-mission-vision" style={{ background: 'var(--color-paper)', padding: '5rem 0' }}>
+        <div className="about-story__inner" style={{ gridTemplateColumns: '1fr 1fr', gap: '4rem' }}>
+          <ScrollReveal direction="up">
+            <Target size={48} color="var(--color-cherry)" style={{ marginBottom: '1.5rem' }} />
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', marginBottom: '1rem', color: 'var(--color-midnight)' }}>Our Mission</h3>
+            <p style={{ lineHeight: 1.7, color: 'var(--color-horizon-700)' }}>
+              To provide reliable, technology-enabled, and compliance-focused security services that protect people, property, and business operations. We aim to create long-term partnerships by delivering trained manpower, transparent processes, timely documentation, and responsive customer support while maintaining the highest standards of integrity and professionalism.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal direction="up" delay={0.2}>
+            <Eye size={48} color="var(--color-cherry)" style={{ marginBottom: '1.5rem' }} />
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', marginBottom: '1rem', color: 'var(--color-midnight)' }}>Our Vision</h3>
+            <p style={{ lineHeight: 1.7, color: 'var(--color-horizon-700)' }}>
+              To become one of the most respected and trusted security guard companies in India, recognized for operational excellence, legal compliance, professionalism, and customer satisfaction. We aspire to build a nationally recognized security brand that consistently delivers value to clients through innovation, accountability, and ethical business practices.
+            </p>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Bottom CTA */}
-      <section className="service-detail-bottom-cta">
-        <h2 className="service-detail-bottom-cta__title">Ready to Work with India&apos;s Trusted Security Force?</h2>
-        <p className="service-detail-bottom-cta__sub">
-          Join 500+ enterprise clients who trust Silbar Security for their protection needs.
-        </p>
-        <div className="service-detail-ctas service-detail-ctas--centered">
-          <MagneticButton as="a" href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--primary">
-            <Phone size={16} /> Call Now
-          </MagneticButton>
-          <MagneticButton
-            as="a"
-            href={CONTACT.whatsapp.url}
-            className="service-detail-cta service-detail-cta--secondary"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            WhatsApp Us
-          </MagneticButton>
+      {/* ─── 6. Leadership Team ─── */}
+      <section className="about-why" id="leadership" style={{ background: '#111' }}>
+        <div className="about-why__inner" style={{ display: 'block', maxWidth: '1000px', margin: '0 auto' }}>
+          <ScrollReveal>
+            <span className="section-eyebrow section-eyebrow--light">LEADERSHIP</span>
+            <h2 className="section-heading section-heading--on-dark" style={{ marginBottom: '3rem', textAlign: 'center' }}>
+              Experienced <em>Leadership.</em>
+            </h2>
+          </ScrollReveal>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem' }}>
+            <ScrollReveal direction="up">
+              <div style={{ background: 'rgba(255,255,255,0.03)', padding: '2.5rem', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px' }}>
+                <Users size={40} color="var(--color-gold)" style={{ marginBottom: '1rem' }} />
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', color: 'white', marginBottom: '0.5rem' }}>Mr. Sonu Singh</h3>
+                <p style={{ color: 'var(--color-gold)', fontWeight: 'bold', fontSize: '0.85rem', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '1.5rem' }}>Director & Founder</p>
+                <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.6, fontSize: '0.9rem' }}>Extensive experience in India's private security industry. Held senior positions with reputed organizations, bringing practical expertise in industrial security operations, manpower deployment, client relationship management, and statutory compliance.</p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal direction="up" delay={0.2}>
+              <div style={{ background: 'rgba(255,255,255,0.03)', padding: '2.5rem', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px' }}>
+                <Users size={40} color="var(--color-gold)" style={{ marginBottom: '1rem' }} />
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', color: 'white', marginBottom: '0.5rem' }}>Mr. Nakul Singh Jadaun</h3>
+                <p style={{ color: 'var(--color-gold)', fontWeight: 'bold', fontSize: '0.85rem', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '1.5rem' }}>Director</p>
+                <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.6, fontSize: '0.9rem' }}>Brings valuable experience from the security services industry along with strong operational and management expertise, focusing on operational discipline, quality service delivery, and long-term client relationships.</p>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 7. Compliance Guarantee ─── */}
+      <section style={{ padding: '6rem 2rem', background: 'var(--color-cherry-deep)', textAlign: 'center' }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+          <Shield size={64} color="var(--color-gold)" style={{ margin: '0 auto 2rem' }} />
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '2.5rem', color: 'white', marginBottom: '1.5rem' }}>Our Compliance Guarantee</h2>
+          <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.85)', lineHeight: 1.8 }}>
+            "If a compliance penalty is imposed solely due to our failure to fulfil our contractual compliance responsibilities, we stand by our commitment and take responsibility in accordance with our service agreement."
+          </p>
+        </div>
+      </section>
+
+      {/* ─── 8. Query Form ─── */}
+      <section style={{ padding: '5rem 1.5rem', background: 'var(--color-paper)' }}>
+        <QueryForm />
+      </section>
+
+      {/* ─── 9. PAN India & Bottom CTA ─── */}
+      <section className="about-cta-section">
+        <div className="about-cta-inner">
+          <span className="section-eyebrow section-eyebrow--light">PAN INDIA OPERATIONS</span>
+          <h2 className="section-heading section-heading--on-dark">
+            Ready to Work with India&apos;s <em>Trusted</em> Security Force?
+          </h2>
+          <p className="about-cta__sub">
+            Silbar Security Services is continuously expanding its footprint to provide PAN India security services. Our objective is to deliver standardized security services through a centralized corporate operating model while ensuring full compliance with state-specific regulatory requirements.
+          </p>
+          <div className="cta-pair" style={{ marginTop: '2rem', justifyContent: 'center' }}>
+            <MagneticButton as="a" href={`tel:${CONTACT.phoneRaw}`} className="btn-primary btn-primary--on-dark" strength={0.2}>
+              <Phone size={14} aria-hidden="true" /> Call Now
+            </MagneticButton>
+            <MagneticButton
+              as="a"
+              href={CONTACT.whatsapp.url}
+              className="btn-secondary btn-secondary--on-dark"
+              target="_blank"
+              rel="noopener noreferrer"
+              strength={0.2}
+            >
+              WhatsApp Us
+            </MagneticButton>
+          </div>
         </div>
       </section>
     </main>

@@ -1,254 +1,292 @@
-/* ============================================
-   Contact Alternative (Quote via WhatsApp/Call)
+﻿/* ============================================
+   Contact Page â€” Editorial 2-Column Split Redesign
    ============================================ */
-.contact-form-alternative {
-  padding: 4rem 2rem;
-  text-align: center;
-  background: var(--color-paper);
-  border: 2px solid var(--color-paper-ink);
-  border-radius: 4px;
+
+/* â”€â”€â”€ Hero Split â”€â”€â”€ */
+.contact-hero-split {
+  background: linear-gradient(160deg, var(--color-paper) 0%, var(--color-champagne) 100%);
+  padding: clamp(6rem, 12vh, 9rem) 0 clamp(3rem, 6vh, 5rem);
 }
 
-.contact-form__title {
+.contact-hero-split__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 6vw, 6rem);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .contact-hero-split__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-hero-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contact-heading {
+  font-size: clamp(2rem, 4.5vw, 3.75rem);
+  margin: 0.25rem 0;
+}
+
+.contact-intro-body {
+  font-family: var(--font-body);
+  font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+  line-height: 1.75;
+  color: var(--color-horizon-600);
+  max-width: 480px;
+}
+
+/* â”€â”€â”€ Contact Info List â”€â”€â”€ */
+.contact-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 0.75rem;
+  border: 1px solid rgba(140, 31, 50, 0.1);
+}
+
+.contact-info-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  background: var(--color-paper);
+  text-decoration: none;
   color: var(--color-paper-ink);
+  border-bottom: 1px solid rgba(140, 31, 50, 0.07);
+  transition: background 0.2s var(--ease-smooth), padding-left 0.2s var(--ease-smooth);
+  position: relative;
+}
+
+.contact-info-row:last-child { border-bottom: none; }
+.contact-info-row--static { cursor: default; }
+
+.contact-info-row:not(.contact-info-row--static):hover {
+  background: rgba(140, 31, 50, 0.03);
+  padding-left: 1.5rem;
+}
+
+.contact-info-row__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(140, 31, 50, 0.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-cherry);
+  flex-shrink: 0;
+}
+
+.contact-info-row__body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.contact-info-row__label {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-horizon-500);
+}
+
+.contact-info-row__value {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-paper-ink);
+}
+
+.contact-info-row__arrow {
+  color: var(--color-cherry);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+
+.contact-info-row:not(.contact-info-row--static):hover .contact-info-row__arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* â”€â”€â”€ CTA Card â”€â”€â”€ */
+.contact-cta-card {
+  background: var(--color-paper);
+  border: 1px solid rgba(140, 31, 50, 0.1);
+  padding: clamp(2rem, 5vh, 3rem) clamp(1.75rem, 4vw, 2.5rem);
+  position: sticky;
+  top: 8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-cta-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
   font-weight: 800;
   text-transform: uppercase;
-}
-
-.contact-form__desc {
-  margin: 1rem 0 2rem;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
   color: var(--color-paper-ink);
-  opacity: 0.8;
+}
+
+.contact-cta-card__title em {
+  font-style: italic;
+  color: var(--color-cherry-bright);
+}
+
+.contact-cta-card__desc {
   font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--color-horizon-600);
+  margin: 0;
 }
 
-.contact-form__ctas {
+.contact-cta-card__buttons {
   display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
 }
 
-.contact-card--whatsapp-btn,
-.contact-card--call-btn {
+.contact-whatsapp-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
+  gap: 0.6rem;
   padding: 1rem 2rem;
-  font-weight: 700;
-  border-radius: 4px;
-  text-decoration: none;
-  font-family: var(--font-body);
-  transition: opacity 0.2s var(--ease-smooth), transform 0.2s var(--ease-smooth);
-}
-
-.contact-card--whatsapp-btn {
   background: var(--color-whatsapp);
   color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
 }
 
-.contact-card--call-btn {
-  background: var(--color-cherry);
-  color: var(--color-paper);
-}
-
-.contact-card--whatsapp-btn:hover,
-.contact-card--call-btn:hover {
+.contact-whatsapp-btn:hover {
   opacity: 0.9;
   transform: translateY(-2px);
 }
 
-/* Contact specific */
-.contact-hero__inner {
-  max-width: 1200px;
-  margin: 0 auto;
+.contact-cta-card__guarantee {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: var(--color-horizon-500);
+  text-align: center;
+  margin: 0;
 }
 
-.contact-body { padding-bottom: clamp(4rem, 8vh, 6rem); }
-.contact-body__inner { max-width: 1200px; margin: 0 auto; padding: clamp(3rem, 6vh, 4rem) clamp(1.5rem, 5vw, 6rem); display: flex; flex-direction: column; gap: 3rem; }
+.contact-cta-card__guarantee span {
+  white-space: nowrap;
+}
 
-.contact-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-@media (max-width: 900px) { .contact-cards { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 480px) { .contact-cards { grid-template-columns: 1fr; } }
-
-.contact-card {
-  padding: 1.5rem;
+/* â”€â”€â”€ Contact Body Section â”€â”€â”€ */
+.contact-body {
   background: var(--color-paper);
-  border: 1px solid rgba(140, 31, 50, 0.12);
-  border-radius: 12px;
-  text-decoration: none;
+  padding-bottom: clamp(4rem, 8vh, 6rem);
+  border-top: 1px solid rgba(140, 31, 50, 0.06);
+}
+
+.contact-body__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(3rem, 6vh, 5rem) clamp(1.5rem, 5vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.contact-offices-heading {
+  font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+  margin: 0.25rem 0;
+}
+
+/* Office card upgrade */
+.office-card {
+  background: linear-gradient(135deg, var(--color-paper) 0%, rgba(232, 223, 200, 0.4) 100%);
+  border: 1px solid rgba(140, 31, 50, 0.1);
+  padding: 2rem 1.75rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  transition: border-color 0.3s, transform 0.2s;
 }
 
-.contact-card:hover { border-color: rgba(191, 149, 63, 0.4); transform: translateY(-2px); }
-
-.contact-card--whatsapp { border-color: rgba(37, 211, 102, 0.2); }
-.contact-card--whatsapp:hover { border-color: rgba(37, 211, 102, 0.5); }
-
-.contact-card__icon { color: var(--color-gold); }
-.contact-card__label { font-family: var(--font-body); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-horizon-500); }
-.contact-card__value { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; color: var(--color-paper-ink); }
-.contact-card__note { font-family: var(--font-body); font-size: 0.72rem; color: var(--color-horizon-600); }
-
-/* Contact form */
-
-.contact-form__input:focus,
-.contact-form__select:focus,
-.contact-form__textarea:focus {
-  border-color: var(--color-gold);
-}
-
-/* Contact offices */
-.contact-offices__title {
-  font-family: var(--font-display);
-  font-size: clamp(1.2rem, 2vw, 1.75rem);
+.office-card__badge {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.62rem;
   font-weight: 700;
-  color: var(--color-paper-ink);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  margin-bottom: 1.5rem;
-}
-
-.contact-offices__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-@media (max-width: 768px) { .contact-offices__grid { grid-template-columns: 1fr; } }
-
-.contact-office { padding: 1.25rem; border: 1px solid rgba(191,149,63,0.1); border-radius: 10px; }
-
-.contact-office__city {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--color-paper-ink);
-  margin-bottom: 0.5rem;
-}
-
-.contact-office__icon { color: var(--color-gold); }
-.contact-office__address { font-family: var(--font-body); font-size: 0.78rem; color: var(--color-horizon-600); line-height: 1.5; margin-bottom: 0.5rem; }
-.contact-office__hours { display: flex; align-items: center; gap: 0.3rem; font-family: var(--font-body); font-size: 0.7rem; color: var(--color-horizon-500); }
-
-/* ============================================
-   Contact card — replaces inline styles
-   ============================================ */
-.contact-card__inner {
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 1.5rem;
-}
-
-.contact-card__icon-wrap {
-  color: var(--color-gold);
-  margin-bottom: 1rem;
-}
-
-.contact-card__icon-wrap--whatsapp {
-  color: #25D366;
-  margin-bottom: 1rem;
-}
-
-.contact-card__label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  opacity: 0.6;
-  margin-bottom: 0.5rem;
-}
-
-.contact-card__label--whatsapp {
-  color: #25D366;
-  opacity: 0.8;
-}
-
-.contact-card__value {
-  font-size: 1.5rem;
-  font-weight: 500;
+  color: var(--color-cherry);
+  background: rgba(140, 31, 50, 0.08);
+  padding: 0.25em 0.75em;
+  align-self: flex-start;
   margin-bottom: 0.25rem;
-  color: var(--color-paper-ink);
-}
-
-.contact-card__note {
-  font-size: 0.85rem;
-  opacity: 0.5;
-}
-
-.bento-cell--whatsapp {
-  background: linear-gradient(135deg, rgba(37, 211, 102, 0.1) 0%, rgba(37, 211, 102, 0.02) 100%) !important;
-  border-color: rgba(37, 211, 102, 0.2) !important;
-}
-
-.office-card {
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
 }
 
 .office-card__header {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--color-gold);
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--color-paper-ink);
 }
 
+.office-card__header svg { color: var(--color-cherry); }
+
 .office-card__address {
-  opacity: 0.8;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
   line-height: 1.6;
-  margin-bottom: 1.5rem;
-  flex-grow: 1;
+  color: var(--color-horizon-600);
+  margin: 0;
 }
 
 .office-card__hours {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-  opacity: 0.5;
+  gap: 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-horizon-500);
+  margin-top: 0.25rem;
 }
 
-.contact-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  margin-bottom: 4rem;
-}
+.office-card__hours svg { color: var(--color-gold); }
 
-@media (max-width: 900px) {
-  .contact-cards-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .contact-cards-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
+/* â”€â”€â”€ contact-offices-grid: defined below for backward compat with offices section â”€â”€â”€ */
 .contact-offices-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
 }
 
 @media (max-width: 900px) {
-  .contact-offices-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .contact-offices-grid { grid-template-columns: 1fr 1fr; }
 }
 
-@media (max-width: 600px) {
-  .contact-offices-grid {
-    grid-template-columns: 1fr;
-  }
+@media (max-width: 580px) {
+  .contact-offices-grid { grid-template-columns: 1fr; }
 }

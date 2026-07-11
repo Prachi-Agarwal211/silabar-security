@@ -2,6 +2,160 @@
    Premium Utility Classes (Glassmorphism & Gradients)
    ============================================ */
 
+/* ============================================
+   Editorial Typography Accent System
+   One italic accent word per heading — the core
+   visual pattern for this redesign.
+   ============================================ */
+
+/* Use on <em> inside headings on light backgrounds */
+.editorial-red {
+  font-style: italic;
+  color: var(--color-cherry-bright);
+}
+
+/* Use on <em> inside headings on dark/cherry backgrounds */
+.editorial-gold {
+  font-style: italic;
+  color: var(--color-gold-light);
+}
+
+/* Section eyebrow label — consistent across all pages */
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 1rem;
+}
+
+.section-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--color-gold);
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.section-eyebrow--light {
+  color: var(--color-gold-light);
+}
+
+.section-eyebrow--red {
+  color: var(--color-cherry-bright);
+}
+
+.section-eyebrow--red::before {
+  background: var(--color-cherry-bright);
+}
+
+/* Section heading — editorial large display */
+.section-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.75rem);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  color: var(--color-paper-ink);
+  text-transform: uppercase;
+}
+
+.section-heading em {
+  font-style: italic;
+  color: var(--color-cherry-bright);
+}
+
+.section-heading--on-dark {
+  color: var(--color-paper);
+}
+
+.section-heading--on-dark em {
+  font-style: italic;
+  color: var(--color-gold-light);
+}
+
+/* CTA button pair utility */
+.cta-pair {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85em 2em;
+  background: var(--color-cherry-bright);
+  color: var(--color-paper);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid var(--color-cherry-bright);
+  transition: background 0.3s var(--ease-smooth), transform 0.2s var(--ease-smooth);
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: var(--color-cherry);
+  border-color: var(--color-cherry);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85em 2em;
+  background: transparent;
+  color: var(--color-paper-ink);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid rgba(20, 16, 13, 0.25);
+  transition: border-color 0.3s var(--ease-smooth), transform 0.2s var(--ease-smooth);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-cherry-bright);
+  color: var(--color-cherry-bright);
+  transform: translateY(-2px);
+}
+
+.btn-primary--on-dark {
+  background: var(--color-gold);
+  color: var(--color-midnight);
+  border-color: var(--color-gold);
+}
+
+.btn-primary--on-dark:hover {
+  background: var(--color-gold-light);
+  border-color: var(--color-gold-light);
+}
+
+.btn-secondary--on-dark {
+  color: var(--color-paper);
+  border-color: rgba(250, 248, 244, 0.35);
+}
+
+.btn-secondary--on-dark:hover {
+  border-color: var(--color-paper);
+}
+
 .mesh-bg {
   background-color: var(--color-midnight);
   background-image: 
@@ -31,33 +185,25 @@
 }
 
 .glass-panel {
-  background: rgba(18, 22, 31, 0.4);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: var(--color-midnight);
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.02), 0 8px 32px rgba(0, 0, 0, 0.2);
   border-radius: 16px;
 }
 
 .glass-panel--light {
-  background: rgba(250, 248, 244, 0.7);
+  background: var(--color-paper);
   border: 1px solid rgba(140, 31, 50, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
 }
 
 .glass-header {
-  background: rgba(11, 14, 20, 0.65);
-  backdrop-filter: blur(20px) saturate(1.8);
-  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  background: var(--color-midnight);
   border-bottom: 1px solid rgba(212, 175, 55, 0.15);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, var(--glass-opacity, 0.03));
-  backdrop-filter: blur(var(--glass-blur, 10px));
-  -webkit-backdrop-filter: blur(var(--glass-blur, 10px));
+  background: var(--color-paper-ink);
   border: 1px solid rgba(191, 149, 63, var(--glass-border-opacity, 0.12));
   border-radius: 12px;
   transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-smooth), background 0.4s var(--ease-smooth), border-color 0.4s var(--ease-smooth);
@@ -79,18 +225,47 @@
    ============================================ */
 
 .glass {
-  background: rgba(10, 10, 10, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: var(--color-midnight);
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 @media (max-width: 767px) {
-  .glass-panel, .glass-card, .glass-header, .glass {
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
+  /* Mobile glass adjustments removed (now solid) */
 }
+
+/* ============================================
+   Section Transitions & Dividers
+   ============================================ */
+
+/* Diagonal clip between sections */
+.section-transition-diagonal {
+  position: relative;
+}
+
+.section-transition-diagonal::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: var(--color-midnight);
+  clip-path: polygon(0 100%, 100% 100%, 100% 0);
+  pointer-events: none;
+}
+
+/* Gradient divider */
+.section-divider-gradient {
+  height: 4px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--color-gold), 
+    var(--color-cherry), 
+    var(--color-gold), 
+    transparent
+  );
+}
+
 /* Gradient Text Base */
 .gradient-text {
   display: inline-block;

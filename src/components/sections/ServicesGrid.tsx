@@ -1,14 +1,15 @@
 'use client'
 
-import { useRef, useMemo } from 'react'
+import { useRef } from 'react'
+import Link from 'next/link'
 import {
-  UserCheck, Factory, Users, Landmark, Camera, ClipboardCheck,
-  Building2, GraduationCap, UsersRound, FileSearch, Flame, Car, ShieldHalf,
+  UserCheck, Camera, ClipboardCheck, Building2, Flame,
+  Users, Landmark, FileSearch, Car, GraduationCap, UsersRound, Factory,
+  ArrowRight, ShieldHalf,
 } from 'lucide-react'
 import { gsap } from '@/lib/gsap'
 import { useGSAP } from '@gsap/react'
 import type { Service } from '@/data/services'
-import { GlassCard } from '../ui/GlassCard'
 
 const ICON_MAP: Record<string, React.ElementType> = {
   'user-check': UserCheck,
@@ -30,92 +31,134 @@ interface ServicesGridProps {
 }
 
 export default function ServicesGrid({ services }: ServicesGridProps) {
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const displayServices = useMemo(() => services.slice(0, 12), [services])
-  const leftColumn = displayServices.slice(0, 6)
-  const rightColumn = displayServices.slice(6, 12)
+  const sectionRef = useRef<HTMLElement>(null)
+  const cardsRef = useRef<HTMLDivElement>(null)
+
+  // Featured 5 — the primary cards in the horizontal row
+  const featured = services.slice(0, 5)
+  // Remaining services as tag pills
+  const pills = services.slice(5)
 
   useGSAP(() => {
-    if (!sectionRef.current) return
+    if (!sectionRef.current || !cardsRef.current) return
     const mm = gsap.matchMedia()
 
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      const items = sectionRef.current!.querySelectorAll('.services-split-item-wrap')
-      const tl = gsap.timeline({
-        scrollTrigger: { trigger: sectionRef.current, start: 'top 70%' },
-      })
-      tl.fromTo(
-        items,
-        { opacity: 0, y: 24 },
-        { opacity: 1, y: 0, duration: 0.6, stagger: 0.06, ease: 'power3.out' }
+      // Header reveal
+      const header = sectionRef.current!.querySelector('.services-dark-header')
+      if (header) {
+        gsap.fromTo(
+          header,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
+            scrollTrigger: { trigger: sectionRef.current, start: 'top 70%' },
+          }
+        )
+      }
+
+      // Cards — single stagger timeline
+      const cards = cardsRef.current!.querySelectorAll('.services-dark-card')
+      gsap.fromTo(
+        cards,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1, y: 0,
+          duration: 0.65,
+          stagger: 0.1,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: cardsRef.current, start: 'top 75%' },
+        }
       )
+
+      // Pills row
+      const pillsEl = sectionRef.current!.querySelector('.services-pills-row')
+      if (pillsEl) {
+        gsap.fromTo(
+          pillsEl,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1, y: 0, duration: 0.5, ease: 'power2.out',
+            scrollTrigger: { trigger: pillsEl, start: 'top 85%' },
+          }
+        )
+      }
     })
 
     return () => mm.revert()
   }, { scope: sectionRef })
 
-  const renderItem = (service: Service, index: number, side: 'left' | 'right') => {
-    const Icon = ICON_MAP[service.icon] || ShieldHalf
-    const numeral = String(index + 1).padStart(2, '0')
-    return (
-      <div className="services-split-item-wrap" key={service.slug}>
-        <GlassCard
-          href={`/services/${service.slug}`}
-          className={`services-split-item services-split-item--${side}`}
-          tilt={true}
-          opacity={0.02}
-          borderOpacity={0.08}
-        >
-          <span className="services-split-item__icon">
-            <Icon size={22} strokeWidth={1.75} />
-          </span>
-          <span className="services-split-item__body">
-            <span className="services-split-item__number">{numeral}</span>
-            <span className="services-split-item__title">{service.shortTitle || service.title}</span>
-            <span className="services-split-item__desc">{service.description}</span>
-          </span>
-        </GlassCard>
-      </div>
-    )
-  }
-
   return (
-    <section className="services-split-section" ref={sectionRef}>
-      <div className="services-split-corner services-split-corner--tl" aria-hidden="true" />
-      <div className="services-split-corner services-split-corner--tr" aria-hidden="true" />
-      <div className="services-split-corner services-split-corner--bl" aria-hidden="true" />
+    <section className="services-dark-section" ref={sectionRef} aria-labelledby="services-dark-heading">
+      {/* Noise texture overlay */}
+      <div className="services-dark-noise" aria-hidden="true" />
 
-      <div className="services-split-intro">
-        <span>Integrated protection verticals</span>
-        <h2>One accountable security partner for every site layer.</h2>
-        <p>
-          Choose a single service or combine manpower, surveillance, audits,
-          fire safety, facility operations, and background verification into a
-          managed security program.
-        </p>
+      <div className="services-dark-inner">
+        {/* Header row: eyebrow + heading + view-all */}
+        <div className="services-dark-header">
+          <div className="services-dark-header__left">
+            <span className="section-eyebrow section-eyebrow--light">OUR SERVICES</span>
+            <h2 id="services-dark-heading" className="section-heading section-heading--on-dark">
+              Comprehensive Security <em>Solutions</em><br />for Every Need.
+            </h2>
+          </div>
+          <Link href="/services" className="services-dark-viewall" aria-label="View all security services">
+            View All Services <ArrowRight size={14} aria-hidden="true" />
+          </Link>
+        </div>
+
+        {/* 5-card horizontal grid */}
+        <div className="services-dark-cards" ref={cardsRef}>
+          {featured.map((service) => {
+            const Icon = ICON_MAP[service.icon] || ShieldHalf
+            return (
+              <Link
+                key={service.slug}
+                href={`/services/${service.slug}`}
+                className="services-dark-card"
+                aria-label={service.title}
+              >
+                <span className="services-dark-card__icon" aria-hidden="true">
+                  <Icon size={20} strokeWidth={1.75} />
+                </span>
+                <span className="services-dark-card__title">{service.shortTitle || service.title}</span>
+                <span className="services-dark-card__desc">{service.description}</span>
+                <span className="services-dark-card__arrow" aria-hidden="true">
+                  <ArrowRight size={14} />
+                </span>
+              </Link>
+            )
+          })}
+        </div>
+
+        {/* Tag pills — secondary services */}
+        {pills.length > 0 && (
+          <div className="services-pills-row" aria-label="Additional services">
+            {pills.map((service) => {
+              const Icon = ICON_MAP[service.icon] || ShieldHalf
+              return (
+                <Link
+                  key={service.slug}
+                  href={`/services/${service.slug}`}
+                  className="services-pill"
+                >
+                  <Icon size={12} strokeWidth={2} aria-hidden="true" />
+                  {service.shortTitle || service.title}
+                </Link>
+              )
+            })}
+          </div>
+        )}
       </div>
 
-      <div className="services-split-grid">
-        <div className="services-split-col services-split-col--left">
-          {leftColumn.map((s, i) => renderItem(s, i, 'left'))}
-        </div>
-
-        <div className="services-split-badge" aria-hidden="true">
-          <ShieldHalf size={40} strokeWidth={1.5} />
-        </div>
-
-        <div className="services-split-col services-split-col--right">
-          {rightColumn.map((s, i) => renderItem(s, i + 6, 'right'))}
-        </div>
-      </div>
-
+      {/* Schema.org */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'ItemList',
-            itemListElement: displayServices.map((service, index) => ({
+            itemListElement: services.map((service, index) => ({
               '@type': 'ListItem',
               position: index + 1,
               url: `https://www.silbarsecurity.in/services/${service.slug}`,

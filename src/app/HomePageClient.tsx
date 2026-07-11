@@ -1,18 +1,26 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useRef } from 'react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import {
   ArrowRight,
   Building2,
-  ClipboardCheck,
-  MapPin,
-  Radio,
-  ShieldCheck,
+  CheckCircle,
+  Factory,
+  Heart,
+  Landmark,
+  Server,
+  ShoppingBag,
+  Hotel,
+  Globe,
+  GraduationCap,
 } from 'lucide-react'
 
-import { initLenis, destroyLenis } from '@/lib/lenis'
+
+
+import { gsap } from '@/lib/gsap'
+import { useGSAP } from '@gsap/react'
 
 const ScrollExperience = dynamic(
   () => import('@/components/sections/ScrollExperience')
@@ -21,39 +29,9 @@ const ScrollExperience = dynamic(
 import { SERVICES } from '@/data/services'
 import { CONTACT } from '@/lib/config'
 const ServicesGrid = dynamic(() => import('@/components/sections/ServicesGrid'))
-import ScrollReveal from '@/components/animations/ScrollReveal'
+const QueryForm = dynamic(() => import('@/components/sections/QueryForm'))
 
-const COMMAND_SIGNALS = [
-  {
-    icon: ShieldCheck,
-    label: 'Security force',
-    value: '7,000+',
-    text: 'Licensed officers, supervisors, lady guards, armed guards, and response teams for regulated deployments.',
-  },
-  {
-    icon: MapPin,
-    label: 'City coverage',
-    value: '200+',
-    text: 'Rapid deployment across Rajasthan, Delhi NCR, Gujarat, Maharashtra, Karnataka, and high-growth corridors.',
-  },
-  {
-    icon: ClipboardCheck,
-    label: 'Compliance stack',
-    value: 'ISO + ESI/PF',
-    text: 'Training records, statutory files, attendance, replacement, and monthly MIS managed through one agency.',
-  },
-]
-
-const COVERAGE_POINTS = [
-  'Jaipur HQ',
-  'Delhi NCR',
-  'Ahmedabad',
-  'Mumbai',
-  'Bengaluru',
-  'PAN India',
-]
-
-// WhatsApp icon inline SVG (no extra package dependency)
+// WhatsApp icon inline SVG
 function WhatsAppIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -62,97 +40,254 @@ function WhatsAppIcon() {
   )
 }
 
+const WHY_SILBAR_POINTS = [
+  'Trained & Verified Manpower — background-checked, uniformed, ISO-audited guards',
+  'Advanced Technology — CCTV integration, access control, real-time monitoring',
+  'Process-Driven Approach — monthly MIS, compliance reporting, account manager',
+  'Pan India Presence — 200+ cities, rapid deployment, 24-hour replacement',
+]
+
+const INDUSTRIES_ICONS = [
+  { icon: Factory, label: 'Manufacturing' },
+  { icon: Heart, label: 'Healthcare' },
+  { icon: Landmark, label: 'Banking & Finance' },
+  { icon: Server, label: 'IT & Tech Parks' },
+  { icon: ShoppingBag, label: 'Retail & Malls' },
+  { icon: GraduationCap, label: 'Education' },
+  { icon: Hotel, label: 'Hospitality' },
+  { icon: Globe, label: 'Government' },
+]
+
+const CLIENT_LOGOS = ['Reliance', 'TATA', 'HDFC Bank', 'Infosys', 'Adani', 'DLF']
+
+const STATS = [
+  { value: '22+', label: 'Years of Excellence', sub: 'Since 2005' },
+  { value: '7,000+', label: 'Security Professionals', sub: 'Licensed & trained' },
+  { value: '200+', label: 'Cities Covered', sub: 'Pan India network' },
+  { value: '1M+', label: 'Lives Protected Daily', sub: 'Across all sectors' },
+]
+
 export default function HomePageClient() {
-  useEffect(() => {
-    initLenis()
-    return () => destroyLenis()
-  }, [])
+  const whySilbarRef = useRef<HTMLElement>(null)
+  const industriesRef = useRef<HTMLElement>(null)
+  const statsRef = useRef<HTMLElement>(null)
+
+  // Why Silbar — photo mosaic stagger + copy reveal
+  useGSAP(() => {
+    if (!whySilbarRef.current) return
+    const mm = gsap.matchMedia()
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      const copy = whySilbarRef.current!.querySelector('.why-silbar-copy')
+      const tiles = whySilbarRef.current!.querySelectorAll('.why-silbar-tile')
+      const tl = gsap.timeline({
+        scrollTrigger: { trigger: whySilbarRef.current, start: 'top 65%' },
+      })
+      tl.fromTo(copy, { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out' })
+        .fromTo(
+          tiles,
+          { opacity: 0, scale: 0.92, rotate: 0 },
+          { opacity: 1, scale: 1, duration: 0.65, stagger: 0.1, ease: 'back.out(1.2)' },
+          '-=0.5'
+        )
+    })
+    return () => mm.revert()
+  }, { scope: whySilbarRef })
+
+  // Industries strip — icon stagger
+  useGSAP(() => {
+    if (!industriesRef.current) return
+    const mm = gsap.matchMedia()
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      const items = industriesRef.current!.querySelectorAll('.industry-icon-item')
+      gsap.fromTo(
+        items,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: 'power2.out',
+          scrollTrigger: { trigger: industriesRef.current, start: 'top 75%' },
+        }
+      )
+    })
+    return () => mm.revert()
+  }, { scope: industriesRef })
+
+  // Stats — counter-style reveal
+  useGSAP(() => {
+    if (!statsRef.current) return
+    const mm = gsap.matchMedia()
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      const cards = statsRef.current!.querySelectorAll('.stat-card')
+      gsap.fromTo(
+        cards,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out',
+          scrollTrigger: { trigger: statsRef.current, start: 'top 75%' },
+        }
+      )
+    })
+    return () => mm.revert()
+  }, { scope: statsRef })
 
   return (
     <main className="relative w-full" id="main-content">
       <ScrollExperience />
       <ServicesGrid services={SERVICES} />
 
-      <section className="home-command-section" aria-labelledby="home-command-title">
-        <div className="home-command-grid">
-          <ScrollReveal className="home-command-copy">
-            <span className="home-section-kicker">Operations command</span>
-            <h2 id="home-command-title" className="home-section-title">
-              Security that moves before risk does.
+      {/* ─── WHY SILBAR ────────────────────────────────── */}
+      <section className="why-silbar-section section-transition-diagonal" ref={whySilbarRef} aria-labelledby="why-silbar-title">
+        <div className="why-silbar-inner">
+          {/* Left: copy */}
+          <div className="why-silbar-copy">
+            <span className="section-eyebrow section-eyebrow--light">WHY SILBAR</span>
+            <h2 id="why-silbar-title" className="section-heading section-heading--on-dark" style={{ marginBottom: '1.25rem' }}>
+              Protection is our <em>Promise.</em><br />Integrity is our Foundation.
             </h2>
-            <p className="home-section-copy">
-              Silbar combines trained manpower, field supervision, electronic surveillance,
-              fire life safety, and compliance reporting into one operating system for
-              factories, hospitals, hotels, banks, residential societies, and enterprise sites.
+            <p className="why-silbar-body">
+              For over two decades, Silbar Security has been the trusted partner for enterprises,
+              institutions, and communities across India. We combine people, process, and technology
+              to deliver unmatched protection.
             </p>
-            <div className="home-command-actions">
-              <Link href="/services" className="home-command-link">
-                Explore services <ArrowRight size={15} aria-hidden="true" />
+            <ul className="why-silbar-checklist" aria-label="Why choose Silbar">
+              {WHY_SILBAR_POINTS.map((point) => (
+                <li key={point} className="why-silbar-check-item">
+                  <CheckCircle size={18} aria-hidden="true" className="why-silbar-check-icon" />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="cta-pair" style={{ marginTop: '1.75rem' }}>
+              <Link href="/about" className="btn-primary">
+                Our Story <ArrowRight size={14} aria-hidden="true" />
               </Link>
-              <Link href="/contact" className="home-command-link home-command-link--muted">
-                Request assessment
+              <Link href="/contact" className="btn-secondary">
+                Request Assessment
               </Link>
             </div>
-          </ScrollReveal>
+          </div>
 
-          <div className="home-command-panels">
-            {COMMAND_SIGNALS.map(({ icon: Icon, label, value, text }, index) => (
-              <ScrollReveal key={label} delay={index * 0.08} className="home-command-card glass-card">
-                <span className="home-command-card__icon" aria-hidden="true">
-                  <Icon size={22} strokeWidth={1.7} />
-                </span>
-                <span className="home-command-card__label">{label}</span>
-                <strong className="home-command-card__value">{value}</strong>
-                <span className="home-command-card__text">{text}</span>
-              </ScrollReveal>
+          {/* Right: asymmetric photo mosaic */}
+          <div className="why-silbar-mosaic" aria-hidden="true">
+            <div className="why-silbar-tile why-silbar-tile--a">
+              <div className="why-silbar-tile__inner" style={{
+                background: 'linear-gradient(135deg, #1a0a0d 0%, #3d0f1a 100%)'
+              }}>
+                <div className="why-silbar-tile__label">Est. 2005</div>
+              </div>
+            </div>
+            <div className="why-silbar-tile why-silbar-tile--b">
+              <div className="why-silbar-tile__inner" style={{
+                background: 'linear-gradient(135deg, #0a0a12 0%, #141420 100%)'
+              }}>
+                <div className="why-silbar-tile__icon">
+                  <Building2 size={28} color="rgba(212,175,55,0.6)" />
+                </div>
+                <div className="why-silbar-tile__label">200+ Cities</div>
+              </div>
+            </div>
+            <div className="why-silbar-tile why-silbar-tile--c">
+              <div className="why-silbar-tile__inner" style={{
+                background: 'linear-gradient(135deg, #8C1F32 0%, #5C1220 100%)'
+              }}>
+                <div className="why-silbar-tile__badge">ISO 9001:2015</div>
+              </div>
+            </div>
+            <div className="why-silbar-tile why-silbar-tile--d">
+              <div className="why-silbar-tile__inner" style={{
+                background: 'linear-gradient(135deg, #14100D 0%, #291e15 100%)'
+              }}>
+                <div className="why-silbar-tile__number">7,000+</div>
+                <div className="why-silbar-tile__label">Professionals</div>
+              </div>
+            </div>
+            {/* Trusted since badge */}
+            <div className="why-silbar-trusted-badge" aria-hidden="true">
+              <span className="why-silbar-trusted-text">TRUSTED<br />SINCE<br />2005</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="section-divider-gradient" />
+
+      {/* ─── INDUSTRIES STRIP ──────────────────────────── */}
+      <section className="industries-strip section-transition-diagonal" ref={industriesRef} aria-labelledby="industries-strip-title">
+        <div className="industries-strip-inner">
+          <div className="industries-strip-header">
+            <span className="section-eyebrow section-eyebrow--light">INDUSTRIES WE PROTECT</span>
+            <h2 id="industries-strip-title" className="section-heading section-heading--on-dark">
+              Securing What <em>Matters</em> Most.
+            </h2>
+            <Link href="/industries" className="industries-strip-viewall">
+              All Industries <ArrowRight size={13} aria-hidden="true" />
+            </Link>
+          </div>
+
+          <div className="industry-icon-grid" role="list">
+            {INDUSTRIES_ICONS.map(({ icon: Icon, label }) => (
+              <div key={label} className="industry-icon-item" role="listitem">
+                <div className="industry-icon-item__circle" aria-hidden="true">
+                  <Icon size={22} strokeWidth={1.6} />
+                </div>
+                <span className="industry-icon-item__label">{label}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Client logos row */}
+          <div className="client-logos" aria-label="Clients include">
+            {CLIENT_LOGOS.map((name) => (
+              <span key={name} className="client-logo-name">{name}</span>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="home-coverage-section" aria-labelledby="home-coverage-title">
-        <div className="home-coverage-map" aria-hidden="true">
-          <span className="home-coverage-map__scan" />
-          {COVERAGE_POINTS.map((point, index) => (
-            <span
-              key={point}
-              className={`home-coverage-pin home-coverage-pin--${index + 1}`}
-            />
-          ))}
-        </div>
-        <ScrollReveal className="home-coverage-copy glass-panel" style={{ padding: '2rem' }}>
-          <span className="home-section-kicker">Local SEO, real operations</span>
-          <h2 id="home-coverage-title" className="home-section-title">
-            Built for city-specific security demand.
-          </h2>
-          <p className="home-section-copy">
-            Local buyers search by city, service, and urgency. The site supports
-            state and city landing pages while the business promise stays consistent:
-            Professionally trained guards, verified manpower, fast replacement, and clean
-            documentation.
-          </p>
-          <div className="home-coverage-tags">
-            {COVERAGE_POINTS.map((point) => (
-              <span key={point}>
-                <Building2 size={13} aria-hidden="true" />
-                {point}
-              </span>
+      <div className="section-divider-gradient" />
+
+      {/* ─── STATS + TESTIMONIAL ───────────────────────── */}
+      <section className="stats-testimonial-section section-transition-diagonal" ref={statsRef} aria-labelledby="stats-section-title">
+        <div className="stats-testimonial-inner">
+          <div className="stats-testimonial-header">
+            <span className="section-eyebrow section-eyebrow--light">OUR COMMITMENT IN NUMBERS</span>
+            <h2 id="stats-section-title" className="section-heading section-heading--on-dark">
+              Explore <em>More</em>
+              <Link href="/about" className="stats-explore-link">
+                <ArrowRight size={16} aria-hidden="true" />
+              </Link>
+            </h2>
+          </div>
+
+          <div className="stats-cards-row">
+            {STATS.map(({ value, label, sub }) => (
+              <div key={label} className="stat-card" aria-label={`${value} ${label}`}>
+                <div className="stat-card__value">{value}</div>
+                <div className="stat-card__label">{label}</div>
+                <div className="stat-card__sub">{sub}</div>
+              </div>
             ))}
           </div>
-        </ScrollReveal>
+
+          {/* Testimonial */}
+          <blockquote className="testimonial-card">
+            <p className="testimonial-card__quote">
+              &ldquo;Silbar&apos;s professionalism, transparency and response times are unmatched.
+              A partner we rely on, every day.&rdquo;
+            </p>
+            <footer className="testimonial-card__attribution">
+              <span className="testimonial-card__name">— Operations Head</span>
+              <span className="testimonial-card__company">Leading Manufacturing Firm</span>
+            </footer>
+          </blockquote>
+        </div>
       </section>
 
-      <section className="home-response-strip" aria-label="Security response process">
-        {['Assess', 'Deploy', 'Monitor', 'Report'].map((step, index) => (
-          <ScrollReveal key={step} delay={index * 0.06} className="home-response-step">
-            <Radio size={16} aria-hidden="true" />
-            <span>{String(index + 1).padStart(2, '0')}</span>
-            <strong>{step}</strong>
-          </ScrollReveal>
-        ))}
+      {/* ─── QUERY FORM ────────────────────────────────── */}
+      <section className="home-query-section" style={{ padding: '4rem 1.5rem' }}>
+        <QueryForm />
       </section>
 
-      {/* Sticky CTAs — WhatsApp + Call */}
+      {/* ─── STICKY CTAs ───────────────────────────────── */}
       <div className="sticky-cta" aria-label="Quick contact options">
         <a
           href={`tel:${CONTACT.phoneRaw}`}

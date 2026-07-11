@@ -1,12 +1,258 @@
-/* Industries listing — shared with services listing hero */
-.industries-hero {
+/* ============================================
+   Industries Listing — Full Editorial Rebuild
+   ============================================ */
+
+/* ─── Intro Section ─── */
+.industries-listing-intro {
+  background: linear-gradient(160deg, var(--color-paper) 0%, var(--color-champagne) 100%);
+  padding: clamp(6rem, 12vh, 9rem) 0 clamp(3rem, 6vh, 5rem);
+}
+
+.industries-listing-intro__inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.industries-listing-h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.industries-listing-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  line-height: 1.75;
+  color: var(--color-horizon-600);
+  max-width: 600px;
+}
+
+/* ─── Card Grid Section ─── */
+.industries-card-section {
+  background: var(--color-paper);
+  padding: clamp(3rem, 6vh, 5rem) 0 clamp(4rem, 8vh, 6rem);
+}
+
+.industries-card-inner {
   max-width: 1400px;
   margin: 0 auto;
-  padding: clamp(6rem, 12vh, 10rem) clamp(1.5rem, 5vw, 6rem) clamp(3rem, 6vh, 5rem);
+  padding: 0 clamp(1.5rem, 4vw, 3rem);
+}
+
+/* 4-column grid desktop — each card fills its cell */
+.industries-card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+}
+
+@media (max-width: 1100px) {
+  .industries-card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
-  .industries-hero {
-    padding: clamp(5rem, 10vh, 7rem) 1.25rem clamp(2rem, 4vh, 3.5rem);
+  .industries-card-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
   }
+}
+
+@media (max-width: 440px) {
+  .industries-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── Individual Photo Card ─── */
+.industry-photo-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 260px;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  text-decoration: none;
+  color: var(--color-paper);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.4s var(--ease-smooth), border-color 0.4s var(--ease-smooth);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .industry-photo-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(212, 175, 55, 0.3);
+  }
+
+  .industry-photo-card:hover .industry-photo-card__scrim {
+    opacity: 0.6;
+  }
+
+  .industry-photo-card:hover .industry-photo-card__icon {
+    transform: scale(1.1);
+    border-color: var(--color-gold);
+    color: var(--color-gold-light);
+  }
+
+  .industry-photo-card:hover .industry-photo-card__arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .industry-photo-card:active {
+    opacity: 0.85;
+  }
+}
+
+/* Gradient scrim — darkens bottom for text readability */
+.industry-photo-card__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(5, 5, 5, 0.85) 0%,
+    rgba(5, 5, 5, 0.4) 40%,
+    rgba(5, 5, 5, 0.1) 100%
+  );
+  transition: opacity 0.4s var(--ease-smooth);
+  z-index: 0;
+}
+
+/* Card number — large ghost watermark */
+.industry-photo-card__num {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.04);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+  letter-spacing: -0.04em;
+}
+
+/* Icon circle — top-left */
+.industry-photo-card__icon {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold-light);
+  z-index: 2;
+  transition: transform 0.3s var(--ease-smooth), border-color 0.3s, color 0.3s;
+}
+
+/* Content — anchored to bottom */
+.industry-photo-card__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.industry-photo-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  color: var(--color-paper);
+  margin: 0;
+}
+
+.industry-photo-card__desc {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: rgba(250, 248, 244, 0.65);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.industry-photo-card__arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gold-light);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 0.25s var(--ease-smooth), transform 0.25s var(--ease-smooth);
+  margin-top: 0.5rem;
+}
+
+/* ─── Bottom CTA ─── */
+.industries-bottom-cta {
+  background: linear-gradient(150deg, var(--color-cherry-deep) 0%, var(--color-cherry) 60%, #6b1726 100%);
+  padding: clamp(4rem, 8vh, 6rem) 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.industries-bottom-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--noise-texture);
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+.industries-bottom-cta__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.industries-bottom-cta__sub {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(250, 248, 244, 0.7);
+  max-width: 500px;
+}
+
+/* sr-only utility for accessible but invisible headings */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

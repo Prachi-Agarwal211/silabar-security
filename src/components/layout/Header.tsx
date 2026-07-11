@@ -12,6 +12,7 @@ const NAV_LINKS = [
   { label: 'Services', href: '/services' },
   { label: 'Industries', href: '/industries' },
   { label: 'About', href: '/about' },
+  { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ]
 
@@ -185,6 +186,10 @@ export default function Header() {
               {label}
             </Link>
           ))}
+        </nav>
+
+        {/* Contact block — pinned at bottom of cherry overlay */}
+        <div className="mobile-nav__contact-block">
           <a
             href={`tel:${CONTACT.phoneRaw}`}
             className="mobile-nav__link mobile-nav__link--phone"
@@ -199,9 +204,9 @@ export default function Header() {
             rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}
           >
-            WhatsApp Us
+            WhatsApp for a Quote
           </a>
-        </nav>
+        </div>
       </div>
     </>
   )

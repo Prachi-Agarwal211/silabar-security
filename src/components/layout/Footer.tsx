@@ -20,6 +20,8 @@ const COMPANY_LINKS = [
   { label: 'About Silbar', href: '/about' },
   { label: 'Why Silbar', href: '/about#why-silbar' },
   { label: 'Certifications', href: '/about#certifications' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'FAQs', href: '/faq' },
   { label: 'Careers', href: '/careers' },
   { label: 'Contact', href: '/contact' },
 ]
@@ -28,7 +30,7 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="site-footer footer-glass-red" id="contact">
+    <footer className="site-footer footer-solid-red" id="contact">
       {/* Trust badges row */}
       <div className="footer-trust-row">
         <div className="footer-trust-badge">
@@ -136,6 +138,7 @@ export default function Footer() {
         <div className="footer-legal-links">
           <Link href="/privacy-policy" className="footer-legal-link">Privacy Policy</Link>
           <Link href="/terms" className="footer-legal-link">Terms of Use</Link>
+          <Link href="/disclaimer" className="footer-legal-link">Disclaimer</Link>
         </div>
       </div>
     </footer>

@@ -54,8 +54,8 @@ const sections = [
     content: 'We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated "Last Updated" date. Significant changes will be notified via email or a prominent notice on our website.',
   },
   {
-    title: 'Contact Us',
-    content: 'For questions about this Privacy Policy or to exercise your data rights, contact us at: ' + CONTACT.email + ', ' + CONTACT.phone + ', or 208, 2nd Floor, Samod Tower, Sansar Chand Road, Jaipur — 302001, Rajasthan, India.',
+    title: 'Grievance Officer (DPDP Act 2023)',
+    content: 'In accordance with the Information Technology Act, 2000 and the DPDP Act, 2023, the name and contact details of the Grievance Officer are: \n\nName: Compliance Department\nCompany: Silbar Security Services Pvt. Ltd.\nAddress: 208, 2nd Floor, Samod Tower, Sansar Chand Road, Jaipur, Rajasthan 302001\nEmail: ' + CONTACT.email + '\nPhone: ' + CONTACT.phone + '\n\nWe will acknowledge your complaint within 24 hours and resolve it within 15 days of receipt.',
   },
 ]
 
@@ -85,12 +85,14 @@ export default function PrivacyPolicyPage() {
       />
 
       <section className="legal-content">
-        {sections.map(({ title, content }) => (
-          <div key={title}>
-            <h2>{title}</h2>
-            <p>{content}</p>
-          </div>
-        ))}
+        <div className="service-detail-faq-list" style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem 1.5rem' }}>
+          {sections.map(({ title, content }) => (
+            <details key={title} className="service-detail-faq-item">
+              <summary className="service-detail-faq-q">{title}</summary>
+              <p className="service-detail-faq-a" style={{ whiteSpace: 'pre-line' }}>{content}</p>
+            </details>
+          ))}
+        </div>
       </section>
 
       <section className="service-detail-bottom-cta">

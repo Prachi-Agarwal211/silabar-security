@@ -108,3 +108,48 @@
   max-width: 560px;
   margin: 0 auto;
 }
+
+/* ============================================
+   Italic accent word — consistent pattern across
+   all headings on all pages (Phase 8: Global CSS)
+   ============================================ */
+
+/* On light backgrounds: <em> inside any page heading = cherry-red italic */
+.page-hero-title em {
+  font-style: italic;
+  color: var(--color-cherry-bright);
+}
+
+/* On dark page hero (service-detail--dark variant if used) */
+.page-hero--dark .page-hero-title em {
+  font-style: italic;
+  color: var(--color-gold-light);
+}
+
+/* Breadcrumb separator fix */
+.breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--color-horizon-500);
+  margin-bottom: 1rem;
+}
+
+.breadcrumb__link {
+  color: var(--color-cherry);
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.breadcrumb__link:hover { opacity: 1; }
+
+.breadcrumb__sep { color: var(--color-horizon-400); }
+
+.breadcrumb__current {
+  color: var(--color-horizon-500);
+}
+

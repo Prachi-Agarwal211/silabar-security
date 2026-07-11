@@ -79,9 +79,14 @@ export const metadata: Metadata = {
     canonical: 'https://www.silbarsecurity.in',
   },
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+    ],
     apple: '/apple-touch-icon.png',
+    shortcut: '/icon-192.png',
   },
+  manifest: '/manifest.json',
   verification: {
     google: process.env.GOOGLE_VERIFICATION || '',
   },
@@ -91,7 +96,10 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
-  themeColor: '#0a0a0a',
+  themeColor: [
+    { media: '(prefers-color-scheme: dark)', color: '#0B0E14' },
+    { media: '(prefers-color-scheme: light)', color: '#8C1F32' },
+  ],
 }
 
 export default function RootLayout({

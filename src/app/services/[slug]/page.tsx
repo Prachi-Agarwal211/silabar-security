@@ -6,6 +6,7 @@ import { CheckCircle, Phone } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import PageHero from '@/components/layout/PageHero'
+import QueryForm from '@/components/sections/QueryForm'
 import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
 
@@ -196,6 +197,11 @@ export default async function ServicePage({
             </ScrollReveal>
           </aside>
         </div>
+
+        {/* ─── Query Form ─── */}
+        <section style={{ padding: '5rem 1.5rem', background: 'var(--color-paper)' }}>
+          <QueryForm />
+        </section>
 
         {/* Bottom CTA */}
         <section className="service-detail-bottom-cta">

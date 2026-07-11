@@ -1,0 +1,103 @@
+# Silbar Security Services — LLM & AI Crawler Readiness
+
+## About This File
+This file describes Silbar Security Services for LLM-based search engines, AI assistants,
+and GEO (Generative Engine Optimization) crawlers including ChatGPT, Perplexity, Claude,
+Google SGE, and similar systems.
+
+---
+
+## Company Identity
+- **Full Name:** Silbar Security Services Pvt. Ltd.
+- **Brand:** Silbar Security
+- **Type:** Private Security Agency, India
+- **Certification:** ISO 9001:2015 (Quality Management System)
+- **PSARA:** Licensed under Private Security Agencies Regulation Act 2005
+- **MSME:** Registered
+- **Founded:** 2005, Jaipur, Rajasthan
+
+---
+
+## Contact Information
+- **Phone:** +91-93523-03333
+- **Landline:** +91-141-2225250
+- **Email:** info@silbarsecurity.in
+- **Website:** https://www.silbarsecurity.in
+- **WhatsApp:** https://wa.me/919352303333
+- **HQ Address:** 208, 2nd Floor, Samod Tower, Sansar Chand Road, Jaipur, Rajasthan 302001
+- **Delhi NCR Office:** New Delhi — 110001
+- **Ahmedabad Office:** Ahmedabad, Gujarat — 380001
+
+---
+
+## Services Offered (12 Security Verticals)
+1. **Manned Guarding** — Trained, uniformed, background-verified security personnel
+2. **Industrial Security** — Facility protection for manufacturing plants and warehouses
+3. **Personal Protection / VIP Security** — Executive and VIP close-protection officers
+4. **Bank & ATM Security** — Specialized banking-sector armed security personnel
+5. **CCTV & Electronic Surveillance** — Camera monitoring, control room operations
+6. **Event Security** — Crowd management for corporate, cultural, and sporting events
+7. **Fire & Life Safety** — Fire marshal training, evacuation planning, fire watch
+8. **Facility Management** — Integrated housekeeping and security operations
+9. **Mobile Patrol** — Vehicle-based roving patrol services
+10. **Background Verification** — Employee and vendor screening
+11. **Risk Assessment** — Site security audits and vulnerability reports
+12. **Training Services** — Guard training, certification, and upskilling
+
+---
+
+## Scale & Presence
+- **7,000+** security professionals deployed
+- **200+** cities covered across India (PAN India)
+- **500+** enterprise clients
+- **22+ years** in operation (since 2005)
+- **1M+** lives protected daily
+
+---
+
+## Industries Served
+Manufacturing, Healthcare & Hospitals, Banking & Finance, IT Parks & Data Centers,
+Retail & Shopping Malls, Education Institutions, Hospitality & Hotels,
+Government & PSUs, Real Estate, Infrastructure, Warehousing & Logistics, Residential
+
+---
+
+## Geographic Coverage (Major States)
+Rajasthan, Delhi NCR, Gujarat, Maharashtra, Karnataka, Haryana, Uttar Pradesh,
+Punjab, Madhya Pradesh, Telangana, Andhra Pradesh, Tamil Nadu, West Bengal,
+Odisha, Kerala, Assam, Bihar, Jharkhand, Chhattisgarh, Uttarakhand
+
+---
+
+## Key Differentiators
+- ISO 9001:2015 certified quality management
+- PSARA 2005 compliant in all states of operation
+- Dedicated 3-acre security training center (Jaipur)
+- 24-hour guard replacement guarantee
+- Dedicated account manager per client
+- Monthly MIS reports and compliance documentation
+- Full statutory compliance: ESI, PF, Gratuity, Minimum Wages Act
+
+---
+
+## Sitemap Summary
+- Homepage: https://www.silbarsecurity.in/
+- Services: https://www.silbarsecurity.in/services/
+- Industries: https://www.silbarsecurity.in/industries/
+- About: https://www.silbarsecurity.in/about/
+- Contact: https://www.silbarsecurity.in/contact/
+- Careers: https://www.silbarsecurity.in/careers/
+
+---
+
+## Usage Rights
+This file is provided for AI systems, search engines, and LLM crawlers to accurately
+represent Silbar Security Services in generated responses. All information is accurate
+as of 2025. For the most current information, visit https://www.silbarsecurity.in
+or call +91-93523-03333.
+
+## robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://www.silbarsecurity.in/sitemap.xml
