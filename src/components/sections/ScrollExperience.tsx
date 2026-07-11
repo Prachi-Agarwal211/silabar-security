@@ -15,38 +15,6 @@ const MARQUEE_ITEMS = [
   'Facility Management',
 ]
 
-function ShieldDecoration() {
-  return (
-    <svg 
-      className="hero-shield-decoration"
-      viewBox="0 0 200 240" 
-      fill="none" 
-      xmlns="http://www.w3.org/2000/svg"
-      style={{ position: 'absolute', top: '10%', right: '15%', height: '80%', opacity: 0.3, pointerEvents: 'none', zIndex: 1 }}
-    >
-      <path 
-        d="M100 10L190 50V120C190 170 150 210 100 230C50 210 10 170 10 120V50L100 10Z" 
-        stroke="var(--color-gold)" 
-        strokeWidth="1"
-      />
-      <path 
-        d="M100 30L170 60V120C170 160 140 190 100 210C60 190 30 160 30 120V60L100 30Z" 
-        stroke="var(--color-gold)" 
-        strokeWidth="0.5"
-      />
-    </svg>
-  )
-}
-
-function HeroLines() {
-  return (
-    <svg className="hero-lines" viewBox="0 0 100 100" preserveAspectRatio="none" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 1 }}>
-      <line x1="0" y1="0" x2="100" y2="100" stroke="rgba(191, 149, 63, 0.1)" strokeWidth="0.5" />
-      <line x1="100" y1="0" x2="0" y2="100" stroke="rgba(191, 149, 63, 0.1)" strokeWidth="0.5" />
-      <circle cx="50" cy="50" r="30" stroke="rgba(191, 149, 63, 0.08)" strokeWidth="0.5" fill="none" />
-    </svg>
-  )
-}
 
 export default function ScrollExperience() {
   const containerRef = useRef<HTMLElement>(null)
@@ -173,8 +141,6 @@ export default function ScrollExperience() {
           preload="auto"
         />
         <div className="hero-video-overlay" />
-        <ShieldDecoration />
-        <HeroLines />
       </div>
 
       {/* 2. Middle Content Layer (The Main Pitch) */}

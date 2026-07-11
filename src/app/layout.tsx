@@ -110,7 +110,6 @@ export default function RootLayout({
   return (
     <html lang="en-IN" className={`${spaceGrotesk.variable} ${manrope.variable}`}>
       <body>
-        <div className="noise-animated" aria-hidden="true" />
         <meta charSet="utf-8" />
         <a
           href="#main-content"
