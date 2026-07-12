@@ -20,9 +20,10 @@ export const CONTACT = {
   },
   hours: '24/7',
   social: {
-    facebook: 'https://facebook.com/silbarsecurity',
+    facebook: 'https://www.facebook.com/share/1GtattxqNp/',
     instagram: 'https://instagram.com/silbarsecurity',
-    linkedin: 'https://linkedin.com/company/silbar-security',
+    linkedin: 'https://www.linkedin.com/company/silbar-security-services-private-limited/',
+    google: 'https://g.co/kgs/silbarsecurity',
   },
   offices: ['Jaipur', 'Delhi', 'Ahmedabad'] as const,
   landline: '+91-141 222 3334',

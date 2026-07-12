@@ -173,8 +173,9 @@ export default function RootLayout({
                 },
               ],
               sameAs: [
-                'https://www.linkedin.com/company/silbar-security',
-                'https://www.facebook.com/silbarsecurity',
+                'https://www.linkedin.com/company/silbar-security-services-private-limited/',
+                'https://www.facebook.com/share/1GtattxqNp/',
+                'https://g.co/kgs/silbarsecurity',
               ],
               actionableFeedbackPolicy: 'https://www.silbarsecurity.in/contact',
               correctionsPolicy: 'https://www.silbarsecurity.in/contact',

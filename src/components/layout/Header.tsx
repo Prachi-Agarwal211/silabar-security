@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X, Phone, Shield } from 'lucide-react'
+import Image from 'next/image'
+import { Menu, X, Phone } from 'lucide-react'
 import { MagneticButton } from '@/components/ui/MagneticButton'
 import { CONTACT } from '@/lib/config'
 
@@ -111,8 +112,15 @@ export default function Header() {
     <>
       <header className={`hero-header${hidden ? ' hero-header--hidden' : ''}${scrolled ? ' hero-header--scrolled' : ''}${pathname !== '/' || !transparent ? ' hero-header--solid' : ''}${transparent && pathname === '/' ? ' hero-header--transparent' : ''}`}>
         <Link href="/" className="hero-logo" onClick={() => setMenuOpen(false)}>
-          <Shield className="hero-logo__icon" size={24} strokeWidth={2} />
-          Silbar Security
+          <Image
+            src="/icon-512.png"
+            alt="Silbar Security"
+            width={48}
+            height={48}
+            className="hero-logo__img"
+            priority
+          />
+          <span className="hero-logo__text">Silbar Security</span>
         </Link>
 
         {/* Desktop nav */}

@@ -119,13 +119,23 @@ export default function HomePageClient() {
     const mm = gsap.matchMedia()
     mm.add('(prefers-reduced-motion: no-preference)', () => {
       const cards = statsRef.current!.querySelectorAll('.stat-card')
-      gsap.fromTo(
+      const testimonials = statsRef.current!.querySelectorAll('.testimonial-card')
+      
+      const tl = gsap.timeline({
+        scrollTrigger: { trigger: statsRef.current, start: 'top 75%' }
+      })
+
+      tl.fromTo(
         cards,
         { opacity: 0, y: 30 },
-        {
-          opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out',
-          scrollTrigger: { trigger: statsRef.current, start: 'top 75%' },
-        }
+        { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out' }
+      )
+      
+      tl.fromTo(
+        testimonials,
+        { opacity: 0, y: 40, scale: 0.95 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.8, stagger: 0.15, ease: 'power2.out' },
+        '-=0.4' // overlap with the stat cards animation
       )
     })
     return () => mm.revert()
@@ -238,66 +248,53 @@ export default function HomePageClient() {
 
       <div className="section-divider-gradient" />
 
-      {/* ─── INDUSTRIES STRIP ──────────────────────────── */}
-      <section className="industries-strip section-transition-diagonal" ref={industriesRef} aria-labelledby="industries-strip-title">
-        <div className="industries-strip-inner">
-          <div className="industries-strip-header">
-            <span className="section-eyebrow section-eyebrow--light">INDUSTRIES WE PROTECT</span>
-            <h2 id="industries-strip-title" className="section-heading section-heading--on-dark">
+      {/* ─── INDUSTRIES WE PROTECT (REDESIGNED) ──────────────────────────── */}
+      <section className="industries-protect-section" ref={industriesRef} aria-labelledby="industries-strip-title">
+        <div className="industries-protect-inner">
+          {/* Content Overlay */}
+          <div className="industries-protect-content">
+            <span className="section-eyebrow">INDUSTRIES WE PROTECT</span>
+            <h2 id="industries-strip-title" className="section-heading">
               Securing What <em>Matters</em> Most.
             </h2>
-            <Link href="/industries" className="industries-strip-viewall">
-              All Industries <ArrowRight size={13} aria-hidden="true" />
-            </Link>
-          </div>
-
-          <div className="industry-icon-grid" role="list">
-            {INDUSTRIES_ICONS.map(({ icon: Icon, label }) => (
-              <div key={label} className="industry-icon-item" role="listitem">
-                <div className="industry-icon-item__circle" aria-hidden="true">
-                  <Icon size={22} strokeWidth={1.6} />
-                </div>
-                <span className="industry-icon-item__label">{label}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Client logos row */}
-          <div className="client-logos" aria-label="Clients include">
-            {CLIENT_LOGOS.map((name) => (
-              <span key={name} className="client-logo-name">{name}</span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <div className="section-divider-gradient" />
-
-      {/* ─── GOOGLE REVIEWS ─────────────────────────── */}
-      <section className="google-reviews-section" aria-label="Google Reviews">
-        <div className="google-reviews-inner">
-          <div className="google-reviews-badge">
-            <div className="google-reviews-stars">
-              {[1,2,3,4,5].map(i => (
-                <svg key={i} width="20" height="20" viewBox="0 0 24 24" fill={i <= 4 ? 'var(--color-gold)' : 'var(--color-gold)'} stroke="none">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
+            
+            <div className="industries-list">
+              <Link href="/industries" className="industry-pill active">All Industries</Link>
+              {INDUSTRIES_ICONS.map(({ label }) => (
+                <span key={label} className="industry-pill">{label}</span>
               ))}
             </div>
-            <span className="google-reviews-rating">4.8</span>
-            <span className="google-reviews-count">on Google</span>
+
+            <div className="client-logos-text">
+              {CLIENT_LOGOS.join(' • ')}
+            </div>
+
+            <div className="google-reviews-compact">
+              <div className="google-reviews-header">
+                <span className="google-reviews-rating">4.8</span>
+                <span className="google-reviews-stars">
+                  {[1,2,3,4,5].map(i => (
+                    <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="var(--color-gold)" stroke="none">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                  ))}
+                </span>
+                <span className="google-reviews-count">on Google</span>
+              </div>
+              <p className="google-reviews-text">
+                Trusted by <strong>500+</strong> businesses across India. Read what our clients say about us.
+              </p>
+              <a
+                href="https://g.page/r/silbar-security/review"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+                style={{ marginTop: '0.5rem', display: 'inline-flex' }}
+              >
+                Review Us on Google
+              </a>
+            </div>
           </div>
-          <p className="google-reviews-text">
-            Trusted by <strong>500+</strong> businesses across India. Read what our clients say about us.
-          </p>
-          <a
-            href="https://g.page/r/silbar-security/review"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary"
-          >
-            Review Us on Google
-          </a>
         </div>
       </section>
 

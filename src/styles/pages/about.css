@@ -146,12 +146,18 @@
 }
 
 .about-intro-shield {
-  color: rgba(250, 248, 244, 0.04);
   position: absolute;
   top: -2rem;
   left: 50%;
   transform: translateX(-50%);
   pointer-events: none;
+  opacity: 0.15;
+}
+
+.about-intro-shield img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
 }
 
 /* ─── Stats Band ─── */

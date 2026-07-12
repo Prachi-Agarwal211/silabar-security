@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Shield, Award, Phone, Play, Target, Eye, Users } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import Counter from '@/components/animations/Counter'
@@ -76,7 +77,9 @@ export default function AboutPage() {
           <div className="about-intro-visual" aria-hidden="true">
             <div className="about-play-circle"><Play size={28} fill="currentColor" /></div>
             <div className="about-intro-tagline">Est. 2005 · Jaipur, Rajasthan</div>
-            <div className="about-intro-shield"><Shield size={80} strokeWidth={1} /></div>
+            <div className="about-intro-shield">
+              <Image src="/logo.png" alt="Silbar Security" width={80} height={80} />
+            </div>
           </div>
         </div>
       </section>
