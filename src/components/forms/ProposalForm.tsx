@@ -1,11 +1,13 @@
 'use client'
 
+import { formatEnquiryWhatsAppMessage, openWhatsApp } from '@/lib/whatsapp'
+
 const inputStyle: React.CSSProperties = {
   padding: '0.75rem 1rem',
   background: 'rgba(20,16,13,0.04)',
   border: '1px solid rgba(20,16,13,0.15)',
   borderRadius: '4px',
-  fontSize: '16px', // prevent iOS zoom
+  fontSize: '16px',
   width: '100%',
   fontFamily: 'var(--font-body)',
 }
@@ -15,7 +17,21 @@ export default function ProposalForm() {
     <form
       onSubmit={(e) => {
         e.preventDefault()
-        alert('Thank you! Your proposal request has been submitted. Our team will contact you within 48 hours.')
+        const form = e.currentTarget
+        const data = new FormData(form)
+        openWhatsApp(
+          formatEnquiryWhatsAppMessage({
+            formType: 'Proposal Request',
+            name: String(data.get('contact') || ''),
+            email: String(data.get('email') || ''),
+            phone: String(data.get('phone') || ''),
+            company: String(data.get('company') || ''),
+            message: String(data.get('details') || ''),
+            extra: {
+              Service: String(data.get('service') || ''),
+            },
+          })
+        )
       }}
     >
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -41,7 +57,7 @@ export default function ProposalForm() {
           style={{ ...inputStyle, resize: 'vertical' }}
         />
         <button type="submit" className="btn-primary" style={{ border: 'none', cursor: 'pointer', alignSelf: 'flex-start' }}>
-          Submit Request
+          Submit on WhatsApp
         </button>
       </div>
     </form>

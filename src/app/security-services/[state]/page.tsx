@@ -294,8 +294,9 @@ export default async function StateSEOPage({
 
         <PageLeadSection
           title={`Security Quote for ${location.name}`}
-          subtitle={`Tell us about your facility in ${location.name}. We respond within 24 hours.`}
+          subtitle={`Tell us about your facility in ${location.name} — submit opens WhatsApp with your details.`}
           defaultMessage={`I need security services in ${location.name}.`}
+          formType={`Security Quote — ${location.name}`}
         />
 
       </main>

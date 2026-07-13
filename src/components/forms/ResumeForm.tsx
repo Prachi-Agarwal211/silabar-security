@@ -1,13 +1,39 @@
 'use client'
 
+import { formatEnquiryWhatsAppMessage, openWhatsApp } from '@/lib/whatsapp'
+
 export default function ResumeForm() {
   return (
-    <form className="resume-upload-form" onSubmit={(e) => { e.preventDefault(); alert('Thank you! Your resume has been submitted. Our HR team will contact you within 48 hours.'); }}>
+    <form
+      className="resume-upload-form"
+      onSubmit={(e) => {
+        e.preventDefault()
+        const form = e.currentTarget
+        const data = new FormData(form)
+        const file = data.get('resume') as File | null
+        const fileNote = file?.name
+          ? `Resume file selected: ${file.name} (please attach this file in WhatsApp after opening)`
+          : 'Resume will be attached in WhatsApp'
+
+        openWhatsApp(
+          formatEnquiryWhatsAppMessage({
+            formType: 'Job Application',
+            name: String(data.get('name') || ''),
+            email: String(data.get('email') || ''),
+            phone: String(data.get('phone') || ''),
+            message: fileNote,
+            extra: {
+              Position: String(data.get('position') || ''),
+            },
+          })
+        )
+      }}
+    >
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem', marginBottom: '1rem' }}>
-        <input type="text" placeholder="Full Name *" required className="resume-input" />
-        <input type="email" placeholder="Email Address *" required className="resume-input" />
-        <input type="tel" placeholder="Phone Number *" required className="resume-input" />
-        <select className="resume-input" required>
+        <input type="text" name="name" placeholder="Full Name *" required autoComplete="name" className="resume-input" />
+        <input type="email" name="email" placeholder="Email Address *" required autoComplete="email" className="resume-input" />
+        <input type="tel" name="phone" placeholder="Phone Number *" required autoComplete="tel" inputMode="tel" className="resume-input" />
+        <select name="position" className="resume-input" required>
           <option value="">Select Desired Position</option>
           <option>Security Guard</option>
           <option>Security Supervisor</option>
@@ -18,10 +44,13 @@ export default function ResumeForm() {
         </select>
       </div>
       <div style={{ marginBottom: '1rem' }}>
-        <input type="file" required className="resume-input" accept=".pdf,.doc,.docx" />
+        <input type="file" name="resume" className="resume-input" accept=".pdf,.doc,.docx" />
+        <p style={{ fontSize: '0.75rem', opacity: 0.7, marginTop: '0.5rem' }}>
+          After WhatsApp opens, attach your resume file before sending.
+        </p>
       </div>
       <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-        Submit Application
+        Apply via WhatsApp
       </button>
     </form>
   )

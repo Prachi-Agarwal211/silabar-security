@@ -1,5 +1,7 @@
 'use client'
 
+import { formatEnquiryWhatsAppMessage, openWhatsApp } from '@/lib/whatsapp'
+
 const inputStyle: React.CSSProperties = {
   padding: '0.75rem 1rem',
   background: 'rgba(20,16,13,0.04)',
@@ -15,7 +17,23 @@ export default function SurveyForm() {
     <form
       onSubmit={(e) => {
         e.preventDefault()
-        alert('Thank you! Your site survey request has been submitted. Our team will contact you to schedule the visit.')
+        const form = e.currentTarget
+        const data = new FormData(form)
+        openWhatsApp(
+          formatEnquiryWhatsAppMessage({
+            formType: 'Site Survey Request',
+            name: String(data.get('contact') || ''),
+            email: String(data.get('email') || ''),
+            phone: String(data.get('phone') || ''),
+            company: String(data.get('company') || ''),
+            message: `Please schedule a free site survey.\nFacility: ${data.get('address') || ''}`,
+            extra: {
+              Address: String(data.get('address') || ''),
+              'Facility Type': String(data.get('facilityType') || ''),
+              'Preferred Date': String(data.get('preferredDate') || 'Flexible'),
+            },
+          })
+        )
       }}
     >
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -38,7 +56,7 @@ export default function SurveyForm() {
         </select>
         <input type="text" name="preferredDate" placeholder="Preferred Date for Survey" style={inputStyle} />
         <button type="submit" className="btn-primary" style={{ border: 'none', cursor: 'pointer', alignSelf: 'flex-start' }}>
-          Book Free Survey
+          Book Survey on WhatsApp
         </button>
       </div>
     </form>

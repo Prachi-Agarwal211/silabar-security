@@ -7,6 +7,7 @@ type PageLeadSectionProps = {
   /** Prefill message textarea (e.g. location or franchise intent) */
   defaultMessage?: string
   submitLabel?: string
+  formType?: string
   /** Optional section id for anchor links */
   id?: string
   className?: string
@@ -14,13 +15,14 @@ type PageLeadSectionProps = {
 
 /**
  * Shared lead-gen block: query form + direct CTAs.
- * Use on every marketing page (client requirement).
+ * Submit routes to WhatsApp with all form fields prefilled.
  */
 export default function PageLeadSection({
   title = 'Have a Security Question?',
-  subtitle = "Fill out the form below and we'll respond within 24 hours.",
+  subtitle = "Fill out the form — we'll open WhatsApp with your details so our team can reply instantly.",
   defaultMessage = '',
   submitLabel,
+  formType,
   id = 'get-a-quote',
   className = '',
 }: PageLeadSectionProps) {
@@ -36,6 +38,7 @@ export default function PageLeadSection({
           subtitle={subtitle}
           defaultMessage={defaultMessage}
           submitLabel={submitLabel}
+          formType={formType}
         />
         <div className="page-lead-section__ctas">
           <a href={`tel:${CONTACT.phoneRaw}`} className="page-lead-section__cta page-lead-section__cta--call">

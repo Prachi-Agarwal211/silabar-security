@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { CheckCircle2, AlertCircle } from 'lucide-react'
 import { CONTACT } from '@/lib/config'
+import { formatEnquiryWhatsAppMessage, openWhatsApp } from '@/lib/whatsapp'
 
 type FieldErrors = {
   name?: string
@@ -17,15 +18,18 @@ type QueryFormProps = {
   subtitle?: string
   defaultMessage?: string
   submitLabel?: string
+  /** Shown in WhatsApp message header */
+  formType?: string
 }
 
 export default function QueryForm({
   title = 'Have a Security Question?',
-  subtitle = "Fill out the form below and we'll respond within 24 hours.",
+  subtitle = "Fill out the form below — we'll open WhatsApp with your details so our team can reply instantly.",
   defaultMessage = '',
   submitLabel,
+  formType = 'Website Enquiry',
 }: QueryFormProps) {
-  const buttonLabel = submitLabel || 'SUBMIT ENQUIRY'
+  const buttonLabel = submitLabel || 'SUBMIT ON WHATSAPP'
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -83,7 +87,7 @@ export default function QueryForm({
     setErrors(prev => ({ ...prev, [name]: validateField(name, value) }))
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
 
     const newErrors: FieldErrors = {}
@@ -99,8 +103,16 @@ export default function QueryForm({
 
     setIsSubmitting(true)
 
-    // Simulate API call — wire to backend/CRM when ready
-    await new Promise(resolve => setTimeout(resolve, 1500))
+    const waMessage = formatEnquiryWhatsAppMessage({
+      formType,
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      company: formData.company,
+      message: formData.message,
+    })
+
+    openWhatsApp(waMessage)
     setIsSubmitting(false)
     setIsSuccess(true)
   }
@@ -111,22 +123,41 @@ export default function QueryForm({
         <div className="query-form__success-icon">
           <CheckCircle2 size={48} />
         </div>
-        <h3 className="query-form__success-title">✓ THANK YOU!</h3>
-        <p className="query-form__success-desc">Your enquiry has been submitted successfully.</p>
+        <h3 className="query-form__success-title">Opening WhatsApp…</h3>
+        <p className="query-form__success-desc">
+          Your enquiry is ready in WhatsApp. Tap <strong>Send</strong> to deliver it to our team.
+        </p>
 
         <div className="query-form__next-steps">
           <h4>What happens next:</h4>
           <ul>
-            <li>You&apos;ll receive a confirmation within a few minutes</li>
-            <li>Our team will review your enquiry</li>
-            <li>We&apos;ll respond within 1 working day (often within 2 hours)</li>
+            <li>WhatsApp opens with your full enquiry text pre-filled</li>
+            <li>Press Send to message Silbar Security</li>
+            <li>Our team typically replies within 2 business hours</li>
           </ul>
         </div>
 
         <div className="query-form__contact-direct">
-          <p>Need immediate assistance?</p>
-          <a href={`tel:${CONTACT.phoneRaw}`}>Call: {CONTACT.phone}</a>
-          <a href={CONTACT.whatsapp.url} target="_blank" rel="noopener noreferrer">WhatsApp: Click here</a>
+          <p>WhatsApp didn&apos;t open?</p>
+          <button
+            type="button"
+            className="query-form__submit"
+            onClick={() => {
+              openWhatsApp(
+                formatEnquiryWhatsAppMessage({
+                  formType,
+                  name: formData.name,
+                  email: formData.email,
+                  phone: formData.phone,
+                  company: formData.company,
+                  message: formData.message,
+                })
+              )
+            }}
+          >
+            Open WhatsApp Again
+          </button>
+          <a href={`tel:${CONTACT.phoneRaw}`}>Or call: {CONTACT.phone}</a>
         </div>
       </div>
     )
@@ -245,15 +276,14 @@ export default function QueryForm({
 
         <div className="query-form__footer">
           <button type="submit" className="query-form__submit" disabled={isSubmitting}>
-            {isSubmitting ? 'SUBMITTING...' : buttonLabel}
+            {isSubmitting ? 'OPENING WHATSAPP…' : buttonLabel}
           </button>
 
           <div className="query-form__alt-contact">
-            Or call us directly:{' '}
-            <a href={`tel:${CONTACT.phoneRaw}`}>{CONTACT.phone}</a>
+            Submits via WhatsApp to {CONTACT.phone}
             <br />
-            WhatsApp:{' '}
-            <a href={CONTACT.whatsapp.url} target="_blank" rel="noopener noreferrer">Click here</a>
+            Or call:{' '}
+            <a href={`tel:${CONTACT.phoneRaw}`}>{CONTACT.phone}</a>
           </div>
         </div>
       </form>

@@ -274,8 +274,9 @@ export default async function CitySEOPage({
 
         <PageLeadSection
           title={`Security Services in ${city.name}`}
-          subtitle={`Request a free quote for manned guarding and security in ${city.name}, ${city.state}.`}
+          subtitle={`Request a free quote for ${city.name} — submit opens WhatsApp with your full enquiry.`}
           defaultMessage={`I need security services in ${city.name}, ${city.state}.`}
+          formType={`Security Quote — ${city.name}`}
         />
       </main>
     </>

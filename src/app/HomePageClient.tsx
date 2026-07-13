@@ -381,7 +381,8 @@ export default function HomePageClient() {
       <section className="home-query-section page-lead-section" style={{ padding: '4rem 1.5rem' }}>
         <QueryForm
           title="Get a Free Security Quote"
-          subtitle="Tell us about your facility — we respond within 2 business hours."
+          subtitle="Tell us about your facility — submit opens WhatsApp with your details so we can reply instantly."
+          formType="Homepage Quote"
         />
       </section>
     </main>

@@ -297,6 +297,12 @@
   text-decoration: none;
 }
 
+.query-form__contact-direct .query-form__submit {
+  margin: 0.5rem 0 1rem;
+  width: 100%;
+  max-width: 320px;
+}
+
 .query-form__contact-direct a:hover {
   text-decoration: underline;
 }

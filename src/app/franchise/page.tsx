@@ -155,9 +155,10 @@ export default function FranchisePage() {
       <PageLeadSection
         id="franchise-form"
         title="Apply for a Silbar Franchise"
-        subtitle="Tell us your preferred city and investment capacity. Our franchise team replies within 24 hours."
+        subtitle="Tell us your preferred city and investment capacity — submit opens WhatsApp with your full enquiry."
         defaultMessage="I am interested in a Silbar Security franchise partnership. Preferred city: "
-        submitLabel="SUBMIT FRANCHISE ENQUIRY"
+        submitLabel="SUBMIT ON WHATSAPP"
+        formType="Franchise Enquiry"
       />
 
 </main>
