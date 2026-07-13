@@ -11,7 +11,7 @@
 }
 
 .page-hero--tall {
-  max-width: 1400px;
+  max-width: var(--shell-max, 1400px);
   padding: clamp(6rem, 12vh, 10rem) clamp(1.5rem, 5vw, 6rem) clamp(3rem, 6vh, 5rem);
 }
 

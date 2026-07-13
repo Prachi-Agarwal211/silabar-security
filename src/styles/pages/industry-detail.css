@@ -6,7 +6,7 @@
 }
 
 .industry-detail-hero {
-  max-width: 1400px;
+  max-width: var(--shell-max, 1400px);
   margin: 0 auto;
   padding: clamp(7rem, 14vh, 10rem) clamp(1.5rem, 5vw, 6rem) clamp(3rem, 6vh, 5rem);
   border-bottom: 1px solid rgba(255,255,255,0.06);

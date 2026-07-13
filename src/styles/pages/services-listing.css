@@ -9,7 +9,7 @@
 }
 
 .services-intro-inner {
-  max-width: 1400px;
+  max-width: var(--shell-max, 1400px);
   margin: 0 auto;
   padding: 0 clamp(1.5rem, 5vw, 4rem);
   display: grid;
@@ -156,7 +156,7 @@
 .services-quickjump-inner {
   display: flex;
   align-items: center;
-  max-width: 1400px;
+  max-width: var(--shell-max, 1400px);
   margin: 0 auto;
   padding: 0 clamp(1.5rem, 5vw, 4rem);
   gap: 0;

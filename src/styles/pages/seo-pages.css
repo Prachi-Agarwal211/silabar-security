@@ -61,7 +61,7 @@
 /* Highlight box for local contact */
 .seo-local-cta-band {
   margin: 0 auto;
-  max-width: 1400px;
+  max-width: var(--shell-max, 1400px);
   padding: 0 clamp(1.25rem, 4vw, 3rem) clamp(2rem, 4vh, 3rem);
 }
 
