@@ -84,4 +84,12 @@
   --bp-md: 768px;   /* Tablet */
   --bp-lg: 1024px;  /* Desktop */
   --bp-xl: 1280px;  /* Large Desktop */
+  --bp-mac: 1440px; /* MacBook Pro 14/16 landscape */
+  --bp-mac-pro: 1728px; /* 16" scaled / Studio */
+  --bp-uw: 1920px;  /* Ultrawide */
+
+  /* Layout rhythm */
+  --shell-max: 1400px;
+  --section-y: clamp(3.5rem, 8vh, 7rem);
+  --header-h: 72px;
 }

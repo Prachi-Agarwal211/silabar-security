@@ -1,0 +1,313 @@
+/* ============================================
+   SILBAR BRAND SYSTEM — unique section shells
+   Mac-first wide layouts + non-repeating patterns
+   ============================================ */
+
+:root {
+  --shell-max: 1400px;
+  --shell-max-mac: 1600px;
+  --shell-max-ultrawide: 1760px;
+  --shell-gutter: clamp(1.25rem, 4vw, 4rem);
+  --brand-gold-line: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-gold) 20%,
+    var(--color-gold-light) 50%,
+    var(--color-gold) 80%,
+    transparent
+  );
+}
+
+/* MacBook Pro 14/16 & Studio Display comfort */
+@media (min-width: 1440px) {
+  :root {
+    --shell-max: 1480px;
+    --shell-gutter: clamp(2rem, 5vw, 5rem);
+  }
+  .section-heading {
+    font-size: clamp(2.4rem, 3.2vw, 4rem);
+  }
+}
+
+@media (min-width: 1728px) {
+  :root {
+    --shell-max: var(--shell-max-mac);
+  }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --shell-max: var(--shell-max-ultrawide);
+  }
+}
+
+/* Unified content shell — use instead of random max-widths */
+.shell {
+  width: 100%;
+  max-width: var(--shell-max);
+  margin-inline: auto;
+  padding-inline: var(--shell-gutter);
+}
+
+.shell--narrow {
+  max-width: 920px;
+}
+
+.shell--wide {
+  max-width: min(100%, var(--shell-max-ultrawide));
+}
+
+/* ─── Pattern A: Gold hairline brand rail ─── */
+.brand-rail {
+  position: relative;
+}
+.brand-rail::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(100%, var(--shell-max));
+  height: 1px;
+  background: var(--brand-gold-line);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+/* ─── Pattern B: Cherry vertical accent (left edge) ─── */
+.brand-spine {
+  position: relative;
+}
+.brand-spine::after {
+  content: '';
+  position: absolute;
+  left: max(0.5rem, calc((100% - var(--shell-max)) / 2 + var(--shell-gutter) - 1rem));
+  top: 15%;
+  bottom: 15%;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--color-cherry) 20%,
+    var(--color-gold) 50%,
+    var(--color-cherry) 80%,
+    transparent
+  );
+  opacity: 0.35;
+  pointer-events: none;
+}
+@media (max-width: 900px) {
+  .brand-spine::after {
+    display: none;
+  }
+}
+
+/* ─── Pattern C: Diagonal brand band ─── */
+.brand-band {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-midnight);
+  color: var(--color-cream);
+}
+.brand-band::before {
+  content: '';
+  position: absolute;
+  inset: -20% -10%;
+  background:
+    radial-gradient(ellipse 50% 60% at 15% 40%, rgba(140, 31, 50, 0.35), transparent 60%),
+    radial-gradient(ellipse 40% 50% at 85% 60%, rgba(191, 149, 63, 0.12), transparent 55%);
+  pointer-events: none;
+}
+.brand-band__inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Pattern D: Asymmetric split shell ─── */
+.brand-split {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(2rem, 4vw, 4.5rem);
+  align-items: center;
+}
+@media (max-width: 960px) {
+  .brand-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── Pattern E: Bento with gold corner ticks ─── */
+.brand-card {
+  position: relative;
+  background: var(--color-paper);
+  border: 1px solid rgba(140, 31, 50, 0.1);
+  border-radius: 6px;
+  padding: clamp(1.25rem, 2vw, 1.75rem);
+  transition: transform 0.35s var(--ease-smooth), border-color 0.35s, box-shadow 0.35s;
+}
+.brand-card::before,
+.brand-card::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--color-gold);
+  border-style: solid;
+  opacity: 0.7;
+  pointer-events: none;
+}
+.brand-card::before {
+  top: 8px;
+  left: 8px;
+  border-width: 1.5px 0 0 1.5px;
+}
+.brand-card::after {
+  bottom: 8px;
+  right: 8px;
+  border-width: 0 1.5px 1.5px 0;
+}
+@media (hover: hover) and (pointer: fine) {
+  .brand-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(191, 149, 63, 0.35);
+    box-shadow: 0 16px 40px rgba(11, 14, 20, 0.08);
+  }
+}
+
+/* ─── Pattern F: Trust marquee (unique, not generic) ─── */
+.brand-trust-bar {
+  background: var(--color-cherry-deep);
+  border-block: 1px solid rgba(212, 175, 55, 0.25);
+  overflow: hidden;
+  position: relative;
+}
+.brand-trust-bar::before,
+.brand-trust-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+.brand-trust-bar::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--color-cherry-deep), transparent);
+}
+.brand-trust-bar::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--color-cherry-deep), transparent);
+}
+.brand-trust-track {
+  display: flex;
+  width: max-content;
+  gap: 0;
+  animation: brandTrustScroll 40s linear infinite;
+}
+.brand-trust-track:hover {
+  animation-play-state: paused;
+}
+.brand-trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem 2rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-gold-light);
+  white-space: nowrap;
+  border-right: 1px solid rgba(212, 175, 55, 0.15);
+}
+.brand-trust-item__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  box-shadow: 0 0 8px var(--color-gold-glow);
+  flex-shrink: 0;
+}
+@keyframes brandTrustScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand-trust-track {
+    animation: none;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ─── Pattern G: Mac cinematic section padding ─── */
+.section-pad {
+  padding-block: clamp(3.5rem, 8vh, 7rem);
+}
+.section-pad--tight {
+  padding-block: clamp(2.5rem, 5vh, 4rem);
+}
+.section-pad--hero {
+  padding-block: clamp(5rem, 12vh, 9rem);
+}
+
+/* ─── Pattern H: Staggered brand seal ─── */
+.brand-seal {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(212, 175, 55, 0.45);
+  background: rgba(11, 14, 20, 0.4);
+  color: var(--color-gold-light);
+  font-family: var(--font-display);
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.25;
+  box-shadow: inset 0 0 0 4px rgba(140, 31, 50, 0.2);
+}
+
+/* ─── GPU-friendly motion helpers ─── */
+.will-change-transform {
+  will-change: transform;
+}
+.gpu-layer {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Smooth interactive focus for Mac trackpad users */
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary,
+  .btn-secondary,
+  .service-detail-cta,
+  .hero-nav-cta {
+    transition:
+      transform 0.25s var(--ease-smooth),
+      background-color 0.25s var(--ease-smooth),
+      box-shadow 0.25s var(--ease-smooth),
+      border-color 0.25s;
+  }
+  .btn-primary:hover,
+  .service-detail-cta--primary:hover {
+    box-shadow: 0 10px 28px rgba(140, 31, 50, 0.28);
+  }
+}
+
+/* Content-visibility for long SEO pages (perf) */
+.seo-about-section,
+.seo-services-section,
+.seo-cities-section,
+.service-detail-faq {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+}

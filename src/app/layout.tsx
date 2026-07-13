@@ -7,18 +7,19 @@ import DynamicBreadcrumbSchema from '@/components/seo/DynamicBreadcrumbSchema'
 import ExitIntentPopup from '@/components/ui/ExitIntentPopup'
 import { CONTACT } from '@/lib/config'
 
+// Fewer weights = faster first paint on MacBook / 4G
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   variable: '--font-space-grotesk',
   display: 'swap',
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['500', '600', '700'],
 })
 
 const manrope = Manrope({
   subsets: ['latin'],
   variable: '--font-manrope',
   display: 'swap',
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400', '500', '600', '700'],
 })
 
 export const metadata: Metadata = {
@@ -79,7 +80,15 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://www.silbarsecurity.in',
+    types: {
+      'text/plain': [{ url: '/llms.txt', title: 'llms.txt' }],
+    },
   },
+  other: {
+    'ai-content-declaration': 'human-authored-brand-site',
+    'geo-optimized': 'true',
+  },
+  category: 'security',
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
@@ -192,7 +201,12 @@ export default function RootLayout({
                 'Bank ATM Security',
                 'Fire Life Safety',
                 'Mobile Patrol Security',
+                'Security Guard Services Jaipur',
+                'Security Agency Delhi NCR',
+                'Security Company Ahmedabad',
               ],
+              slogan: 'Building Trust Through Professional Security & Compliance',
+              areaServed: { '@type': 'Country', name: 'India' },
               hasCredential: [
                 {
                   '@type': 'EducationalOccupationalCredential',
@@ -204,7 +218,7 @@ export default function RootLayout({
             }),
           }}
         />
-        {/* WebSite + SearchAction + Speakable schema — GEO-optimized */}
+        {/* WebSite + Speakable — Generative Engine Optimization */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -215,19 +229,64 @@ export default function RootLayout({
               url: 'https://www.silbarsecurity.in',
               name: 'Silbar Security Services',
               description:
-                'Private security agency in India. Manned guarding, CCTV, facility management, event security.',
-              potentialAction: {
-                '@type': 'SearchAction',
-                target: {
-                  '@type': 'EntryPoint',
-                  urlTemplate: 'https://www.silbarsecurity.in/search?q={search_term_string}',
-                },
-                'query-input': 'required name=search_term_string',
-              },
+                'ISO 9001:2015 certified private security agency in India. Manned guarding, industrial security, CCTV support, facility protection across 200+ cities.',
+              inLanguage: 'en-IN',
+              publisher: { '@id': 'https://www.silbarsecurity.in/#organization' },
               speakable: {
                 '@type': 'SpeakableSpecification',
-                cssSelector: ['.seo-page-title', '.seo-page-subtitle', '.service-detail-section-title', '.service-detail-faq-q'],
+                cssSelector: [
+                  '.seo-page-title',
+                  '.seo-page-subtitle',
+                  '.service-detail-section-title',
+                  '.service-detail-faq-q',
+                  '.service-detail-faq-a',
+                  '.about-hero__title',
+                  '.section-heading',
+                  '.seo-about-content p',
+                ],
               },
+            }),
+          }}
+        />
+        {/* ProfessionalService schema for GEO answer engines */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'ProfessionalService',
+              '@id': 'https://www.silbarsecurity.in/#security-service',
+              name: 'Silbar Security Guard Services',
+              image: 'https://www.silbarsecurity.in/og-image.jpg',
+              url: 'https://www.silbarsecurity.in',
+              telephone: CONTACT.phone,
+              priceRange: '$$',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: '208, 2nd Floor, Samod Tower, Sansar Chand Road',
+                addressLocality: 'Jaipur',
+                addressRegion: 'Rajasthan',
+                postalCode: '302001',
+                addressCountry: 'IN',
+              },
+              geo: {
+                '@type': 'GeoCoordinates',
+                latitude: 26.9124,
+                longitude: 75.7873,
+              },
+              openingHoursSpecification: {
+                '@type': 'OpeningHoursSpecification',
+                dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                opens: '09:00',
+                closes: '19:00',
+              },
+              areaServed: 'IN',
+              serviceType: [
+                'Manned Guarding',
+                'Industrial Security',
+                'Event Security',
+                'Facility Security',
+              ],
             }),
           }}
         />

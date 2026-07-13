@@ -8,20 +8,26 @@ const tickerCallback = (time: number) => {
 }
 
 export function initLenis() {
+  if (typeof window === 'undefined') return null
   if (lenis) return lenis
 
-  // ponytail: shorter duration on mobile for snappier scroll
-  const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches
+  // Respect reduced motion — native scroll is better for a11y & battery
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  if (reduceMotion) return null
+
+  const isMobile = window.matchMedia('(max-width: 767px)').matches
+  // MacBook / desktop: slightly longer cinematic glide
+  const isMacWide = window.matchMedia('(min-width: 1280px)').matches
+
   lenis = new Lenis({
-    duration: isMobile ? 0.8 : 1.2,
+    duration: isMobile ? 0.75 : isMacWide ? 1.15 : 1.05,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    touchMultiplier: isMobile ? 1.5 : 2,
+    touchMultiplier: isMobile ? 1.4 : 1.8,
+    smoothWheel: true,
+    syncTouch: false,
   })
 
-  // Sync Lenis → ScrollTrigger
   lenis.on('scroll', ScrollTrigger.update)
-
-  // Drive Lenis from GSAP ticker (not its own RAF)
   gsap.ticker.add(tickerCallback)
   gsap.ticker.lagSmoothing(0)
 

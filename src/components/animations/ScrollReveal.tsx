@@ -12,6 +12,12 @@ interface ScrollRevealProps {
   style?: React.CSSProperties
 }
 
+/**
+ * Performance-minded scroll reveal:
+ * - transform + opacity only (no blur on large screens — blur is expensive on Mac GPU)
+ * - shorter distances on mobile
+ * - fully skipped when prefers-reduced-motion
+ */
 export default function ScrollReveal({
   children,
   direction = 'up',
@@ -27,10 +33,14 @@ export default function ScrollReveal({
 
     const mm = gsap.matchMedia()
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      // ponytail: reduce distance on mobile for snappier feel
       const isMobile = window.innerWidth < 768
-      const distance = isMobile ? 30 : 60
-      const fromVars: Record<string, unknown> = { opacity: 0, filter: 'blur(8px)' }
+      const isMac = window.innerWidth >= 1280
+      const distance = isMobile ? 24 : isMac ? 40 : 48
+      const fromVars: gsap.TweenVars = {
+        opacity: 0,
+        // Avoid filter:blur on desktop — major paint cost
+        ...(isMobile ? { filter: 'blur(4px)' } : {}),
+      }
       if (direction === 'up') fromVars.y = distance
       else if (direction === 'down') fromVars.y = -distance
       else if (direction === 'left') fromVars.x = distance
@@ -38,13 +48,15 @@ export default function ScrollReveal({
 
       gsap.from(el, {
         ...fromVars,
-        duration: 1.2,
+        duration: isMac ? 0.9 : 1.05,
         delay,
-        ease: 'expo.out',
+        ease: 'power3.out',
+        clearProps: 'filter',
         scrollTrigger: {
           trigger: el,
-          start: 'top 85%',
+          start: 'top 88%',
           toggleActions: 'play none none none',
+          once: true,
         },
       })
     })

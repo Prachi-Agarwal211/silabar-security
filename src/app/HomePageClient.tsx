@@ -136,8 +136,29 @@ export default function HomePageClient() {
       <ScrollExperience />
       <ServicesGrid services={SERVICES} />
 
+      {/* Brand claim strip — unique pattern between services & why */}
+      <section className="brand-band section-pad--tight" aria-label="Brand promise">
+        <div className="brand-band__inner shell brand-split">
+          <div>
+            <span className="section-eyebrow section-eyebrow--light">SILBAR PROMISE</span>
+            <h2 className="section-heading section-heading--on-dark" style={{ marginBottom: '0.75rem' }}>
+              Security You Can <em className="brand-shimmer-text">Measure.</em>
+            </h2>
+            <p style={{ color: 'rgba(250,248,244,0.75)', lineHeight: 1.7, maxWidth: 520, margin: 0 }}>
+              Trained manpower. Documented SOPs. Statutory-aware commercials. Account ownership.
+              Built for factories, campuses, hospitals, and multi-city brands across India.
+            </p>
+          </div>
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+            <div className="brand-seal motion-glow">ISO<br />9001<br />2015</div>
+            <div className="brand-seal">EST<br />2005<br />JAIPUR</div>
+            <div className="brand-seal">7000+<br />PROS</div>
+          </div>
+        </div>
+      </section>
+
       {/* ─── WHY SILBAR ────────────────────────────────── */}
-      <section className="why-silbar-section" ref={whySilbarRef} aria-labelledby="why-silbar-title">
+      <section className="why-silbar-section brand-rail" ref={whySilbarRef} aria-labelledby="why-silbar-title">
         {/* Background image */}
         <div className="why-silbar-bg" aria-hidden="true" />
 

@@ -10,6 +10,7 @@
 @layer utilities {
   @import "../styles/utilities.css";
   @import "../styles/animations.css";
+  @import "../styles/brand-system.css";
 }
 
 @layer components {

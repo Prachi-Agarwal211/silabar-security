@@ -8,9 +8,9 @@ import { CheckCircle2 } from 'lucide-react'
  */
 export default function LocationRichContent({ content }: { content: LocationSEOContent }) {
   return (
-    <>
+    <div className="brand-spine brand-rail">
       {/* Intro */}
-      <section className="seo-about-section">
+      <section className="seo-about-section section-pad--tight">
         <div className="service-detail-section-inner">
           <ScrollReveal>
             <h2 className="service-detail-section-title">
@@ -242,6 +242,6 @@ export default function LocationRichContent({ content }: { content: LocationSEOC
           <p className="seo-closing-cta">{content.closingCta}</p>
         </div>
       </section>
-    </>
+    </div>
   )
 }
