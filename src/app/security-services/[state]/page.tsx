@@ -5,13 +5,14 @@ import { STATES, CITIES } from '@/data/locations'
 import { SERVICES } from '@/data/services'
 import { GEO_COORDINATES } from '@/lib/geo-coordinates'
 import { generateStateContent } from '@/lib/seo-content-generator'
-import { ArrowRight, Phone, MapPin, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, Phone, MapPin } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import PageHero from '@/components/layout/PageHero'
 import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
+import LocationRichContent from '@/components/sections/LocationRichContent'
 
 export const revalidate = 86400
 
@@ -210,76 +211,7 @@ export default async function StateSEOPage({
           </div>
         </div>
 
-        <section className="seo-about-section">
-          <div className="service-detail-section-inner">
-            <ScrollReveal>
-              <h2 className="service-detail-section-title">
-                Security Company in {location.name}
-              </h2>
-            </ScrollReveal>
-            <div className="seo-about-content">
-              {content.intro.map((paragraph, i) => (
-                <p key={i}>{paragraph}</p>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="seo-services-section">
-          <div className="service-detail-section-inner">
-            <ScrollReveal>
-              <h2 className="service-detail-section-title">{content.sectorsHeading}</h2>
-              <p className="seo-cities-note" style={{ marginBottom: '1.25rem' }}>{content.sectorsBlurb}</p>
-            </ScrollReveal>
-            <ul className="seo-sector-list">
-              {content.sectors.map((s) => (
-                <li key={s} className="seo-sector-item">
-                  <CheckCircle2 size={16} aria-hidden="true" />
-                  <span>{s}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <section className="seo-cities-section">
-          <div className="service-detail-section-inner">
-            <ScrollReveal>
-              <h2 className="service-detail-section-title">Why Silbar in {location.name}</h2>
-            </ScrollReveal>
-            <ul className="seo-why-grid">
-              {content.whyPoints.map((point) => (
-                <li key={point} className="seo-why-item">
-                  <CheckCircle2 size={18} aria-hidden="true" />
-                  <span>{point}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="seo-about-content" style={{ marginTop: '1.5rem' }}>
-              <p>{content.operations}</p>
-              <p>{content.compliance}</p>
-            </div>
-          </div>
-        </section>
-
-        <section className="seo-about-section">
-          <div className="service-detail-section-inner">
-            <ScrollReveal>
-              <h2 className="service-detail-section-title">How deployment works in {location.name}</h2>
-            </ScrollReveal>
-            <ol className="seo-process-list">
-              {content.process.map((step, i) => (
-                <li key={step.title} className="seo-process-item">
-                  <span className="seo-process-num">{String(i + 1).padStart(2, '0')}</span>
-                  <div>
-                    <h3>{step.title}</h3>
-                    <p>{step.desc}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
+        <LocationRichContent content={content} />
 
         <section className="seo-services-section">
           <div className="service-detail-section-inner">
@@ -334,24 +266,6 @@ export default async function StateSEOPage({
               {location.name}.{' '}
               <Link href="/contact" className="seo-cities-link">Contact us for your location.</Link>
             </p>
-          </div>
-        </section>
-
-        <section className="service-detail-faq">
-          <div className="service-detail-section-inner">
-            <ScrollReveal>
-              <h2 className="service-detail-section-title">
-                FAQs — Security Services in {location.name}
-              </h2>
-            </ScrollReveal>
-            <div className="service-detail-faq-list">
-              {content.faqs.map(({ q, a }) => (
-                <details key={q} className="service-detail-faq-item">
-                  <summary className="service-detail-faq-q">{q}</summary>
-                  <p className="service-detail-faq-a">{a}</p>
-                </details>
-              ))}
-            </div>
           </div>
         </section>
 
