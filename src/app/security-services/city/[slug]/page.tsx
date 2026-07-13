@@ -11,6 +11,7 @@ import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import PageHero from '@/components/layout/PageHero'
 import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
+import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export async function generateStaticParams() {
   return CITIES.map((c) => ({ slug: c.slug }))
@@ -125,6 +126,9 @@ export default async function CitySEOPage({
 
       <main className="seo-page" id="main-content">
         <PageHero
+          variant="image"
+          imageSrc="/hero-guard.webp"
+          eyebrow={`${city.name.toUpperCase()} · ${city.state.toUpperCase()}`}
           title={<SplitTextReveal text={`Security Services in ${city.name}`} mode="words" />}
           subtitle={
             <>
@@ -137,6 +141,8 @@ export default async function CitySEOPage({
           topContent={
             <nav className="breadcrumb" aria-label="Breadcrumb">
               <Link href="/" className="breadcrumb__link">Home</Link>
+              <span className="breadcrumb__sep">›</span>
+              <Link href="/security-services" className="breadcrumb__link">Locations</Link>
               <span className="breadcrumb__sep">›</span>
               <Link href={`/security-services/${city.stateSlug}`} className="breadcrumb__link">{city.state}</Link>
               <span className="breadcrumb__sep">›</span>
@@ -265,6 +271,12 @@ export default async function CitySEOPage({
             </div>
           </ScrollReveal>
         </section>
+
+        <PageLeadSection
+          title={`Security Services in ${city.name}`}
+          subtitle={`Request a free quote for manned guarding and security in ${city.name}, ${city.state}.`}
+          defaultMessage={`I need security services in ${city.name}, ${city.state}.`}
+        />
       </main>
     </>
   )

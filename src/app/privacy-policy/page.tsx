@@ -5,6 +5,7 @@ import PageHero from '@/components/layout/PageHero'
 import { CONTACT } from '@/lib/config'
 import { Phone } from 'lucide-react'
 import { ogMetadata } from '@/lib/metadata'
+import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | Silbar Security Services',
@@ -109,6 +110,9 @@ export default function PrivacyPolicyPage() {
           </a>
         </div>
       </section>
-    </main>
+    
+      <PageLeadSection title="Questions About Privacy?" subtitle="Contact us for any data protection queries or service enquiries." />
+
+</main>
   )
 }

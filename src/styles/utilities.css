@@ -268,13 +268,25 @@
 
 .sticky-cta {
   position: fixed;
-  bottom: calc(clamp(5.5rem, 3vh + 4.5rem, 6.5rem) + env(safe-area-inset-bottom, 0px));
+  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
   right: clamp(1rem, 2vw, 1.5rem);
-  z-index: 50;
+  z-index: 90;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   align-items: flex-end;
+  pointer-events: none;
+}
+
+.sticky-cta > * {
+  pointer-events: auto;
+}
+
+@media (max-width: 1024px) {
+  .sticky-cta {
+    /* Clear mobile browser chrome + leave room for reading */
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  }
 }
 
 .sticky-cta__whatsapp {

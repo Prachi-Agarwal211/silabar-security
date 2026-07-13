@@ -5,6 +5,7 @@ import PageHero from '@/components/layout/PageHero'
 import { CONTACT } from '@/lib/config'
 import { Phone } from 'lucide-react'
 import { ogMetadata } from '@/lib/metadata'
+import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
   title: 'Terms of Use | Silbar Security Services',
@@ -107,6 +108,9 @@ export default function TermsPage() {
           </a>
         </div>
       </section>
-    </main>
+    
+      <PageLeadSection title="Ready to Engage Silbar?" subtitle="Request a quote or ask our team anything about our services." />
+
+</main>
   )
 }

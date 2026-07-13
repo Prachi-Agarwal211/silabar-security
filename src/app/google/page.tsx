@@ -5,6 +5,7 @@ import ScrollReveal from '@/components/animations/ScrollReveal'
 import { Phone, Mail, MapPin, Clock, Shield, CheckCircle } from 'lucide-react'
 import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
+import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
   title: 'Silbar Security Services — Trusted Security Agency | Jaipur, Delhi, Ahmedabad',
@@ -40,7 +41,7 @@ export default function GoogleLandingPage() {
       {/* Hero — Quick Trust */}
       <section style={{ padding: '4rem 2rem 3rem', textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
         <ScrollReveal>
-          <Image src="/logo.png" alt="Silbar Security" width={100} height={100} style={{ margin: '0 auto 1.5rem', borderRadius: '12px' }} />
+          <Image src="/logo.webp" alt="Silbar Security" width={100} height={100} style={{ margin: '0 auto 1.5rem', borderRadius: '12px' }} />
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 800, color: 'white', marginBottom: '1rem' }}>
             Silbar Security <span style={{ color: 'var(--color-cherry)' }}>Services</span>
           </h1>
@@ -158,6 +159,13 @@ export default function GoogleLandingPage() {
           </Link>
         </div>
       </section>
-    </main>
+    
+      <PageLeadSection
+        title="Get Your Free Security Quote"
+        subtitle="Found us on Google? Tell us about your site — we respond within 2 hours."
+        defaultMessage="I found Silbar Security on Google and need a security quote."
+      />
+
+</main>
   )
 }

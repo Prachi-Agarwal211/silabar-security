@@ -7,6 +7,7 @@ import PageHero from '@/components/layout/PageHero'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import { ogMetadata } from '@/lib/metadata'
+import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export async function generateStaticParams() {
   return BLOG_POSTS.map((post) => ({ slug: post.slug }))
@@ -116,6 +117,12 @@ export default async function BlogPostPage({
           </footer>
         </article>
       </section>
-    </main>
+    
+      <PageLeadSection
+        title="Protect Your Facility with Silbar"
+        subtitle="Talk to our security consultants for a tailored quote."
+      />
+
+</main>
   )
 }

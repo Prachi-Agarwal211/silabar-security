@@ -139,6 +139,26 @@ export default function IndustriesGrid({ industries }: IndustriesGridProps) {
                 Explore <ArrowRight size={12} />
               </span>
             </div>
+            {/* Soft photo texture layer for depth */}
+            <div
+              className="industry-photo-card__texture"
+              aria-hidden="true"
+              style={{
+                position: 'absolute',
+                inset: 0,
+                backgroundImage: i % 3 === 0
+                  ? "url('/industries-bg.webp')"
+                  : i % 3 === 1
+                    ? "url('/why-silbar-bg.webp')"
+                    : "url('/hero-guard.webp')",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                opacity: 0.18,
+                mixBlendMode: 'overlay',
+                zIndex: 0,
+                pointerEvents: 'none',
+              }}
+            />
             {/* Scrim overlay */}
             <div className="industry-photo-card__scrim" aria-hidden="true" />
           </Link>

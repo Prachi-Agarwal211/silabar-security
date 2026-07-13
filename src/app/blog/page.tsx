@@ -4,6 +4,7 @@ import PageHero from '@/components/layout/PageHero'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import BlogFilter from '@/components/sections/BlogFilter'
 import { ogMetadata } from '@/lib/metadata'
+import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
   title: 'Blog | Silbar Security Insights',
@@ -41,6 +42,12 @@ export default function BlogListingPage() {
           <BlogFilter />
         </div>
       </section>
-    </main>
+    
+      <PageLeadSection
+        title="Need Security for Your Business?"
+        subtitle="Get a free consultation from Silbar Security. We respond within 24 hours."
+      />
+
+</main>
   )
 }

@@ -1,62 +1,87 @@
 /* ============================================
-   SEO Page CTAs section (state + city pages)
+   SEO Location Pages (state + city)
+   Light paper body + image heroes
    ============================================ */
+
+.seo-page {
+  background: var(--color-paper);
+}
+
+/* City tags */
 .seo-city-tag {
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
-  padding: 0.3rem 0.7rem;
+  gap: 0.35rem;
+  padding: 0.45rem 0.85rem;
   font-size: 0.75rem;
   font-family: var(--font-body);
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   border-radius: 4px;
-  border: 1px solid rgba(191, 149, 63, 0.3);
-  color: var(--color-gold);
+  border: 1px solid rgba(140, 31, 50, 0.15);
+  color: var(--color-cherry);
+  background: rgba(140, 31, 50, 0.04);
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s;
 }
 
 .seo-city-tag--link {
-  text-decoration: none;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .seo-city-tag--link:hover {
-  background: var(--color-gold);
-  color: var(--color-midnight);
-  border-color: var(--color-gold);
+  background: var(--color-cherry);
+  color: var(--color-cream);
+  border-color: var(--color-cherry);
 }
 
-/* SEO pages */
+/* Services grid on location pages */
 .seo-services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.75rem;
+  gap: 0.85rem;
 }
 
-@media (max-width: 768px) { .seo-services-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 480px) { .seo-services-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) {
+  .seo-services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .seo-services-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 .seo-service-link {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
-  padding: 0.9rem 1rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(191, 149, 63, 0.1);
-  border-radius: 8px;
+  padding: 1rem 1.1rem;
+  background: var(--color-paper);
+  border: 1px solid rgba(140, 31, 50, 0.1);
+  border-radius: 4px;
   text-decoration: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(11, 14, 20, 0.03);
 }
 
-.seo-service-link:hover { border-color: rgba(191, 149, 63, 0.35); }
+.seo-service-link:hover {
+  border-color: rgba(140, 31, 50, 0.28);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(11, 14, 20, 0.06);
+}
 
 .seo-service-link__title {
   font-family: var(--font-display);
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--color-cream);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-midnight);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 .seo-service-link__location {
@@ -64,49 +89,52 @@
   align-items: center;
   gap: 0.25rem;
   font-family: var(--font-body);
-  font-size: 0.65rem;
+  font-size: 0.68rem;
   color: var(--color-horizon-500);
 }
 
 .seo-cities-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
+  gap: 0.55rem;
+  margin-bottom: 1.25rem;
 }
 
 .seo-cities-note {
   font-family: var(--font-body);
-  font-size: 0.82rem;
-  color: rgba(244, 241, 234, 0.5);
+  font-size: 0.88rem;
+  color: var(--color-horizon-500);
+  line-height: 1.6;
 }
 
 .seo-cities-link {
-  color: var(--color-gold);
+  color: var(--color-cherry);
+  font-weight: 700;
   text-decoration: none;
 }
 
-.seo-services-section {
-  margin: 0 auto;
-  border-top: 1px solid rgba(191, 149, 63, 0.08);
+.seo-cities-link:hover {
+  text-decoration: underline;
 }
 
-.seo-cities-section {
+.seo-services-section,
+.seo-cities-section,
+.seo-about-section {
   margin: 0 auto;
-  border-top: 1px solid rgba(191, 149, 63, 0.08);
+  border-top: 1px solid rgba(140, 31, 50, 0.08);
+  background: var(--color-paper);
 }
 
 .seo-about-section {
-  margin: 0 auto;
-  border-top: 1px solid rgba(191, 149, 63, 0.08);
+  background: linear-gradient(180deg, var(--color-champagne) 0%, var(--color-paper) 100%);
 }
 
 .seo-about-content p {
   font-family: var(--font-body);
-  font-size: 0.9rem;
-  line-height: 1.8;
-  color: rgba(244, 241, 234, 0.7);
-  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: var(--color-horizon-600);
+  margin-bottom: 1.1rem;
   max-width: 780px;
 }
 
@@ -130,4 +158,25 @@
   color: var(--color-horizon-600);
   max-width: 680px;
   margin-bottom: 2rem;
+}
+
+/* Location page section titles */
+.seo-page .service-detail-section-title {
+  color: var(--color-midnight);
+}
+
+.seo-page .service-detail-faq-q {
+  color: var(--color-midnight);
+}
+
+.seo-page .service-detail-faq-a {
+  color: var(--color-horizon-600);
+}
+
+.seo-page .service-detail-faq-item {
+  background: var(--color-paper);
+  border: 1px solid rgba(140, 31, 50, 0.1);
+  border-radius: 4px;
+  margin-bottom: 0.65rem;
+  padding: 0.25rem 0.5rem;
 }

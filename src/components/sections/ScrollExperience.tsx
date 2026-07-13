@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { ArrowRight, ShieldCheck, Award } from 'lucide-react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import { CONTACT } from '@/lib/config'
 
 export default function ScrollExperience() {
   const [isMobile, setIsMobile] = useState(false)
@@ -19,48 +20,43 @@ export default function ScrollExperience() {
 
   useGSAP(() => {
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
-    
-    // Initial state setup to prevent flash of unstyled content
+
     gsap.set('.hero-content-layer > *', { y: 30, opacity: 0 })
-    gsap.set('.trust-badge--floating', { x: 30, opacity: 0 })
     gsap.set('.hero-scroll-arrow', { opacity: 0 })
 
     tl.to('.hero-content-layer > *', {
       y: 0,
       opacity: 1,
       duration: 1,
-      stagger: 0.15,
-      delay: 0.2 // Small delay for smoother feel after page load
-    })
-    .to('.trust-badge--floating', {
-      x: 0,
-      opacity: 1,
-      duration: 0.8,
-      stagger: 0.15
-    }, '-=0.6')
-    .to('.hero-scroll-arrow', {
-      opacity: 0.6,
-      duration: 1
-    }, '-=0.2')
+      stagger: 0.12,
+      delay: 0.2,
+    }).to(
+      '.hero-scroll-arrow',
+      {
+        opacity: 0.6,
+        duration: 1,
+      },
+      '-=0.2'
+    )
   }, { scope: containerRef })
 
   return (
     <section className="scroll-hero-container" ref={containerRef}>
-      {/* Background Video */}
       <div className="hero-video-wrapper">
         <video
-          src={isMobile ? "/hero-720p.mp4" : "/hero-1080p.mp4"}
+          src={isMobile ? '/hero-720p.mp4' : '/hero-1080p.mp4'}
           className="hero-video-bg"
           playsInline
           muted
           loop
           autoPlay
-          preload="auto"
+          preload="metadata"
+          poster="/hero-guard.webp"
         />
         <div className="hero-video-overlay" />
       </div>
 
-      {/* Text Content */}
+      {/* Content + badges nested together so mobile layout stays correct */}
       <div className="hero-content-layer">
         <div className="trust-eyebrow trust-eyebrow--dark">
           <span className="trust-eyebrow__rule trust-eyebrow__rule--dark" />
@@ -68,7 +64,8 @@ export default function ScrollExperience() {
         </div>
 
         <h1 className="hero-cinematic-heading">
-          SECURITY YOU<br />
+          SECURITY YOU
+          <br />
           <span className="hero-cinematic-heading--accent">CAN TRUST.®</span>
         </h1>
 
@@ -81,24 +78,22 @@ export default function ScrollExperience() {
             Request a Quote <ArrowRight size={18} />
           </Link>
           <span className="hero-cta-sub hero-cta-sub--light">
-            or call <a href="tel:+919352303333">+91-93523-03333</a>
+            or call <a href={`tel:${CONTACT.phoneRaw}`}>{CONTACT.phone}</a>
           </span>
         </div>
+
+        <div className="hero-floating-badges">
+          <div className="trust-badge trust-badge--floating">
+            <Award size={20} color="var(--color-gold)" />
+            <span>ISO 9001:2015</span>
+          </div>
+          <div className="trust-badge trust-badge--floating">
+            <ShieldCheck size={20} color="var(--color-gold)" />
+            <span>Licensed Agency</span>
+          </div>
+        </div>
       </div>
 
-      {/* Trust Badges */}
-      <div className="hero-floating-badges">
-        <div className="trust-badge trust-badge--floating">
-          <Award size={20} color="var(--color-gold)" />
-          <span>ISO 9001:2015</span>
-        </div>
-        <div className="trust-badge trust-badge--floating">
-          <ShieldCheck size={20} color="var(--color-gold)" />
-          <span>PSARA Licensed</span>
-        </div>
-      </div>
-
-      {/* Scroll Arrow */}
       <div className="hero-scroll-arrow" aria-hidden="true">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="6 9 12 15 18 9" />

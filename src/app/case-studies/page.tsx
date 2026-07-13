@@ -3,6 +3,7 @@ import Link from 'next/link'
 import PageHero from '@/components/layout/PageHero'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import { ogMetadata } from '@/lib/metadata'
+import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
   title: 'Case Studies | Silbar Security',
@@ -143,6 +144,12 @@ export default function CaseStudiesPage() {
           </div>
         </div>
       </section>
-    </main>
+    
+      <PageLeadSection
+        title="Want Results Like These?"
+        subtitle="Request a free security assessment for your facility."
+      />
+
+</main>
   )
 }

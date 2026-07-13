@@ -12,7 +12,9 @@ const NAV_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'Services', href: '/services' },
   { label: 'Industries', href: '/industries' },
+  { label: 'Locations', href: '/security-services' },
   { label: 'About', href: '/about' },
+  { label: 'Franchise', href: '/franchise' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ]
@@ -25,11 +27,12 @@ export default function Header() {
     transparent: true,
     menuOpen: false,
   })
-  const scrollProgressRef = useRef(0)
   const scrollProgressElRef = useRef<HTMLDivElement>(null)
   const lastScrollY = useRef(0)
   const ticking = useRef(false)
   const wasMenuOpen = useRef(false)
+  const hamburgerRef = useRef<HTMLButtonElement>(null)
+  const navRef = useRef<HTMLDivElement>(null)
 
   const setMenuOpen = useCallback((open: boolean) => {
     setState(prev => ({ ...prev, menuOpen: open }))
@@ -38,7 +41,9 @@ export default function Header() {
   useEffect(() => {
     const setInitialTransparent = () => {
       if (pathname === '/') {
-        setState(prev => ({ ...prev, transparent: window.scrollY < 50 }))
+        setState(prev => ({ ...prev, transparent: window.scrollY < 50, menuOpen: false }))
+      } else {
+        setState(prev => ({ ...prev, transparent: false, menuOpen: false }))
       }
     }
     setInitialTransparent()
@@ -48,26 +53,27 @@ export default function Header() {
         requestAnimationFrame(() => {
           const currentY = window.scrollY
           const direction = currentY > lastScrollY.current ? 'down' : 'up'
+          const isMobileNav = window.matchMedia('(max-width: 1024px)').matches
 
           const totalScroll = document.documentElement.scrollHeight - window.innerHeight
           const progress = totalScroll > 0 ? (currentY / totalScroll) * 100 : 0
-          scrollProgressRef.current = progress
           if (scrollProgressElRef.current) {
             scrollProgressElRef.current.style.width = `${progress}%`
           }
 
+          // Only auto-hide header on large desktop; keep fixed on tablet/mobile
           let newHidden = false
-          let newMenuOpen = false
-          if (direction === 'down' && currentY > 100) {
+          if (!isMobileNav && direction === 'down' && currentY > 100) {
             newHidden = true
-            newMenuOpen = false
           }
 
           setState(prev => ({
+            ...prev,
             hidden: newHidden,
             scrolled: currentY > 50,
-            transparent: pathname === '/' ? currentY < 50 : prev.transparent,
-            menuOpen: newMenuOpen,
+            transparent: pathname === '/' ? currentY < 50 : false,
+            // Do not force-close menu on scroll while open on mobile
+            menuOpen: prev.menuOpen && isMobileNav ? prev.menuOpen : (newHidden ? false : prev.menuOpen),
           }))
 
           lastScrollY.current = currentY
@@ -81,9 +87,6 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [pathname])
 
-  const navRef = useRef<HTMLDivElement>(null)
-
-  // Lock body scroll when menu open + Escape key
   useEffect(() => {
     document.body.style.overflow = state.menuOpen ? 'hidden' : ''
     const handleKey = (e: KeyboardEvent) => {
@@ -96,8 +99,6 @@ export default function Header() {
     }
   }, [state.menuOpen, setMenuOpen])
 
-  // Return focus to hamburger on close
-  const hamburgerRef = useRef<HTMLButtonElement>(null)
   useEffect(() => {
     if (wasMenuOpen.current && !state.menuOpen) hamburgerRef.current?.focus()
     wasMenuOpen.current = state.menuOpen
@@ -110,7 +111,9 @@ export default function Header() {
 
   return (
     <>
-      <header className={`hero-header${hidden ? ' hero-header--hidden' : ''}${scrolled ? ' hero-header--scrolled' : ''}${pathname !== '/' || !transparent ? ' hero-header--solid' : ''}${transparent && pathname === '/' ? ' hero-header--transparent' : ''}`}>
+      <header
+        className={`hero-header${hidden ? ' hero-header--hidden' : ''}${scrolled ? ' hero-header--scrolled' : ''}${pathname !== '/' || !transparent ? ' hero-header--solid' : ''}${transparent && pathname === '/' ? ' hero-header--transparent' : ''}`}
+      >
         <Link href="/" className="hero-logo" onClick={() => setMenuOpen(false)}>
           <Image
             src="/icon-512.png"
@@ -123,7 +126,6 @@ export default function Header() {
           <span className="hero-logo__text">Silbar Security</span>
         </Link>
 
-        {/* Desktop nav */}
         <nav className="hero-nav" aria-label="Primary navigation">
           {NAV_LINKS.map(({ label, href }) => (
             <Link
@@ -155,7 +157,6 @@ export default function Header() {
           </MagneticButton>
         </nav>
 
-        {/* Mobile hamburger */}
         <button
           ref={hamburgerRef}
           className="hero-nav-hamburger"
@@ -167,7 +168,6 @@ export default function Header() {
           {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
 
-        {/* Scroll Progress Bar — updated via ref, no state */}
         <div
           ref={scrollProgressElRef}
           className="scroll-progress"
@@ -175,7 +175,6 @@ export default function Header() {
         />
       </header>
 
-      {/* Mobile drawer */}
       <div
         id="mobile-nav-drawer"
         ref={navRef}
@@ -196,7 +195,6 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Contact block — pinned at bottom of cherry overlay */}
         <div className="mobile-nav__contact-block">
           <a
             href={`tel:${CONTACT.phoneRaw}`}

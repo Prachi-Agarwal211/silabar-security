@@ -7,6 +7,7 @@ import ProposalForm from '@/components/forms/ProposalForm'
 import SurveyForm from '@/components/forms/SurveyForm'
 import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
+import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
   ...ogMetadata('Client Services', 'Request proposals, site surveys, and instant quotes from Silbar Security. Existing clients can access documents and raise service requests.', '/clients'),
@@ -100,6 +101,12 @@ export default function ClientsPage() {
           </div>
         </div>
       </section>
-    </main>
+    
+      <PageLeadSection
+        title="Join Our Client Family"
+        subtitle="Request a proposal for your site — free consultation."
+      />
+
+</main>
   )
 }

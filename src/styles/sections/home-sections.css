@@ -28,7 +28,11 @@
 .why-silbar-bg {
   position: absolute;
   inset: 0;
-  background: url('/why-silbar-bg.png') center center / cover no-repeat;
+  background: center center / cover no-repeat;
+  background-image: image-set(
+    url('/why-silbar-bg.webp') type('image/webp'),
+    url('/why-silbar-bg.jpg') type('image/jpeg')
+  );
   opacity: 0.7;
   z-index: 0;
 }
@@ -353,7 +357,10 @@
 
 .industries-protect-section {
   background-color: #fdfaf6;
-  background-image: url('/industries-bg.png');
+  background-image: image-set(
+    url('/industries-bg.webp') type('image/webp'),
+    url('/industries-bg.jpg') type('image/jpeg')
+  );
   background-size: cover;
   background-position: center right;
   background-repeat: no-repeat;

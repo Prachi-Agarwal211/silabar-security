@@ -11,6 +11,7 @@ import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import PageHero from '@/components/layout/PageHero'
 import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
+import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const revalidate = 86400 // ISR — revalidate once per day
 
@@ -132,6 +133,9 @@ export default async function StateSEOPage({
       <main className="seo-page" id="main-content">
 
         <PageHero
+          variant="image"
+          imageSrc="/industries-bg.webp"
+          eyebrow={`${location.name.toUpperCase()} · PAN INDIA`}
           title={<SplitTextReveal text={`Security Guard Services in ${location.name}`} mode="words" />}
           subtitle={
             <>
@@ -145,7 +149,9 @@ export default async function StateSEOPage({
             <nav className="breadcrumb" aria-label="Breadcrumb">
               <Link href="/" className="breadcrumb__link">Home</Link>
               <span className="breadcrumb__sep">›</span>
-              <span className="breadcrumb__current">Security Services in {location.name}</span>
+              <Link href="/security-services" className="breadcrumb__link">Locations</Link>
+              <span className="breadcrumb__sep">›</span>
+              <span className="breadcrumb__current">{location.name}</span>
             </nav>
           }
           bottomContent={
@@ -285,6 +291,12 @@ export default async function StateSEOPage({
             </div>
           </ScrollReveal>
         </section>
+
+        <PageLeadSection
+          title={`Security Quote for ${location.name}`}
+          subtitle={`Tell us about your facility in ${location.name}. We respond within 24 hours.`}
+          defaultMessage={`I need security services in ${location.name}.`}
+        />
 
       </main>
     </>

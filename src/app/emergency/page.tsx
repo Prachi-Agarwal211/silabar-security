@@ -5,6 +5,7 @@ import PageHero from '@/components/layout/PageHero'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import { ogMetadata } from '@/lib/metadata'
 import { CONTACT } from '@/lib/config'
+import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
   title: 'Emergency Contact | Silbar Security',
@@ -68,11 +69,11 @@ export default function EmergencyPage() {
               <p style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', fontWeight: 800, color: 'var(--color-cherry)' }}>{CONTACT.phone}</p>
               <p style={{ fontSize: '0.8rem', color: 'var(--color-horizon-600)' }}>24/7 Available</p>
             </a>
-            <a href={`tel:${CONTACT.tollFreeRaw}`} className="bento-cell glass-panel" style={{ padding: '2rem', textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '0.75rem' }}>
+            <a href={`tel:${CONTACT.landlineRaw}`} className="bento-cell glass-panel" style={{ padding: '2rem', textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '0.75rem' }}>
               <Phone size={32} color="var(--color-gold)" />
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 700, color: 'var(--color-paper-ink)' }}>Toll-Free Number</h3>
-              <p style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', fontWeight: 800, color: 'var(--color-cherry)' }}>{CONTACT.tollFree}</p>
-              <p style={{ fontSize: '0.8rem', color: 'var(--color-horizon-600)' }}>Free across India</p>
+              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 700, color: 'var(--color-paper-ink)' }}>HQ Landline</h3>
+              <p style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', fontWeight: 800, color: 'var(--color-cherry)' }}>{CONTACT.landline}</p>
+              <p style={{ fontSize: '0.8rem', color: 'var(--color-horizon-600)' }}>Jaipur headquarters</p>
             </a>
             <a href={CONTACT.whatsapp.url} target="_blank" rel="noopener noreferrer" className="bento-cell glass-panel" style={{ padding: '2rem', textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '0.75rem' }}>
               <MessageSquare size={32} color="var(--color-gold)" />
@@ -116,6 +117,13 @@ export default function EmergencyPage() {
           </div>
         </div>
       </section>
-    </main>
+    
+      <PageLeadSection
+        title="Non-Emergency Security Enquiry"
+        subtitle="For active emergencies call our hotline. For quotes and planning, use this form."
+        defaultMessage="I need help planning security / emergency response coverage."
+      />
+
+</main>
   )
 }

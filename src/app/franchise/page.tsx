@@ -4,6 +4,7 @@ import PageHero from '@/components/layout/PageHero'
 import { Phone, MapPin, TrendingUp, Users, Shield } from 'lucide-react'
 import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
+import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
   title: 'Franchise Opportunities — Partner with Silbar Security | PAN India',
@@ -136,13 +137,13 @@ export default function FranchisePage() {
       </section>
 
       {/* Franchise Form CTA */}
-      <section id="franchise-form" className="service-detail-bottom-cta" style={{ background: 'linear-gradient(135deg, var(--color-cherry-deep) 0%, var(--color-cherry) 100%)' }}>
+      <section id="franchise-cta-banner" className="service-detail-bottom-cta" style={{ background: 'linear-gradient(135deg, var(--color-cherry-deep) 0%, var(--color-cherry) 100%)' }}>
         <h2 className="service-detail-bottom-cta__title">Ready to Partner?</h2>
         <p className="service-detail-bottom-cta__sub">
           Fill out the form below or call us directly. Our franchise team will get back to you within 24 hours.
         </p>
         <div className="service-detail-ctas service-detail-ctas--centered">
-          <a href="/contact" className="service-detail-cta service-detail-cta--primary">
+          <a href="#franchise-form" className="service-detail-cta service-detail-cta--primary">
             Submit Franchise Inquiry
           </a>
           <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--secondary">
@@ -150,6 +151,15 @@ export default function FranchisePage() {
           </a>
         </div>
       </section>
-    </main>
+    
+      <PageLeadSection
+        id="franchise-form"
+        title="Apply for a Silbar Franchise"
+        subtitle="Tell us your preferred city and investment capacity. Our franchise team replies within 24 hours."
+        defaultMessage="I am interested in a Silbar Security franchise partnership. Preferred city: "
+        submitLabel="SUBMIT FRANCHISE ENQUIRY"
+      />
+
+</main>
   )
 }

@@ -5,6 +5,7 @@ import PageHero from '@/components/layout/PageHero'
 import { CONTACT } from '@/lib/config'
 import { Phone } from 'lucide-react'
 import { ogMetadata } from '@/lib/metadata'
+import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
   title: 'Disclaimer | Silbar Security Services',
@@ -85,6 +86,9 @@ export default function DisclaimerPage() {
           </a>
         </div>
       </section>
-    </main>
+    
+      <PageLeadSection title="Still Have Questions?" subtitle="Contact Silbar Security for clarifications about our services." />
+
+</main>
   )
 }

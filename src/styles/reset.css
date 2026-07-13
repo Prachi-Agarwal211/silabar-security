@@ -21,6 +21,8 @@ body {
   min-height: 100dvh;
   color: var(--color-cream);
   font-family: var(--font-body), system-ui, sans-serif;
+  /* Room for sitewide sticky Call/WhatsApp so content isn't hidden behind it */
+  padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
 }
 
 /* ============================================
@@ -62,29 +64,27 @@ html, body {
 }
 
 /* ============================================
-   Global Text Justification
+   Text alignment — left by default (justify looks bad on mobile)
    ============================================ */
 
 p, li, td, th, dd, dt, blockquote, figcaption {
-  text-align: justify;
-  hyphens: auto;
-  -webkit-hyphens: auto;
+  text-align: left;
+  hyphens: manual;
 }
 
-/* Keep headings left-aligned */
 h1, h2, h3, h4, h5, h6 {
   text-align: left;
 }
 
-/* Keep short text left-aligned */
-.hero-cinematic-subcopy,
-.sv-subtitle,
-.sv-card__desc,
-.stat-label,
-.footer-tagline,
-.breadcrumb__current,
-.section-eyebrow {
-  text-align: left;
+/* Optional editorial justify only on wide screens for long body copy */
+@media (min-width: 900px) {
+  .seo-about-content p,
+  .blog-post-body p,
+  .legal-page__body p {
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
 }
 
 /* ============================================
@@ -92,20 +92,29 @@ h1, h2, h3, h4, h5, h6 {
    ============================================ */
 
 @media (max-width: 768px) {
-  /* Ensure readable font sizes */
   body {
-    font-size: 15px;
+    font-size: 16px;
     -webkit-text-size-adjust: 100%;
   }
 
-  /* Prevent text overflow */
   h1, h2, h3, h4 {
     word-break: break-word;
     overflow-wrap: break-word;
   }
 
-  /* Better tap targets */
-  a, button {
+  /* Tap targets only for primary interactive controls — NOT every link */
+  .btn-primary,
+  .btn-secondary,
+  .hero-nav-cta,
+  .hero-nav-hamburger,
+  .mobile-nav__cta,
+  .sticky-cta__call,
+  .sticky-cta__whatsapp,
+  .query-form__submit,
+  .service-detail-cta,
+  .page-lead-section__cta,
+  .exit-popup__btn,
+  .contact-whatsapp-btn {
     min-height: 44px;
     min-width: 44px;
   }

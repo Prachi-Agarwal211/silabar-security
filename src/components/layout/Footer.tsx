@@ -61,7 +61,10 @@ export default function Footer() {
               <Mail size={13} /> {CONTACT.email}
             </a>
             <span className="footer-contact-item footer-contact-item--location">
-              <MapPin size={13} /> Jaipur · Delhi · Ahmedabad
+              <MapPin size={13} /> {CONTACT.address.full}
+            </span>
+            <span className="footer-contact-item footer-contact-item--location">
+              Also: Delhi NCR · Ahmedabad
             </span>
           </div>
           <div className="footer-social">

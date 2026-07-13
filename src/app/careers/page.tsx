@@ -7,6 +7,7 @@ import PageHero from '@/components/layout/PageHero'
 import { Phone, Mail, CheckCircle } from 'lucide-react'
 import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
+import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
   title: 'Careers — Join India\'s Most Trusted Security Team | Silbar Security',
@@ -167,9 +168,9 @@ export default function CareersPage() {
           <h2 className="service-detail-section-title service-detail-section-title--mb">Walk-In Interviews</h2>
           <div className="bento-grid">
             {[
-              { city: 'Jaipur (HQ)', address: '208, 2nd Floor, Samod Tower, Sansar Chand Road', time: 'Mon–Sat: 10:00 AM – 4:00 PM', roles: 'All Positions' },
-              { city: 'Delhi NCR', address: 'Corporate Office, New Delhi', time: 'Mon–Fri: 10:00 AM – 3:00 PM', roles: 'Security Guards, Supervisors' },
-              { city: 'Ahmedabad', address: 'Ahmedabad, Gujarat', time: 'Mon–Fri: 11:00 AM – 3:00 PM', roles: 'Security Guards, Armed Guards' },
+              { city: 'Jaipur (HQ)', address: CONTACT.officeLocations[0].address, time: 'Mon–Sat: 10:00 AM – 4:00 PM', roles: 'All Positions' },
+              { city: 'Delhi NCR', address: CONTACT.officeLocations[1].address, time: 'Mon–Fri: 10:00 AM – 3:00 PM', roles: 'Security Guards, Supervisors' },
+              { city: 'Ahmedabad', address: CONTACT.officeLocations[2].address, time: 'Mon–Fri: 11:00 AM – 3:00 PM', roles: 'Security Guards, Armed Guards' },
             ].map((loc, i) => (
               <ScrollReveal key={loc.city} delay={i * 0.1} className="bento-cell glass-panel">
                 <h3 style={{ color: 'var(--color-gold-light)', fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.5rem' }}>{loc.city}</h3>
@@ -200,6 +201,13 @@ export default function CareersPage() {
           </a>
         </div>
       </section>
-    </main>
+    
+      <PageLeadSection
+        title="Hiring or Partnering with Silbar?"
+        subtitle="For job applications use the form above. For business enquiries, leave a message here."
+        defaultMessage="I would like to discuss a careers / recruitment enquiry with Silbar Security."
+      />
+
+</main>
   )
 }

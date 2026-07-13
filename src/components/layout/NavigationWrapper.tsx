@@ -1,6 +1,7 @@
 import Header from './Header'
 import Footer from './Footer'
 import GlobalAnimations from './GlobalAnimations'
+import StickyCta from './StickyCta'
 
 export default function NavigationWrapper({ children }: { children: React.ReactNode }) {
   return (
@@ -8,6 +9,7 @@ export default function NavigationWrapper({ children }: { children: React.ReactN
       <Header />
       {children}
       <Footer />
+      <StickyCta />
     </GlobalAnimations>
   )
 }

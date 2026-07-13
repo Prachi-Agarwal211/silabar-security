@@ -4,6 +4,7 @@ import { Heart, Users, GraduationCap, Shield } from 'lucide-react'
 import PageHero from '@/components/layout/PageHero'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import { ogMetadata } from '@/lib/metadata'
+import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
   title: 'Corporate Social Responsibility | Silbar Security',
@@ -84,6 +85,12 @@ export default function CSRPage() {
           </div>
         </div>
       </section>
-    </main>
+    
+      <PageLeadSection
+        title="Partner with a Responsible Security Company"
+        subtitle="Get in touch for security services or CSR collaboration."
+      />
+
+</main>
   )
 }

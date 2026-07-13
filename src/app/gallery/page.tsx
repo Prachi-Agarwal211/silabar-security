@@ -3,6 +3,7 @@ import Link from 'next/link'
 import PageHero from '@/components/layout/PageHero'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import { ogMetadata } from '@/lib/metadata'
+import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
   title: 'Gallery | Silbar Security',
@@ -93,6 +94,9 @@ export default function GalleryPage() {
           </div>
         </div>
       </section>
-    </main>
+    
+      <PageLeadSection title="Ready to Work with Silbar?" subtitle="Request a free security quote for your location." />
+
+</main>
   )
 }

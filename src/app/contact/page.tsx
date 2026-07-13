@@ -186,20 +186,19 @@ export default function ContactPage() {
               Find Us <em>Nearby.</em>
             </h2>
             <div className="contact-offices-grid" style={{ marginTop: '1.5rem' }}>
-              {[
-                { city: 'Jaipur (HQ)', address: '208, 2nd Floor, Samod Tower, Sansar Chand Road, Jaipur — 302001', badge: 'Headquarters' },
-                { city: 'Delhi NCR', address: 'Corporate Office, New Delhi — 110001', badge: 'North India' },
-                { city: 'Ahmedabad', address: 'Ahmedabad, Gujarat — 380001', badge: 'West India' },
-              ].map(({ city, address, badge }) => (
-                <div key={city} className="office-card">
-                  <div className="office-card__badge">{badge}</div>
+              {CONTACT.officeLocations.map((office) => (
+                <div key={office.city} className="office-card">
+                  <div className="office-card__badge">{office.badge}</div>
                   <div className="office-card__header">
                     <MapPin size={18} aria-hidden="true" />
-                    {city}
+                    {office.city}
                   </div>
-                  <p className="office-card__address">{address}</p>
+                  <p className="office-card__address">{office.address}</p>
+                  <a href={`tel:${office.phoneRaw}`} className="office-card__phone" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', marginTop: '0.5rem', color: 'var(--color-cherry)', fontWeight: 700, fontSize: '0.9rem', textDecoration: 'none' }}>
+                    <Phone size={14} aria-hidden="true" /> {office.phone}
+                  </a>
                   <div className="office-card__hours">
-                    <Clock size={13} aria-hidden="true" /> Mon–Sat: 9:00 AM – 7:00 PM
+                    <Clock size={13} aria-hidden="true" /> {office.hours}
                   </div>
                 </div>
               ))}
