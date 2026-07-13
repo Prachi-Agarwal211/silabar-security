@@ -105,6 +105,27 @@ export default async function IndustryPage({
 
         <div className="detail-layout-container">
           <div className="detail-main-content">
+            <section className="industry-challenges">
+              <div className="service-detail-section-inner">
+                <ScrollReveal>
+                  <h2 className="service-detail-section-title">Industry Overview</h2>
+                </ScrollReveal>
+                <p className="service-detail-longcopy">{industry.description}</p>
+                <p className="service-detail-longcopy">
+                  Silbar Security designs {industry.shortTitle.toLowerCase()} security around real
+                  operational risk — access points, shifts, contractors, emergency paths, and
+                  compliance expectations. Deployments can include manned posts, supervision,
+                  visitor/material discipline, and coordination with your facility team across
+                  single or multi-site networks in India.
+                </p>
+                <p className="service-detail-longcopy">
+                  Every site is different. We start with a clear scope discussion, propose category-wise
+                  manpower, and mobilise with induction on your layout and emergency contacts so
+                  day-one performance is not guesswork.
+                </p>
+              </div>
+            </section>
+
             {/* Challenges */}
             <section className="industry-challenges">
               <div className="service-detail-section-inner">
@@ -203,7 +224,12 @@ href={CONTACT.whatsapp.url}
 
         {/* ─── Query Form ─── */}
         <section style={{ padding: '5rem 1.5rem', background: 'var(--color-paper)' }}>
-          <QueryForm />
+          <QueryForm
+            title={`${industry.shortTitle} Security Quote`}
+            subtitle="Submit opens WhatsApp with your enquiry for our consultants."
+            defaultMessage={`I need security for a ${industry.shortTitle} facility.`}
+            formType={`${industry.shortTitle} Security Enquiry`}
+          />
         </section>
 
         <section className="service-detail-bottom-cta">
