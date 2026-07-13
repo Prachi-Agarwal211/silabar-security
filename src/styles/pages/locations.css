@@ -465,3 +465,56 @@
   color: var(--color-gold-light);
   font-weight: 700;
 }
+
+/* Mobile polish */
+@media (max-width: 768px) {
+  .locations-hero {
+    min-height: auto;
+    padding-bottom: calc(2.5rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .locations-hero__title {
+    font-size: clamp(2rem, 9vw, 2.75rem);
+  }
+
+  .locations-city-grid {
+    gap: 0.75rem;
+  }
+
+  .location-city-card {
+    min-height: 160px;
+    padding: 1.25rem 1.1rem;
+  }
+
+  .location-state-card {
+    padding: 1rem;
+    min-height: 72px;
+  }
+
+  .locations-inventory__total {
+    font-size: clamp(2.75rem, 14vw, 4rem);
+  }
+
+  .seo-city-tag {
+    min-height: 40px;
+  }
+}
+
+/* Cool hover sheen on city cards (desktop) */
+@media (hover: hover) and (pointer: fine) {
+  .location-city-card {
+    transition: transform 0.35s var(--ease-smooth), border-color 0.35s, box-shadow 0.35s;
+  }
+  .location-city-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), transparent 50%);
+    opacity: 0;
+    transition: opacity 0.35s;
+    pointer-events: none;
+  }
+  .location-city-card:hover::after {
+    opacity: 1;
+  }
+}

@@ -7,6 +7,26 @@
   min-height: 100vh;
 }
 
+/* Image hero service pages — no double header padding */
+.service-detail-page:has(.page-hero--image) {
+  padding-top: 0 !important;
+}
+
+/* Mobile stacked CTAs */
+@media (max-width: 640px) {
+  .service-detail-ctas {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .service-detail-cta {
+    justify-content: center;
+    min-height: 48px;
+  }
+  .detail-layout-container {
+    padding-inline: 0;
+  }
+}
+
 /* Hero section */
 .service-detail-hero {
   max-width: var(--shell-max, 1400px);

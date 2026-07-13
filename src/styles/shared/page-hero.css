@@ -74,7 +74,8 @@
 /* Full-bleed photo-hero pages — no top padding (hero clears header) */
 .about-page,
 .industries-page,
-.locations-page {
+.locations-page,
+.services-page--v2 {
   min-height: 100dvh;
   background: var(--color-paper);
   color: var(--color-paper-ink);

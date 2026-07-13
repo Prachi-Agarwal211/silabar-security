@@ -88,9 +88,11 @@ export default async function ServicePage({
 
       <main className="service-detail-page" id="main-content">
 
-        {/* Hero */}
+        {/* Cinematic image hero */}
         <PageHero
-          eyebrow={service.shortTitle}
+          variant="image"
+          imageSrc="/hero-guard.webp"
+          eyebrow={`${service.shortTitle.toUpperCase()} · ISO 9001:2015`}
           title={<SplitTextReveal text={service.title} mode="words" />}
           subtitle={service.longDescription}
           size="tall"

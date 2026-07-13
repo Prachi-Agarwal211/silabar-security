@@ -59,13 +59,18 @@ export default function ServicesGrid({ services }: ServicesGridProps) {
       const cards = cardsRef.current!.querySelectorAll('.sv-card')
       gsap.fromTo(
         cards,
-        { opacity: 0, y: 40 },
+        { opacity: 0, y: 32 },
         {
-          opacity: 1, y: 0,
-          duration: 0.65,
-          stagger: 0.1,
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.06,
           ease: 'power3.out',
-          scrollTrigger: { trigger: cardsRef.current, start: 'top 75%' },
+          scrollTrigger: {
+            trigger: cardsRef.current,
+            start: 'top 80%',
+            once: true,
+          },
         }
       )
 
