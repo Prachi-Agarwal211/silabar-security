@@ -12,6 +12,14 @@ interface MaskRevealProps {
   className?: string
 }
 
+const DIR_MAP: Record<string, string> = {
+  left: 'inset(0% 100% 0% 0%)',
+  right: 'inset(0% 0% 0% 100%)',
+  top: 'inset(100% 0% 0% 0%)',
+  bottom: 'inset(0% 0% 100% 0%)',
+  center: 'inset(50% 50% 50% 50%)',
+}
+
 export default function MaskReveal({
   children,
   direction = 'bottom',
@@ -22,45 +30,31 @@ export default function MaskReveal({
   const containerRef = useRef<HTMLDivElement>(null)
 
   useGSAP(() => {
-    if (!containerRef.current) return
+    const el = containerRef.current
+    if (!el) return
 
-    let clipPathStart = ''
-    switch (direction) {
-      case 'left':
-        clipPathStart = 'inset(0% 100% 0% 0%)'
-        break
-      case 'right':
-        clipPathStart = 'inset(0% 0% 0% 100%)'
-        break
-      case 'top':
-        clipPathStart = 'inset(100% 0% 0% 0%)'
-        break
-      case 'bottom':
-        clipPathStart = 'inset(0% 0% 100% 0%)'
-        break
-      case 'center':
-        clipPathStart = 'inset(50% 50% 50% 50%)'
-        break
-    }
-
-    gsap.fromTo(
-      containerRef.current,
-      { clipPath: clipPathStart },
-      {
-        clipPath: 'inset(0% 0% 0% 0%)',
-        duration,
-        delay,
-        ease: 'power3.inOut',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 85%',
+    const mm = gsap.matchMedia()
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      gsap.fromTo(el,
+        { clipPath: DIR_MAP[direction] || DIR_MAP.bottom },
+        {
+          clipPath: 'inset(0% 0% 0% 0%)',
+          duration,
+          delay,
+          ease: 'power3.inOut',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 85%',
+          },
         }
-      }
-    )
-  }, { scope: containerRef })
+      )
+    })
+
+    return () => mm.revert()
+  }, { scope: containerRef, dependencies: [direction, duration, delay] })
 
   return (
-    <div ref={containerRef} className={`mask-reveal ${className}`} style={{ visibility: 'hidden' /* GSAP fixes this on load */ }}>
+    <div ref={containerRef} className={className}>
       {children}
     </div>
   )

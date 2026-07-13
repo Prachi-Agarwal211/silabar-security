@@ -21,21 +21,21 @@ import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
 
 export const metadata: Metadata = {
-  title: 'About Silbar Security — ISO 9001:2015 Certified Security Agency',
+  title: 'About Silbar Security — ISO & PSARA Certified PAN India Security Agency',
   description:
-    'Silbar Security Services Pvt. Ltd. — ISO certified PAN India security company. Founded in Jaipur. 7,000+ professionals. Compliance-driven guarding across India.',
+    'Silbar Security Services Pvt. Ltd. — ISO 9001:14001:45001:27001 certified PAN India security company. Founded in Jaipur. PSARA licensed across 19 states. Compliance-driven guarding across India.',
   ...ogMetadata(
-    'About Silbar Security — ISO 9001:2015 Certified Security Agency',
-    'Silbar Security Services Pvt. Ltd. — ISO certified PAN India security company. Founded in Jaipur. 7,000+ professionals.',
+    'About Silbar Security — ISO & PSARA Certified PAN India Security Agency',
+    'Silbar Security Services Pvt. Ltd. — ISO & PSARA certified PAN India security company. Founded in Jaipur. PSARA licensed across 19 states.',
     '/about'
   ),
 }
 
 const STATS = [
-  { number: 22, suffix: '+', label: 'Years of Excellence' },
-  { number: 7000, suffix: '+', label: 'Security Professionals' },
+  { number: 8, suffix: '+', label: 'Years of Excellence' },
+  { number: 100, suffix: '+', label: 'Security Professionals' },
   { number: 200, suffix: '+', label: 'Cities Covered' },
-  { number: 500, suffix: '+', label: 'Enterprise Clients' },
+  { number: 19, suffix: '', label: 'PSARA Licensed States' },
 ]
 
 const VALUES = [
@@ -46,31 +46,31 @@ const VALUES = [
 ]
 
 const CERTIFICATIONS = [
-  { name: 'ISO 9001:2015', desc: 'Quality Management System' },
-  { name: 'ISO 14001:2015', desc: 'Environmental Management' },
-  { name: 'ISO 45001:2018', desc: 'Occupational Health & Safety' },
-  { name: 'ISO 27001', desc: 'Information Security Management' },
-  { name: 'Licensed Agency', desc: 'State-compliant private security' },
+  { name: 'ISO 9001:2015', desc: 'Quality Management System (IAF Accredited)' },
+  { name: 'ISO 14001:2015', desc: 'Environmental Management (IAF Accredited)' },
+  { name: 'ISO 45001:2018', desc: 'Occupational Health & Safety (IAF Accredited)' },
+  { name: 'ISO 27001', desc: 'Information Security Management (IAF Accredited)' },
+  { name: 'PSARA Licensed', desc: '19 states & UTs across India' },
+  { name: 'Startup India', desc: 'DPIIT recognized startup' },
   { name: 'MSME Registered', desc: 'Government-recognized enterprise' },
-  { name: 'EPF & ESIC', desc: 'Full statutory employee coverage' },
-  { name: 'MCA · GST', desc: 'Corporate compliance ready' },
+  { name: 'CAPSI Member', desc: 'Central Association of Private Security Industry' },
 ]
 
 const TIMELINE = [
   {
-    year: '2005',
+    year: '2018',
     title: 'The Foundation',
-    desc: 'Founded in Jaipur, Rajasthan by Mr. Sonu Singh with a vision to raise private security standards through professionalism and discipline.',
+    desc: 'Founded in Jaipur, Rajasthan by Mr. Sonu Singh with a vision to transform private security standards through professionalism, compliance, and discipline.',
   },
   {
     year: '2025',
     title: 'Corporate Incorporation',
-    desc: 'Incorporated as Silbar Security Services Pvt. Ltd. with Mr. Nakul Singh Jadaun — scaling into a professionally managed national security organization.',
+    desc: 'Incorporated as Silbar Security Services Pvt. Ltd. in October 2025 with Mr. Nakul Singh Jadaun joining as Director — marking the transition into a professionally managed corporate security organization.',
   },
   {
     year: 'Today',
     title: 'PAN India Operations',
-    desc: 'HQ in Jaipur with regional hubs in Delhi NCR and Ahmedabad. Protecting industries, institutions, and communities across 200+ cities.',
+    desc: 'Registered Office at Statesman House, Barakhamba Road, Connaught Place, New Delhi. Corporate Office at MPD Tower, Golf Course Road, Gurugram. PSARA licensed in 19 states, serving clients across 200+ cities.',
   },
 ]
 
@@ -78,12 +78,12 @@ const LEADERS = [
   {
     name: 'Mr. Sonu Singh',
     role: 'Director & Founder',
-    bio: 'Extensive experience in India’s private security industry — industrial operations, manpower deployment, client relationships, and statutory compliance.',
+    bio: 'Mr. Sonu Singh has worked in senior positions with reputed organizations in the security and corporate sectors. His experience includes leadership responsibilities with well-known security and corporate brands such as SIS, SLV Security, Jaguar Security, ICICI, and Bajaj, providing him with practical expertise in industrial security operations, corporate security management, manpower deployment, risk assessment, client relationship management, compliance systems, and large-scale security deployment. His vision is to build a professionally managed Indian security company that competes with the highest industry standards through compliance, quality, innovation, and operational excellence.',
   },
   {
     name: 'Mr. Nakul Singh Jadaun',
     role: 'Director',
-    bio: 'Operational and management expertise focused on service quality, disciplined field execution, and long-term client partnerships across India.',
+    bio: 'Mr. Nakul Singh Jadaun brings valuable experience from the security services industry along with operational and management expertise. Having worked with organizations including Bajaj and BSS Security, he plays a key role in strengthening operational efficiency, quality control, manpower deployment, and customer satisfaction across the organization. His focus on disciplined field execution, client servicing, and operational planning has been instrumental in Silbar Security\'s growth as a trusted PAN India security partner.',
   },
 ]
 
@@ -136,13 +136,13 @@ export default function AboutPage() {
             <p className="about-hero__body">
               Silbar Security Services Pvt. Ltd. is one of India&apos;s emerging PAN India security
               companies — delivering reliable, compliance-driven solutions for industries, commercial
-              establishments, institutions, and government organizations.
+              establishments, institutions, and government organizations across 19 states.
             </p>
             <ul className="about-hero__pills" aria-label="Key credentials">
-              <li>ISO 9001:2015</li>
-              <li>7,000+ Professionals</li>
+              <li>4 ISO Certified (IAF)</li>
+              <li>PSARA Licensed · 19 States</li>
               <li>200+ Cities</li>
-              <li>Est. 2005 · Jaipur</li>
+              <li>Est. 2018 · Jaipur</li>
             </ul>
             <div className="about-hero__ctas">
               <MagneticButton
@@ -198,27 +198,28 @@ export default function AboutPage() {
             <p className="about-story__body">
               The journey of Silbar Security began in Jaipur, Rajasthan, where Mr. Sonu Singh founded
               the business with a vision to redefine private security standards. Through dedication,
-              industry expertise, and uncompromising quality, the organization expanded its capabilities
-              and client base across India.
+              industry expertise, and uncompromising quality, the organization steadily expanded its
+              capabilities and client base across India.
             </p>
             <p className="about-story__body">
-              In 2025, the business was incorporated as Silbar Security Services Pvt. Ltd. in partnership
-              with Mr. Nakul Singh Jadaun — a milestone in becoming a professionally managed corporate
-              security organization with national ambition and local execution.
+              In October 2025, the business was incorporated as Silbar Security Services Pvt. Ltd.
+              in partnership with Mr. Nakul Singh Jadaun — marking a significant milestone in its
+              transformation into a professionally managed corporate security organization with
+              PAN India ambition.
             </p>
             <div className="about-story__offices">
               <div className="about-story__office">
                 <MapPin size={16} aria-hidden="true" />
                 <div>
-                  <strong>Headquarters</strong>
-                  <span>{CONTACT.address.full}</span>
+                  <strong>Registered Office</strong>
+                  <span>Statesman House, Barakhamba Road, Connaught Place, New Delhi — 110001</span>
                 </div>
               </div>
               <div className="about-story__office">
                 <Building2 size={16} aria-hidden="true" />
                 <div>
-                  <strong>Regional Hubs</strong>
-                  <span>Delhi NCR · Ahmedabad · expanding PAN India</span>
+                  <strong>Corporate Office</strong>
+                  <span>MPD Tower, Golf Course Road, Sector 43, Gurugram, Haryana — 122002</span>
                 </div>
               </div>
             </div>
@@ -234,13 +235,13 @@ export default function AboutPage() {
                 className="about-story__mosaic-img"
               />
               <div className="about-story__mosaic-caption">
-                <span>22+</span>
-                <small>Years protecting India</small>
+                <span>8+</span>
+                <small>Years of protecting India</small>
               </div>
             </div>
             <div className="about-story__mosaic-side">
               <div className="about-story__mosaic-tile about-story__mosaic-tile--gold">
-                <strong>7,000+</strong>
+                <strong>100+</strong>
                 <span>Trained professionals</span>
               </div>
               <div className="about-story__mosaic-tile about-story__mosaic-tile--photo">
@@ -300,8 +301,9 @@ export default function AboutPage() {
               <h3>Our Mission</h3>
               <p>
                 To provide reliable, technology-enabled, and compliance-focused security services that
-                protect people, property, and business operations — with trained manpower, transparent
-                processes, and responsive support.
+                protect people, property, and business operations across India through highly trained
+                professionals, ethical business practices, transparent processes, continuous improvement,
+                and exceptional customer service.
               </p>
             </ScrollReveal>
             <ScrollReveal className="about-mv__card about-mv__card--accent" delay={0.12}>
@@ -310,9 +312,10 @@ export default function AboutPage() {
               </div>
               <h3>Our Vision</h3>
               <p>
-                To become one of India&apos;s most respected security companies — recognized for
-                operational excellence, legal compliance, professionalism, and customer satisfaction
-                nationwide.
+                To become one of India&apos;s most respected and trusted Security Guard Companies,
+                recognized for professionalism, compliance, innovation, operational excellence,
+                and long-term customer relationships while setting new benchmarks for the
+                private security industry.
               </p>
             </ScrollReveal>
           </div>
@@ -394,11 +397,12 @@ export default function AboutPage() {
       <section className="about-guarantee" aria-labelledby="guarantee-heading">
         <div className="about-guarantee__inner">
           <Shield size={48} className="about-guarantee__icon" aria-hidden="true" />
-          <h2 id="guarantee-heading">Our Compliance Guarantee</h2>
+          <h2 id="guarantee-heading">Our Compliance Assurance</h2>
           <p>
             If a compliance penalty is imposed solely due to our failure to fulfil contractual
             compliance responsibilities, we stand by our commitment and take responsibility in
-            accordance with our service agreement.
+            accordance with our service agreement. This reflects our accountability, transparency,
+            and long-term partnership approach with every client.
           </p>
         </div>
       </section>
@@ -419,8 +423,9 @@ export default function AboutPage() {
             Ready to Work with India&apos;s <em>Trusted</em> Security Force?
           </h2>
           <p className="about-cta__sub">
-            Standardized security through a corporate operating model — with full respect for
-            state-specific regulatory requirements wherever we deploy.
+            Registered Office: Statesman House, Barakhamba Road, Connaught Place, New Delhi.
+            Corporate Office: MPD Tower, Golf Course Road, Sector 43, Gurugram.
+            Serving clients across 19 states with 4 ISO certifications.
           </p>
           <div className="about-cta__actions">
             <MagneticButton

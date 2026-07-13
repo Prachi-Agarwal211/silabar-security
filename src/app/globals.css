@@ -25,6 +25,7 @@
 
   @import "../styles/sections/services-home.css";
   @import "../styles/sections/home-sections.css";
+  @import "../styles/sections/home-extended.css";
 
   @import "../styles/sections/query-form.css";
   
@@ -38,6 +39,14 @@
   @import "../styles/pages/locations.css";
   @import "../styles/pages/careers.css";
   @import "../styles/pages/legal.css";
+  @import "../styles/pages/certification.css";
+  @import "../styles/pages/emergency.css";
+  @import "../styles/pages/gallery.css";
+  @import "../styles/pages/csr.css";
+  @import "../styles/pages/faq.css";
+  @import "../styles/pages/franchise.css";
+  @import "../styles/pages/case-study.css";
+  @import "../styles/pages/career-detail.css";
   
   @import "../styles/shared/page-hero.css";
 }

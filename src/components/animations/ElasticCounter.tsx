@@ -18,31 +18,28 @@ export default function ElasticCounter({
   const counterRef = useRef<HTMLSpanElement>(null)
 
   useGSAP(() => {
-    if (!counterRef.current) return
-
     const el = counterRef.current
-    
-    // Animate using CustomEase to simulate a spring physics bounce
-    gsap.fromTo(
-      el,
-      { innerHTML: 0 },
-      {
-        innerHTML: value,
-        duration: 2.5,
-        ease: 'elastic.out(1, 0.4)', // Elastic bounce
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 85%',
-        },
-        snap: { innerHTML: 1 },
-        onUpdate: function () {
-          // Format with commas and prefix/suffix
-          const currentVal = Math.round(Number(this.targets()[0].innerHTML))
-          el.innerHTML = `${prefix}${currentVal.toLocaleString()}${suffix}`
-        }
-      }
-    )
-  }, { scope: counterRef })
+    if (!el) return
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.textContent = `${prefix}${value.toLocaleString()}${suffix}`
+      return
+    }
+
+    const obj = { val: 0 }
+    gsap.to(obj, {
+      val: value,
+      duration: 2.5,
+      ease: 'elastic.out(1, 0.4)',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 85%',
+      },
+      onUpdate: () => {
+        el.textContent = `${prefix}${Math.round(obj.val).toLocaleString()}${suffix}`
+      },
+    })
+  }, { scope: counterRef, dependencies: [value, prefix, suffix] })
 
   return (
     <span ref={counterRef} className="elastic-counter">

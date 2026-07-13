@@ -14,17 +14,12 @@ export default function Error({
   }, [error])
 
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      minHeight: '100vh',
+    <div className="flex flex-col items-center justify-center min-h-screen" style={{
       background: 'var(--color-midnight)',
       color: 'var(--color-paper)',
       fontFamily: 'var(--font-display)'
     }}>
-      <h2 style={{ marginBottom: '1rem', color: 'var(--color-gold)' }}>Something went wrong!</h2>
+      <h2 className="mb-4" style={{ color: 'var(--color-gold)' }}>Something went wrong!</h2>
       <button
         onClick={() => reset()}
         style={{
@@ -35,7 +30,7 @@ export default function Error({
           borderRadius: '4px',
           cursor: 'pointer',
           fontFamily: 'var(--font-body)',
-          fontWeight: '600'
+          fontWeight: 600,
         }}
       >
         Try again

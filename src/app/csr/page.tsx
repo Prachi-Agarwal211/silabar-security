@@ -72,15 +72,15 @@ export default function CSRPage() {
         <div className="service-detail-section-inner service-detail-section-inner--no-padding">
           <div className="bento-grid">
             {CSR_INITIATIVES.map((initiative, i) => {
-              const Icon = initiative.icon
-              return (
-                <div key={i} className="bento-cell glass-panel" style={{ padding: '2rem' }}>
-                  <Icon size={28} color="var(--color-gold)" style={{ marginBottom: '1rem' }} />
-                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 700, color: 'var(--color-paper-ink)', marginBottom: '0.75rem' }}>{initiative.title}</h3>
-                  <p style={{ fontSize: '0.85rem', color: 'var(--color-horizon-600)', lineHeight: 1.6, marginBottom: '1rem' }}>{initiative.description}</p>
-                  <span style={{ display: 'inline-block', padding: '0.3rem 0.8rem', background: 'rgba(140,31,50,0.08)', borderRadius: '4px', fontSize: '0.75rem', fontWeight: 700, color: 'var(--color-cherry)' }}>{initiative.impact}</span>
-                </div>
-              )
+  const Icon = initiative.icon
+  return (
+    <div key={i} className="bento-cell glass-panel csr-card">
+      <Icon size={28} color="var(--color-gold)" className="csr-card__icon" />
+      <h3 className="csr-card__title">{initiative.title}</h3>
+      <p className="csr-card__desc">{initiative.description}</p>
+      <span className="csr-card__impact">{initiative.impact}</span>
+    </div>
+  )
             })}
           </div>
         </div>

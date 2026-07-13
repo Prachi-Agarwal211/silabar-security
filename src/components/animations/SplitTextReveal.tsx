@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState, useEffect } from 'react'
+import { useRef } from 'react'
 import { gsap } from '@/lib/gsap'
 import { useGSAP } from '@gsap/react'
 
@@ -18,38 +18,28 @@ export default function SplitTextReveal({
   mode = 'chars',
 }: SplitTextRevealProps) {
   const containerRef = useRef<HTMLDivElement>(null)
-  const [effectiveMode, setEffectiveMode] = useState(mode)
-
-  useEffect(() => {
-    const checkMode = () => {
-      setEffectiveMode(window.innerWidth < 768 ? 'words' : mode)
-    }
-    checkMode()
-    window.addEventListener('resize', checkMode)
-    return () => window.removeEventListener('resize', checkMode)
-  }, [mode])
 
   useGSAP(() => {
     const container = containerRef.current
     if (!container) return
 
-    const targets = container.querySelectorAll(`.split-${effectiveMode}`)
-    if (!targets.length) return
+    const inner = container.children[0] as HTMLElement | undefined
+    if (!inner) return
+    const nodes = Array.from(inner.querySelectorAll('.split-item'))
+    if (!nodes.length) return
 
     const mm = gsap.matchMedia()
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      targets.forEach((target, i) => {
-        gsap.fromTo(target,
-          { opacity: 0, y: 30, rotateX: -90, scale: 0.95, filter: 'blur(8px)' },
+      const isMobile = window.innerWidth < 768
+      nodes.forEach((node, i) => {
+        gsap.fromTo(node,
+          { opacity: 0, y: isMobile ? 16 : 24 },
           {
             opacity: 1,
             y: 0,
-            rotateX: 0,
-            scale: 1,
-            filter: 'blur(0px)',
-            duration: 1.0,
+            duration: isMobile ? 0.6 : 0.8,
             delay: delay + i * 0.03,
-            ease: 'expo.out',
+            ease: 'power2.out',
             scrollTrigger: {
               trigger: container,
               start: 'top 85%',
@@ -61,26 +51,19 @@ export default function SplitTextReveal({
     })
 
     return () => mm.revert()
-  }, { scope: containerRef, dependencies: [delay, effectiveMode, text] })
+  }, { scope: containerRef, dependencies: [delay, mode, text] })
 
-  const renderSplit = () => {
-    if (effectiveMode === 'words') {
-      return text.split(' ').map((word, i) => (
-        <span key={i} className="split-words inline-block" style={{ perspective: '400px' }}>
-          {word}{i < text.split(' ').length - 1 ? '\u00A0' : ''}
-        </span>
-      ))
-    }
-    return text.split('').map((char, i) => (
-      <span key={i} className="split-chars inline-block" style={{ perspective: '400px' }}>
-        {char === ' ' ? '\u00A0' : char}
-      </span>
-    ))
-  }
+  const words = text.split(' ')
 
   return (
     <div ref={containerRef} className={className}>
-      {renderSplit()}
+      <span>
+        {words.map((word, i) => (
+          <span key={i} className="split-item inline-block">
+            {word}{i < words.length - 1 ? '\u00A0' : ''}
+          </span>
+        ))}
+      </span>
     </div>
   )
 }

@@ -277,10 +277,19 @@
 .office-card__hours svg { color: var(--color-gold); }
 
 /* â”€â”€â”€ contact-offices-grid: defined below for backward compat with offices section â”€â”€â”€ */
+.contact-reg-office {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-cherry);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
 .contact-offices-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  margin-top: 1.5rem;
 }
 
 @media (max-width: 900px) {
@@ -289,4 +298,19 @@
 
 @media (max-width: 580px) {
   .contact-offices-grid { grid-template-columns: 1fr; }
+}
+
+.office-card__phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+  color: var(--color-cherry);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+.contact-map-frame {
+  border: 0;
+  border-radius: 8px;
 }

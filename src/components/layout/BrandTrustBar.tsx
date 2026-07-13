@@ -1,14 +1,14 @@
 const ITEMS = [
-  'ISO 9001:2015 Certified',
-  '7,000+ Professionals',
-  '200+ Cities',
-  'Est. 2005 · Jaipur',
-  'PAN India Deployment',
+  '4 ISO Certified · IAF Accredited',
+  'PSARA Licensed · 19 States',
+  '200+ Cities PAN India',
+  'Est. 2018 · Jaipur',
+  'Pvt. Ltd. · Incorporated 2025',
   'Licensed & Insured',
-  'Industrial · Corporate · Residential',
+  'Industrial · Corporate · Government',
   'WhatsApp-Ready Quotes',
-  'MSME Registered',
-  'Process-Driven Security',
+  'Startup India · MSME Registered',
+  'CAPSI Member',
 ]
 
 /** Cinematic looping brand strip — unique vs generic logo marquee */

@@ -29,6 +29,16 @@
   line-height: 1.5;
 }
 
+.job-card__link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.job-card__link:hover .job-card__title {
+  color: var(--color-gold);
+}
+
 /* ============================================
    Benefit items — replaces inline styles
    ============================================ */

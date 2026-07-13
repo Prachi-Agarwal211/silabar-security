@@ -1,0 +1,268 @@
+/* ============================================
+   Certification Page — Clean section patterns
+   ============================================ */
+
+.cert-section--light {
+  padding: clamp(4rem, 8vh, 6rem) 1.5rem;
+  background: var(--color-paper);
+}
+.cert-section--dark {
+  padding: clamp(4rem, 8vh, 6rem) 1.5rem;
+  background: var(--color-midnight);
+  color: var(--color-cream);
+}
+.cert-section--cherry {
+  padding: clamp(3.5rem, 6vh, 4.5rem) 1.5rem;
+  background: var(--color-cherry);
+  color: white;
+}
+
+.cert-section__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.cert-section__inner--narrow {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.cert-section__inner--tight {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cert-section__body {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  color: rgba(10,10,10,0.7);
+  max-width: 700px;
+  line-height: 1.7;
+  margin-bottom: clamp(2rem, 4vh, 3rem);
+}
+.cert-section__body--light {
+  color: rgba(250,248,244,0.7);
+}
+
+/* ISO Card Grid */
+.cert-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.cert-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1px solid rgba(191,149,63,0.15);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s var(--ease-smooth), box-shadow 0.35s var(--ease-smooth);
+}
+.cert-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(140, 31, 50, 0.08);
+}
+.cert-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(140,31,50,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  color: var(--color-cherry);
+  flex-shrink: 0;
+}
+.cert-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.3vw, 1.15rem);
+  font-weight: 800;
+  margin-bottom: 0.35rem;
+  color: var(--color-midnight);
+}
+.cert-card__sub {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  margin-bottom: 0.75rem;
+}
+.cert-card__detail {
+  font-size: 0.9rem;
+  color: rgba(10,10,10,0.6);
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* PSARA State Pills */
+.cert-pill-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+.cert-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.25rem;
+  background: rgba(191,149,63,0.1);
+  border: 1px solid rgba(191,149,63,0.2);
+  border-radius: 999px;
+  color: var(--color-gold-light);
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  transition: background 0.3s, border-color 0.3s, transform 0.3s var(--ease-smooth);
+}
+.cert-pill:hover {
+  background: rgba(191,149,63,0.18);
+  border-color: rgba(191,149,63,0.35);
+  transform: translateY(-2px);
+}
+.cert-pill__icon {
+  flex-shrink: 0;
+}
+.cert-note {
+  text-align: center;
+  color: rgba(250,248,244,0.5);
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+
+/* Regulatory Cards */
+.cert-reg-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+.cert-reg-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+  transition: transform 0.35s var(--ease-smooth), box-shadow 0.35s;
+}
+.cert-reg-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+.cert-reg-card__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(140,31,50,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-cherry);
+}
+.cert-reg-card__title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.15rem;
+}
+.cert-reg-card__sub {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  margin-bottom: 0.35rem;
+}
+.cert-reg-card__detail {
+  font-size: 0.85rem;
+  color: rgba(10,10,10,0.6);
+  line-height: 1.5;
+}
+
+/* Compliance Assurance section */
+.cert-assurance-icon {
+  color: var(--color-gold);
+  margin-bottom: 1.5rem;
+}
+.cert-assurance-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 800;
+  color: white;
+  margin-bottom: 1rem;
+}
+.cert-assurance-text {
+  color: rgba(255,255,255,0.85);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* Certificate Gallery */
+.cert-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.cert-gallery-item {
+  padding: 2rem 1rem;
+  background: white;
+  border-radius: 10px;
+  border: 2px dashed rgba(191,149,63,0.3);
+  text-align: center;
+  transition: border-color 0.35s, transform 0.35s var(--ease-smooth);
+}
+.cert-gallery-item:hover {
+  border-color: rgba(191,149,63,0.6);
+  transform: translateY(-3px);
+}
+.cert-gallery-item__icon {
+  color: var(--color-gold);
+  margin-bottom: 0.75rem;
+}
+.cert-gallery-item__title {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-midnight);
+}
+.cert-gallery-item__status {
+  font-size: 0.75rem;
+  color: rgba(10,10,10,0.4);
+  margin-top: 0.5rem;
+}
+
+/* CTA section */
+.cert-cta-section {
+  padding: clamp(4rem, 8vh, 6rem) 1.5rem;
+  background: var(--color-midnight);
+}
+.cert-cta__inner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+.cert-cta__text {
+  color: rgba(250,248,244,0.7);
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+.cert-cta__actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Section heading margin override */
+.cert-heading-mb {
+  margin-bottom: 1rem;
+}

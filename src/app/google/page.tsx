@@ -27,12 +27,12 @@ const SERVICES_LIST = [
 ]
 
 const TRUST_BADGES = [
-  'ISO 9001:2015 Certified',
-  'Licensed & Insured',
-  'MSME Registered',
-  '7,000+ Professionals',
+  '4 ISO Certified (IAF)',
+  'PSARA Licensed · 19 States',
   '200+ Cities PAN India',
-  '20+ Years Experience',
+  '100+ Professionals',
+  'Est. 2018 · Jaipur',
+  'Startup India · MSME Registered',
 ]
 
 export default function GoogleLandingPage() {
@@ -46,7 +46,7 @@ export default function GoogleLandingPage() {
             Silbar Security <span style={{ color: 'var(--color-cherry)' }}>Services</span>
           </h1>
           <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.8)', lineHeight: 1.7, marginBottom: '2rem' }}>
-            India&apos;s trusted ISO 9001:2015 certified security agency with 7,000+ professionals protecting businesses, homes, and events across PAN India.
+            India&apos;s trusted ISO 9001:2015 certified security agency with           100+ professionals protecting businesses, homes, and events across PAN India with PSARA licenses in 19 states and 4 ISO certifications.
           </p>
         </ScrollReveal>
 
@@ -129,7 +129,7 @@ export default function GoogleLandingPage() {
               </div>
               <div>
                 <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.75rem', marginBottom: '0.25rem' }}>Visit Us</div>
-                <div style={{ color: 'white', fontWeight: 600, fontSize: '0.85rem' }}>Jaipur · Delhi · Ahmedabad</div>
+                <div style={{ color: 'white', fontWeight: 600, fontSize: '0.85rem' }}>New Delhi · Gurugram · Jaipur</div>
               </div>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1.25rem', background: 'rgba(255,255,255,0.05)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.08)' }}>
@@ -148,7 +148,7 @@ export default function GoogleLandingPage() {
       {/* Bottom CTA */}
       <section style={{ padding: '4rem 2rem', textAlign: 'center' }}>
         <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem', marginBottom: '1.5rem' }}>
-          Serving Jaipur, Delhi, Ahmedabad, Gurgaon, Noida, and 200+ cities across India
+          Serving New Delhi, Gurugram, Jaipur, and 200+ cities across 19 states in India
         </p>
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
           <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.875rem 1.75rem', background: 'var(--color-gold)', color: 'var(--color-midnight)', borderRadius: '8px', fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '0.95rem', textDecoration: 'none' }}>

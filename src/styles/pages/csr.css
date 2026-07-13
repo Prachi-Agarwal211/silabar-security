@@ -1,0 +1,28 @@
+.csr-card {
+  padding: 2rem;
+}
+.csr-card__icon {
+  margin-bottom: 1rem;
+}
+.csr-card__title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-paper-ink);
+  margin-bottom: 0.75rem;
+}
+.csr-card__desc {
+  font-size: 0.85rem;
+  color: var(--color-horizon-600);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+.csr-card__impact {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  background: rgba(140, 31, 50, 0.08);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-cherry);
+}

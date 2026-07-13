@@ -8,6 +8,7 @@ import { Phone, Mail, CheckCircle } from 'lucide-react'
 import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
+import { CAREERS } from '@/data/careers'
 
 export const metadata: Metadata = {
   title: 'Careers — Join India\'s Most Trusted Security Team | Silbar Security',
@@ -25,49 +26,16 @@ const WHY_JOIN = [
   'PAN India deployment — work in your city or relocate',
 ]
 
-const OPENINGS = [
-  {
-    title: 'Security Guard (Armed & Unarmed)',
-    type: 'Full-time',
-    locations: 'Jaipur, Delhi, Mumbai, Ahmedabad, Bengaluru',
-    description: 'Trained security guards for corporate offices, factories, hospitals, and residential societies.',
-  },
-  {
-    title: 'Security Supervisor',
-    type: 'Full-time',
-    locations: 'Jaipur, Delhi, Mumbai, Pune',
-    description: 'Oversee shift operations, conduct patrol rounds, manage guard deployment, and report to account manager.',
-  },
-  {
-    title: 'Account Manager',
-    type: 'Full-time',
-    locations: 'Jaipur (HQ)',
-    description: 'Manage client relationships, conduct site audits, ensure compliance, and lead a team of supervisors.',
-  },
-  {
-    title: 'Lady Security Guard',
-    type: 'Full-time',
-    locations: 'Jaipur, Delhi, Mumbai, Bengaluru',
-    description: 'Trained lady security personnel for hospitals, schools, malls, and corporate offices.',
-  },
-  {
-    title: 'Business Development Executive',
-    type: 'Full-time',
-    locations: 'Jaipur (HQ)',
-    description: 'Generate leads, pitch security solutions, manage client onboarding, and achieve sales targets.',
-  },
-]
-
 export default function CareersPage() {
   return (
     <main className="careers-page" id="main-content">
         <script type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: JSON.stringify(OPENINGS.map(job => ({
+          __html: JSON.stringify(CAREERS.map(job => ({
             '@context': 'https://schema.org',
             '@type': 'JobPosting',
             title: job.title,
-            description: job.description,
-            datePosted: '2026-07-01',
+            description: job.description.replace(/<[^>]*>/g, '').substring(0, 500),
+            datePosted: job.postedAt,
             employmentType: 'FULL_TIME',
             hiringOrganization: {
               '@type': 'Organization',
@@ -78,8 +46,7 @@ export default function CareersPage() {
               '@type': 'Place',
               address: {
                 '@type': 'PostalAddress',
-                addressLocality: job.locations.includes('Jaipur') ? 'Jaipur' : 'Delhi',
-                addressRegion: job.locations.includes('Jaipur') ? 'Rajasthan' : 'Delhi',
+                addressLocality: job.locations[0],
                 addressCountry: 'IN',
               },
             },
@@ -126,11 +93,13 @@ export default function CareersPage() {
       <section className="service-detail-section-inner openings-section">
         <h2 className="service-detail-section-title service-detail-section-title--mb">Current Openings</h2>
         <div className="openings-grid">
-          {OPENINGS.map((job, i) => (
-            <ScrollReveal key={job.title} delay={i * 0.1} className="bento-cell glass-panel">
-              <h3 className="job-card__title">{job.title}</h3>
-              <p className="job-card__meta">{job.type} — {job.locations}</p>
-              <p className="job-card__desc">{job.description}</p>
+          {CAREERS.map((job, i) => (
+            <ScrollReveal key={job.slug} delay={i * 0.05} className="bento-cell glass-panel">
+              <Link href={`/careers/${job.slug}`} className="job-card__link">
+                <h3 className="job-card__title">{job.title}</h3>
+                <p className="job-card__meta">{job.type} — {job.department} — {job.locations.join(', ')}</p>
+                <p className="job-card__desc">Click to view full details, responsibilities, requirements, and apply.</p>
+              </Link>
             </ScrollReveal>
           ))}
         </div>

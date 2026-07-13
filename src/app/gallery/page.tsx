@@ -57,38 +57,11 @@ export default function GalleryPage() {
 
       <section className="service-detail-features service-detail-features--padded">
         <div className="service-detail-section-inner service-detail-section-inner--no-padding">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1rem' }}>
+          <div className="gallery-grid">
             {GALLERY_ITEMS.map((item, i) => (
-              <div key={i} style={{
-                background: item.color,
-                borderRadius: '8px',
-                padding: '2rem',
-                minHeight: '200px',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'flex-end',
-                position: 'relative',
-                overflow: 'hidden',
-              }}>
-                <span style={{
-                  position: 'absolute',
-                  top: '1rem',
-                  left: '1rem',
-                  padding: '0.2rem 0.6rem',
-                  background: 'rgba(191,149,63,0.2)',
-                  borderRadius: '4px',
-                  fontSize: '0.65rem',
-                  fontWeight: 700,
-                  color: 'var(--color-gold)',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.1em',
-                }}>{item.category}</span>
-                <h3 style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: '1.1rem',
-                  fontWeight: 700,
-                  color: 'var(--color-cream)',
-                }}>{item.title}</h3>
+              <div key={i} className="gallery-item" style={{ background: item.color }}>
+                <span className="gallery-item__cat">{item.category}</span>
+                <h3 className="gallery-item__title">{item.title}</h3>
               </div>
             ))}
           </div>

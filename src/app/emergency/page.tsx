@@ -44,72 +44,49 @@ export default function EmergencyPage() {
 
       <section className="service-detail-features service-detail-features--padded">
         <div className="service-detail-section-inner service-detail-section-inner--no-padding">
-          {/* Emergency Alert */}
-          <div style={{
-            background: 'linear-gradient(135deg, #dc2626 0%, #991b1b 100%)',
-            borderRadius: '8px',
-            padding: '2rem',
-            marginBottom: '2rem',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '1rem',
-          }}>
+          <div className="emergency-alert">
             <AlertTriangle size={32} color="white" />
             <div>
-              <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', fontWeight: 700, color: 'white', marginBottom: '0.25rem' }}>Security Emergency?</h2>
-              <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.8)' }}>Call our 24/7 emergency line for immediate response.</p>
+              <h2 className="emergency-alert__title">Security Emergency?</h2>
+              <p className="emergency-alert__sub">Call our 24/7 emergency line for immediate response.</p>
             </div>
           </div>
 
-          {/* Emergency Contact Numbers */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', marginBottom: '2rem' }}>
-            <a href={`tel:${CONTACT.phoneRaw}`} className="bento-cell glass-panel" style={{ padding: '2rem', textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '0.75rem' }}>
+          <div className="emergency-contacts-grid">
+            <a href={`tel:${CONTACT.phoneRaw}`} className="emergency-card bento-cell glass-panel">
               <Phone size={32} color="var(--color-gold)" />
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 700, color: 'var(--color-paper-ink)' }}>Emergency Hotline</h3>
-              <p style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', fontWeight: 800, color: 'var(--color-cherry)' }}>{CONTACT.phone}</p>
-              <p style={{ fontSize: '0.8rem', color: 'var(--color-horizon-600)' }}>24/7 Available</p>
+              <h3 className="emergency-card__label">Emergency Hotline</h3>
+              <p className="emergency-card__value">{CONTACT.phone}</p>
+              <p className="emergency-card__meta">24/7 Available</p>
             </a>
-            <a href={`tel:${CONTACT.landlineRaw}`} className="bento-cell glass-panel" style={{ padding: '2rem', textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '0.75rem' }}>
+            <a href={`tel:${CONTACT.landlineRaw}`} className="emergency-card bento-cell glass-panel">
               <Phone size={32} color="var(--color-gold)" />
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 700, color: 'var(--color-paper-ink)' }}>HQ Landline</h3>
-              <p style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', fontWeight: 800, color: 'var(--color-cherry)' }}>{CONTACT.landline}</p>
-              <p style={{ fontSize: '0.8rem', color: 'var(--color-horizon-600)' }}>Jaipur headquarters</p>
+              <h3 className="emergency-card__label">HQ Landline</h3>
+              <p className="emergency-card__value">{CONTACT.landline}</p>
+              <p className="emergency-card__meta">Jaipur headquarters</p>
             </a>
-            <a href={CONTACT.whatsapp.url} target="_blank" rel="noopener noreferrer" className="bento-cell glass-panel" style={{ padding: '2rem', textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '0.75rem' }}>
+            <a href={CONTACT.whatsapp.url} target="_blank" rel="noopener noreferrer" className="emergency-card bento-cell glass-panel">
               <MessageSquare size={32} color="var(--color-gold)" />
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 700, color: 'var(--color-paper-ink)' }}>WhatsApp Emergency</h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--color-cherry)', fontWeight: 600 }}>Send SOS Message</p>
-              <p style={{ fontSize: '0.8rem', color: 'var(--color-horizon-600)' }}>Instant alert to response team</p>
+              <h3 className="emergency-card__label">WhatsApp Emergency</h3>
+              <p className="emergency-card__value--sm">Send SOS Message</p>
+              <p className="emergency-card__meta">Instant alert to response team</p>
             </a>
           </div>
 
-          {/* Emergency Procedures */}
-          <div className="bento-cell glass-panel" style={{ padding: '2rem' }}>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700, color: 'var(--color-paper-ink)', marginBottom: '1rem' }}>Emergency Response Protocol</h2>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <div className="bento-cell glass-panel emergency-protocol">
+            <h2 className="emergency-protocol__title">Emergency Response Protocol</h2>
+            <div className="emergency-protocol__list">
               {[
                 { step: '1', title: 'Call Emergency Line', desc: 'Dial our 24/7 emergency hotline immediately upon detecting any security incident.' },
                 { step: '2', title: 'Provide Location', desc: 'Share the exact location and nature of the incident (theft, intrusion, fire, medical).' },
                 { step: '3', title: 'Quick Response Team', desc: 'Our nearest QRT will be dispatched within minutes to your location.' },
                 { step: '4', title: 'Incident Documentation', desc: 'Our team will document the incident and provide a detailed report within 24 hours.' },
               ].map((item) => (
-                <div key={item.step} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-                  <span style={{
-                    minWidth: '32px',
-                    height: '32px',
-                    borderRadius: '50%',
-                    background: 'var(--color-cherry)',
-                    color: 'white',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontFamily: 'var(--font-display)',
-                    fontSize: '0.8rem',
-                    fontWeight: 700,
-                  }}>{item.step}</span>
+                <div key={item.step} className="emergency-step">
+                  <span className="emergency-step__num">{item.step}</span>
                   <div>
-                    <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '0.9rem', fontWeight: 700, color: 'var(--color-paper-ink)', marginBottom: '0.25rem' }}>{item.title}</h4>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--color-horizon-600)', lineHeight: 1.5 }}>{item.desc}</p>
+                    <h4 className="emergency-step__title">{item.title}</h4>
+                    <p className="emergency-step__desc">{item.desc}</p>
                   </div>
                 </div>
               ))}

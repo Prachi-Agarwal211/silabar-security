@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import {
@@ -17,6 +17,10 @@ import {
   Shield,
   Award,
   Users,
+  ClipboardCheck,
+  FileSearch,
+  Building2,
+  Headphones,
 } from 'lucide-react'
 
 
@@ -34,9 +38,23 @@ const QueryForm = dynamic(() => import('@/components/sections/QueryForm'))
 
 const WHY_SILBAR_POINTS = [
   'Trained & Verified Manpower — background-checked, uniformed, ISO-audited guards',
-  'Advanced Technology — CCTV integration, access control, real-time monitoring',
-  'Process-Driven Approach — monthly MIS, compliance reporting, account manager',
-  'Pan India Presence — 200+ cities, rapid deployment, 24-hour replacement',
+  'PSARA Licensed Across 19 States — full statutory compliance on every deployment',
+  '4 ISO Certifications (IAF Accredited) — 9001, 14001, 45001, 27001',
+  'Pan India Presence — 200+ cities across 19 states, rapid deployment, 24-hour replacement',
+]
+
+const PROCESS_STEPS = [
+  { number: '01', icon: ClipboardCheck, title: 'Free Security Assessment', desc: 'We analyze your facility, identify vulnerabilities, and understand your specific security concerns — no obligation.' },
+  { number: '02', icon: FileSearch, title: 'Custom Security Plan', desc: 'Tailored solution with transparent pricing. Manned guarding, remote monitoring, or integrated — whatever fits.' },
+  { number: '03', icon: Building2, title: 'Rapid Deployment', desc: 'Vetted, trained professionals deployed within 48 hours using documented SOPs and ISO-audited processes.' },
+  { number: '04', icon: Headphones, title: '24/7 Account Support', desc: 'Dedicated account manager, monthly MIS, real-time incident reporting, and 24-hour replacement guarantee.' },
+]
+
+const CERTIFICATIONS_DATA = [
+  { title: 'ISO 9001:2015', sub: 'Quality Management', icon: Award },
+  { title: 'ISO 14001:2015', sub: 'Environmental Management', icon: Shield },
+  { title: 'ISO 45001:2018', sub: 'Health & Safety', icon: Shield },
+  { title: 'ISO 27001', sub: 'Information Security', icon: Shield },
 ]
 
 const INDUSTRIES_ICONS = [
@@ -50,19 +68,30 @@ const INDUSTRIES_ICONS = [
   { icon: Globe, label: 'Government' },
 ]
 
-const CLIENT_LOGOS = ['Reliance', 'TATA', 'HDFC Bank', 'Infosys', 'Adani', 'DLF']
+const CLIENT_LOGOS = ['Manufacturing', 'Healthcare', 'Banking & Finance', 'IT & Tech Parks', 'Retail & Malls', 'Government']
 
 const STATS = [
-  { value: '22+', label: 'Years of Excellence', sub: 'Since 2005' },
-  { value: '7,000+', label: 'Security Professionals', sub: 'Licensed & trained' },
-  { value: '200+', label: 'Cities Covered', sub: 'Pan India network' },
-  { value: '1M+', label: 'Lives Protected Daily', sub: 'Across all sectors' },
+  { value: '8+', label: 'Years of Excellence', sub: 'Since 2018' },
+  { value: '100+', label: 'Security Professionals', sub: 'Trained & verified' },
+  { value: '200+', label: 'Cities Covered', sub: '19 states across India' },
+  { value: '19', label: 'PSARA Licensed States', sub: 'With 4 ISO certifications' },
+]
+
+const TESTIMONIALS = [
+  { quote: 'Silbar\'s professionalism, transparency and response times are unmatched. A partner we rely on, every day.', name: 'Operations Head', company: 'Leading Manufacturing Firm' },
+  { quote: 'We switched to Silbar Security for our 12 factories across Rajasthan. The reduction in security incidents has been remarkable — 90% fewer incidents in the first quarter.', name: 'VP Facilities', company: 'Automobile Manufacturer' },
+  { quote: 'Their electronic surveillance integration with manned guarding gave us complete visibility across 45 retail locations. Truly pan-India capability.', name: 'Security Director', company: 'National Retail Chain' },
+  { quote: 'The Quick Response Team arrived within 15 minutes of our distress call. Silbar\'s 24/7 monitoring is genuinely world-class.', name: 'Facility Manager', company: 'IT Park, Bengaluru' },
+  { quote: 'From event security for our 10,000-strong conference to daily office guarding, Silbar handles it all with ISO-certified processes. Highly recommended.', name: 'CEO', company: 'Corporate Events Company' },
+  { quote: 'Their facility management team manages housekeeping, security, and maintenance for our hospital chain. Single vendor, zero compliance headaches.', name: 'Admin Director', company: 'Multi-Specialty Hospital Chain' },
 ]
 
 export default function HomePageClient() {
   const whySilbarRef = useRef<HTMLElement>(null)
   const industriesRef = useRef<HTMLElement>(null)
   const statsRef = useRef<HTMLElement>(null)
+  const carouselRef = useRef<HTMLDivElement>(null)
+  const [activeDot, setActiveDot] = useState(0)
 
   // Why Silbar — photo mosaic stagger + copy reveal
   useGSAP(() => {
@@ -109,7 +138,7 @@ export default function HomePageClient() {
     const mm = gsap.matchMedia()
     mm.add('(prefers-reduced-motion: no-preference)', () => {
       const cards = statsRef.current!.querySelectorAll('.stat-card')
-      const testimonials = statsRef.current!.querySelectorAll('.testimonial-card')
+      const testimonialItems = statsRef.current!.querySelectorAll('.testimonial-card')
       
       const tl = gsap.timeline({
         scrollTrigger: { trigger: statsRef.current, start: 'top 75%' }
@@ -122,10 +151,10 @@ export default function HomePageClient() {
       )
       
       tl.fromTo(
-        testimonials,
+        testimonialItems,
         { opacity: 0, y: 40, scale: 0.95 },
         { opacity: 1, y: 0, scale: 1, duration: 0.8, stagger: 0.15, ease: 'power2.out' },
-        '-=0.4' // overlap with the stat cards animation
+        '-=0.4'
       )
     })
     return () => mm.revert()
@@ -136,42 +165,68 @@ export default function HomePageClient() {
       <ScrollExperience />
       <ServicesGrid services={SERVICES} />
 
+      {/* ─── HOW WE WORK (Process) ────────────────────── */}
+      <section className="process-section brand-rail" aria-labelledby="process-title">
+        <div className="shell">
+          <span className="section-eyebrow">HOW WE WORK</span>
+          <h2 id="process-title" className="section-heading">
+            Simple Process. <em>Trusted</em> Protection.
+          </h2>
+          <p className="section-subtitle">
+            From assessment to deployment — a transparent, step-by-step approach that puts your safety first.
+          </p>
+          <div className="process-grid">
+            {PROCESS_STEPS.map((step, i) => (
+              <div key={step.number} className={`process-step hover-lift${i < PROCESS_STEPS.length - 1 ? ' process-step--arrow' : ''}`}>
+                <div className="process-step__header">
+                  <div className="process-step__number">{step.number}</div>
+                  <div className="process-step__icon">
+                    <step.icon size={20} strokeWidth={1.5} />
+                  </div>
+                </div>
+                <h3 className="process-step__title">{step.title}</h3>
+                <p className="process-step__desc">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Brand claim strip — unique pattern between services & why */}
       <section className="brand-band section-pad--tight" aria-label="Brand promise">
         <div className="brand-band__inner shell brand-split">
           <div>
             <span className="section-eyebrow section-eyebrow--light">SILBAR PROMISE</span>
-            <h2 className="section-heading section-heading--on-dark" style={{ marginBottom: '0.75rem' }}>
+            <h2 className="section-heading section-heading--on-dark heading-mb-sm">
               Security You Can <em className="brand-shimmer-text">Measure.</em>
             </h2>
-            <p style={{ color: 'rgba(250,248,244,0.75)', lineHeight: 1.7, maxWidth: 520, margin: 0 }}>
+            <p className="brand-claim-text">
               Trained manpower. Documented SOPs. Statutory-aware commercials. Account ownership.
               Built for factories, campuses, hospitals, and multi-city brands across India.
             </p>
           </div>
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+          <div className="brand-seals-row">
             <div className="brand-seal motion-glow">ISO<br />9001<br />2015</div>
-            <div className="brand-seal">EST<br />2005<br />JAIPUR</div>
-            <div className="brand-seal">7000+<br />PROS</div>
+            <div className="brand-seal">EST<br />2018<br />JAIPUR</div>
+            <div className="brand-seal">19<br />STATES</div>
           </div>
         </div>
       </section>
 
       {/* ─── WHY SILBAR ────────────────────────────────── */}
       <section className="why-silbar-section brand-rail" ref={whySilbarRef} aria-labelledby="why-silbar-title">
-        {/* Background image */}
         <div className="why-silbar-bg" aria-hidden="true" />
 
         <div className="why-silbar-inner">
-          {/* Left: copy */}
           <div className="why-silbar-copy">
             <span className="section-eyebrow section-eyebrow--light">WHY SILBAR</span>
-            <h2 id="why-silbar-title" className="section-heading section-heading--on-dark" style={{ marginBottom: '1.25rem' }}>
+            <h2 id="why-silbar-title" className="section-heading section-heading--on-dark heading-mb-lg">
               Protection is our <em>Promise.</em><br />Integrity is our Foundation.
             </h2>
             <p className="why-silbar-body">
-              For over two decades, Silbar Security has been the trusted partner for enterprises,
-              institutions, and communities across India. We combine people, process, and technology
+              Since 2018, Silbar Security has grown into a trusted PAN India security partner for enterprises,
+              institutions, and communities across India. With PSARA licenses in 19 states, 4 ISO certifications,
+              and a team of 100+ trained professionals, we combine compliance, people, and technology
               to deliver unmatched protection.
             </p>
             <div className="why-silbar-divider" aria-hidden="true" />
@@ -183,75 +238,69 @@ export default function HomePageClient() {
                 </li>
               ))}
             </ul>
-            <div className="cta-pair" style={{ marginTop: '1.75rem' }}>
-              <Link href="/about" className="btn-primary" style={{ background: 'white', color: '#0B0E14', borderColor: 'white' }}>
+            <div className="cta-pair cta-pair--on-dark">
+              <Link href="/about" className="btn-primary btn-primary--white">
                 Our Story <ArrowRight size={14} aria-hidden="true" />
               </Link>
-              <Link href="/contact" className="btn-secondary" style={{ color: 'white', borderColor: 'rgba(255,255,255,0.5)' }}>
+              <Link href="/contact" className="btn-secondary btn-secondary--on-dark">
                 Request Assessment
               </Link>
             </div>
           </div>
 
-          {/* Right: mosaic cards */}
           <div className="why-silbar-mosaic" aria-hidden="true">
-            {/* Tile A — EST. 2005 */}
             <div className="why-silbar-tile why-silbar-tile--a">
               <div className="why-silbar-tile__inner why-silbar-tile__inner--dark">
                 <div className="why-silbar-tile__icon-wrap why-silbar-tile__icon-wrap--gold">
                   <Shield size={32} strokeWidth={1.5} />
                 </div>
                 <div className="why-silbar-tile__content">
-                  <div className="why-silbar-tile__title">EST. 2005</div>
-                  <div className="why-silbar-tile__subtitle">Two decades of trust<br />and commitment</div>
+                  <div className="why-silbar-tile__title">EST. 2018</div>
+                  <div className="why-silbar-tile__subtitle">Building trust since<br />2018 · Jaipur</div>
                 </div>
               </div>
             </div>
 
-            {/* Tile B — 200+ CITIES */}
             <div className="why-silbar-tile why-silbar-tile--b">
               <div className="why-silbar-tile__inner why-silbar-tile__inner--dark">
                 <div className="why-silbar-tile__icon-wrap why-silbar-tile__icon-wrap--gold">
                   <Globe size={32} strokeWidth={1.5} />
                 </div>
                 <div className="why-silbar-tile__content">
-                  <div className="why-silbar-tile__title">200+ CITIES</div>
-                  <div className="why-silbar-tile__subtitle">PAN INDIA PRESENCE</div>
+                  <div className="why-silbar-tile__title">19 STATES</div>
+                  <div className="why-silbar-tile__subtitle">PSARA LICENSED<br />200+ CITIES</div>
                 </div>
               </div>
             </div>
 
-            {/* Tile C — ISO 9001:2015 */}
             <div className="why-silbar-tile why-silbar-tile--c">
               <div className="why-silbar-tile__inner why-silbar-tile__inner--light">
                 <div className="why-silbar-tile__icon-wrap why-silbar-tile__icon-wrap--cherry">
                   <Award size={28} strokeWidth={1.5} />
                 </div>
                 <div className="why-silbar-tile__content">
-                  <div className="why-silbar-tile__title why-silbar-tile__title--dark">ISO 9001:2015</div>
-                  <div className="why-silbar-tile__subtitle why-silbar-tile__subtitle--dark">CERTIFIED</div>
-                  <div className="why-silbar-tile__desc">Quality processes.<br />Trusted standards.</div>
+                  <div className="why-silbar-tile__title why-silbar-tile__title--dark">4 ISO CERTIFIED</div>
+                  <div className="why-silbar-tile__subtitle why-silbar-tile__subtitle--dark">IAF ACCREDITED</div>
+                  <div className="why-silbar-tile__desc">9001 · 14001 · 45001 · 27001<br />Quality. Safety. Security.</div>
                 </div>
               </div>
             </div>
 
-            {/* Tile D — 7,000+ PROFESSIONALS */}
             <div className="why-silbar-tile why-silbar-tile--d">
               <div className="why-silbar-tile__inner why-silbar-tile__inner--light">
                 <div className="why-silbar-tile__icon-wrap why-silbar-tile__icon-wrap--cherry">
                   <Users size={28} strokeWidth={1.5} />
                 </div>
                 <div className="why-silbar-tile__content">
-                  <div className="why-silbar-tile__number">7,000+</div>
+                  <div className="why-silbar-tile__number">100+</div>
                   <div className="why-silbar-tile__subtitle why-silbar-tile__subtitle--dark">PROFESSIONALS</div>
                   <div className="why-silbar-tile__desc">Trained. Equipped.<br />Committed.</div>
                 </div>
               </div>
             </div>
 
-            {/* Trusted since badge */}
             <div className="why-silbar-trusted-badge" aria-hidden="true">
-              <span className="why-silbar-trusted-text">TRUSTED<br />SINCE<br />2005</span>
+              <span className="why-silbar-trusted-text">TRUSTED<br />SINCE<br />2018</span>
             </div>
           </div>
         </div>
@@ -259,10 +308,9 @@ export default function HomePageClient() {
 
       <div className="section-divider-gradient" />
 
-      {/* ─── INDUSTRIES WE PROTECT (REDESIGNED) ──────────────────────────── */}
+      {/* ─── INDUSTRIES WE PROTECT ──────────────────────── */}
       <section className="industries-protect-section" ref={industriesRef} aria-labelledby="industries-strip-title">
         <div className="industries-protect-inner">
-          {/* Content Overlay */}
           <div className="industries-protect-content">
             <span className="section-eyebrow">INDUSTRIES WE PROTECT</span>
             <h2 id="industries-strip-title" className="section-heading">
@@ -299,12 +347,41 @@ export default function HomePageClient() {
                 href="https://g.page/r/silbar-security/review"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary"
-                style={{ marginTop: '0.5rem', display: 'inline-flex' }}
+                className="btn-primary review-btn"
               >
                 Review Us on Google
               </a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── CERTIFICATIONS SHOWCASE ───────────────────── */}
+      <section className="certs-showcase brand-rail" aria-labelledby="certs-title">
+        <div className="shell">
+          <span className="section-eyebrow section-eyebrow--light">CERTIFIED EXCELLENCE</span>
+          <h2 id="certs-title" className="section-heading section-heading--on-dark">
+            ISO Certified. <em>IAF Accredited.</em>
+          </h2>
+          <p className="section-subtitle section-subtitle--light">
+            Our certifications reflect our commitment to quality, safety, environment, and information security — 
+            independently verified by IAF-accredited bodies.
+          </p>
+          <div className="certs-showcase__grid">
+            {CERTIFICATIONS_DATA.map((cert) => (
+              <div key={cert.title} className="cert-badge hover-lift">
+                <div className="cert-badge__icon cert-badge__icon--gold">
+                  <cert.icon size={24} strokeWidth={1.5} />
+                </div>
+                <div className="cert-badge__title">{cert.title}</div>
+                <div className="cert-badge__sub">{cert.sub}</div>
+              </div>
+            ))}
+          </div>
+          <div className="certs-showcase__cta">
+            <Link href="/certification" className="btn-primary btn-primary--on-dark">
+              View All Certifications <ArrowRight size={14} />
+            </Link>
           </div>
         </div>
       </section>
@@ -332,74 +409,47 @@ export default function HomePageClient() {
             ))}
           </div>
 
-          {/* Testimonials */}
-          <div className="testimonials-grid">
-            <blockquote className="testimonial-card">
-              <p className="testimonial-card__quote">
-                &ldquo;Silbar&apos;s professionalism, transparency and response times are unmatched.
-                A partner we rely on, every day.&rdquo;
-              </p>
-              <footer className="testimonial-card__attribution">
-                <span className="testimonial-card__name">— Operations Head</span>
-                <span className="testimonial-card__company">Leading Manufacturing Firm</span>
-              </footer>
-            </blockquote>
-            <blockquote className="testimonial-card">
-              <p className="testimonial-card__quote">
-                &ldquo;We switched to Silbar Security for our 12 factories across Rajasthan.
-                The reduction in security incidents has been remarkable — 90% fewer incidents in the first quarter.&rdquo;
-              </p>
-              <footer className="testimonial-card__attribution">
-                <span className="testimonial-card__name">— VP Facilities</span>
-                <span className="testimonial-card__company">Automobile Manufacturer</span>
-              </footer>
-            </blockquote>
-            <blockquote className="testimonial-card">
-              <p className="testimonial-card__quote">
-                &ldquo;Their electronic surveillance integration with manned guarding gave us
-                complete visibility across 45 retail locations. Truly pan-India capability.&rdquo;
-              </p>
-              <footer className="testimonial-card__attribution">
-                <span className="testimonial-card__name">— Security Director</span>
-                <span className="testimonial-card__company">National Retail Chain</span>
-              </footer>
-            </blockquote>
-            <blockquote className="testimonial-card">
-              <p className="testimonial-card__quote">
-                &ldquo;The Quick Response Team arrived within 15 minutes of our distress call.
-                Silbar&apos;s 24/7 monitoring is genuinely world-class.&rdquo;
-              </p>
-              <footer className="testimonial-card__attribution">
-                <span className="testimonial-card__name">— Facility Manager</span>
-                <span className="testimonial-card__company">IT Park, Bengaluru</span>
-              </footer>
-            </blockquote>
-            <blockquote className="testimonial-card">
-              <p className="testimonial-card__quote">
-                &ldquo;From event security for our 10,000-strong conference to daily office guarding,
-                Silbar handles it all with ISO-certified processes. Highly recommended.&rdquo;
-              </p>
-              <footer className="testimonial-card__attribution">
-                <span className="testimonial-card__name">— CEO</span>
-                <span className="testimonial-card__company">Corporate Events Company</span>
-              </footer>
-            </blockquote>
-            <blockquote className="testimonial-card">
-              <p className="testimonial-card__quote">
-                &ldquo;Their facility management team manages housekeeping, security, and maintenance
-                for our hospital chain. Single vendor, zero compliance headaches.&rdquo;
-              </p>
-              <footer className="testimonial-card__attribution">
-                <span className="testimonial-card__name">— Admin Director</span>
-                <span className="testimonial-card__company">Multi-Specialty Hospital Chain</span>
-              </footer>
-            </blockquote>
+          {/* Testimonials carousel */}
+          <div
+            className="testimonials-carousel"
+            ref={carouselRef}
+            onScroll={(e) => {
+              const el = e.currentTarget
+              const idx = Math.round(el.scrollLeft / (el.children[0] as HTMLElement).offsetWidth)
+              if (idx !== activeDot) setActiveDot(Math.min(idx, TESTIMONIALS.length - 1))
+            }}
+          >
+            {TESTIMONIALS.map((t, i) => (
+              <blockquote key={i} className="testimonial-card">
+                <p className="testimonial-card__quote">&ldquo;{t.quote}&rdquo;</p>
+                <footer className="testimonial-card__attribution">
+                  <span className="testimonial-card__name">— {t.name}</span>
+                  <span className="testimonial-card__company">{t.company}</span>
+                </footer>
+              </blockquote>
+            ))}
+          </div>
+          <div className="testimonials-dots" role="group" aria-label="Testimonial navigation">
+            {TESTIMONIALS.map((_, i) => (
+              <button
+                key={i}
+                className={`testimonials-dot${i === activeDot ? ' active' : ''}`}
+                onClick={() => {
+                  const el = carouselRef.current
+                  if (!el) return
+                  const card = el.children[0] as HTMLElement
+                  el.scrollTo({ left: card.offsetWidth * i, behavior: 'smooth' })
+                  setActiveDot(i)
+                }}
+                aria-label={`Go to testimonial ${i + 1}`}
+              />
+            ))}
           </div>
         </div>
       </section>
 
       {/* ─── QUERY FORM ────────────────────────────────── */}
-      <section className="home-query-section page-lead-section" style={{ padding: '4rem 1.5rem' }}>
+      <section className="home-query-section page-lead-section">
         <QueryForm
           title="Get a Free Security Quote"
           subtitle="Tell us about your facility — submit opens WhatsApp with your details so we can reply instantly."

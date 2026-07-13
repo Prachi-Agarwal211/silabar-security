@@ -487,3 +487,23 @@
   color: rgba(250, 248, 244, 0.4);
   letter-spacing: 0.05em;
 }
+
+/* ─── Layout utilities ─── */
+.u-block { display: block; }
+.u-inline-flex {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.u-flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+.u-mb-0 { margin-bottom: 0; }
+.u-mb-1 { margin-bottom: 1rem; }
+.u-mb-2 { margin-bottom: 2rem; }
+.u-mb-4 { margin-bottom: 4rem; }
+.u-mt-1 { margin-top: 1rem; }
+.u-mt-2 { margin-top: 2rem; }

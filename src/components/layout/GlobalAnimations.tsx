@@ -1,21 +1,29 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 import { initLenis, destroyLenis } from '@/lib/lenis'
 
+let lenisInitialized = false
+
 export default function GlobalAnimations({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
+  const initialized = useRef(false)
 
-  // Initialize Lenis globally
   useEffect(() => {
-    initLenis()
+    if (!initialized.current) {
+      initLenis()
+      lenisInitialized = true
+      initialized.current = true
+    }
     return () => {
-      destroyLenis()
+      if (lenisInitialized) {
+        destroyLenis()
+        lenisInitialized = false
+      }
     }
   }, [])
 
-  // Basic Page Transition effect - scroll to top
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [pathname])

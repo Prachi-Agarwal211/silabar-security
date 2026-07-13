@@ -39,10 +39,10 @@ export default function Footer() {
     <footer className="site-footer footer-solid-red" id="contact">
       {/* Trust badges row */}
       <div className="footer-trust-row">
-        <div className="footer-trust-badge">ISO 9001:2015 Certified</div>
-        <div className="footer-trust-badge">Licensed &amp; Insured</div>
-        <div className="footer-trust-badge">MSME Registered</div>
-        <div className="footer-trust-badge">7,000+ Professionals</div>
+        <div className="footer-trust-badge">4 ISO Certified (IAF)</div>
+        <div className="footer-trust-badge">PSARA Licensed · 19 States</div>
+        <div className="footer-trust-badge">200+ Cities PAN India</div>
+        <div className="footer-trust-badge">Startup India · MSME Registered</div>
       </div>
 
       <div className="footer-grid">
@@ -52,7 +52,7 @@ export default function Footer() {
             <Image src="/icon-512.png" alt="Silbar Security" width={44} height={44} className="footer-logo-img" />
             <div>
               <div className="footer-brand">Silbar Security</div>
-              <p className="footer-tagline">India&apos;s trusted security services company.</p>
+              <p className="footer-tagline">India&apos;s trusted PAN India security company.</p>
             </div>
           </div>
           <div className="footer-contact-list">
@@ -63,10 +63,10 @@ export default function Footer() {
               <Mail size={13} /> {CONTACT.email}
             </a>
             <span className="footer-contact-item footer-contact-item--location">
-              <MapPin size={13} /> {CONTACT.address.full}
+              <MapPin size={13} /> Regd. Office: Statesman House, Barakhamba Rd, New Delhi
             </span>
             <span className="footer-contact-item footer-contact-item--location">
-              Also: Delhi NCR · Ahmedabad
+              <MapPin size={13} /> Corp. Office: MPD Tower, Golf Course Rd, Gurugram
             </span>
           </div>
           <div className="footer-social">

@@ -30,22 +30,22 @@ export default function ContactPage() {
           {
             '@context': 'https://schema.org',
             '@type': 'LocalBusiness',
-            name: 'Silbar Security Services Pvt. Ltd. (HQ)',
+            name: 'Silbar Security Services Pvt. Ltd. (Registered Office)',
             image: 'https://www.silbarsecurity.in/og-image.jpg',
             telephone: CONTACT.phoneRaw,
             email: CONTACT.email,
             address: {
               '@type': 'PostalAddress',
-              streetAddress: '208, 2nd Floor, Samod Tower, Sansar Chand Road',
-              addressLocality: 'Jaipur',
-              addressRegion: 'Rajasthan',
-              postalCode: '302001',
+              streetAddress: '5th Floor, Statesman House, Plot No. 148, Barakhamba Road, Connaught Place',
+              addressLocality: 'New Delhi',
+              addressRegion: 'Delhi',
+              postalCode: '110001',
               addressCountry: 'IN',
             },
             geo: {
               '@type': 'GeoCoordinates',
-              latitude: GEO_COORDINATES['jaipur-hq']?.lat || 26.9124,
-              longitude: GEO_COORDINATES['jaipur-hq']?.lng || 75.7873,
+              latitude: GEO_COORDINATES['delhi-office']?.lat || 28.6315,
+              longitude: GEO_COORDINATES['delhi-office']?.lng || 77.2335,
             },
             openingHoursSpecification: [{
               '@type': 'OpeningHoursSpecification',
@@ -63,18 +63,18 @@ export default function ContactPage() {
           {
             '@context': 'https://schema.org',
             '@type': 'LocalBusiness',
-            name: 'Silbar Security Services — Delhi NCR',
+            name: 'Silbar Security Services — Gurugram (Corporate Office)',
             telephone: CONTACT.phoneRaw,
-            address: { '@type': 'PostalAddress', addressLocality: 'New Delhi', addressRegion: 'Delhi', addressCountry: 'IN' },
-            geo: { '@type': 'GeoCoordinates', latitude: GEO_COORDINATES['delhi-office']?.lat || 28.6139, longitude: GEO_COORDINATES['delhi-office']?.lng || 77.2090 },
+            address: { '@type': 'PostalAddress', streetAddress: '2nd Floor, MPD Tower, Golf Course Road, Sector 43', addressLocality: 'Gurugram', addressRegion: 'Haryana', postalCode: '122002', addressCountry: 'IN' },
+            geo: { '@type': 'GeoCoordinates', latitude: 28.4595, longitude: 77.0266 },
           },
           {
             '@context': 'https://schema.org',
             '@type': 'LocalBusiness',
-            name: 'Silbar Security Services — Ahmedabad',
+            name: 'Silbar Security Services — Jaipur (Branch Office)',
             telephone: CONTACT.phoneRaw,
-            address: { '@type': 'PostalAddress', addressLocality: 'Ahmedabad', addressRegion: 'Gujarat', addressCountry: 'IN' },
-            geo: { '@type': 'GeoCoordinates', latitude: GEO_COORDINATES['ahmedabad-office']?.lat || 23.0225, longitude: GEO_COORDINATES['ahmedabad-office']?.lng || 72.5714 },
+            address: { '@type': 'PostalAddress', streetAddress: 'C-36, 3rd Floor, Capital Galleria, Sirsi Road, Kanakpura', addressLocality: 'Jaipur', addressRegion: 'Rajasthan', postalCode: '302034', addressCountry: 'IN' },
+            geo: { '@type': 'GeoCoordinates', latitude: GEO_COORDINATES['jaipur-hq']?.lat || 26.9124, longitude: GEO_COORDINATES['jaipur-hq']?.lng || 75.7873 },
           }
         ])
       }} />
@@ -90,6 +90,9 @@ export default function ContactPage() {
               <span className="breadcrumb__current">Contact</span>
             </nav>
             <span className="section-eyebrow section-eyebrow--red">GET IN TOUCH</span>
+            <p className="contact-reg-office">
+              Registered Office: Statesman House, Barakhamba Road, Connaught Place, New Delhi
+            </p>
             <h1 id="contact-heading" className="section-heading contact-heading">
               Let&apos;s Build a Safer <em>Tomorrow.</em> Together.
             </h1>
@@ -127,8 +130,15 @@ export default function ContactPage() {
               <div className="contact-info-row contact-info-row--static">
                 <span className="contact-info-row__icon" aria-hidden="true"><MapPin size={18} /></span>
                 <span className="contact-info-row__body">
-                  <span className="contact-info-row__label">Headquarters</span>
-                  <span className="contact-info-row__value">Samod Tower, Sansar Chand Rd, Jaipur 302001</span>
+                  <span className="contact-info-row__label">Registered Office</span>
+                  <span className="contact-info-row__value">Statesman House, Barakhamba Rd, Connaught Place, New Delhi 110001</span>
+                </span>
+              </div>
+              <div className="contact-info-row contact-info-row--static">
+                <span className="contact-info-row__icon" aria-hidden="true"><MapPin size={18} /></span>
+                <span className="contact-info-row__body">
+                  <span className="contact-info-row__label">Corporate Office</span>
+                  <span className="contact-info-row__value">MPD Tower, Golf Course Rd, Sector 43, Gurugram 122002</span>
                 </span>
               </div>
               <div className="contact-info-row contact-info-row--static">
@@ -143,7 +153,7 @@ export default function ContactPage() {
 
           {/* Right column: CTA card */}
           <ScrollReveal delay={0.15} className="contact-cta-card">
-            <span className="section-eyebrow section-eyebrow--red" style={{ marginBottom: '1.25rem', display: 'block' }}>QUICK QUOTE</span>
+            <span className="section-eyebrow section-eyebrow--red u-block u-mb-1">QUICK QUOTE</span>
             <h2 className="contact-cta-card__title">
               We Respond in <em>2 Hours</em>
             </h2>
@@ -175,17 +185,17 @@ export default function ContactPage() {
       {/* ─── Contact Details Cards ─── */}
       <section className="contact-body" aria-label="Contact details">
         <div className="contact-body__inner">
-          <div style={{ marginBottom: '4rem' }}>
+          <div className="u-mb-2">
             <QueryForm />
           </div>
 
           {/* Office locations */}
           <ScrollReveal delay={0.1} className="contact-offices">
-            <span className="section-eyebrow section-eyebrow--red" style={{ marginBottom: '1rem', display: 'block' }}>OUR OFFICES</span>
+            <span className="section-eyebrow section-eyebrow--red u-block u-mb-1">OUR OFFICES</span>
             <h2 className="section-heading contact-offices-heading">
               Find Us <em>Nearby.</em>
             </h2>
-            <div className="contact-offices-grid" style={{ marginTop: '1.5rem' }}>
+            <div className="contact-offices-grid">
               {CONTACT.officeLocations.map((office) => (
                 <div key={office.city} className="office-card">
                   <div className="office-card__badge">{office.badge}</div>
@@ -194,7 +204,7 @@ export default function ContactPage() {
                     {office.city}
                   </div>
                   <p className="office-card__address">{office.address}</p>
-                  <a href={`tel:${office.phoneRaw}`} className="office-card__phone" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', marginTop: '0.5rem', color: 'var(--color-cherry)', fontWeight: 700, fontSize: '0.9rem', textDecoration: 'none' }}>
+                  <a href={`tel:${office.phoneRaw}`} className="office-card__phone">
                     <Phone size={14} aria-hidden="true" /> {office.phone}
                   </a>
                   <div className="office-card__hours">
@@ -206,18 +216,18 @@ export default function ContactPage() {
           </ScrollReveal>
 
           {/* Google Maps */}
-          <div style={{ marginTop: '3rem' }}>
-            <span className="section-eyebrow section-eyebrow--red" style={{ marginBottom: '1rem', display: 'block' }}>FIND US ON MAP</span>
+          <div className="u-mt-2">
+            <span className="section-eyebrow section-eyebrow--red u-block u-mb-1">FIND US ON MAP</span>
             <div className="contact-map-container">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3627.5!2d75.7873!3d26.9124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sJaipur!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.2!2d77.2335!3d28.6315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd1a0c0c0c0f%3A0x0!2sStatesman+House%2C+Barakhamba+Rd%2C+New+Delhi!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
                 width="100%"
                 height="400"
-                style={{ border: 0, borderRadius: '8px' }}
+                className="contact-map-frame"
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Silbar Security Office Location - Jaipur"
+                title="Silbar Security Registered Office - Statesman House, New Delhi"
               />
             </div>
           </div>

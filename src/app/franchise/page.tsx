@@ -49,13 +49,12 @@ const INVESTMENTFAQ = [
 export default function FranchisePage() {
   return (
     <main className="service-detail-page">
-      {/* Hero */}
       <PageHero
         eyebrow="Franchise Opportunities"
         title={<>Partner with <em>India&apos;s Fastest-Growing</em> Security Company</>}
         subtitle="Join 200+ franchise partners across India. Low investment, high returns, and full operational support from a 20-year trusted brand."
         bottomContent={
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: '1.5rem' }}>
+          <div className="franchise-hero-ctas">
             <a href="#franchise-form" className="service-detail-cta service-detail-cta--primary">
               Apply for Franchise
             </a>
@@ -66,24 +65,23 @@ export default function FranchisePage() {
         }
       />
 
-      {/* Why Franchise */}
-      <section className="service-detail-why" style={{ padding: '6rem 2rem' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <section className="franchise-section">
+        <div className="franchise-section__inner">
           <ScrollReveal>
             <span className="section-eyebrow section-eyebrow--red">Why Partner With Us</span>
-            <h2 className="section-heading" style={{ marginBottom: '3rem' }}>
+            <h2 className="section-heading franchise-section__heading">
               Built for <em>Growth.</em>
             </h2>
           </ScrollReveal>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}>
+          <div className="franchise-grid">
             {WHY_FRANCHISE.map(({ icon: Icon, title, desc }) => (
               <ScrollReveal key={title}>
-                <div style={{ padding: '2rem', background: 'var(--color-paper)', borderRadius: '12px', border: '1px solid rgba(191,149,63,0.15)' }}>
-                  <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(140,31,50,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.25rem' }}>
+                <div className="franchise-card">
+                  <div className="franchise-card__icon-wrap">
                     <Icon size={24} color="var(--color-cherry)" />
                   </div>
-                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 700, color: 'var(--color-midnight)', marginBottom: '0.5rem' }}>{title}</h3>
-                  <p style={{ fontSize: '0.9rem', color: 'rgba(0,0,0,0.6)', lineHeight: 1.6 }}>{desc}</p>
+                  <h3 className="franchise-card__title">{title}</h3>
+                  <p className="franchise-card__desc">{desc}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -91,22 +89,21 @@ export default function FranchisePage() {
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="service-detail-process" style={{ padding: '6rem 2rem', background: 'var(--color-midnight)' }}>
-        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+      <section className="franchise-section franchise-section--dark">
+        <div className="franchise-section__inner franchise-section__inner--narrow">
           <ScrollReveal>
             <span className="section-eyebrow section-eyebrow--red">How It Works</span>
-            <h2 className="section-heading" style={{ color: 'white', marginBottom: '3rem' }}>
+            <h2 className="section-heading franchise-section__heading--light">
               Four Steps to <em>Partnership.</em>
             </h2>
           </ScrollReveal>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem' }}>
+          <div className="franchise-steps-grid">
             {STEPS.map(({ step, title, desc }) => (
               <ScrollReveal key={step}>
-                <div style={{ textAlign: 'center', padding: '2rem 1.5rem' }}>
-                  <div style={{ fontFamily: 'var(--font-display)', fontSize: '2.5rem', fontWeight: 800, color: 'var(--color-cherry)', marginBottom: '1rem' }}>{step}</div>
-                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700, color: 'white', marginBottom: '0.75rem' }}>{title}</h3>
-                  <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.7)', lineHeight: 1.6 }}>{desc}</p>
+                <div className="franchise-step">
+                  <div className="franchise-step__num">{step}</div>
+                  <h3 className="franchise-step__title">{title}</h3>
+                  <p className="franchise-step__desc">{desc}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -114,30 +111,28 @@ export default function FranchisePage() {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="service-detail-faq" style={{ padding: '6rem 2rem' }}>
-        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+      <section className="franchise-section">
+        <div className="franchise-section__inner franchise-section__inner--narrow">
           <ScrollReveal>
             <span className="section-eyebrow section-eyebrow--red">Frequently Asked</span>
-            <h2 className="section-heading" style={{ marginBottom: '3rem' }}>
+            <h2 className="section-heading franchise-section__heading">
               Franchise <em>Questions.</em>
             </h2>
           </ScrollReveal>
-          {INVESTMENTFAQ.map(({ q, a }, i) => (
-            <ScrollReveal key={i}>
-              <details style={{ marginBottom: '1rem', padding: '1.25rem 1.5rem', background: 'var(--color-paper)', borderRadius: '8px', border: '1px solid rgba(0,0,0,0.08)' }}>
-                <summary style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1rem', color: 'var(--color-midnight)', cursor: 'pointer', listStyle: 'none' }}>
-                  {q}
-                </summary>
-                <p style={{ marginTop: '0.75rem', fontSize: '0.9rem', color: 'rgba(0,0,0,0.65)', lineHeight: 1.7 }}>{a}</p>
-              </details>
-            </ScrollReveal>
-          ))}
+          <div className="franchise-faq-list">
+            {INVESTMENTFAQ.map(({ q, a }, i) => (
+              <ScrollReveal key={i}>
+                <details className="franchise-faq-item">
+                  <summary className="franchise-faq-item__q">{q}</summary>
+                  <p className="franchise-faq-item__a">{a}</p>
+                </details>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Franchise Form CTA */}
-      <section id="franchise-cta-banner" className="service-detail-bottom-cta" style={{ background: 'linear-gradient(135deg, var(--color-cherry-deep) 0%, var(--color-cherry) 100%)' }}>
+      <section id="franchise-cta-banner" className="service-detail-bottom-cta franchise-cta-banner">
         <h2 className="service-detail-bottom-cta__title">Ready to Partner?</h2>
         <p className="service-detail-bottom-cta__sub">
           Fill out the form below or call us directly. Our franchise team will get back to you within 24 hours.

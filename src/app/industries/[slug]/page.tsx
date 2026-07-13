@@ -3,7 +3,9 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { INDUSTRIES, INDUSTRY_SLUGS } from '@/data/industries'
 import { SERVICES } from '@/data/services'
-import { CheckCircle, ArrowRight, AlertTriangle, Phone } from 'lucide-react'
+import { CASE_STUDIES } from '@/data/case-studies'
+import { generateServiceExtraContent } from '@/lib/seo-content-generator'
+import { CheckCircle, CheckCircle2, ArrowRight, AlertTriangle, Phone, Shield, MapPin, Award, Users, BadgeCheck, Headphones } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import PageHero from '@/components/layout/PageHero'
@@ -42,6 +44,13 @@ export default async function IndustryPage({
   const relatedServices = SERVICES.filter((s) =>
     industry.services.includes(s.slug)
   )
+
+  const extra = generateServiceExtraContent(industry.title, industry.shortTitle)
+
+  const relatedCaseStudies = CASE_STUDIES.filter(
+    (cs) => cs.industry.toLowerCase().replace(/\s+/g, '-') === slug
+  )
+  const caseStudiesSlice = relatedCaseStudies.slice(0, 3)
 
   const schema = {
     '@context': 'https://schema.org',
@@ -118,6 +127,12 @@ export default async function IndustryPage({
                   visitor/material discipline, and coordination with your facility team across
                   single or multi-site networks in India.
                 </p>
+                <div className="service-trust-pills">
+                  <span className="service-trust-pill">4 ISO Certified (IAF)</span>
+                  <span className="service-trust-pill">PSARA Licensed · 19 States</span>
+                  <span className="service-trust-pill">Police Verified Guards</span>
+                  <span className="service-trust-pill">200+ Cities PAN India</span>
+                </div>
                 <p className="service-detail-longcopy">
                   Every site is different. We start with a clear scope discussion, propose category-wise
                   manpower, and mobilise with induction on your layout and emergency contacts so
@@ -160,6 +175,43 @@ export default async function IndustryPage({
               </div>
             </section>
 
+            {/* Key Benefits */}
+            <section className="industry-benefits">
+              <div className="service-detail-section-inner">
+                <ScrollReveal>
+                  <h2 className="service-detail-section-title">Key Benefits</h2>
+                </ScrollReveal>
+                <ScrollReveal className="industry-benefits-grid">
+                  {extra.benefits.map((b) => (
+                    <div key={b} className="industry-benefit-item">
+                      <CheckCircle2 size={16} className="why-choose-item__icon" />
+                      <span>{b}</span>
+                    </div>
+                  ))}
+                </ScrollReveal>
+              </div>
+            </section>
+
+            {/* How We Deliver */}
+            <section className="industry-process">
+              <div className="service-detail-section-inner">
+                <ScrollReveal>
+                  <h2 className="service-detail-section-title">How We Deliver</h2>
+                </ScrollReveal>
+                <ScrollReveal>
+                  {extra.process.map((step, i) => (
+                    <div key={step.title} className="industry-process-step">
+                      <div className="industry-process-step__num">{String(i + 1).padStart(2, '0')}</div>
+                      <div>
+                        <div className="industry-process-step__title">{step.title}</div>
+                        <div className="industry-process-step__desc">{step.desc}</div>
+                      </div>
+                    </div>
+                  ))}
+                </ScrollReveal>
+              </div>
+            </section>
+
             {/* Related Services */}
             <section className="industry-related-services">
               <div className="service-detail-section-inner">
@@ -175,6 +227,92 @@ export default async function IndustryPage({
                     </div>
                   ))}
                 </ScrollReveal>
+              </div>
+            </section>
+
+            {/* Stats */}
+            <section className="industry-stats">
+              <div className="service-detail-section-inner">
+                <div className="service-stats-strip">
+                  <div className="service-stat">
+                    <div className="service-stat__number">8+</div>
+                    <div className="service-stat__label">Years Experience</div>
+                  </div>
+                  <div className="service-stat">
+                    <div className="service-stat__number">200+</div>
+                    <div className="service-stat__label">Cities Covered</div>
+                  </div>
+                  <div className="service-stat">
+                    <div className="service-stat__number">100+</div>
+                    <div className="service-stat__label">Professionals</div>
+                  </div>
+                  <div className="service-stat">
+                    <div className="service-stat__number">4</div>
+                    <div className="service-stat__label">ISO Certified</div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Why Choose Silbar */}
+            <section className="industry-why-choose">
+              <div className="service-detail-section-inner">
+                <ScrollReveal>
+                  <h2 className="service-detail-section-title">Why Choose Silbar for {industry.shortTitle}</h2>
+                </ScrollReveal>
+                <ScrollReveal className="why-choose-grid">
+                  <div className="why-choose-item">
+                    <Shield size={18} className="why-choose-item__icon" />
+                    <span>Industry-specific security expertise</span>
+                  </div>
+                  <div className="why-choose-item">
+                    <MapPin size={18} className="why-choose-item__icon" />
+                    <span>PAN India presence across 200+ cities</span>
+                  </div>
+                  <div className="why-choose-item">
+                    <Award size={18} className="why-choose-item__icon" />
+                    <span>4 ISO certifications (IAF accredited)</span>
+                  </div>
+                  <div className="why-choose-item">
+                    <BadgeCheck size={18} className="why-choose-item__icon" />
+                    <span>PSARA licensed across 19 states</span>
+                  </div>
+                  <div className="why-choose-item">
+                    <Users size={18} className="why-choose-item__icon" />
+                    <span>Police verified, background-checked manpower</span>
+                  </div>
+                  <div className="why-choose-item">
+                    <Headphones size={18} className="why-choose-item__icon" />
+                    <span>24/7 account management and support</span>
+                  </div>
+                </ScrollReveal>
+              </div>
+            </section>
+
+            {/* Case Studies */}
+            <section className="industry-case-studies-section">
+              <div className="service-detail-section-inner">
+                <ScrollReveal>
+                  <h2 className="service-detail-section-title">Case Studies</h2>
+                </ScrollReveal>
+                {caseStudiesSlice.length > 0 ? (
+                  <ScrollReveal className="industry-case-studies">
+                    {caseStudiesSlice.map((cs) => (
+                      <Link
+                        key={cs.slug}
+                        href={`/case-studies/${cs.slug}`}
+                        className="industry-case-study-card"
+                      >
+                        <div className="industry-case-study-card__title">{cs.title}</div>
+                        <div className="industry-case-study-card__meta">{cs.client} · {cs.location}</div>
+                      </Link>
+                    ))}
+                  </ScrollReveal>
+                ) : (
+                  <p className="service-detail-longcopy" style={{ marginTop: '0.5rem' }}>
+                    Explore our <Link href="/case-studies" style={{ color: 'var(--color-cherry)', textDecoration: 'underline' }}>case studies</Link> to see how Silbar Security delivers results across industries.
+                  </p>
+                )}
               </div>
             </section>
 
@@ -223,7 +361,7 @@ href={CONTACT.whatsapp.url}
         </div>
 
         {/* ─── Query Form ─── */}
-        <section style={{ padding: '5rem 1.5rem', background: 'var(--color-paper)' }}>
+        <section className="section-form-shell">
           <QueryForm
             title={`${industry.shortTitle} Security Quote`}
             subtitle="Submit opens WhatsApp with your enquiry for our consultants."
