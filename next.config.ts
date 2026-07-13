@@ -24,7 +24,7 @@ const csp = [
   `img-src 'self' data: blob: https:`,
   `media-src 'self' blob:`,
   `frame-src 'self' https://www.google.com https://maps.google.com`,
-  `connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://fonts.googleapis.com https://fonts.gstatic.com`,
+  `connect-src 'self' https://blog.silbarsecurity.in https://www.google-analytics.com https://www.googletagmanager.com https://fonts.googleapis.com https://fonts.gstatic.com`,
   `base-uri 'self'`,
   `form-action 'self' https://wa.me https://api.whatsapp.com`,
 ].join('; ')
@@ -40,6 +40,12 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'blog.silbarsecurity.in',
         port: '',
         pathname: '/**',
       },

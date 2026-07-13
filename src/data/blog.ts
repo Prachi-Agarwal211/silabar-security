@@ -3,12 +3,15 @@ export type BlogPost = {
   slug: string
   title: string
   excerpt: string
-  content: string // HTML or Markdown string for real app, here just a long string
+  content: string // HTML string
   coverImage: string
   author: string
   publishedAt: string
   category: string
   readTime: string
+  /** When set, card opens WordPress (or external) instead of /blog/[slug] */
+  externalUrl?: string
+  source?: 'local' | 'wordpress'
 }
 
 export const BLOG_CATEGORIES = [

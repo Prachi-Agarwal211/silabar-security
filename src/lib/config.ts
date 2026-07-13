@@ -1,5 +1,13 @@
 // Business contact information — single source of truth
 
+/** Official WordPress blog (daily posts / CMS) */
+export const WORDPRESS_BLOG = {
+  origin: 'https://blog.silbarsecurity.in',
+  home: 'https://blog.silbarsecurity.in/',
+  api: 'https://blog.silbarsecurity.in/wp-json/wp/v2',
+  feed: 'https://blog.silbarsecurity.in/feed/',
+} as const
+
 export const CONTACT = {
   phone: '+91 93523 03333',
   phoneRaw: '919352303333',

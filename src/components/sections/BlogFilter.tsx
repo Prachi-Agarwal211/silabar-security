@@ -1,37 +1,38 @@
 'use client'
 
-import { useState } from 'react'
-import { BLOG_POSTS, BLOG_CATEGORIES } from '@/data/blog'
+import { useMemo, useState } from 'react'
+import type { BlogPost } from '@/data/blog'
 import BlogCard from '@/components/ui/BlogCard'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 
-export default function BlogFilter() {
+type Props = {
+  posts: BlogPost[]
+  categories?: string[]
+}
+
+export default function BlogFilter({ posts, categories }: Props) {
+  const cats = useMemo(() => {
+    if (categories?.length) return categories
+    const set = new Set<string>(['All'])
+    posts.forEach((p) => set.add(p.category || 'Updates'))
+    return Array.from(set)
+  }, [posts, categories])
+
   const [active, setActive] = useState('All')
 
-  const filtered = active === 'All'
-    ? BLOG_POSTS
-    : BLOG_POSTS.filter(p => p.category === active)
+  const filtered =
+    active === 'All' ? posts : posts.filter((p) => p.category === active)
 
   return (
     <>
       <ScrollReveal>
-        <div className="blog-categories" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '3rem', justifyContent: 'center' }}>
-          {BLOG_CATEGORIES.map((cat) => (
+        <div className="blog-categories">
+          {cats.map((cat) => (
             <button
               key={cat}
+              type="button"
               onClick={() => setActive(cat)}
-              style={{
-                padding: '0.5rem 1.25rem',
-                borderRadius: '999px',
-                border: '1px solid rgba(191, 149, 63, 0.4)',
-                background: active === cat ? 'var(--color-cherry)' : 'transparent',
-                color: active === cat ? 'white' : 'var(--color-midnight)',
-                fontFamily: 'var(--font-body)',
-                fontWeight: 700,
-                fontSize: '0.85rem',
-                cursor: 'pointer',
-                transition: 'all 0.2s',
-              }}
+              className={`blog-cat-btn${active === cat ? ' is-active' : ''}`}
             >
               {cat}
             </button>
@@ -39,18 +40,16 @@ export default function BlogFilter() {
         </div>
       </ScrollReveal>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '2rem' }}>
+      <div className="blog-grid">
         {filtered.map((post, i) => (
-          <ScrollReveal key={post.id} delay={i * 0.1}>
+          <ScrollReveal key={post.id} delay={Math.min(i * 0.06, 0.4)}>
             <BlogCard post={post} />
           </ScrollReveal>
         ))}
       </div>
 
       {filtered.length === 0 && (
-        <p style={{ textAlign: 'center', color: 'rgba(0,0,0,0.5)', padding: '3rem 0', fontSize: '1rem' }}>
-          No posts found in this category.
-        </p>
+        <p className="blog-empty">No posts found in this category.</p>
       )}
     </>
   )

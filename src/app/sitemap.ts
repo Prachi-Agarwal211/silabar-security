@@ -63,10 +63,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entry(`/industries/${slug}`, 0.8, 'monthly', now)
   )
 
-  // ── Blog posts ──
-  const blogPages = BLOG_POSTS.map((post) =>
-    entry(`/blog/${post.slug}`, 0.65, 'monthly', new Date(post.publishedAt))
-  )
+  // Blog hub + local curated posts (WordPress articles are canonical on blog.silbarsecurity.in)
+  const blogPages = [
+    entry('/blog', 0.85, 'daily', now),
+    ...BLOG_POSTS.map((post) =>
+      entry(`/blog/${post.slug}`, 0.6, 'monthly', new Date(post.publishedAt))
+    ),
+  ]
 
   // ── State SEO pages ──
   const statePages = STATES.map((state) =>
