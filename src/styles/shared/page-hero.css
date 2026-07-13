@@ -56,34 +56,36 @@
    Shared Page Layout
    ============================================ */
 
-/* All inner pages default to light background */
+/* Light pages: clear fixed header with consistent offset */
 .contact-page,
-.services-page,
-.service-detail-page,
-.seo-page,
+.services-page:not(.services-page--v2),
+.service-detail-page:not(:has(.page-hero--image)),
+.seo-page:not(:has(.page-hero--image)),
 .careers-page,
 .blog-page,
+.blog-listing-page,
+.blog-post-page,
 .legal-page,
-.industry-detail-page {
+.industry-detail-page,
+.faq-page,
+.franchise-page,
+.page-main {
   min-height: 100dvh;
   background: var(--color-paper);
   color: var(--color-paper-ink);
-  padding-top: clamp(5rem, 10vh, 8rem); /* clear the fixed header */
+  padding-top: calc(var(--header-offset, 72px) + 1.5rem);
 }
 
-/* Full-bleed photo-hero pages — no top padding (hero clears header) */
+/* Full-bleed dark / photo heroes — header overlays, no extra top pad */
 .about-page,
 .industries-page,
 .locations-page,
-.services-page--v2 {
+.services-page--v2,
+.service-detail-page:has(.page-hero--image),
+.seo-page:has(.page-hero--image) {
   min-height: 100dvh;
   background: var(--color-paper);
   color: var(--color-paper-ink);
-  padding-top: 0;
-}
-
-/* SEO location pages with image hero — hero handles header clearance */
-.seo-page:has(.page-hero--image) {
   padding-top: 0;
 }
 
@@ -139,7 +141,11 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding: clamp(6.5rem, 12vh, 9rem) clamp(1.25rem, 5vw, 4rem) clamp(2.75rem, 6vh, 4rem);
+  /* Always clear fixed header */
+  padding:
+    calc(var(--header-offset, 72px) + clamp(2rem, 5vh, 3.5rem))
+    clamp(1.25rem, 5vw, 4rem)
+    clamp(2.75rem, 6vh, 4rem);
   text-align: left;
   border-bottom: none;
   overflow: hidden;

@@ -93,3 +93,8 @@
   --section-y: clamp(3.5rem, 8vh, 7rem);
   --header-h: 72px;
 }
+
+/* Fixed header clearance — use everywhere content starts under header */
+:root {
+  --header-offset: calc(var(--header-h, 72px) + env(safe-area-inset-top, 0px));
+}

@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import { Menu, X, Phone } from 'lucide-react'
-import { MagneticButton } from '@/components/ui/MagneticButton'
 import { CONTACT } from '@/lib/config'
 
 const NAV_LINKS = [
@@ -19,196 +18,204 @@ const NAV_LINKS = [
   { label: 'Contact', href: '/contact' },
 ]
 
+/**
+ * Pages with dark photo / video heroes — header starts glass-transparent.
+ * Light pages (contact, blog, legal, industry detail, etc.) start solid midnight.
+ */
+function isDarkHeroPath(pathname: string): boolean {
+  if (pathname === '/') return true
+  if (pathname === '/about' || pathname === '/services' || pathname === '/industries') return true
+  if (pathname === '/security-services' || pathname.startsWith('/security-services/')) return true
+  // Service detail pages use image heroes
+  if (pathname.startsWith('/services/') && pathname !== '/services') return true
+  return false
+}
+
 export default function Header() {
   const pathname = usePathname()
-  const [state, setState] = useState({
-    hidden: false,
-    scrolled: false,
-    transparent: true,
-    menuOpen: false,
-  })
+  const darkHero = isDarkHeroPath(pathname)
+
+  const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
   const scrollProgressElRef = useRef<HTMLDivElement>(null)
-  const lastScrollY = useRef(0)
-  const ticking = useRef(false)
-  const wasMenuOpen = useRef(false)
   const hamburgerRef = useRef<HTMLButtonElement>(null)
-  const navRef = useRef<HTMLDivElement>(null)
+  const wasMenuOpen = useRef(false)
+  const ticking = useRef(false)
 
-  const setMenuOpen = useCallback((open: boolean) => {
-    setState(prev => ({ ...prev, menuOpen: open }))
-  }, [])
-
+  // Reset menu + scroll state on route change
   useEffect(() => {
-    const setInitialTransparent = () => {
-      if (pathname === '/') {
-        setState(prev => ({ ...prev, transparent: window.scrollY < 50, menuOpen: false }))
-      } else {
-        setState(prev => ({ ...prev, transparent: false, menuOpen: false }))
-      }
-    }
-    setInitialTransparent()
-
-    const handleScroll = () => {
-      if (!ticking.current) {
-        requestAnimationFrame(() => {
-          const currentY = window.scrollY
-          const direction = currentY > lastScrollY.current ? 'down' : 'up'
-          const isMobileNav = window.matchMedia('(max-width: 1024px)').matches
-
-          const totalScroll = document.documentElement.scrollHeight - window.innerHeight
-          const progress = totalScroll > 0 ? (currentY / totalScroll) * 100 : 0
-          if (scrollProgressElRef.current) {
-            scrollProgressElRef.current.style.width = `${progress}%`
-          }
-
-          // Only auto-hide header on large desktop; keep fixed on tablet/mobile
-          let newHidden = false
-          if (!isMobileNav && direction === 'down' && currentY > 100) {
-            newHidden = true
-          }
-
-          setState(prev => ({
-            ...prev,
-            hidden: newHidden,
-            scrolled: currentY > 50,
-            transparent: pathname === '/' ? currentY < 50 : false,
-            // Do not force-close menu on scroll while open on mobile
-            menuOpen: prev.menuOpen && isMobileNav ? prev.menuOpen : (newHidden ? false : prev.menuOpen),
-          }))
-
-          lastScrollY.current = currentY
-          ticking.current = false
-        })
-        ticking.current = true
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
+    setMenuOpen(false)
+    setScrolled(typeof window !== 'undefined' ? window.scrollY > 24 : false)
   }, [pathname])
 
   useEffect(() => {
-    document.body.style.overflow = state.menuOpen ? 'hidden' : ''
-    const handleKey = (e: KeyboardEvent) => {
+    const onScroll = () => {
+      if (ticking.current) return
+      ticking.current = true
+      requestAnimationFrame(() => {
+        const y = window.scrollY
+        setScrolled(y > 24)
+
+        const total = document.documentElement.scrollHeight - window.innerHeight
+        const progress = total > 0 ? Math.min(100, (y / total) * 100) : 0
+        if (scrollProgressElRef.current) {
+          scrollProgressElRef.current.style.width = `${progress}%`
+        }
+        ticking.current = false
+      })
+    }
+
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [pathname])
+
+  // Body lock + Escape
+  useEffect(() => {
+    const prev = document.body.style.overflow
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setMenuOpen(false)
     }
-    if (state.menuOpen) window.addEventListener('keydown', handleKey)
+    if (menuOpen) window.addEventListener('keydown', onKey)
     return () => {
-      document.body.style.overflow = ''
-      window.removeEventListener('keydown', handleKey)
+      document.body.style.overflow = prev
+      window.removeEventListener('keydown', onKey)
     }
-  }, [state.menuOpen, setMenuOpen])
+  }, [menuOpen])
 
   useEffect(() => {
-    if (wasMenuOpen.current && !state.menuOpen) hamburgerRef.current?.focus()
-    wasMenuOpen.current = state.menuOpen
-  }, [state.menuOpen])
+    if (wasMenuOpen.current && !menuOpen) hamburgerRef.current?.focus()
+    wasMenuOpen.current = menuOpen
+  }, [menuOpen])
+
+  const closeMenu = useCallback(() => setMenuOpen(false), [])
 
   const isActive = (href: string) =>
-    href === '/' ? pathname === '/' : pathname.startsWith(href)
+    href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(`${href}/`)
 
-  const { hidden, scrolled, transparent, menuOpen } = state
+  // Solid bar when: light page, scrolled on dark hero, or menu open
+  const solid = !darkHero || scrolled || menuOpen
+  const glass = darkHero && !scrolled && !menuOpen
+
+  const headerClass = [
+    'site-header',
+    solid ? 'site-header--solid' : '',
+    glass ? 'site-header--glass' : '',
+    menuOpen ? 'site-header--menu-open' : '',
+  ]
+    .filter(Boolean)
+    .join(' ')
 
   return (
     <>
-      <header
-        className={`hero-header${hidden ? ' hero-header--hidden' : ''}${scrolled ? ' hero-header--scrolled' : ''}${pathname !== '/' || !transparent ? ' hero-header--solid' : ''}${transparent && pathname === '/' ? ' hero-header--transparent' : ''}`}
-      >
-        <Link href="/" className="hero-logo" onClick={() => setMenuOpen(false)}>
-          <Image
-            src="/icon-512.png"
-            alt="Silbar Security"
-            width={48}
-            height={48}
-            className="hero-logo__img"
-            priority
-          />
-          <span className="hero-logo__text">Silbar Security</span>
-        </Link>
+      <header className={headerClass} data-pathname={pathname}>
+        <div className="site-header__inner">
+          <Link href="/" className="site-header__logo" onClick={closeMenu}>
+            <Image
+              src="/icon-512.png"
+              alt=""
+              width={40}
+              height={40}
+              className="site-header__logo-img"
+              priority
+            />
+            <span className="site-header__logo-text">
+              Silbar <span className="site-header__logo-accent">Security</span>
+            </span>
+          </Link>
 
-        <nav className="hero-nav" aria-label="Primary navigation">
-          {NAV_LINKS.map(({ label, href }) => (
-            <Link
-              key={label}
-              href={href}
-              className={`hero-nav-link${isActive(href) ? ' hero-nav-link--active' : ''}`}
-              aria-current={isActive(href) ? 'page' : undefined}
+          <nav className="site-header__nav" aria-label="Primary">
+            {NAV_LINKS.map(({ label, href }) => (
+              <Link
+                key={href}
+                href={href}
+                className={`site-header__link${isActive(href) ? ' is-active' : ''}`}
+                aria-current={isActive(href) ? 'page' : undefined}
+              >
+                {label}
+              </Link>
+            ))}
+            <a
+              href={`tel:${CONTACT.phoneRaw}`}
+              className="site-header__link site-header__link--phone"
+              aria-label={`Call ${CONTACT.phone}`}
             >
-              {label}
-            </Link>
-          ))}
-          <a
-            href={`tel:${CONTACT.phoneRaw}`}
-            className="hero-nav-link hero-nav-link--phone"
-            aria-label="Call Silbar Security"
-          >
-            <Phone size={14} strokeWidth={1.75} />
-            {CONTACT.phone}
-          </a>
-          <MagneticButton
-            as="a"
-            href={CONTACT.whatsapp.url}
-            className="hero-nav-cta"
-            target="_blank"
-            rel="noopener noreferrer"
-            strength={0.2}
-          >
-            WhatsApp Us
-          </MagneticButton>
-        </nav>
+              <Phone size={14} strokeWidth={2} aria-hidden="true" />
+              <span className="site-header__phone-text">{CONTACT.phone}</span>
+            </a>
+            <a
+              href={CONTACT.whatsapp.url}
+              className="site-header__cta"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp
+            </a>
+          </nav>
 
-        <button
-          ref={hamburgerRef}
-          className="hero-nav-hamburger"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-          aria-expanded={menuOpen}
-          aria-controls="mobile-nav-drawer"
-        >
-          {menuOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
+          <div className="site-header__mobile-actions">
+            <a
+              href={`tel:${CONTACT.phoneRaw}`}
+              className="site-header__icon-btn"
+              aria-label={`Call ${CONTACT.phone}`}
+            >
+              <Phone size={18} strokeWidth={2} />
+            </a>
+            <button
+              ref={hamburgerRef}
+              type="button"
+              className="site-header__icon-btn site-header__menu-btn"
+              onClick={() => setMenuOpen((o) => !o)}
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={menuOpen}
+              aria-controls="site-mobile-nav"
+            >
+              {menuOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
+        </div>
 
-        <div
-          ref={scrollProgressElRef}
-          className="scroll-progress"
-          aria-hidden="true"
-        />
+        <div ref={scrollProgressElRef} className="site-header__progress" aria-hidden="true" />
       </header>
 
+      {/* Overlay */}
       <div
-        id="mobile-nav-drawer"
-        ref={navRef}
-        className={`mobile-nav ${menuOpen ? 'mobile-nav--open' : ''}`}
+        className={`site-nav-overlay${menuOpen ? ' is-open' : ''}`}
+        aria-hidden={!menuOpen}
+        onClick={closeMenu}
+      />
+
+      {/* Mobile / tablet drawer */}
+      <div
+        id="site-mobile-nav"
+        className={`site-mobile-nav${menuOpen ? ' is-open' : ''}`}
         aria-hidden={!menuOpen}
       >
-        <nav className="mobile-nav__links" aria-label="Mobile navigation">
-          {NAV_LINKS.map(({ label, href }) => (
+        <nav className="site-mobile-nav__links" aria-label="Mobile">
+          {NAV_LINKS.map(({ label, href }, i) => (
             <Link
-              key={label}
+              key={href}
               href={href}
-              className={`mobile-nav__link${isActive(href) ? ' mobile-nav__link--active' : ''}`}
+              className={`site-mobile-nav__link${isActive(href) ? ' is-active' : ''}`}
               aria-current={isActive(href) ? 'page' : undefined}
-              onClick={() => setMenuOpen(false)}
+              onClick={closeMenu}
+              style={{ transitionDelay: menuOpen ? `${i * 40}ms` : '0ms' }}
             >
               {label}
             </Link>
           ))}
         </nav>
-
-        <div className="mobile-nav__contact-block">
-          <a
-            href={`tel:${CONTACT.phoneRaw}`}
-            className="mobile-nav__link mobile-nav__link--phone"
-            onClick={() => setMenuOpen(false)}
-          >
-            <Phone size={16} /> {CONTACT.phone}
+        <div className="site-mobile-nav__footer">
+          <a href={`tel:${CONTACT.phoneRaw}`} className="site-mobile-nav__phone" onClick={closeMenu}>
+            <Phone size={18} /> {CONTACT.phone}
           </a>
           <a
             href={CONTACT.whatsapp.url}
-            className="mobile-nav__cta"
+            className="site-mobile-nav__cta"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => setMenuOpen(false)}
+            onClick={closeMenu}
           >
             WhatsApp for a Quote
           </a>
