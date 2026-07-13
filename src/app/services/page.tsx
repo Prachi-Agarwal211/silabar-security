@@ -274,7 +274,7 @@ export default function ServicesPage() {
             </h2>
             <div className="svc-copy-prose">
               <p>
-                Security failures rarely start with “not enough guards.” They start with unclear posts,
+                Security failures rarely start with &ldquo;not enough guards.&rdquo; They start with unclear posts,
                 weak night checks, informal material movement, and vendors who disappear on absences.
                 Silbar Security structures each service line around those failure modes.
               </p>
@@ -282,6 +282,22 @@ export default function ServicesPage() {
                 Whether you need manned guarding for a society desk, industrial gate control, event surge
                 teams, or multi-city standardisation, we propose category-wise commercials and mobilisation
                 plans you can review with operations and finance.
+              </p>
+              <p>
+                The Indian security landscape is evolving rapidly. Businesses today face a wider range of threats
+                than ever before — from unauthorised access and material theft to fire hazards, data breaches, and
+                compliance penalties. A fragmented security approach with multiple vendors often leads to gaps in
+                coverage, inconsistent standards, and higher management overhead. This is why more organisations
+                are consolidating their security requirements under a single, accountable partner who can deliver
+                consistent quality across every site.
+              </p>
+              <p>
+                Silbar Security brings together manned guarding, electronic surveillance, fire safety personnel,
+                and facility management under one roof. Our integrated approach means fewer vendor touchpoints,
+                standardised operating procedures across locations, and a single point of accountability for
+                all your security needs. Whether you operate a single factory or a chain of retail outlets
+                across 10 states, you get the same disciplined execution, compliance rigour, and responsive
+                support at every location.
               </p>
               <p>
                 Explore locations across India on our{' '}
@@ -295,6 +311,8 @@ export default function ServicesPage() {
                 'Supervisor / field check options on multi-post sites',
                 'Statutory-aware proposals for eligible staff',
                 'WhatsApp-ready enquiries from every service page',
+                'Centralised billing and MIS for multi-site clients',
+                '24-hour replacement guarantee on all deployments',
               ].map((t) => (
                 <li key={t}>
                   <CheckCircle2 size={18} aria-hidden="true" />
@@ -318,6 +336,35 @@ export default function ServicesPage() {
               </div>
             </div>
           </ScrollReveal>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section-pad brand-rail" aria-labelledby="svc-faq-title">
+        <div className="shell" style={{ maxWidth: '900px' }}>
+          <ScrollReveal>
+            <span className="section-eyebrow section-eyebrow--red">FAQ</span>
+            <h2 id="svc-faq-title" className="section-heading" style={{ marginBottom: '0.75rem' }}>
+              Common Questions About <em>Our Services.</em>
+            </h2>
+            <p className="section-subtitle" style={{ marginBottom: '2.5rem' }}>
+              Answers about deployment, compliance, costs, and coverage.
+            </p>
+          </ScrollReveal>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            {[
+              { q: 'How quickly can Silbar deploy security guards at my facility?', a: 'We typically deploy trained, verified guards within 48\u201372 hours of proposal acceptance. For emergency requirements, we can mobilise a Quick Response Team within 24 hours from our nearest regional hub. Deployment includes site induction, uniform issue, and SOP briefing before the guard assumes duty.' },
+              { q: 'Do you provide security services in tier-2 and tier-3 cities?', a: 'Yes. Silbar Security operates across 200+ cities in India, including tier-2 and tier-3 locations. Our regional offices in Rajasthan, Delhi NCR, Uttar Pradesh, Madhya Pradesh, Gujarat, Punjab, Haryana, Maharashtra, and other states ensure we can deploy and supervise guards even in smaller cities with the same quality standards as our metro operations.' },
+              { q: 'Are your security guards insured and compliant with labour laws?', a: 'Absolutely. All our guards are enrolled in EPF, ESIC, and covered under comprehensive insurance policies. We strictly adhere to Minimum Wages Act, Contract Labour Act, and all applicable state-specific labour regulations. Our compliance-first approach means zero statutory risk for our clients.' },
+              { q: 'What is the typical cost of hiring a security guard from Silbar?', a: 'Costs vary based on location, post type (armed/unarmed), shift duration, and any special requirements. We provide transparent, category-wise pricing with no hidden charges. Contact us via WhatsApp or phone for a custom quote tailored to your facility and city.' },
+              { q: 'Can Silbar manage security across multiple locations for a single client?', a: 'Yes. Multi-site deployment is one of our core strengths. We provide centralised billing, standardised SOPs, consistent supervision, and a single account manager for all locations. This ensures uniform security standards whether you have 2 sites or 200.' },
+            ].map((faq) => (
+              <details key={faq.q} className="service-detail-faq-item">
+                <summary className="service-detail-faq-q">{faq.q}</summary>
+                <p className="service-detail-faq-a">{faq.a}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
 

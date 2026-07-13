@@ -22,6 +22,7 @@ import {
   Building2,
   Headphones,
 } from 'lucide-react'
+import { FAQS } from '@/data/faq'
 
 
 
@@ -444,6 +445,32 @@ export default function HomePageClient() {
                 aria-label={`Go to testimonial ${i + 1}`}
               />
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── FAQ ──────────────────────────────────────── */}
+      <section className="section-pad brand-rail" aria-labelledby="home-faq-title">
+        <div className="shell">
+          <span className="section-eyebrow">FAQ</span>
+          <h2 id="home-faq-title" className="section-heading" style={{ marginBottom: '0.75rem' }}>
+            Frequently Asked <em>Questions.</em>
+          </h2>
+          <p className="section-subtitle" style={{ marginBottom: '2.5rem' }}>
+            Quick answers about our security services, coverage, and compliance standards.
+          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', maxWidth: '800px' }}>
+            {FAQS.filter(f => f.category === 'General').slice(0, 6).map((faq) => (
+              <details key={faq.q} className="service-detail-faq-item">
+                <summary className="service-detail-faq-q">{faq.q}</summary>
+                <p className="service-detail-faq-a">{faq.a}</p>
+              </details>
+            ))}
+          </div>
+          <div style={{ marginTop: '2rem' }}>
+            <Link href="/faq" className="btn-secondary">
+              View All {FAQS.length} FAQs <ArrowRight size={14} />
+            </Link>
           </div>
         </div>
       </section>

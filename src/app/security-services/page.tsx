@@ -110,6 +110,40 @@ export default function LocationsIndexPage() {
         </div>
       </section>
 
+      {/* ─── Why coverage matters ─── */}
+      <section className="section-pad" aria-labelledby="coverage-title">
+        <div className="shell">
+          <ScrollReveal>
+            <span className="section-eyebrow section-eyebrow--red">OUR COVERAGE PHILOSOPHY</span>
+            <h2 id="coverage-title" className="section-heading" style={{ marginBottom: '1rem' }}>
+              Security Without <em>Boundaries.</em>
+            </h2>
+            <div style={{ maxWidth: '800px' }}>
+              <p style={{ fontFamily: 'var(--font-body)', lineHeight: 1.8, color: 'var(--color-horizon-600)', marginBottom: '1rem' }}>
+                India&apos;s security needs are not limited to metro cities. Businesses operate in tier-2
+                and tier-3 cities, industrial corridors, emerging manufacturing hubs, and remote commercial
+                centres — and every one of these locations deserves professional, ISO-certified security
+                services. Silbar Security has built its PAN India network to ensure that geographic location
+                never compromises security quality.
+              </p>
+              <p style={{ fontFamily: 'var(--font-body)', lineHeight: 1.8, color: 'var(--color-horizon-600)', marginBottom: '1rem' }}>
+                Our expansion strategy is client-driven. When a client needs security in a new city, we 
+                establish a local presence — recruiting from the local workforce, setting up supervision,
+                and integrating the location into our centralised monitoring and compliance systems. 
+                This approach means we don&apos;t just cover 200+ cities in name — we have operational 
+                capability, local supervisors, and deployed guards in each of them.
+              </p>
+              <p style={{ fontFamily: 'var(--font-body)', lineHeight: 1.8, color: 'var(--color-horizon-600)' }}>
+                From the national capital region to emerging industrial towns in Madhya Pradesh, from 
+                Gujarat&apos;s manufacturing corridors to Tamil Nadu&apos;s industrial belts, from Rajasthan&apos;s 
+                mining districts to Uttar Pradesh&apos;s commercial centres — Silbar delivers consistent, 
+                compliant, and professional security services everywhere we operate.
+              </p>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* ─── Office hubs ─── */}
       <section className="locations-section" aria-labelledby="hubs-heading">
         <div className="locations-section__inner">

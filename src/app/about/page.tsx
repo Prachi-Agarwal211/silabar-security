@@ -407,6 +407,71 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ─── Commitments section ─── */}
+      <section className="section-pad" aria-labelledby="commitments-heading">
+        <div className="shell" style={{ maxWidth: '900px' }}>
+          <ScrollReveal>
+            <span className="section-eyebrow section-eyebrow--red">OUR COMMITMENTS</span>
+            <h2 id="commitments-heading" className="section-heading" style={{ marginBottom: '1rem' }}>
+              What We Stand <em>For.</em>
+            </h2>
+            <div style={{ fontFamily: 'var(--font-body)', lineHeight: 1.8, color: 'var(--color-horizon-600)' }}>
+              <p style={{ marginBottom: '1rem' }}>
+                Silbar Security is built on a foundation of ethical business practices, statutory compliance,
+                and client-centric service delivery. We believe that security is not just about deploying
+                guards — it is about building systems, processes, and relationships that protect our clients&apos;
+                people, assets, and reputation every single day.
+              </p>
+              <p style={{ marginBottom: '1rem' }}>
+                Every decision we make — from the guards we recruit to the equipment we deploy, from the
+                training we deliver to the reports we share — is guided by our core philosophy: compliance
+                is not optional, quality is not negotiable, and client partnership is not transactional.
+                This philosophy has earned us the trust of 500+ businesses across 19 states, and it
+                continues to drive our growth as one of India&apos;s emerging security companies.
+              </p>
+              <p>
+                We are equally committed to our security personnel — providing them with fair wages,
+                statutory benefits (EPF, ESIC), proper training, uniforms, equipment, and career
+                growth opportunities. A motivated, well-treated guard delivers better security.
+                It is that simple.
+              </p>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ─── FAQ ─── */}
+      <section className="section-pad brand-rail" aria-labelledby="about-faq-title">
+        <div className="shell" style={{ maxWidth: '900px' }}>
+          <ScrollReveal>
+            <span className="section-eyebrow section-eyebrow--red">FAQ</span>
+            <h2 id="about-faq-title" className="section-heading" style={{ marginBottom: '0.75rem' }}>
+              Questions About <em>Silbar Security.</em>
+            </h2>
+            <p className="section-subtitle" style={{ marginBottom: '2.5rem' }}>
+              Everything you need to know about our company, credentials, and approach.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              {[
+                { q: 'Is Silbar Security Services a registered company?', a: 'Yes. Silbar Security Services Pvt. Ltd. is registered under the Companies Act, 2013 (CIN: U80210RJ2025PTC092323). The company is also registered with Startup India (DPIIT recognized), MSME, GST, EPF, ESIC, and holds PSARA licenses across 19 states.' },
+                { q: 'Where is Silbar Security headquartered?', a: 'Our Registered Office is at Statesman House, Barakhamba Road, Connaught Place, New Delhi — 110001. Our Corporate Office is at MPD Tower, Golf Course Road, Sector 43, Gurugram, Haryana — 122002.' },
+                { q: 'Who are the directors of Silbar Security?', a: 'Silbar Security Services Pvt. Ltd. is led by Mr. Sonu Singh (Director & Founder) and Mr. Nakul Singh Jadaun (Director). Both bring extensive industry experience from senior roles with leading security and corporate organizations.' },
+                { q: 'What certifications does Silbar Security hold?', a: 'We hold 4 ISO certifications (9001:2015, 14001:2015, 45001:2018, 27001) all IAF accredited, PSARA licenses across 19 states, CAPSI membership, and registrations with Startup India, MSME, EPF, ESIC, and GST.' },
+                { q: 'How many clients does Silbar Security serve?', a: 'We are trusted by 500+ businesses across 19 states and 200+ cities in India, serving manufacturing, healthcare, banking, IT, retail, education, hospitality, government, and residential sectors.' },
+                { q: 'Does Silbar provide security only in North India?', a: 'No. While we started in Rajasthan, we now operate across 19 states covering North, West, Central, East, and South India. Our PAN India presence includes major metros and tier-2/3 cities alike.' },
+              ].map((faq) => (
+                <details key={faq.q} className="service-detail-faq-item">
+                  <summary className="service-detail-faq-q">{faq.q}</summary>
+                  <p className="service-detail-faq-a">{faq.a}</p>
+                </details>
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* ─── Form ─── */}
       <section className="about-form-section" aria-label="Contact Silbar Security">
         <QueryForm

@@ -148,9 +148,44 @@ export default function IndustriesPage() {
             Factory gate protocols differ from hospital visitor flows and bank cash-handling rules.
             Silbar deploys sector-specific SOPs, supervisors, and reporting — not one-size-fits-all manpower.
           </p>
+          <p style={{ maxWidth: '640px', opacity: 0.85 }}>
+            Every industry has unique security challenges. Manufacturing facilities face material theft and 
+            contractor access issues. Hospitals need visitor management and asset protection. Retail outlets 
+            grapple with shoplifting and cash-handling risks. IT parks require access control and data centre 
+            security. Hotels need guest safety and event crowd management. Educational institutions focus on 
+            student safety and campus access. Our sector-trained guards understand these nuances before they 
+            report for duty — we don&apos;t just deploy guards, we deploy domain-aware professionals.
+          </p>
           <Link href="/services" className="industries-band__link">
             View all services <ArrowRight size={16} aria-hidden="true" />
           </Link>
+        </div>
+      </section>
+
+      {/* ─── FAQ ─── */}
+      <section className="section-pad brand-rail" aria-labelledby="ind-faq-title">
+        <div className="shell" style={{ maxWidth: '900px' }}>
+          <span className="section-eyebrow section-eyebrow--red">FAQ</span>
+          <h2 id="ind-faq-title" className="section-heading" style={{ marginBottom: '0.75rem' }}>
+            Industry-Specific Security <em>Questions.</em>
+          </h2>
+          <p className="section-subtitle" style={{ marginBottom: '2.5rem' }}>
+            Common queries about sector-focused security solutions.
+          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            {[
+              { q: 'Which industries does Silbar Security specialise in?', a: `We serve ${INDUSTRIES.length} industry verticals including manufacturing, healthcare, banking and finance, IT and tech parks, retail and malls, education, hospitality, government, logistics and warehousing, residential complexes, data centres, and more. Each sector receives customised SOPs, trained personnel, and industry-specific reporting formats.` },
+              { q: 'How does Silbar train guards for different industries?', a: 'Guard training is not generic. A guard deployed at a manufacturing plant receives training in material gate pass procedures and contractor management. A guard at a hospital learns visitor flow protocols and emergency response. A guard at a data centre is trained in access control rigour and breach escalation. Training is job-specific and site-specific.' },
+              { q: 'Can Silbar handle security for a multi-industry corporate campus?', a: 'Yes. Many of our clients operate mixed-use campuses with office towers, retail areas, parking, and utility zones. We deploy a tiered security model with different SOPs for different zones, supervised by a single on-site security manager who coordinates across all functions.' },
+              { q: 'Do you provide security for government and public sector organisations?', a: 'Yes, we serve government institutions, public sector undertakings, and municipal bodies. Our compliance-first approach, PSARA licensing, ISO certifications, and transparent billing make us a preferred vendor for government security contracts.' },
+              { q: 'What is the process to get industry-specific security for my facility?', a: 'Contact us via phone or WhatsApp. We schedule a free site assessment, understand your operations and risks, and design a custom security plan with transparent pricing. Deployment typically begins within 48 hours of proposal acceptance.' },
+            ].map((faq) => (
+              <details key={faq.q} className="service-detail-faq-item">
+                <summary className="service-detail-faq-q">{faq.q}</summary>
+                <p className="service-detail-faq-a">{faq.a}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
 
