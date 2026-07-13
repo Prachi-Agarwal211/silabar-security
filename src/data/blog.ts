@@ -97,5 +97,80 @@ export const BLOG_POSTS: BlogPost[] = [
     publishedAt: '2026-07-05',
     category: 'Industry News',
     readTime: '3 min read'
-  }
+  },
+  {
+    id: 'post-4',
+    slug: 'how-to-choose-security-agency-india',
+    title: 'How to Choose a Security Agency in India: A Practical Checklist',
+    excerpt: 'Beyond the lowest quote — what facility managers should verify before awarding a security contract.',
+    content: `
+      <h2>Price Is Not the Only Metric</h2>
+      <p>Many RFPs for private security still award contracts primarily on lowest cost. That approach often leads to underpaid manpower, high attrition, and weak night supervision. A better process evaluates process quality, compliance, and operational control alongside commercials.</p>
+      <h2>Checklist Before You Sign</h2>
+      <ul>
+        <li><strong>Company credentials:</strong> Incorporation, GST, and quality certifications such as ISO 9001:2015.</li>
+        <li><strong>Manpower practices:</strong> Background verification, training syllabus, and replacement guarantees.</li>
+        <li><strong>Statutory approach:</strong> How wages, EPF, and ESIC are handled for eligible staff in your state.</li>
+        <li><strong>Supervision model:</strong> Field officers, night checks, and reporting frequency.</li>
+        <li><strong>References:</strong> Similar industry deployments (factory, hospital, warehouse, society).</li>
+      </ul>
+      <h2>Questions to Ask Vendors</h2>
+      <p>Ask for a sample site instruction document, escalation matrix, and a clear commercial breakup. If answers are vague, risk usually shows up after mobilisation — not before.</p>
+      <p>Silbar Security structures proposals with transparent scope so clients in Jaipur, Delhi NCR, Ahmedabad, and pan-India multi-site networks can compare value — not just headcount rates.</p>
+    `,
+    coverImage: '/images/blog/choose-agency.jpg',
+    author: 'Silbar Security Expert',
+    publishedAt: '2026-07-08',
+    category: 'Security Tips',
+    readTime: '5 min read',
+  },
+  {
+    id: 'post-5',
+    slug: 'industrial-security-gate-management',
+    title: 'Industrial Gate Management: Where Most Factory Losses Start',
+    excerpt: 'Material movement, contractor access, and shift change chaos — fixing the gate often fixes half the risk.',
+    content: `
+      <h2>The Gate Is a Control Point</h2>
+      <p>In manufacturing and logistics, losses frequently begin at the gate: incomplete vehicle logs, weak material challan checks, and uncontrolled contractor entry. Technology helps, but disciplined manpower is still the frontline.</p>
+      <h2>What Good Gate Security Looks Like</h2>
+      <ul>
+        <li>Documented vehicle and material procedures</li>
+        <li>Separate pedestrian and vehicle flows where possible</li>
+        <li>Shift-wise accountability with supervisor samples</li>
+        <li>Coordination with stores / logistics teams</li>
+      </ul>
+      <h2>How Silbar Approaches Industrial Sites</h2>
+      <p>Our industrial deployments emphasise gate discipline, perimeter awareness, and clear escalation. Combined with optional CCTV support and MIS reporting, plants get a security layer that supports operations — not just a uniform at the barrier.</p>
+    `,
+    coverImage: '/images/blog/industrial-gate.jpg',
+    author: 'Operations Head',
+    publishedAt: '2026-07-10',
+    category: 'Industry News',
+    readTime: '4 min read',
+  },
+  {
+    id: 'post-6',
+    slug: 'residential-society-security-best-practices',
+    title: 'Residential Society Security: Best Practices for RWAs',
+    excerpt: 'Visitor management, parking disputes, and night patrols — practical guidance for society committees.',
+    content: `
+      <h2>Societies Need Process, Not Just Guards</h2>
+      <p>Residential security fails when posts are unclear: who handles deliveries, how visitors are logged, and what happens at 2 AM when a gate is left open. RWAs should define duty instructions with their security partner.</p>
+      <h2>Core Practices</h2>
+      <ol>
+        <li>Standard visitor and cab protocols</li>
+        <li>Delivery staging rules</li>
+        <li>Parking and boom-barrier discipline</li>
+        <li>Emergency contact tree for residents and police/fire</li>
+      </ol>
+      <h2>Working With a Professional Agency</h2>
+      <p>Silbar Security supports residential communities with trained guards, lady guards where required, and supervisor oversight. Clear commercial terms and replacement backup help committees avoid service gaps during festivals and peak seasons.</p>
+    `,
+    coverImage: '/images/blog/residential-security.jpg',
+    author: 'Silbar Security Expert',
+    publishedAt: '2026-07-11',
+    category: 'Security Tips',
+    readTime: '4 min read',
+  },
 ]
+

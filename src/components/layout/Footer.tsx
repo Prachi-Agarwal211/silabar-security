@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Phone, Mail, MapPin } from 'lucide-react'
 import { CONTACT } from '@/lib/config'
+import { SITE_STATS } from '@/lib/site-stats'
 
 const TOP_SERVICES = [
   { label: 'Manned Guarding', href: '/services/manned-guarding' },
@@ -26,6 +27,7 @@ const COMPANY_LINKS = [
   { label: 'Franchise', href: '/franchise' },
   { label: 'Careers', href: '/careers' },
   { label: 'Blog', href: '/blog' },
+  { label: 'Locations', href: '/security-services' },
   { label: 'FAQs', href: '/faq' },
   { label: 'Contact', href: '/contact' },
 ]
@@ -124,9 +126,11 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="footer-bottom">
         <span className="footer-copyright">
-          © {year} Silbar Security Services Pvt. Ltd.
+          © {year} Silbar Security Services Pvt. Ltd. · {SITE_STATS.total} pages · {SITE_STATS.cities} cities · {SITE_STATS.states} states
         </span>
         <div className="footer-legal-links">
+          <Link href="/security-services" className="footer-legal-link">Locations</Link>
+          <Link href="/sitemap.xml" className="footer-legal-link">Sitemap</Link>
           <Link href="/privacy-policy" className="footer-legal-link">Privacy</Link>
           <Link href="/terms" className="footer-legal-link">Terms</Link>
           <Link href="/disclaimer" className="footer-legal-link">Disclaimer</Link>

@@ -376,3 +376,92 @@
 .locations-hub a:hover {
   text-decoration: underline;
 }
+
+/* ─── Site inventory (page count proof for clients) ─── */
+.locations-inventory {
+  background: var(--color-midnight);
+  color: var(--color-cream);
+  padding: clamp(2.5rem, 5vh, 3.5rem) 0;
+  border-top: 2px solid var(--color-gold);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.locations-inventory__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  text-align: center;
+}
+
+.locations-inventory__total {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 900;
+  color: var(--color-gold-light);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: 0.35rem 0 0.5rem;
+}
+
+.locations-inventory__label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(250, 248, 244, 0.7);
+  margin: 0 0 1.75rem;
+}
+
+.locations-inventory__grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.75rem;
+}
+
+@media (max-width: 900px) {
+  .locations-inventory__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .locations-inventory__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.locations-inventory__cell {
+  padding: 1rem 0.75rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-radius: 4px;
+}
+
+.locations-inventory__cell strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-gold-light);
+  line-height: 1.1;
+}
+
+.locations-inventory__cell span {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(250, 248, 244, 0.55);
+}
+
+.locations-inventory__note {
+  margin: 1.25rem 0 0;
+  font-size: 0.8rem;
+  color: rgba(250, 248, 244, 0.5);
+  line-height: 1.5;
+}
+
+.locations-inventory__note a {
+  color: var(--color-gold-light);
+  font-weight: 700;
+}

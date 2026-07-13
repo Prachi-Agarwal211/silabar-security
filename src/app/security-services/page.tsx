@@ -7,20 +7,21 @@ import { MapPin, ArrowRight, Phone } from 'lucide-react'
 import { ogMetadata } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 import { CONTACT } from '@/lib/config'
+import { SITE_STATS } from '@/lib/site-stats'
 
 export const metadata: Metadata = {
-  title: 'Security Services Across India | Cities & States | Silbar Security',
-  description:
-    'Silbar Security provides professional security guard services across all major cities and states in India. Find coverage near you — Jaipur, Delhi, Ahmedabad and 200+ cities.',
+  title: 'Security Services Across India | 200+ Cities & All States | Silbar Security',
+  description: `Silbar Security — ${SITE_STATS.cities} city pages, ${SITE_STATS.states} state pages, professional security guard services across India. Jaipur HQ · PAN India deployment.`,
   ...ogMetadata(
     'Security Services Across India | Cities & States',
-    'Professional security guard services across India. Find your city or state.',
+    `Professional security across ${SITE_STATS.cities}+ cities and ${SITE_STATS.states} states. ISO 9001:2015.`,
     '/security-services'
   ),
 }
 
 export default function LocationsIndexPage() {
   const topCities = CITIES.filter((c) => c.tier === 1).slice(0, 12)
+  const allCitiesAZ = [...CITIES].sort((a, b) => a.name.localeCompare(b.name))
 
   return (
     <main className="locations-page" id="main-content">
@@ -43,18 +44,18 @@ export default function LocationsIndexPage() {
             <span className="breadcrumb__sep">›</span>
             <span className="breadcrumb__current">Locations</span>
           </nav>
-          <span className="section-eyebrow section-eyebrow--light">PAN INDIA COVERAGE</span>
+          <span className="section-eyebrow section-eyebrow--light">PAN INDIA COVERAGE · {SITE_STATS.total} LIVE PAGES</span>
           <h1 id="locations-heading" className="locations-hero__title">
             Security Services Across <em>India.</em>
           </h1>
           <p className="locations-hero__sub">
-            Professional manned guarding, CCTV, and facility security across major states and cities.
-            ISO-certified processes. Local deployment. National standards.
+            Professional manned guarding, CCTV, and facility security across {SITE_STATS.states} states
+            and {SITE_STATS.cities} cities — each with a dedicated page, FAQs, and quote form.
           </p>
           <div className="locations-hero__meta">
-            <span>{STATES.length}+ States &amp; UTs</span>
-            <span>{CITIES.length}+ Cities</span>
-            <span>HQ Jaipur · Hubs Delhi · Ahmedabad</span>
+            <span>{SITE_STATS.states} States &amp; UTs</span>
+            <span>{SITE_STATS.cities} City Pages</span>
+            <span>{SITE_STATS.total} Total Site Pages</span>
           </div>
           <div className="industries-hero__ctas" style={{ marginTop: '0.5rem' }}>
             <a href={`tel:${CONTACT.phoneRaw}`} className="btn-primary btn-primary--on-dark">
@@ -64,6 +65,48 @@ export default function LocationsIndexPage() {
               Browse Cities <ArrowRight size={14} aria-hidden="true" />
             </a>
           </div>
+        </div>
+      </section>
+
+      {/* ─── Page inventory (client-visible proof) ─── */}
+      <section className="locations-inventory" aria-label="Website page inventory">
+        <div className="locations-inventory__inner">
+          <span className="section-eyebrow section-eyebrow--light">FULL WEBSITE INVENTORY</span>
+          <p className="locations-inventory__total">{SITE_STATS.total}</p>
+          <p className="locations-inventory__label">Live public pages on this website</p>
+          <div className="locations-inventory__grid">
+            <div className="locations-inventory__cell">
+              <strong>{SITE_STATS.core}</strong>
+              <span>Core pages</span>
+            </div>
+            <div className="locations-inventory__cell">
+              <strong>{SITE_STATS.services}</strong>
+              <span>Services</span>
+            </div>
+            <div className="locations-inventory__cell">
+              <strong>{SITE_STATS.industries}</strong>
+              <span>Industries</span>
+            </div>
+            <div className="locations-inventory__cell">
+              <strong>{SITE_STATS.states}</strong>
+              <span>States / UTs</span>
+            </div>
+            <div className="locations-inventory__cell">
+              <strong>{SITE_STATS.cities}</strong>
+              <span>Cities</span>
+            </div>
+            <div className="locations-inventory__cell">
+              <strong>{SITE_STATS.blog}</strong>
+              <span>Blog posts</span>
+            </div>
+          </div>
+          <p className="locations-inventory__note">
+            Verified in sitemap:{' '}
+            <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer">
+              /sitemap.xml
+            </a>
+            {' '}· {SITE_STATS.locationPages} location pages (states + cities) alone
+          </p>
         </div>
       </section>
 
@@ -126,11 +169,13 @@ export default function LocationsIndexPage() {
       <section className="locations-section" aria-labelledby="states-heading">
         <div className="locations-section__inner">
           <ScrollReveal className="locations-section__header">
-            <span className="section-eyebrow section-eyebrow--red">ALL STATES</span>
+            <span className="section-eyebrow section-eyebrow--red">ALL {SITE_STATS.states} STATES &amp; UTs</span>
             <h2 id="states-heading" className="section-heading">
               Choose Your <em>State.</em>
             </h2>
-            <p>Select a state to explore major cities, districts, and local security coverage.</p>
+            <p>
+              Each state has a full dedicated page with services, FAQs, sectors, and a WhatsApp quote form.
+            </p>
           </ScrollReveal>
 
           <div className="locations-state-grid">
@@ -154,9 +199,38 @@ export default function LocationsIndexPage() {
         </div>
       </section>
 
+      {/* ─── All cities A–Z ─── */}
+      <section className="locations-section locations-section--alt" id="all-cities" aria-labelledby="all-cities-heading">
+        <div className="locations-section__inner">
+          <ScrollReveal className="locations-section__header">
+            <span className="section-eyebrow section-eyebrow--red">ALL {SITE_STATS.cities} CITY PAGES</span>
+            <h2 id="all-cities-heading" className="section-heading">
+              Every City We <em>List.</em>
+            </h2>
+            <p>
+              Full directory of city security pages — each with unique local content, service links, and enquiry form.
+            </p>
+          </ScrollReveal>
+
+          <div className="seo-cities-grid" style={{ marginBottom: 0 }}>
+            {allCitiesAZ.map((city) => (
+              <Link
+                key={city.slug}
+                href={`/security-services/city/${city.slug}`}
+                className="seo-city-tag seo-city-tag--link"
+              >
+                <MapPin size={12} /> {city.name}
+                <span style={{ opacity: 0.55, fontWeight: 500 }}> · {city.state}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <PageLeadSection
         title="Need Security in Your City?"
-        subtitle="Select a location above or request a quote — we cover 200+ cities across India."
+        subtitle={`Select any of our ${SITE_STATS.cities} city pages or request a quote — WhatsApp opens with your details.`}
+        formType="Locations Quote"
       />
     </main>
   )

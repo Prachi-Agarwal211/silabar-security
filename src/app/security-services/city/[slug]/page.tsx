@@ -5,13 +5,17 @@ import { CITIES, STATES } from '@/data/locations'
 import { SERVICES } from '@/data/services'
 import { GEO_COORDINATES } from '@/lib/geo-coordinates'
 import { generateCityContent } from '@/lib/seo-content-generator'
-import { Phone, MapPin } from 'lucide-react'
+import { Phone, MapPin, CheckCircle2, ArrowRight } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import PageHero from '@/components/layout/PageHero'
 import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
+
+function citySlugFromName(name: string) {
+  return name.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and')
+}
 
 export async function generateStaticParams() {
   return CITIES.map((c) => ({ slug: c.slug }))
@@ -26,12 +30,20 @@ export async function generateMetadata({
   const city = CITIES.find((c) => c.slug === slug)
   if (!city) return {}
 
-  const title = `Security Services in ${city.name} | Silbar Security`
-  const description = `Professional security guards in ${city.name}, ${city.state}. Silbar Security provides manned guarding, CCTV, event security, and facility management across ${city.name}. Call ${CONTACT.phone}.`
+  const content = generateCityContent(city)
+  const title = `Security Guard Services in ${city.name}, ${city.state} | Silbar Security`
+  const description = content.metaDescription
 
   return {
     title,
     description,
+    keywords: [
+      `security guard services ${city.name}`,
+      `security agency ${city.name}`,
+      `manned guarding ${city.name}`,
+      `security company ${city.state}`,
+      'Silbar Security',
+    ],
     ...ogMetadata(title, description, `/security-services/city/${slug}`),
   }
 }
@@ -46,17 +58,19 @@ export default async function CitySEOPage({
   if (!city) notFound()
 
   const state = STATES.find((s) => s.slug === city.stateSlug)
-  const nearbyCities = state ? state.majorCities.filter((c) => c !== city.name).slice(0, 4) : []
-  const uniqueContent = generateCityContent(city)
+  const content = generateCityContent(city)
+  const nearbyCities = state
+    ? state.majorCities.filter((c) => c.toLowerCase() !== city.name.toLowerCase()).slice(0, 6)
+    : []
 
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     '@id': `https://www.silbarsecurity.in/security-services/city/${slug}`,
     name: `Silbar Security Services — ${city.name}`,
-    description: `Professional security services in ${city.name}, ${city.state}`,
-    url: 'https://www.silbarsecurity.in',
-    telephone: CONTACT.phoneRaw,
+    description: content.metaDescription,
+    url: `https://www.silbarsecurity.in/security-services/city/${slug}`,
+    telephone: CONTACT.phone,
     email: CONTACT.email,
     address: {
       '@type': 'PostalAddress',
@@ -75,8 +89,8 @@ export default async function CitySEOPage({
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
         opens: '09:00',
-        closes: '18:00',
-      }
+        closes: '19:00',
+      },
     ],
     areaServed: [
       { '@type': 'City', name: city.name },
@@ -85,7 +99,7 @@ export default async function CitySEOPage({
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: `Security Services in ${city.name}`,
-      itemListElement: SERVICES.slice(0, 6).map((s) => ({
+      itemListElement: SERVICES.slice(0, 8).map((s) => ({
         '@type': 'Offer',
         itemOffered: { '@type': 'Service', name: `${s.shortTitle} in ${city.name}` },
       })),
@@ -95,28 +109,11 @@ export default async function CitySEOPage({
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: `Are your security guards in ${city.name} fully licensed?`,
-        acceptedAnswer: { '@type': 'Answer', text: `Yes. All Silbar Security guards deployed in ${city.name} are fully licensed, background verified, and compliant with all state regulations.` },
-      },
-      {
-        '@type': 'Question',
-        name: `What security services do you offer in ${city.name}?`,
-        acceptedAnswer: { '@type': 'Answer', text: `We provide manned guarding, electronic surveillance (CCTV), industrial security, event security, facility management, and background verification services across ${city.name}.` },
-      },
-      {
-        '@type': 'Question',
-        name: `How much do security guards cost in ${city.name}?`,
-        acceptedAnswer: { '@type': 'Answer', text: `Costs vary based on guard type (armed/unarmed), shift duration, and site complexity. Contact us at +91 93523 03333 for a customized quote for your ${city.name} facility.` },
-      },
-      {
-        '@type': 'Question',
-        name: `Do you serve businesses in ${city.name}?`,
-        acceptedAnswer: { '@type': 'Answer', text: `Yes. We serve manufacturing plants, hospitals, hotels, banks, corporate offices, warehouses, retail stores, and residential societies across ${city.name}.` },
-      },
-    ],
+    mainEntity: content.faqs.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
   }
 
   return (
@@ -129,12 +126,11 @@ export default async function CitySEOPage({
           variant="image"
           imageSrc="/hero-guard.webp"
           eyebrow={`${city.name.toUpperCase()} · ${city.state.toUpperCase()}`}
-          title={<SplitTextReveal text={`Security Services in ${city.name}`} mode="words" />}
+          title={<SplitTextReveal text={`Security Guard Services in ${city.name}`} mode="words" />}
           subtitle={
             <>
-              Professional security guard services in {city.name}, {city.state}.
-              Manned guarding, CCTV surveillance, event security, and facility management.
-              {state ? ` Covering all ${state.districts} districts of ${state.name}.` : ''}
+              Professional manned guarding, industrial security, and facility protection in {city.name},{' '}
+              {city.state}. ISO 9001:2015 certified processes. Trained manpower. Clear proposals.
             </>
           }
           size="tall"
@@ -155,7 +151,7 @@ export default async function CitySEOPage({
                 <Phone size={16} /> Call Now
               </a>
               <a
-                href={`https://wa.me/${CONTACT.whatsapp.number}?text=Hello%20Silbar%20Security%2C%20I%20need%20security%20services%20in%20${encodeURIComponent(city.name)}.`}
+                href={`https://wa.me/${CONTACT.whatsapp.number}?text=${encodeURIComponent(`Hello Silbar Security, I need security services in ${city.name}, ${city.state}.`)}`}
                 className="service-detail-cta service-detail-cta--secondary"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -166,70 +162,190 @@ export default async function CitySEOPage({
           }
         />
 
-        <section className="seo-services-section">
-          <div className="service-detail-section-inner">
-            <ScrollReveal>
-              <h2 className="service-detail-section-title">
-                Our Services in {city.name}
-              </h2>
-            </ScrollReveal>
-            <div className="seo-services-grid">
-              {SERVICES.map((service, i) => (
-                <ScrollReveal key={service.slug} delay={i * 0.03}>
-                  <Link
-                    href={`/services/${service.slug}`}
-                    className="seo-service-link"
-                  >
-                    <span className="seo-service-link__title">{service.shortTitle}</span>
-                    <span className="seo-service-link__location">
-                      <MapPin size={11} /> {city.name}
-                    </span>
-                  </Link>
-                </ScrollReveal>
-              ))}
+        <section className="seo-stats-strip" aria-label="Coverage snapshot">
+          <div className="seo-stats-strip__inner">
+            <div className="seo-stats-strip__item">
+              <strong>{city.name}</strong>
+              <span>City coverage</span>
+            </div>
+            <div className="seo-stats-strip__item">
+              <strong>{city.state}</strong>
+              <span>State</span>
+            </div>
+            <div className="seo-stats-strip__item">
+              <strong>Tier {city.tier}</strong>
+              <span>Market tier</span>
+            </div>
+            <div className="seo-stats-strip__item">
+              <strong>24/7</strong>
+              <span>Enquiry support</span>
             </div>
           </div>
         </section>
 
-        {nearbyCities.length > 0 && (
-          <section className="seo-cities-section">
-            <div className="service-detail-section-inner">
-              <ScrollReveal>
-                <h2 className="service-detail-section-title">
-                  Nearby Cities We Serve
-                </h2>
-              </ScrollReveal>
-              <div className="seo-cities-grid">
-                {nearbyCities.map((c, i) => (
-                  <ScrollReveal key={c} delay={i * 0.04}>
-                    <Link
-                      href={`/security-services/city/${c.toLowerCase().replace(/\\s+/g, '-')}`}
-                      className="seo-city-tag seo-city-tag--link"
-                    >
-                      <MapPin size={12} /> {c}
-                    </Link>
-                  </ScrollReveal>
-                ))}
-              </div>
+        <div className="seo-local-cta-band">
+          <div className="seo-local-cta-card">
+            <div>
+              <h2>
+                Security quote for <em>{city.name}</em>
+              </h2>
+              <p>
+                Trained guards, clear commercials, WhatsApp-ready enquiry. Call or message our team
+                for {city.name}, {city.state}.
+              </p>
             </div>
-          </section>
-        )}
+            <div className="seo-local-cta-card__actions">
+              <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--primary">
+                <Phone size={16} /> {CONTACT.phone}
+              </a>
+              <a
+                href={`https://wa.me/${CONTACT.whatsapp.number}?text=${encodeURIComponent(`Hello Silbar Security, I need security in ${city.name}.`)}`}
+                className="service-detail-cta service-detail-cta--secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
 
+        {/* Intro content */}
         <section className="seo-about-section">
           <div className="service-detail-section-inner">
             <ScrollReveal>
               <h2 className="service-detail-section-title">
-                About Silbar Security in {city.name}
+                Security Agency in {city.name}
               </h2>
             </ScrollReveal>
             <div className="seo-about-content">
-              {uniqueContent.map((paragraph, i) => (
+              {content.intro.map((paragraph, i) => (
                 <p key={i}>{paragraph}</p>
               ))}
             </div>
           </div>
         </section>
 
+        {/* Sectors */}
+        <section className="seo-services-section">
+          <div className="service-detail-section-inner">
+            <ScrollReveal>
+              <h2 className="service-detail-section-title">{content.sectorsHeading}</h2>
+              <p className="seo-cities-note" style={{ marginBottom: '1.25rem' }}>{content.sectorsBlurb}</p>
+            </ScrollReveal>
+            <ul className="seo-sector-list">
+              {content.sectors.map((s) => (
+                <li key={s} className="seo-sector-item">
+                  <CheckCircle2 size={16} aria-hidden="true" />
+                  <span>{s}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* Why Silbar */}
+        <section className="seo-cities-section">
+          <div className="service-detail-section-inner">
+            <ScrollReveal>
+              <h2 className="service-detail-section-title">Why Silbar in {city.name}</h2>
+            </ScrollReveal>
+            <ul className="seo-why-grid">
+              {content.whyPoints.map((point) => (
+                <li key={point} className="seo-why-item">
+                  <CheckCircle2 size={18} aria-hidden="true" />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="seo-about-content" style={{ marginTop: '1.5rem' }}>
+              <span style={{ display: 'block', marginBottom: '0.75rem' }}>{content.operations}</span>
+              <span style={{ display: 'block' }}>{content.compliance}</span>
+            </p>
+          </div>
+        </section>
+
+        {/* Process */}
+        <section className="seo-about-section">
+          <div className="service-detail-section-inner">
+            <ScrollReveal>
+              <h2 className="service-detail-section-title">How deployment works in {city.name}</h2>
+            </ScrollReveal>
+            <ol className="seo-process-list">
+              {content.process.map((step, i) => (
+                <li key={step.title} className="seo-process-item">
+                  <span className="seo-process-num">{String(i + 1).padStart(2, '0')}</span>
+                  <div>
+                    <h3>{step.title}</h3>
+                    <p>{step.desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        {/* Services links */}
+        <section className="seo-services-section">
+          <div className="service-detail-section-inner">
+            <ScrollReveal>
+              <h2 className="service-detail-section-title">Our Services in {city.name}</h2>
+              <p className="seo-cities-note" style={{ marginBottom: '1.25rem' }}>{content.servicesIntro}</p>
+            </ScrollReveal>
+            <div className="seo-services-grid">
+              {SERVICES.map((service) => (
+                <Link
+                  key={service.slug}
+                  href={`/services/${service.slug}`}
+                  className="seo-service-link"
+                >
+                  <span className="seo-service-link__title">{service.shortTitle}</span>
+                  <span className="seo-service-link__location">
+                    <MapPin size={11} /> {city.name}
+                  </span>
+                  <ArrowRight size={14} aria-hidden="true" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Nearby */}
+        {nearbyCities.length > 0 && (
+          <section className="seo-cities-section">
+            <div className="service-detail-section-inner">
+              <ScrollReveal>
+                <h2 className="service-detail-section-title">Nearby Cities We Serve</h2>
+              </ScrollReveal>
+              <div className="seo-cities-grid">
+                {nearbyCities.map((c) => {
+                  const match = CITIES.find(
+                    (x) => x.name.toLowerCase() === c.toLowerCase() || x.slug === citySlugFromName(c)
+                  )
+                  const href = match
+                    ? `/security-services/city/${match.slug}`
+                    : `/security-services/${city.stateSlug}`
+                  return (
+                    <Link key={c} href={href} className="seo-city-tag seo-city-tag--link">
+                      <MapPin size={12} /> {c}
+                    </Link>
+                  )
+                })}
+              </div>
+              {state && (
+                <p className="seo-cities-note">
+                  View all of{' '}
+                  <Link href={`/security-services/${city.stateSlug}`} className="seo-cities-link">
+                    {state.name} security coverage
+                  </Link>
+                  .
+                </p>
+              )}
+            </div>
+          </section>
+        )}
+
+        {/* FAQs */}
         <section className="service-detail-faq">
           <div className="service-detail-section-inner">
             <ScrollReveal>
@@ -238,10 +354,10 @@ export default async function CitySEOPage({
               </h2>
             </ScrollReveal>
             <div className="service-detail-faq-list">
-              {faqSchema.mainEntity.map(({ name, acceptedAnswer }: { name: string; acceptedAnswer: { text: string } }) => (
-                <details key={name} className="service-detail-faq-item">
-                  <summary className="service-detail-faq-q">{name}</summary>
-                  <p className="service-detail-faq-a">{acceptedAnswer.text}</p>
+              {content.faqs.map(({ q, a }) => (
+                <details key={q} className="service-detail-faq-item">
+                  <summary className="service-detail-faq-q">{q}</summary>
+                  <p className="service-detail-faq-a">{a}</p>
                 </details>
               ))}
             </div>
@@ -254,14 +370,14 @@ export default async function CitySEOPage({
               Need Security in {city.name}?
             </h2>
             <p className="service-detail-bottom-cta__sub">
-              Get a customized security quote for your {city.name} facility within 24 hours.
+              Get a customized security quote for your {city.name} facility. Submit opens WhatsApp with your details.
             </p>
             <div className="service-detail-ctas service-detail-ctas--centered">
               <a href={`tel:${CONTACT.phoneRaw}`} className="service-detail-cta service-detail-cta--primary">
                 <Phone size={16} /> Call Now
               </a>
               <a
-                href={`https://wa.me/${CONTACT.whatsapp.number}?text=Hello%20Silbar%20Security%2C%20I%20need%20a%20quote%20for%20security%20services%20in%20${encodeURIComponent(city.name)}.`}
+                href={`https://wa.me/${CONTACT.whatsapp.number}?text=${encodeURIComponent(`Hello Silbar Security, I need a quote for security services in ${city.name}.`)}`}
                 className="service-detail-cta service-detail-cta--secondary"
                 target="_blank"
                 rel="noopener noreferrer"

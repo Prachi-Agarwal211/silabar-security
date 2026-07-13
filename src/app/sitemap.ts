@@ -1,74 +1,90 @@
 import { MetadataRoute } from 'next'
 import { SERVICE_SLUGS } from '@/data/services'
 import { INDUSTRY_SLUGS } from '@/data/industries'
-import { STATES, CITIES as ALL_CITIES } from '@/data/locations'
+import { STATES, CITIES } from '@/data/locations'
 import { BLOG_POSTS } from '@/data/blog'
 
 const BASE_URL = 'https://www.silbarsecurity.in'
 
+type Freq = MetadataRoute.Sitemap[number]['changeFrequency']
+
+function entry(
+  path: string,
+  priority: number,
+  changeFrequency: Freq = 'monthly',
+  lastModified: Date = new Date()
+): MetadataRoute.Sitemap[number] {
+  return {
+    url: path === '/' ? BASE_URL : `${BASE_URL}${path}`,
+    lastModified,
+    changeFrequency,
+    priority,
+  }
+}
+
+/**
+ * Complete XML sitemap for Google / Bing.
+ * Includes every public marketing URL: core, services, industries,
+ * states, cities, blog, legal, franchise, google landing.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
 
-  // Core pages
-  const corePages = [
-    { url: BASE_URL, lastModified: now, changeFrequency: 'weekly' as const, priority: 1.0 },
-    { url: `${BASE_URL}/about`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
-    { url: `${BASE_URL}/contact`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.9 },
-    { url: `${BASE_URL}/services`, lastModified: now, changeFrequency: 'weekly' as const, priority: 0.9 },
-    { url: `${BASE_URL}/industries`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
-    { url: `${BASE_URL}/blog`, lastModified: now, changeFrequency: 'weekly' as const, priority: 0.8 },
-    { url: `${BASE_URL}/careers`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.6 },
-    { url: `${BASE_URL}/security-services`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.9 },
-    { url: `${BASE_URL}/privacy-policy`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.3 },
-    { url: `${BASE_URL}/terms`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.3 },
-    { url: `${BASE_URL}/faq`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.5 },
-    { url: `${BASE_URL}/disclaimer`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.3 },
-    { url: `${BASE_URL}/clients`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
-    { url: `${BASE_URL}/case-studies`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.6 },
-    { url: `${BASE_URL}/gallery`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.5 },
-    { url: `${BASE_URL}/csr`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.5 },
-    { url: `${BASE_URL}/emergency`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
+  // ── Core pages (high value) ──
+  const corePages: MetadataRoute.Sitemap = [
+    entry('/', 1.0, 'weekly', now),
+    entry('/services', 0.95, 'weekly', now),
+    entry('/security-services', 0.95, 'weekly', now),
+    entry('/contact', 0.95, 'monthly', now),
+    entry('/about', 0.9, 'monthly', now),
+    entry('/industries', 0.9, 'monthly', now),
+    entry('/faq', 0.85, 'monthly', now),
+    entry('/franchise', 0.85, 'monthly', now),
+    entry('/blog', 0.8, 'weekly', now),
+    entry('/careers', 0.7, 'monthly', now),
+    entry('/clients', 0.7, 'monthly', now),
+    entry('/case-studies', 0.7, 'monthly', now),
+    entry('/emergency', 0.75, 'monthly', now),
+    entry('/gallery', 0.55, 'monthly', now),
+    entry('/csr', 0.55, 'monthly', now),
+    entry('/google', 0.5, 'monthly', now), // Google Business landing
+    entry('/privacy-policy', 0.3, 'yearly', now),
+    entry('/terms', 0.3, 'yearly', now),
+    entry('/disclaimer', 0.3, 'yearly', now),
   ]
 
-  // Service pages
-  const servicePages = SERVICE_SLUGS.map((slug) => ({
-    url: `${BASE_URL}/services/${slug}`,
-    lastModified: now,
-    changeFrequency: 'monthly' as const,
-    priority: 0.8,
-  }))
+  // ── Service detail pages ──
+  const servicePages = SERVICE_SLUGS.map((slug) =>
+    entry(`/services/${slug}`, 0.85, 'monthly', now)
+  )
 
-  // Industry pages
-  const industryPages = INDUSTRY_SLUGS.map((slug) => ({
-    url: `${BASE_URL}/industries/${slug}`,
-    lastModified: now,
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }))
+  // ── Industry detail pages ──
+  const industryPages = INDUSTRY_SLUGS.map((slug) =>
+    entry(`/industries/${slug}`, 0.8, 'monthly', now)
+  )
 
-  // Blog posts — dynamic from data (not hardcoded)
-  const blogPages = BLOG_POSTS.map((post) => ({
-    url: `${BASE_URL}/blog/${post.slug}`,
-    lastModified: new Date(post.publishedAt),
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }))
+  // ── Blog posts ──
+  const blogPages = BLOG_POSTS.map((post) =>
+    entry(`/blog/${post.slug}`, 0.65, 'monthly', new Date(post.publishedAt))
+  )
 
-  // State SEO pages
-  const statePages = STATES.map((state) => ({
-    url: `${BASE_URL}/security-services/${state.slug}`,
-    lastModified: now,
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }))
+  // ── State SEO pages ──
+  const statePages = STATES.map((state) =>
+    entry(`/security-services/${state.slug}`, 0.75, 'monthly', now)
+  )
 
-  // City SEO pages
-  const cityPages = ALL_CITIES.map((city) => ({
-    url: `${BASE_URL}/security-services/city/${city.slug}`,
-    lastModified: now,
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }))
+  // ── City SEO pages (tier-1 slightly higher priority) ──
+  const cityPages = CITIES.map((city) => {
+    const priority = city.tier === 1 ? 0.72 : city.tier === 2 ? 0.65 : 0.58
+    return entry(`/security-services/city/${city.slug}`, priority, 'monthly', now)
+  })
 
-  return [...corePages, ...servicePages, ...industryPages, ...blogPages, ...statePages, ...cityPages]
+  return [
+    ...corePages,
+    ...servicePages,
+    ...industryPages,
+    ...blogPages,
+    ...statePages,
+    ...cityPages,
+  ]
 }
