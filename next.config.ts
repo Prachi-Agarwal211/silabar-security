@@ -78,6 +78,19 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      {
+        source: '/((?!_next/static|_next/image|favicon.ico|icon-192.png|icon-512.png|apple-touch-icon.png|og-image.jpg|logo.png|logo.webp|manifest.json|llms.txt).*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, s-maxage=0, must-revalidate',
+          },
+          {
+            key: 'Surrogate-Control',
+            value: 'no-store',
+          },
+        ],
+      },
     ]
   },
 }

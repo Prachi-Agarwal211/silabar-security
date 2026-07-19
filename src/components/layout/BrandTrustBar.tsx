@@ -2,7 +2,7 @@ const ITEMS = [
   '4 ISO Certified · IAF Accredited',
   'PSARA Licensed · 19 States',
   '200+ Cities PAN India',
-  'Est. 2018 · Jaipur',
+  'Est. 2018',
   'Pvt. Ltd. · Incorporated 2025',
   'Licensed & Insured',
   'Industrial · Corporate · Government',

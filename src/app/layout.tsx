@@ -121,6 +121,8 @@ export default function RootLayout({
   return (
     <html lang="en-IN" className={`${spaceGrotesk.variable} ${manrope.variable}`}>
       <body>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[9999] focus:bg-gold focus:text-midnight focus:px-4 focus:py-2 focus:font-body focus:font-semibold"
@@ -140,16 +142,16 @@ export default function RootLayout({
               url: 'https://www.silbarsecurity.in',
               logo: {
                 '@type': 'ImageObject',
-                url: 'https://www.silbarsecurity.in/logo.png',
-                width: 300,
-                height: 60,
+                url: 'https://www.silbarsecurity.in/icon-512.png',
+                width: 512,
+                height: 512,
               },
               description:
                 'ISO 9001:14001:45001:27001 certified PAN India security agency with PSARA licenses across 19 states. Manned guarding, electronic surveillance, facility management, VIP protection across India.',
               telephone: '+91-9352303333',
               email: CONTACT.email,
               foundingDate: '2018',
-              numberOfEmployees: { '@type': 'QuantitativeValue', value: 100 },
+              numberOfEmployees: { '@type': 'QuantitativeValue', value: 7000 },
               address: {
                 '@type': 'PostalAddress',
                 streetAddress: '5th Floor, Statesman House, Plot No. 148, Barakhamba Road, Connaught Place',
@@ -184,6 +186,7 @@ export default function RootLayout({
               sameAs: [
                 'https://www.linkedin.com/company/silbar-security-services-private-limited/',
                 'https://www.facebook.com/share/1GtattxqNp/',
+                'https://www.instagram.com/silbar_security',
                 'https://g.co/kgs/silbarsecurity',
               ],
               actionableFeedbackPolicy: 'https://www.silbarsecurity.in/contact',
@@ -243,6 +246,18 @@ export default function RootLayout({
                   '.about-hero__title',
                   '.section-heading',
                   '.seo-about-content p',
+                  '.service-detail-hero-content p',
+                  '.industry-description p',
+                  '.city-description p',
+                  '.faq-answer p',
+                  '.benefit-item__text',
+                  '.job-card__desc',
+                  '.certification-description',
+                  '.case-study-summary',
+                  '.blog-post-content p',
+                  '.service-detail-features li',
+                  '.service-detail-bottom-cta__title',
+                  '.service-detail-bottom-cta__sub',
                 ],
               },
             }),
@@ -263,16 +278,11 @@ export default function RootLayout({
               priceRange: '$$',
               address: {
                 '@type': 'PostalAddress',
-                streetAddress: '208, 2nd Floor, Samod Tower, Sansar Chand Road',
-                addressLocality: 'Jaipur',
-                addressRegion: 'Rajasthan',
-                postalCode: '302001',
+                streetAddress: '5th Floor, Statesman House, Plot No. 148, Barakhamba Road, Connaught Place',
+                addressLocality: 'New Delhi',
+                addressRegion: 'Delhi',
+                postalCode: '110001',
                 addressCountry: 'IN',
-              },
-              geo: {
-                '@type': 'GeoCoordinates',
-                latitude: 26.9124,
-                longitude: 75.7873,
               },
               openingHoursSpecification: {
                 '@type': 'OpeningHoursSpecification',

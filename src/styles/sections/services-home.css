@@ -120,13 +120,13 @@
   border-radius: 10px;
   text-decoration: none;
   color: var(--color-paper-ink);
-  transition: transform 0.35s var(--ease-smooth), box-shadow 0.35s var(--ease-smooth), border-color 0.35s var(--ease-smooth);
+  transition: box-shadow 0.35s var(--ease-smooth), border-color 0.35s var(--ease-smooth);
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
+  will-change: transform;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .sv-card:hover {
-    transform: translateY(-6px);
     box-shadow: 0 20px 48px rgba(140, 31, 50, 0.14);
     border-color: var(--color-cherry);
   }

@@ -22,8 +22,8 @@ export const metadata: Metadata = {
 const ISO_CERTS = [
   { name: 'ISO 9001:2015', desc: 'Quality Management System — IAF Accredited', detail: 'Demonstrates our ability to consistently provide services that meet customer and regulatory requirements through effective quality management processes.' },
   { name: 'ISO 14001:2015', desc: 'Environmental Management System — IAF Accredited', detail: 'Reflects our commitment to environmental responsibility, sustainable operations, and minimizing our ecological footprint across all deployments.' },
-  { name: 'ISO 45001:2018', desc: 'Occupational Health & Safety — IAF Accredited', detail: 'Ensures a safe working environment for our 100+ professionals through systematic hazard identification, risk assessment, and safety protocols.' },
-  { name: 'ISO 27001', desc: 'Information Security Management — IAF Accredited', detail: 'Guarantees the security of client data, confidential information, and operational records through robust information security controls.' },
+  { name: 'ISO 45001:2018', desc: 'Occupational Health & Safety — IAF Accredited', detail: 'Ensures a safe working environment for our 7,000+ professionals through systematic hazard identification, risk assessment, and safety protocols.' },
+  { name: 'ISO/IEC 27001:2022', desc: 'Information Security Management — IAF Accredited', detail: 'Guarantees the security of client data, confidential information, and operational records through robust information security controls.' },
 ]
 
 const REGULATORY = [
@@ -40,7 +40,7 @@ const PSARA_STATES = [
   'Rajasthan', 'Delhi', 'Haryana', 'Uttar Pradesh', 'Madhya Pradesh',
   'Gujarat', 'Punjab', 'Chandigarh', 'Uttarakhand', 'Maharashtra',
   'Chhattisgarh', 'Odisha', 'Jharkhand', 'West Bengal', 'Karnataka',
-  'Tamil Nadu', 'Telangana'
+  'Tamil Nadu', 'Telangana', 'Andhra Pradesh', 'Bihar'
 ]
 
 export default function CertificationPage() {
@@ -199,7 +199,7 @@ export default function CertificationPage() {
               Download and view our official certificates. New certificates will be added here as they are received.
             </p>
             <div className="cert-gallery-grid">
-              {['ISO 9001:2015', 'ISO 14001:2015', 'ISO 45001:2018', 'ISO 27001', 'PSARA License', 'Startup India'].map((cert) => (
+              {['ISO 9001:2015', 'ISO 14001:2015', 'ISO 45001:2018', 'ISO/IEC 27001:2022', 'PSARA License', 'Startup India'].map((cert) => (
                 <div key={cert} className="cert-gallery-item hover-lift">
                   <ScrollText size={28} className="cert-gallery-item__icon" />
                   <p className="cert-gallery-item__title">{cert}</p>

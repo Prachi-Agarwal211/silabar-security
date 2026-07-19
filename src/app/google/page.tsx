@@ -30,7 +30,7 @@ const TRUST_BADGES = [
   '4 ISO Certified (IAF)',
   'PSARA Licensed · 19 States',
   '200+ Cities PAN India',
-  '100+ Professionals',
+  '7,000+ Professionals',
   'Est. 2018 · Jaipur',
   'Startup India · MSME Registered',
 ]
@@ -46,7 +46,7 @@ export default function GoogleLandingPage() {
             Silbar Security <span style={{ color: 'var(--color-cherry)' }}>Services</span>
           </h1>
           <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.8)', lineHeight: 1.7, marginBottom: '2rem' }}>
-            India&apos;s trusted ISO 9001:2015 certified security agency with           100+ professionals protecting businesses, homes, and events across PAN India with PSARA licenses in 19 states and 4 ISO certifications.
+            India&apos;s trusted ISO 9001:2015 certified security agency with           7,000+ professionals protecting businesses, homes, and events across PAN India with PSARA licenses in 19 states and 4 ISO certifications.
           </p>
         </ScrollReveal>
 

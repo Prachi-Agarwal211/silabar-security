@@ -137,9 +137,8 @@ export default function CareersPage() {
           <h2 className="service-detail-section-title service-detail-section-title--mb">Walk-In Interviews</h2>
           <div className="bento-grid">
             {[
-              { city: 'Jaipur (HQ)', address: CONTACT.officeLocations[0].address, time: 'Mon–Sat: 10:00 AM – 4:00 PM', roles: 'All Positions' },
-              { city: 'Delhi NCR', address: CONTACT.officeLocations[1].address, time: 'Mon–Fri: 10:00 AM – 3:00 PM', roles: 'Security Guards, Supervisors' },
-              { city: 'Ahmedabad', address: CONTACT.officeLocations[2].address, time: 'Mon–Fri: 11:00 AM – 3:00 PM', roles: 'Security Guards, Armed Guards' },
+              { city: 'New Delhi (Registered Office)', address: CONTACT.officeLocations[0].address, time: 'Mon–Sat: 10:00 AM – 4:00 PM', roles: 'All Positions' },
+              { city: 'Gurugram (Corporate Office)', address: CONTACT.officeLocations[1].address, time: 'Mon–Fri: 10:00 AM – 3:00 PM', roles: 'Security Guards, Supervisors' },
             ].map((loc, i) => (
               <ScrollReveal key={loc.city} delay={i * 0.1} className="bento-cell glass-panel">
                 <h3 style={{ color: 'var(--color-gold-light)', fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.5rem' }}>{loc.city}</h3>

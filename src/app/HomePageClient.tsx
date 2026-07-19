@@ -55,7 +55,7 @@ const CERTIFICATIONS_DATA = [
   { title: 'ISO 9001:2015', sub: 'Quality Management', icon: Award },
   { title: 'ISO 14001:2015', sub: 'Environmental Management', icon: Shield },
   { title: 'ISO 45001:2018', sub: 'Health & Safety', icon: Shield },
-  { title: 'ISO 27001', sub: 'Information Security', icon: Shield },
+  { title: 'ISO/IEC 27001:2022', sub: 'Information Security', icon: Shield },
 ]
 
 const INDUSTRIES_ICONS = [
@@ -73,7 +73,7 @@ const CLIENT_LOGOS = ['Manufacturing', 'Healthcare', 'Banking & Finance', 'IT & 
 
 const STATS = [
   { value: '8+', label: 'Years of Excellence', sub: 'Since 2018' },
-  { value: '100+', label: 'Security Professionals', sub: 'Trained & verified' },
+  { value: '7,000+', label: 'Security Professionals', sub: 'Licensed & trained' },
   { value: '200+', label: 'Cities Covered', sub: '19 states across India' },
   { value: '19', label: 'PSARA Licensed States', sub: 'With 4 ISO certifications' },
 ]
@@ -208,7 +208,7 @@ export default function HomePageClient() {
           </div>
           <div className="brand-seals-row">
             <div className="brand-seal motion-glow">ISO<br />9001<br />2015</div>
-            <div className="brand-seal">EST<br />2018<br />JAIPUR</div>
+            <div className="brand-seal">EST<br />2018</div>
             <div className="brand-seal">19<br />STATES</div>
           </div>
         </div>
@@ -227,7 +227,7 @@ export default function HomePageClient() {
             <p className="why-silbar-body">
               Since 2018, Silbar Security has grown into a trusted PAN India security partner for enterprises,
               institutions, and communities across India. With PSARA licenses in 19 states, 4 ISO certifications,
-              and a team of 100+ trained professionals, we combine compliance, people, and technology
+              and a team of 7,000+ trained professionals, we combine compliance, people, and technology
               to deliver unmatched protection.
             </p>
             <div className="why-silbar-divider" aria-hidden="true" />
@@ -257,7 +257,7 @@ export default function HomePageClient() {
                 </div>
                 <div className="why-silbar-tile__content">
                   <div className="why-silbar-tile__title">EST. 2018</div>
-                  <div className="why-silbar-tile__subtitle">Building trust since<br />2018 · Jaipur</div>
+                  <div className="why-silbar-tile__subtitle">Building trust since<br />2018</div>
                 </div>
               </div>
             </div>
@@ -293,7 +293,7 @@ export default function HomePageClient() {
                   <Users size={28} strokeWidth={1.5} />
                 </div>
                 <div className="why-silbar-tile__content">
-                  <div className="why-silbar-tile__number">100+</div>
+                  <div className="why-silbar-tile__number">7,000+</div>
                   <div className="why-silbar-tile__subtitle why-silbar-tile__subtitle--dark">PROFESSIONALS</div>
                   <div className="why-silbar-tile__desc">Trained. Equipped.<br />Committed.</div>
                 </div>

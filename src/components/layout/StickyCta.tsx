@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
+import { gsap } from '@/lib/gsap'
 import { CONTACT } from '@/lib/config'
 
 function WhatsAppIcon() {
@@ -12,8 +14,16 @@ function WhatsAppIcon() {
 
 /** Sitewide floating Call + WhatsApp — mounted once in layout */
 export default function StickyCta() {
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    gsap.fromTo(el, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, delay: 1.5, ease: 'power2.out' })
+  }, [])
+
   return (
-    <div className="sticky-cta" aria-label="Quick contact options">
+    <div className="sticky-cta" ref={ref} aria-label="Quick contact options">
       <a
         href={`tel:${CONTACT.phoneRaw}`}
         className="sticky-cta__call"

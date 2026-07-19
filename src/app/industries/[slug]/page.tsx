@@ -243,7 +243,7 @@ export default async function IndustryPage({
                     <div className="service-stat__label">Cities Covered</div>
                   </div>
                   <div className="service-stat">
-                    <div className="service-stat__number">100+</div>
+                    <div className="service-stat__number">7,000+</div>
                     <div className="service-stat__label">Professionals</div>
                   </div>
                   <div className="service-stat">

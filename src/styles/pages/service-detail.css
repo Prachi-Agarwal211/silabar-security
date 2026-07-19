@@ -5,6 +5,7 @@
 /* Page wrapper */
 .service-detail-page {
   min-height: 100vh;
+  @supports (height: 100dvh) { min-height: 100dvh; }
 }
 
 /* Image hero service pages — no double header padding */

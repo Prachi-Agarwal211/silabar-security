@@ -176,14 +176,16 @@
   align-items: center;
   text-align: center;
   padding: 2rem 1rem;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(191, 149, 63, 0.15);
   border-radius: 10px;
   transition: background 0.35s, border-color 0.35s, transform 0.35s var(--ease-smooth);
 }
 .cert-badge:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(191, 149, 63, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(191, 149, 63, 0.35);
   transform: translateY(-3px);
 }
 .cert-badge__icon {

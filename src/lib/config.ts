@@ -35,8 +35,8 @@ export const CONTACT = {
     linkedin: 'https://www.linkedin.com/company/silbar-security-services-private-limited/',
     google: 'https://g.co/kgs/silbarsecurity',
   },
-  landline: '+91-141 222 3334',
-  landlineRaw: '911412223334',
+  landline: '+91-141-4021078',
+  landlineRaw: '911414021078',
   /**
    * Office locations for contact / careers / schema.
    * HQ has full street address; regional hubs show city + coverage until street addresses are confirmed by client.
@@ -64,18 +64,7 @@ export const CONTACT = {
       hours: 'Mon–Sat: 9:00 AM – 7:00 PM',
       isHQ: false,
     },
-    {
-      city: 'Jaipur (Branch Office)',
-      badge: 'Branch Office',
-      region: 'Rajasthan',
-      address: 'C-36, 3rd Floor, Capital Galleria, Sirsi Road, Kanakpura, Jaipur — 302034',
-      pin: '302034',
-      phone: '+91 93523 03333',
-      phoneRaw: '919352303333',
-      landline: '+91-141 222 3334',
-      hours: 'Mon–Sat: 9:00 AM – 7:00 PM',
-      isHQ: false,
-    },
+
   ] as const,
   /** @deprecated Use emergencyPhone — placeholder removed; maps to primary mobile */
   tollFree: '+91 93523 03333',

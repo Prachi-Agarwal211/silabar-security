@@ -50,7 +50,7 @@ export default async function ServicePage({
   const stats = [
     { number: '8+', label: 'Years Experience' },
     { number: '200+', label: 'Cities Covered' },
-    { number: '100+', label: 'Professionals' },
+    { number: '7,000+', label: 'Professionals' },
     { number: '4', label: 'ISO Certified' },
   ]
 

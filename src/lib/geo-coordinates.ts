@@ -824,10 +824,6 @@ export const GEO_COORDINATES: Record<string, { lat: number; lng: number }> = {
     "lat": 21.5006421,
     "lng": 86.919884
   },
-  "jaipur-hq": {
-    "lat": 26.9124,
-    "lng": 75.7873
-  },
   "delhi-office": {
     "lat": 28.6139,
     "lng": 77.209

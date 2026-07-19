@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import Link from 'next/link'
 import {
   UserCheck, Camera, ClipboardCheck, Building2, Flame,
@@ -10,6 +10,28 @@ import {
 import { gsap } from '@/lib/gsap'
 import { useGSAP } from '@gsap/react'
 import type { Service } from '@/data/services'
+
+// ponytail: cursor-driven 3D tilt on hover cards; full PointerEvents polyfill not needed for modern browsers
+function tiltOnHover(container: HTMLElement, selector: string) {
+  const cards = container.querySelectorAll<HTMLElement>(selector)
+  const onMove = (e: PointerEvent, card: HTMLElement) => {
+    const rect = card.getBoundingClientRect()
+    const x = (e.clientX - rect.left) / rect.width - 0.5
+    const y = (e.clientY - rect.top) / rect.height - 0.5
+    card.style.transform = `perspective(800px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg)`
+  }
+  const onLeave = (card: HTMLElement) => {
+    card.style.transform = ''
+  }
+  cards.forEach((card) => {
+    card.addEventListener('pointermove', (e) => onMove(e, card))
+    card.addEventListener('pointerleave', () => onLeave(card))
+  })
+  return () => cards.forEach((card) => {
+    card.removeEventListener('pointermove', (e) => onMove(e, card))
+    card.removeEventListener('pointerleave', () => onLeave(card))
+  })
+}
 
 const ICON_MAP: Record<string, React.ElementType> = {
   'user-check': UserCheck,
@@ -38,6 +60,11 @@ export default function ServicesGrid({ services }: ServicesGridProps) {
 
   const featured = services.slice(0, 5)
   const pills = services.slice(5)
+
+  useEffect(() => {
+    if (!cardsRef.current) return
+    return tiltOnHover(cardsRef.current, '.sv-card')
+  }, [])
 
   useGSAP(() => {
     if (!sectionRef.current || !cardsRef.current) return

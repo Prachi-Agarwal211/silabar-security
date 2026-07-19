@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 
 const STATS = [
   { number: 8, suffix: '+', label: 'Years of Excellence' },
-  { number: 100, suffix: '+', label: 'Security Professionals' },
+  { number: 7000, suffix: '+', label: 'Security Professionals' },
   { number: 200, suffix: '+', label: 'Cities Covered' },
   { number: 19, suffix: '', label: 'PSARA Licensed States' },
 ]
@@ -49,7 +49,7 @@ const CERTIFICATIONS = [
   { name: 'ISO 9001:2015', desc: 'Quality Management System (IAF Accredited)' },
   { name: 'ISO 14001:2015', desc: 'Environmental Management (IAF Accredited)' },
   { name: 'ISO 45001:2018', desc: 'Occupational Health & Safety (IAF Accredited)' },
-  { name: 'ISO 27001', desc: 'Information Security Management (IAF Accredited)' },
+  { name: 'ISO/IEC 27001:2022', desc: 'Information Security Management (IAF Accredited)' },
   { name: 'PSARA Licensed', desc: '19 states & UTs across India' },
   { name: 'Startup India', desc: 'DPIIT recognized startup' },
   { name: 'MSME Registered', desc: 'Government-recognized enterprise' },
@@ -101,7 +101,7 @@ export default function AboutPage() {
             mainEntity: {
               '@type': 'Organization',
               name: 'Silbar Security Services Pvt. Ltd.',
-              foundingDate: '2005',
+              foundingDate: '2018',
               address: CONTACT.address.full,
             },
           }),
@@ -142,7 +142,7 @@ export default function AboutPage() {
               <li>4 ISO Certified (IAF)</li>
               <li>PSARA Licensed · 19 States</li>
               <li>200+ Cities</li>
-              <li>Est. 2018 · Jaipur</li>
+              <li>Est. 2018</li>
             </ul>
             <div className="about-hero__ctas">
               <MagneticButton
@@ -241,7 +241,7 @@ export default function AboutPage() {
             </div>
             <div className="about-story__mosaic-side">
               <div className="about-story__mosaic-tile about-story__mosaic-tile--gold">
-                <strong>100+</strong>
+                <strong>7,000+</strong>
                 <span>Trained professionals</span>
               </div>
               <div className="about-story__mosaic-tile about-story__mosaic-tile--photo">

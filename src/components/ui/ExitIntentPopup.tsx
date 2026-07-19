@@ -27,7 +27,7 @@ export default function ExitIntentPopup() {
   if (!show || dismissed) return null
 
   return (
-    <div className="exit-popup-overlay" onClick={() => setDismissed(true)} role="dialog" aria-modal="true" aria-labelledby="exit-popup-title">
+    <div className="exit-popup-overlay exit-popup-overlay--visible" onClick={() => setDismissed(true)} role="dialog" aria-modal="true" aria-labelledby="exit-popup-title">
       <div className="exit-popup" onClick={(e) => e.stopPropagation()}>
         <button className="exit-popup__close" onClick={() => setDismissed(true)} aria-label="Close">
           <X size={20} />

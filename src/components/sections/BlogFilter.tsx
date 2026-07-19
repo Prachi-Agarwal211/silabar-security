@@ -41,10 +41,8 @@ export default function BlogFilter({ posts, categories }: Props) {
       </ScrollReveal>
 
       <div className="blog-grid">
-        {filtered.map((post, i) => (
-          <ScrollReveal key={post.id} delay={Math.min(i * 0.06, 0.4)}>
-            <BlogCard post={post} />
-          </ScrollReveal>
+        {filtered.map((post) => (
+          <BlogCard key={post.id} post={post} />
         ))}
       </div>
 

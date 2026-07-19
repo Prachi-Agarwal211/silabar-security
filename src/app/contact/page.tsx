@@ -10,8 +10,8 @@ import { GEO_COORDINATES } from '@/lib/geo-coordinates'
 export const metadata: Metadata = {
   title: 'Contact Us — Call or WhatsApp Silbar Security',
   description:
-    'Contact Silbar Security Services for a free security consultation and quote. Call ' + CONTACT.phone + ' or email ' + CONTACT.email + '. Offices in Jaipur, Delhi, and Ahmedabad.',
-  ...ogMetadata('Contact Us — Call or WhatsApp Silbar Security', 'Contact Silbar Security Services for a free security consultation and quote. Call ' + CONTACT.phone + ' or email ' + CONTACT.email + '. Offices in Jaipur, Delhi, and Ahmedabad.', '/contact'),
+    'Contact Silbar Security Services for a free security consultation and quote. Call ' + CONTACT.phone + ' or email ' + CONTACT.email + '. Offices in Delhi and Gurugram.',
+  ...ogMetadata('Contact Us — Call or WhatsApp Silbar Security', 'Contact Silbar Security Services for a free security consultation and quote. Call ' + CONTACT.phone + ' or email ' + CONTACT.email + '. Offices in Delhi and Gurugram.', '/contact'),
 }
 
 export default function ContactPage() {
@@ -67,14 +67,6 @@ export default function ContactPage() {
             telephone: CONTACT.phoneRaw,
             address: { '@type': 'PostalAddress', streetAddress: '2nd Floor, MPD Tower, Golf Course Road, Sector 43', addressLocality: 'Gurugram', addressRegion: 'Haryana', postalCode: '122002', addressCountry: 'IN' },
             geo: { '@type': 'GeoCoordinates', latitude: 28.4595, longitude: 77.0266 },
-          },
-          {
-            '@context': 'https://schema.org',
-            '@type': 'LocalBusiness',
-            name: 'Silbar Security Services — Jaipur (Branch Office)',
-            telephone: CONTACT.phoneRaw,
-            address: { '@type': 'PostalAddress', streetAddress: 'C-36, 3rd Floor, Capital Galleria, Sirsi Road, Kanakpura', addressLocality: 'Jaipur', addressRegion: 'Rajasthan', postalCode: '302034', addressCountry: 'IN' },
-            geo: { '@type': 'GeoCoordinates', latitude: GEO_COORDINATES['jaipur-hq']?.lat || 26.9124, longitude: GEO_COORDINATES['jaipur-hq']?.lng || 75.7873 },
           }
         ])
       }} />

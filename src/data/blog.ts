@@ -874,7 +874,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <ul>
         <li><strong>8 Years</strong> of uninterrupted service and operations.</li>
         <li><strong>500+ Security Personnel</strong> trained, PSARA-licensed, and deployed across our client network.</li>
-        <li><strong>100+ Clients</strong> served across manufacturing, logistics, healthcare, education, hospitality, and residential sectors.</li>
+        <li><strong>7,000+ Clients</strong> served across manufacturing, logistics, healthcare, education, hospitality, and residential sectors.</li>
         <li><strong>Zero Major Incidents</strong> at client locations under our watch — a track record we take immense pride in.</li>
         <li><strong>5 States</strong> of active operations, with expansion planned into additional regions in the coming year.</li>
       </ul>
