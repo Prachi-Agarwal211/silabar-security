@@ -10,14 +10,13 @@ import {
   Users,
   CheckCircle2,
   MapPin,
-  Building2,
   ArrowRight,
 } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
+import { CONTACT } from '@/lib/config'
 import Counter from '@/components/animations/Counter'
 import { MagneticButton } from '@/components/ui/MagneticButton'
 import QueryForm from '@/components/sections/QueryForm'
-import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
 
 export const metadata: Metadata = {
@@ -212,20 +211,15 @@ export default function AboutPage() {
               PAN India ambition.
             </p>
             <div className="about-story__offices">
-              <div className="about-story__office">
-                <MapPin size={16} aria-hidden="true" />
-                <div>
-                  <strong>Registered Office</strong>
-                  <span>Statesman House, Barakhamba Road, Connaught Place, New Delhi — 110001</span>
+              {[...CONTACT.officeLocations].map((office) => (
+                <div key={office.city} className="about-story__office">
+                  <MapPin size={16} aria-hidden="true" />
+                  <div>
+                    <strong>{office.badge}</strong>
+                    <span>{office.address}</span>
+                  </div>
                 </div>
-              </div>
-              <div className="about-story__office">
-                <Building2 size={16} aria-hidden="true" />
-                <div>
-                  <strong>Corporate Office</strong>
-                  <span>MPD Tower, Golf Course Road, Sector 43, Gurugram, Haryana — 122002</span>
-                </div>
-              </div>
+              ))}
             </div>
           </ScrollReveal>
 

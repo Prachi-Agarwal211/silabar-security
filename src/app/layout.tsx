@@ -176,7 +176,7 @@ export default function RootLayout({
               },
               description:
                 'ISO 9001:14001:45001:27001 certified PAN India security agency with PSARA licenses across 19 states. Manned guarding, electronic surveillance, facility management, VIP protection across India.',
-              telephone: '+91-9352303333',
+              telephone: '+91-9982170555',
               email: CONTACT.email,
               foundingDate: '2018',
               numberOfEmployees: { '@type': 'QuantitativeValue', value: 7000 },
@@ -200,7 +200,7 @@ export default function RootLayout({
               contactPoint: [
                 {
                   '@type': 'ContactPoint',
-                  telephone: '+91-9352303333',
+                  telephone: '+91-9982170555',
                   contactType: 'customer service',
                   areaServed: [
                     'Rajasthan', 'Delhi', 'Gujarat', 'Maharashtra', 'Karnataka', 
@@ -218,9 +218,7 @@ export default function RootLayout({
                 'https://x.com/silbarsecurity',
                 'https://g.co/kgs/silbarsecurity',
                 'https://www.wikidata.org/wiki/Q140635640',
-                // Google Business Profiles (GBP)
-                'https://maps.google.com/?cid=7869038594776014797', // Registered Office — Delhi, Barakhamba Rd (matches schema address)
-                'https://maps.google.com/?cid=3300960116722998024', // Corporate Office — Gurgaon, Golf Course Rd
+                ...(CONTACT.officeLocations as unknown as any[]).map((o: any) => o.mapUrl).filter(Boolean),
               ],
               actionableFeedbackPolicy: 'https://www.silbarsecurity.in/contact',
               correctionsPolicy: 'https://www.silbarsecurity.in/contact',

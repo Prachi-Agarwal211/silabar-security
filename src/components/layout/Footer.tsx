@@ -62,12 +62,11 @@ export default function Footer() {
             <a href={`mailto:${CONTACT.email}`} className="footer-contact-item">
               <Mail size={13} /> {CONTACT.email}
             </a>
-            <span className="footer-contact-item footer-contact-item--location">
-              <MapPin size={13} /> Regd. Office: Statesman House, Barakhamba Rd, New Delhi
-            </span>
-            <span className="footer-contact-item footer-contact-item--location">
-              <MapPin size={13} /> Corp. Office: MPD Tower, Golf Course Rd, Gurugram
-            </span>
+            {CONTACT.officeLocations.map((office) => (
+              <span key={office.city} className="footer-contact-item footer-contact-item--location">
+                <MapPin size={13} /> {office.badge}: {office.city.replace(/\s*\(.*?\)\s*/g, '')}
+              </span>
+            ))}
           </div>
           <div className="footer-social">
             <a href={CONTACT.social.linkedin} target="_blank" rel="noopener noreferrer" className="footer-social__link" aria-label="LinkedIn">

@@ -9,11 +9,11 @@ export const WORDPRESS_BLOG = {
 } as const
 
 export const CONTACT = {
-  phone: '+91 93523 03333',
-  phoneRaw: '919352303333',
+  phone: '+91 99821 70555',
+  phoneRaw: '919982170555',
   /** Primary emergency line (same as main mobile until dedicated toll-free is confirmed) */
-  emergencyPhone: '+91 93523 03333',
-  emergencyPhoneRaw: '919352303333',
+  emergencyPhone: '+91 99821 70555',
+  emergencyPhoneRaw: '919982170555',
   email: 'info@silbarsecurity.in',
   emergencyEmail: 'emergency@silbarsecurity.in',
   address: {
@@ -24,9 +24,9 @@ export const CONTACT = {
     full: '5th Floor, Statesman House, Plot No. 148, Barakhamba Road, Connaught Place, New Delhi — 110001, India',
   },
   whatsapp: {
-    number: '919352303333',
+    number: '919982170555',
     message: 'Hello%20Silbar%20Security%20-%20I%20need%20a%20security%20quote',
-    url: 'https://wa.me/919352303333?text=Hello%20Silbar%20Security%20-%20I%20need%20a%20security%20quote',
+    url: 'https://wa.me/919982170555?text=Hello%20Silbar%20Security%20-%20I%20need%20a%20security%20quote',
   },
   hours: 'Mon–Sat 9:00 AM – 7:00 PM · Emergency: 24/7',
   social: {
@@ -48,10 +48,11 @@ export const CONTACT = {
       region: 'Delhi',
       address: '5th Floor, Statesman House, Plot No. 148, Barakhamba Road, Connaught Place, New Delhi — 110001',
       pin: '110001',
-      phone: '+91 93523 03333',
-      phoneRaw: '919352303333',
+      phone: '+91 99821 70555',
+      phoneRaw: '919982170555',
       hours: 'Mon–Sat: 9:00 AM – 7:00 PM',
       isHQ: true,
+      mapUrl: 'https://maps.google.com/?cid=7869038594776014797',
     },
     {
       city: 'Gurugram (Corporate Office)',
@@ -59,14 +60,60 @@ export const CONTACT = {
       region: 'Haryana',
       address: '2nd Floor, MPD Tower, Golf Course Road, Sector 43, Gurugram, Haryana — 122002',
       pin: '122002',
-      phone: '+91 93523 03333',
-      phoneRaw: '919352303333',
+      phone: '+91 99821 70555',
+      phoneRaw: '919982170555',
       hours: 'Mon–Sat: 9:00 AM – 7:00 PM',
       isHQ: false,
+      mapUrl: 'https://maps.google.com/?cid=3300960116722998024',
     },
-
+    {
+      city: 'Jaipur (Regional Office)',
+      badge: 'Regional Office',
+      region: 'Rajasthan',
+      address: '7th Floor, Man Upasana Tower, C-44, Sardar Patel Marg, C Scheme, Ashok Nagar, Jaipur — 302001',
+      pin: '302001',
+      phone: '+91 99821 70555',
+      phoneRaw: '919982170555',
+      hours: 'Mon–Sat: 9:00 AM – 7:00 PM',
+      isHQ: false,
+      mapUrl: 'https://www.google.com/maps?kgmid=/g/11y05bzscz',
+    },
+    {
+      city: 'Noida (Regional Office)',
+      badge: 'Regional Office',
+      region: 'Uttar Pradesh',
+      address: 'C-20, Coast Guard Golf Ground Rd, C Block, Phase 2, Industrial Area, Sector 62, Noida, Uttar Pradesh — 201309',
+      pin: '201309',
+      phone: '+91 99821 70555',
+      phoneRaw: '919982170555',
+      hours: 'Mon–Sat: 9:00 AM – 7:00 PM',
+      isHQ: false,
+      mapUrl: 'https://www.google.com/maps?kgmid=/g/11y0631x1t',
+    },
+    {
+      city: 'Ahmedabad (Regional Office)',
+      badge: 'Regional Office',
+      region: 'Gujarat',
+      address: '6th Floor, Tower-A, Mondeal Heights, 605, S.G. Highway, Iskcon Cross Rd, Ahmedabad, Gujarat — 380015',
+      pin: '380015',
+      phone: '+91 99821 70555',
+      phoneRaw: '919982170555',
+      hours: 'Mon–Sat: 9:00 AM – 7:00 PM',
+      isHQ: false,
+      mapUrl: 'https://www.google.com/maps?kgmid=/g/11t2sjqn5v',
+    },
   ] as const,
   /** @deprecated Use emergencyPhone — placeholder removed; maps to primary mobile */
-  tollFree: '+91 93523 03333',
-  tollFreeRaw: '919352303333',
+  tollFree: '+91 99821 70555',
+  tollFreeRaw: '919982170555',
+} as const
+
+export const GOOGLE_REVIEWS = {
+  /** Google review write URL — get this from your GBP dashboard → Promote → Get more reviews */
+  writeUrl: 'https://g.page/r/silbar-security/review',
+  /** EmbedSocial (or similar) widget embed code — empty = fallback static display shown */
+  embedScriptSrc: '',
+  embedDivAttrs: '',
+  rating: 4.8,
+  reviewCount: '150+',
 } as const

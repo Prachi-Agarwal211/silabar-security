@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Phone, Mail, MapPin, Clock, MessageCircle, ArrowRight } from 'lucide-react'
+import { Phone, Mail, MapPin, Clock, MessageCircle, ArrowRight, Map } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import QueryForm from '@/components/sections/QueryForm'
 import { CONTACT } from '@/lib/config'
@@ -10,8 +10,8 @@ import { GEO_COORDINATES } from '@/lib/geo-coordinates'
 export const metadata: Metadata = {
   title: 'Contact Us — Call or WhatsApp Silbar Security India',
   description:
-    'Contact Silbar Security Services India for a free security consultation and quote. Call ' + CONTACT.phone + ' or email ' + CONTACT.email + '. Offices in Delhi and Gurugram.',
-  ...ogMetadata('Contact Us — Call or WhatsApp Silbar Security India', 'Contact Silbar Security Services India for a free security consultation and quote. Call ' + CONTACT.phone + ' or email ' + CONTACT.email + '. Offices in Delhi and Gurugram.', '/contact'),
+    'Contact Silbar Security Services India for a free security consultation and quote. Call ' + CONTACT.phone + ' or email ' + CONTACT.email + '. Offices in Delhi, Gurugram, Jaipur, Noida & Ahmedabad.',
+  ...ogMetadata('Contact Us — Call or WhatsApp Silbar Security India', 'Contact Silbar Security Services India for a free security consultation and quote. Call ' + CONTACT.phone + ' or email ' + CONTACT.email + '. Offices in Delhi, Gurugram, Jaipur, Noida & Ahmedabad.', '/contact'),
 }
 
 export default function ContactPage() {
@@ -26,49 +26,45 @@ export default function ContactPage() {
         })
       }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{
-        __html: JSON.stringify([
-          {
+        __html: JSON.stringify((CONTACT.officeLocations as unknown as any[]).map((office: any, i: number) => {
+          const key = office.city.toLowerCase().includes('delhi') ? 'delhi-office'
+            : office.city.toLowerCase().includes('gurugram') ? 'gurugram-office'
+            : office.city.toLowerCase().includes('jaipur') ? 'jaipur-office'
+            : office.city.toLowerCase().includes('noida') ? 'noida-office'
+            : office.city.toLowerCase().includes('ahmedabad') ? 'ahmedabad-office'
+            : ''
+          const geo = key && (GEO_COORDINATES as any)[key]
+          return {
             '@context': 'https://schema.org',
             '@type': 'LocalBusiness',
-            name: 'Silbar Security Services Pvt. Ltd. (Registered Office)',
-            image: 'https://www.silbarsecurity.in/og-image.jpg',
-            telephone: CONTACT.phoneRaw,
+            name: `Silbar Security Services — ${office.city}`,
+            telephone: office.phoneRaw,
             email: CONTACT.email,
             address: {
               '@type': 'PostalAddress',
-              streetAddress: '5th Floor, Statesman House, Plot No. 148, Barakhamba Road, Connaught Place',
-              addressLocality: 'New Delhi',
-              addressRegion: 'Delhi',
-              postalCode: '110001',
+              streetAddress: office.address.split(',')[0].trim(),
+              addressLocality: office.city.replace(/\s*\(.*?\)\s*/g, ''),
+              addressRegion: office.region,
+              postalCode: office.pin || undefined,
               addressCountry: 'IN',
             },
-            geo: {
-              '@type': 'GeoCoordinates',
-              latitude: GEO_COORDINATES['delhi-office']?.lat || 28.6315,
-              longitude: GEO_COORDINATES['delhi-office']?.lng || 77.2335,
-            },
-            openingHoursSpecification: [{
-              '@type': 'OpeningHoursSpecification',
-              dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
-              opens: '09:00', closes: '19:00'
-            }],
-            contactPoint: {
-              '@type': 'ContactPoint',
-              telephone: '+91-9352303333',
-              contactType: 'customer service',
-              areaServed: 'IN',
-              availableLanguage: ['English', 'Hindi'],
-            },
-          },
-          {
-            '@context': 'https://schema.org',
-            '@type': 'LocalBusiness',
-            name: 'Silbar Security Services — Gurugram (Corporate Office)',
-            telephone: CONTACT.phoneRaw,
-            address: { '@type': 'PostalAddress', streetAddress: '2nd Floor, MPD Tower, Golf Course Road, Sector 43', addressLocality: 'Gurugram', addressRegion: 'Haryana', postalCode: '122002', addressCountry: 'IN' },
-            geo: { '@type': 'GeoCoordinates', latitude: 28.4595, longitude: 77.0266 },
+            ...(geo ? { geo: { '@type': 'GeoCoordinates', latitude: geo.lat, longitude: geo.lng } } : {}),
+            ...(i === 0 ? {
+              openingHoursSpecification: [{
+                '@type': 'OpeningHoursSpecification',
+                dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+                opens: '09:00', closes: '19:00'
+              }],
+              contactPoint: {
+                '@type': 'ContactPoint',
+                telephone: '+91-9982170555',
+                contactType: 'customer service',
+                areaServed: 'IN',
+                availableLanguage: ['English', 'Hindi'],
+              },
+            } : {}),
           }
-        ])
+        }))
       }} />
 
       {/* ─── Hero Split — 2-column editorial intro ─── */}
@@ -83,7 +79,7 @@ export default function ContactPage() {
             </nav>
             <span className="section-eyebrow section-eyebrow--red">GET IN TOUCH</span>
             <p className="contact-reg-office">
-              Registered Office: Statesman House, Barakhamba Road, Connaught Place, New Delhi
+              Offices in Delhi, Gurugram, Jaipur, Noida &amp; Ahmedabad
             </p>
             <h1 id="contact-heading" className="section-heading contact-heading">
               Let&apos;s Build a Safer <em>Tomorrow.</em> Together.
@@ -119,20 +115,20 @@ export default function ContactPage() {
                 </span>
                 <ArrowRight size={14} aria-hidden="true" className="contact-info-row__arrow" />
               </a>
-              <div className="contact-info-row contact-info-row--static">
-                <span className="contact-info-row__icon" aria-hidden="true"><MapPin size={18} /></span>
-                <span className="contact-info-row__body">
-                  <span className="contact-info-row__label">Registered Office</span>
-                  <span className="contact-info-row__value">Statesman House, Barakhamba Rd, Connaught Place, New Delhi 110001</span>
-                </span>
-              </div>
-              <div className="contact-info-row contact-info-row--static">
-                <span className="contact-info-row__icon" aria-hidden="true"><MapPin size={18} /></span>
-                <span className="contact-info-row__body">
-                  <span className="contact-info-row__label">Corporate Office</span>
-                  <span className="contact-info-row__value">MPD Tower, Golf Course Rd, Sector 43, Gurugram 122002</span>
-                </span>
-              </div>
+              {CONTACT.officeLocations.map((office) => (
+                <div key={(office as any).city} className="contact-info-row contact-info-row--static">
+                  <span className="contact-info-row__icon" aria-hidden="true"><MapPin size={18} /></span>
+                  <span className="contact-info-row__body">
+                    <span className="contact-info-row__label">{(office as any).badge}</span>
+                    <span className="contact-info-row__value">{(office as any).address}</span>
+                  </span>
+                  {(office as any).mapUrl && (
+                    <a href={(office as any).mapUrl} target="_blank" rel="noopener noreferrer" className="contact-info-row__map" aria-label={`View ${(office as any).city} on map`}>
+                      <Map size={14} />
+                    </a>
+                  )}
+                </div>
+              ))}
               <div className="contact-info-row contact-info-row--static">
                 <span className="contact-info-row__icon" aria-hidden="true"><Clock size={18} /></span>
                 <span className="contact-info-row__body">
@@ -202,6 +198,11 @@ export default function ContactPage() {
                   <div className="office-card__hours">
                     <Clock size={13} aria-hidden="true" /> {office.hours}
                   </div>
+                  {office.mapUrl && (
+                    <a href={office.mapUrl} target="_blank" rel="noopener noreferrer" className="office-card__map-btn">
+                      <Map size={13} aria-hidden="true" /> View on Map
+                    </a>
+                  )}
                 </div>
               ))}
             </div>

@@ -23,6 +23,7 @@ import {
   Headphones,
 } from 'lucide-react'
 import { FAQS } from '@/data/faq'
+import GoogleReviews from '@/components/sections/GoogleReviews'
 
 
 
@@ -474,6 +475,9 @@ export default function HomePageClient() {
           </div>
         </div>
       </section>
+
+      {/* ─── GOOGLE REVIEWS ──────────────────────────────── */}
+      <GoogleReviews />
 
       {/* ─── QUERY FORM ────────────────────────────────── */}
       <section className="home-query-section page-lead-section">

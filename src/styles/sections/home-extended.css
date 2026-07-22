@@ -309,3 +309,50 @@
 .hover-border-cherry:hover {
   border-color: var(--color-cherry-bright);
 }
+
+/* ─── Google Reviews Section ─── */
+.google-reviews-section {
+  background: var(--color-paper);
+  padding: clamp(4rem, 8vh, 6rem) 0;
+  text-align: center;
+}
+.google-reviews-rating-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+.google-reviews-stars-large {
+  display: flex;
+  gap: 0.25rem;
+}
+.google-reviews-rating-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 700;
+  color: var(--color-midnight);
+}
+.google-reviews-count-text {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-horizon-600);
+}
+.google-reviews-cta {
+  margin-top: 1.5rem;
+}
+.google-review-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-gold);
+  color: var(--color-midnight);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  transition: opacity 0.2s;
+  text-decoration: none;
+}
+.google-review-btn:hover { opacity: 0.85; }

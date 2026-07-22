@@ -349,7 +349,7 @@ export const FAQS: FAQ[] = [
   {
     category: 'Operations',
     q: 'Who should we contact in case of an emergency?',
-    a: 'Clients are provided with a 3-level escalation matrix. Level 1 is the Site Supervisor, Level 2 is the Field Officer/Area Manager, and Level 3 is the Operations Head available 24/7. We also have a dedicated emergency helpline at +91 93523 03333.'
+    a: 'Clients are provided with a 3-level escalation matrix. Level 1 is the Site Supervisor, Level 2 is the Field Officer/Area Manager, and Level 3 is the Operations Head available 24/7. We also have a dedicated emergency helpline at +91 99821 70555.'
   },
   {
     category: 'Operations',

@@ -828,6 +828,18 @@ export const GEO_COORDINATES: Record<string, { lat: number; lng: number }> = {
     "lat": 28.6139,
     "lng": 77.209
   },
+  "gurugram-office": {
+    "lat": 28.4595,
+    "lng": 77.0266
+  },
+  "jaipur-office": {
+    "lat": 26.9155,
+    "lng": 75.819
+  },
+  "noida-office": {
+    "lat": 28.5706,
+    "lng": 77.3272
+  },
   "ahmedabad-office": {
     "lat": 23.0225,
     "lng": 72.5714
