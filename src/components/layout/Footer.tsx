@@ -62,10 +62,10 @@ export default function Footer() {
             <a href={`mailto:${CONTACT.email}`} className="footer-contact-item">
               <Mail size={13} /> {CONTACT.email}
             </a>
-            {CONTACT.officeLocations.map((office) => (
-              <span key={office.city} className="footer-contact-item footer-contact-item--location">
+            {(CONTACT.officeLocations as unknown as any[]).map((office: any) => (
+              <a key={office.city} href={office.mapUrl} target="_blank" rel="noopener noreferrer" className="footer-contact-item footer-contact-item--location">
                 <MapPin size={13} /> {office.badge}: {office.city.replace(/\s*\(.*?\)\s*/g, '')}
-              </span>
+              </a>
             ))}
           </div>
           <div className="footer-social">
