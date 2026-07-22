@@ -8,7 +8,7 @@ import { CONTACT } from '@/lib/config'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
-  title: 'Emergency Contact | Silbar Security',
+  title: 'Emergency Contact',
   description: '24/7 emergency security contact for Silbar Security clients. Immediate response for security incidents, fire emergencies, and critical situations.',
   ...ogMetadata(
     'Emergency Contact',

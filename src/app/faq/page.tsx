@@ -18,8 +18,8 @@ function groupFaqsByCategory() {
 }
 
 export const metadata: Metadata = {
-  title: 'Frequently Asked Questions | Silbar Security',
-  description: 'Find answers to common questions about Silbar Security services, PSARA licensing, ISO certifications, pricing, coverage areas, and security solutions across India.',
+  title: 'Frequently Asked Questions',
+  description: 'Find answers about Silbar Security services, PSARA licensing, ISO certifications, pricing, coverage areas, and security solutions across India.',
   ...ogMetadata(
     'FAQs',
     'Find answers to common questions about Silbar Security services, PSARA licensing, ISO certifications, pricing, coverage areas.',
@@ -27,11 +27,22 @@ export const metadata: Metadata = {
   ),
 }
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQS.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+}
+
 export default function FAQPage() {
   const faqsByCategory = groupFaqsByCategory()
 
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <PageHero
         eyebrow="FAQs"
         title={

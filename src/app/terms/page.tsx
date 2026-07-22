@@ -8,9 +8,10 @@ import { ogMetadata } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
-  title: 'Terms of Use | Silbar Security Services',
+  title: 'Terms of Use',
   description: 'Terms of Use for Silbar Security Services Pvt. Ltd. Please read these terms carefully before using our website or services.',
-  ...ogMetadata('Terms of Use | Silbar Security Services', 'Terms of Use for Silbar Security Services Pvt. Ltd. Please read these terms carefully before using our website or services.', '/terms'),
+  robots: { index: false, follow: false },
+  ...ogMetadata('Terms of Use', 'Terms of Use for Silbar Security Services Pvt. Ltd. Please read these terms carefully before using our website or services.', '/terms'),
 }
 
 const sections = [

@@ -11,10 +11,10 @@ import PageLeadSection from '@/components/sections/PageLeadSection'
 import { CAREERS } from '@/data/careers'
 
 export const metadata: Metadata = {
-  title: 'Careers — Join India\'s Most Trusted Security Team | Silbar Security',
+  title: 'Careers — Join India\'s Most Trusted Security Team',
   description:
-    'Build your career with Silbar Security Services. We hire security guards, supervisors, account managers, and corporate staff across PAN India. Professional training. Growth guaranteed.',
-  ...ogMetadata('Careers — Join India\'s Most Trusted Security Team | Silbar Security', 'Build your career with Silbar Security Services. We hire security guards, supervisors, account managers, and corporate staff across PAN India. Professional training. Growth guaranteed.', '/careers'),
+    'Build your career with Silbar Security. Security guards, supervisors, account managers & corporate staff. Professional training, growth guaranteed. PAN India.',
+  ...ogMetadata('Careers — Join India\'s Most Trusted Security Team', 'Build your career with Silbar Security. Security guards, supervisors, account managers & corporate staff. Professional training, growth guaranteed. PAN India.', '/careers'),
 }
 
 const WHY_JOIN = [

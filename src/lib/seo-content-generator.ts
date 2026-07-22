@@ -812,7 +812,7 @@ export function generateCityContent(city: CityLocation): LocationSEOContent {
     process,
     faqs: buildFaqs(place, region, seed, true),
     closingCta: `Ready to secure your facility in ${place}? Call ${CONTACT.phone}, WhatsApp via the form below, or email ${CONTACT.email}. Share your facility type, number of posts, and shift requirements for a fast, transparent proposal.`,
-    metaDescription: `Security guard services in ${place}, ${region}. Silbar Security — PSARA licensed, 4 ISO certified. Trained manpower for industrial, commercial & residential security. Call ${CONTACT.phone}.`,
+    metaDescription: `Security guard company in ${place}, ${region}. PSARA licensed, 4 ISO certified. Industrial, commercial & residential security manpower. Call ${CONTACT.phone}.`,
     servicesIntro: `Explore all Silbar Security service verticals available for your ${place} facility. Click any service for detailed features, use cases, and FAQs, then request a site-specific quote for your ${region} location.`,
     keywordsLine: `security guard services ${place}, security agency ${place}, manned guarding ${place}, security company ${region}, industrial security ${place}, PSARA licensed security ${place}`,
   }
@@ -881,7 +881,7 @@ export function generateStateContent(state: StateLocation): LocationSEOContent {
     })),
     faqs: buildFaqs(place, place, seed, false),
     closingCta: `Planning security for your facility in ${place}? Call ${CONTACT.phone}, email ${CONTACT.email}, or use the WhatsApp form below. Share your facility type, number of posts, and shift requirements for a fast proposal.`,
-    metaDescription: `Security guard company in ${place} — Silbar Security. PSARA licensed, 4 ISO certified. Manned guarding across ${citiesList} & more. Call ${CONTACT.phone} for a free quote.`,
+    metaDescription: `Security guard company in ${place}. PSARA licensed, 4 ISO certified. Manned guarding across ${place}. Call ${CONTACT.phone} for a free quote.`,
     servicesIntro: `Explore Silbar Security's full range of service verticals available for deployment across ${place}. Click any service to view features, use cases, and FAQs, then request a ${place}-specific quote.`,
     keywordsLine: `security guard services ${place}, security agency ${place}, security company ${state.capital}, manned guarding ${place}, industrial security ${place}, PSARA licensed security ${place}`,
   }

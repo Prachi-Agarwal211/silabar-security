@@ -8,10 +8,10 @@ import { ogMetadata } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
-  title: 'Silbar Security Services — Trusted Security Agency | Jaipur, Delhi, Ahmedabad',
+  title: 'Silbar Security Services India — Trusted Security Agency | Jaipur, Delhi, Ahmedabad',
   description:
-    'ISO 9001:2015 certified security agency. 7,000+ professionals. Manned guarding, CCTV surveillance, facility management across PAN India. Call now for a free quote.',
-  ...ogMetadata('Silbar Security Services — Trusted Security Agency', 'ISO 9001:2015 certified. 7,000+ professionals. Manned guarding, CCTV, facility management across India.', '/google'),
+    'ISO 9001:2015 certified Indian security agency. 7,000+ professionals. Manned guarding, CCTV, facility management across India. Call for a free quote.',
+  ...ogMetadata('Silbar Security Services India — Trusted Security Agency', 'ISO 9001:2015 certified. 7,000+ professionals. Manned guarding, CCTV, facility management across India.', '/google'),
   robots: { index: false, follow: true },
 }
 

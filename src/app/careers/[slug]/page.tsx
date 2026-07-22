@@ -23,9 +23,9 @@ export async function generateMetadata({
   if (!career) return {}
 
   return {
-    title: `${career.title} — Careers at Silbar Security`,
-    description: `Apply for ${career.title} at Silbar Security Services. ${career.locations.join(', ')}. ${career.type}. ${career.department}. Join India's most trusted security force.`,
-    ...ogMetadata(`${career.title} — Careers at Silbar Security`, `Apply for ${career.title} at Silbar Security Services. ${career.locations.join(', ')}.`, `/careers/${slug}`),
+    title: `${career.title} — Careers`,
+    description: `Apply for ${career.title} at Silbar Security Services India. ${career.locations.join(', ')}. ${career.type}. ${career.department}. Join India's most trusted security force.`,
+    ...ogMetadata(`${career.title} — Careers`, `Apply for ${career.title} at Silbar Security Services India. ${career.locations.join(', ')}.`, `/careers/${slug}`),
   }
 }
 

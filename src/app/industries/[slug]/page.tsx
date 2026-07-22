@@ -25,10 +25,12 @@ export async function generateMetadata({
   const { slug } = await params
   const industry = INDUSTRIES.find((i) => i.slug === slug)
   if (!industry) return {}
+  const desc = industry.description.length > 157 ? industry.description.slice(0, 157) + '...' : industry.description
+  const shortTitle = industry.shortTitle.length > 55 ? industry.shortTitle.slice(0, 52) + '...' : industry.shortTitle
   return {
-    title: `${industry.title} | Silbar Security`,
-    description: industry.description,
-    ...ogMetadata(`${industry.title} | Silbar Security`, industry.description, `/industries/${slug}`),
+    title: `${shortTitle} Security`,
+    description: desc,
+    ...ogMetadata(`${industry.title}`, desc, `/industries/${slug}`),
   }
 }
 
@@ -59,7 +61,7 @@ export default async function IndustryPage({
     description: industry.description,
     provider: {
       '@type': 'Organization',
-      name: 'Silbar Security Services Pvt. Ltd.',
+      name: 'Silbar Security Services India Pvt. Ltd.',
       url: 'https://www.silbarsecurity.in',
     },
   }

@@ -7,11 +7,11 @@ import { ogMetadata } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
-  title: 'Corporate Social Responsibility | Silbar Security',
-  description: 'Silbar Security\'s CSR initiatives — community safety programs, security training for youth, and women empowerment through employment.',
+  title: 'Corporate Social Responsibility',
+  description: 'Silbar Security India\'s CSR initiatives — community safety programs, security training for youth, and women empowerment through employment.',
   ...ogMetadata(
     'Corporate Social Responsibility',
-    'Silbar Security\'s CSR initiatives — community safety programs, security training for youth, and women empowerment through employment.',
+    'Silbar Security India\'s CSR initiatives — community safety programs, security training for youth, and women empowerment through employment.',
     '/csr'
   ),
 }

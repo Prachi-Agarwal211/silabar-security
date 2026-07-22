@@ -34,8 +34,11 @@ export async function generateMetadata({
   if (!location) return {}
 
   const content = generateStateContent(location)
-  const title = `Security Guard Services in ${location.name} | Silbar Security`
-  const description = content.metaDescription
+  // Truncate to 40 chars max — layout template adds ' | Silbar Security India' (~20 chars)
+  // Final title must stay under ~60 chars for SEO
+  const shortTitle = `Security Services ${location.name}`
+  const title = shortTitle.length > 40 ? shortTitle.slice(0, 37) + '...' : shortTitle
+  const description = content.metaDescription.length > 157 ? content.metaDescription.slice(0, 157) + '...' : content.metaDescription
 
   return {
     title,
@@ -66,9 +69,9 @@ export default async function StateSEOPage({
 
   const localBusinessSchema = {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
+    '@type': 'Organization',
     '@id': `https://www.silbarsecurity.in/security-services/${state}`,
-    name: `Silbar Security Services — ${location.name}`,
+    name: `Silbar Security Services India — ${location.name}`,
     description: content.metaDescription,
     url: `https://www.silbarsecurity.in/security-services/${state}`,
     telephone: CONTACT.phone,

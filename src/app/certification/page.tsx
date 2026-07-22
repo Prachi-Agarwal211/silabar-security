@@ -9,14 +9,14 @@ import { CONTACT } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
 
 export const metadata: Metadata = {
-  title: 'Certifications — ISO, PSARA & Regulatory Compliance | Silbar Security',
-  description:
-    'View all certifications of Silbar Security Services Pvt. Ltd. — 4 ISO certifications (IAF accredited), PSARA licenses across 19 states, Startup India, MSME, CAPSI member, and more.',
-  ...ogMetadata(
-    'Certifications — ISO, PSARA & Regulatory Compliance | Silbar Security',
-    'View all certifications of Silbar Security Services Pvt. Ltd. — 4 ISO certifications (IAF accredited), PSARA licenses across 19 states.',
-    '/certification'
-  ),
+  title: 'Certifications — ISO, PSARA & Regulatory Compliance',
+    description:
+      'Certifications of Silbar Security India — 4 ISO (IAF accredited), PSARA licenses across 19 states, Startup India, MSME, CAPSI member.',
+    ...ogMetadata(
+      'Certifications — ISO, PSARA & Regulatory Compliance',
+      'Certifications of Silbar Security India — 4 ISO (IAF accredited), PSARA licenses across 19 states, Startup India, MSME, CAPSI member.',
+      '/certification'
+    ),
 }
 
 const ISO_CERTS = [

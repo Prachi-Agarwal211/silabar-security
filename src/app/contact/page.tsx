@@ -8,10 +8,10 @@ import { ogMetadata } from '@/lib/metadata'
 import { GEO_COORDINATES } from '@/lib/geo-coordinates'
 
 export const metadata: Metadata = {
-  title: 'Contact Us — Call or WhatsApp Silbar Security',
+  title: 'Contact Us — Call or WhatsApp Silbar Security India',
   description:
-    'Contact Silbar Security Services for a free security consultation and quote. Call ' + CONTACT.phone + ' or email ' + CONTACT.email + '. Offices in Delhi and Gurugram.',
-  ...ogMetadata('Contact Us — Call or WhatsApp Silbar Security', 'Contact Silbar Security Services for a free security consultation and quote. Call ' + CONTACT.phone + ' or email ' + CONTACT.email + '. Offices in Delhi and Gurugram.', '/contact'),
+    'Contact Silbar Security Services India for a free security consultation and quote. Call ' + CONTACT.phone + ' or email ' + CONTACT.email + '. Offices in Delhi and Gurugram.',
+  ...ogMetadata('Contact Us — Call or WhatsApp Silbar Security India', 'Contact Silbar Security Services India for a free security consultation and quote. Call ' + CONTACT.phone + ' or email ' + CONTACT.email + '. Offices in Delhi and Gurugram.', '/contact'),
 }
 
 export default function ContactPage() {
@@ -212,7 +212,7 @@ export default function ContactPage() {
             <span className="section-eyebrow section-eyebrow--red u-block u-mb-1">FIND US ON MAP</span>
             <div className="contact-map-container">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.2!2d77.2335!3d28.6315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd1a0c0c0c0f%3A0x0!2sStatesman+House%2C+Barakhamba+Rd%2C+New+Delhi!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.2!2d77.2332!3d28.6308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd1a0c0c0c0f%3A0x0!2sStatesman+House%2C+148+Barakhamba+Rd%2C+Connaught+Place%2C+New+Delhi+110001!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
                 width="100%"
                 height="400"
                 className="contact-map-frame"

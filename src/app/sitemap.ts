@@ -35,23 +35,44 @@ const blogSlugs = [
   'importance-of-security-audits',
 ]
 
+const caseStudySlugs = [
+  'manufacturing-plant-security',
+  'hospital-security-deployment',
+  'it-park-security-solution',
+]
+
+const careerSlugs = [
+  'security-guard',
+  'supervisor',
+  'operations-manager',
+]
+
 const states = [
-  'andhra-pradesh', 'bihar', 'chhattisgarh', 'delhi',
+  'andhra-pradesh', 'assam', 'bihar', 'chhattisgarh', 'delhi',
   'gujarat', 'haryana', 'himachal-pradesh', 'jharkhand',
   'karnataka', 'kerala', 'madhya-pradesh', 'maharashtra',
   'odisha', 'punjab', 'rajasthan', 'tamil-nadu',
   'telangana', 'uttar-pradesh', 'uttarakhand', 'west-bengal',
-  'assam',
+  'andaman', 'chandigarh', 'dadra-nagar-haveli', 'daman-diu', 'goa',
+  'jammu-kashmir', 'ladakh', 'lakshadweep', 'manipur', 'meghalaya',
+  'mizoram', 'nagaland', 'puducherry', 'sikkim', 'tripura',
 ]
 
 const cities = [
-  'ahmedabad', 'bangalore', 'bhopal', 'chandigarh',
-  'chennai', 'coimbatore', 'delhi', 'ghaziabad',
-  'gurugram', 'hyderabad', 'indore', 'jaipur',
-  'jodhpur', 'kolkata', 'kochi', 'lucknow',
-  'ludhiana', 'mumbai', 'nagpur', 'noida',
-  'patna', 'pune', 'ranchi', 'surat',
-  'thane', 'vadodara', 'varanasi',
+  'agra', 'ahmedabad', 'ajmer', 'allahabad', 'amritsar', 'aurangabad',
+  'bangalore', 'bareilly', 'bhopal', 'bhubaneswar', 'chandigarh',
+  'chennai', 'coimbatore', 'dehradun', 'delhi', 'dhanbad', 'durgapur',
+  'faridabad', 'ghaziabad', 'gorakhpur', 'gurugram', 'guwahati',
+  'gwalior', 'hubli', 'hyderabad', 'indore', 'isse', 'jabalpur',
+  'jaipur', 'jalandhar', 'jammu', 'jamnagar', 'jamshedpur',
+  'jhansi', 'jodhpur', 'kanpur', 'kolkata', 'kochi', 'kota',
+  'lucknow', 'ludhiana', 'madurai', 'mangalore', 'meerut',
+  'moradabad', 'mumbai', 'mysore', 'nagpur', 'nashik',
+  'navi-mumbai', 'noida', 'patna', 'pune', 'raipur',
+  'rajkot', 'ranchi', 'rohtak', 'salem', 'shimla',
+  'siliguri', 'solapur', 'srinagar', 'surat', 'thane',
+  'tiruchirappalli', 'trivandrum', 'udaipur', 'vadodara',
+  'varanasi', 'vijayawada', 'visakhapatnam', 'warangal',
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -107,6 +128,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${BASE_URL}/blog/${slug}`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
+      priority: 0.5,
+    })
+  }
+
+  for (const slug of caseStudySlugs) {
+    urls.push({
+      url: `${BASE_URL}/case-studies/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    })
+  }
+
+  for (const slug of careerSlugs) {
+    urls.push({
+      url: `${BASE_URL}/careers/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
       priority: 0.5,
     })
   }

@@ -25,10 +25,11 @@ export async function generateMetadata({
   const service = SERVICES.find((s) => s.slug === slug)
   if (!service) return {}
 
+  const desc = service.description.length > 157 ? service.description.slice(0, 157) + '...' : service.description
   return {
-    title: `${service.title} in India | Silbar Security`,
-    description: service.description,
-    ...ogMetadata(`${service.title} in India | Silbar Security`, service.description, `/services/${slug}`),
+    title: `${service.title} in India`,
+    description: desc,
+    ...ogMetadata(`${service.title} in India`, desc, `/services/${slug}`),
   }
 }
 
@@ -71,7 +72,7 @@ export default async function ServicePage({
     description: service.description,
     provider: {
       '@type': 'Organization',
-      name: 'Silbar Security Services Pvt. Ltd.',
+      name: 'Silbar Security Services India Pvt. Ltd.',
       url: 'https://www.silbarsecurity.in',
     },
     areaServed: {

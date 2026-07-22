@@ -6,7 +6,7 @@ import { ogMetadata } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
-  title: 'Gallery | Silbar Security',
+  title: 'Gallery',
   description: 'Visual gallery of Silbar Security operations, training facilities, team deployments, and events across India.',
   ...ogMetadata(
     'Gallery',

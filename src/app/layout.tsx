@@ -1,10 +1,11 @@
 import type { Metadata, Viewport } from 'next'
 import { Space_Grotesk, Manrope } from 'next/font/google'
-import Script from 'next/script'
 import './globals.css'
 import NavigationWrapper from '@/components/layout/NavigationWrapper'
 import DynamicBreadcrumbSchema from '@/components/seo/DynamicBreadcrumbSchema'
 import ExitIntentPopup from '@/components/ui/ExitIntentPopup'
+import AnalyticsScripts from '@/components/AnalyticsScripts'
+import CookieConsentWrapper from '@/components/CookieConsentWrapper'
 import { CONTACT } from '@/lib/config'
 
 // Fewer weights = faster first paint on MacBook / 4G
@@ -25,11 +26,11 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.silbarsecurity.in'),
   title: {
-    default: 'Silbar Security Services | Trusted Security Agency India',
-    template: '%s | Silbar Security Services',
+    default: 'Silbar Security Services India | Trusted Security Agency',
+    template: '%s | Silbar Security India',
   },
   description:
-    'Silbar Security Services Pvt. Ltd. — ISO 9001:2015 certified security agency with 7,000+ professionals. Manned guarding, electronic surveillance, facility management, and VIP protection across PAN India.',
+    'Silbar Security India — ISO 9001:2015 certified security agency with 7,000+ guards. Manned guarding, CCTV, facility management, VIP protection across India.',
   keywords: [
     'security agency India',
     'security company India',
@@ -40,9 +41,9 @@ export const metadata: Metadata = {
     'CCTV surveillance services',
     'event security India',
   ],
-  authors: [{ name: 'Silbar Security Services Pvt. Ltd.' }],
-  creator: 'Silbar Security Services',
-  publisher: 'Silbar Security Services Pvt. Ltd.',
+  authors: [{ name: 'Silbar Security Services India Pvt. Ltd.' }],
+  creator: 'Silbar Security Services India',
+  publisher: 'Silbar Security Services India Pvt. Ltd.',
   robots: {
     index: true,
     follow: true,
@@ -58,8 +59,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.silbarsecurity.in',
-    siteName: 'Silbar Security Services',
-    title: 'Silbar Security Services | Trusted Security Agency India',
+    siteName: 'Silbar Security Services India',
+    title: 'Silbar Security Services India | Trusted Security Agency',
     description:
       'ISO 9001:2015 certified. 7,000+ professionals. Manned guarding, VIP protection, surveillance, and facility management across India.',
     images: [
@@ -67,13 +68,13 @@ export const metadata: Metadata = {
         url: 'https://www.silbarsecurity.in/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Silbar Security Services — Protecting India',
+        alt: 'Silbar Security Services India — Protecting India',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Silbar Security Services | Trusted Security Agency India',
+    title: 'Silbar Security Services India | Trusted Security Agency',
     description:
       'ISO 9001:2015 certified. 7,000+ professionals. Security services across PAN India.',
     images: ['https://www.silbarsecurity.in/og-image.jpg'],
@@ -85,8 +86,10 @@ export const metadata: Metadata = {
     },
   },
   other: {
-    'ai-content-declaration': 'human-authored-brand-site',
+    'ai-content-declaration': 'public',
     'geo-optimized': 'true',
+    'geo.region': 'IN-DL',
+    'geo.placename': 'New Delhi, Delhi',
   },
   category: 'security',
   icons: {
@@ -129,6 +132,31 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+
+        {/* Server-rendered nav for search engine crawlability */}
+        <nav aria-label="Site navigation" className="sr-only">
+          <a href="/">Home</a>
+          <a href="/about">About Us</a>
+          <a href="/security-services">Security Services</a>
+          <a href="/services/industrial-security">Industrial Security</a>
+          <a href="/services/security-guard-services">Security Guard Services</a>
+          <a href="/services/event-security">Event Security</a>
+          <a href="/services/cctv-surveillance-systems">CCTV Surveillance</a>
+          <a href="/industries">Industries We Serve</a>
+          <a href="/industries/manufacturing">Manufacturing Security</a>
+          <a href="/industries/hospitality">Hospitality Security</a>
+          <a href="/case-studies">Case Studies</a>
+          <a href="/careers">Careers</a>
+          <a href="/blog">Blog</a>
+          <a href="/faq">FAQ</a>
+          <a href="/gallery">Gallery</a>
+          <a href="/contact">Contact Us</a>
+          <a href="/security-services">Locations</a>
+          <a href="/contact">Get a Quote</a>
+          <a href="/franchise">Franchise</a>
+          <a href="/privacy-policy">Privacy Policy</a>
+        </nav>
+
         {/* Organization schema — injected globally */}
         <script
           type="application/ld+json"
@@ -137,8 +165,8 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'Organization',
               '@id': 'https://www.silbarsecurity.in/#organization',
-              name: 'Silbar Security Services Pvt. Ltd.',
-              alternateName: 'Silbar Security',
+              name: 'Silbar Security Services India Pvt. Ltd.',
+              alternateName: 'Silbar Security India',
               url: 'https://www.silbarsecurity.in',
               logo: {
                 '@type': 'ImageObject',
@@ -187,7 +215,12 @@ export default function RootLayout({
                 'https://www.linkedin.com/company/silbar-security-services-private-limited/',
                 'https://www.facebook.com/share/1GtattxqNp/',
                 'https://www.instagram.com/silbar_security',
+                'https://x.com/silbarsecurity',
                 'https://g.co/kgs/silbarsecurity',
+                'https://www.wikidata.org/wiki/Q140635640',
+                // Google Business Profiles (GBP)
+                'https://maps.google.com/?cid=7869038594776014797', // Registered Office — Delhi, Barakhamba Rd (matches schema address)
+                'https://maps.google.com/?cid=3300960116722998024', // Corporate Office — Gurgaon, Golf Course Rd
               ],
               actionableFeedbackPolicy: 'https://www.silbarsecurity.in/contact',
               correctionsPolicy: 'https://www.silbarsecurity.in/contact',
@@ -208,6 +241,13 @@ export default function RootLayout({
                 'Security Agency Delhi NCR',
                 'Security Company Ahmedabad',
               ],
+              aggregateRating: {
+                '@type': 'AggregateRating',
+                ratingValue: '4.8',
+                reviewCount: '150',
+                bestRating: '5',
+                worstRating: '1',
+              },
               slogan: 'Building Trust Through Professional Security & Compliance',
               areaServed: { '@type': 'Country', name: 'India' },
               hasCredential: [
@@ -230,7 +270,7 @@ export default function RootLayout({
               '@type': 'WebSite',
               '@id': 'https://www.silbarsecurity.in/#website',
               url: 'https://www.silbarsecurity.in',
-              name: 'Silbar Security Services',
+              name: 'Silbar Security Services India',
               description:
                 'ISO 9001:2015 certified private security agency in India. Manned guarding, industrial security, CCTV support, facility protection across 200+ cities.',
               inLanguage: 'en-IN',
@@ -271,7 +311,7 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'ProfessionalService',
               '@id': 'https://www.silbarsecurity.in/#security-service',
-              name: 'Silbar Security Guard Services',
+              name: 'Silbar Security India Guard Services',
               image: 'https://www.silbarsecurity.in/og-image.jpg',
               url: 'https://www.silbarsecurity.in',
               telephone: CONTACT.phone,
@@ -304,50 +344,11 @@ export default function RootLayout({
         <NavigationWrapper>{children}</NavigationWrapper>
         <ExitIntentPopup />
 
-        {/* Google Analytics 4 */}
-        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="ga4-init" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}', {
-                  page_path: window.location.pathname,
-                });
-              `}
-            </Script>
-          </>
-        )}
+        {/* Consent-gated analytics scripts */}
+        <AnalyticsScripts />
 
-        {/* Google Tag Manager */}
-        {process.env.NEXT_PUBLIC_GTM_ID && (
-          <Script id="gtm-init" strategy="afterInteractive">
-            {`
-              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GTM_ID}');
-            `}
-          </Script>
-        )}
-
-        {/* Google Tag Manager (noscript) */}
-        {process.env.NEXT_PUBLIC_GTM_ID && (
-          <noscript>
-            <iframe
-              src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}`}
-              height="0"
-              width="0"
-              style={{ display: 'none', visibility: 'hidden' }}
-            />
-          </noscript>
-        )}
+        {/* Cookie consent banner */}
+        <CookieConsentWrapper />
       </body>
     </html>
   )

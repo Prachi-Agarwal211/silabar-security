@@ -8,9 +8,10 @@ import { ogMetadata } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
-  title: 'Disclaimer | Silbar Security Services',
+  title: 'Disclaimer',
   description: 'Legal disclaimer for Silbar Security Services Pvt. Ltd. regarding liability, third-party links, and CCTV recording policies.',
-  ...ogMetadata('Disclaimer | Silbar Security Services', 'Legal disclaimer for Silbar Security Services Pvt. Ltd. regarding liability, third-party links, and CCTV recording policies.', '/disclaimer'),
+  robots: { index: false, follow: false },
+  ...ogMetadata('Disclaimer', 'Legal disclaimer for Silbar Security Services Pvt. Ltd. regarding liability, third-party links, and CCTV recording policies.', '/disclaimer'),
 }
 
 const sections = [

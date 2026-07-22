@@ -23,9 +23,17 @@ export async function generateMetadata({
   if (!post) return {}
 
   return {
-    title: `${post.title} | Silbar Security`,
+    title: `${post.title}`,
     description: post.excerpt,
-    ...ogMetadata(`${post.title} | Silbar Security`, post.excerpt, `/blog/${slug}`),
+    ...ogMetadata(`${post.title}`, post.excerpt, `/blog/${slug}`),
+    openGraph: {
+      type: 'article' as const,
+      publishedTime: post.publishedAt,
+      authors: [post.author],
+      section: post.category,
+      title: post.title,
+      description: post.excerpt,
+    },
   }
 }
 

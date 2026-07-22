@@ -7,10 +7,10 @@ import { ogMetadata } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
-  title: 'Franchise Opportunities — Partner with Silbar Security | PAN India',
+  title: 'Franchise Opportunities — Partner with Silbar Security India | PAN India',
   description:
-    'Become a Silbar Security franchise partner. Low investment, high returns. Professional training, brand support, and 200+ cities available. Apply now for franchise opportunities.',
-  ...ogMetadata('Franchise Opportunities — Partner with Silbar Security', 'Become a Silbar Security franchise partner. Low investment, high returns. Professional training, brand support, and 200+ cities available.', '/franchise'),
+    'Become a Silbar Security India franchise partner. Low investment, high returns. Training, brand support, 200+ cities available. Apply now.',
+  ...ogMetadata('Franchise Opportunities — Partner with Silbar Security India', 'Become a Silbar Security India franchise partner. Low investment, high returns. Training, brand support, 200+ cities available. Apply now.', '/franchise'),
 }
 
 const WHY_FRANCHISE = [
