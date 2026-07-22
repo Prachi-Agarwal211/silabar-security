@@ -76,7 +76,7 @@ export const CONTACT = {
       phoneRaw: '919982170555',
       hours: 'Mon–Sat: 9:00 AM – 7:00 PM',
       isHQ: false,
-      mapUrl: 'https://www.google.com/maps?kgmid=/g/11y05bzscz',
+      mapUrl: 'https://maps.google.com/?q=Man+Upasana+Tower+C-44+Sardar+Patel+Marg+C+Scheme+Ashok+Nagar+Jaipur+302001',
     },
     {
       city: 'Noida (Regional Office)',
@@ -88,7 +88,7 @@ export const CONTACT = {
       phoneRaw: '919982170555',
       hours: 'Mon–Sat: 9:00 AM – 7:00 PM',
       isHQ: false,
-      mapUrl: 'https://www.google.com/maps?kgmid=/g/11y0631x1t',
+      mapUrl: 'https://maps.google.com/?q=C-20+Coast+Guard+Golf+Ground+Rd+Sector+62+Noida+201309',
     },
     {
       city: 'Ahmedabad (Regional Office)',
@@ -100,7 +100,7 @@ export const CONTACT = {
       phoneRaw: '919982170555',
       hours: 'Mon–Sat: 9:00 AM – 7:00 PM',
       isHQ: false,
-      mapUrl: 'https://www.google.com/maps?kgmid=/g/11t2sjqn5v',
+      mapUrl: 'https://maps.google.com/?q=Mondeal+Heights+S.G.+Highway+Iskcon+Cross+Rd+Ahmedabad+380015',
     },
   ] as const,
   /** @deprecated Use emergencyPhone — placeholder removed; maps to primary mobile */

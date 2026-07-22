@@ -23,6 +23,7 @@ import {
   Headphones,
 } from 'lucide-react'
 import { FAQS } from '@/data/faq'
+import { GOOGLE_REVIEWS } from '@/lib/config'
 import GoogleReviews from '@/components/sections/GoogleReviews'
 
 
@@ -346,7 +347,7 @@ export default function HomePageClient() {
                 Trusted by <strong>500+</strong> businesses across India. Read what our clients say about us.
               </p>
               <a
-                href="https://g.page/r/silbar-security/review"
+                href={GOOGLE_REVIEWS.writeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary review-btn"
