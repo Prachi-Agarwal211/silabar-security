@@ -68,7 +68,7 @@ export default function BlogCard({ post }: BlogCardProps) {
   )
 
   return (
-    <article className="blog-card glass-panel">
+    <article className="blog-card glass-panel--light">
       {isExternal ? (
         <a
           href={href}

@@ -176,21 +176,24 @@
 
 .service-detail-industry-tag {
   display: inline-block;
-  padding: 0.45em 1.1em;
+  padding: 0.5em 1.25em;
   font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--color-cream);
-  border: 1px solid rgba(191, 149, 63, 0.2);
-  border-radius: 4px;
-  transition: border-color 0.2s, color 0.2s;
+  color: var(--color-midnight);
+  background: var(--color-paper);
+  border: 1px solid rgba(191, 149, 63, 0.35);
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s var(--ease-smooth);
 }
 
 .service-detail-industry-tag:hover {
-  border-color: var(--color-gold);
-  color: var(--color-gold);
+  border-color: var(--color-cherry);
+  color: var(--color-cherry);
+  background: rgba(140, 31, 50, 0.06);
 }
 
 /* FAQ Accordion — uses native <details>/<summary> */
@@ -447,11 +450,15 @@
 .bento-cell__text {
   font-size: 0.95rem;
   line-height: 1.6;
-  color: var(--color-horizon-700);
+  color: var(--color-cream);
+}
+
+.sticky-contact-card__title {
+  color: var(--color-cream);
 }
 
 .sticky-contact-card__desc {
-  color: rgba(244, 241, 234, 0.85);
+  color: rgba(250, 246, 236, 0.85);
 }
 
 /* ============================================

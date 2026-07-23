@@ -37,22 +37,22 @@
   font-family: var(--font-display);
   font-size: 1rem;
   font-weight: 700;
-  color: var(--color-paper-ink);
+  color: var(--color-cream);
 }
 .emergency-card__value {
   font-family: var(--font-display);
   font-size: 1.3rem;
   font-weight: 800;
-  color: var(--color-cherry);
+  color: var(--color-gold);
 }
 .emergency-card__value--sm {
   font-size: 0.9rem;
-  color: var(--color-cherry);
+  color: var(--color-gold);
   font-weight: 600;
 }
 .emergency-card__meta {
   font-size: 0.8rem;
-  color: var(--color-horizon-600);
+  color: rgba(250, 246, 236, 0.75);
 }
 .emergency-protocol {
   padding: 2rem;
@@ -61,7 +61,7 @@
   font-family: var(--font-display);
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--color-paper-ink);
+  color: var(--color-cream);
   margin-bottom: 1rem;
 }
 .emergency-protocol__list {
@@ -91,11 +91,11 @@
   font-family: var(--font-display);
   font-size: 0.9rem;
   font-weight: 700;
-  color: var(--color-paper-ink);
+  color: var(--color-cream);
   margin-bottom: 0.25rem;
 }
 .emergency-step__desc {
   font-size: 0.85rem;
-  color: var(--color-horizon-600);
+  color: rgba(250, 246, 236, 0.75);
   line-height: 1.5;
 }

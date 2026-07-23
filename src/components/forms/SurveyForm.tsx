@@ -4,8 +4,9 @@ import { formatEnquiryWhatsAppMessage, openWhatsApp } from '@/lib/whatsapp'
 
 const inputStyle: React.CSSProperties = {
   padding: '0.75rem 1rem',
-  background: 'rgba(20,16,13,0.04)',
-  border: '1px solid rgba(20,16,13,0.15)',
+  background: '#ffffff',
+  color: 'var(--color-paper-ink)',
+  border: '1px solid rgba(20,16,13,0.2)',
   borderRadius: '4px',
   fontSize: '16px',
   width: '100%',

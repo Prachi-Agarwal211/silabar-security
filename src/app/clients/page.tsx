@@ -43,33 +43,33 @@ export default function ClientsPage() {
         <div className="service-detail-section-inner service-detail-section-inner--no-padding">
           <div className="bento-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
             {/* Request Proposal */}
-            <div className="bento-cell glass-panel" style={{ padding: '2rem' }}>
+            <div className="bento-cell glass-panel--light" style={{ padding: '2rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-                <FileText size={24} color="var(--color-gold)" />
+                <FileText size={24} color="var(--color-cherry)" />
                 <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', fontWeight: 700, color: 'var(--color-paper-ink)' }}>Request Proposal</h2>
               </div>
-              <p style={{ color: 'var(--color-horizon-600)', fontSize: '0.85rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+              <p style={{ color: 'var(--color-horizon-700)', fontSize: '0.85rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
                 Get a customized security proposal tailored to your facility requirements. Our team will prepare a detailed plan within 48 hours.
               </p>
               <ProposalForm />
             </div>
 
             {/* Request Site Survey */}
-            <div className="bento-cell glass-panel" style={{ padding: '2rem' }}>
+            <div className="bento-cell glass-panel--light" style={{ padding: '2rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-                <MapPin size={24} color="var(--color-gold)" />
+                <MapPin size={24} color="var(--color-cherry)" />
                 <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', fontWeight: 700, color: 'var(--color-paper-ink)' }}>Request Site Survey</h2>
               </div>
-              <p style={{ color: 'var(--color-horizon-600)', fontSize: '0.85rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+              <p style={{ color: 'var(--color-horizon-700)', fontSize: '0.85rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
                 Our security experts will visit your facility for a comprehensive risk assessment and security audit. Free of charge.
               </p>
               <SurveyForm />
             </div>
 
             {/* Quick Actions */}
-            <div className="bento-cell glass-panel" style={{ padding: '2rem' }}>
+            <div className="bento-cell glass-panel--light" style={{ padding: '2rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-                <ClipboardCheck size={24} color="var(--color-gold)" />
+                <ClipboardCheck size={24} color="var(--color-cherry)" />
                 <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', fontWeight: 700, color: 'var(--color-paper-ink)' }}>Quick Actions</h2>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>

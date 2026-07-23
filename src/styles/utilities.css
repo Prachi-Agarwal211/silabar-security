@@ -186,14 +186,32 @@
 
 .glass-panel {
   background: var(--color-midnight);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.02), 0 8px 32px rgba(0, 0, 0, 0.2);
+  color: var(--color-cream);
+  border: 1px solid rgba(191, 149, 63, 0.15);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.02), 0 8px 32px rgba(0, 0, 0, 0.25);
   border-radius: 16px;
+}
+
+.glass-panel h1,
+.glass-panel h2,
+.glass-panel h3,
+.glass-panel h4,
+.glass-panel h5,
+.glass-panel h6 {
+  color: var(--color-cream);
+}
+
+.glass-panel p,
+.glass-panel span:not(.service-detail-feature__icon):not(.blog-card__read-more):not(.blog-card__source):not(.emergency-card__value),
+.glass-panel div,
+.glass-panel li {
+  color: rgba(250, 246, 236, 0.9);
 }
 
 .glass-panel--light {
   background: var(--color-paper);
-  border: 1px solid rgba(140, 31, 50, 0.1);
+  color: var(--color-paper-ink);
+  border: 1px solid rgba(140, 31, 50, 0.12);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
 }
 

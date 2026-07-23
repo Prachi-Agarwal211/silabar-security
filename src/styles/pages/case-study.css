@@ -219,13 +219,13 @@
   font-family: var(--font-display);
   font-size: 1.3rem;
   font-weight: 700;
-  color: var(--color-paper-ink);
+  color: var(--color-cream);
   margin-bottom: 0.25rem;
 }
 
 .case-study-card__client {
   font-size: 0.85rem;
-  color: var(--color-cherry);
+  color: var(--color-gold);
 }
 
 .case-study-card__body {
@@ -241,17 +241,17 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--color-cherry);
+  color: var(--color-cherry-bright);
   margin-bottom: 0.5rem;
 }
 
 .case-study-card__label--results {
-  color: var(--color-gold-dark);
+  color: var(--color-gold);
 }
 
 .case-study-card__text {
   font-size: 0.85rem;
-  color: var(--color-horizon-600);
+  color: rgba(250, 246, 236, 0.82);
   line-height: 1.6;
 }
 
@@ -263,7 +263,7 @@
 
 .case-study-card__result {
   font-size: 0.85rem;
-  color: var(--color-horizon-600);
+  color: rgba(250, 246, 236, 0.82);
   line-height: 1.8;
   padding-left: 1rem;
   position: relative;
