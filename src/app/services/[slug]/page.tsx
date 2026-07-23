@@ -72,7 +72,7 @@ export default async function ServicePage({
     description: service.description,
     provider: {
       '@type': 'Organization',
-      name: 'Silbar Security Services India Pvt. Ltd.',
+      name: 'Silbar Security Services Pvt. Ltd.',
       url: 'https://www.silbarsecurity.in',
     },
     areaServed: {
@@ -153,7 +153,7 @@ export default async function ServicePage({
                 </ScrollReveal>
                 <p className="service-detail-longcopy">{service.longDescription}</p>
                 <p className="service-detail-longcopy">
-                  Silbar Security delivers {service.shortTitle.toLowerCase()} with trained manpower,
+                  Silbar Security Services Pvt. Ltd. delivers {service.shortTitle.toLowerCase()} with trained manpower,
                   documented site instructions, and account coordination for single-site and multi-city
                   clients across India. Scope is always designed around your facility risk, shifts, and
                   compliance requirements — not a one-line brochure rate.
@@ -301,7 +301,7 @@ export default async function ServicePage({
                   </div>
                 ) : (
                   <p style={{ fontSize: '0.9rem', color: 'var(--color-horizon-600)' }}>
-                    Read our detailed case studies to see how Silbar Security has delivered
+                    Read our detailed case studies to see how Silbar Security Services Pvt. Ltd. has delivered
                     measurable results across industries.
                   </p>
                 )}

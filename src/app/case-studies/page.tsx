@@ -9,10 +9,10 @@ import { CASE_STUDIES } from '@/data/case-studies'
 
 export const metadata: Metadata = {
   title: 'Case Studies',
-  description: 'Real-world security solutions delivered by Silbar Security. See how we protect India\'s leading enterprises across manufacturing, healthcare, and corporate sectors.',
+  description: 'Real-world security solutions delivered by Silbar Security Services Pvt. Ltd.. See how we protect India\'s leading enterprises across manufacturing, healthcare, and corporate sectors.',
   ...ogMetadata(
     'Case Studies',
-    'Real-world security solutions delivered by Silbar Security. See how we protect India\'s leading enterprises across manufacturing, healthcare, and corporate sectors.',
+    'Real-world security solutions delivered by Silbar Security Services Pvt. Ltd.. See how we protect India\'s leading enterprises across manufacturing, healthcare, and corporate sectors.',
     '/case-studies'
   ),
 }
@@ -31,7 +31,7 @@ export default function CaseStudiesPage() {
             </span>
           </>
         }
-        subtitle="See how Silbar Security delivers measurable outcomes for India's leading enterprises."
+        subtitle="See how Silbar Security Services Pvt. Ltd. delivers measurable outcomes for India's leading enterprises."
         size="compact"
         topContent={
           <nav className="breadcrumb" aria-label="Breadcrumb">

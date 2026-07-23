@@ -24,7 +24,7 @@ export const SERVICES: Service[] = [
     description:
       'Professional armed and unarmed security guards for factories, offices, hospitals, residential societies, and commercial properties across India.',
     longDescription:
-      'Silbar Security deploys professionally trained security personnel across India. Our guards are uniformed, police-verified, and trained in access control, first aid, fire safety, emergency response, and customer interaction. We deploy armed and unarmed guards, lady guards, supervisors, field officers, and personal protection officers based on client risk assessment. All personnel undergo police verification and background checks, and are covered under applicable statutory compliance including EPF, ESIC, and minimum wage regulations. Our manned guarding service is backed by 4 ISO certifications (IAF accredited) and PSARA licensing across 19 states.',
+      'Silbar Security Services Pvt. Ltd. deploys professionally trained security personnel across India. Our guards are uniformed, police-verified, and trained in access control, first aid, fire safety, emergency response, and customer interaction. We deploy armed and unarmed guards, lady guards, supervisors, field officers, and personal protection officers based on client risk assessment. All personnel undergo police verification and background checks, and are covered under applicable statutory compliance including EPF, ESIC, and minimum wage regulations. Our manned guarding service is backed by 4 ISO certifications (IAF accredited) and PSARA licensing across 19 states.',
     features: [
       'Armed & unarmed security guards',
       'Lady guards for gender-sensitive environments',
@@ -72,7 +72,7 @@ export const SERVICES: Service[] = [
     description:
       'Comprehensive security solutions for manufacturing plants, factories, warehouses, and logistics facilities. Perimeter control, access management, and shift supervision.',
     longDescription:
-      'Industrial facilities face unique security challenges — high-value inventory, machinery, shift workers, and multiple entry points. Silbar Security provides dedicated industrial security teams trained in perimeter surveillance, access control systems, material movement monitoring, and emergency response. We work with ISO-certified factories, SEZ units, auto ancillaries, textile mills, and pharmaceutical plants.',
+      'Industrial facilities face unique security challenges — high-value inventory, machinery, shift workers, and multiple entry points. Silbar Security Services Pvt. Ltd. provides dedicated industrial security teams trained in perimeter surveillance, access control systems, material movement monitoring, and emergency response. We work with ISO-certified factories, SEZ units, auto ancillaries, textile mills, and pharmaceutical plants.',
     features: [
       'Perimeter and boundary security',
       'Material gate management and vehicle logging',
@@ -120,7 +120,7 @@ export const SERVICES: Service[] = [
     description:
       'Professional crowd management, VIP escort, and VVIP protection for corporate events, conferences, concerts, exhibitions, and government functions.',
     longDescription:
-      'Event security requires specialized skills in crowd psychology, emergency evacuation, and protocol management. Silbar Security deploys trained event security teams for corporate conferences, product launches, music concerts, sporting events, political rallies, and cultural festivals. Our VIP/VVIP protection teams are drawn from law enforcement backgrounds and trained in close protection, route planning, and threat assessment.',
+      'Event security requires specialized skills in crowd psychology, emergency evacuation, and protocol management. Silbar Security Services Pvt. Ltd. deploys trained event security teams for corporate conferences, product launches, music concerts, sporting events, political rallies, and cultural festivals. Our VIP/VVIP protection teams are drawn from law enforcement backgrounds and trained in close protection, route planning, and threat assessment.',
     features: [
       'Crowd management and entry-exit control',
       'VIP and VVIP close protection',
@@ -172,7 +172,7 @@ export const SERVICES: Service[] = [
     description:
       'Cash-in-transit, bullion escort, and armed ATM guard services. Strict compliance with RBI security guidelines and banking sector protocols.',
     longDescription:
-      'Financial institutions require the highest security standards. Silbar Security provides armed guards for bank branches, ATM kiosks, cash vans, and bullion transport. All our bank security personnel are specially trained in cash handling protocols, threat assessment, and emergency response. We maintain strict compliance with RBI-mandated security standards for banking premises.',
+      'Financial institutions require the highest security standards. Silbar Security Services Pvt. Ltd. provides armed guards for bank branches, ATM kiosks, cash vans, and bullion transport. All our bank security personnel are specially trained in cash handling protocols, threat assessment, and emergency response. We maintain strict compliance with RBI-mandated security standards for banking premises.',
     features: [
       'Armed branch security guards',
       'ATM security and overnight protection',
@@ -220,7 +220,7 @@ export const SERVICES: Service[] = [
     description:
       'CCTV installation, remote monitoring, access control, fire alarm systems, GPS vehicle tracking, and integrated security technology solutions.',
     longDescription:
-      'Modern security is technology-powered. Silbar Security provides end-to-end electronic surveillance solutions including CCTV design and installation, remote monitoring centers, access control systems (biometric, RFID), video analytics, fire detection and alarm systems, and GPS fleet tracking. We integrate hardware with software for a complete digital security picture.',
+      'Modern security is technology-powered. Silbar Security Services Pvt. Ltd. provides end-to-end electronic surveillance solutions including CCTV design and installation, remote monitoring centers, access control systems (biometric, RFID), video analytics, fire detection and alarm systems, and GPS fleet tracking. We integrate hardware with software for a complete digital security picture.',
     features: [
       'CCTV design, supply, and installation',
       'Remote 24/7 monitoring center',
@@ -272,7 +272,7 @@ export const SERVICES: Service[] = [
     description:
       'Professional security audits, vulnerability assessments, disaster management planning, and crisis response consultancy for enterprises.',
     longDescription:
-      'Before deploying security, you need to understand your risks. Silbar Security\'s risk assessment team conducts on-site security audits, identifies vulnerabilities in perimeter security, access control, and emergency response, and delivers a detailed remediation plan. We also develop disaster management and business continuity plans for industrial facilities, hospitals, and large commercial properties.',
+      'Before deploying security, you need to understand your risks. Silbar Security Services Pvt. Ltd.\'s risk assessment team conducts on-site security audits, identifies vulnerabilities in perimeter security, access control, and emergency response, and delivers a detailed remediation plan. We also develop disaster management and business continuity plans for industrial facilities, hospitals, and large commercial properties.',
     features: [
       'Comprehensive security audit',
       'Vulnerability and threat assessment',
@@ -324,7 +324,7 @@ export const SERVICES: Service[] = [
     description:
       'Integrated facility management including housekeeping, maintenance, pantry services, and operations support. One vendor, complete facility coverage.',
     longDescription:
-      'Silbar Security extends beyond security into complete facility management — because a well-managed facility is a secure one. We provide housekeeping, deep cleaning, pantry and cafeteria management, electrical and plumbing maintenance, landscaping, pest control coordination, and operations support staff. Our single-vendor model simplifies procurement, billing, and compliance for facility managers.',
+      'Silbar Security Services Pvt. Ltd. extends beyond security into complete facility management — because a well-managed facility is a secure one. We provide housekeeping, deep cleaning, pantry and cafeteria management, electrical and plumbing maintenance, landscaping, pest control coordination, and operations support staff. Our single-vendor model simplifies procurement, billing, and compliance for facility managers.',
     features: [
       'Housekeeping and sanitation',
       'Electrical and plumbing maintenance',
@@ -372,7 +372,7 @@ export const SERVICES: Service[] = [
     description:
       'Professional security training for guards, supervisors, and corporate security teams. Weapons handling, first aid, fire safety, and soft skills.',
     longDescription:
-      'Quality security starts with quality training. Silbar Security operates a dedicated 3-acre training center where security personnel receive certified instruction in unarmed combat, weapons handling (for armed guards), first aid and CPR, fire safety and evacuation, access control procedures, report writing, and professional conduct. We also offer in-house training programs for corporate security teams.',
+      'Quality security starts with quality training. Silbar Security Services Pvt. Ltd. operates a dedicated 3-acre training center where security personnel receive certified instruction in unarmed combat, weapons handling (for armed guards), first aid and CPR, fire safety and evacuation, access control procedures, report writing, and professional conduct. We also offer in-house training programs for corporate security teams.',
     features: [
       'Comprehensive security training',
       'Weapons handling and safety',
@@ -424,7 +424,7 @@ export const SERVICES: Service[] = [
     description:
       'End-to-end manpower deployment for security, facility, and support roles with payroll, compliance, and statutory management handled by Silbar.',
     longDescription:
-      'Hiring and managing contract staff is complex — compliance, payroll, ESI, PF, and attrition are constant challenges. Silbar Security takes complete ownership of manpower deployment: recruitment, training, deployment, payroll processing, ESI/PF filing, gratuity management, and replacement. We operate as a compliant labour contractor so you can focus on your core business.',
+      'Hiring and managing contract staff is complex — compliance, payroll, ESI, PF, and attrition are constant challenges. Silbar Security Services Pvt. Ltd. takes complete ownership of manpower deployment: recruitment, training, deployment, payroll processing, ESI/PF filing, gratuity management, and replacement. We operate as a compliant labour contractor so you can focus on your core business.',
     features: [
       'End-to-end recruitment and screening',
       'Payroll processing and disbursement',
@@ -472,7 +472,7 @@ export const SERVICES: Service[] = [
     description:
       'Pre-employment verification, address checks, criminal record screening, and KYC documentation for vendor and employee onboarding.',
     longDescription:
-      'Knowing who you hire is the first line of security. Silbar Security offers comprehensive background verification services including address verification, identity document authentication, criminal record checks through police verification, previous employment verification, educational certificate verification, and credit history checks for sensitive financial roles.',
+      'Knowing who you hire is the first line of security. Silbar Security Services Pvt. Ltd. offers comprehensive background verification services including address verification, identity document authentication, criminal record checks through police verification, previous employment verification, educational certificate verification, and credit history checks for sensitive financial roles.',
     features: [
       'Address and identity verification',
       'Police verification and criminal record check',
@@ -524,7 +524,7 @@ export const SERVICES: Service[] = [
     description:
       'Fire safety audits, fire-fighting equipment maintenance, and trained fire warden deployment for factories, warehouses, hospitals, and high-occupancy buildings across India.',
     longDescription:
-      'Silbar Security provides on-ground fire and life safety services that go beyond the classroom drills covered in our training programs — fire risk audits, fire extinguisher and hydrant system maintenance, fire warden deployment on every shift, and evacuation route planning for factories, warehouses, hospitals, hotels, and multi-tenant commercial buildings. Our teams work alongside your existing fire-fighting infrastructure and local fire NOC requirements to keep your facility compliant and genuinely prepared, not just paper-certified.',
+      'Silbar Security Services Pvt. Ltd. provides on-ground fire and life safety services that go beyond the classroom drills covered in our training programs — fire risk audits, fire extinguisher and hydrant system maintenance, fire warden deployment on every shift, and evacuation route planning for factories, warehouses, hospitals, hotels, and multi-tenant commercial buildings. Our teams work alongside your existing fire-fighting infrastructure and local fire NOC requirements to keep your facility compliant and genuinely prepared, not just paper-certified.',
     features: [
       'Fire risk assessment and audits',
       'Fire extinguisher and hydrant system checks',
@@ -576,7 +576,7 @@ export const SERVICES: Service[] = [
     description:
       'Randomized mobile patrol visits and rapid-response teams for multi-site facilities, residential societies, and properties that need deterrence between fixed guard shifts.',
     longDescription:
-      'For clients who don\'t need a guard stationed 24/7 at every location — multi-site retail chains, residential societies, ATMs, and seasonal facilities — Silbar Security runs scheduled and randomized mobile patrol visits, backed by a quick-response team that can reach any covered site within a committed response window if an alarm or distress call comes in. Patrol logs, timestamps, and site photos are shared with facility managers after every visit for full accountability.',
+      'For clients who don\'t need a guard stationed 24/7 at every location — multi-site retail chains, residential societies, ATMs, and seasonal facilities — Silbar Security Services Pvt. Ltd. runs scheduled and randomized mobile patrol visits, backed by a quick-response team that can reach any covered site within a committed response window if an alarm or distress call comes in. Patrol logs, timestamps, and site photos are shared with facility managers after every visit for full accountability.',
     features: [
       'Scheduled and randomized patrol visits',
       'Rapid-response team for alarm callouts',
@@ -621,7 +621,7 @@ export const SERVICES: Service[] = [
     shortTitle: 'Armed Security',
     icon: 'shield-half',
     description: 'Licensed armed security guards for high-risk facilities, cash transportation, VIP protection, and critical infrastructure across India.',
-    longDescription: 'Silbar Security provides licensed armed guards for environments requiring elevated protection levels such as banks, jewelry stores, cash vans, and critical infrastructure. All armed personnel hold valid arms licenses issued by state authorities, undergo enhanced background verification including psychological assessment, and receive specialized training in weapons handling, threat assessment, use-of-force protocols, and legal compliance. Our armed guards are subject to annual revalidation of licenses and periodic proficiency testing to ensure they meet the highest operational standards.',
+    longDescription: 'Silbar Security Services Pvt. Ltd. provides licensed armed guards for environments requiring elevated protection levels such as banks, jewelry stores, cash vans, and critical infrastructure. All armed personnel hold valid arms licenses issued by state authorities, undergo enhanced background verification including psychological assessment, and receive specialized training in weapons handling, threat assessment, use-of-force protocols, and legal compliance. Our armed guards are subject to annual revalidation of licenses and periodic proficiency testing to ensure they meet the highest operational standards.',
     features: ['Licensed armed guards', 'Arms licensing support', 'Threat assessment', 'Critical infrastructure protection', 'Cash transportation security', 'VIP armed escort', 'Enhanced background verification', 'Annual weapons proficiency testing', 'Use-of-force legal training', 'Psychological fitness screening', 'Coordination with local police', 'Armory management support'],
     industries: ['Banks', 'Jewellery', 'Government', 'Mining', 'Oil & Gas', 'Infrastructure', 'Pharma', 'Data Centers'],
     faqs: [
@@ -1037,7 +1037,7 @@ export const SERVICES: Service[] = [
     description:
       'Strategic security consulting and advisory services including risk management, policy development, compliance audits, and security program design for enterprises across India.',
     longDescription:
-      'Silbar Security provides strategic consulting services for organizations that need expert guidance on security architecture, policy frameworks, and risk management. Our consultants bring decades of combined experience across defense, law enforcement, and corporate security. We conduct comprehensive security assessments, design bespoke security programs, develop crisis management plans, and advise on regulatory compliance. Our consulting engagements range from single-site gap analysis to enterprise-wide security transformation programs covering multiple states and facilities.',
+      'Silbar Security Services Pvt. Ltd. provides strategic consulting services for organizations that need expert guidance on security architecture, policy frameworks, and risk management. Our consultants bring decades of combined experience across defense, law enforcement, and corporate security. We conduct comprehensive security assessments, design bespoke security programs, develop crisis management plans, and advise on regulatory compliance. Our consulting engagements range from single-site gap analysis to enterprise-wide security transformation programs covering multiple states and facilities.',
     features: [
       'Security program design and architecture',
       'Security policy and SOP development',
@@ -1085,7 +1085,7 @@ export const SERVICES: Service[] = [
     description:
       'Community-driven neighbourhood watch programs for residential societies and housing complexes. Crime prevention through vigilance, patrol coordination, and resident awareness.',
     longDescription:
-      'Silbar Security\'s neighbourhood watch program turns communities into active participants in their own security. We train resident volunteers in observation techniques, incident reporting, and emergency response. Our coordinators establish communication channels with local police, set up patrol schedules, install community CCTV networks, and run periodic awareness drives on burglary prevention, cyber fraud, and personal safety. The program is designed to complement our professional guarding services, creating a layered security model where residents and guards work as one team.',
+      'Silbar Security Services Pvt. Ltd.\'s neighbourhood watch program turns communities into active participants in their own security. We train resident volunteers in observation techniques, incident reporting, and emergency response. Our coordinators establish communication channels with local police, set up patrol schedules, install community CCTV networks, and run periodic awareness drives on burglary prevention, cyber fraud, and personal safety. The program is designed to complement our professional guarding services, creating a layered security model where residents and guards work as one team.',
     features: [
       'Resident volunteer training programs',
       'Patrol coordination and scheduling',
@@ -1133,7 +1133,7 @@ export const SERVICES: Service[] = [
     description:
       'Specialised security for oil & gas facilities, refineries, petrochemical plants, and pipelines. Hazardous environment protocols and armed perimeter protection.',
     longDescription:
-      'Petrochemical facilities present extreme security and safety risks — flammable materials, volatile processes, and critical national infrastructure. Silbar Security deploys specially trained teams for refinery and petrochemical plant security. Our personnel are trained in HAZMAT awareness, fire prevention protocols, exclusion zone management, and emergency shut-down procedures. We provide armed perimeter protection, vehicle screening at entry points, pipeline route surveillance, and integration with the facility\'s own process safety systems. All deployments comply with OISD standards and statutory safety requirements.',
+      'Petrochemical facilities present extreme security and safety risks — flammable materials, volatile processes, and critical national infrastructure. Silbar Security Services Pvt. Ltd. deploys specially trained teams for refinery and petrochemical plant security. Our personnel are trained in HAZMAT awareness, fire prevention protocols, exclusion zone management, and emergency shut-down procedures. We provide armed perimeter protection, vehicle screening at entry points, pipeline route surveillance, and integration with the facility\'s own process safety systems. All deployments comply with OISD standards and statutory safety requirements.',
     features: [
       'HAZMAT-trained security personnel',
       'Armed perimeter and gate security',
@@ -1181,7 +1181,7 @@ export const SERVICES: Service[] = [
     description:
       'Security for pharmaceutical manufacturing plants, R&D centers, warehouses, and distribution networks. IP protection, material control, and regulatory compliance.',
     longDescription:
-      'Pharmaceutical facilities require security that protects not just people and assets, but intellectual property and controlled substances. Silbar Security provides pharma-specific security teams trained in narcotic substance handling, cleanroom access protocols, API material control, and visitor management for R&D zones. Our personnel maintain compliance with WHO-GMP, Schedule M, and narcotic drug regulations. We deploy integrated access control with biometric authentication, electronic logging of material movement, and CCTV coverage with retention periods aligned to pharma audit requirements.',
+      'Pharmaceutical facilities require security that protects not just people and assets, but intellectual property and controlled substances. Silbar Security Services Pvt. Ltd. provides pharma-specific security teams trained in narcotic substance handling, cleanroom access protocols, API material control, and visitor management for R&D zones. Our personnel maintain compliance with WHO-GMP, Schedule M, and narcotic drug regulations. We deploy integrated access control with biometric authentication, electronic logging of material movement, and CCTV coverage with retention periods aligned to pharma audit requirements.',
     features: [
       'Narcotic and controlled substance security',
       'Cleanroom and R&D zone access control',
@@ -1229,7 +1229,7 @@ export const SERVICES: Service[] = [
     description:
       'Multi-layered physical security for data centers and server rooms. Mantrap access, biometric authentication, and 24/7 monitoring with incident response.',
     longDescription:
-      'Data centers demand the highest physical security standards — tiered access control, redundant surveillance, and rapid incident containment. Silbar Security provides dedicated data center security teams trained in mantrap operation, biometric and card-based multi-factor access control, CCTV surveillance with 90-day retention, environmental monitoring alerts, and escort protocols for unauthorised personnel. Our guards are trained in incident containment procedures that prioritize data integrity and uptime, working alongside your facility management and IT teams.',
+      'Data centers demand the highest physical security standards — tiered access control, redundant surveillance, and rapid incident containment. Silbar Security Services Pvt. Ltd. provides dedicated data center security teams trained in mantrap operation, biometric and card-based multi-factor access control, CCTV surveillance with 90-day retention, environmental monitoring alerts, and escort protocols for unauthorised personnel. Our guards are trained in incident containment procedures that prioritize data integrity and uptime, working alongside your facility management and IT teams.',
     features: [
       'Mantrap and interlock access control',
       'Multi-factor biometric entry systems',
@@ -1277,7 +1277,7 @@ export const SERVICES: Service[] = [
     description:
       'Professional parking lot security and valet management for hotels, malls, hospitals, and corporate complexes. Vehicle safety, theft prevention, and traffic control.',
     longDescription:
-      'Parking areas are often the most vulnerable part of any facility — poorly lit, high vehicle traffic, and limited supervision. Silbar Security provides dedicated parking security teams trained in vehicle inspection, theft prevention, traffic flow management, and valet key control. We deploy guards at entry and exit points, patrol attendants for multi-level parking, and surveillance systems integrated with the facility\'s main security. Our valet security service includes key management protocols, driver verification, and damage documentation procedures.',
+      'Parking areas are often the most vulnerable part of any facility — poorly lit, high vehicle traffic, and limited supervision. Silbar Security Services Pvt. Ltd. provides dedicated parking security teams trained in vehicle inspection, theft prevention, traffic flow management, and valet key control. We deploy guards at entry and exit points, patrol attendants for multi-level parking, and surveillance systems integrated with the facility\'s main security. Our valet security service includes key management protocols, driver verification, and damage documentation procedures.',
     features: [
       'Entry and exit point control',
       'Vehicle inspection and verification',
@@ -1325,7 +1325,7 @@ export const SERVICES: Service[] = [
     description:
       'End-to-end fleet and transport security including GPS tracking, cargo escorts, driver verification, and supply chain integrity monitoring across India.',
     longDescription:
-      'Transport and fleet operations face risks from hijacking, cargo theft, pilferage during transit, and driver fraud. Silbar Security provides comprehensive fleet security services including GPS-enabled vehicle tracking with real-time monitoring, armed cargo escorts for high-value shipments, driver background verification, seal integrity checks at every loading and unloading point, and a 24/7 response center that can coordinate with local police in case of route deviation or emergency. Our system covers everything from last-mile delivery fleets to long-haul trucking operations.',
+      'Transport and fleet operations face risks from hijacking, cargo theft, pilferage during transit, and driver fraud. Silbar Security Services Pvt. Ltd. provides comprehensive fleet security services including GPS-enabled vehicle tracking with real-time monitoring, armed cargo escorts for high-value shipments, driver background verification, seal integrity checks at every loading and unloading point, and a 24/7 response center that can coordinate with local police in case of route deviation or emergency. Our system covers everything from last-mile delivery fleets to long-haul trucking operations.',
     features: [
       'GPS vehicle tracking and route monitoring',
       'Armed cargo escort for high-value shipments',
@@ -1373,7 +1373,7 @@ export const SERVICES: Service[] = [
     description:
       'Marine security for ports, harbours, jetties, and coastal facilities. Vessel security, waterfront patrol, and ISPS compliance for maritime infrastructure.',
     longDescription:
-      'Maritime facilities present unique security challenges — waterborne access, large perimeters, international traffic, and compliance with international security codes. Silbar Security provides marine security services including waterfront and jetty patrol, vessel access control, cargo area security, and ISPS (International Ship and Port Facility Security) compliance support. Our marine teams are trained in port operations, vessel documentation verification, waterfront surveillance, and coordination with coast guard and port authorities.',
+      'Maritime facilities present unique security challenges — waterborne access, large perimeters, international traffic, and compliance with international security codes. Silbar Security Services Pvt. Ltd. provides marine security services including waterfront and jetty patrol, vessel access control, cargo area security, and ISPS (International Ship and Port Facility Security) compliance support. Our marine teams are trained in port operations, vessel documentation verification, waterfront surveillance, and coordination with coast guard and port authorities.',
     features: [
       'Waterfront and jetty patrol',
       'Vessel access control and documentation check',
@@ -1421,7 +1421,7 @@ export const SERVICES: Service[] = [
     description:
       'Independent third-party security audits for enterprises, government facilities, and commercial properties. Comprehensive vulnerability assessment with actionable remediation plans.',
     longDescription:
-      'An objective third-party security audit reveals gaps your internal team might miss. Silbar Security conducts independent audits covering physical security, access control systems, CCTV coverage analysis, fire safety compliance, security personnel performance, emergency preparedness, and documentation review. Our auditors are certified professionals who do not operate at the audited site, ensuring unbiased findings. Every audit delivers a detailed report with risk-rated findings, photographic evidence, and a prioritised remediation roadmap with estimated costs.',
+      'An objective third-party security audit reveals gaps your internal team might miss. Silbar Security Services Pvt. Ltd. conducts independent audits covering physical security, access control systems, CCTV coverage analysis, fire safety compliance, security personnel performance, emergency preparedness, and documentation review. Our auditors are certified professionals who do not operate at the audited site, ensuring unbiased findings. Every audit delivers a detailed report with risk-rated findings, photographic evidence, and a prioritised remediation roadmap with estimated costs.',
     features: [
       'Physical security infrastructure audit',
       'Access control system penetration testing',
@@ -1469,7 +1469,7 @@ export const SERVICES: Service[] = [
     description:
       'Retail loss prevention consulting to reduce shrinkage from theft, fraud, and operational errors. Store audits, process improvements, and staff training programs.',
     longDescription:
-      'Retail shrinkage — whether from shoplifting, employee theft, vendor fraud, or administrative error — directly impacts profitability. Silbar Security\'s loss prevention consulting helps retailers identify shrinkage sources, implement prevention systems, and build a loss-conscious culture. Our consultants review store layouts, POS operations, inventory management processes, CCTV coverage, and staff procedures. We deliver customised loss prevention programmes including physical security improvements, electronic article surveillance (EAS) integration, staff training, and ongoing shrinkage measurement with quarterly reviews.',
+      'Retail shrinkage — whether from shoplifting, employee theft, vendor fraud, or administrative error — directly impacts profitability. Silbar Security Services Pvt. Ltd.\'s loss prevention consulting helps retailers identify shrinkage sources, implement prevention systems, and build a loss-conscious culture. Our consultants review store layouts, POS operations, inventory management processes, CCTV coverage, and staff procedures. We deliver customised loss prevention programmes including physical security improvements, electronic article surveillance (EAS) integration, staff training, and ongoing shrinkage measurement with quarterly reviews.',
     features: [
       'Shrinkage source identification and analysis',
       'Store layout and CCTV coverage review',

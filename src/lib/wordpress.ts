@@ -70,7 +70,7 @@ export function mapWpPostToBlogPost(post: WpPost): BlogPost {
     excerpt: stripHtml(post.excerpt.rendered) || stripHtml(post.content.rendered).slice(0, 160),
     content: post.content.rendered,
     coverImage: featuredImage(post),
-    author: post._embedded?.author?.[0]?.name || 'Silbar Security',
+    author: post._embedded?.author?.[0]?.name || 'Silbar Security Services Pvt. Ltd.',
     publishedAt: post.date,
     category: categoryName(post),
     readTime: estimateReadTime(post.content.rendered),

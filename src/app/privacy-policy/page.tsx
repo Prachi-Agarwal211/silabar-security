@@ -57,7 +57,7 @@ const sections = [
   },
   {
     title: 'Grievance Officer (DPDP Act 2023)',
-    content: 'In accordance with the Information Technology Act, 2000 and the DPDP Act, 2023, the name and contact details of the Grievance Officer are: \n\nName: Compliance Department\nCompany: Silbar Security Services Pvt. Ltd.\nAddress: 208, 2nd Floor, Samod Tower, Sansar Chand Road, Jaipur, Rajasthan 302001\nEmail: ' + CONTACT.email + '\nPhone: ' + CONTACT.phone + '\n\nWe will acknowledge your complaint within 24 hours and resolve it within 15 days of receipt.',
+    content: 'In accordance with the Information Technology Act, 2000 and the DPDP Act, 2023, the name and contact details of the Grievance Officer are: \n\nName: Compliance Department\nCompany: Silbar Security Services Pvt. Ltd.\nAddress: 5th Floor, Statesman House, Plot No. 148, Barakhamba Road, Connaught Place, New Delhi — 110001\nEmail: ' + CONTACT.email + '\nPhone: ' + CONTACT.phone + '\nPSARA line: ' + CONTACT.psaraPhone + '\n\nWe will acknowledge your complaint within 24 hours and resolve it within 15 days of receipt.',
   },
 ]
 

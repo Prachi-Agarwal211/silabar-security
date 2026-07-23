@@ -677,7 +677,7 @@ function buildFaqs(place: string, region: string, seed: number, isCity: boolean)
   const base: FAQItem[] = [
     {
       q: `Do you provide security guard services in ${place}?`,
-      a: `Yes. Silbar Security deploys professional security manpower and related services in ${place}${isCity ? `, ${region}` : ''}. Share your site details for a tailored proposal and mobilisation timeline.`,
+      a: `Yes. Silbar Security Services Pvt. Ltd. deploys professional security manpower and related services in ${place}${isCity ? `, ${region}` : ''}. Share your site details for a tailored proposal and mobilisation timeline.`,
     },
     {
       q: `What security services can I hire in ${place}?`,
@@ -736,9 +736,9 @@ export function generateCityContent(city: CityLocation): LocationSEOContent {
 
   const intro = [
     pick(seed, 1, [
-      `Silbar Security Services provides professional security guard services in ${place}, ${region}. We deploy trained, background-verified manpower for factories, offices, hospitals, warehouses, retail sites, residential communities, and institutional campuses across the city.`,
-      `If you are searching for a reliable security agency in ${place}, Silbar Security delivers manned guarding and facility protection with ISO-certified processes, PSARA compliance, clear commercials, and responsive coordination for clients across ${region}.`,
-      `Businesses and institutions in ${place} need more than a uniform at the gate. Silbar Security focuses on disciplined posts, site-specific duty instructions, supervisor oversight, monthly compliance reporting, and measurable service standards tailored to local operating conditions in ${region}.`,
+      `Silbar Security Services Pvt. Ltd. provides professional security guard services in ${place}, ${region}. We deploy trained, background-verified manpower for factories, offices, hospitals, warehouses, retail sites, residential communities, and institutional campuses across the city.`,
+      `If you are searching for a reliable security agency in ${place}, Silbar Security Services Pvt. Ltd. delivers manned guarding and facility protection with ISO-certified processes, PSARA compliance, clear commercials, and responsive coordination for clients across ${region}.`,
+      `Businesses and institutions in ${place} need more than a uniform at the gate. Silbar Security Services Pvt. Ltd. focuses on disciplined posts, site-specific duty instructions, supervisor oversight, monthly compliance reporting, and measurable service standards tailored to local operating conditions in ${region}.`,
     ]),
     pick(seed, 2, [
       `${place} is a Tier-${city.tier} market with an urban population of about ${city.population}. Growth in industry, logistics, healthcare, retail, and housing increases demand for professional, compliance-driven security — not ad-hoc manpower hired without process.`,
@@ -746,7 +746,7 @@ export function generateCityContent(city: CityLocation): LocationSEOContent {
       `${place}'s mix of industrial and commercial facilities (population ~${city.population}) requires flexible deployment models — 8/12-hour shifts, lady guards where gender sensitivity is needed, and optional integration of manned posts with electronic surveillance systems.`,
     ]),
     pick(seed, 3, [
-      `Silbar Security Services Pvt. Ltd. — with Registered Office in New Delhi, Corporate Office in Gurugram, and branch presence in Jaipur — coordinates PAN India deployments. For ${place}, that means local mobilisation with national process standards: uniforms, induction, replacement pool, and account management.`,
+      `Silbar Security Services Pvt. Ltd. — with Registered Office in New Delhi, Corporate Office in Gurugram, and regional offices in Jaipur, Noida, and Ahmedabad — coordinates PAN India deployments. For ${place}, that means local mobilisation with national process standards: uniforms, induction, replacement pool, and account management.`,
       `Clients expanding into ${place} from other cities often prefer a single security partner. We support multi-location contracts across ${region} while keeping each site's duty instructions specific to its facility layout, operational hours, and risk profile.`,
     ]),
     `Whether you manage a single warehouse gate or a multi-post industrial complex in ${place}, we start with scope clarity: number of posts, shift timings, visitor management rules, material movement protocols, and escalation contacts — then propose trained manpower that matches your actual requirements, not a generic brochure headcount.`,
@@ -755,7 +755,7 @@ export function generateCityContent(city: CityLocation): LocationSEOContent {
   const marketOverview = [
     `Security demand in ${place} is driven by ${sectors.slice(0, 5).join(', ')}, and other commercial activities. Each facility type needs different soft skills, post discipline, and supervision intensity — a one-size approach fails across such varied environments.`,
     `Peak risks in ${place} often appear at shift changeovers, night hours when visibility is low, contractor entry windows, and festival seasons when footfall spikes dramatically. A professional agency plans posts, relief systems, and supervisor coverage for these pressure points.`,
-    `Choosing Silbar Security for ${place} means partnering with a PSARA-licensed, ISO-certified agency focused on operational control: attendance discipline, professional presentation, duty knowledge, compliance documentation, and responsive communication with your facility management or HO team.`,
+    `Choosing Silbar Security Services Pvt. Ltd. for ${place} means partnering with a PSARA-licensed, ISO-certified agency focused on operational control: attendance discipline, professional presentation, duty knowledge, compliance documentation, and responsive communication with your facility management or HO team.`,
   ]
 
   const challenges = pickN(seed, CHALLENGES_POOL, 8)
@@ -813,7 +813,7 @@ export function generateCityContent(city: CityLocation): LocationSEOContent {
     faqs: buildFaqs(place, region, seed, true),
     closingCta: `Ready to secure your facility in ${place}? Call ${CONTACT.phone}, WhatsApp via the form below, or email ${CONTACT.email}. Share your facility type, number of posts, and shift requirements for a fast, transparent proposal.`,
     metaDescription: `Security guard company in ${place}, ${region}. PSARA licensed, 4 ISO certified. Industrial, commercial & residential security manpower. Call ${CONTACT.phone}.`,
-    servicesIntro: `Explore all Silbar Security service verticals available for your ${place} facility. Click any service for detailed features, use cases, and FAQs, then request a site-specific quote for your ${region} location.`,
+    servicesIntro: `Explore all Silbar Security Services Pvt. Ltd. service verticals available for your ${place} facility. Click any service for detailed features, use cases, and FAQs, then request a site-specific quote for your ${region} location.`,
     keywordsLine: `security guard services ${place}, security agency ${place}, manned guarding ${place}, security company ${region}, industrial security ${place}, PSARA licensed security ${place}`,
   }
 }
@@ -825,21 +825,21 @@ export function generateStateContent(state: StateLocation): LocationSEOContent {
   const sectors = sectorsForState(state.slug, seed)
 
   const intro = [
-    `Silbar Security Services provides professional security solutions across ${place}, covering major cities including ${citiesList} and client sites across ${state.districts} districts with trained, background-verified manpower.`,
+    `Silbar Security Services Pvt. Ltd. provides professional security solutions across ${place}, covering major cities including ${citiesList} and client sites across ${state.districts} districts with trained, background-verified manpower.`,
     `With a state population of about ${state.population}, ${place} has diverse security demand spanning ${sectors.slice(0, 5).join(', ')} and more. Each sector requires a tailored approach to manpower deployment, supervision intensity, and compliance management.`,
-    `Silbar Security is PSARA licensed and operates with 4 ISO certifications (IAF accredited), bringing national standards to every deployment in ${place} — from single society desks to multi-plant industrial contracts.`,
+    `Silbar Security Services Pvt. Ltd. is PSARA licensed and operates with 4 ISO certifications (IAF accredited), bringing national standards to every deployment in ${place} — from single society desks to multi-plant industrial contracts.`,
     pick(seed, 2, [
       `Our approach in ${place} prioritises verified guards with police background checks, clear site-specific duty instructions, regular supervisor oversight, and statutory-aware commercial structures so clients can scale posts without losing quality control.`,
       `Whether you need a society gate in ${state.capital} or comprehensive industrial security across multiple cities in ${place}, Silbar designs manpower, shifts, and reporting to match your operational reality.`,
       `Businesses expanding across ${place} benefit from a single security partner model: consistent training standards, dedicated account management, monthly compliance documentation, and transparent proposals for each site.`,
     ]),
-    `Silbar Security Services Pvt. Ltd. is headquartered in New Delhi with corporate operations from Gurugram and branch presence in Jaipur. For ${place} enquiries, call ${CONTACT.phone}, email ${CONTACT.email}, or submit the WhatsApp form on this page.`,
+    `Silbar Security Services Pvt. Ltd. operates from New Delhi (Registered Office), Gurugram (Corporate Office), and regional offices in Jaipur, Noida, and Ahmedabad. For ${place} enquiries, call ${CONTACT.phone}, email ${CONTACT.email}, or submit the WhatsApp form on this page.`,
   ]
 
   const marketOverview = [
     `${place}'s economy spans ${sectors.slice(0, 5).join(', ')}, with security risk profiles that differ sharply between a manufacturing plant, a hospital, a shopping mall, and a residential township — generic guard rosters fail to address these varied requirements.`,
     `Key industrial corridors and commercial hubs in ${place} experience peak security demand during night logistics windows, festival seasons when footfall surges, and contractor-heavy operational periods. Professional agencies plan relief manpower, supervisor coverage, and escalation protocols for these pressure points.`,
-    `Choosing Silbar Security for ${place} means partnering with a PSARA-compliant agency that brings documented processes, trained personnel, monthly compliance reporting, and responsive account management — not just uniformed staff at the gate.`,
+    `Choosing Silbar Security Services Pvt. Ltd. for ${place} means partnering with a PSARA-compliant agency that brings documented processes, trained personnel, monthly compliance reporting, and responsive account management — not just uniformed staff at the gate.`,
   ]
 
   return {
@@ -870,9 +870,9 @@ export function generateStateContent(state: StateLocation): LocationSEOContent {
     compliance: [
       `For all ${place} deployments, we emphasise police-verified recruitment, structured training, wage-structure clarity aligned with state minimum wage notifications, and full statutory compliance (EPF, ESIC) for eligible employees as per applicable law.`,
       `Monthly compliance documentation — attendance records, wage registers, PF/ESIC challans — is provided to clients for complete transparency and audit readiness.`,
-      `Silbar Security holds 4 ISO certifications (IAF accredited) and PSARA licenses across 19 states. Our process discipline is ISO-certified; site delivery excellence depends on clear client instructions and structured joint onboarding at every ${place} location.`,
+      `Silbar Security Services Pvt. Ltd. holds 4 ISO certifications (IAF accredited) and PSARA licenses across 19 states. Our process discipline is ISO-certified; site delivery excellence depends on clear client instructions and structured joint onboarding at every ${place} location.`,
     ],
-    whyHeading: `Why choose Silbar Security in ${place}`,
+    whyHeading: `Why choose Silbar Security Services Pvt. Ltd. in ${place}`,
     whyPoints: pickN(seed, WHY_POINTS_POOL, 10),
     processHeading: `How Silbar deploys security for ${place} sites`,
     process: PROCESS_STEPS.map((s) => ({
@@ -882,7 +882,7 @@ export function generateStateContent(state: StateLocation): LocationSEOContent {
     faqs: buildFaqs(place, place, seed, false),
     closingCta: `Planning security for your facility in ${place}? Call ${CONTACT.phone}, email ${CONTACT.email}, or use the WhatsApp form below. Share your facility type, number of posts, and shift requirements for a fast proposal.`,
     metaDescription: `Security guard company in ${place}. PSARA licensed, 4 ISO certified. Manned guarding across ${place}. Call ${CONTACT.phone} for a free quote.`,
-    servicesIntro: `Explore Silbar Security's full range of service verticals available for deployment across ${place}. Click any service to view features, use cases, and FAQs, then request a ${place}-specific quote.`,
+    servicesIntro: `Explore Silbar Security Services Pvt. Ltd.'s full range of service verticals available for deployment across ${place}. Click any service to view features, use cases, and FAQs, then request a ${place}-specific quote.`,
     keywordsLine: `security guard services ${place}, security agency ${place}, security company ${state.capital}, manned guarding ${place}, industrial security ${place}, PSARA licensed security ${place}`,
   }
 }

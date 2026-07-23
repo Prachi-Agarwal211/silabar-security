@@ -28,7 +28,7 @@ type EnquiryFields = {
 export function formatEnquiryWhatsAppMessage(fields: EnquiryFields): string {
   const type = fields.formType || 'Website Enquiry'
   const lines: string[] = [
-    `*New ${type} — Silbar Security*`,
+    `*New ${type} — Silbar Security Services Pvt. Ltd.*`,
     '',
   ]
 

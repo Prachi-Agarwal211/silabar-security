@@ -15,7 +15,7 @@ const ITEMS = [
 export default function BrandTrustBar() {
   const loop = [...ITEMS, ...ITEMS]
   return (
-    <div className="brand-trust-bar" aria-label="Silbar Security credentials">
+    <div className="brand-trust-bar" aria-label="Silbar Security Services Pvt. Ltd. credentials">
       <div className="brand-trust-track">
         {loop.map((label, i) => (
           <span key={`${label}-${i}`} className="brand-trust-item">

@@ -41,7 +41,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
 
       <h2>Why Clients Should Demand Certified Agencies</h2>
-      <p>Partnering with a non-certified, unorganized agency often leads to compliance risks, high attrition rates, and ultimately, security breaches. A certified agency like Silbar Security ensures that our processes are audited by third-party experts annually, guaranteeing that our commitment to quality isn't just a promise—it's a proven practice.</p>
+      <p>Partnering with a non-certified, unorganized agency often leads to compliance risks, high attrition rates, and ultimately, security breaches. A certified agency like Silbar Security Services Pvt. Ltd. ensures that our processes are audited by third-party experts annually, guaranteeing that our commitment to quality isn't just a promise—it's a proven practice.</p>
     `,
     coverImage: '/images/blog/iso-security.jpg',
     author: 'Silbar Security Expert',
@@ -62,7 +62,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>While CCTV cameras are excellent for recording events, deterring casual theft, and providing post-incident evidence, they cannot <em>intervene</em>. A camera cannot escort an abusive visitor off the premises, check a delivery truck for unauthorized materials, or respond instantly to a fire alarm.</p>
 
       <h2>The Integrated Security Model</h2>
-      <p>The most effective security strategy doesn't choose between humans and technology; it integrates them. At Silbar Security, we train our guards to act as the "response arm" of the electronic surveillance system.</p>
+      <p>The most effective security strategy doesn't choose between humans and technology; it integrates them. At Silbar Security Services Pvt. Ltd., we train our guards to act as the "response arm" of the electronic surveillance system.</p>
       <ul>
         <li><strong>Proactive Monitoring:</strong> Guards stationed at the control room monitor feeds to detect anomalies before they escalate.</li>
         <li><strong>Immediate Response:</strong> When a perimeter breach alarm triggers, the Quick Response Team (QRT) is deployed instantly.</li>
@@ -93,7 +93,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <li><strong>Verify Temporary Staff:</strong> Ensure all seasonal workers undergo strict ID verification and are issued temporary passes.</li>
         <li><strong>Test Fire Safety Systems:</strong> With the increased use of electrical decorations and firecrackers, ensuring fire extinguishers and alarms are functional is critical.</li>
       </ol>
-      <p>Silbar Security provides short-term deployment services tailored for the festive season, ensuring your business operations continue smoothly without compromising on safety.</p>
+      <p>Silbar Security Services Pvt. Ltd. provides short-term deployment services tailored for the festive season, ensuring your business operations continue smoothly without compromising on safety.</p>
     `,
     coverImage: '/images/blog/festive-security.jpg',
     author: 'Silbar Security Expert',
@@ -119,7 +119,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
       <h2>Questions to Ask Vendors</h2>
       <p>Ask for a sample site instruction document, escalation matrix, and a clear commercial breakup. If answers are vague, risk usually shows up after mobilisation — not before.</p>
-      <p>Silbar Security structures proposals with transparent scope so clients in Jaipur, Delhi NCR, Ahmedabad, and pan-India multi-site networks can compare value — not just headcount rates.</p>
+      <p>Silbar Security Services Pvt. Ltd. structures proposals with transparent scope so clients in Jaipur, Delhi NCR, Ahmedabad, and pan-India multi-site networks can compare value — not just headcount rates.</p>
     `,
     coverImage: '/images/blog/choose-agency.jpg',
     author: 'Silbar Security Expert',
@@ -167,7 +167,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <li>Emergency contact tree for residents and police/fire</li>
       </ol>
       <h2>Working With a Professional Agency</h2>
-      <p>Silbar Security supports residential communities with trained guards, lady guards where required, and supervisor oversight. Clear commercial terms and replacement backup help committees avoid service gaps during festivals and peak seasons.</p>
+      <p>Silbar Security Services Pvt. Ltd. supports residential communities with trained guards, lady guards where required, and supervisor oversight. Clear commercial terms and replacement backup help committees avoid service gaps during festivals and peak seasons.</p>
     `,
     coverImage: '/images/blog/residential-security.jpg',
     author: 'Silbar Security Expert',
@@ -196,7 +196,7 @@ export const BLOG_POSTS: BlogPost[] = [
 
       <h2>Common Violations Found in Audits</h2>
       <p>Factory inspectors frequently flag blocked fire exits, expired extinguishers, lack of evacuation drills, and absence of a trained fire warden. These violations can lead to closure notices, heavy penalties, or worse — loss of lives during an actual emergency.</p>
-      <p>Silbar Security offers fire audit services as part of our integrated safety solutions, helping factory owners identify gaps and implement corrective measures before the inspector arrives.</p>
+      <p>Silbar Security Services Pvt. Ltd. offers fire audit services as part of our integrated safety solutions, helping factory owners identify gaps and implement corrective measures before the inspector arrives.</p>
     `,
     coverImage: '/images/blog/fire-safety.jpg',
     author: 'Compliance Team',
@@ -250,7 +250,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
 
       <h2>The Human + AI Balance</h2>
-      <p>Despite these advances, AI is a force multiplier, not a replacement. A security operations centre (SOC) still requires trained personnel to interpret alerts, exercise judgment, and coordinate physical response. The future belongs to integrated teams where AI handles the monitoring load and humans handle the decisions. Silbar Security is investing in AI-assisted remote monitoring for clients who want smart surveillance without replacing their security team.</p>
+      <p>Despite these advances, AI is a force multiplier, not a replacement. A security operations centre (SOC) still requires trained personnel to interpret alerts, exercise judgment, and coordinate physical response. The future belongs to integrated teams where AI handles the monitoring load and humans handle the decisions. Silbar Security Services Pvt. Ltd. is investing in AI-assisted remote monitoring for clients who want smart surveillance without replacing their security team.</p>
     `,
     coverImage: '/images/blog/ai-surveillance.jpg',
     author: 'Silbar Security Expert',
@@ -283,7 +283,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <li><strong>CCTV with Analytics:</strong> Cameras covering loading docks, storage aisles, and waste disposal areas with motion-triggered recording.</li>
         <li><strong>Supplier and Driver Verification:</strong> Pre-register all delivery personnel and verify identity at the gate before loading or unloading begins.</li>
       </ol>
-      <p>Silbar Security specializes in warehouse security deployments with trained personnel, CCTV integration, and daily MIS reporting to keep your inventory safe.</p>
+      <p>Silbar Security Services Pvt. Ltd. specializes in warehouse security deployments with trained personnel, CCTV integration, and daily MIS reporting to keep your inventory safe.</p>
     `,
     coverImage: '/images/blog/warehouse-theft.jpg',
     author: 'Operations Head',
@@ -311,7 +311,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ol>
 
       <h2>Who Should Conduct the Assessment?</h2>
-      <p>While internal security teams can perform basic assessments, an independent third-party SVA often reveals blind spots that internal teams miss due to familiarity. Silbar Security offers vulnerability assessment services conducted by trained field officers with checklists customized for your industry and facility size.</p>
+      <p>While internal security teams can perform basic assessments, an independent third-party SVA often reveals blind spots that internal teams miss due to familiarity. Silbar Security Services Pvt. Ltd. offers vulnerability assessment services conducted by trained field officers with checklists customized for your industry and facility size.</p>
     `,
     coverImage: '/images/blog/vulnerability-assessment.jpg',
     author: 'Silbar Security Expert',
@@ -337,7 +337,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
 
       <h2>Coordination With Local Authorities</h2>
-      <p>For events exceeding 500 attendees, organisers should coordinate with the local police, fire brigade, and ambulance services in advance. Obtain necessary permissions under the local police act and share your security plan with authorities. Silbar Security provides end-to-end event security management, including liaison with local authorities, manpower deployment, and CCTV setup — so you can focus on the event, not the logistics.</p>
+      <p>For events exceeding 500 attendees, organisers should coordinate with the local police, fire brigade, and ambulance services in advance. Obtain necessary permissions under the local police act and share your security plan with authorities. Silbar Security Services Pvt. Ltd. provides end-to-end event security management, including liaison with local authorities, manpower deployment, and CCTV setup — so you can focus on the event, not the logistics.</p>
     `,
     coverImage: '/images/blog/event-security.jpg',
     author: 'Operations Head',
@@ -362,7 +362,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
 
       <h2>Challenges and Opportunities</h2>
-      <p>The industry still faces challenges in recruiting and retaining women — including safety concerns during late-night commutes, lack of women-friendly facilities at deployment sites, and societal biases. Progressive agencies like Silbar Security are addressing these issues through women-only training batches, safe transport policies, and sensitization programs for male colleagues.</p>
+      <p>The industry still faces challenges in recruiting and retaining women — including safety concerns during late-night commutes, lack of women-friendly facilities at deployment sites, and societal biases. Progressive agencies like Silbar Security Services Pvt. Ltd. are addressing these issues through women-only training batches, safe transport policies, and sensitization programs for male colleagues.</p>
       <p>We actively recruit and train female security guards across our service areas, and we encourage our clients to consider mixed-gender security teams for better overall outcomes.</p>
     `,
     coverImage: '/images/blog/women-security.jpg',
@@ -394,7 +394,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
 
       <h2>Recommendation: Hybrid Approach</h2>
-      <p>For most facilities, a layered approach works best — RFID for low-security perimeter gates, biometrics for high-security zones like server rooms and cash handling areas, and smart cards for general office access. Silbar Security can help design and implement a customized access control plan for your facility.</p>
+      <p>For most facilities, a layered approach works best — RFID for low-security perimeter gates, biometrics for high-security zones like server rooms and cash handling areas, and smart cards for general office access. Silbar Security Services Pvt. Ltd. can help design and implement a customized access control plan for your facility.</p>
     `,
     coverImage: '/images/blog/access-control.jpg',
     author: 'Silbar Security Expert',
@@ -422,7 +422,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
 
       <h2>The Ground Reality</h2>
-      <p>While the standards are well-defined, enforcement is uneven. Many small agencies cut corners on training to reduce costs, deploying untrained personnel and exposing clients to liability. At Silbar Security, training is not a checkbox — we maintain an in-house training facility where every guard undergoes refresher training every six months, and we maintain detailed training records for client inspection.</p>
+      <p>While the standards are well-defined, enforcement is uneven. Many small agencies cut corners on training to reduce costs, deploying untrained personnel and exposing clients to liability. At Silbar Security Services Pvt. Ltd., training is not a checkbox — we maintain an in-house training facility where every guard undergoes refresher training every six months, and we maintain detailed training records for client inspection.</p>
     `,
     coverImage: '/images/blog/training-standards.jpg',
     author: 'Operations Head',
@@ -449,7 +449,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
 
       <h2>Why Choose a Specialist Agency</h2>
-      <p>Bank security is not generic guarding. It requires personnel who understand RBI compliance, discreet observation, and the specific protocols of financial institutions. Silbar Security provides trained and PSARA-licensed guards for banking clients, with armed and unarmed options tailored to each branch's risk profile.</p>
+      <p>Bank security is not generic guarding. It requires personnel who understand RBI compliance, discreet observation, and the specific protocols of financial institutions. Silbar Security Services Pvt. Ltd. provides trained and PSARA-licensed guards for banking clients, with armed and unarmed options tailored to each branch's risk profile.</p>
     `,
     coverImage: '/images/blog/bank-security.jpg',
     author: 'Silbar Security Expert',
@@ -481,7 +481,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <li><strong>Perimeter CCTV:</strong> Install cameras covering storage yards, main gate, and tool rooms with night vision and motion alerts.</li>
         <li><strong>Supervisor Rotations:</strong> Rotate security personnel across different posts and shifts to prevent familiarity-based collusion.</li>
       </ol>
-      <p>Silbar Security provides construction site security across India, with trained personnel experienced in the unique challenges of active project sites.</p>
+      <p>Silbar Security Services Pvt. Ltd. provides construction site security across India, with trained personnel experienced in the unique challenges of active project sites.</p>
     `,
     coverImage: '/images/blog/construction-site.jpg',
     author: 'Operations Head',
@@ -508,7 +508,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
 
       <h2>Technology for Hotel Security</h2>
-      <p>Modern hotels benefit from integrated security systems — key cards that log every door open event, CCTV analytics that detect loitering in restricted areas, and panic buttons at front desk and concierge stations. Silbar Security partners with hotels to provide trained personnel who understand hospitality etiquette while maintaining firm security standards.</p>
+      <p>Modern hotels benefit from integrated security systems — key cards that log every door open event, CCTV analytics that detect loitering in restricted areas, and panic buttons at front desk and concierge stations. Silbar Security Services Pvt. Ltd. partners with hotels to provide trained personnel who understand hospitality etiquette while maintaining firm security standards.</p>
     `,
     coverImage: '/images/blog/hotel-security.jpg',
     author: 'Silbar Security Expert',
@@ -535,7 +535,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
 
       <h2>Building a Safety Culture</h2>
-      <p>Safety is not just the security team's responsibility. Teachers, administrative staff, and even students must be part of the safety framework through training and regular drills. Silbar Security provides school safety audits and trained personnel who specialize in educational environments.</p>
+      <p>Safety is not just the security team's responsibility. Teachers, administrative staff, and even students must be part of the safety framework through training and regular drills. Silbar Security Services Pvt. Ltd. provides school safety audits and trained personnel who specialize in educational environments.</p>
     `,
     coverImage: '/images/blog/school-safety.jpg',
     author: 'Silbar Security Expert',
@@ -563,7 +563,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ol>
 
       <h2>Why Preparedness Pays</h2>
-      <p>Every rupee spent on monsoon preparedness saves ten in potential losses from production downtime, equipment damage, and accident claims. Silbar Security includes monsoon safety in our guard training curriculum and provides facility safety audits to help industrial clients prepare for the season.</p>
+      <p>Every rupee spent on monsoon preparedness saves ten in potential losses from production downtime, equipment damage, and accident claims. Silbar Security Services Pvt. Ltd. includes monsoon safety in our guard training curriculum and provides facility safety audits to help industrial clients prepare for the season.</p>
     `,
     coverImage: '/images/blog/monsoon-safety.jpg',
     author: 'Operations Head',
@@ -589,7 +589,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
 
       <h2>Measuring Performance Across Locations</h2>
-      <p>Key metrics to track include: incident response time, false alarm rate, attrition of security personnel, and compliance score from random audits. Weekly dashboards help retail security managers identify underperforming locations before losses accumulate. Silbar Security provides multi-site security solutions with centralized reporting and dedicated account management for retail chains across India.</p>
+      <p>Key metrics to track include: incident response time, false alarm rate, attrition of security personnel, and compliance score from random audits. Weekly dashboards help retail security managers identify underperforming locations before losses accumulate. Silbar Security Services Pvt. Ltd. provides multi-site security solutions with centralized reporting and dedicated account management for retail chains across India.</p>
     `,
     coverImage: '/images/blog/retail-security.jpg',
     author: 'Operations Head',
@@ -615,7 +615,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
 
       <h2>Preparing for the Shift</h2>
-      <p>Agencies that invest in training, technology, and compliance today will dominate the market of 2030. Silbar Security is already investing in these pillars to ensure we remain at the forefront of India's private security evolution.</p>
+      <p>Agencies that invest in training, technology, and compliance today will dominate the market of 2030. Silbar Security Services Pvt. Ltd. is already investing in these pillars to ensure we remain at the forefront of India's private security evolution.</p>
     `,
     coverImage: '/images/blog/future-security.jpg',
     author: 'Silbar Security Expert',
@@ -648,7 +648,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <li><strong>CCTV Coverage:</strong> Cameras covering the ER waiting area, entrance, corridors, and drug storage room. Audio recording is generally not permitted in patient areas due to privacy laws.</li>
         <li><strong>Staff Training:</strong> All ER staff should receive basic training in recognizing escalating behavior and activating security protocols. Security personnel should receive regular refresher training in healthcare environment handling.</li>
       </ol>
-      <p>Silbar Security provides specialized healthcare security personnel who understand the unique protocols and sensitivities of hospital environments.</p>
+      <p>Silbar Security Services Pvt. Ltd. provides specialized healthcare security personnel who understand the unique protocols and sensitivities of hospital environments.</p>
     `,
     coverImage: '/images/blog/hospital-security.jpg',
     author: 'Operations Head',
@@ -684,7 +684,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <ul>
         <li><strong>Log all incidents</strong> — even minor ones — and review them in a post-festival meeting. Identify what worked and what needs improvement for next year.</li>
       </ul>
-      <p>Silbar Security offers temporary festive season security deployments for factories, malls, residential societies, and corporate offices across all our service locations.</p>
+      <p>Silbar Security Services Pvt. Ltd. offers temporary festive season security deployments for factories, malls, residential societies, and corporate offices across all our service locations.</p>
     `,
     coverImage: '/images/blog/festive-checklist.jpg',
     author: 'Silbar Security Expert',
@@ -712,7 +712,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
 
       <h2>Ongoing Compliance Monitoring</h2>
-      <p>Compliance verification should not be a one-time event. Insist on quarterly compliance reports from your agency, including proof of statutory remittances, training attendance records, and incident logs. Silbar Security provides full statutory compliance documentation to all our clients as a standard practice, not as an add-on.</p>
+      <p>Compliance verification should not be a one-time event. Insist on quarterly compliance reports from your agency, including proof of statutory remittances, training attendance records, and incident logs. Silbar Security Services Pvt. Ltd. provides full statutory compliance documentation to all our clients as a standard practice, not as an add-on.</p>
     `,
     coverImage: '/images/blog/compliance-check.jpg',
     author: 'Compliance Team',
@@ -745,7 +745,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <li><strong>Drone Patrols:</strong> Scheduled autonomous drone patrols over the farm provide aerial surveillance and can spot encroachment, theft in progress, or fence damage.</li>
         <li><strong>Small Guard Force + Response Team:</strong> A small on-site team focused on the control room and main gate, backed by a mobile patrol unit that can respond to alarms generated by the electronic system.</li>
       </ul>
-      <p>Silbar Security provides integrated security solutions for solar farms, combining electronic surveillance with trained personnel and rapid response protocols.</p>
+      <p>Silbar Security Services Pvt. Ltd. provides integrated security solutions for solar farms, combining electronic surveillance with trained personnel and rapid response protocols.</p>
     `,
     coverImage: '/images/blog/solar-farm.jpg',
     author: 'Silbar Security Expert',
@@ -771,7 +771,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
 
       <h2>Benefits of ISO 14001 Certification for Security Agencies</h2>
-      <p>Adopting an EMS framework helps agencies reduce operating costs through energy and fuel efficiency, enhance their reputation with environmentally conscious clients, and comply with increasingly stringent environmental regulations. Silbar Security is committed to sustainable operations and is pursuing ISO 14001 certification as part of our continuous improvement journey.</p>
+      <p>Adopting an EMS framework helps agencies reduce operating costs through energy and fuel efficiency, enhance their reputation with environmentally conscious clients, and comply with increasingly stringent environmental regulations. Silbar Security Services Pvt. Ltd. is committed to sustainable operations and is pursuing ISO 14001 certification as part of our continuous improvement journey.</p>
       <p>For clients in the renewable energy, green building, and ESG-conscious sectors, partnering with an ISO 14001-certified security agency aligns with their own environmental commitments.</p>
     `,
     coverImage: '/images/blog/iso-14001.jpg',
@@ -799,7 +799,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
 
       <h2>Why Data Center Security Requires Specialist Guards</h2>
-      <p>Data center guards must understand the sensitivity of the environment. They must be trained to identify social engineering attempts (someone posing as a technician to gain access), manage visitor access in strict compliance with the access policy, and respond to environmental alarms (temperature rise, water leak, fire). Silbar Security provides trained personnel for data center security who understand ISO 27001 requirements and can integrate with your existing ISMS team.</p>
+      <p>Data center guards must understand the sensitivity of the environment. They must be trained to identify social engineering attempts (someone posing as a technician to gain access), manage visitor access in strict compliance with the access policy, and respond to environmental alarms (temperature rise, water leak, fire). Silbar Security Services Pvt. Ltd. provides trained personnel for data center security who understand ISO 27001 requirements and can integrate with your existing ISMS team.</p>
     `,
     coverImage: '/images/blog/data-center.jpg',
     author: 'Compliance Team',
@@ -826,7 +826,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
 
       <h2>Discretion and Professionalism</h2>
-      <p>The hallmark of professional executive protection is that the principal barely notices the security presence while being fully protected. Silbar Security provides executive protection services with trained personnel who combine physical security skills with the discretion and professionalism that high-profile clients require.</p>
+      <p>The hallmark of professional executive protection is that the principal barely notices the security presence while being fully protected. Silbar Security Services Pvt. Ltd. provides executive protection services with trained personnel who combine physical security skills with the discretion and professionalism that high-profile clients require.</p>
     `,
     coverImage: '/images/blog/executive-protection.jpg',
     author: 'Silbar Security Expert',
@@ -853,7 +853,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
 
       <h2>Cost-Effective Security Strategies</h2>
-      <p>You don't need to spend lavishly to achieve effective security. A risk-based approach allocates resources where they matter most — high-value asset areas, vulnerable entry points, and high-risk time windows. Silbar Security works with clients to design cost-effective security plans that maximize protection while respecting budget constraints.</p>
+      <p>You don't need to spend lavishly to achieve effective security. A risk-based approach allocates resources where they matter most — high-value asset areas, vulnerable entry points, and high-risk time windows. Silbar Security Services Pvt. Ltd. works with clients to design cost-effective security plans that maximize protection while respecting budget constraints.</p>
     `,
     coverImage: '/images/blog/economics-security.jpg',
     author: 'Silbar Security Expert',
@@ -864,11 +864,11 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     id: 'post-31',
     slug: 'silbar-security-completes-8-years-operations',
-    title: 'Silbar Security Completes 8 Years of Operations',
+    title: 'Silbar Security Services Pvt. Ltd. Completes 8 Years of Operations',
     excerpt: 'Eight years of growth, service, and commitment to safety. A message from the founders on our journey and what lies ahead.',
     content: `
       <h2>A Milestone Worth Celebrating</h2>
-      <p>Silbar Security is proud to announce the completion of eight successful years in the private security industry. Since our founding in 2018, we have grown from a team of 15 security personnel serving a handful of clients in Jaipur to a trusted security partner operating across multiple states with over hundreds of trained professionals.</p>
+      <p>Silbar Security Services Pvt. Ltd. is proud to announce the completion of eight successful years in the private security industry. Since our founding in 2018, we have grown from a team of 15 security personnel serving a handful of clients in Jaipur to a trusted security partner operating across multiple states with over hundreds of trained professionals.</p>
 
       <h2>Our Journey in Numbers</h2>
       <ul>
@@ -880,7 +880,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
 
       <h2>What Sets Us Apart</h2>
-      <p>Over the last eight years, we have remained committed to the principles that define Silbar Security: uncompromising quality, full statutory compliance, investment in training, and a client-first approach. Our ISO 9001:2015 certification, PSARA compliance across all states, and continuous investment in technology reflect our commitment to being more than just a security agency — we are a safety partner.</p>
+      <p>Over the last eight years, we have remained committed to the principles that define Silbar Security Services Pvt. Ltd.: uncompromising quality, full statutory compliance, investment in training, and a client-first approach. Our ISO 9001:2015 certification, PSARA compliance across all states, and continuous investment in technology reflect our commitment to being more than just a security agency — we are a safety partner.</p>
 
       <h2>Looking Ahead</h2>
       <p>As we enter our ninth year, our focus remains on expanding our geographic footprint, deepening our technological capabilities, and continuing to provide the highest standard of security services to every client. We thank our clients, our team members, and our partners for their trust and support over these eight years. The journey ahead is exciting, and we invite you to be part of it.</p>

@@ -9,10 +9,11 @@ import { Phone, MapPin, ArrowRight } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import PageHero from '@/components/layout/PageHero'
-import { CONTACT } from '@/lib/config'
+import { CONTACT, getOfficeForCitySlug, getOfficesForCityPage } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 import LocationRichContent from '@/components/sections/LocationRichContent'
+import GbpOfficeSection from '@/components/sections/GbpOfficeSection'
 
 function citySlugFromName(name: string) {
   return name.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and')
@@ -32,7 +33,7 @@ export async function generateMetadata({
   if (!city) return {}
 
   const content = generateCityContent(city)
-  // Truncate to 40 chars max — layout template adds ' | Silbar Security India' (~20 chars)
+  // Truncate to 40 chars max — layout template adds ' | Silbar Security Services Pvt. Ltd. India' (~20 chars)
   // Final title must stay under ~60 chars for SEO
   const shortTitle = `Security Services ${city.name}, ${city.state}`
   const title = shortTitle.length > 40 ? shortTitle.slice(0, 37) + '...' : shortTitle
@@ -46,7 +47,7 @@ export async function generateMetadata({
       `security agency ${city.name}`,
       `manned guarding ${city.name}`,
       `security company ${city.state}`,
-      'Silbar Security',
+      'Silbar Security Services Pvt. Ltd.',
     ],
     ...ogMetadata(title, description, `/security-services/city/${slug}`),
   }
@@ -67,26 +68,34 @@ export default async function CitySEOPage({
     ? state.majorCities.filter((c) => c.toLowerCase() !== city.name.toLowerCase()).slice(0, 6)
     : []
 
+  const office = getOfficeForCitySlug(slug)
+  const gbpOffices = getOfficesForCityPage(slug, city.stateSlug)
+  const schemaOffice = office || gbpOffices[0]
+
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     '@id': `https://www.silbarsecurity.in/security-services/city/${slug}`,
-    name: `Silbar Security Services India — ${city.name}`,
+    name: office?.placeName || `Silbar Security Services Pvt. Ltd. — ${city.name}`,
+    legalName: 'Silbar Security Services Pvt. Ltd.',
     description: content.metaDescription,
     url: `https://www.silbarsecurity.in/security-services/city/${slug}`,
-    telephone: CONTACT.phone,
+    telephone: schemaOffice?.phone || CONTACT.phone,
     email: CONTACT.email,
     address: {
       '@type': 'PostalAddress',
+      streetAddress: office?.address?.split(',')[0]?.trim(),
       addressLocality: city.name,
       addressRegion: city.state,
+      postalCode: office?.pin,
       addressCountry: 'IN',
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: GEO_COORDINATES[slug]?.lat || 20.5937,
-      longitude: GEO_COORDINATES[slug]?.lng || 78.9629,
+      latitude: schemaOffice?.lat || GEO_COORDINATES[slug]?.lat || 20.5937,
+      longitude: schemaOffice?.lng || GEO_COORDINATES[slug]?.lng || 78.9629,
     },
+    ...(schemaOffice?.mapUrl ? { hasMap: schemaOffice.mapUrl } : {}),
     image: 'https://www.silbarsecurity.in/og-image.jpg',
     openingHoursSpecification: [
       {
@@ -155,7 +164,7 @@ export default async function CitySEOPage({
                 <Phone size={16} /> Call Now
               </a>
               <a
-                href={`https://wa.me/${CONTACT.whatsapp.number}?text=${encodeURIComponent(`Hello Silbar Security, I need security services in ${city.name}, ${city.state}.`)}`}
+                href={`https://wa.me/${CONTACT.whatsapp.number}?text=${encodeURIComponent(`Hello Silbar Security Services Pvt. Ltd., I need security services in ${city.name}, ${city.state}.`)}`}
                 className="service-detail-cta service-detail-cta--secondary"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -203,16 +212,32 @@ export default async function CitySEOPage({
                 <Phone size={16} /> {CONTACT.phone}
               </a>
               <a
-                href={`https://wa.me/${CONTACT.whatsapp.number}?text=${encodeURIComponent(`Hello Silbar Security, I need security in ${city.name}.`)}`}
+                href={`https://wa.me/${CONTACT.whatsapp.number}?text=${encodeURIComponent(`Hello Silbar Security Services Pvt. Ltd., I need security in ${city.name}.`)}`}
                 className="service-detail-cta service-detail-cta--secondary"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 WhatsApp
               </a>
+              {schemaOffice?.mapUrl && (
+                <a
+                  href={schemaOffice.mapUrl}
+                  className="service-detail-cta service-detail-cta--secondary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MapPin size={16} /> Google Profile
+                </a>
+              )}
             </div>
           </div>
         </div>
+
+        <GbpOfficeSection
+          placeLabel={city.name}
+          offices={gbpOffices}
+          isLocalOffice={Boolean(office)}
+        />
 
         <LocationRichContent content={content} />
 
@@ -289,7 +314,7 @@ export default async function CitySEOPage({
                 <Phone size={16} /> Call Now
               </a>
               <a
-                href={`https://wa.me/${CONTACT.whatsapp.number}?text=${encodeURIComponent(`Hello Silbar Security, I need a quote for security services in ${city.name}.`)}`}
+                href={`https://wa.me/${CONTACT.whatsapp.number}?text=${encodeURIComponent(`Hello Silbar Security Services Pvt. Ltd., I need a quote for security services in ${city.name}.`)}`}
                 className="service-detail-cta service-detail-cta--secondary"
                 target="_blank"
                 rel="noopener noreferrer"

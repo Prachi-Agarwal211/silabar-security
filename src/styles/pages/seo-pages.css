@@ -118,6 +118,113 @@
   }
 }
 
+/* Google Business Profile block on city / state pages */
+.seo-gbp-section {
+  background: var(--color-paper);
+  padding: clamp(2rem, 4vh, 3.5rem) 0;
+  border-top: 1px solid rgba(140, 31, 50, 0.07);
+}
+
+.seo-gbp-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.seo-gbp-grid--single {
+  grid-template-columns: 1fr;
+  max-width: 720px;
+}
+
+@media (max-width: 800px) {
+  .seo-gbp-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.seo-gbp-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem 1rem 1.1rem;
+  background: linear-gradient(135deg, var(--color-paper) 0%, rgba(232, 223, 200, 0.35) 100%);
+  border: 1px solid rgba(140, 31, 50, 0.1);
+  border-radius: 6px;
+}
+
+.seo-gbp-card__badge {
+  display: inline-block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-cherry);
+  background: rgba(140, 31, 50, 0.08);
+  padding: 0.2em 0.65em;
+  margin-bottom: 0.35rem;
+}
+
+.seo-gbp-card__title {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  margin: 0 0 0.35rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-paper-ink);
+}
+
+.seo-gbp-card__title svg {
+  color: var(--color-cherry);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.seo-gbp-card__address {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--color-horizon-600);
+}
+
+.seo-gbp-card__phone {
+  display: inline-block;
+  margin-top: 0.35rem;
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--color-cherry);
+  text-decoration: none;
+}
+
+.seo-gbp-card__map {
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(140, 31, 50, 0.08);
+}
+
+.seo-gbp-card__iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+}
+
+.seo-gbp-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.seo-gbp-card__link:hover {
+  opacity: 0.75;
+}
+
 /* City tags */
 .seo-city-tag {
   display: inline-flex;

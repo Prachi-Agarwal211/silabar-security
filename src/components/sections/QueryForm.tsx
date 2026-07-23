@@ -132,7 +132,7 @@ export default function QueryForm({
           <h4>What happens next:</h4>
           <ul>
             <li>WhatsApp opens with your full enquiry text pre-filled</li>
-            <li>Press Send to message Silbar Security</li>
+            <li>Press Send to message Silbar Security Services Pvt. Ltd.</li>
             <li>Our team typically replies within 2 business hours</li>
           </ul>
         </div>

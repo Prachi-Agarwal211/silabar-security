@@ -9,10 +9,11 @@ import { ArrowRight, Phone, MapPin } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import PageHero from '@/components/layout/PageHero'
-import { CONTACT } from '@/lib/config'
+import { CONTACT, getOfficesForStatePage } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 import LocationRichContent from '@/components/sections/LocationRichContent'
+import GbpOfficeSection from '@/components/sections/GbpOfficeSection'
 
 export const revalidate = 86400
 
@@ -34,7 +35,7 @@ export async function generateMetadata({
   if (!location) return {}
 
   const content = generateStateContent(location)
-  // Truncate to 40 chars max — layout template adds ' | Silbar Security India' (~20 chars)
+  // Truncate to 40 chars max — layout template adds ' | Silbar Security Services Pvt. Ltd. India' (~20 chars)
   // Final title must stay under ~60 chars for SEO
   const shortTitle = `Security Services ${location.name}`
   const title = shortTitle.length > 40 ? shortTitle.slice(0, 37) + '...' : shortTitle
@@ -47,7 +48,7 @@ export async function generateMetadata({
       `security guard services ${location.name}`,
       `security agency ${location.name}`,
       `security company ${location.capital}`,
-      'Silbar Security',
+      'Silbar Security Services Pvt. Ltd.',
       'manned guarding India',
     ],
     ...ogMetadata(title, description, `/security-services/${state}`),
@@ -66,26 +67,38 @@ export default async function StateSEOPage({
   const content = generateStateContent(location)
   const capitalKey = location.capital.toLowerCase().replace(/\s+/g, '-')
   const citiesInState = CITIES.filter((c) => c.stateSlug === location.slug)
+  const gbpOffices = getOfficesForStatePage(location.slug)
+  const primaryOffice = gbpOffices[0]
 
   const localBusinessSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     '@id': `https://www.silbarsecurity.in/security-services/${state}`,
-    name: `Silbar Security Services India — ${location.name}`,
+    name: primaryOffice?.placeName || `Silbar Security Services Pvt. Ltd. — ${location.name}`,
+    legalName: 'Silbar Security Services Pvt. Ltd.',
     description: content.metaDescription,
     url: `https://www.silbarsecurity.in/security-services/${state}`,
-    telephone: CONTACT.phone,
+    telephone: primaryOffice?.phone || CONTACT.phone,
     email: CONTACT.email,
     address: {
       '@type': 'PostalAddress',
+      streetAddress: primaryOffice?.address?.split(',')[0]?.trim(),
+      addressLocality: primaryOffice?.city?.replace(/\s*\(.*?\)\s*/g, '').trim(),
       addressRegion: location.name,
+      postalCode: primaryOffice?.pin,
       addressCountry: 'IN',
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: GEO_COORDINATES[capitalKey]?.lat || 20.5937,
-      longitude: GEO_COORDINATES[capitalKey]?.lng || 78.9629,
+      latitude: primaryOffice?.lat || GEO_COORDINATES[capitalKey]?.lat || 20.5937,
+      longitude: primaryOffice?.lng || GEO_COORDINATES[capitalKey]?.lng || 78.9629,
     },
+    ...(primaryOffice?.mapUrl ? { hasMap: primaryOffice.mapUrl } : {}),
+    ...(gbpOffices.length > 1
+      ? { sameAs: gbpOffices.map((o) => o.mapUrl) }
+      : primaryOffice?.mapUrl
+        ? { sameAs: [primaryOffice.mapUrl] }
+        : {}),
     image: 'https://www.silbarsecurity.in/og-image.jpg',
     openingHoursSpecification: [
       {
@@ -155,7 +168,7 @@ export default async function StateSEOPage({
                 <Phone size={16} /> Call Now
               </a>
               <a
-                href={`https://wa.me/${CONTACT.whatsapp.number}?text=${encodeURIComponent(`Hello Silbar Security, I need security services in ${location.name}.`)}`}
+                href={`https://wa.me/${CONTACT.whatsapp.number}?text=${encodeURIComponent(`Hello Silbar Security Services Pvt. Ltd., I need security services in ${location.name}.`)}`}
                 className="service-detail-cta service-detail-cta--secondary"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -203,16 +216,32 @@ export default async function StateSEOPage({
                 <Phone size={16} /> {CONTACT.phone}
               </a>
               <a
-                href={`https://wa.me/${CONTACT.whatsapp.number}?text=${encodeURIComponent(`Hello Silbar Security, I need security services in ${location.name}.`)}`}
+                href={`https://wa.me/${CONTACT.whatsapp.number}?text=${encodeURIComponent(`Hello Silbar Security Services Pvt. Ltd., I need security services in ${location.name}.`)}`}
                 className="service-detail-cta service-detail-cta--secondary"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 WhatsApp
               </a>
+              {primaryOffice?.mapUrl && (
+                <a
+                  href={primaryOffice.mapUrl}
+                  className="service-detail-cta service-detail-cta--secondary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MapPin size={16} /> Google Profile
+                </a>
+              )}
             </div>
           </div>
         </div>
+
+        <GbpOfficeSection
+          placeLabel={location.name}
+          offices={gbpOffices}
+          isLocalOffice={['delhi', 'haryana', 'rajasthan', 'uttar-pradesh', 'gujarat'].includes(location.slug)}
+        />
 
         <LocationRichContent content={content} />
 
@@ -283,7 +312,7 @@ export default async function StateSEOPage({
                 <Phone size={16} /> Call {CONTACT.phone}
               </a>
               <a
-                href={`https://wa.me/${CONTACT.whatsapp.number}?text=${encodeURIComponent(`Hello Silbar Security, I need a quote for security services in ${location.name}.`)}`}
+                href={`https://wa.me/${CONTACT.whatsapp.number}?text=${encodeURIComponent(`Hello Silbar Security Services Pvt. Ltd., I need a quote for security services in ${location.name}.`)}`}
                 className="service-detail-cta service-detail-cta--secondary"
                 target="_blank"
                 rel="noopener noreferrer"

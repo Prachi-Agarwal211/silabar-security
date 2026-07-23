@@ -1,6 +1,6 @@
 {
-  "name": "Silbar Security Services India",
-  "short_name": "Silbar Security India",
+  "name": "Silbar Security Services Pvt. Ltd.",
+  "short_name": "Silbar Security Services Pvt. Ltd.",
   "description": "ISO 9001:2015 certified security agency — manned guarding, surveillance, and facility management across PAN India.",
   "start_url": "/",
   "display": "standalone",
@@ -33,7 +33,7 @@
     {
       "name": "Call Now",
       "short_name": "Call",
-      "description": "Call Silbar Security directly",
+      "description": "Call Silbar Security Services Pvt. Ltd. directly",
       "url": "tel:+919982170555",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },

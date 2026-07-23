@@ -15,7 +15,7 @@ export const FAQS: FAQ[] = [
   },
   {
     category: 'General',
-    q: 'Is Silbar Security Services a PSARA licensed security company?',
+    q: 'Is Silbar Security Services Pvt. Ltd. a PSARA licensed security company?',
     a: 'Yes. Silbar Security Services Pvt. Ltd. has obtained PSARA licences across 19 states and Union Territories including Rajasthan, Delhi, Haryana, Uttar Pradesh, Madhya Pradesh, Gujarat, Punjab, Chandigarh, Uttarakhand, Maharashtra, Chhattisgarh, Odisha, Jharkhand, West Bengal, Karnataka, Tamil Nadu, and Telangana, with expansion into additional states continuing as part of our PAN India growth strategy.'
   },
   {
@@ -30,7 +30,7 @@ export const FAQS: FAQ[] = [
   },
   {
     category: 'General',
-    q: 'What makes Silbar Security different from other security companies?',
+    q: 'What makes Silbar Security Services Pvt. Ltd. different from other security companies?',
     a: 'Our biggest strength is our Compliance-First Business Model. We focus on professional manpower, statutory compliance (EPF, ESIC, Minimum Wages), transparent documentation, experienced management, quality supervision, 4 ISO certifications (IAF accredited), PSARA licensing across 19 states, CAPSI membership, and long-term client partnerships rather than simply deploying guards.'
   },
   {
@@ -40,12 +40,12 @@ export const FAQS: FAQ[] = [
   },
   {
     category: 'General',
-    q: 'How long has Silbar Security been operating in India?',
-    a: 'Silbar Security was established in 2018 with a vision to transform the private security industry. Founded initially as a proprietorship in Jaipur, Rajasthan by Mr. Sonu Singh, it was incorporated as Silbar Security Services Pvt. Ltd. in October 2025 with Mr. Nakul Singh Jadaun joining as Director.'
+    q: 'How long has Silbar Security Services Pvt. Ltd. been operating in India?',
+    a: 'Silbar Security Services Pvt. Ltd. was established in 2018 with a vision to transform the private security industry. Founded initially as a proprietorship in Jaipur, Rajasthan by Mr. Sonu Singh, it was incorporated as Silbar Security Services Pvt. Ltd. in October 2025 with Mr. Nakul Singh Jadaun joining as Director.'
   },
   {
     category: 'General',
-    q: 'Is Silbar Security Services registered with Startup India, MSME, GST, EPF and ESIC?',
+    q: 'Is Silbar Security Services Pvt. Ltd. registered with Startup India, MSME, GST, EPF and ESIC?',
     a: 'Yes. Our company is registered under Startup India (DPIIT recognized), MSME, MCA, GST, and fully complies with EPF and ESIC requirements, enabling us to deliver legally compliant and transparent security services to all our clients.'
   },
   {
@@ -103,11 +103,11 @@ export const FAQS: FAQ[] = [
   {
     category: 'Compliance',
     q: 'Are all your security guards police verified?',
-    a: 'Yes, police verification is a mandatory pre-requisite for employment at Silbar Security. No guard is deployed without a cleared police verification report. We follow strict recruitment and verification procedures as required by law, client policy, and contract requirements.'
+    a: 'Yes, police verification is a mandatory pre-requisite for employment at Silbar Security Services Pvt. Ltd. No guard is deployed without a cleared police verification report. We follow strict recruitment and verification procedures as required by law, client policy, and contract requirements.'
   },
   {
     category: 'Compliance',
-    q: 'What ISO certifications does Silbar Security hold?',
+    q: 'What ISO certifications does Silbar Security Services Pvt. Ltd. hold?',
     a: 'Silbar Security Services Pvt. Ltd. holds 4 ISO certifications — ISO 9001:2015 (Quality Management System), ISO 14001:2015 (Environmental Management System), ISO 45001:2018 (Occupational Health & Safety Management System), and ISO 27001 (Information Security Management System). All certifications are IAF accredited, ensuring global recognition and credibility.'
   },
   {
@@ -143,7 +143,7 @@ export const FAQS: FAQ[] = [
   {
     category: 'Compliance',
     q: 'Are our guards eligible for gratuity benefits under your employment?',
-    a: 'Yes, all guards who complete 5 years of continuous service with Silbar Security are eligible for gratuity as per the Payment of Gratuity Act, 1972. We are registered under the act and maintain a gratuity fund. The gratuity amount is calculated at 15 days of last drawn wages for every completed year of service or part thereof exceeding six months.'
+    a: 'Yes, all guards who complete 5 years of continuous service with Silbar Security Services Pvt. Ltd. are eligible for gratuity as per the Payment of Gratuity Act, 1972. We are registered under the act and maintain a gratuity fund. The gratuity amount is calculated at 15 days of last drawn wages for every completed year of service or part thereof exceeding six months.'
   },
   {
     category: 'Compliance',
@@ -292,7 +292,7 @@ export const FAQS: FAQ[] = [
   {
     category: 'Industries',
     q: 'Do you provide security for government departments and PSUs?',
-    a: 'Yes. Silbar Security Services actively participates in government and public sector opportunities and provides security manpower for eligible government departments, public sector organizations, and infrastructure projects, subject to applicable tender requirements and PSARA compliance.'
+    a: 'Yes. Silbar Security Services Pvt. Ltd. actively participates in government and public sector opportunities and provides security manpower for eligible government departments, public sector organizations, and infrastructure projects, subject to applicable tender requirements and PSARA compliance.'
   },
   {
     category: 'Industries',

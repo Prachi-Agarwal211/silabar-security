@@ -3,8 +3,8 @@ import type { Metadata } from 'next'
 import { Shield, ArrowLeft } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Page Not Found | Silbar Security India',
-  description: 'The page you are looking for does not exist or has been moved. Return to Silbar Security India home.',
+  title: 'Page Not Found | Silbar Security Services Pvt. Ltd.',
+  description: 'The page you are looking for does not exist or has been moved. Return to Silbar Security Services Pvt. Ltd. home.',
   robots: { index: false },
 }
 

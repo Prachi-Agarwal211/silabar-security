@@ -335,4 +335,60 @@
 .contact-map-frame {
   border: 0;
   border-radius: 8px;
+  width: 100%;
+  display: block;
+}
+
+.contact-maps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .contact-maps-grid { grid-template-columns: 1fr; }
+}
+
+.contact-map-card {
+  background: linear-gradient(135deg, var(--color-paper) 0%, rgba(232, 223, 200, 0.35) 100%);
+  border: 1px solid rgba(140, 31, 50, 0.1);
+  padding: 1rem 1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.contact-map-card__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.contact-map-card__head svg {
+  color: var(--color-cherry);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.contact-map-card__head strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--color-paper-ink);
+  line-height: 1.35;
+}
+
+.contact-map-card__head p {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--color-horizon-600);
+}
+
+.contact-map-container--office {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(140, 31, 50, 0.08);
 }

@@ -8,10 +8,10 @@ import { ogMetadata } from '@/lib/metadata'
 import { GEO_COORDINATES } from '@/lib/geo-coordinates'
 
 export const metadata: Metadata = {
-  title: 'Contact Us — Call or WhatsApp Silbar Security India',
+  title: 'Contact Us — Call or WhatsApp Silbar Security Services Pvt. Ltd.',
   description:
-    'Contact Silbar Security Services India for a free security consultation and quote. Call ' + CONTACT.phone + ' or email ' + CONTACT.email + '. Offices in Delhi, Gurugram, Jaipur, Noida & Ahmedabad.',
-  ...ogMetadata('Contact Us — Call or WhatsApp Silbar Security India', 'Contact Silbar Security Services India for a free security consultation and quote. Call ' + CONTACT.phone + ' or email ' + CONTACT.email + '. Offices in Delhi, Gurugram, Jaipur, Noida & Ahmedabad.', '/contact'),
+    'Contact Silbar Security Services Pvt. Ltd. for a free security consultation and quote. Call ' + CONTACT.phone + ' or email ' + CONTACT.email + '. Offices in Delhi, Gurugram, Jaipur, Noida & Ahmedabad.',
+  ...ogMetadata('Contact Us — Call or WhatsApp Silbar Security Services Pvt. Ltd.', 'Contact Silbar Security Services Pvt. Ltd. for a free security consultation and quote. Call ' + CONTACT.phone + ' or email ' + CONTACT.email + '. Offices in Delhi, Gurugram, Jaipur, Noida & Ahmedabad.', '/contact'),
 }
 
 export default function ContactPage() {
@@ -33,28 +33,33 @@ export default function ContactPage() {
             : office.city.toLowerCase().includes('noida') ? 'noida-office'
             : office.city.toLowerCase().includes('ahmedabad') ? 'ahmedabad-office'
             : ''
-          const geo = key && (GEO_COORDINATES as any)[key]
+          const geo = (office.lat && office.lng)
+            ? { lat: office.lat, lng: office.lng }
+            : key ? (GEO_COORDINATES as any)[key] : null
           return {
             '@context': 'https://schema.org',
             '@type': 'LocalBusiness',
-            name: `Silbar Security Services — ${office.city}`,
+            name: office.placeName || `Silbar Security Services Pvt. Ltd. — ${office.city}`,
+            legalName: 'Silbar Security Services Pvt. Ltd.',
             telephone: office.phoneRaw,
             email: CONTACT.email,
+            url: 'https://www.silbarsecurity.in/contact',
+            hasMap: office.mapUrl,
             address: {
               '@type': 'PostalAddress',
               streetAddress: office.address.split(',')[0].trim(),
-              addressLocality: office.city.replace(/\s*\(.*?\)\s*/g, ''),
+              addressLocality: office.city.replace(/\s*\(.*?\)\s*/g, '').trim(),
               addressRegion: office.region,
               postalCode: office.pin || undefined,
               addressCountry: 'IN',
             },
             ...(geo ? { geo: { '@type': 'GeoCoordinates', latitude: geo.lat, longitude: geo.lng } } : {}),
+            openingHoursSpecification: [{
+              '@type': 'OpeningHoursSpecification',
+              dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+              opens: '09:00', closes: '19:00'
+            }],
             ...(i === 0 ? {
-              openingHoursSpecification: [{
-                '@type': 'OpeningHoursSpecification',
-                dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
-                opens: '09:00', closes: '19:00'
-              }],
               contactPoint: {
                 '@type': 'ContactPoint',
                 telephone: '+91-9982170555',
@@ -189,7 +194,7 @@ export default function ContactPage() {
                   <div className="office-card__badge">{office.badge}</div>
                   <div className="office-card__header">
                     <MapPin size={18} aria-hidden="true" />
-                    {office.city}
+                    {(office as any).placeName || office.city}
                   </div>
                   <p className="office-card__address">{office.address}</p>
                   <a href={`tel:${office.phoneRaw}`} className="office-card__phone">
@@ -208,20 +213,39 @@ export default function ContactPage() {
             </div>
           </ScrollReveal>
 
-          {/* Google Maps */}
+          {/* Google Business Profile maps — all 5 Silbar offices */}
           <div className="u-mt-2">
             <span className="section-eyebrow section-eyebrow--red u-block u-mb-1">FIND US ON MAP</span>
-            <div className="contact-map-container">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.2!2d77.2332!3d28.6308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd1a0c0c0c0f%3A0x0!2sStatesman+House%2C+148+Barakhamba+Rd%2C+Connaught+Place%2C+New+Delhi+110001!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-                width="100%"
-                height="400"
-                className="contact-map-frame"
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Silbar Security Registered Office - Statesman House, New Delhi"
-              />
+            <h2 className="section-heading contact-offices-heading" style={{ marginBottom: '1.25rem' }}>
+              Silbar Security Services Pvt. Ltd. <em>Locations</em>
+            </h2>
+            <div className="contact-maps-grid">
+              {(CONTACT.officeLocations as unknown as any[]).map((office: any) => (
+                <div key={office.city} className="contact-map-card">
+                  <div className="contact-map-card__head">
+                    <MapPin size={16} aria-hidden="true" />
+                    <div>
+                      <strong>{office.placeName || office.city}</strong>
+                      <p>{office.address}</p>
+                    </div>
+                  </div>
+                  <div className="contact-map-container contact-map-container--office">
+                    <iframe
+                      src={office.mapEmbed}
+                      width="100%"
+                      height="280"
+                      className="contact-map-frame"
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title={`${office.placeName || office.city} — Google Map`}
+                    />
+                  </div>
+                  <a href={office.mapUrl} target="_blank" rel="noopener noreferrer" className="office-card__map-btn">
+                    <Map size={13} aria-hidden="true" /> Open Silbar Google Profile
+                  </a>
+                </div>
+              ))}
             </div>
           </div>
 

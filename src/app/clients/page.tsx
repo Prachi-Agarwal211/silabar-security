@@ -10,7 +10,7 @@ import { ogMetadata } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
-  ...ogMetadata('Client Services', 'Request proposals, site surveys, and instant quotes from Silbar Security. Existing clients can access documents and raise service requests.', '/clients'),
+  ...ogMetadata('Client Services', 'Request proposals, site surveys, and instant quotes from Silbar Security Services Pvt. Ltd.. Existing clients can access documents and raise service requests.', '/clients'),
 }
 
 export default function ClientsPage() {

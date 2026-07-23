@@ -8,10 +8,10 @@ import { ogMetadata } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
-  title: 'Silbar Security Services India — Trusted Security Agency | Jaipur, Delhi, Ahmedabad',
+  title: 'Silbar Security Services Pvt. Ltd. — Trusted Security Agency | Jaipur, Delhi, Ahmedabad',
   description:
     'ISO 9001:2015 certified Indian security agency. 7,000+ professionals. Manned guarding, CCTV, facility management across India. Call for a free quote.',
-  ...ogMetadata('Silbar Security Services India — Trusted Security Agency', 'ISO 9001:2015 certified. 7,000+ professionals. Manned guarding, CCTV, facility management across India.', '/google'),
+  ...ogMetadata('Silbar Security Services Pvt. Ltd. — Trusted Security Agency', 'ISO 9001:2015 certified. 7,000+ professionals. Manned guarding, CCTV, facility management across India.', '/google'),
   robots: { index: false, follow: true },
 }
 
@@ -42,8 +42,8 @@ export default function GoogleLandingPage() {
       <section style={{ padding: '4rem 2rem 3rem', textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
         <ScrollReveal>
           <Image src="/logo.webp" alt="Silbar Security" width={100} height={100} style={{ margin: '0 auto 1.5rem', borderRadius: '12px' }} />
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 800, color: 'white', marginBottom: '1rem' }}>
-            Silbar Security <span style={{ color: 'var(--color-cherry)' }}>Services</span>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem, 4.5vw, 2.75rem)', fontWeight: 800, color: 'white', marginBottom: '1rem' }}>
+            Silbar Security Services <span style={{ color: 'var(--color-cherry)' }}>Pvt. Ltd.</span>
           </h1>
           <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.8)', lineHeight: 1.7, marginBottom: '2rem' }}>
             India&apos;s trusted ISO 9001:2015 certified security agency with           7,000+ professionals protecting businesses, homes, and events across PAN India with PSARA licenses in 19 states and 4 ISO certifications.
@@ -129,7 +129,7 @@ export default function GoogleLandingPage() {
               </div>
               <div>
                 <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.75rem', marginBottom: '0.25rem' }}>Visit Us</div>
-                <div style={{ color: 'white', fontWeight: 600, fontSize: '0.85rem' }}>New Delhi · Gurugram · Jaipur</div>
+                <div style={{ color: 'white', fontWeight: 600, fontSize: '0.85rem' }}>Delhi · Gurugram · Jaipur · Noida · Ahmedabad</div>
               </div>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1.25rem', background: 'rgba(255,255,255,0.05)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.08)' }}>
@@ -148,7 +148,7 @@ export default function GoogleLandingPage() {
       {/* Bottom CTA */}
       <section style={{ padding: '4rem 2rem', textAlign: 'center' }}>
         <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem', marginBottom: '1.5rem' }}>
-          Serving New Delhi, Gurugram, Jaipur, and 200+ cities across 19 states in India
+          Serving New Delhi, Gurugram, Jaipur, Noida, Ahmedabad, and 200+ cities across 19 states in India
         </p>
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
           <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.875rem 1.75rem', background: 'var(--color-gold)', color: 'var(--color-midnight)', borderRadius: '8px', fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '0.95rem', textDecoration: 'none' }}>

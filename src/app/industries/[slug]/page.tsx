@@ -61,7 +61,7 @@ export default async function IndustryPage({
     description: industry.description,
     provider: {
       '@type': 'Organization',
-      name: 'Silbar Security Services India Pvt. Ltd.',
+      name: 'Silbar Security Services Pvt. Ltd.',
       url: 'https://www.silbarsecurity.in',
     },
   }
@@ -123,7 +123,7 @@ export default async function IndustryPage({
                 </ScrollReveal>
                 <p className="service-detail-longcopy">{industry.description}</p>
                 <p className="service-detail-longcopy">
-                  Silbar Security designs {industry.shortTitle.toLowerCase()} security around real
+                  Silbar Security Services Pvt. Ltd. designs {industry.shortTitle.toLowerCase()} security around real
                   operational risk — access points, shifts, contractors, emergency paths, and
                   compliance expectations. Deployments can include manned posts, supervision,
                   visitor/material discipline, and coordination with your facility team across
@@ -312,7 +312,7 @@ export default async function IndustryPage({
                   </ScrollReveal>
                 ) : (
                   <p className="service-detail-longcopy" style={{ marginTop: '0.5rem' }}>
-                    Explore our <Link href="/case-studies" style={{ color: 'var(--color-cherry)', textDecoration: 'underline' }}>case studies</Link> to see how Silbar Security delivers results across industries.
+                    Explore our <Link href="/case-studies" style={{ color: 'var(--color-cherry)', textDecoration: 'underline' }}>case studies</Link> to see how Silbar Security Services Pvt. Ltd. delivers results across industries.
                   </p>
                 )}
               </div>

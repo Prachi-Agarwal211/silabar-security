@@ -19,10 +19,10 @@ function groupFaqsByCategory() {
 
 export const metadata: Metadata = {
   title: 'Frequently Asked Questions',
-  description: 'Find answers about Silbar Security services, PSARA licensing, ISO certifications, pricing, coverage areas, and security solutions across India.',
+  description: 'Find answers about Silbar Security Services Pvt. Ltd. services, PSARA licensing, ISO certifications, pricing, coverage areas, and security solutions across India.',
   ...ogMetadata(
     'FAQs',
-    'Find answers to common questions about Silbar Security services, PSARA licensing, ISO certifications, pricing, coverage areas.',
+    'Find answers to common questions about Silbar Security Services Pvt. Ltd. services, PSARA licensing, ISO certifications, pricing, coverage areas.',
     '/faq'
   ),
 }

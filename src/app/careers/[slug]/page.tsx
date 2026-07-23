@@ -24,8 +24,8 @@ export async function generateMetadata({
 
   return {
     title: `${career.title} — Careers`,
-    description: `Apply for ${career.title} at Silbar Security Services India. ${career.locations.join(', ')}. ${career.type}. ${career.department}. Join India's most trusted security force.`,
-    ...ogMetadata(`${career.title} — Careers`, `Apply for ${career.title} at Silbar Security Services India. ${career.locations.join(', ')}.`, `/careers/${slug}`),
+    description: `Apply for ${career.title} at Silbar Security Services Pvt. Ltd.. ${career.locations.join(', ')}. ${career.type}. ${career.department}. Join India's most trusted security force.`,
+    ...ogMetadata(`${career.title} — Careers`, `Apply for ${career.title} at Silbar Security Services Pvt. Ltd.. ${career.locations.join(', ')}.`, `/careers/${slug}`),
   }
 }
 
@@ -103,7 +103,7 @@ export default async function CareerDetailPage({
 
           <div className="career-detail-hero__ctas">
             <a
-              href={`https://wa.me/${CONTACT.whatsapp.number}?text=${encodeURIComponent(`Hi Silbar Security, I am interested in the ${career.title} position at ${career.locations[0]}.`)}`}
+              href={`https://wa.me/${CONTACT.whatsapp.number}?text=${encodeURIComponent(`Hi Silbar Security Services Pvt. Ltd., I am interested in the ${career.title} position at ${career.locations[0]}.`)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="service-detail-cta service-detail-cta--secondary"
@@ -181,7 +181,7 @@ export default async function CareerDetailPage({
             </p>
             <div className="service-detail-ctas service-detail-ctas--centered">
               <a
-                href={`https://wa.me/${CONTACT.whatsapp.number}?text=${encodeURIComponent(`Hi Silbar Security, I am interested in the ${career.title} position at ${career.locations[0]}. My name is [Your Name].`)}`}
+                href={`https://wa.me/${CONTACT.whatsapp.number}?text=${encodeURIComponent(`Hi Silbar Security Services Pvt. Ltd., I am interested in the ${career.title} position at ${career.locations[0]}. My name is [Your Name].`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="service-detail-cta service-detail-cta--secondary"
@@ -202,7 +202,7 @@ export default async function CareerDetailPage({
       <PageLeadSection
         title="Not the Role You're Looking For?"
         subtitle="We're always hiring talented professionals. Send us your resume and our team will reach out when a suitable position opens up."
-        defaultMessage={`I would like to discuss a careers enquiry with Silbar Security. I am interested in similar roles to ${career.title}.`}
+        defaultMessage={`I would like to discuss a careers enquiry with Silbar Security Services Pvt. Ltd.. I am interested in similar roles to ${career.title}.`}
       />
     </main>
   )

@@ -1,16 +1,16 @@
 // Automatically generated GPS coordinates
 export const GEO_COORDINATES: Record<string, { lat: number; lng: number }> = {
   "jaipur": {
-    "lat": 26.9154576,
-    "lng": 75.8189817
+    "lat": 26.9119365,
+    "lng": 75.7973241
   },
   "delhi": {
-    "lat": 28.6138954,
-    "lng": 77.2090057
+    "lat": 28.6307992,
+    "lng": 77.2226255
   },
   "ahmedabad": {
-    "lat": 23.0215374,
-    "lng": 72.5800568
+    "lat": 23.0228658,
+    "lng": 72.5067099
   },
   "mumbai": {
     "lat": 19.054999,
@@ -45,12 +45,12 @@ export const GEO_COORDINATES: Record<string, { lat: number; lng: number }> = {
     "lng": 73.0351433
   },
   "noida": {
-    "lat": 28.5706333,
-    "lng": 77.3272147
+    "lat": 28.6143967,
+    "lng": 77.3553021
   },
   "gurugram": {
-    "lat": 28.4646148,
-    "lng": 77.0299194
+    "lat": 28.4502633,
+    "lng": 77.1006415
   },
   "indore": {
     "lat": 22.7203616,
@@ -617,8 +617,8 @@ export const GEO_COORDINATES: Record<string, { lat: number; lng: number }> = {
     "lng": 92.7976082
   },
   "new-delhi": {
-    "lat": 28.6138954,
-    "lng": 77.2090057
+    "lat": 28.6307992,
+    "lng": 77.2226255
   },
   "greater-noida": {
     "lat": 28.4670734,
@@ -824,24 +824,25 @@ export const GEO_COORDINATES: Record<string, { lat: number; lng: number }> = {
     "lat": 21.5006421,
     "lng": 86.919884
   },
+  // Silbar Security Services Pvt. Ltd. office pins (Google Business Profile)
   "delhi-office": {
-    "lat": 28.6139,
-    "lng": 77.209
+    "lat": 28.6307992,
+    "lng": 77.2226255
   },
   "gurugram-office": {
-    "lat": 28.4595,
-    "lng": 77.0266
+    "lat": 28.4502633,
+    "lng": 77.1006415
   },
   "jaipur-office": {
-    "lat": 26.9155,
-    "lng": 75.819
+    "lat": 26.9119365,
+    "lng": 75.7973241
   },
   "noida-office": {
-    "lat": 28.5706,
-    "lng": 77.3272
+    "lat": 28.6143967,
+    "lng": 77.3553021
   },
   "ahmedabad-office": {
-    "lat": 23.0225,
-    "lng": 72.5714
+    "lat": 23.0228658,
+    "lng": 72.5067099
   }
 };

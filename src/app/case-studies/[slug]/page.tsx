@@ -23,7 +23,7 @@ export async function generateMetadata({
   const study = CASE_STUDIES.find((s) => s.slug === slug)
   if (!study) return {}
 
-  const desc = `How Silbar Security delivered measurable results for ${study.client} in ${study.location}.`
+  const desc = `How Silbar Security Services Pvt. Ltd. delivered measurable results for ${study.client} in ${study.location}.`
   const descShort = desc.length > 157 ? desc.slice(0, 157) + '...' : desc
   const ogDesc = `Case study: ${study.client} – ${study.results[0]}`
   const ogDescShort = ogDesc.length > 157 ? ogDesc.slice(0, 157) + '...' : ogDesc

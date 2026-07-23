@@ -21,19 +21,19 @@ const sections = [
   },
   {
     title: 'Professional Security Liability',
-    content: 'The security tips, advice, and information available on this website do not constitute professional security advice. While we strive to provide accurate security guidelines, every facility and situation is unique. Action taken based on the information provided on this website is strictly at your own risk. Silbar Security Services is not liable for any losses or damages in connection with the use of our website. For tailored security solutions, please contact our consultants directly for a formal assessment.',
+    content: 'The security tips, advice, and information available on this website do not constitute professional security advice. While we strive to provide accurate security guidelines, every facility and situation is unique. Action taken based on the information provided on this website is strictly at your own risk. Silbar Security Services Pvt. Ltd. is not liable for any losses or damages in connection with the use of our website. For tailored security solutions, please contact our consultants directly for a formal assessment.',
   },
   {
     title: 'Third-Party Links Disclaimer',
-    content: 'Our website may contain links to external websites that are not provided or maintained by or in any way affiliated with Silbar Security Services. Please note that Silbar Security Services does not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external websites. We do not endorse the views expressed or the products/services offered on these external sites.',
+    content: 'Our website may contain links to external websites that are not provided or maintained by or in any way affiliated with Silbar Security Services Pvt. Ltd. Please note that Silbar Security Services Pvt. Ltd. does not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external websites. We do not endorse the views expressed or the products/services offered on these external sites.',
   },
   {
     title: 'CCTV and Surveillance Disclaimer',
-    content: 'Silbar Security Services may operate CCTV and other electronic surveillance equipment at our corporate offices and at client sites under contract. Such surveillance is conducted strictly for security, safety, and operational monitoring purposes, in compliance with applicable laws including the DPDP Act 2023. Video footage may be shared with law enforcement agencies upon lawful request.',
+    content: 'Silbar Security Services Pvt. Ltd. may operate CCTV and other electronic surveillance equipment at our corporate offices and at client sites under contract. Such surveillance is conducted strictly for security, safety, and operational monitoring purposes, in compliance with applicable laws including the DPDP Act 2023. Video footage may be shared with law enforcement agencies upon lawful request.',
   },
   {
     title: 'Errors and Omissions',
-    content: 'While we have made every attempt to ensure that the information contained on this site has been obtained from reliable sources, Silbar Security Services is not responsible for any errors or omissions, or for the results obtained from the use of this information.',
+    content: 'While we have made every attempt to ensure that the information contained on this site has been obtained from reliable sources, Silbar Security Services Pvt. Ltd. is not responsible for any errors or omissions, or for the results obtained from the use of this information.',
   },
   {
     title: 'Testimonials Disclaimer',
@@ -88,7 +88,7 @@ export default function DisclaimerPage() {
         </div>
       </section>
     
-      <PageLeadSection title="Still Have Questions?" subtitle="Contact Silbar Security for clarifications about our services." />
+      <PageLeadSection title="Still Have Questions?" subtitle="Contact Silbar Security Services Pvt. Ltd. for clarifications about our services." />
 
 </main>
   )

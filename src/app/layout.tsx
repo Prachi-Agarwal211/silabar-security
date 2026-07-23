@@ -26,11 +26,11 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.silbarsecurity.in'),
   title: {
-    default: 'Silbar Security Services India | Trusted Security Agency',
-    template: '%s | Silbar Security India',
+    default: 'Silbar Security Services Pvt. Ltd. | Trusted Security Agency',
+    template: '%s | Silbar Security Services Pvt. Ltd.',
   },
   description:
-    'Silbar Security India — ISO 9001:2015 certified security agency with 7,000+ guards. Manned guarding, CCTV, facility management, VIP protection across India.',
+    'Silbar Security Services Pvt. Ltd. — ISO 9001:2015 certified security agency with 7,000+ guards. Manned guarding, CCTV, facility management, VIP protection across India.',
   keywords: [
     'security agency India',
     'security company India',
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
     'CCTV surveillance services',
     'event security India',
   ],
-  authors: [{ name: 'Silbar Security Services India Pvt. Ltd.' }],
-  creator: 'Silbar Security Services India',
-  publisher: 'Silbar Security Services India Pvt. Ltd.',
+  authors: [{ name: 'Silbar Security Services Pvt. Ltd.' }],
+  creator: 'Silbar Security Services Pvt. Ltd.',
+  publisher: 'Silbar Security Services Pvt. Ltd.',
   robots: {
     index: true,
     follow: true,
@@ -59,8 +59,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.silbarsecurity.in',
-    siteName: 'Silbar Security Services India',
-    title: 'Silbar Security Services India | Trusted Security Agency',
+    siteName: 'Silbar Security Services Pvt. Ltd.',
+    title: 'Silbar Security Services Pvt. Ltd. | Trusted Security Agency',
     description:
       'ISO 9001:2015 certified. 7,000+ professionals. Manned guarding, VIP protection, surveillance, and facility management across India.',
     images: [
@@ -68,13 +68,13 @@ export const metadata: Metadata = {
         url: 'https://www.silbarsecurity.in/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Silbar Security Services India — Protecting India',
+        alt: 'Silbar Security Services Pvt. Ltd. — Protecting India',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Silbar Security Services India | Trusted Security Agency',
+    title: 'Silbar Security Services Pvt. Ltd. | Trusted Security Agency',
     description:
       'ISO 9001:2015 certified. 7,000+ professionals. Security services across PAN India.',
     images: ['https://www.silbarsecurity.in/og-image.jpg'],
@@ -165,8 +165,8 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'Organization',
               '@id': 'https://www.silbarsecurity.in/#organization',
-              name: 'Silbar Security Services India Pvt. Ltd.',
-              alternateName: 'Silbar Security India',
+              name: 'Silbar Security Services Pvt. Ltd.',
+              alternateName: 'Silbar Security Services Pvt. Ltd.',
               url: 'https://www.silbarsecurity.in',
               logo: {
                 '@type': 'ImageObject',
@@ -268,7 +268,7 @@ export default function RootLayout({
               '@type': 'WebSite',
               '@id': 'https://www.silbarsecurity.in/#website',
               url: 'https://www.silbarsecurity.in',
-              name: 'Silbar Security Services India',
+              name: 'Silbar Security Services Pvt. Ltd.',
               description:
                 'ISO 9001:2015 certified private security agency in India. Manned guarding, industrial security, CCTV support, facility protection across 200+ cities.',
               inLanguage: 'en-IN',
@@ -309,7 +309,7 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'ProfessionalService',
               '@id': 'https://www.silbarsecurity.in/#security-service',
-              name: 'Silbar Security India Guard Services',
+              name: 'Silbar Security Services Pvt. Ltd.',
               image: 'https://www.silbarsecurity.in/og-image.jpg',
               url: 'https://www.silbarsecurity.in',
               telephone: CONTACT.phone,

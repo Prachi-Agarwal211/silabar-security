@@ -9,10 +9,10 @@ import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
   title: 'Emergency Contact',
-  description: '24/7 emergency security contact for Silbar Security clients. Immediate response for security incidents, fire emergencies, and critical situations.',
+  description: '24/7 emergency security contact for Silbar Security Services Pvt. Ltd. clients. Immediate response for security incidents, fire emergencies, and critical situations.',
   ...ogMetadata(
     'Emergency Contact',
-    '24/7 emergency security contact for Silbar Security clients. Immediate response for security incidents, fire emergencies, and critical situations.',
+    '24/7 emergency security contact for Silbar Security Services Pvt. Ltd. clients. Immediate response for security incidents, fire emergencies, and critical situations.',
     '/emergency'
   ),
 }
@@ -63,7 +63,7 @@ export default function EmergencyPage() {
               <Phone size={32} color="var(--color-gold)" />
               <h3 className="emergency-card__label">HQ Landline</h3>
               <p className="emergency-card__value">{CONTACT.landline}</p>
-              <p className="emergency-card__meta">Jaipur headquarters</p>
+              <p className="emergency-card__meta">Silbar Security Services Pvt. Ltd. · 24/7 operations</p>
             </a>
             <a href={CONTACT.whatsapp.url} target="_blank" rel="noopener noreferrer" className="emergency-card bento-cell glass-panel">
               <MessageSquare size={32} color="var(--color-gold)" />

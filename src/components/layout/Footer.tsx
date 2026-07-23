@@ -49,9 +49,9 @@ export default function Footer() {
         {/* Brand + Contact column */}
         <div className="footer-brand-col">
           <div className="footer-brand-row">
-            <Image src="/icon-512.png" alt="Silbar Security" width={44} height={44} className="footer-logo-img" />
+            <Image src="/icon-512.png" alt="Silbar Security Services Pvt. Ltd." width={44} height={44} className="footer-logo-img" />
             <div>
-              <div className="footer-brand">Silbar Security</div>
+              <div className="footer-brand">Silbar Security Services Pvt. Ltd.</div>
               <p className="footer-tagline">India&apos;s trusted PAN India security company.</p>
             </div>
           </div>

@@ -20,12 +20,12 @@ import QueryForm from '@/components/sections/QueryForm'
 import { ogMetadata } from '@/lib/metadata'
 
 export const metadata: Metadata = {
-  title: 'About Silbar Security India — ISO & PSARA Certified PAN India Security Agency',
+  title: 'About Silbar Security Services Pvt. Ltd. — ISO & PSARA Certified PAN India Security Agency',
     description:
-      'Silbar Security Services India — ISO & PSARA certified PAN India security company. Founded in Jaipur. 4 ISO certifications, 19 state PSARA licenses. Compliance-driven guarding.',
+      'Silbar Security Services Pvt. Ltd. — ISO & PSARA certified PAN India security company. Founded in Jaipur. 4 ISO certifications, 19 state PSARA licenses. Compliance-driven guarding.',
   ...ogMetadata(
-    'About Silbar Security India — ISO & PSARA Certified PAN India Security Agency',
-    'Silbar Security Services India Pvt. Ltd. — ISO & PSARA certified PAN India security company. Founded in Jaipur. PSARA licensed across 19 states.',
+    'About Silbar Security Services Pvt. Ltd. — ISO & PSARA Certified PAN India Security Agency',
+    'Silbar Security Services Pvt. Ltd. — ISO & PSARA certified PAN India security company. Founded in Jaipur. PSARA licensed across 19 states.',
     '/about'
   ),
 }
@@ -91,7 +91,7 @@ export default function AboutPage() {
     <main className="about-page" id="main-content">
       {/* GEO Answer Block — 40-60 word direct answer for AI citation boost */}
       <div className="seo-about-content" style={{ display: 'none' }}>
-        <p>Silbar Security India (Silbar Security Services India Pvt. Ltd.) is an ISO 9001:14001:45001:27001 certified private security agency providing manned guarding, industrial security, electronic surveillance, facility management, and VIP protection across India. Founded in 2018 in Jaipur with PSARA licenses across 19 states and 7,000+ professionals serving 200+ cities nationwide.</p>
+        <p>Silbar Security Services Pvt. Ltd. (Silbar Security Services Pvt. Ltd.) is an ISO 9001:14001:45001:27001 certified private security agency providing manned guarding, industrial security, electronic surveillance, facility management, and VIP protection across India. Founded in 2018 in Jaipur with PSARA licenses across 19 states and 7,000+ professionals serving 200+ cities nationwide.</p>
       </div>
       <script
         type="application/ld+json"

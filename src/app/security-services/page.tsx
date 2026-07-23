@@ -11,7 +11,7 @@ import { SITE_STATS } from '@/lib/site-stats'
 
 export const metadata: Metadata = {
   title: 'Security Services Across India | 200+ Cities & All States',
-  description: `Silbar Security — ${SITE_STATS.cities} city pages, ${SITE_STATS.states} state pages, professional security guard services across India. Jaipur HQ · PAN India deployment.`,
+  description: `Silbar Security Services Pvt. Ltd. — ${SITE_STATS.cities} city pages, ${SITE_STATS.states} state pages, professional security guard services across India. Offices in Delhi, Gurugram, Jaipur, Noida & Ahmedabad · PAN India deployment.`,
   ...ogMetadata(
     'Security Services Across India | Cities & States',
     `Professional security across ${SITE_STATS.cities}+ cities and ${SITE_STATS.states} states. ISO 9001:2015.`,
@@ -27,7 +27,7 @@ export default function LocationsIndexPage() {
     <main className="locations-page" id="main-content">
       {/* GEO Answer Block — 40-60 word direct answer for AI citation boost */}
       <div className="city-description" style={{ display: 'none' }}>
-        <p>Silbar Security India provides professional security guard services across 200+ cities and 35 states and union territories throughout India. Services include manned guarding, industrial security, CCTV surveillance support, event security, VIP protection, and facility management. Each city page has unique local content, FAQs, and a WhatsApp quote form tailored to that location.</p>
+        <p>Silbar Security Services Pvt. Ltd. provides professional security guard services across 200+ cities and 35 states and union territories throughout India. Services include manned guarding, industrial security, CCTV surveillance support, event security, VIP protection, and facility management. Each city page has unique local content, FAQs, and a WhatsApp quote form tailored to that location.</p>
       </div>
       {/* ─── Hero ─── */}
       <section className="locations-hero" aria-labelledby="locations-heading">

@@ -57,7 +57,7 @@ const sections = [
   },
   {
     title: 'Contact',
-    content: 'For questions about these Terms of Use, contact us at: ' + CONTACT.email + ', ' + CONTACT.phone + ', or 208, 2nd Floor, Samod Tower, Sansar Chand Road, Jaipur — 302001, Rajasthan, India.',
+    content: 'For questions about these Terms of Use, contact us at: ' + CONTACT.email + ', ' + CONTACT.phone + ', or Silbar Security Services Pvt. Ltd., 5th Floor, Statesman House, Plot No. 148, Barakhamba Road, Connaught Place, New Delhi — 110001, India. Regional office: 7th Floor, Man Upasana Tower, C-44, Sardar Patel Marg, C Scheme, Ashok Nagar, Jaipur — 302001.',
   },
 ]
 

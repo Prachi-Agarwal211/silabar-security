@@ -82,7 +82,7 @@ const STATS = [
 
 const TESTIMONIALS = [
   { quote: 'Silbar\'s professionalism, transparency and response times are unmatched. A partner we rely on, every day.', name: 'Operations Head', company: 'Leading Manufacturing Firm' },
-  { quote: 'We switched to Silbar Security for our 12 factories across Rajasthan. The reduction in security incidents has been remarkable — 90% fewer incidents in the first quarter.', name: 'VP Facilities', company: 'Automobile Manufacturer' },
+  { quote: 'We switched to Silbar Security Services Pvt. Ltd. for our 12 factories across Rajasthan. The reduction in security incidents has been remarkable — 90% fewer incidents in the first quarter.', name: 'VP Facilities', company: 'Automobile Manufacturer' },
   { quote: 'Their electronic surveillance integration with manned guarding gave us complete visibility across 45 retail locations. Truly pan-India capability.', name: 'Security Director', company: 'National Retail Chain' },
   { quote: 'The Quick Response Team arrived within 15 minutes of our distress call. Silbar\'s 24/7 monitoring is genuinely world-class.', name: 'Facility Manager', company: 'IT Park, Bengaluru' },
   { quote: 'From event security for our 10,000-strong conference to daily office guarding, Silbar handles it all with ISO-certified processes. Highly recommended.', name: 'CEO', company: 'Corporate Events Company' },
@@ -227,7 +227,7 @@ export default function HomePageClient() {
               Protection is our <em>Promise.</em><br />Integrity is our Foundation.
             </h2>
             <p className="why-silbar-body">
-              Since 2018, Silbar Security has grown into a trusted PAN India security partner for enterprises,
+               Since 2018, Silbar Security Services Pvt. Ltd. has grown into a trusted PAN India security partner for enterprises,
               institutions, and communities across India. With PSARA licenses in 19 states, 4 ISO certifications,
               and a team of 7,000+ trained professionals, we combine compliance, people, and technology
               to deliver unmatched protection.

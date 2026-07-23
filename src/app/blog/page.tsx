@@ -13,12 +13,12 @@ import { WORDPRESS_BLOG } from '@/lib/config'
 export const revalidate = 300 // refresh WP posts every 5 min
 
 export const metadata: Metadata = {
-  title: 'Blog | Security Insights — Silbar Security India',
+  title: 'Blog | Security Insights — Silbar Security Services Pvt. Ltd.',
   description:
-    'Security tips, compliance guides, and company updates from Silbar Security India. Live posts from blog.silbarsecurity.in plus curated insights.',
+    'Security tips, compliance guides, and company updates from Silbar Security Services Pvt. Ltd.. Live posts from blog.silbarsecurity.in plus curated insights.',
   ...ogMetadata(
-    'Blog | Security Insights — Silbar Security India',
-    'Live WordPress blog + security insights from Silbar Security Services India.',
+    'Blog | Security Insights — Silbar Security Services Pvt. Ltd.',
+    'Live WordPress blog + security insights from Silbar Security Services Pvt. Ltd..',
     '/blog'
   ),
 }
