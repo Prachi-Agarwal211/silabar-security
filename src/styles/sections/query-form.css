@@ -219,6 +219,15 @@
   text-decoration: underline;
 }
 
+.query-form__trust-line {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  letter-spacing: 0.01em;
+}
+
 /* Success State */
 .query-form--success {
   text-align: center;

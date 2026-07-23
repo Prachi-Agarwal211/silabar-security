@@ -6,7 +6,7 @@ import DynamicBreadcrumbSchema from '@/components/seo/DynamicBreadcrumbSchema'
 import ExitIntentPopup from '@/components/ui/ExitIntentPopup'
 import AnalyticsScripts from '@/components/AnalyticsScripts'
 import CookieConsentWrapper from '@/components/CookieConsentWrapper'
-import { CONTACT } from '@/lib/config'
+import { CONTACT, GOOGLE_REVIEWS } from '@/lib/config'
 
 // Fewer weights = faster first paint on MacBook / 4G
 const spaceGrotesk = Space_Grotesk({
@@ -216,8 +216,9 @@ export default function RootLayout({
                 'https://www.facebook.com/share/1GtattxqNp/',
                 'https://www.instagram.com/silbar_security',
                 'https://x.com/silbarsecurity',
-                'https://g.co/kgs/silbarsecurity',
+                GOOGLE_REVIEWS.profileUrl,
                 'https://www.wikidata.org/wiki/Q140635640',
+                ...GOOGLE_REVIEWS.offices.map((o) => o.profileUrl),
                 ...(CONTACT.officeLocations as unknown as any[]).map((o: any) => o.mapUrl).filter(Boolean),
               ],
               actionableFeedbackPolicy: 'https://www.silbarsecurity.in/contact',
@@ -241,8 +242,8 @@ export default function RootLayout({
               ],
               aggregateRating: {
                 '@type': 'AggregateRating',
-                ratingValue: '4.8',
-                reviewCount: '150',
+                ratingValue: String(GOOGLE_REVIEWS.rating),
+                reviewCount: String(GOOGLE_REVIEWS.reviewCountNumber),
                 bestRating: '5',
                 worstRating: '1',
               },

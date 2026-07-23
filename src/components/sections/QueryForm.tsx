@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { CheckCircle2, AlertCircle } from 'lucide-react'
-import { CONTACT } from '@/lib/config'
+import { CONTACT, GOOGLE_REVIEWS } from '@/lib/config'
 import { formatEnquiryWhatsAppMessage, openWhatsApp } from '@/lib/whatsapp'
 
 type FieldErrors = {
@@ -284,6 +284,10 @@ export default function QueryForm({
             <br />
             Or call:{' '}
             <a href={`tel:${CONTACT.phoneRaw}`}>{CONTACT.phone}</a>
+            <br />
+            <span className="query-form__trust-line">
+              ★ {GOOGLE_REVIEWS.ratingLabel} · {GOOGLE_REVIEWS.reviewCount} Google reviews · Silbar Security Services Pvt. Ltd.
+            </span>
           </div>
         </div>
       </form>

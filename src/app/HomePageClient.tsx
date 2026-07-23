@@ -23,7 +23,8 @@ import {
   Headphones,
 } from 'lucide-react'
 import { FAQS } from '@/data/faq'
-import { GOOGLE_REVIEWS } from '@/lib/config'
+import { HOME_TESTIMONIALS } from '@/data/reviews'
+import { CONTACT, GOOGLE_REVIEWS } from '@/lib/config'
 import GoogleReviews from '@/components/sections/GoogleReviews'
 
 
@@ -78,15 +79,6 @@ const STATS = [
   { value: '7,000+', label: 'Security Professionals', sub: 'Licensed & trained' },
   { value: '200+', label: 'Cities Covered', sub: '19 states across India' },
   { value: '19', label: 'PSARA Licensed States', sub: 'With 4 ISO certifications' },
-]
-
-const TESTIMONIALS = [
-  { quote: 'Silbar\'s professionalism, transparency and response times are unmatched. A partner we rely on, every day.', name: 'Operations Head', company: 'Leading Manufacturing Firm' },
-  { quote: 'We switched to Silbar Security Services Pvt. Ltd. for our 12 factories across Rajasthan. The reduction in security incidents has been remarkable — 90% fewer incidents in the first quarter.', name: 'VP Facilities', company: 'Automobile Manufacturer' },
-  { quote: 'Their electronic surveillance integration with manned guarding gave us complete visibility across 45 retail locations. Truly pan-India capability.', name: 'Security Director', company: 'National Retail Chain' },
-  { quote: 'The Quick Response Team arrived within 15 minutes of our distress call. Silbar\'s 24/7 monitoring is genuinely world-class.', name: 'Facility Manager', company: 'IT Park, Bengaluru' },
-  { quote: 'From event security for our 10,000-strong conference to daily office guarding, Silbar handles it all with ISO-certified processes. Highly recommended.', name: 'CEO', company: 'Corporate Events Company' },
-  { quote: 'Their facility management team manages housekeeping, security, and maintenance for our hospital chain. Single vendor, zero compliance headaches.', name: 'Admin Director', company: 'Multi-Specialty Hospital Chain' },
 ]
 
 export default function HomePageClient() {
@@ -333,27 +325,38 @@ export default function HomePageClient() {
 
             <div className="google-reviews-compact">
               <div className="google-reviews-header">
-                <span className="google-reviews-rating">4.8</span>
-                <span className="google-reviews-stars">
+                <span className="google-reviews-rating">{GOOGLE_REVIEWS.rating}</span>
+                <span className="google-reviews-stars" aria-label={`${GOOGLE_REVIEWS.rating} out of 5`}>
                   {[1,2,3,4,5].map(i => (
-                    <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="var(--color-gold)" stroke="none">
+                    <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="var(--color-gold)" stroke="none" aria-hidden="true">
                       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                     </svg>
                   ))}
                 </span>
-                <span className="google-reviews-count">on Google</span>
+                <span className="google-reviews-count">{GOOGLE_REVIEWS.reviewCount} on Google</span>
               </div>
               <p className="google-reviews-text">
-                Trusted by <strong>500+</strong> businesses across India. Read what our clients say about us.
+                Trusted by <strong>{GOOGLE_REVIEWS.businessesServed}</strong> businesses across India.
+                Silbar Security Services Pvt. Ltd. — ISO certified · PSARA licensed.
               </p>
-              <a
-                href={GOOGLE_REVIEWS.writeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary review-btn"
-              >
-                Review Us on Google
-              </a>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                <a
+                  href={GOOGLE_REVIEWS.profileUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary review-btn"
+                >
+                  View on Google
+                </a>
+                <a
+                  href={GOOGLE_REVIEWS.writeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary review-btn"
+                >
+                  Review Us on Google
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -419,21 +422,21 @@ export default function HomePageClient() {
             onScroll={(e) => {
               const el = e.currentTarget
               const idx = Math.round(el.scrollLeft / (el.children[0] as HTMLElement).offsetWidth)
-              if (idx !== activeDot) setActiveDot(Math.min(idx, TESTIMONIALS.length - 1))
+              if (idx !== activeDot) setActiveDot(Math.min(idx, HOME_TESTIMONIALS.length - 1))
             }}
           >
-            {TESTIMONIALS.map((t, i) => (
+            {HOME_TESTIMONIALS.map((t, i) => (
               <blockquote key={i} className="testimonial-card">
                 <p className="testimonial-card__quote">&ldquo;{t.quote}&rdquo;</p>
                 <footer className="testimonial-card__attribution">
                   <span className="testimonial-card__name">— {t.name}</span>
-                  <span className="testimonial-card__company">{t.company}</span>
+                  <span className="testimonial-card__company">{t.company}{t.city ? ` · ${t.city}` : ''}</span>
                 </footer>
               </blockquote>
             ))}
           </div>
           <div className="testimonials-dots" role="group" aria-label="Testimonial navigation">
-            {TESTIMONIALS.map((_, i) => (
+            {HOME_TESTIMONIALS.map((_, i) => (
               <button
                 key={i}
                 className={`testimonials-dot${i === activeDot ? ' active' : ''}`}
@@ -477,16 +480,28 @@ export default function HomePageClient() {
         </div>
       </section>
 
-      {/* ─── GOOGLE REVIEWS ──────────────────────────────── */}
-      <GoogleReviews />
+      {/* ─── GOOGLE REVIEWS / SOCIAL PROOF ───────────────── */}
+      <GoogleReviews variant="full" />
 
       {/* ─── QUERY FORM ────────────────────────────────── */}
-      <section className="home-query-section page-lead-section">
+      <section className="home-query-section page-lead-section" aria-label="Request a security quote">
+        <div className="lead-social-proof" aria-label="Google reviews summary">
+          <span className="lead-social-proof__rating">★ {GOOGLE_REVIEWS.ratingLabel}</span>
+          <p className="lead-social-proof__text">
+            {GOOGLE_REVIEWS.reviewCount} Google reviews · Trusted by {GOOGLE_REVIEWS.businessesServed} businesses · Silbar Security Services Pvt. Ltd.
+          </p>
+          <a href={GOOGLE_REVIEWS.profileUrl} target="_blank" rel="noopener noreferrer" className="lead-social-proof__link">
+            View Google Profile →
+          </a>
+        </div>
         <QueryForm
           title="Get a Free Security Quote"
           subtitle="Tell us about your facility — submit opens WhatsApp with your details so we can reply instantly."
           formType="Homepage Quote"
         />
+        <p className="google-reviews-contact-note" style={{ textAlign: 'center', marginTop: '1rem' }}>
+          Submits via WhatsApp to {CONTACT.phone} · Or call: <a href={`tel:${CONTACT.phoneRaw}`}>{CONTACT.phone}</a>
+        </p>
       </section>
     </main>
   )

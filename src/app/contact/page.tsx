@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Phone, Mail, MapPin, Clock, MessageCircle, ArrowRight, Map } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import QueryForm from '@/components/sections/QueryForm'
-import { CONTACT } from '@/lib/config'
+import { CONTACT, GOOGLE_REVIEWS } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
 import { GEO_COORDINATES } from '@/lib/geo-coordinates'
 
@@ -169,8 +169,17 @@ export default function ContactPage() {
               </a>
             </div>
             <p className="contact-cta-card__guarantee">
-              <span>ISO 9001:2015 Certified</span> · <span>PSARA Licensed</span> · <span>PAN India</span>
+              <span>ISO 9001:2015 Certified</span> · <span>PSARA Licensed</span> · <span>★ {GOOGLE_REVIEWS.ratingLabel}</span> · <span>{GOOGLE_REVIEWS.reviewCount} Google reviews</span>
             </p>
+            <a
+              href={GOOGLE_REVIEWS.profileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="lead-social-proof__link"
+              style={{ display: 'inline-block', marginTop: '0.75rem' }}
+            >
+              View Silbar on Google →
+            </a>
           </ScrollReveal>
         </div>
       </section>
@@ -179,7 +188,20 @@ export default function ContactPage() {
       <section className="contact-body" aria-label="Contact details">
         <div className="contact-body__inner">
           <div className="u-mb-2">
-            <QueryForm />
+            <div className="lead-social-proof" aria-label="Google reviews summary">
+              <span className="lead-social-proof__rating">★ {GOOGLE_REVIEWS.ratingLabel}</span>
+              <p className="lead-social-proof__text">
+                {GOOGLE_REVIEWS.reviewCount} Google reviews · Trusted by {GOOGLE_REVIEWS.businessesServed} businesses · Silbar Security Services Pvt. Ltd.
+              </p>
+              <a href={GOOGLE_REVIEWS.writeUrl} target="_blank" rel="noopener noreferrer" className="lead-social-proof__link">
+                Review Us on Google →
+              </a>
+            </div>
+            <QueryForm
+              title="Get a Free Security Quote"
+              subtitle="Tell us about your facility — submit opens WhatsApp with your details so we can reply instantly."
+              formType="Contact Page Quote"
+            />
           </div>
 
           {/* Office locations */}
@@ -213,42 +235,12 @@ export default function ContactPage() {
             </div>
           </ScrollReveal>
 
-          {/* Google Business Profile maps — all 5 Silbar offices */}
-          <div className="u-mt-2">
-            <span className="section-eyebrow section-eyebrow--red u-block u-mb-1">FIND US ON MAP</span>
-            <h2 className="section-heading contact-offices-heading" style={{ marginBottom: '1.25rem' }}>
-              Silbar Security Services Pvt. Ltd. <em>Locations</em>
-            </h2>
-            <div className="contact-maps-grid">
-              {(CONTACT.officeLocations as unknown as any[]).map((office: any) => (
-                <div key={office.city} className="contact-map-card">
-                  <div className="contact-map-card__head">
-                    <MapPin size={16} aria-hidden="true" />
-                    <div>
-                      <strong>{office.placeName || office.city}</strong>
-                      <p>{office.address}</p>
-                    </div>
-                  </div>
-                  <div className="contact-map-container contact-map-container--office">
-                    <iframe
-                      src={office.mapEmbed}
-                      width="100%"
-                      height="280"
-                      className="contact-map-frame"
-                      allowFullScreen
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                      title={`${office.placeName || office.city} — Google Map`}
-                    />
-                  </div>
-                  <a href={office.mapUrl} target="_blank" rel="noopener noreferrer" className="office-card__map-btn">
-                    <Map size={13} aria-hidden="true" /> Open Silbar Google Profile
-                  </a>
-                </div>
-              ))}
-            </div>
+          {/* Maps + full GBP grid render site-wide in GlobalGbpSection (every page) */}
+          <div className="u-mt-2" style={{ textAlign: 'center' }}>
+            <a href="#google-business-profiles" className="office-card__map-btn" style={{ display: 'inline-flex' }}>
+              <Map size={13} aria-hidden="true" /> View all Silbar Google Business Profiles &amp; maps below
+            </a>
           </div>
-
         </div>
       </section>
     </main>

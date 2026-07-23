@@ -37,7 +37,8 @@ export const CONTACT = {
     facebook: 'https://www.facebook.com/share/1GtattxqNp/',
     instagram: 'https://instagram.com/silbar_security',
     linkedin: 'https://www.linkedin.com/company/silbar-security-services-private-limited/',
-    google: 'https://g.co/kgs/silbarsecurity',
+    /** Primary Google Business Profile (Registered Office) */
+    google: 'https://maps.google.com/?cid=7869038594776014797',
   },
   landline: '+91-141-4021078',
   landlineRaw: '911414021078',
@@ -175,12 +176,55 @@ export function getOfficesForStatePage(stateSlug: string): OfficeLocation[] {
   return [CONTACT.officeLocations[i ?? 0]!]
 }
 
+/**
+ * Google social proof — single source of truth.
+ * writeUrl uses Google's local write-review endpoint with place feature id (opens sign-in → review).
+ * profileUrl opens the official Silbar GBP map listing (cid).
+ */
 export const GOOGLE_REVIEWS = {
-  /** Google review write URL — get this from your GBP dashboard → Promote → Get more reviews */
-  writeUrl: 'https://g.page/r/silbar-security/review',
-  /** EmbedSocial (or similar) widget embed code — empty = fallback static display shown */
+  rating: 4.8,
+  ratingLabel: '4.8 / 5',
+  reviewCount: '150+',
+  reviewCountNumber: 150,
+  businessesServed: '500+',
+  /** Primary write-a-review (Registered Office, New Delhi) */
+  writeUrl:
+    'https://search.google.com/local/writereview?placeid=0x390cfd2fc31e049d:0x6d3470e8f5769fcd',
+  /** Primary profile (Registered Office) */
+  profileUrl: 'https://maps.google.com/?cid=7869038594776014797',
+  /** Optional third-party embed (Elfsight / EmbedSocial etc.) — empty = built-in cards */
   embedScriptSrc: '',
   embedDivAttrs: '',
-  rating: 4.8,
-  reviewCount: '150+',
+  offices: [
+    {
+      label: 'New Delhi',
+      profileUrl: 'https://maps.google.com/?cid=7869038594776014797',
+      writeUrl:
+        'https://search.google.com/local/writereview?placeid=0x390cfd2fc31e049d:0x6d3470e8f5769fcd',
+    },
+    {
+      label: 'Gurugram',
+      profileUrl: 'https://maps.google.com/?cid=3300960116722998024',
+      writeUrl:
+        'https://search.google.com/local/writereview?placeid=0x195c9650d245049:0x2dcf5dbca7019b08',
+    },
+    {
+      label: 'Jaipur',
+      profileUrl: 'https://maps.google.com/?cid=7404208150107816544',
+      writeUrl:
+        'https://search.google.com/local/writereview?placeid=0x396db3ffa3eaaaab:0x66c10815563a8260',
+    },
+    {
+      label: 'Noida',
+      profileUrl: 'https://maps.google.com/?cid=14695954397884633275',
+      writeUrl:
+        'https://search.google.com/local/writereview?placeid=0x390ce50735bd1029:0xcbf284a99140d0bb',
+    },
+    {
+      label: 'Ahmedabad',
+      profileUrl: 'https://maps.google.com/?cid=4837321117134116721',
+      writeUrl:
+        'https://search.google.com/local/writereview?placeid=0x395e9b85390bb2a3:0x43219ded43465771',
+    },
+  ],
 } as const
