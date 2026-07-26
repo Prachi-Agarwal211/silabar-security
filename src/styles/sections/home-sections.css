@@ -225,7 +225,7 @@
   font-family: var(--font-body);
   font-size: 0.8rem;
   line-height: 1.5;
-  color: var(--color-horizon-600);
+  color: rgba(250, 248, 244, 0.75);
   margin-top: 0.6rem;
 }
 
@@ -233,7 +233,7 @@
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 4vw, 3.5rem);
   font-weight: 900;
-  color: var(--color-cherry);
+  color: var(--color-gold);
   line-height: 1;
   margin-bottom: 0.3rem;
 }

@@ -37,6 +37,7 @@ const ScrollExperience = dynamic(
 )
 
 import { SERVICES } from '@/data/services'
+import Counter from '@/components/animations/Counter'
 const ServicesGrid = dynamic(() => import('@/components/sections/ServicesGrid'))
 const QueryForm = dynamic(() => import('@/components/sections/QueryForm'))
 
@@ -75,10 +76,10 @@ const INDUSTRIES_ICONS = [
 const CLIENT_LOGOS = ['Manufacturing', 'Healthcare', 'Banking & Finance', 'IT & Tech Parks', 'Retail & Malls', 'Government']
 
 const STATS = [
-  { value: '8+', label: 'Years of Excellence', sub: 'Since 2018' },
-  { value: '7,000+', label: 'Security Professionals', sub: 'Licensed & trained' },
-  { value: '200+', label: 'Cities Covered', sub: '19 states across India' },
-  { value: '19', label: 'PSARA Licensed States', sub: 'With 4 ISO certifications' },
+  { number: 8, suffix: '+', label: 'Years of Excellence', sub: 'Since 2018' },
+  { number: 7000, suffix: '+', label: 'Security Professionals', sub: 'Licensed & trained' },
+  { number: 200, suffix: '+', label: 'Cities Covered', sub: '19 states across India' },
+  { number: 19, suffix: '', label: 'PSARA Licensed States', sub: 'With 4 ISO certifications' },
 ]
 
 export default function HomePageClient() {
@@ -87,6 +88,7 @@ export default function HomePageClient() {
   const statsRef = useRef<HTMLElement>(null)
   const carouselRef = useRef<HTMLDivElement>(null)
   const [activeDot, setActiveDot] = useState(0)
+  const [hasScrolled, setHasScrolled] = useState(false)
 
   // Why Silbar — photo mosaic stagger + copy reveal
   useGSAP(() => {
@@ -159,6 +161,13 @@ export default function HomePageClient() {
     <main className="relative w-full" id="main-content">
       <ScrollExperience />
       <ServicesGrid services={SERVICES} />
+
+      {/* Visible GEO Overview Callout */}
+      <section className="svc-answer-card brand-card shell" aria-label="At a glance">
+        <p className="svc-answer-card__text">
+          Silbar Security Services Pvt. Ltd. provides professional security guard services, manned guarding, industrial security, CCTV surveillance, event security, VIP protection, and facility management across 200+ cities in India. The agency is ISO 9001:14001:45001:27001 certified, PSARA licensed in 19 states, and deploys 7,000+ trained professionals for corporate, industrial, residential, and government clients nationwide.
+        </p>
+      </section>
 
       {/* ─── HOW WE WORK (Process) ────────────────────── */}
       <section className="process-section brand-rail" aria-labelledby="process-title">
@@ -269,26 +278,26 @@ export default function HomePageClient() {
             </div>
 
             <div className="why-silbar-tile why-silbar-tile--c">
-              <div className="why-silbar-tile__inner why-silbar-tile__inner--light">
-                <div className="why-silbar-tile__icon-wrap why-silbar-tile__icon-wrap--cherry">
+              <div className="why-silbar-tile__inner why-silbar-tile__inner--dark">
+                <div className="why-silbar-tile__icon-wrap why-silbar-tile__icon-wrap--gold">
                   <Award size={28} strokeWidth={1.5} />
                 </div>
                 <div className="why-silbar-tile__content">
-                  <div className="why-silbar-tile__title why-silbar-tile__title--dark">4 ISO CERTIFIED</div>
-                  <div className="why-silbar-tile__subtitle why-silbar-tile__subtitle--dark">IAF ACCREDITED</div>
+                  <div className="why-silbar-tile__title">4 ISO CERTIFIED</div>
+                  <div className="why-silbar-tile__subtitle">IAF ACCREDITED</div>
                   <div className="why-silbar-tile__desc">9001 · 14001 · 45001 · 27001<br />Quality. Safety. Security.</div>
                 </div>
               </div>
             </div>
 
             <div className="why-silbar-tile why-silbar-tile--d">
-              <div className="why-silbar-tile__inner why-silbar-tile__inner--light">
-                <div className="why-silbar-tile__icon-wrap why-silbar-tile__icon-wrap--cherry">
+              <div className="why-silbar-tile__inner why-silbar-tile__inner--dark">
+                <div className="why-silbar-tile__icon-wrap why-silbar-tile__icon-wrap--gold">
                   <Users size={28} strokeWidth={1.5} />
                 </div>
                 <div className="why-silbar-tile__content">
                   <div className="why-silbar-tile__number">7,000+</div>
-                  <div className="why-silbar-tile__subtitle why-silbar-tile__subtitle--dark">PROFESSIONALS</div>
+                  <div className="why-silbar-tile__subtitle">PROFESSIONALS</div>
                   <div className="why-silbar-tile__desc">Trained. Equipped.<br />Committed.</div>
                 </div>
               </div>
@@ -406,9 +415,11 @@ export default function HomePageClient() {
           </div>
 
           <div className="stats-cards-row">
-            {STATS.map(({ value, label, sub }) => (
-              <div key={label} className="stat-card" aria-label={`${value} ${label}`}>
-                <div className="stat-card__value">{value}</div>
+            {STATS.map(({ number, suffix, label, sub }) => (
+              <div key={label} className="stat-card" aria-label={`${number}${suffix} ${label}`}>
+                <div className="stat-card__value">
+                  <Counter to={number} suffix={suffix} />
+                </div>
                 <div className="stat-card__label">{label}</div>
                 <div className="stat-card__sub">{sub}</div>
               </div>
@@ -420,6 +431,7 @@ export default function HomePageClient() {
             className="testimonials-carousel"
             ref={carouselRef}
             onScroll={(e) => {
+              if (!hasScrolled) setHasScrolled(true)
               const el = e.currentTarget
               const idx = Math.round(el.scrollLeft / (el.children[0] as HTMLElement).offsetWidth)
               if (idx !== activeDot) setActiveDot(Math.min(idx, HOME_TESTIMONIALS.length - 1))
@@ -435,6 +447,9 @@ export default function HomePageClient() {
               </blockquote>
             ))}
           </div>
+          {!hasScrolled && (
+            <p className="testimonials-swipe-hint" aria-hidden="true">Swipe for more reviews →</p>
+          )}
           <div className="testimonials-dots" role="group" aria-label="Testimonial navigation">
             {HOME_TESTIMONIALS.map((_, i) => (
               <button
@@ -456,6 +471,20 @@ export default function HomePageClient() {
 
       {/* ─── FAQ ──────────────────────────────────────── */}
       <section className="section-pad brand-rail" aria-labelledby="home-faq-title">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: FAQS.filter(f => f.category === 'General').slice(0, 6).map(({ q, a }) => ({
+                '@type': 'Question',
+                name: q,
+                acceptedAnswer: { '@type': 'Answer', text: a },
+              })),
+            }),
+          }}
+        />
         <div className="shell">
           <span className="section-eyebrow">FAQ</span>
           <h2 id="home-faq-title" className="section-heading" style={{ marginBottom: '0.75rem' }}>

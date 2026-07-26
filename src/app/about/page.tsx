@@ -89,28 +89,6 @@ const LEADERS = [
 export default function AboutPage() {
   return (
     <main className="about-page" id="main-content">
-      {/* GEO Answer Block — 40-60 word direct answer for AI citation boost */}
-      <div className="seo-about-content" style={{ display: 'none' }}>
-        <p>Silbar Security Services Pvt. Ltd. (Silbar Security Services Pvt. Ltd.) is an ISO 9001:14001:45001:27001 certified private security agency providing manned guarding, industrial security, electronic surveillance, facility management, and VIP protection across India. Founded in 2018 in Jaipur with PSARA licenses across 19 states and 7,000+ professionals serving 200+ cities nationwide.</p>
-      </div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'AboutPage',
-            name: 'About Silbar Security Services',
-            description: 'ISO-certified PAN India security agency founded in Jaipur.',
-            mainEntity: {
-              '@type': 'Organization',
-              name: 'Silbar Security Services Pvt. Ltd.',
-              foundingDate: '2018',
-              address: CONTACT.address.full,
-            },
-          }),
-        }}
-      />
-
       {/* ─── Hero with photo ─── */}
       <section className="about-hero" aria-labelledby="about-page-heading">
         <div className="about-hero__media" aria-hidden="true">
@@ -174,6 +152,13 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* GEO Answer Block — visible direct answer callout */}
+      <section className="svc-answer-card brand-card shell" aria-label="At a glance">
+        <p className="svc-answer-card__text">
+          Silbar Security Services Pvt. Ltd. is an ISO 9001:14001:45001:27001 certified private security agency providing manned guarding, industrial security, electronic surveillance, facility management, and VIP protection across India. Founded in 2018 in Jaipur with PSARA licenses across 19 states and 7,000+ professionals serving 200+ cities nationwide.
+        </p>
       </section>
 
       {/* ─── Stats ─── */}

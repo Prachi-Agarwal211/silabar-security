@@ -286,73 +286,117 @@
 
 .sticky-cta {
   position: fixed;
-  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
-  right: clamp(1rem, 2vw, 1.5rem);
-  z-index: 90;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  align-items: flex-end;
+  z-index: 99999;
   pointer-events: none;
 }
 
-.sticky-cta > * {
-  pointer-events: auto;
-}
-
-@media (max-width: 1024px) {
+/* Desktop / laptop: floating pill buttons, bottom-right */
+@media (min-width: 481px) {
   .sticky-cta {
-    /* Clear mobile browser chrome + leave room for reading */
-    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    bottom: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-end;
+  }
+  .sticky-cta > * {
+    pointer-events: auto;
+  }
+  .sticky-cta__label {
+    display: inline;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+  .sticky-cta__whatsapp {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.2rem;
+    background: var(--color-whatsapp, #25D366);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 999px;
+    box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45);
+    text-decoration: none;
+    transition: transform 0.25s var(--ease-spring), box-shadow 0.25s var(--ease-smooth);
+  }
+  .sticky-cta__whatsapp:hover {
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+  }
+  .sticky-cta__call {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.2rem;
+    background: var(--color-gold);
+    color: var(--color-midnight);
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 999px;
+    box-shadow: 0 6px 24px rgba(191, 149, 63, 0.45);
+    transition: background-color 0.25s var(--ease-smooth), transform 0.25s var(--ease-smooth);
+    white-space: nowrap;
+  }
+  .sticky-cta__call:hover {
+    background: var(--color-gold-light);
+    transform: translateY(-2px) scale(1.04);
   }
 }
 
-.sticky-cta__whatsapp {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: var(--color-whatsapp);
-  color: #fff;
-  box-shadow: 0 4px 24px rgba(37, 211, 102, 0.4);
-  text-decoration: none;
-  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s var(--ease-smooth);
-}
-
-.sticky-cta__whatsapp:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 32px rgba(37, 211, 102, 0.5);
-}
-
-.sticky-cta__call {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.6em 1.2em;
-  background: var(--color-gold);
-  color: var(--color-midnight);
-  font-family: var(--font-display);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-decoration: none;
-  border-radius: 4px;
-  box-shadow: 0 4px 20px rgba(191, 149, 63, 0.4);
-  transition: background-color 0.3s var(--ease-smooth), transform 0.2s var(--ease-smooth);
-  white-space: nowrap;
-}
-
-.sticky-cta__call:hover {
-  background: var(--color-gold-light);
-  transform: translateY(-2px);
-}
-
+/* Mobile: full-width anchored two-button bar, always visible, never hidden */
 @media (max-width: 480px) {
+  body {
+    padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px));
+  }
+  .sticky-cta {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(191, 149, 63, 0.2);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .sticky-cta > * {
+    pointer-events: auto;
+    border-radius: 0 !important;
+    width: 100%;
+    height: 56px;
+    box-shadow: none !important;
+  }
+  .sticky-cta__call,
+  .sticky-cta__whatsapp {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    text-decoration: none;
+  }
+  .sticky-cta__whatsapp {
+    background: var(--color-whatsapp);
+    color: #fff;
+  }
   .sticky-cta__call {
-    display: none;
+    background: var(--color-gold);
+    color: var(--color-midnight);
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .sticky-cta__label {
+    display: inline;
+    font-weight: 600;
   }
 }
 
@@ -525,3 +569,27 @@
 .u-mb-4 { margin-bottom: 4rem; }
 .u-mt-1 { margin-top: 1rem; }
 .u-mt-2 { margin-top: 2rem; }
+
+/* ─── Visible GEO Answer Callouts ─── */
+.svc-answer-card {
+  max-width: 860px;
+  margin: 1.5rem auto 2rem;
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+  background: rgba(140, 31, 50, 0.04);
+  border: 1px solid rgba(191, 149, 63, 0.3);
+  border-radius: 12px;
+}
+.svc-answer-card--on-dark {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(191, 149, 63, 0.35);
+}
+.svc-answer-card__text {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--color-paper-ink);
+  margin: 0;
+}
+.svc-answer-card--on-dark .svc-answer-card__text {
+  color: var(--color-cream);
+}

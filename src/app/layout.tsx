@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Space_Grotesk, Manrope } from 'next/font/google'
 import './globals.css'
 import NavigationWrapper from '@/components/layout/NavigationWrapper'
+import StickyCta from '@/components/layout/StickyCta'
 import DynamicBreadcrumbSchema from '@/components/seo/DynamicBreadcrumbSchema'
 import ExitIntentPopup from '@/components/ui/ExitIntentPopup'
 import AnalyticsScripts from '@/components/AnalyticsScripts'
@@ -341,6 +342,7 @@ export default function RootLayout({
         />
         <DynamicBreadcrumbSchema />
         <NavigationWrapper>{children}</NavigationWrapper>
+        <StickyCta />
         <ExitIntentPopup />
 
         {/* Consent-gated analytics scripts */}

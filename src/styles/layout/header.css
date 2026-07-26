@@ -354,7 +354,7 @@
 
 /* Sticky CTA sits below header */
 .sticky-cta {
-  z-index: 150;
+  z-index: 999;
 }
 
 /* Header spacer utility if needed */

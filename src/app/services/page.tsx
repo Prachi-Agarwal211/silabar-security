@@ -67,10 +67,6 @@ const FEATURED = SERVICES.slice(0, 6)
 export default function ServicesPage() {
   return (
     <main className="services-page services-page--v2" id="main-content">
-      {/* GEO Answer Block — 40-60 word direct answer for AI citation boost */}
-      <section className="service-detail-section-title" style={{ display: 'none' }}>
-        Silbar Security Services Pvt. Ltd. offers 12 comprehensive security service verticals including manned guarding, industrial and factory security, event security, CCTV surveillance support, VIP close protection, bank and ATM security, fire and life safety, facility management, and mobile patrol services across 200+ cities in India. All services are ISO 9001:2015 certified and backed by PSARA licensed operations.
-      </section>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -129,11 +125,18 @@ export default function ServicesPage() {
             <a href={`tel:${CONTACT.phoneRaw}`} className="btn-primary btn-primary--on-dark">
               <Phone size={14} aria-hidden="true" /> {CONTACT.phone}
             </a>
-            <a href="#all-services" className="btn-secondary btn-secondary--on-dark">
-              Browse all services <ArrowRight size={14} aria-hidden="true" />
+            <a href="#query-form" className="btn-secondary btn-secondary--on-dark">
+              Get Quote <ArrowRight size={14} aria-hidden="true" />
             </a>
           </div>
         </div>
+      </section>
+
+      {/* GEO Answer Block — visible direct answer callout */}
+      <section className="svc-answer-card brand-card shell" aria-label="At a glance">
+        <p className="svc-answer-card__text">
+          Silbar Security Services Pvt. Ltd. offers {SERVICES.length} comprehensive security service verticals — including manned guarding, industrial and factory security, event security, CCTV surveillance support, VIP close protection, bank and ATM security, fire safety, and facility management — across 200+ cities in India. All services are ISO 9001:2015 certified and backed by PSARA licensed operations.
+        </p>
       </section>
 
       {/* Stats */}

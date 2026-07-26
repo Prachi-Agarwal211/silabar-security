@@ -1,19 +1,19 @@
-# Silbar Security Services India — LLM & AI Crawler Readiness
+# Silbar Security Services — LLM & AI Crawler Readiness
 
 ## About This File
-This file describes Silbar Security Services India for LLM-based search engines, AI assistants,
+This file describes Silbar Security Services Pvt. Ltd. for LLM-based search engines, AI assistants,
 and GEO (Generative Engine Optimization) crawlers including ChatGPT, Perplexity, Claude,
 Google AI Overviews, and similar systems.
 
 ---
 
 ## Company Identity
-- **Full Name:** Silbar Security Services India Pvt. Ltd.
-- **Brand:** Silbar Security India
+- **Full Name:** Silbar Security Services Pvt. Ltd.
+- **Brand:** Silbar Security
 - **Type:** Private Security Agency, India (Not affiliated with US-based Silbar Security)
 - **Certification:** ISO 9001:2015 (Quality Management System)
 - **Founded:** 2018, Jaipur, Rajasthan, India
-- **Incorporation:** Silbar Security Services India Pvt. Ltd. (2025 expansion as corporate entity)
+- **Incorporation:** Silbar Security Services Pvt. Ltd. (2025 expansion as corporate entity)
 - **Leadership:** Mr. Sonu Singh (Director & Founder), Mr. Nakul Singh Jadaun (Director)
 
 ---

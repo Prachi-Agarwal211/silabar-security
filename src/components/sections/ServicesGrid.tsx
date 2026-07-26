@@ -50,6 +50,52 @@ const ICON_MAP: Record<string, React.ElementType> = {
   'shield-half': ShieldHalf,
 }
 
+const CATEGORY_MAP: Record<string, string> = {
+  'manned-guarding': 'Manned Guarding',
+  'industrial-security': 'Industry-Specific',
+  'event-security': 'Specialized & VIP Protection',
+  'corporate-security': 'Manned Guarding',
+  'cctv-surveillance-support': 'Electronic & Tech Security',
+  'hospital-security': 'Industry-Specific',
+  'hotel-security': 'Industry-Specific',
+  'educational-security': 'Industry-Specific',
+  'lady-security-guards': 'Manned Guarding',
+  'bank-atm-security': 'Industry-Specific',
+  'vip-close-protection': 'Specialized & VIP Protection',
+  'fire-life-safety': 'Compliance & Training',
+  'facility-management': 'Manned Guarding',
+  'escort-security-guards': 'Specialized & VIP Protection',
+  'residential-society-security': 'Manned Guarding',
+  'warehouse-logistics-security': 'Industry-Specific',
+  'retail-mall-security': 'Industry-Specific',
+  'construction-site-security': 'Industry-Specific',
+  'data-centre-security': 'Electronic & Tech Security',
+  'bpo-it-security': 'Electronic & Tech Security',
+  'cash-in-transit-security': 'Specialized & VIP Protection',
+  'maritime-port-security': 'Industry-Specific',
+  'solar-power-plant-security': 'Industry-Specific',
+  'mining-infrastructure-security': 'Industry-Specific',
+  'supermarket-hypermarket-security': 'Industry-Specific',
+  'religious-place-event-security': 'Specialized & VIP Protection',
+  'toll-plaza-highway-security': 'Industry-Specific',
+  'parking-traffic-management': 'Manned Guarding',
+  'dog-squad-k9': 'Specialized & VIP Protection',
+  'cyber-security-advisory': 'Electronic & Tech Security',
+  'security-audit-risk-assessment': 'Compliance & Training',
+  'disaster-emergency-response': 'Compliance & Training',
+  'estate-farmhouse-security': 'Manned Guarding',
+  'psara-compliance-consulting': 'Compliance & Training',
+  'security-training-academy': 'Compliance & Training',
+}
+
+const CATEGORIES = [
+  'Manned Guarding',
+  'Electronic & Tech Security',
+  'Industry-Specific',
+  'Specialized & VIP Protection',
+  'Compliance & Training',
+]
+
 interface ServicesGridProps {
   services: Service[]
 }
@@ -59,7 +105,14 @@ export default function ServicesGrid({ services }: ServicesGridProps) {
   const cardsRef = useRef<HTMLDivElement>(null)
 
   const featured = services.slice(0, 5)
-  const pills = services.slice(5)
+  const remaining = services.slice(5)
+
+  const grouped = CATEGORIES.map((cat) => ({
+    name: cat,
+    items: remaining.filter(
+      (s) => (s.category || CATEGORY_MAP[s.slug] || 'Manned Guarding') === cat
+    ),
+  })).filter((cat) => cat.items.length > 0)
 
   useEffect(() => {
     if (!cardsRef.current) return
@@ -100,18 +153,6 @@ export default function ServicesGrid({ services }: ServicesGridProps) {
           },
         }
       )
-
-      const pillsEl = sectionRef.current!.querySelector('.sv-pills')
-      if (pillsEl) {
-        gsap.fromTo(
-          pillsEl,
-          { opacity: 0, y: 20 },
-          {
-            opacity: 1, y: 0, duration: 0.5, ease: 'power2.out',
-            scrollTrigger: { trigger: pillsEl, start: 'top 85%' },
-          }
-        )
-      }
     })
 
     return () => mm.revert()
@@ -156,21 +197,37 @@ export default function ServicesGrid({ services }: ServicesGridProps) {
           })}
         </div>
 
-        {/* Tag pills — all remaining services */}
-        <div className="sv-pills" aria-label="All services">
-          {pills.map((service) => {
-            const Icon = ICON_MAP[service.icon] || ShieldHalf
-            return (
-              <Link
-                key={service.slug}
-                href={`/services/${service.slug}`}
-                className="sv-pill"
-              >
-                <Icon size={12} strokeWidth={2} aria-hidden="true" />
-                {service.shortTitle || service.title}
-              </Link>
-            )
-          })}
+        {/* Categorized service accordions */}
+        <div className="sv-categories-accordion-wrap" aria-label="Services by Category">
+          {grouped.map((group, idx) => (
+            <details
+              key={group.name}
+              className="sv-category-accordion"
+              open={idx === 0}
+            >
+              <summary className="sv-category-summary">
+                <span>{group.name}</span>
+                <small style={{ fontSize: '0.75rem', opacity: 0.7 }}>
+                  {group.items.length} {group.items.length === 1 ? 'service' : 'services'}
+                </small>
+              </summary>
+              <div className="sv-category-pills">
+                {group.items.map((service) => {
+                  const Icon = ICON_MAP[service.icon] || ShieldHalf
+                  return (
+                    <Link
+                      key={service.slug}
+                      href={`/services/${service.slug}`}
+                      className="sv-pill"
+                    >
+                      <Icon size={12} strokeWidth={2} aria-hidden="true" />
+                      {service.shortTitle || service.title}
+                    </Link>
+                  )
+                })}
+              </div>
+            </details>
+          ))}
         </div>
       </div>
 

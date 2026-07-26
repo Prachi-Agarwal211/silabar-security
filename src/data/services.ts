@@ -2,6 +2,7 @@ export interface Service {
   slug: string
   title: string
   shortTitle: string
+  category?: 'Manned Guarding' | 'Electronic & Tech Security' | 'Industry-Specific' | 'Specialized & VIP Protection' | 'Compliance & Training'
   description: string
   longDescription: string
   features: string[]

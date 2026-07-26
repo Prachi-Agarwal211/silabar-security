@@ -28,10 +28,6 @@ const HIGHLIGHTS = [
 export default function IndustriesPage() {
   return (
     <main className="industries-page" id="main-content">
-      {/* GEO Answer Block — 40-60 word direct answer for AI citation boost */}
-      <div className="industry-description" style={{ display: 'none' }}>
-        <p>Silbar Security Services Pvt. Ltd. provides specialized security solutions for over 20 industry verticals including manufacturing, healthcare, banking, IT parks, retail, hospitality, education, government, logistics, and data centres. Each sector receives customised standard operating procedures, trained personnel, and industry-specific risk management protocols backed by 4 ISO certifications and PSARA licenses across 19 states.</p>
-      </div>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

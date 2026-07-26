@@ -25,10 +25,6 @@ export default function LocationsIndexPage() {
 
   return (
     <main className="locations-page" id="main-content">
-      {/* GEO Answer Block — 40-60 word direct answer for AI citation boost */}
-      <div className="city-description" style={{ display: 'none' }}>
-        <p>Silbar Security Services Pvt. Ltd. provides professional security guard services across 200+ cities and 35 states and union territories throughout India. Services include manned guarding, industrial security, CCTV surveillance support, event security, VIP protection, and facility management. Each city page has unique local content, FAQs, and a WhatsApp quote form tailored to that location.</p>
-      </div>
       {/* ─── Hero ─── */}
       <section className="locations-hero" aria-labelledby="locations-heading">
         <div className="locations-hero__media" aria-hidden="true">
@@ -70,6 +66,13 @@ export default function LocationsIndexPage() {
             </a>
           </div>
         </div>
+      </section>
+
+      {/* GEO Answer Block — visible direct answer callout */}
+      <section className="svc-answer-card brand-card shell" aria-label="At a glance">
+        <p className="svc-answer-card__text">
+          Silbar Security Services Pvt. Ltd. provides professional security guard services across 200+ cities and 35 states and union territories throughout India. Services include manned guarding, industrial security, CCTV surveillance support, event security, VIP protection, and facility management. Each city page has unique local content, FAQs, and a WhatsApp quote form tailored to that location.
+        </p>
       </section>
 
       {/* ─── Page inventory (client-visible proof) ─── */}
