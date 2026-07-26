@@ -1,151 +1,110 @@
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from 'next'
+import { SERVICES } from '@/data/services'
+import { INDUSTRIES } from '@/data/industries'
+import { STATES, CITIES } from '@/data/locations'
+import { BLOG_POSTS } from '@/data/blog'
+import { CASE_STUDIES } from '@/data/case-studies'
+import { CAREERS } from '@/data/careers'
 
 const BASE_URL = 'https://www.silbarsecurity.in'
 
-const staticRoutes = [
-  '', '/about', '/blog', '/careers', '/case-studies',
-  '/certification', '/clients', '/contact', '/csr',
-  '/disclaimer', '/emergency', '/faq', '/franchise',
-  '/gallery', '/google', '/industries', '/privacy-policy',
-  '/security-services', '/services', '/terms',
+/** Core marketing routes (always indexable) */
+const staticRoutes: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[0]['changeFrequency'] }[] = [
+  { path: '', priority: 1.0, changeFrequency: 'weekly' },
+  { path: '/about', priority: 0.9, changeFrequency: 'monthly' },
+  { path: '/services', priority: 0.9, changeFrequency: 'weekly' },
+  { path: '/industries', priority: 0.85, changeFrequency: 'monthly' },
+  { path: '/security-services', priority: 0.9, changeFrequency: 'weekly' },
+  { path: '/contact', priority: 0.95, changeFrequency: 'monthly' },
+  { path: '/blog', priority: 0.8, changeFrequency: 'weekly' },
+  { path: '/faq', priority: 0.75, changeFrequency: 'monthly' },
+  { path: '/franchise', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/careers', priority: 0.7, changeFrequency: 'weekly' },
+  { path: '/case-studies', priority: 0.75, changeFrequency: 'monthly' },
+  { path: '/clients', priority: 0.65, changeFrequency: 'monthly' },
+  { path: '/csr', priority: 0.5, changeFrequency: 'yearly' },
+  { path: '/gallery', priority: 0.5, changeFrequency: 'monthly' },
+  { path: '/certification', priority: 0.85, changeFrequency: 'monthly' },
+  { path: '/emergency', priority: 0.7, changeFrequency: 'monthly' },
+  // privacy indexable; terms/disclaimer noindex in metadata — omit from sitemap
 ]
 
-const industries = [
-  'banking-finance', 'government-psus', 'healthcare',
-  'hospitality', 'it-telecom', 'logistics-supply-chain',
-  'manufacturing', 'residential-real-estate',
-  'commercial-real-estate', 'retail',
-]
-
-const services = [
-  'armed-security-guards', 'bank-atm-security',
-  'bouncer-vip-protection', 'cctv-surveillance-systems',
-  'corporate-security', 'emergency-response',
-  'event-security', 'facility-management',
-  'fire-life-safety', 'industrial-security',
-  'mobile-patrol-security', 'retail-security',
-  'school-college-security', 'security-consulting',
-  'security-guard-services', 'unarmed-security-guards',
-  'warehouse-security',
-]
-
-const blogSlugs = [
-  'security-guard-services-in-delhi',
-  'security-awareness-month-2026',
-  'importance-of-security-audits',
-]
-
-const caseStudySlugs = [
-  'manufacturing-plant-security',
-  'hospital-security-deployment',
-  'it-park-security-solution',
-]
-
-const careerSlugs = [
-  'security-guard',
-  'supervisor',
-  'operations-manager',
-]
-
-const states = [
-  'andhra-pradesh', 'assam', 'bihar', 'chhattisgarh', 'delhi',
-  'gujarat', 'haryana', 'himachal-pradesh', 'jharkhand',
-  'karnataka', 'kerala', 'madhya-pradesh', 'maharashtra',
-  'odisha', 'punjab', 'rajasthan', 'tamil-nadu',
-  'telangana', 'uttar-pradesh', 'uttarakhand', 'west-bengal',
-  'andaman', 'chandigarh', 'dadra-nagar-haveli', 'daman-diu', 'goa',
-  'jammu-kashmir', 'ladakh', 'lakshadweep', 'manipur', 'meghalaya',
-  'mizoram', 'nagaland', 'puducherry', 'sikkim', 'tripura',
-]
-
-const cities = [
-  'agra', 'ahmedabad', 'ajmer', 'allahabad', 'amritsar', 'aurangabad',
-  'bangalore', 'bareilly', 'bhopal', 'bhubaneswar', 'chandigarh',
-  'chennai', 'coimbatore', 'dehradun', 'delhi', 'dhanbad', 'durgapur',
-  'faridabad', 'ghaziabad', 'gorakhpur', 'gurugram', 'guwahati',
-  'gwalior', 'hubli', 'hyderabad', 'indore', 'isse', 'jabalpur',
-  'jaipur', 'jalandhar', 'jammu', 'jamnagar', 'jamshedpur',
-  'jhansi', 'jodhpur', 'kanpur', 'kolkata', 'kochi', 'kota',
-  'lucknow', 'ludhiana', 'madurai', 'mangalore', 'meerut',
-  'moradabad', 'mumbai', 'mysore', 'nagpur', 'nashik',
-  'navi-mumbai', 'noida', 'patna', 'pune', 'raipur',
-  'rajkot', 'ranchi', 'rohtak', 'salem', 'shimla',
-  'siliguri', 'solapur', 'srinagar', 'surat', 'thane',
-  'tiruchirappalli', 'trivandrum', 'udaipur', 'vadodara',
-  'varanasi', 'vijayawada', 'visakhapatnam', 'warangal',
-]
-
+/**
+ * Full public inventory for Google + AI crawlers.
+ * Built from live data modules so city/state/service pages are not left out of discovery.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date()
   const urls: MetadataRoute.Sitemap = []
 
-  for (const route of staticRoutes) {
+  for (const r of staticRoutes) {
     urls.push({
-      url: `${BASE_URL}${route}`,
-      lastModified: new Date(),
-      changeFrequency: route === '' ? 'weekly' : 'monthly',
-      priority: route === '' ? 1.0 : route === '/contact' ? 0.9 : 0.8,
+      url: `${BASE_URL}${r.path}`,
+      lastModified: now,
+      changeFrequency: r.changeFrequency,
+      priority: r.priority,
     })
   }
 
-  for (const slug of services) {
+  for (const s of SERVICES) {
     urls.push({
-      url: `${BASE_URL}/services/${slug}`,
-      lastModified: new Date(),
+      url: `${BASE_URL}/services/${s.slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    })
+  }
+
+  for (const i of INDUSTRIES) {
+    urls.push({
+      url: `${BASE_URL}/industries/${i.slug}`,
+      lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.7,
     })
   }
 
-  for (const slug of industries) {
+  for (const st of STATES) {
     urls.push({
-      url: `${BASE_URL}/industries/${slug}`,
-      lastModified: new Date(),
+      url: `${BASE_URL}/security-services/${st.slug}`,
+      lastModified: now,
       changeFrequency: 'monthly',
-      priority: 0.7,
+      priority: 0.65,
     })
   }
 
-  for (const state of states) {
+  for (const c of CITIES) {
     urls.push({
-      url: `${BASE_URL}/security-services/${state}`,
-      lastModified: new Date(),
+      url: `${BASE_URL}/security-services/city/${c.slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: c.tier === 1 ? 0.7 : 0.55,
+    })
+  }
+
+  for (const b of BLOG_POSTS) {
+    urls.push({
+      url: `${BASE_URL}/blog/${b.slug}`,
+      lastModified: b.publishedAt ? new Date(b.publishedAt) : now,
+      changeFrequency: 'monthly',
+      priority: 0.55,
+    })
+  }
+
+  for (const cs of CASE_STUDIES) {
+    urls.push({
+      url: `${BASE_URL}/case-studies/${cs.slug}`,
+      lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.6,
     })
   }
 
-  for (const city of cities) {
+  for (const job of CAREERS) {
     urls.push({
-      url: `${BASE_URL}/security-services/city/${city}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    })
-  }
-
-  for (const slug of blogSlugs) {
-    urls.push({
-      url: `${BASE_URL}/blog/${slug}`,
-      lastModified: new Date(),
+      url: `${BASE_URL}/careers/${job.slug}`,
+      lastModified: now,
       changeFrequency: 'weekly',
-      priority: 0.5,
-    })
-  }
-
-  for (const slug of caseStudySlugs) {
-    urls.push({
-      url: `${BASE_URL}/case-studies/${slug}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    })
-  }
-
-  for (const slug of careerSlugs) {
-    urls.push({
-      url: `${BASE_URL}/careers/${slug}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
       priority: 0.5,
     })
   }
