@@ -48,7 +48,7 @@ const INVESTMENTFAQ = [
 
 export default function FranchisePage() {
   return (
-    <main className="service-detail-page">
+    <main id="main-content" className="service-detail-page">
       <PageHero
         eyebrow="Franchise Opportunities"
         title={<>Partner with <em>India&apos;s Fastest-Growing</em> Security Company</>}

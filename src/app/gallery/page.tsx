@@ -32,7 +32,7 @@ const GALLERY_ITEMS = [
 
 export default function GalleryPage() {
   return (
-    <main>
+    <main id="main-content">
       <PageHero
         eyebrow="GALLERY"
         title={

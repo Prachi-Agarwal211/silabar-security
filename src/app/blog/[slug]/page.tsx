@@ -68,6 +68,7 @@ export default async function BlogPostPage({
             name: post.author
           },
           datePublished: post.publishedAt,
+          dateModified: post.modifiedAt,
           publisher: {
             '@type': 'Organization',
             name: 'Silbar Security Services Pvt. Ltd.',

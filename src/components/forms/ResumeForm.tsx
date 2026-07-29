@@ -30,10 +30,10 @@ export default function ResumeForm() {
       }}
     >
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem', marginBottom: '1rem' }}>
-        <input type="text" name="name" placeholder="Full Name *" required autoComplete="name" className="resume-input" />
-        <input type="email" name="email" placeholder="Email Address *" required autoComplete="email" className="resume-input" />
-        <input type="tel" name="phone" placeholder="Phone Number *" required autoComplete="tel" inputMode="tel" className="resume-input" />
-        <select name="position" className="resume-input" required>
+        <input type="text" name="name" placeholder="Full Name *" required autoComplete="name" aria-label="Full Name" className="resume-input" />
+        <input type="email" name="email" placeholder="Email Address *" required autoComplete="email" aria-label="Email Address" className="resume-input" />
+        <input type="tel" name="phone" placeholder="Phone Number *" required autoComplete="tel" inputMode="tel" aria-label="Phone Number" className="resume-input" />
+        <select name="position" className="resume-input" required aria-label="Desired Position">
           <option value="">Select Desired Position</option>
           <option>Security Guard</option>
           <option>Security Supervisor</option>
@@ -44,7 +44,7 @@ export default function ResumeForm() {
         </select>
       </div>
       <div style={{ marginBottom: '1rem' }}>
-        <input type="file" name="resume" className="resume-input" accept=".pdf,.doc,.docx" />
+        <input type="file" name="resume" className="resume-input" accept=".pdf,.doc,.docx" aria-label="Upload Resume" />
         <p style={{ fontSize: '0.75rem', opacity: 0.7, marginTop: '0.5rem' }}>
           After WhatsApp opens, attach your resume file before sending.
         </p>

@@ -33,6 +33,7 @@ export default function BlogFilter({ posts, categories }: Props) {
               type="button"
               onClick={() => setActive(cat)}
               className={`blog-cat-btn${active === cat ? ' is-active' : ''}`}
+              aria-pressed={active === cat}
             >
               {cat}
             </button>

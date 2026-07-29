@@ -30,7 +30,7 @@ export default function LocationsIndexPage() {
         <div className="locations-hero__media" aria-hidden="true">
           <Image
             src="/why-silbar-bg.webp"
-            alt=""
+            alt="Silbar Security PAN India coverage background"
             fill
             priority
             sizes="100vw"

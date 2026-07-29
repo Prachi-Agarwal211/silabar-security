@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Phone, Mail, FileText, MapPin, ClipboardCheck, Download } from 'lucide-react'
+import { Phone, Mail, FileText, MapPin, ClipboardCheck } from 'lucide-react'
 import PageHero from '@/components/layout/PageHero'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import ProposalForm from '@/components/forms/ProposalForm'
@@ -10,12 +10,14 @@ import { ogMetadata } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
-  ...ogMetadata('Client Services', 'Request proposals, site surveys, and instant quotes from Silbar Security Services Pvt. Ltd.. Existing clients can access documents and raise service requests.', '/clients'),
+  title: 'Client Services — Silbar Security Services Pvt. Ltd.',
+  description: 'Request proposals, site surveys, and instant quotes from Silbar Security Services Pvt. Ltd. Existing clients can access documents and raise service requests.',
+  ...ogMetadata('Client Services', 'Request proposals, site surveys, and instant quotes from Silbar Security Services Pvt. Ltd. Existing clients can access documents and raise service requests.', '/clients'),
 }
 
 export default function ClientsPage() {
   return (
-    <main>
+    <main id="main-content">
       <PageHero
         eyebrow="CLIENT SERVICES"
         title={
@@ -82,20 +84,10 @@ export default function ClientsPage() {
                 <a href={`mailto:${CONTACT.email}`} className="service-detail-cta service-detail-cta--secondary" style={{ justifyContent: 'center' }}>
                   <Mail size={16} /> Email Us
                 </a>
-                <div style={{ borderTop: '1px solid rgba(20,16,13,0.1)', paddingTop: '1rem', marginTop: '0.5rem' }}>
-                  <p style={{ fontSize: '0.8rem', color: 'var(--color-horizon-600)', fontWeight: 600, marginBottom: '0.5rem' }}>Download Documents</p>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                    <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.8rem', color: 'var(--color-cherry)', textDecoration: 'none' }}>
-                      <Download size={14} /> Company Profile (PDF)
-                    </a>
-                    <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.8rem', color: 'var(--color-cherry)', textDecoration: 'none' }}>
-                      <Download size={14} /> Service Catalogue (PDF)
-                    </a>
-                    <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.8rem', color: 'var(--color-cherry)', textDecoration: 'none' }}>
-                      <Download size={14} /> PSARA License (PDF)
-                    </a>
-                  </div>
-                </div>
+                    <div style={{ borderTop: '1px solid rgba(20,16,13,0.1)', paddingTop: '1rem', marginTop: '0.5rem' }}>
+                      <p style={{ fontSize: '0.8rem', color: 'var(--color-horizon-600)', fontWeight: 600, marginBottom: '0.5rem' }}>Download Documents</p>
+                      <p style={{ fontSize: '0.8rem', color: 'var(--color-horizon-500)' }}>Contact us to request documents.</p>
+                    </div>
               </div>
             </div>
           </div>

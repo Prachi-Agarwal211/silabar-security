@@ -21,6 +21,7 @@ import {
   FileSearch,
   Building2,
   Headphones,
+  MapPin,
 } from 'lucide-react'
 import { FAQS } from '@/data/faq'
 import { HOME_TESTIMONIALS } from '@/data/reviews'
@@ -306,6 +307,49 @@ export default function HomePageClient() {
             <div className="why-silbar-trusted-badge" aria-hidden="true">
               <span className="why-silbar-trusted-text">TRUSTED<br />SINCE<br />2018</span>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── COVERAGE ─────────────────────────────────── */}
+      <section className="section-pad brand-rail" aria-labelledby="coverage-title">
+        <div className="shell">
+          <span className="section-eyebrow section-eyebrow--red">PAN INDIA COVERAGE</span>
+          <h2 id="coverage-title" className="section-heading">
+            Security Across <em>India.</em>
+          </h2>
+          <p className="section-subtitle" style={{ marginBottom: '2rem' }}>
+            Manned guarding, CCTV, and facility security in 200+ cities across 19 PSARA-licensed states.
+          </p>
+          <div className="coverage-grid">
+            {[
+              { name: 'Rajasthan', slug: 'rajasthan' },
+              { name: 'Delhi', slug: 'delhi' },
+              { name: 'Gujarat', slug: 'gujarat' },
+              { name: 'Maharashtra', slug: 'maharashtra' },
+              { name: 'Uttar Pradesh', slug: 'uttar-pradesh' },
+              { name: 'Haryana', slug: 'haryana' },
+              { name: 'Karnataka', slug: 'karnataka' },
+              { name: 'Tamil Nadu', slug: 'tamil-nadu' },
+              { name: 'Madhya Pradesh', slug: 'madhya-pradesh' },
+              { name: 'Punjab', slug: 'punjab' },
+              { name: 'West Bengal', slug: 'west-bengal' },
+              { name: 'Bihar', slug: 'bihar' },
+            ].map((s) => (
+              <Link
+                key={s.slug}
+                href={`/security-services/${s.slug}`}
+                className="coverage-link"
+              >
+                <MapPin size={14} aria-hidden="true" />
+                {s.name}
+              </Link>
+            ))}
+          </div>
+          <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+            <Link href="/security-services" className="btn-secondary">
+              View All States &amp; Cities <ArrowRight size={14} aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </section>

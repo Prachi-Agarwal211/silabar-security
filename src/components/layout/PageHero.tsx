@@ -14,6 +14,7 @@ interface PageHeroProps {
   /** Photo background for location / industry style heroes */
   variant?: 'default' | 'image' | 'dark'
   imageSrc?: string
+  imageAlt?: string
 }
 
 export default function PageHero({
@@ -27,6 +28,7 @@ export default function PageHero({
   bottomContent,
   variant = 'default',
   imageSrc = '/why-silbar-bg.webp',
+  imageAlt = 'Silbar Security background',
 }: PageHeroProps) {
   const isShort = size === 'short' || size === 'compact'
   const isImage = variant === 'image'
@@ -48,7 +50,7 @@ export default function PageHero({
         <div className="page-hero__media" aria-hidden="true">
           <Image
             src={imageSrc}
-            alt=""
+            alt={imageAlt}
             fill
             priority
             sizes="100vw"

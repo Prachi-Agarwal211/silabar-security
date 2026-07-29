@@ -41,7 +41,7 @@ export default function FAQPage() {
   const faqsByCategory = groupFaqsByCategory()
 
   return (
-    <main>
+    <main id="main-content">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <PageHero
         eyebrow="FAQs"

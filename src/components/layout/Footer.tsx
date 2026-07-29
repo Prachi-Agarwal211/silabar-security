@@ -22,12 +22,25 @@ const TOP_INDUSTRIES = [
   { label: 'Banks & ATMs', href: '/industries/banks-atms' },
 ]
 
+const TOP_STATES = [
+  { label: 'Rajasthan', href: '/security-services/rajasthan' },
+  { label: 'Delhi', href: '/security-services/delhi' },
+  { label: 'Gujarat', href: '/security-services/gujarat' },
+  { label: 'Maharashtra', href: '/security-services/maharashtra' },
+  { label: 'Uttar Pradesh', href: '/security-services/uttar-pradesh' },
+  { label: 'Haryana', href: '/security-services/haryana' },
+  { label: 'Karnataka', href: '/security-services/karnataka' },
+  { label: 'Tamil Nadu', href: '/security-services/tamil-nadu' },
+  { label: 'Madhya Pradesh', href: '/security-services/madhya-pradesh' },
+  { label: 'Punjab', href: '/security-services/punjab' },
+]
+
 const COMPANY_LINKS = [
   { label: 'About', href: '/about' },
   { label: 'Franchise', href: '/franchise' },
   { label: 'Careers', href: '/careers' },
   { label: 'Blog', href: '/blog' },
-  { label: 'Locations', href: '/security-services' },
+  { label: 'All Locations', href: '/security-services' },
   { label: 'FAQs', href: '/faq' },
   { label: 'Contact', href: '/contact' },
 ]
@@ -103,6 +116,17 @@ export default function Footer() {
               <li key={label}><Link href={href} className="footer-link">{label}</Link></li>
             ))}
             <li><Link href="/industries" className="footer-link footer-link--all">View All →</Link></li>
+          </ul>
+        </div>
+
+        {/* Coverage column */}
+        <div>
+          <div className="footer-heading">Coverage</div>
+          <ul className="footer-links">
+            {TOP_STATES.map(({ label, href }) => (
+              <li key={label}><Link href={href} className="footer-link">{label}</Link></li>
+            ))}
+            <li><Link href="/security-services" className="footer-link footer-link--all">View All States →</Link></li>
           </ul>
         </div>
 

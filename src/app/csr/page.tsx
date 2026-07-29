@@ -45,7 +45,7 @@ const CSR_INITIATIVES = [
 
 export default function CSRPage() {
   return (
-    <main>
+    <main id="main-content">
       <PageHero
         eyebrow="CSR"
         title={

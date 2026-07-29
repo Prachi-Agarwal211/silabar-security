@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function CaseStudiesPage() {
   return (
-    <main>
+    <main id="main-content">
       <PageHero
         eyebrow="CASE STUDIES"
         title={

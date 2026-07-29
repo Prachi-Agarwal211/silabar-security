@@ -7,6 +7,7 @@ export type BlogPost = {
   coverImage: string
   author: string
   publishedAt: string
+  modifiedAt: string
   category: string
   readTime: string
   /** When set, card opens WordPress (or external) instead of /blog/[slug] */
@@ -46,6 +47,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/iso-security.jpg',
     author: 'Silbar Security Expert',
     publishedAt: '2026-06-15',
+
+    modifiedAt: '2026-06-15',
     category: 'Compliance',
     readTime: '4 min read'
   },
@@ -73,6 +76,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/cctv-guard.jpg',
     author: 'Operations Head',
     publishedAt: '2026-06-28',
+
+    modifiedAt: '2026-06-28',
     category: 'Security Tips',
     readTime: '5 min read'
   },
@@ -98,6 +103,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/festive-security.jpg',
     author: 'Silbar Security Expert',
     publishedAt: '2026-07-05',
+
+    modifiedAt: '2026-07-05',
     category: 'Industry News',
     readTime: '3 min read'
   },
@@ -124,6 +131,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/choose-agency.jpg',
     author: 'Silbar Security Expert',
     publishedAt: '2026-07-08',
+
+    modifiedAt: '2026-07-08',
     category: 'Security Tips',
     readTime: '5 min read',
   },
@@ -148,6 +157,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/industrial-gate.jpg',
     author: 'Operations Head',
     publishedAt: '2026-07-10',
+
+    modifiedAt: '2026-07-10',
     category: 'Industry News',
     readTime: '4 min read',
   },
@@ -172,6 +183,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/residential-security.jpg',
     author: 'Silbar Security Expert',
     publishedAt: '2026-07-11',
+
+    modifiedAt: '2026-07-11',
     category: 'Security Tips',
     readTime: '4 min read',
   },
@@ -201,6 +214,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/fire-safety.jpg',
     author: 'Compliance Team',
     publishedAt: '2026-07-18',
+
+    modifiedAt: '2026-07-18',
     category: 'Compliance',
     readTime: '5 min read',
   },
@@ -228,6 +243,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/psara-license.jpg',
     author: 'Compliance Team',
     publishedAt: '2026-07-25',
+
+    modifiedAt: '2026-07-25',
     category: 'Compliance',
     readTime: '6 min read',
   },
@@ -255,6 +272,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/ai-surveillance.jpg',
     author: 'Silbar Security Expert',
     publishedAt: '2026-08-02',
+
+    modifiedAt: '2026-08-02',
     category: 'Industry News',
     readTime: '5 min read',
   },
@@ -288,6 +307,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/warehouse-theft.jpg',
     author: 'Operations Head',
     publishedAt: '2026-08-10',
+
+    modifiedAt: '2026-08-10',
     category: 'Security Tips',
     readTime: '6 min read',
   },
@@ -316,6 +337,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/vulnerability-assessment.jpg',
     author: 'Silbar Security Expert',
     publishedAt: '2026-08-18',
+
+    modifiedAt: '2026-08-18',
     category: 'Security Tips',
     readTime: '7 min read',
   },
@@ -342,6 +365,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/event-security.jpg',
     author: 'Operations Head',
     publishedAt: '2026-08-25',
+
+    modifiedAt: '2026-08-25',
     category: 'Security Tips',
     readTime: '5 min read',
   },
@@ -368,6 +393,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/women-security.jpg',
     author: 'Silbar Security Expert',
     publishedAt: '2026-09-01',
+
+    modifiedAt: '2026-09-01',
     category: 'Industry News',
     readTime: '4 min read',
   },
@@ -399,6 +426,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/access-control.jpg',
     author: 'Silbar Security Expert',
     publishedAt: '2026-09-08',
+
+    modifiedAt: '2026-09-08',
     category: 'Security Tips',
     readTime: '6 min read',
   },
@@ -427,6 +456,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/training-standards.jpg',
     author: 'Operations Head',
     publishedAt: '2026-09-15',
+
+    modifiedAt: '2026-09-15',
     category: 'Industry News',
     readTime: '5 min read',
   },
@@ -454,6 +485,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/bank-security.jpg',
     author: 'Silbar Security Expert',
     publishedAt: '2026-09-22',
+
+    modifiedAt: '2026-09-22',
     category: 'Security Tips',
     readTime: '6 min read',
   },
@@ -486,6 +519,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/construction-site.jpg',
     author: 'Operations Head',
     publishedAt: '2026-09-29',
+
+    modifiedAt: '2026-09-29',
     category: 'Security Tips',
     readTime: '5 min read',
   },
@@ -513,6 +548,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/hotel-security.jpg',
     author: 'Silbar Security Expert',
     publishedAt: '2026-10-05',
+
+    modifiedAt: '2026-10-05',
     category: 'Security Tips',
     readTime: '6 min read',
   },
@@ -540,6 +577,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/school-safety.jpg',
     author: 'Silbar Security Expert',
     publishedAt: '2026-10-12',
+
+    modifiedAt: '2026-10-12',
     category: 'Industry News',
     readTime: '6 min read',
   },
@@ -568,6 +607,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/monsoon-safety.jpg',
     author: 'Operations Head',
     publishedAt: '2026-10-19',
+
+    modifiedAt: '2026-10-19',
     category: 'Security Tips',
     readTime: '5 min read',
   },
@@ -594,6 +635,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/retail-security.jpg',
     author: 'Operations Head',
     publishedAt: '2026-10-26',
+
+    modifiedAt: '2026-10-26',
     category: 'Security Tips',
     readTime: '5 min read',
   },
@@ -620,6 +663,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/future-security.jpg',
     author: 'Silbar Security Expert',
     publishedAt: '2026-11-02',
+
+    modifiedAt: '2026-11-02',
     category: 'Industry News',
     readTime: '6 min read',
   },
@@ -653,6 +698,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/hospital-security.jpg',
     author: 'Operations Head',
     publishedAt: '2026-11-08',
+
+    modifiedAt: '2026-11-08',
     category: 'Security Tips',
     readTime: '6 min read',
   },
@@ -689,6 +736,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/festive-checklist.jpg',
     author: 'Silbar Security Expert',
     publishedAt: '2026-11-15',
+
+    modifiedAt: '2026-11-15',
     category: 'Security Tips',
     readTime: '5 min read',
   },
@@ -717,6 +766,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/compliance-check.jpg',
     author: 'Compliance Team',
     publishedAt: '2026-11-22',
+
+    modifiedAt: '2026-11-22',
     category: 'Compliance',
     readTime: '5 min read',
   },
@@ -750,6 +801,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/solar-farm.jpg',
     author: 'Silbar Security Expert',
     publishedAt: '2026-11-29',
+
+    modifiedAt: '2026-11-29',
     category: 'Industry News',
     readTime: '6 min read',
   },
@@ -777,6 +830,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/iso-14001.jpg',
     author: 'Compliance Team',
     publishedAt: '2026-12-03',
+
+    modifiedAt: '2026-12-03',
     category: 'Compliance',
     readTime: '5 min read',
   },
@@ -804,6 +859,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/data-center.jpg',
     author: 'Compliance Team',
     publishedAt: '2026-12-08',
+
+    modifiedAt: '2026-12-08',
     category: 'Compliance',
     readTime: '7 min read',
   },
@@ -831,6 +888,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/executive-protection.jpg',
     author: 'Silbar Security Expert',
     publishedAt: '2026-12-14',
+
+    modifiedAt: '2026-12-14',
     category: 'Security Tips',
     readTime: '6 min read',
   },
@@ -858,6 +917,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/economics-security.jpg',
     author: 'Silbar Security Expert',
     publishedAt: '2026-12-20',
+
+    modifiedAt: '2026-12-20',
     category: 'Industry News',
     readTime: '5 min read',
   },
@@ -888,6 +949,8 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: '/images/blog/8-years.jpg',
     author: 'Operations Head',
     publishedAt: '2026-12-25',
+
+    modifiedAt: '2026-12-25',
     category: 'Company Updates',
     readTime: '4 min read',
   },

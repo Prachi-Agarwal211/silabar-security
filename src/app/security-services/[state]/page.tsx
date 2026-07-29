@@ -80,25 +80,31 @@ export default async function StateSEOPage({
     url: `https://www.silbarsecurity.in/security-services/${state}`,
     telephone: primaryOffice?.phone || CONTACT.phone,
     email: CONTACT.email,
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: primaryOffice?.address?.split(',')[0]?.trim(),
-      addressLocality: primaryOffice?.city?.replace(/\s*\(.*?\)\s*/g, '').trim(),
-      addressRegion: location.name,
-      postalCode: primaryOffice?.pin,
-      addressCountry: 'IN',
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: primaryOffice?.lat || GEO_COORDINATES[capitalKey]?.lat || 20.5937,
-      longitude: primaryOffice?.lng || GEO_COORDINATES[capitalKey]?.lng || 78.9629,
-    },
-    ...(primaryOffice?.mapUrl ? { hasMap: primaryOffice.mapUrl } : {}),
-    ...(gbpOffices.length > 1
-      ? { sameAs: gbpOffices.map((o) => o.mapUrl) }
-      : primaryOffice?.mapUrl
-        ? { sameAs: [primaryOffice.mapUrl] }
-        : {}),
+    ...(primaryOffice?.address && primaryOffice?.region === location.name
+      ? {
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: primaryOffice.address.split(',')[0]?.trim(),
+            addressLocality: primaryOffice.city?.replace(/\s*\(.*?\)\s*/g, '').trim(),
+            addressRegion: location.name,
+            postalCode: primaryOffice.pin,
+            addressCountry: 'IN',
+          },
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: primaryOffice.lat || GEO_COORDINATES[capitalKey]?.lat || 20.5937,
+            longitude: primaryOffice.lng || GEO_COORDINATES[capitalKey]?.lng || 78.9629,
+          },
+          ...(primaryOffice.mapUrl ? { hasMap: primaryOffice.mapUrl } : {}),
+        }
+      : {
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: GEO_COORDINATES[capitalKey]?.lat || 20.5937,
+            longitude: GEO_COORDINATES[capitalKey]?.lng || 78.9629,
+          },
+        }),
+    sameAs: [`https://www.silbarsecurity.in/security-services/${state}`],
     image: 'https://www.silbarsecurity.in/og-image.jpg',
     openingHoursSpecification: [
       {

@@ -114,7 +114,7 @@ export default function Header() {
           <Link href="/" className="site-header__logo" onClick={closeMenu}>
             <Image
               src="/icon-512.png"
-              alt=""
+              alt="Silbar Security"
               width={40}
               height={40}
               className="site-header__logo-img"

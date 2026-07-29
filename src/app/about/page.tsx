@@ -212,7 +212,7 @@ export default function AboutPage() {
             <div className="about-story__mosaic-main">
               <Image
                 src="/why-silbar-bg.webp"
-                alt=""
+                alt="Silbar Security operations team"
                 fill
                 sizes="(max-width: 900px) 100vw, 50vw"
                 className="about-story__mosaic-img"
@@ -230,7 +230,7 @@ export default function AboutPage() {
               <div className="about-story__mosaic-tile about-story__mosaic-tile--photo">
                 <Image
                   src="/industries-bg.webp"
-                  alt=""
+                  alt="Security guard at industrial deployment site"
                   fill
                   sizes="240px"
                   className="about-story__mosaic-img"
@@ -329,7 +329,7 @@ export default function AboutPage() {
       {/* ─── Leadership ─── */}
       <section className="about-leadership" id="leadership" aria-labelledby="leadership-heading">
         <div className="about-leadership__bg" aria-hidden="true">
-          <Image src="/why-silbar-bg.webp" alt="" fill sizes="100vw" className="about-leadership__bg-img" />
+          <Image src="/why-silbar-bg.webp" alt="Silbar Security team and operations background" fill sizes="100vw" className="about-leadership__bg-img" />
         </div>
         <div className="about-leadership__inner">
           <ScrollReveal>

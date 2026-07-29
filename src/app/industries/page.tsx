@@ -49,7 +49,7 @@ export default function IndustriesPage() {
         <div className="industries-hero__media" aria-hidden="true">
           <Image
             src="/industries-bg.webp"
-            alt=""
+            alt="Industrial security by Silbar Security"
             fill
             priority
             sizes="100vw"
@@ -136,7 +136,7 @@ export default function IndustriesPage() {
       {/* ─── Mid band with image ─── */}
       <section className="industries-band" aria-label="Why industry specialists">
         <div className="industries-band__media" aria-hidden="true">
-          <Image src="/why-silbar-bg.webp" alt="" fill sizes="100vw" className="industries-band__img" />
+          <Image src="/why-silbar-bg.webp" alt="Silbar Security industry operations background" fill sizes="100vw" className="industries-band__img" />
           <div className="industries-band__scrim" />
         </div>
         <div className="industries-band__inner">

@@ -6,6 +6,7 @@ type WpRendered = { rendered: string; protected?: boolean }
 type WpPost = {
   id: number
   date: string
+  modified: string
   slug: string
   link: string
   title: WpRendered
@@ -72,6 +73,7 @@ export function mapWpPostToBlogPost(post: WpPost): BlogPost {
     coverImage: featuredImage(post),
     author: post._embedded?.author?.[0]?.name || 'Silbar Security Services Pvt. Ltd.',
     publishedAt: post.date,
+    modifiedAt: post.modified || post.date,
     category: categoryName(post),
     readTime: estimateReadTime(post.content.rendered),
     externalUrl: post.link || `${WORDPRESS_BLOG.origin}/${post.slug}/`,

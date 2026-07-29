@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function EmergencyPage() {
   return (
-    <main>
+    <main id="main-content">
       <PageHero
         eyebrow="EMERGENCY"
         title={

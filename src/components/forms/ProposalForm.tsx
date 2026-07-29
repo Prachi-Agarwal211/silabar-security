@@ -36,11 +36,11 @@ export default function ProposalForm() {
       }}
     >
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-        <input type="text" name="company" placeholder="Company Name *" required autoComplete="organization" style={inputStyle} />
-        <input type="text" name="contact" placeholder="Contact Person *" required autoComplete="name" style={inputStyle} />
-        <input type="email" name="email" placeholder="Email *" required autoComplete="email" style={inputStyle} />
-        <input type="tel" name="phone" placeholder="Phone *" required autoComplete="tel" inputMode="tel" style={inputStyle} />
-        <select name="service" required style={{ ...inputStyle, color: 'var(--color-horizon-600)' }}>
+        <input type="text" name="company" placeholder="Company Name *" required autoComplete="organization" aria-label="Company Name" style={inputStyle} />
+        <input type="text" name="contact" placeholder="Contact Person *" required autoComplete="name" aria-label="Contact Person" style={inputStyle} />
+        <input type="email" name="email" placeholder="Email *" required autoComplete="email" aria-label="Email" style={inputStyle} />
+        <input type="tel" name="phone" placeholder="Phone *" required autoComplete="tel" inputMode="tel" aria-label="Phone" style={inputStyle} />
+        <select name="service" required aria-label="Service Required" style={{ ...inputStyle, color: 'var(--color-horizon-600)' }}>
           <option value="">Service Required *</option>
           <option>Manned Guarding</option>
           <option>Armed Security</option>
@@ -55,6 +55,7 @@ export default function ProposalForm() {
           placeholder="Facility Details (location, size, requirements) *"
           required
           rows={3}
+          aria-label="Facility Details"
           style={{ ...inputStyle, resize: 'vertical' }}
         />
         <button type="submit" className="btn-primary" style={{ border: 'none', cursor: 'pointer', alignSelf: 'flex-start' }}>

@@ -38,12 +38,12 @@ export default function SurveyForm() {
       }}
     >
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-        <input type="text" name="company" placeholder="Company Name *" required autoComplete="organization" style={inputStyle} />
-        <input type="text" name="contact" placeholder="Contact Person *" required autoComplete="name" style={inputStyle} />
-        <input type="email" name="email" placeholder="Email *" required autoComplete="email" style={inputStyle} />
-        <input type="tel" name="phone" placeholder="Phone *" required autoComplete="tel" inputMode="tel" style={inputStyle} />
-        <input type="text" name="address" placeholder="Facility Address *" required autoComplete="street-address" style={inputStyle} />
-        <select name="facilityType" required style={{ ...inputStyle, color: 'var(--color-horizon-600)' }}>
+        <input type="text" name="company" placeholder="Company Name *" required autoComplete="organization" aria-label="Company Name" style={inputStyle} />
+        <input type="text" name="contact" placeholder="Contact Person *" required autoComplete="name" aria-label="Contact Person" style={inputStyle} />
+        <input type="email" name="email" placeholder="Email *" required autoComplete="email" aria-label="Email" style={inputStyle} />
+        <input type="tel" name="phone" placeholder="Phone *" required autoComplete="tel" inputMode="tel" aria-label="Phone" style={inputStyle} />
+        <input type="text" name="address" placeholder="Facility Address *" required autoComplete="street-address" aria-label="Facility Address" style={inputStyle} />
+        <select name="facilityType" required aria-label="Facility Type" style={{ ...inputStyle, color: 'var(--color-horizon-600)' }}>
           <option value="">Facility Type *</option>
           <option>Manufacturing Plant</option>
           <option>Warehouse</option>
@@ -55,7 +55,7 @@ export default function SurveyForm() {
           <option>Educational Institution</option>
           <option>Other</option>
         </select>
-        <input type="text" name="preferredDate" placeholder="Preferred Date for Survey" style={inputStyle} />
+        <input type="text" name="preferredDate" placeholder="Preferred Date for Survey" aria-label="Preferred Date for Survey" style={inputStyle} />
         <button type="submit" className="btn-primary" style={{ border: 'none', cursor: 'pointer', alignSelf: 'flex-start' }}>
           Book Survey on WhatsApp
         </button>

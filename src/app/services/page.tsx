@@ -91,7 +91,7 @@ export default function ServicesPage() {
         <div className="svc-hero__media" aria-hidden="true">
           <Image
             src="/hero-guard.webp"
-            alt=""
+            alt="Silbar Security guard on duty"
             fill
             priority
             sizes="100vw"
@@ -205,7 +205,7 @@ export default function ServicesPage() {
       {/* Featured image band */}
       <section className="svc-feature-band" aria-labelledby="featured-heading">
         <div className="svc-feature-band__media" aria-hidden="true">
-          <Image src="/industries-bg.webp" alt="" fill sizes="100vw" className="svc-feature-band__img" />
+          <Image src="/industries-bg.webp" alt="Industries served by Silbar Security" fill sizes="100vw" className="svc-feature-band__img" />
           <div className="svc-feature-band__scrim" />
         </div>
         <div className="shell svc-feature-band__inner">
