@@ -578,6 +578,102 @@ const CHALLENGES_POOL = [
     title: 'Integration of legacy security systems',
     desc: 'Many facilities still operate analog CCTV, standalone biometric readers, or manual logbooks. Deploying guards who can work alongside — not replace — these legacy systems requires careful SOP design.',
   },
+  {
+    title: 'Guard misconduct & negligence risks',
+    desc: 'Sleeping on duty, excessive phone use, or gate abandonment undermines security. Structured supervisor rounds, CCTV oversight, and random spot checks deter misconduct before it becomes a pattern.',
+  },
+  {
+    title: 'Key management & asset room access',
+    desc: 'Loose key registers and undocumented asset room entry create blind spots in theft investigations. Tamper-evident key cabinets with signed in/out logs close this gap.',
+  },
+  {
+    title: 'Post-muster & attendance manipulation',
+    desc: 'Proxy attendance and late sign-ins are common in unorganised security setups. Biometric or GPS-verified check-ins eliminate ghost manpower and ensure billed hours match deployed hours.',
+  },
+  {
+    title: 'Fire safety equipment tampering',
+    desc: 'Extinguishers and hose reels are often blocked, expired, or tampered with between inspections. Guards trained in weekly equipment checks catch these before an emergency.',
+  },
+  {
+    title: 'Late-night delivery oversight',
+    desc: 'After-hours deliveries skip gate checks when supervision is thin. Protocols for night delivery windows with pre-approved vendor lists and mandatory vehicle search reduce risk.',
+  },
+  {
+    title: 'Unauthorised photography & recording',
+    desc: 'Sensitive industrial and corporate sites face risks from mobile cameras. Clear signage, bag inspection protocols, and guard alertness to recording behaviour are essential countermeasures.',
+  },
+  {
+    title: 'Vehicle search compliance gaps',
+    desc: 'Inconsistent vehicle checks at gates — skipped boot inspections, unchecked undercarriages — create smuggling vulnerabilities. Standardised vehicle search SOPs with checkpoint verification help.',
+  },
+  {
+    title: 'Construction material theft during fit-outs',
+    desc: 'Renovation and fit-out periods see high material movement. Without dedicated material gate passes and exit verification, copper, steel, and fixtures leave sites undetected.',
+  },
+  {
+    title: 'Visitor ID verification fatigue',
+    desc: 'High footfall dulls vigilance at busy gates, leading to tailgating and unauthorised entry. Rotating gate staff and periodic supervisor interventions maintain check quality throughout shifts.',
+  },
+  {
+    title: 'Public demonstration & protest management',
+    desc: 'Corporate and government sites near protest-prone areas need guards trained in cordon management, non-confrontational communication, and coordinated response with local law enforcement.',
+  },
+  {
+    title: 'VIP movement security coordination',
+    desc: 'Unscheduled VIP visits create scramble. Pre-planned route security, room sweeps, elevator holds, and discrete cordon protocols ensure seamless protection without disrupting facility operations.',
+  },
+  {
+    title: 'Lone women employee night safety',
+    desc: 'Women working night shifts at IT parks, BPOs, and factories need escort protocols, well-lit pathways, and emergency contact points. Guards trained in gender-sensitive response are critical.',
+  },
+  {
+    title: 'School bus & child safety at gates',
+    desc: 'Residential societies and school-adjacent sites face unique risks during pickup and drop-off. Guards must verify vehicle IDs, manage gate area crowd control, and prevent unauthorised child access.',
+  },
+  {
+    title: 'Flood & monsoon preparedness',
+    desc: 'Heavy rainfall creates waterlogging, electrical hazards, and access road disruptions. Guards need monsoon SOPs — sump pump checks, electrical panel monitoring, and emergency sandbag placement.',
+  },
+  {
+    title: 'Power failure & generator security protocols',
+    desc: 'Blackouts disable electronic access, CCTV, and alarm systems. Guards must know generator changeover procedures, manual gate protocols, and increased patrol requirements during power loss.',
+  },
+  {
+    title: 'Security equipment maintenance oversight',
+    desc: 'Cameras with obstructed lenses, non-functional boom barriers, and offline biometric readers are common in aging installations. Guard-reported equipment faults with logged follow-ups prevent degradation.',
+  },
+  {
+    title: 'Multi-agency security coordination',
+    desc: 'Sites with separate cleaning, catering, and facility vendors need clear security coordination. Conflicting instructions and undefined escalation paths create gaps that compromise site safety.',
+  },
+  {
+    title: 'Guard welfare & accommodation quality',
+    desc: 'Poor living conditions and irregular breaks lower guard morale and retention. Clients benefit when partner agencies invest in guard amenities, medical coverage, and fair shift scheduling.',
+  },
+  {
+    title: 'Cash & valuables handling oversight',
+    desc: 'ATMs, retail cash counters, and payroll offices handle significant cash movement. Dedicated cash escort protocols with signed handover chains and CCTV coverage reduce internal and external theft.',
+  },
+  {
+    title: 'Alcohol & substance detection protocols',
+    desc: 'On-duty intoxication compromises alertness and professional conduct. Random breathalyser tests with documented results and clear escalation for positive cases maintain chemical-free deployments.',
+  },
+  {
+    title: 'Parking enforcement & towing disputes',
+    desc: 'Unauthorised parking and vehicle towing create confrontations at commercial and residential sites. Guards need clear parking SOPs, signage enforcement authority, and de-escalation skills for resulting disputes.',
+  },
+  {
+    title: 'Lost & found management gaps',
+    desc: 'Misplaced wallets, phones, and documents at malls, offices, and hospitals create liability. A documented lost-and-found process with signed custody logs protects both clients and the security team.',
+  },
+  {
+    title: 'Medical emergency first response',
+    desc: 'Heart attacks, falls, and injuries on site need immediate response. Guards with basic first aid training, knowledge of nearest hospitals, and emergency contact lists save critical minutes.',
+  },
+  {
+    title: 'Post-incident evidence preservation',
+    desc: 'After theft, vandalism, or intrusion, poorly preserved evidence weakens investigations. Guards trained in scene cordon, CCTV footage preservation, and witness identification strengthen case outcomes.',
+  },
 ]
 
 const DELIVERABLES_POOL = [
@@ -606,6 +702,21 @@ const DELIVERABLES_POOL = [
   'Biometric attendance integration report for multi-site payroll consolidation',
   'Vendor background check documentation with court record verification proof',
   'Executive protection itinerary logs with route risk assessments',
+  'Standardised uniform and grooming protocols across all deployed personnel',
+  '24/7 central control room coordination for multi-site client emergency escalation',
+  'WhatsApp-based daily shift reports with photo evidence of post readiness and site conditions',
+  'Monthly client review meetings with performance metrics and improvement action plans',
+  'Pre-deployment medical fitness screening documentation for all security personnel',
+  'On-site CCTV operator deployment where manned posts need real-time surveillance backup',
+  'Vehicle patrol services with GPS-tracked route adherence and checkpoint verification logs',
+  'Crisis management cell activation within 30 minutes for emergency situations',
+  'Guard rotation planning every 6-12 months to prevent site familiarity and complacency risks',
+  'Weather-appropriate gear provision — raincoats, woollen uniforms, sun protection as per season',
+  'Post order books with signed guard acknowledgements and mandatory monthly refresher audits',
+  'Surprise alertness drills — unannounced supervisor visits to test response times and procedure recall',
+  'Third-party compliance audit facilitation for client ISO, IMS, and regulatory credential requirements',
+  'Biometric attendance integration with real-time data sync for multi-site payroll and compliance reporting',
+  'Security awareness bulletin distribution — monthly one-pagers on emerging threats and guard best practices',
 ]
 
 const TRAINING_TOPICS = [
@@ -627,6 +738,23 @@ const TRAINING_TOPICS = [
   'Diversity and inclusion in security operations — gender sensitivity and cultural awareness',
   'Stress management, shift fatigue coping, and mental health awareness for security personnel',
   'Environmental safety awareness and waste management best practices for facility perimeters',
+  'Vehicle search techniques — mirror checks, compartment inspection, and document verification at gates',
+  'Baggage and package screening protocols — visual inspection, X-ray awareness, prohibited item identification',
+  'Ethical conduct and anti-corruption training — gift refusal protocols, bribery prevention, whistleblower rights',
+  'Monsoon and flood safety protocols — water level monitoring, electrical hazard awareness, evacuation routes',
+  'Basic English and Hindi communication skills for report writing, visitor interaction, and phone etiquette',
+  'Gender sensitisation training — respectful interaction with women, children, elderly, and vulnerable individuals',
+  'Emergency triage and first responder protocols for medical incidents, injuries, and accident scenes',
+  'Legal awareness — rights of arrested persons, use-of-force continuum, citizen arrest boundaries, RTI basics',
+  'Suicide prevention and mental health crisis recognition — identifying warning signs, escalation to supervisors',
+  'VIP movement protocols — route security, room sweeping, crowd cordon, and motorcade assistance coordination',
+  'Electronic access control systems — RFID card management, biometric reader troubleshooting, tailgate prevention',
+  'Hotel and hospitality security — guest privacy, baggage handling, room key control, and front desk coordination',
+  'Fire warden training for multi-floor buildings — floor marshals, assembly point management, and headcount procedures',
+  'IoT security awareness for smart buildings — sensor tampering detection, network port monitoring, device alerts',
+  'Posture, uniform presentation, and personal grooming standards for professional appearance at client sites',
+  'Conflict resolution and persuasion techniques for managing aggressive individuals without physical confrontation',
+  'Substance abuse recognition — identifying intoxication signs, refusal procedures, escalation, and documentation',
 ]
 
 const PACKAGE_TYPES = [
@@ -674,6 +802,20 @@ const WHO_NEEDS = [
   'Government offices, secretariats, and public service centres requiring protocol-compliant security deployment',
   'Sports stadiums, entertainment venues, and convention centres with large crowd ingress and egress management',
   'Commercial real estate developers requiring construction site security during active development phases',
+  'Event management companies needing temporary surge manpower for conferences, concerts, and wedding venues',
+  'Government hospitals requiring security personnel with sensitivity training for patient and visitor management',
+  'Agricultural processing units — rice mills, cold storage facilities, grain warehouses — needing theft prevention',
+  'Religious institutions and large temple trusts requiring organised crowd management and queue discipline systems',
+  'Film and television production sets needing access control and equipment protection during active shoots',
+  'Corporate event venues and convention centres managing high-profile gatherings with VIP guest protocols',
+  'Petrol pumps and fuel stations with cash handling requirements and night-time security coverage concerns',
+  'Courier and parcel sorting hubs with high-volume goods movement requiring pilferage prevention measures',
+  'Old age homes and assisted living facilities requiring compassionate security and visitor monitoring protocols',
+  'Agricultural mandis and wholesale markets needing organised traffic management and theft prevention systems',
+  'Luxury retail boutiques and jewellery showrooms with high-value merchandise requiring VIP clientele protocols',
+  'Airport-adjacent logistics and cargo handling facilities needing transport security and cargo clearance protocols',
+  'Heritage hotels and palace properties requiring security with sensitivity to guest privacy and hospitality standards',
+  'Bus depots and transport hubs needing crowd management, ticket fraud prevention, and passenger safety measures',
 ]
 
 const WHY_POINTS_POOL = [
@@ -702,6 +844,21 @@ const WHY_POINTS_POOL = [
   'Comprehensive insurance coverage — public liability, employee compensation, and third-party property damage',
   'Local expertise across 19 PSARA-licensed states with native-language guards and regional team presence',
   'Real-time GPS-based attendance and patrol tracking with supervisor verification alerts',
+  'In-house training facility with structured curriculum, certified trainers, and periodic skill assessments',
+  'Digital HRMS system for attendance, payroll, and multi-site compliance management in one platform',
+  'Client web portal for on-demand access to deployment registers, incident reports, and compliance documentation',
+  'Active in 19 states with native-language speaking guards matched to regional client preferences',
+  'Zero-tolerance policy for guard misconduct with documented disciplinary action and client notification',
+  'Dedicated recruitment wing with police verification, court record checks, and reference verification',
+  '24/7 emergency helpline for client escalation — single-point contact for after-hours security concerns',
+  'Annual third-party security audit with vulnerability assessment, gap analysis, and remediation roadmap',
+  'Customised post order books tailored to each facility layout, risk matrix, and client-specific SOPs',
+  'Partnership network of PSARA-certified agencies enabling seamless pan-India scalability',
+  'Employee welfare programmes — medical insurance, skill development, and recognition initiatives for guard retention',
+  'Compliance with Sexual Harassment of Women at Workplace Act for lady guard deployment protocols',
+  'Bi-annual client satisfaction surveys with published results and documented action plans for improvement',
+  'Guard recognition and reward programme — employee of the month, performance incentives, and career advancement paths',
+  'Rapid response team on standby for crisis situations — labour unrest, natural disasters, and major security breaches',
 ]
 
 const PROCESS_STEPS = [
@@ -818,20 +975,26 @@ export function generateCityContent(city: CityLocation): LocationSEOContent {
   const region = city.state
   const sectors = sectorsForState(city.stateSlug, seed)
 
+  const tierLabel = city.tier === 1 ? 'metropolitan' : city.tier === 2 ? 'urban' : 'regional'
+
   const intro = [
     pick(seed, 1, [
       `Silbar Security Services Pvt. Ltd. provides professional security guard services in ${place}, ${region}. We deploy trained, background-verified manpower for factories, offices, hospitals, warehouses, retail sites, residential communities, and institutional campuses across the city.`,
       `If you are searching for a reliable security agency in ${place}, Silbar Security Services Pvt. Ltd. delivers manned guarding and facility protection with ISO-certified processes, PSARA compliance, clear commercials, and responsive coordination for clients across ${region}.`,
       `Businesses and institutions in ${place} need more than a uniform at the gate. Silbar Security Services Pvt. Ltd. focuses on disciplined posts, site-specific duty instructions, supervisor oversight, monthly compliance reporting, and measurable service standards tailored to local operating conditions in ${region}.`,
+      `Looking for trusted security guards in ${place}? Silbar Security Services Pvt. Ltd. provides end-to-end security deployment — from gate management and night patrols to visitor control and incident reporting — across ${region}.`,
+      `Silbar Security Services Pvt. Ltd. is your ${tierLabel} security partner in ${place}, ${region}. We bring ISO-certified processes and PSARA-licensed manpower to factories, offices, hospitals, residential societies, and commercial establishments across the city.`,
     ]),
     pick(seed, 2, [
       `${place} is a Tier-${city.tier} market with an urban population of about ${city.population}. Growth in industry, logistics, healthcare, retail, and housing increases demand for professional, compliance-driven security — not ad-hoc manpower hired without process.`,
       `With roughly ${city.population} residents and expanding commercial activity across ${sectors.slice(0, 4).join(', ')}, ${place} presents high-traffic gates, night shift requirements, and multi-tenant facilities that demand verified personnel and structured supervision.`,
       `${place}'s mix of industrial and commercial facilities (population ~${city.population}) requires flexible deployment models — 8/12-hour shifts, lady guards where gender sensitivity is needed, and optional integration of manned posts with electronic surveillance systems.`,
+      `Home to approximately ${city.population} people and a growing ${tierLabel} economy, ${place} generates security demand across ${sectors.slice(0, 3).join(', ')}.`,
     ]),
     pick(seed, 3, [
       `Silbar Security Services Pvt. Ltd. — with Registered Office in New Delhi, Corporate Office in Gurugram, and regional offices in Jaipur, Noida, and Ahmedabad — coordinates PAN India deployments. For ${place}, that means local mobilisation with national process standards: uniforms, induction, replacement pool, and account management.`,
       `Clients expanding into ${place} from other cities often prefer a single security partner. We support multi-location contracts across ${region} while keeping each site's duty instructions specific to its facility layout, operational hours, and risk profile.`,
+      `Our ${tierLabel} deployment model in ${place} emphasises post-specific duty briefings, supervisor field checks, and documented incident reporting — so whether you manage a single gate or a multi-acre campus, the service standard remains consistent across ${region}.`,
     ]),
     `Whether you manage a single warehouse gate or a multi-post industrial complex in ${place}, we start with scope clarity: number of posts, shift timings, visitor management rules, material movement protocols, and escalation contacts — then propose trained manpower that matches your actual requirements, not a generic brochure headcount.`,
   ]
@@ -896,7 +1059,13 @@ export function generateCityContent(city: CityLocation): LocationSEOContent {
     process,
     faqs: buildFaqs(place, region, seed, true),
     closingCta: `Ready to secure your facility in ${place}? Call ${CONTACT.phone}, WhatsApp via the form below, or email ${CONTACT.email}. Share your facility type, number of posts, and shift requirements for a fast, transparent proposal.`,
-    metaDescription: `Security guard company in ${place}, ${region}. Tier-${city.tier}, population ${city.population}. Serving ${sectors.slice(0, 3).join(', ')}. PSARA licensed, ISO certified. Call ${CONTACT.phone}.`,
+    metaDescription: pick(seed, 20, [
+      `Security guard company in ${place}, ${region}. Tier-${city.tier}, population ${city.population}. Serving ${sectors.slice(0, 3).join(', ')}. PSARA licensed, ISO certified. Call ${CONTACT.phone}.`,
+      `Trusted security agency in ${place}, ${region}. ${sectors.slice(0, 2).join(' and ')} security. PSARA licensed, ISO 9001:2015 certified. Get a free quote.`,
+      `${place} security guard services — ${sectors.slice(0, 2).join(', ')} protection. Verified manpower, PSARA licensed, PAN India deployments. Call ${CONTACT.phone}.`,
+      `Professional security company serving ${place}, ${region}. Manned guarding, industrial security, and facility protection. ISO & PSARA certified. Enquire now.`,
+      `Looking for security guards in ${place}? Silbar Security Services Pvt. Ltd. — Tier-${city.tier} security partner with PSARA license and 4 ISO certifications serving ${sectors.slice(0, 2).join(', ')} clients.`,
+    ]),
     servicesIntro: `Explore all Silbar Security Services Pvt. Ltd. service verticals available for your ${place} facility. Click any service for detailed features, use cases, and FAQs, then request a site-specific quote for your ${region} location.`,
     keywordsLine: `security guard services ${place}, security agency ${place}, manned guarding ${place}, security company ${region}, industrial security ${place}, PSARA licensed security ${place}`,
   }
@@ -965,7 +1134,13 @@ export function generateStateContent(state: StateLocation): LocationSEOContent {
     })),
     faqs: buildFaqs(place, place, seed, false),
     closingCta: `Planning security for your facility in ${place}? Call ${CONTACT.phone}, email ${CONTACT.email}, or use the WhatsApp form below. Share your facility type, number of posts, and shift requirements for a fast proposal.`,
-    metaDescription: `Security guard company in ${place}. Serving ${citiesList || state.capital} across ${state.districts} districts. ${sectors.slice(0, 3).join(', ')} security. PSARA licensed, ISO certified. Call ${CONTACT.phone}.`,
+    metaDescription: pick(seed, 20, [
+      `Security guard company in ${place}. Serving ${citiesList || state.capital} across ${state.districts} districts. ${sectors.slice(0, 3).join(', ')} security. PSARA licensed, ISO certified. Call ${CONTACT.phone}.`,
+      `Security agency in ${place} — ${sectors.slice(0, 3).join(', ')}. ${state.districts} districts covered. PSARA licensed, 4 ISO certifications. Get a free quote.`,
+      `${place} security guard services across ${state.districts} districts. Serving ${citiesList || state.capital} and all major cities. ISO 9001:2015 certified. Call ${CONTACT.phone}.`,
+      `Professional security company in ${place}. ${sectors.slice(0, 2).join(' and ')} security. PAN India capability with local ${place} deployment. Enquire now.`,
+      `Looking for security in ${place}? Silbar Security Services Pvt. Ltd. covers ${state.districts} districts with PSARA-licensed, ISO-certified security manpower across ${citiesList || state.capital}.`,
+    ]),
     servicesIntro: `Explore Silbar Security Services Pvt. Ltd.'s full range of service verticals available for deployment across ${place}. Click any service to view features, use cases, and FAQs, then request a ${place}-specific quote.`,
     keywordsLine: `security guard services ${place}, security agency ${place}, security company ${state.capital}, manned guarding ${place}, industrial security ${place}, PSARA licensed security ${place}`,
   }
