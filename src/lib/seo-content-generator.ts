@@ -466,6 +466,210 @@ const STATE_SECTORS: Record<string, string[]> = {
   ],
 }
 
+/** State-specific security challenges — cities draw from their state's pool before falling back to generic */
+const STATE_CHALLENGES: Record<string, ChallengeItem[]> = {
+  rajasthan: [
+    { title: 'Heritage hotel security complexity', desc: 'Rajasthan\'s palace hotels and heritage properties face unique challenges — unauthorised photography, trespassing, and managing high tourist footfall across sprawling, multi-entrance properties without disrupting guest experience.' },
+    { title: 'Mining site perimeter protection', desc: 'Zinc, marble, and sandstone mining operations in remote Rajasthan locations need 24/7 perimeter security to prevent equipment theft, illegal extraction, and unauthorized access across vast, hard-to-monitor sites.' },
+    { title: 'Textile & garment factory material loss', desc: 'Pali and Bhilwara textile units lose significant value at loading bays. Without structured material challan and vehicle check systems, fabric and finished goods disappear during dispatch.' },
+    { title: 'Solar & wind farm remote guarding', desc: 'Renewable energy installations across Rajasthan\'s desert and rural stretches face vandalism, cable theft, and trespassing where local police response times are long.' },
+    { title: 'Coaching hub crowd control', desc: 'Kota and Jaipur\'s student coaching hubs create dense pedestrian traffic, parking chaos, and late-night security concerns. Guards must manage entry, vehicle flow, and after-hours campus safety.' },
+    { title: 'Jewellery unit cash & valuables handling', desc: 'Gems and jewellery manufacturing units in Jaipur handle high-value inventory daily. Internal theft, cash movement during payroll, and vendor access need layered security protocols.' },
+    { title: 'Heritage site visitor management', desc: 'Tourist-heavy cities like Udaipur and Jodhpur see thousands of daily visitors at heritage sites. Guards must balance access control with hospitality — firm on security, polite with guests.' },
+    { title: 'Industrial estate material theft', desc: 'Neemrana and Bhiwadi industrial belts experience material theft during night shifts. Perimeter patrol gaps and unguarded rear gates create vulnerabilities in multi-tenant estates.' },
+  ],
+  delhi: [
+    { title: 'Corporate IT park multi-entry challenge', desc: 'Delhi\'s IT parks and corporate offices operate with multiple entry points, parking levels, and visitor-heavy lobbies. Guards must manage vehicle checks, identity verification, and professional front desk presence simultaneously.' },
+    { title: 'Embassy-adjacent sensitive zone security', desc: 'Properties near diplomatic enclaves face elevated security scrutiny. Guards need heightened alertness for suspicious activity, coordinated response protocols, and discretion around VIP-protected zones.' },
+    { title: 'High-rise residential tower management', desc: 'Delhi\'s premium residential towers in Dwarka, Rohini, and Vasant Kunj need dedicated gate management, visitor verification, parcel handling, and night patrols across multiple floors and basements.' },
+    { title: 'Retail mall high-footfall control', desc: 'Delhi malls experience peak weekend footfall of 50,000+. Guards need de-escalation skills, crowd management training, and coordinated incident response across parking, entry gates, and food courts.' },
+    { title: 'Warehouse & logistics night operations', desc: 'NCR warehouse clusters operate night dispatch windows with high vehicle throughput. Material challan verification, seal checks, and driver identification need rigorous SOPs to prevent cargo theft.' },
+    { title: 'Government building protocol compliance', desc: 'Delhi government buildings require protocol-compliant security — visitor logs, bag screening, ID verification, and coordination with central security agencies. Private guards must follow strict service-level rules.' },
+    { title: 'Metro station adjacent footfall management', desc: 'Properties near Delhi metro stations face concentrated footfall surges during peak hours. Security teams must manage access without creating bottlenecks that cause commuter congestion.' },
+    { title: 'Banks & ATMs cash logistics security', desc: 'Delhi\'s financial district has high-value cash movement between banks, ATMs, and corporate treasuries. Armoured van coordination, cash room access logs, and after-hours vault monitoring are critical.' },
+  ],
+  gujarat: [
+    { title: 'Chemical plant hazardous zone access', desc: 'Ankleshwar and Dahej chemical plants need strict access control around hazardous material storage zones. Guards must verify PPE compliance, manage contractor entry, and escalate safety violations immediately.' },
+    { title: 'Port & CFS cargo theft prevention', desc: 'Gujarat\'s ports and container freight stations face cargo theft during loading, unloading, and storage. Seal verification, container yard patrols, and driver handover protocols prevent losses.' },
+    { title: 'Diamond unit high-value merchandise protection', desc: 'Surat\'s diamond manufacturing units handle high-value inventory requiring bag searches, work-in-progress reconciliation, and restricted area access. Internal theft prevention and CCTV integration are essential.' },
+    { title: 'Pharma plant clean-room entry protocols', desc: 'Pharmaceutical manufacturing units require controlled-access clean room environments. Guards must enforce gowning protocols, hygiene discipline, and material pass-through systems without contaminating production zones.' },
+    { title: 'Textile park fire safety compliance', desc: 'Textile parks face elevated fire risks from fabric dust and chemical storage. Guards must conduct weekly fire extinguisher checks, evacuation drills, and hot work permit verification.' },
+    { title: 'SEZ multi-tenant estate coordination', desc: 'Gujarat SEZs house multiple manufacturing units under one perimeter. Guards coordinate across tenants for common gate access, visitor passes, and shared emergency response plans.' },
+    { title: 'Solar park cable theft prevention', desc: 'Large solar installations in Kutch and Banaskantha face copper cable theft. Night patrols, perimeter intrusion detection, and local police coordination are critical for energy infrastructure protection.' },
+    { title: 'Auto & EV plant shift change management', desc: 'Auto and EV plants in Sanand and Mandal operate multiple shifts with thousands of workers entering and exiting. Guard checkpoints must clear worker queues efficiently while preventing unauthorized entry.' },
+  ],
+  maharashtra: [
+    { title: 'IT park high-density access control', desc: 'Mumbai and Pune IT parks house 10,000+ employees daily. Guards must manage fast-paced visitor check-ins, lift lobby security, parking allocation, and emergency evacuations across multi-building campuses.' },
+    { title: 'Port logistics cargo chain integrity', desc: 'JNPT and Mumbai port belts face cargo theft across the logistics chain — from container yard to truck dispatch. Seal verification, vehicle tracking, and loading bay supervision are essential.' },
+    { title: 'High-rise residential fire evacuation', desc: 'Mumbai\'s high-rise apartments need rigorous fire safety protocols — weekly extinguisher checks, assembly point drills, and coordination with building fire safety officers during emergencies.' },
+    { title: 'Pharma & biotech R&D security', desc: 'Pharma R&D units need layered access control for sensitive research zones, intellectual property protection, and visitor NDAs. Guards must monitor material exit and enforce data room protocols.' },
+    { title: 'Auto plant tool & equipment theft', desc: 'Pune and Nashik auto plants experience tool crib theft during shift handovers. Structured tool issue systems, contractor bag checks, and CCTV oversight of tool rooms prevent losses.' },
+    { title: 'Financial district lobby management', desc: 'Mumbai BKC offices need reception-area security with professional presentation, visitor pre-registration, meeting room access control, and coordination with building concierge services.' },
+    { title: 'Nightclub & entertainment venue crowd control', desc: 'Pune and Mumbai nightlife venues require guards trained in intoxication management, age verification, and non-confrontational crowd de-escalation during peak hours.' },
+    { title: 'Hospital emergency room security', desc: 'Multi-specialty hospitals face ER security challenges — distressed relatives, agitated patients, and late-night footfall. Guards need crisis intervention skills and sensitivity training.' },
+  ],
+  karnataka: [
+    { title: 'Tech campus bike & vehicle theft', desc: 'Bengaluru tech parks with 50,000+ employees face high vehicle theft risk in sprawling parking lots. Structured patrol routes, CCTV blind-spot coverage, and bike verification at exits are essential.' },
+    { title: 'Startup co-working space access', desc: 'Bengaluru\'s co-working boom creates shared-space security challenges — multiple companies under one roof, transient members, and after-hours access without dedicated reception.' },
+    { title: 'Biotech lab intellectual property risk', desc: 'Biotech R&D units in Bengaluru need layered access with bio-metric entry, material exit screening, and escort protocols for visitors near sensitive research areas.' },
+    { title: 'Manufacturing plant night patrol gaps', desc: 'Peenya and electronic city industrial estates face night patrol gaps between guard shift changes. Random supervisor checks and GPS-tracked patrol routes improve after-hours vigilance.' },
+    { title: 'Apartment tower visitor management', desc: 'Bengaluru\'s high-density apartment complexes face constant delivery personnel, domestic help, and service vendor traffic. Digital visitor logs with photo capture improve accountability.' },
+    { title: 'Aerospace & defence access protocols', desc: 'Aerospace manufacturing units near Bengaluru require defence-grade access control — classified area segregation, visitor NDAs, camera-free zones, and security-cleared personnel only.' },
+    { title: 'Electronic city late-night employee safety', desc: 'IT parks in Electronic City operate night shifts with employees leaving at 2-3 AM. Guards must ensure well-lit pathways, escort protocols for women employees, and emergency contact readiness.' },
+    { title: 'Warehouse inventory shrinkage prevention', desc: 'Bengaluru logistics hubs face inventory shrinkage during night dispatch. Material reconciliation at loading bays, driver verification, and CCTV coverage of dispatch zones reduce losses.' },
+  ],
+  'tamil-nadu': [
+    { title: 'Auto plant production line security', desc: 'Chennai and Hosur auto plants require access control segregated by production zone. Guards must monitor inter-zone material movement, contractor access, and tool crib security across sprawling shop floors.' },
+    { title: 'IT corridor vehicle flow management', desc: 'Chennai\'s OMR corridor IT parks face peak-hour vehicle congestion. Traffic management at entry gates, parking allocation, and shuttle coordination need trained guards during rush windows.' },
+    { title: 'Port & maritime logistics chain security', desc: 'Chennai and Tuticorin port areas face cargo theft from container yards. Seal verification during loading, yard lighting audits, and truck dispatch checks reduce pilferage.' },
+    { title: 'Textile mill fire safety compliance', desc: 'Tiruppur and Coimbatore textile mills have high fire risk from cotton dust and chemical storage. Guards need fire warden training, weekly extinguisher checks, and evacuation drill coordination.' },
+    { title: 'Educational campus hostel security', desc: 'Tamil Nadu\'s engineering colleges and hostel campuses require round-the-clock access control, visitor logs, and gender-sensitive security protocols for student safety.' },
+    { title: 'Hospital multi-specialty access control', desc: 'Chennai hospital corridors see heavy visitor footfall. Ward-specific access, OPD queue management, and emergency room security need guards trained in healthcare environment sensitivity.' },
+    { title: 'Electronics unit anti-theft protocols', desc: 'Electronics manufacturing units face component theft — small, high-value parts leave in pockets or bags. Mandatory bag checks, tool reconciliation, and CCTV at exit points deter internal theft.' },
+    { title: 'Cement plant material movement checks', desc: 'Cement plants have high-volume material movement — trucks, raw materials, finished goods. Gate checks, weighbridge verification, and loading bay supervision prevent material leakage.' },
+  ],
+  telangana: [
+    { title: 'Pharma unit clean-room access', desc: 'Hyderabad pharma SEZs require badge-restricted access to clean rooms and production zones. Guards enforce gowning, material pass-through, and contractor escort protocols without disrupting production.' },
+    { title: 'IT corridor night shift safety', desc: 'HITEC City and Gachibowli IT parks operate 24/7. Night shift employees need well-lit parking, escort services, and emergency contact points. Guards trained in gender-sensitive response are essential.' },
+    { title: 'Life sciences R&D IP protection', desc: 'Vaccine and life sciences R&D centres need layered security — biometric access, classified zone segregation, visitor NDAs, and material exit screening to protect intellectual property.' },
+    { title: 'Warehouse & distribution hub oversight', desc: 'Hyderabad logistics hubs face inventory loss during night dispatch windows. Material reconciliation, driver verification, and GPS-tracked outbound shipments close theft vulnerabilities.' },
+    { title: 'Corporate GCC visitor management', desc: 'Global capability centres in Hyderabad host international visitors frequently. Guards need professional reception skills, visitor pre-registration systems, and meeting room access management.' },
+    { title: 'Biotech research centre data security', desc: 'Biotech R&D units require physical-data security convergence — guards monitor access to server rooms and research data storage areas, reporting unusual after-hours entry attempts.' },
+    { title: 'Convention centre event security', desc: 'Hyderabad\'s convention centres host large conferences with 5,000+ attendees. Guards manage bag checks, crowd flow, VIP segregation, and emergency evacuation coordination during events.' },
+    { title: 'Residential township perimeter control', desc: 'Hyderabad\'s gated communities need perimeter patrols, night vigilance at secondary gates, and visitor verification at main gates. Intercom-based release systems reduce unauthorized entry.' },
+  ],
+  'uttar-pradesh': [
+    { title: 'Electronics factory anti-pilferage', desc: 'Noida electronics manufacturing units face high risk of component pilferage. Mandatory bag checks, tool reconciliation, and CCTV at exit points prevent small high-value parts from leaving undetected.' },
+    { title: 'Defence corridor sensitive zone access', desc: 'Kanpur and Lucknow defence corridor facilities need strict access segregation between classified and general zones. Guards must verify clearances, enforce camera restrictions, and manage contractor entry.' },
+    { title: 'Leather unit chemical safety compliance', desc: 'Kanpur leather tanneries handle hazardous chemicals. Guards must monitor PPE compliance, restricted chemical storage access, and emergency spill response readiness.' },
+    { title: 'Warehouse night dispatch integrity', desc: 'UP logistics hubs operate night dispatch for e-commerce fulfilment. Seal verification, driver photo capture, and load reconciliation at gates during after-hours windows prevent theft.' },
+    { title: 'Educational campus multi-entry management', desc: 'UP\'s large university campuses have multiple entry gates, hostels, and academic blocks. Guards must manage pedestrian and vehicle access simultaneously while maintaining student safety protocols.' },
+    { title: 'Heritage & tourism site crowd control', desc: 'Agra, Varanasi, and Ayodhya see millions of tourists and pilgrims. Guards need training in crowd management, queue discipline, and emergency response at high-density religious sites.' },
+    { title: 'Mandis & wholesale market theft', desc: 'Agricultural mandis in UP face theft during peak trading hours. Cash handling, vendor access, and vehicle movement need structured oversight to prevent loss.' },
+    { title: 'Industrial estate common perimeter', desc: 'UP industrial area tenants share common gates and roads. Guards coordinate across multiple factories for access control, visitor passes, and shared emergency response.' },
+  ],
+  haryana: [
+    { title: 'Corporate park multi-tenant access', desc: 'Gurugram corporate parks host 50+ companies under one roof. Guards manage visitor verification, lift lobby security, parking allocation, and inter-floor access across multiple tenants.' },
+    { title: 'Auto plant tool crib theft', desc: 'Manesar and Kharkhoda auto plants face tool theft from open cribs during shift changes. Structured check-in/out systems, bag checks at shift end, and CCTV tool room coverage prevent losses.' },
+    { title: 'Warehouse cluster cargo security', desc: 'Haryana warehouse clusters near NH-48 face cargo theft during loading bay operations. Seal verification, driver identity checks, and GPS-tracked dispatch reduce pilferage risk.' },
+    { title: 'Retail mall parking lot safety', desc: 'Gurugram malls face vehicle theft and vandalism in multi-level parking. Patrol routes, CCTV coverage of blind spots, and boom barrier checks at exit points improve security.' },
+    { title: 'Residential society RWA coordination', desc: 'Haryana\'s residential societies have active RWAs with specific security expectations — visitor logs, night patrol GPS tracking, and monthly security committee meetings.' },
+    { title: 'Data centre physical access control', desc: 'Gurugram data centres need ISO 27001-aligned physical security — biometric access, mantrap entry, escort policies, and strict separation between colocation and admin zones.' },
+    { title: 'Educational campus student safety', desc: 'Haryana\'s private universities and coaching centres need POCSO-compliant security protocols, hostel entry logs, and gender-sensitive guard deployment.' },
+    { title: 'IMT industrial estate perimeter', desc: 'IMT Manesar and Bawal industrial areas have shared perimeter walls. Guards must coordinate across units for common gate discipline and emergency response.' },
+  ],
+  'west-bengal': [
+    { title: 'Shipyard & dry dock access control', desc: 'Kolkata shipbuilding yards need strict access segregation between production, dry dock, and administrative zones. Guards verify clearances, enforce PPE compliance, and monitor material movement.' },
+    { title: 'Jute mill fire prevention', desc: 'Howrah jute mills face extreme fire risk from loose jute fibre and chemical treatments. Guards need fire-specific training, weekly extinguisher checks, and hot work permit enforcement.' },
+    { title: 'IT hub after-hours security', desc: 'Salt Lake Sector V IT parks operate night shifts. Guards must manage after-hours access, employee safety to transit points, and secure the perimeter during low-occupancy hours.' },
+    { title: 'Port area cargo chain integrity', desc: 'Kolkata port logistics face cargo theft from container yards and loading bays. Seal verification, truck dispatch checks, and yard lighting audits reduce losses.' },
+    { title: 'Heritage property visitor management', desc: 'Kolkata\'s heritage buildings and museums need security balancing preservation with public access — bag checks, photography restrictions, and crowd flow management in narrow corridors.' },
+    { title: 'Multi-specialty hospital access', desc: 'Kolkata hospitals see high patient footfall. Ward-specific access, OPD queue discipline, and emergency room security need healthcare-trained guards with crisis de-escalation skills.' },
+    { title: 'Residential complex monsoon readiness', desc: 'Kolkata\'s monsoon-prone residential complexes need guards trained in waterlogging response, electrical panel monitoring during rain, and emergency sandbag placement.' },
+    { title: 'Tea estate processing security', desc: 'Siliguri tea processing units face equipment theft and material pilferage during harvest season. Night patrols, processing area access control, and contractor verification are essential.' },
+  ],
+  punjab: [
+    { title: 'Auto ancillaries tool security', desc: 'Ludhiana auto and bicycle parts units face high tool theft. Structured tool crib management, shift-end bag checks, and CCTV in tool rooms deter internal theft.' },
+    { title: 'Food processing hygiene-security balance', desc: 'Punjab food processing plants need guards to enforce hygiene protocols at entry — hairnets, shoe covers, hand sanitization — while maintaining access control and material movement checks.' },
+    { title: 'Cold storage temperature zone access', desc: 'Cold storage facilities need restricted access to temperature-controlled zones. Guards must monitor entry logs, verify contractor clearances, and prevent unauthorized access to perishable goods.' },
+    { title: 'Sports goods unit anti-theft', desc: 'Jalandhar sports goods units face component theft from production floors. Mandatory bag checks, raw material reconciliation, and finished goods verification during dispatch help.' },
+    { title: 'Hosiery cluster fire safety', desc: 'Ludhiana hosiery clusters have elevated fire risk from fabric and synthetic materials. Guards need fire warden training, weekly extinguisher checks, and evacuation drill coordination.' },
+    { title: 'Warehouse cluster night logistics', desc: 'Punjab logistics hubs operate night dispatch for agricultural produce. Seal verification, truck dispatch checks, and driver identity verification during late hours prevent cargo theft.' },
+    { title: 'Educational campus hostel supervision', desc: 'Punjab university hostels need round-the-clock access control, visitor logs, and gender-sensitive security for student safety in residential halls.' },
+    { title: 'Agri mandi crowd & cash management', desc: 'Agricultural mandis see peak season crowds and cash transactions. Guards manage vendor access, vehicle queues, and cash handling security during auction hours.' },
+  ],
+  bihar: [
+    { title: 'Hospital ER security & crowd control', desc: 'Patna hospitals face crowded emergency rooms with distressed relatives. Guards need crisis de-escalation training, queue management skills, and coordinated response with hospital security teams.' },
+    { title: 'Coaching institute student safety', desc: 'Bihar\'s coaching hubs see thousands of students in concentrated areas. Guards need to manage entry, prevent unauthorized access, monitor after-hours campus use, and ensure student safety.' },
+    { title: 'Government building protocol compliance', desc: 'Patna government offices require security guards familiar with official protocol — visitor registers, bag screening, identity verification, and coordination with administrative staff.' },
+    { title: 'Warehouse grain theft prevention', desc: 'Bihar grain warehouses and mandis face theft during harvest procurement. Night patrols, seal verification, and inventory reconciliation at dispatch prevent losses.' },
+    { title: 'Wedding venue crowd management', desc: 'Bihar\'s large wedding venues host thousands of guests. Guards need temporary surge planning, parking management, and guest verification during peak wedding season.' },
+    { title: 'Educational campus boundary security', desc: 'Bihar university campuses need perimeter patrols, hostel gate security, and night vigilance to prevent unauthorized entry and ensure student safety across large grounds.' },
+    { title: 'Retail market theft prevention', desc: 'Bihar\'s busy retail markets face pickpocketing, shoplifting, and vendor disputes. Trained guards in de-escalation and patrol patterns reduce incidents.' },
+    { title: 'Infrastructure project site security', desc: 'Road and bridge construction sites face material theft — steel, cement, and equipment disappear from unattended sites. Night guards with material logs prevent losses.' },
+  ],
+  kerala: [
+    { title: 'IT park flood & monsoon preparedness', desc: 'Kerala IT parks face monsoon waterlogging. Guards need sump pump monitoring, electrical panel checks during rain, and emergency sandbag deployment training.' },
+    { title: 'Hospital super-specialty access', desc: 'Kerala\'s multi-specialty hospitals need ward-specific access control, visitor verification, and sensitive handling of medical records and pharmaceutical storage zones.' },
+    { title: 'Tourism resort beach access control', desc: 'Kerala beach resorts face unauthorized beach access and guest privacy challenges. Guards must secure perimeter boundaries while maintaining open beach feel for guests.' },
+    { title: 'Port cargo integrity checks', desc: 'Kerala ports handle spice, seafood, and coir exports. Seal verification, cargo reconciliation, and driver ID checks during loading prevent theft and contamination.' },
+    { title: 'Houseboat & backwater tourism security', desc: 'Kerala\'s houseboat tourism sector needs security for overnight guest safety, equipment theft prevention, and emergency response coordination in remote backwater locations.' },
+    { title: 'Educational campus security', desc: 'Kerala university campuses need hostel security, night patrols, and visitor management — balancing open academic environment with student safety requirements.' },
+    { title: 'Food processing hygiene compliance', desc: 'Kerala seafood and spice processing units need guards to enforce hygiene protocols — PPE compliance, restricted zone access, and contamination prevention in processing areas.' },
+    { title: 'Residential community gate management', desc: 'Kerala\'s gated communities need visitor verification, delivery management, and night patrols. Guards must balance security with hospitality for resident comfort.' },
+  ],
+  jharkhand: [
+    { title: 'Coal mine perimeter & equipment security', desc: 'Dhanbad coal mines face equipment theft and illegal mining access. Guards need perimeter patrol protocols, vehicle checks at mine entry, and coordination with mine security teams.' },
+    { title: 'Steel plant material movement oversight', desc: 'Jamshedpur and Bokaro steel plants have high-volume material movement — raw materials in, finished goods out. Gate checks, weighbridge verification, and scrap material monitoring prevent leakage.' },
+    { title: 'Power plant access segregation', desc: 'Jharkhand power plants need segregated access between administrative, turbine, and coal handling zones. Guards must verify clearances and enforce restricted area protocols.' },
+    { title: 'Warehouse contractor management', desc: 'Jharkhand warehouses see high contractor and truck driver footfall. Structured contractor pass systems and time-bound access clearances prevent tailgating and unauthorized movement.' },
+    { title: 'Educational campus hostel security', desc: 'Jharkhand university hostels need round-the-clock security, visitor logs, and gender-sensitive patrols for student safety across residential campuses.' },
+    { title: 'Hospital emergency room discipline', desc: 'Ranchi and Jamshedpur hospitals need trained security for ER crowd management, distressed relative handling, and late-night visitor control.' },
+    { title: 'Industrial estate shared perimeter', desc: 'Adityapur and other industrial estates have common perimeter walls. Guards coordinate across units for gate discipline and emergency response.' },
+    { title: 'Construction material theft prevention', desc: 'Infrastructure projects across Jharkhand face material theft from active sites. Night guards with material reconciliation logs prevent losses of steel, cement, and equipment.' },
+  ],
+  odisha: [
+    { title: 'Steel plant scrap material theft', desc: 'Rourkela steel plants face significant value loss through scrap material theft. Structured scrap disposal protocols, vehicle checks at exits, and weighbridge verification prevent leakage.' },
+    { title: 'Port cargo chain integrity', desc: 'Paradip port operations face cargo theft from container yards and warehouses. Seal verification, truck dispatch checks, and yard lighting audits during night operations reduce pilferage.' },
+    { title: 'Power & energy plant access control', desc: 'Odisha\'s energy infrastructure needs segregated access between generation, transmission, and administrative zones — with strict contractor verification and restricted area protocols.' },
+    { title: 'Mining site equipment security', desc: 'Iron ore and bauxite mining operations face equipment theft from remote sites. Night patrols, perimeter fencing checks, and local police coordination are essential.' },
+    { title: 'Hospital emergency security', desc: 'Bhubaneswar and Cuttack hospitals need ER and OPD security for crowd management, distressed relative handling, and late-night visitor control.' },
+    { title: 'Educational campus boundary security', desc: 'Odisha university campuses need perimeter patrols, hostel gate control, and night vigilance to prevent unauthorized entry across large grounds.' },
+    { title: 'Warehouse logistics dispatch integrity', desc: 'Odisha logistics hubs face inventory loss during dispatch. Material reconciliation, driver verification, and loading bay supervision close theft vulnerabilities.' },
+    { title: 'Aluminium plant pot room access', desc: 'Aluminium smelters need strict access to pot rooms and reduction areas. Guards enforce PPE compliance, restricted entry, and contractor escort protocols.' },
+  ],
+  chhattisgarh: [
+    { title: 'Steel plant hot zone access', desc: 'Bhilai steel plants require strict segregation between hot zone (furnace, rolling) and cold zones. Guards must enforce PPE compliance and restricted area access in high-temperature environments.' },
+    { title: 'Coal mine vehicle & equipment check', desc: 'Chhattisgarh coal mines face vehicle theft and equipment pilferage. Gate checks for outgoing vehicles, tool reconciliation, and perimeter patrols reduce losses.' },
+    { title: 'Cement plant material reconciliation', desc: 'Cement plants have high-volume raw material and finished goods movement. Weighbridge verification, vehicle sealing, and dispatch reconciliation prevent leakage.' },
+    { title: 'Power plant contractor access', desc: 'Chhattisgarh power plants have high contractor turnover during maintenance shutdowns. Structured contractor pass systems and time-bound clearances prevent unauthorized access.' },
+    { title: 'AI & semiconductor park emerging risk', desc: 'Nava Raipur\'s emerging AI and semiconductor park needs future-ready security — biometric entry, server room access logs, and environment monitoring for sensitive equipment.' },
+    { title: 'Hospital & healthcare security', desc: 'Raipur and Bhilai hospitals need ER crowd management, OPD queue discipline, and night security for emergency departments.' },
+    { title: 'Industrial estate common perimeter', desc: 'Chhattisgarh industrial estates share perimeter walls. Guards coordinate across units for gate discipline, visitor management, and shared emergency response.' },
+    { title: 'Food processing hygiene-security', desc: 'Chhattisgarh food processing units need guards to enforce hygiene protocols while maintaining access control and material movement verification.' },
+  ],
+  'madhya-pradesh': [
+    { title: 'Auto plant tool & component theft', desc: 'Pithampur auto hub faces tool crib theft and component pilferage. Structured check-in/out systems, shift-end bag checks, and CCTV in tool rooms deter internal theft.' },
+    { title: 'Pharma unit clean-room compliance', desc: 'Ujjain pharma SEZs need strict clean-room access — gowning enforcement, material pass-through, and contractor escort protocols without disrupting production.' },
+    { title: 'Textile park fire safety', desc: 'Dhar textile units face elevated fire risk from fabric and synthetic materials. Guards need fire warden training, extinguisher checks, and evacuation drills.' },
+    { title: 'Warehouse dispatch theft prevention', desc: 'MP logistics hubs face inventory loss during night dispatch. Material reconciliation, driver verification, and seal checks at loading bays reduce theft.' },
+    { title: 'Educational campus student hostel security', desc: 'MP\'s university campuses need hostel security, night patrols, and visitor management for student safety across residential buildings.' },
+    { title: 'Hospital & medical college security', desc: 'Bhopal and Indore hospitals need ER crowd management, OPD queue discipline, and late-night emergency department security.' },
+    { title: 'Agro-processing seasonal demand', desc: 'MP food parks face seasonal production surges during harvest. Temporary guard deployment and surge planning help manage increased material movement and contractor access.' },
+    { title: 'Industrial estate material movement', desc: 'MP industrial estates have multi-unit common gates. Guards coordinate across tenants for access control and shared security SOPs.' },
+  ],
+  uttarakhand: [
+    { title: 'Pharma plant cold chain access', desc: 'Haridwar pharma SEZs need strict access control in cold chain storage zones. Guards monitor temperature-sensitive area entry, enforce PPE compliance, and verify contractor clearances.' },
+    { title: 'Tourism & pilgrimage site crowd control', desc: 'Haridwar, Rishikesh, and Char Dham routes see millions of pilgrims. Guards need crowd management training, queue discipline, and emergency response for high-density religious gatherings.' },
+    { title: 'Auto component unit tool control', desc: 'Rudrapur auto ancillaries face tool crib theft. Structured tool issue systems, shift-end checks, and CCTV tool room surveillance prevent losses.' },
+    { title: 'Hydro power station remote guarding', desc: 'Uttarakhand\'s hydro power stations in remote hilly areas face equipment theft and vandalism. Guards need self-sufficient deployment with local police coordination.' },
+    { title: 'Resort & hotel guest privacy', desc: 'Uttarakhand hill resorts need security balanced with guest experience — perimeter access control, room key management, and VIP guest privacy protection.' },
+    { title: 'Educational campus hostel security', desc: 'Dehradun\'s boarding schools and university hostels need round-the-clock security, visitor logs, and gender-sensitive patrols for student safety.' },
+    { title: 'Data centre physical security', desc: 'Emerging data centres in Uttarakhand need mantrap entry, biometric access, and 24/7 monitoring for server room and colocation zone security.' },
+    { title: 'Monsoon landslide emergency readiness', desc: 'Uttarakhand facilities face monsoon-triggered landslides. Guards need emergency evacuation protocols, road blockage reporting, and coordination with disaster response teams.' },
+  ],
+  'jammu-and-kashmir': [
+    { title: 'Tourist resort perimeter security', desc: 'Kashmir\'s hotel and resort properties need perimeter security, guest verification, and coordination with local tourism police during peak season.' },
+    { title: 'Government facility protocol compliance', desc: 'Government buildings in Srinagar and Jammu require strict protocol compliance — visitor registers, identity verification, bag screening, and coordination with central security agencies.' },
+    { title: 'Hospital emergency readiness', desc: 'J&K hospitals need security trained in emergency response, crowd management, and sensitive handling of patients and visitors in high-stress environments.' },
+    { title: 'Educational campus security', desc: 'Kashmir university campuses need perimeter patrols, hostel security, and student safety protocols that respect the sensitive regional context.' },
+    { title: 'Apple & horticulture cold storage', desc: 'Kashmir apple cold storage facilities face theft during harvest season. Night patrols, access control to cold rooms, and dispatch verification prevent losses.' },
+    { title: 'Handicraft unit IP protection', desc: 'Kashmir\'s handicraft and carpet units need protection of designs and materials. Restricted area access, visitor logs, and material exit screening protect intellectual property.' },
+    { title: 'Commercial complex crowd management', desc: 'Srinagar markets see heavy footfall during tourist season. Guards need crowd management, theft prevention patrols, and coordinated response for busy commercial zones.' },
+    { title: 'Infrastructure project site security', desc: 'Road and tunnel construction sites need material theft prevention and site access control. Night guards with material logs prevent losses of equipment and supplies.' },
+  ],
+  himachal: [
+    { title: 'Tourist resort off-season security', desc: 'Himachal resorts face unique challenges — high season crowds followed by sparse off-season occupancy requiring different security postures.' },
+    { title: 'Pharma unit cold chain access', desc: 'Solan pharma units need clean-room and cold chain access control — gowning enforcement, restricted zone entry, and contractor escort protocols.' },
+    { title: 'Hydro power station remote monitoring', desc: 'Himachal\'s hydro stations in remote valleys face equipment theft and vandalism. Guards need self-sufficient deployment with local police coordination.' },
+    { title: 'Hill station parking & traffic management', desc: 'Shimla and Manali face severe parking constraints during tourist season. Guards need traffic management training and de-escalation skills for parking disputes.' },
+    { title: 'Adventure sports venue safety', desc: 'River rafting, paragliding, and trekking base camps need equipment security, participant verification, and emergency response coordination.' },
+    { title: 'Hotel & homestay guest privacy', desc: 'Himachal hospitality properties need security balanced with guest experience — perimeter control, key management, and privacy protection.' },
+    { title: 'Educational campus hostel security', desc: 'Himachal boarding schools and colleges need hostel security, visitor logs, and gender-sensitive patrols.' },
+    { title: 'Monsoon landslide response', desc: 'Himachal facilities face monsoon disruption. Guards need evacuation protocols, road status reporting, and coordination with disaster response teams.' },
+  ],
+}
+
 const DEFAULT_SECTORS = [
   'manufacturing plants',
   'warehouses & logistics',
@@ -880,6 +1084,7 @@ export type ProcessStep = { title: string; desc: string }
 export type LocationSEOContent = {
   placeName: string
   placeType: 'city' | 'state'
+  seed: number
   intro: string[]
   marketOverview: string[]
   challengesHeading: string
@@ -909,9 +1114,164 @@ export type LocationSEOContent = {
   keywordsLine: string
 }
 
+/** City-specific landmarks / notable zones — adds local uniqueness to intro paragraphs */
+const CITY_LANDMARKS: Record<string, string[]> = {
+  // ── Tier 1 cities ──
+  jaipur: ['Sanganer Airport', 'Jaipur Railway Station (PRS)', 'Mansarovar Industrial Area', 'Sitapura Industrial Zone', 'Tonk Road Corridor', 'Bais Godam Circle'],
+  delhi: ['Indira Gandhi International Airport', 'New Delhi Railway Station', 'Connaught Place', 'Nehru Place', 'Okhla Industrial Area', 'Bawana Industrial Estate', 'Rohini Sector', 'Dwarka Sector'],
+  mumbai: ['Chhatrapati Shivaji Maharaj International Airport', 'Navi Mumbai SEZ', 'BKC Financial District', 'Andheri MIDC', 'Thane-Belapur Industrial Belt', 'Lower Parel Commercial Hub'],
+  bengaluru: ['Kempegowda International Airport', 'Electronic City', 'Whitefield IT Corridor', 'Peenya Industrial Estate', 'Manyata Tech Park', 'HSR Layout', 'MG Road'],
+  hyderabad: ['Rajiv Gandhi International Airport', 'HITEC City', 'Gachibowli IT Corridor', 'Patancheru Industrial Area', 'Nacharam Industrial Estate', 'Banjara Hills', 'Secunderabad'],
+  chennai: ['Chennai International Airport', 'OMR IT Corridor', 'Guindy Industrial Estate', 'Ambattur Industrial Area', 'Tidel Park', 'Sriperumbudur SEZ', 'Ennore Port Area'],
+  kolkata: ['Netaji Subhas Chandra Bose International Airport', 'Salt Lake Sector V', 'New Town', 'Howrah Industrial Belt', 'Rajahat IT Hub', 'Dharamtolla', 'Park Street'],
+  pune: ['Pune International Airport', 'Hinjewadi IT Park', 'Chakan MIDC', 'Bhosari Industrial Area', 'Baner', 'Kharadi', 'Shivajinagar'],
+  ahmedabad: ['Sardar Vallabhbhai Patel International Airport', 'SG Highway Corridor', 'Sanand Industrial Area', 'GIDC Naroda', 'GIDC Vatva', 'Bavla Industrial Zone', 'Satellite'],
+  surat: ['Surat International Airport', 'Sachin GIDC', 'Palsana Industrial Area', 'Pandesara GIDC', 'Katargam', 'Varachha', 'City Light Road'],
+  lucknow: ['Chaudhary Charan Singh International Airport', 'Transport Nagar', 'Sitapur Road Industrial Area', 'Gomti Nagar', 'Hazratganj', 'Amausi Industrial Area'],
+  noida: ['Noida International Airport (Jewar)', 'Sector 62 IT Hub', 'Sector 125 Financial District', 'Film City', 'Noida-Greater Noida Expressway', 'Sector 18 Market'],
+  gurugram: ['Gurugram Cyber City', 'MG Road', 'Golf Course Road', 'Udyog Vihar', 'IMT Manesar', 'Sohna Road Corridor', 'DLF Phase 1–5'],
+  // ── Rajasthan T2/T3 ──
+  jodhpur: ['Jodhpur Airport', 'Jodhpur Railway Station', 'Basni Industrial Area', 'Sangaria Industrial Hub', 'Soorsagar', 'Paota'],
+  kota: ['Kota Airport', 'Kota Junction Railway Station', 'Kota Industrial Area', 'Rawatbhata Atomic Complex', 'Aerodrome Circle', 'Chambal Garden'],
+  ajmer: ['Ajmer Junction Railway Station', 'Kishangarh Airport', 'Madanganj Industrial Area', 'Ana Sagar Lake', 'Dargah Area', 'Mayo College'],
+  bikaner: ['Bikaner Airport', 'Bikaner Junction Railway Station', 'Bikaner Industrial Area', 'Gajner Palace Road', 'Rani Bazaar', 'Kote Gate'],
+  udaipur: ['Maharana Pratap Airport (Dabok)', 'Udaipur City Railway Station', 'Udaipur Industrial Area (Eklingpura)', 'Hiran Magri', 'Lake Pichola Area', 'Bapu Bazaar'],
+  bhilwara: ['Bhilwara Railway Station', 'Bhilwara Industrial Area', 'Mandal Chawni', 'Bhopalganj', 'Chittor Road', 'Pur Road'],
+  alwar: ['Alwar Railway Station', 'Alwar Industrial Area (Matsya)', 'Bhiwadi Industrial Corridor', 'City Palace Area', 'Company Bagh', 'Khithalpar'],
+  // ── Maharashtra T2/T3 ──
+  nashik: ['Nashik Airport (Ozar)', 'Nashik Road Railway Station', 'Satpur MIDC', 'Ambad MIDC', 'Gangapur Road', 'College Road'],
+  nagpur: ['Dr. Babasaheb Ambedkar International Airport', 'Butibori MIDC', 'Hingna MIDC', 'MIHAN SEZ', 'Sitabuldi', 'Wardha Road Corridor'],
+  'navi-mumbai': ['Chhatrapati Shivaji Maharaj International Airport (via Atal Setu)', 'Navi Mumbai SEZ', 'MIDC Rabale', 'Vashi Node', 'Kharghar Sector', 'CBD Belapur'],
+  thane: ['Thane Railway Station', 'Wagle Industrial Estate', 'Thane-Belapur Industrial Belt', 'Hiranandani Estate', 'Kasarvadavali', 'Ghoda Khoda'],
+  aurangabad: ['Aurangabad Airport (Chikalthana)', 'Aurangabad Railway Station', 'Shendra MIDC', 'Waluj MIDC', 'CIDCO', 'Padegaon Industrial Area'],
+  solapur: ['Solapur Airport', 'Solapur Railway Station', 'Solapur MIDC', 'Chincholi Industrial Area', 'Railway Lines Workshops', 'Degaon'],
+  kolhapur: ['Kolhapur Airport', 'Kolhapur Railway Station', 'Shivaji Udyamnagar Industrial Area', 'Tararani Chowk', 'Sambhaji Nagar', 'Rankala Lake Area'],
+  amravati: ['Amravati Airport', 'Amravati Railway Station', 'MIDC Amravati (Bela)', 'VMV Chowk', 'Gadge Nagar', 'Rajapeth'],
+  // ── Gujarat T2/T3 ──
+  vadodara: ['Vadodara Airport (Harni)', 'Vadodara Railway Station', 'Makarpura GIDC', 'Waghodia Industrial Area', 'Gujarat Industrial Estate', 'Fatehgunj'],
+  rajkot: ['Rajkot Airport', 'Rajkot Railway Station', 'Aji Industrial Zone', 'Metoda GIDC', 'Kalavad Road', 'Race Course Area'],
+  bhavnagar: ['Bhavnagar Airport', 'Bhavnagar Railway Station', 'Bhavnagar Port', 'Chitra GIDC', 'Kalyan Nagar', 'Gautam Nagar'],
+  jamnagar: ['Jamnagar Airport', 'Jamnagar Railway Station', 'Jamnagar Refinery Complex', 'Reliance Township', 'GIDC Digvijay', 'Bedis'],
+  gandhinagar: ['Gandhinagar Railway Station', 'Gandhinagar IT Park', 'GHB Complex', 'Gandhinagar Sector', 'Infocity', 'Pethapur'],
+  anand: ['Anand Railway Station', 'Vadodara Airport (nearby)', 'GIDC Anand', 'Sardar Vallabhbhai Patel University', 'Vithal Udyognagar', 'Gunjan'],
+  mehsana: ['Mehsana Railway Station', 'Unava GIDC', 'Mehsana Industrial Park', 'Highway Road Corridor', 'Nagalpur', 'Santalpur Road'],
+  // ── UP T2/T3 ──
+  kanpur: ['Kanpur Airport (Chakeri)', 'Kanpur Central Railway Station', 'Panki Industrial Area', 'Dada Nagar Industrial Area', 'The Mall', 'Transport Nagar'],
+  ghaziabad: ['Ghaziabad Railway Station', 'Hindon Airport', 'Ghaziabad Industrial Area', 'Vaishali Sector', 'Kavi Nagar', 'Raj Nagar Extension'],
+  meerut: ['Meerut City Railway Station', 'Meerut Industrial Area (Partapur)', 'Modipuram Industrial Zone', 'Ganga Nagar', 'Jail Chauraha', 'Delhi Road'],
+  allahabad: ['Prayagraj Airport (Bamrauli)', 'Prayagraj Junction', 'Naini Industrial Area', 'Subedarganj', 'Civil Lines', 'Triveni Marg'],
+  bareilly: ['Bareilly Airport', 'Bareilly Junction Railway Station', 'Bareilly Industrial Area (Izzatnagar)', 'Pilibhit Road', 'Civil Lines', 'Bada Bazaar'],
+  gorakhpur: ['Gorakhpur Airport', 'Gorakhpur Junction Railway Station', 'Gorakhpur Industrial Development Area', 'Golghar', 'Mohaddipur', 'Tarapetwa'],
+  moradabad: ['Moradabad Railway Station', 'Moradabad Industrial Area', 'Transport Nagar', 'Kanth Road', 'Buddhi Vihar', 'Civil Lines'],
+  aligarh: ['Aligarh Junction Railway Station', 'Aligarh Industrial Area', 'Mathura Road Corridor', 'University Area (AMU)', 'Ramghat Road', 'Sahil Bazaar'],
+  mathura: ['Mathura Junction Railway Station', 'Agra Airport (nearby)', 'Mathura Industrial Area', 'Vrindavan Road', 'Chattikara', 'Krishna Janmabhoomi Area'],
+  // ── Haryana T2/T3 ──
+  faridabad: ['Faridabad Railway Station', 'Sector 27 Industrial Area', 'Surajkund Road', 'NH-44 Corridor', 'Neharpar Faridabad', 'Ballabhgarh'],
+  hisar: ['Hisar Airport', 'Hisar Railway Station', 'Hisar Industrial Area', 'Sirsa Road', 'Azad Nagar', 'Red Square Market'],
+  rohtak: ['Rohtak Junction Railway Station', 'Rohtak Industrial Estate', 'MDU Campus Road', 'Civil Road', 'Model Town', 'Jhajjar Road'],
+  panipat: ['Panipat Junction Railway Station', 'Panipat Refinery Complex', 'Panipat Industrial Area (Sector 31)', 'G.T. Road', 'Huda Sector', 'Sanjay Chowk'],
+  ambala: ['Ambala Cantonment Railway Station', 'Ambala Air Force Station', 'Ambala Industrial Area', 'Ambala City', 'Jagadhri Road', 'Saddar Bazaar'],
+  karnal: ['Karnal Junction Railway Station', 'Karnal Industrial Area', 'GT Road Corridor', 'Sector 12', 'Model Town', 'Kunjpura Road'],
+  sonipat: ['Sonipat Junction Railway Station', 'Sonipat Industrial Area', 'GT Karnal Road', 'Kharkhoda Industrial Corridor', 'Model Town', 'Atlas Cycle Area'],
+  // ── Karnataka T2/T3 ──
+  mysuru: ['Mysuru Airport', 'Mysuru Junction Railway Station', 'Belavadi Industrial Area', 'Hootagalli Industrial Zone', 'KRS Road', 'Jayanagar'],
+  mangaluru: ['Mangaluru International Airport', 'Mangaluru Railway Station', 'Mangaluru SEZ', 'Kuttar Industrial Area', 'Mangaladevi Temple Area', 'Hampankatta'],
+  hubli: ['Hubli Airport', 'Hubli Junction Railway Station', 'Gokul Industrial Area', 'Tarihal Industrial Estate', 'Vidyanagar', 'Deshpande Nagar'],
+  belagavi: ['Belagavi Airport (Sambre)', 'Belagavi Railway Station', 'Belagavi Industrial Area (Kanbargi)', 'Peeranwadi', 'Tilakwadi', 'Shahpur'],
+  // ── Tamil Nadu T2/T3 ──
+  coimbatore: ['Coimbatore International Airport', 'Coimbatore Junction Railway Station', 'SIDCO Industrial Estate', 'Kurichi Industrial Area', 'Peelamedu', 'Avinashi Road'],
+  madurai: ['Madurai International Airport', 'Madurai Junction Railway Station', 'SIDCO Industrial Estate (Kappalur)', 'Madurai-Tirunagar', 'Anna Nagar', 'Periyar Bus Stand Area'],
+  tiruchirappalli: ['Tiruchirappalli International Airport', 'Trichy Junction Railway Station', 'SIDCO Industrial Estate (Thuvakudi)', 'BHEL Campus', 'Crawford', 'Srirangam'],
+  salem: ['Salem Airport', 'Salem Junction Railway Station', 'SIDCO Industrial Estate (Kondalampatti)', 'Hastampatti', 'Alagapuram', 'Swarnavalli'],
+  tiruppur: ['Tiruppur Railway Station', 'SIDCO Industrial Estate (Mangalam)', 'Tiruppur Textile Hub', 'Kumaran Nagar', 'Ukkadam', 'Avinashi Road'],
+  vellore: ['Vellore Cantonment Railway Station', 'SIDCO Industrial Estate', 'Katpadi', 'Vellore Fort Road', 'Bypass Road', 'Sankarapalayam'],
+  erode: ['Erode Junction Railway Station', 'SIDCO Industrial Estate', 'Perundurai SEZ', 'Brough Road', 'Kollampalayam', 'Sampath Nagar'],
+  // ── Andhra Pradesh T2/T3 ──
+  vijayawada: ['Vijayawada Railway Station', 'Vijayawada Airport (Gannavaram)', 'Benz Circle', 'Machilipatnam Road Corridor', 'Patamata', 'Auto Nagar Industrial Area'],
+  guntur: ['Guntur Junction Railway Station', 'Guntur Industrial Estate', 'Brodipet', 'Lakshmipuram', 'Kothapet', 'Pattabhipuram'],
+  tirupati: ['Tirupati International Airport', 'Tirupati Railway Station', 'APIIC Industrial Estate (Renigunta)', 'Alipiri', 'Kapila Teertham Road', 'Tiruchanoor'],
+  kakinada: ['Kakinada Port', 'Kakinada Railway Station', 'APIIC Industrial Estate (Kakinada SEZ)', 'Jaganath Nagar', 'Sarpavaram', 'Chandramouleswar Temple Area'],
+  nellore: ['Nellore Railway Station', 'APIIC Industrial Estate (Bitragunta)', 'Pogathota', 'Railway Station Road Corridor', 'Vedayapalem', 'Ranganayakulapet'],
+  // ── Madhya Pradesh T2/T3 ──
+  gwalior: ['Gwalior Airport', 'Gwalior Junction Railway Station', 'Gwalior IT Park', 'Birlanagar Industrial Area', 'Mohan Nagar', 'Phool Bagh'],
+  jabalpur: ['Jabalpur Airport (Dumna)', 'Jabalpur Junction Railway Station', 'Jabalpur Industrial Area', 'Adhartal', 'Marhatal', 'Gwarighat'],
+  ujjain: ['Ujjain Junction Railway Station', 'Devi Ahilya Bai Holkar Airport (Indore, nearby)', 'Ujjain Industrial Area', 'Nana Khera', 'Dewas Road', 'Harsiddhi Mandir Area'],
+  // ── West Bengal T2/T3 ──
+  howrah: ['Howrah Junction Railway Station', 'Howrah Industrial Belt (Bally)', 'Shibpur', 'Golabari', 'Belur Math Road', 'Santragachi'],
+  siliguri: ['Bagdogra International Airport', 'Siliguri Junction Railway Station', 'Sevoke Road Corridor', 'Khalpara', 'Matigara', 'Salugara'],
+  durgapur: ['Durgapur Airport (Kazi Nazrul Islam)', 'Durgapur Railway Station', 'Durgapur Steel Plant', 'Bidhan Nagar', 'Ashanda', 'Muchipara'],
+  asansol: ['Asansol Junction Railway Station', 'Asansol Industrial Area', 'Burnpur', 'Ushagram', 'Kultipara', 'Chelidanga'],
+  // ── Punjab T2/T3 ──
+  ludhiana: ['Ludhiana Airport (Sahnewal)', 'Ludhiana Railway Station', 'Focal Point Industrial Area', 'G.T. Road', 'Model Town', 'PAU Road'],
+  amritsar: ['Sri Guru Ram Dass Jee International Airport', 'Amritsar Railway Station', 'Amritsar Industrial Area (Verrka)', 'Ranjit Avenue', 'Hall Bazaar', 'Golden Temple Area'],
+  jalandhar: ['Jalandhar City Railway Station', 'Jalandhar Industrial Area (Nurmahal Road)', 'Model Town', 'BMC Chowk', 'Basti Sheikh', 'Apra'],
+  // ── Bihar T2/T3 ──
+  gaya: ['Gaya Airport (Bodhgaya)', 'Gaya Junction Railway Station', 'Bodhgaya Temple Corridor', 'Manpur Industrial Area', 'Suhail', 'Tekari Road'],
+  bhagalpur: ['Bhagalpur Railway Station', 'Bhagalpur Industrial Area (Vikramshila)', 'Barari Ghat Road', 'Tilkamanjhi', 'Sabour', 'Nathnagar'],
+  muzaffarpur: ['Muzaffarpur Railway Station', 'Muzaffarpur Industrial Area', 'Saraiya', 'Beltron', 'Akhara Ghat', 'Juda Bazaar'],
+  // ── Kerala T2/T3 ──
+  kochi: ['Cochin International Airport', 'Ernakulam Junction Railway Station', 'Kochi Port & SEZ', 'Infopark (Kakkanad)', 'MG Road', 'Edappally'],
+  trivandrum: ['Thiruvananthapuram International Airport', 'Thiruvananthapuram Central Railway Station', 'Technopark', 'Sasthamangalam', 'Kazhakoottam', 'East Fort'],
+  kozhikode: ['Calicut International Airport', 'Kozhikode Railway Station', 'KINFRA Industrial Park', 'Kallayi Road', 'Vellayil', 'Mavoor Road'],
+  thrissur: ['Thrissur Railway Station', 'KINFRA Industrial Park (Koratty)', 'Punkunnam', 'Round West', 'Shakthan Thampuran Market Area', 'Chembookavu'],
+  // ── Jharkhand T2/T3 ──
+  dhanbad: ['Dhanbad Junction Railway Station', 'Dhanbad Industrial Area', 'Saraidhela Industrial Zone', 'Sindri', 'Bank More', 'Jharia'],
+  bokaro: ['Bokaro Airport', 'Bokaro Steel Plant', 'Bokaro Industrial Area', 'Chas', 'Sector 4', 'City Centre'],
+  // ── Odisha T2/T3 ──
+  cuttack: ['Cuttack Railway Station', 'Cuttack Industrial Estate', 'CBD Area', 'Mangalabag', 'Buxi Bazaar', 'Badambadi'],
+  rourkela: ['Rourkela Airport', 'Rourkela Railway Station', 'Rourkela Steel Plant', 'Udit Nagar', 'Bisra Road', 'Chhend'],
+  // ── Chhattisgarh T2/T3 ──
+  raipur: ['Swami Vivekananda Airport (Raipur)', 'Raipur Junction Railway Station', 'Siltara Industrial Area', 'Urla Industrial Estate', 'Civil Lines', 'New Rajendra Nagar'],
+  bhilai: ['Bhilai Railway Station', 'Bhilai Steel Plant', 'Bhilai Industrial Area', 'Civic Centre', 'Supela', 'Smriti Nagar'],
+  // ── Uttarakhand T2 ──
+  dehradun: ['Jolly Grant Airport (Dehradun)', 'Dehradun Railway Station', 'SIDCUL Industrial Area (Haridwar nearby)', 'Rajpur Road', 'ISBT Dehradun', 'Doon University Road'],
+  haridwar: ['Haridwar Junction Railway Station', 'Jolly Grant Airport (nearby)', 'SIDCUL Haridwar', 'Ranipur More', 'Kankhal', 'Bhupatwala'],
+  rishikesh: ['Rishikesh Railway Station', 'SIDCUL Area (nearby)', 'Laxman Jhula Road', 'Tapovan', 'Rishikesh Bus Stand', 'Triveni Ghat Area'],
+  // ── Himachal T3 ──
+  shimla: ['Shimla Railway Station', 'Shimla Bus Stand (ISBT)', 'The Mall Road', 'Jakhu Temple Road', 'Sanjauli', 'Chaura Maidan'],
+  dharamshala: ['Kangra Airport (Gaggal)', 'Dharamshala Bus Stand', 'Mclodganj Road', 'Naddi', 'Temple Road', 'Kotwali Bazaar'],
+  // ── UTs / Others ──
+  pondicherry: ['Puducherry Railway Station', 'Puducherry Port', 'White Town', 'Goubert Market Area', 'Anna Nagar', 'Muthialpet'],
+  // ── Northeast India ──
+  silchar: ['Silchar Airport (Kumbhirgram)', 'Silchar Railway Station', 'Silchar IT Park', 'Tarapur', 'Sonai Road', 'Premtala'],
+  dibrugarh: ['Dibrugarh Airport (Mohanbari)', 'Dibrugarh Railway Station', 'Dibrugarh Port (Bogibeel)', 'Dibrugarh University Area', 'Chowkidinghee', 'Sepon'],
+  jorhat: ['Jorhat Airport (Rowriah)', 'Jorhat Railway Station', 'Jorhat IT Park', 'Cinnamara', 'Gar Ali', 'Barbheta'],
+  tezpur: ['Tezpur Airport (Salonibari)', 'Tezpur Railway Station', 'Tezpur University Area', 'Jyoti Chitraban', 'Chitralekha Udyan', 'Dekargaon'],
+  imphal: ['Imphal International Airport (Bir Tikendrajit)', 'Imphal Railway Station', 'Manipur Secretariat Area', 'Thangal Bazaar', 'Paona Bazaar', 'Palace Compound'],
+  dimapur: ['Dimapur Airport', 'Dimapur Railway Station', 'Dimapur Industrial Area', 'Kohima Road Corridor', 'Circular Road', 'Pamla Colony'],
+  // ── Jammu, Kashmir & Ladakh ──
+  jammu: ['Jammu Airport (Satwari)', 'Jammu Tawi Railway Station', 'Jammu Industrial Area (Bari Brahmana)', 'Shalimar Road', 'Raghunath Bazaar', 'Gandhi Nagar'],
+  anantnag: ['Anantnag Railway Station', 'Srinagar Airport (nearby)', 'Anantnag Industrial Area', 'Khanabal', 'Mattan Road', 'Bijbehara'],
+  leh: ['Leh Kushok Bakula Rimpochee Airport', 'Leh Bus Stand', 'Main Bazaar', 'Changspa Road', 'Fort Road', 'Old Town'],
+  // ── Sikkim ──
+  gangtok: ['Bagdogra Airport (nearby, Siliguri)', 'Gangtok Bus Stand', 'MG Marg Area', 'Ranka Monastery Road', 'Tadong', 'Deorali'],
+  // ── Meghalaya, Tripura ──
+  shillong: ['Shillong Airport (Umroi)', 'Shillong Railway Station (Byrnihat)', 'Shillong Peak Road', 'Police Bazaar', 'Laitumkhrah', 'Mawlai'],
+  agartala: ['Agartala Airport (Maharaja Bir Bikram)', 'Agartala Railway Station', 'Agartala Industrial Area', 'Amaravati Road', 'Shyamali Bazaar', 'Battala'],
+  // ── Islands & UTs ──
+  'port-blair': ['Veer Savarkar International Airport', 'Port Blair Harbour', 'Aberdeen Bazaar', 'Phoenix Bay', 'Haddo', 'Marine Drive'],
+  silvassa: ['Silvassa Bus Stand', 'Silvassa Industrial Estate', 'Dadra Industrial Area', 'Naroli Road', 'Chikhli Road', 'Amli'],
+  // ── More UP district towns ──
+  firozabad: ['Firozabad Railway Station', 'Firozabad Glass Industrial Belt', 'Taj Nagari Highway', 'Sobti Ganj', 'Dev Nagar', 'Patsua'],
+  jhansi: ['Jhansi Airport', 'Jhansi Junction Railway Station', 'Jhansi Industrial Area', 'Shivpuri Road', 'Civil Lines', 'Laxmi Talab'],
+  muzaffarnagar: ['Muzaffarnagar Railway Station', 'Muzaffarnagar Industrial Area', 'Delhi Road Corridor', 'New Mandi', 'Civil Lines', 'Saharanpur Road'],
+  ayodhya: ['Ayodhya Railway Station', 'Ayodhya Airport (Maryada Purushottam Shri Ram)', 'Ram Path', 'Naya Ghat', 'Saket Nagar', 'Rikabganj'],
+}
+
+function getLandmarks(slug: string): string[] {
+  return CITY_LANDMARKS[slug] || []
+}
+
 function sectorsForState(stateSlug: string, seed: number): string[] {
   const base = STATE_SECTORS[stateSlug] || DEFAULT_SECTORS
   return pickN(seed, base, Math.min(8, base.length))
+}
+
+/** State-specific challenges — each city gets its state's challenges + generic fill */
+function challengesForState(stateSlug: string, seed: number): ChallengeItem[] {
+  const base = STATE_CHALLENGES[stateSlug]
+  if (!base) return []
+  return pickN(seed, base, Math.min(6, base.length))
 }
 
 function buildFaqs(place: string, region: string, seed: number, isCity: boolean): FAQItem[] {
@@ -977,26 +1337,42 @@ export function generateCityContent(city: CityLocation): LocationSEOContent {
 
   const tierLabel = city.tier === 1 ? 'metropolitan' : city.tier === 2 ? 'urban' : 'regional'
 
+  const landmarks = getLandmarks(city.slug)
+  const landmarkAreas = landmarks.length >= 3 ? landmarks.slice(0, 3).join(', ') : ''
+  const landmarkSuffix = landmarkAreas ? ` Key locations include ${landmarkAreas}.` : ''
+
   const intro = [
     pick(seed, 1, [
-      `Silbar Security Services Pvt. Ltd. provides professional security guard services in ${place}, ${region}. We deploy trained, background-verified manpower for factories, offices, hospitals, warehouses, retail sites, residential communities, and institutional campuses across the city.`,
+      `Silbar Security Services Pvt. Ltd. provides professional security guard services in ${place}, ${region}. We deploy trained, background-verified manpower for factories, offices, hospitals, warehouses, retail sites, residential communities, and institutional campuses across the city.${landmarkSuffix}`,
       `If you are searching for a reliable security agency in ${place}, Silbar Security Services Pvt. Ltd. delivers manned guarding and facility protection with ISO-certified processes, PSARA compliance, clear commercials, and responsive coordination for clients across ${region}.`,
       `Businesses and institutions in ${place} need more than a uniform at the gate. Silbar Security Services Pvt. Ltd. focuses on disciplined posts, site-specific duty instructions, supervisor oversight, monthly compliance reporting, and measurable service standards tailored to local operating conditions in ${region}.`,
       `Looking for trusted security guards in ${place}? Silbar Security Services Pvt. Ltd. provides end-to-end security deployment — from gate management and night patrols to visitor control and incident reporting — across ${region}.`,
       `Silbar Security Services Pvt. Ltd. is your ${tierLabel} security partner in ${place}, ${region}. We bring ISO-certified processes and PSARA-licensed manpower to factories, offices, hospitals, residential societies, and commercial establishments across the city.`,
+      `${place} businesses trust Silbar Security Services Pvt. Ltd. for reliable, compliance-driven security solutions. From ${sectors.slice(0, 2).join(' to ')} — our ${tierLabel} team in ${region} delivers site-specific guarding, supervision, and reporting.`,
+      `Need security in ${place}? Silbar Security Services Pvt. Ltd. combines PSARA licensing, 4 ISO certifications, and local expertise in ${region} to protect your facility — whether a factory gate, a corporate lobby, or a residential township.`,
+      `Silbar Security Services Pvt. Ltd. serves ${place} with discipline-driven security manpower trained for ${sectors.slice(0, 3).join(', ')}. Our ${tierLabel} approach ensures guards are matched to your facility's specific risk profile — not a generic shift roster.`,
+      `Since our inception, Silbar Security Services Pvt. Ltd. has built a reputation for dependable security in ${place}, ${region}. We partner with ${sectors.slice(0, 3).join(', ')} to deliver verified personnel, structured SOPs, and responsive account management.`,
+      `Operating across ${region}, Silbar Security Services Pvt. Ltd. brings scalable security solutions to ${place}. Our PSARA-licensed, ISO-certified deployment model adapts to single-site and multi-location requirements across ${sectors.slice(0, 4).join(', ')}.`,
     ]),
     pick(seed, 2, [
       `${place} is a Tier-${city.tier} market with an urban population of about ${city.population}. Growth in industry, logistics, healthcare, retail, and housing increases demand for professional, compliance-driven security — not ad-hoc manpower hired without process.`,
       `With roughly ${city.population} residents and expanding commercial activity across ${sectors.slice(0, 4).join(', ')}, ${place} presents high-traffic gates, night shift requirements, and multi-tenant facilities that demand verified personnel and structured supervision.`,
       `${place}'s mix of industrial and commercial facilities (population ~${city.population}) requires flexible deployment models — 8/12-hour shifts, lady guards where gender sensitivity is needed, and optional integration of manned posts with electronic surveillance systems.`,
-      `Home to approximately ${city.population} people and a growing ${tierLabel} economy, ${place} generates security demand across ${sectors.slice(0, 3).join(', ')}.`,
+      `Home to approximately ${city.population} people and a growing ${tierLabel} economy, ${place} generates security demand across ${sectors.slice(0, 3).join(', ')}. Key commercial nodes require disciplined access control, material movement checks, and professional guard presentation.`,
+      `The ${region} business landscape in ${place} (population ~${city.population}) spans ${sectors.slice(0, 4).join(', ')}. Each sector presents unique security challenges — from visitor management in hospitals to material movement in factories to lobby discipline in corporate offices.`,
+      `${place}'s ${tierLabel} economy (population ~${city.population}) is driven by ${sectors.slice(0, 3).join(', ')}. Security providers must adapt to varied shift patterns, supervision needs, and compliance requirements that differ sharply between an industrial plant and a residential tower.`,
     ]),
     pick(seed, 3, [
       `Silbar Security Services Pvt. Ltd. — with Registered Office in New Delhi, Corporate Office in Gurugram, and regional offices in Jaipur, Noida, and Ahmedabad — coordinates PAN India deployments. For ${place}, that means local mobilisation with national process standards: uniforms, induction, replacement pool, and account management.`,
       `Clients expanding into ${place} from other cities often prefer a single security partner. We support multi-location contracts across ${region} while keeping each site's duty instructions specific to its facility layout, operational hours, and risk profile.`,
       `Our ${tierLabel} deployment model in ${place} emphasises post-specific duty briefings, supervisor field checks, and documented incident reporting — so whether you manage a single gate or a multi-acre campus, the service standard remains consistent across ${region}.`,
+      `What sets Silbar apart in ${place} is our focus on operational rigour: police-verified manpower, site-specific duty instructions, supervisor oversight, and transparent commercials with statutory compliance. ${landmarkSuffix}`,
+      `For ${place} clients, Silbar Security Services Pvt. Ltd. provides more than guards — we provide a security management system with documented SOPS, structured escalation, monthly compliance packs, and a dedicated account manager who knows your site.${landmarkSuffix}`,
     ]),
-    `Whether you manage a single warehouse gate or a multi-post industrial complex in ${place}, we start with scope clarity: number of posts, shift timings, visitor management rules, material movement protocols, and escalation contacts — then propose trained manpower that matches your actual requirements, not a generic brochure headcount.`,
+    pick(seed, 4, [
+      `Whether you manage a single warehouse gate or a multi-post industrial complex in ${place}, we start with scope clarity: number of posts, shift timings, visitor management rules, material movement protocols, and escalation contacts — then propose trained manpower that matches your actual requirements, not a generic brochure headcount.`,
+      `Silbar's engagement in ${place} begins with a site assessment: we understand your facility layout, peak traffic hours, sensitive zones, and emergency protocols — then design a manpower plan that covers your actual risk areas without over-posting or under-delivering.`,
+    ]),
   ]
 
   const marketOverview = [
@@ -1005,7 +1381,11 @@ export function generateCityContent(city: CityLocation): LocationSEOContent {
     `Choosing Silbar Security Services Pvt. Ltd. for ${place} means partnering with a PSARA-licensed, ISO-certified agency focused on operational control: attendance discipline, professional presentation, duty knowledge, compliance documentation, and responsive communication with your facility management or HO team.`,
   ]
 
-  const challenges = pickN(seed, CHALLENGES_POOL, 8)
+  // ponytail: offset seed (+31337) so generic fill items diverge from state-picked items.
+  // Without this offset, same-state cities would share identical state + generic sets.
+  const stateChallenges = challengesForState(city.stateSlug, seed)
+  const genericChallenges = pickN(seed + 31337, CHALLENGES_POOL, 8)
+  const challenges = [...stateChallenges, ...genericChallenges].slice(0, 8)
   const deliverables = pickN(seed, DELIVERABLES_POOL, 12)
   const whyPoints = pickN(seed, WHY_POINTS_POOL, 10)
   const whoNeeds = pickN(seed, WHO_NEEDS, 10)
@@ -1035,6 +1415,7 @@ export function generateCityContent(city: CityLocation): LocationSEOContent {
   return {
     placeName: place,
     placeType: 'city',
+    seed,
     intro,
     marketOverview,
     challengesHeading: `Common security challenges in ${place}`,
@@ -1065,6 +1446,9 @@ export function generateCityContent(city: CityLocation): LocationSEOContent {
       `${place} security guard services — ${sectors.slice(0, 2).join(', ')} protection. Verified manpower, PSARA licensed, PAN India deployments. Call ${CONTACT.phone}.`,
       `Professional security company serving ${place}, ${region}. Manned guarding, industrial security, and facility protection. ISO & PSARA certified. Enquire now.`,
       `Looking for security guards in ${place}? Silbar Security Services Pvt. Ltd. — Tier-${city.tier} security partner with PSARA license and 4 ISO certifications serving ${sectors.slice(0, 2).join(', ')} clients.`,
+      `Best security agency in ${place}, ${region}. PSARA licensed, ISO 9001:2015, 14001, 45001 & 27001 certified. Serving ${sectors.slice(0, 3).join(', ')}. Call ${CONTACT.phone} now.`,
+      `Reliable security guards in ${place}, ${region}. Professional manned guarding for ${sectors.slice(0, 2).join(', ')}. Police-verified personnel, 24/7 supervision. Free quote available.`,
+      `Top security company in ${place}. ISO & PSARA certified security services for ${sectors.slice(0, 3).join(', ')}. Trained guards, supervisor oversight, compliance reporting. Call ${CONTACT.phone}.`,
     ]),
     servicesIntro: `Explore all Silbar Security Services Pvt. Ltd. service verticals available for your ${place} facility. Click any service for detailed features, use cases, and FAQs, then request a site-specific quote for your ${region} location.`,
     keywordsLine: `security guard services ${place}, security agency ${place}, manned guarding ${place}, security company ${region}, industrial security ${place}, PSARA licensed security ${place}`,
@@ -1095,13 +1479,19 @@ export function generateStateContent(state: StateLocation): LocationSEOContent {
     `Choosing Silbar Security Services Pvt. Ltd. for ${place} means partnering with a PSARA-compliant agency that brings documented processes, trained personnel, monthly compliance reporting, and responsive account management — not just uniformed staff at the gate.`,
   ]
 
+  // Blended challenges: state-specific + generic (offset seed so generic items differ from city pages in the same state)
+  const sChallenges = challengesForState(state.slug, seed)
+  const gChallenges = pickN(seed + 31337, CHALLENGES_POOL, 8)
+  const stateChallenges = [...sChallenges, ...gChallenges].slice(0, 8)
+
   return {
     placeName: place,
     placeType: 'state',
+    seed,
     intro,
     marketOverview,
     challengesHeading: `Security challenges facilities face across ${place}`,
-    challenges: pickN(seed, CHALLENGES_POOL, 8),
+    challenges: stateChallenges,
     sectorsHeading: `Key security demand areas in ${place}`,
     sectors,
     sectorsBlurb: `${place}'s diverse economy spans ${sectors.slice(0, 5).join(', ')}. Silbar maps manpower, supervision intensity, and compliance requirements to each sector's specific risk profile — not a one-size roster for every site in the state.`,

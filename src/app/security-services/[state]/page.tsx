@@ -261,7 +261,7 @@ export default async function StateSEOPage({
           isLocalOffice={['delhi', 'haryana', 'rajasthan', 'uttar-pradesh', 'gujarat'].includes(location.slug)}
         />
 
-        <LocationRichContent content={content} />
+        <LocationRichContent content={content} seed={content.seed} />
 
         <section className="seo-services-section">
           <div className="service-detail-section-inner">

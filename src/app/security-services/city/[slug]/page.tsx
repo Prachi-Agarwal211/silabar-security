@@ -9,7 +9,7 @@ import { Phone, MapPin, ArrowRight } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import PageHero from '@/components/layout/PageHero'
-import { CONTACT, GOOGLE_REVIEWS, getOfficeForCitySlug, getOfficesForCityPage } from '@/lib/config'
+import { CONTACT, getOfficeForCitySlug, getOfficesForCityPage } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 import LocationRichContent from '@/components/sections/LocationRichContent'
@@ -95,8 +95,8 @@ export default async function CitySEOPage({
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: schemaOffice?.lat || GEO_COORDINATES[slug]?.lat || 20.5937,
-      longitude: schemaOffice?.lng || GEO_COORDINATES[slug]?.lng || 78.9629,
+      latitude: GEO_COORDINATES[slug]?.lat || schemaOffice?.lat || 20.5937,
+      longitude: GEO_COORDINATES[slug]?.lng || schemaOffice?.lng || 78.9629,
     },
     ...(schemaOffice?.mapUrl ? { hasMap: schemaOffice.mapUrl } : {}),
     sameAs: [
@@ -115,13 +115,8 @@ export default async function CitySEOPage({
       { '@type': 'City', name: city.name },
       ...nearbyCities.map((c) => ({ '@type': 'City', name: c })),
     ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: String(GOOGLE_REVIEWS.rating),
-      reviewCount: String(GOOGLE_REVIEWS.reviewCountNumber),
-      bestRating: '5',
-      worstRating: '1',
-    },
+    // aggregateRating intentionally omitted — only on main/about pages.
+    // Google flags city pages that share the same company-wide rating on every URL as doorway patterns.
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: `Security Services in ${city.name}`,
@@ -252,7 +247,7 @@ export default async function CitySEOPage({
           isLocalOffice={Boolean(office)}
         />
 
-        <LocationRichContent content={content} />
+        <LocationRichContent content={content} seed={content.seed} />
 
         {/* Services links */}
         <section className="seo-services-section">
