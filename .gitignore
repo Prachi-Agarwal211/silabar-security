@@ -42,6 +42,10 @@ nul
 .kilocode/
 .opencode/
 
+# generated build assets (can be regenerated via scripts/generators/)
+public/images/blog/*.svg
+public/images/og/*.svg
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

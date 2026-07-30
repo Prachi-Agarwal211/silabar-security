@@ -9,7 +9,7 @@ import { Phone, MapPin, ArrowRight } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import PageHero from '@/components/layout/PageHero'
-import { CONTACT, getOfficeForCitySlug, getOfficesForCityPage } from '@/lib/config'
+import { CONTACT, GOOGLE_REVIEWS, getOfficeForCitySlug, getOfficesForCityPage } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 import LocationRichContent from '@/components/sections/LocationRichContent'
@@ -82,6 +82,9 @@ export default async function CitySEOPage({
     url: `https://www.silbarsecurity.in/security-services/city/${slug}`,
     telephone: schemaOffice?.phone || CONTACT.phone,
     email: CONTACT.email,
+    parentOrganization: {
+      '@id': 'https://www.silbarsecurity.in/#organization',
+    },
     address: {
       '@type': 'PostalAddress',
       streetAddress: office?.address?.split(',')[0]?.trim(),
@@ -96,6 +99,9 @@ export default async function CitySEOPage({
       longitude: schemaOffice?.lng || GEO_COORDINATES[slug]?.lng || 78.9629,
     },
     ...(schemaOffice?.mapUrl ? { hasMap: schemaOffice.mapUrl } : {}),
+    sameAs: [
+      ...(schemaOffice?.mapUrl ? [schemaOffice.mapUrl] : []),
+    ],
     image: 'https://www.silbarsecurity.in/og-image.jpg',
     openingHoursSpecification: [
       {
@@ -109,6 +115,13 @@ export default async function CitySEOPage({
       { '@type': 'City', name: city.name },
       ...nearbyCities.map((c) => ({ '@type': 'City', name: c })),
     ],
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: String(GOOGLE_REVIEWS.rating),
+      reviewCount: String(GOOGLE_REVIEWS.reviewCountNumber),
+      bestRating: '5',
+      worstRating: '1',
+    },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: `Security Services in ${city.name}`,

@@ -16,6 +16,14 @@ const LABEL_MAP: Record<string, string> = {
   'security-services': 'Security Services',
   'disclaimer': 'Disclaimer',
   'faq': 'FAQs',
+  'csr': 'CSR',
+  'certification': 'Certifications',
+  'emergency': 'Emergency',
+  'google': 'Google',
+  'franchise': 'Franchise',
+  'gallery': 'Gallery',
+  'case-studies': 'Case Studies',
+  'city': 'City',
 }
 
 export default function DynamicBreadcrumbSchema() {

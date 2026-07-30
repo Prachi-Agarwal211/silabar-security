@@ -59,10 +59,11 @@ export default async function CareerDetailPage({
       },
     },
     ...(career.salary ? {
-      estimatedSalary: {
+      baseSalary: {
         '@type': 'MonetaryAmount',
         currency: 'INR',
         value: career.salary,
+        unitText: 'MONTH',
       },
     } : {}),
   }

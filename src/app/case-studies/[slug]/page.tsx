@@ -47,12 +47,12 @@ export default async function CaseStudyPage({
 
   const schema = {
     '@context': 'https://schema.org',
-    '@type': 'CaseStudy',
+    '@type': 'Article',
     name: study.title,
     description: study.results[0],
-    client: { '@type': 'Organization', name: study.client },
-    location: study.location,
+    author: { '@type': 'Organization', name: 'Silbar Security Services Pvt. Ltd.' },
     about: study.industry,
+    location: study.location,
   }
 
   return (

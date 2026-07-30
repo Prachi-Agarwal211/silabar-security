@@ -9,7 +9,7 @@ import { ArrowRight, Phone, MapPin } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import PageHero from '@/components/layout/PageHero'
-import { CONTACT, getOfficesForStatePage } from '@/lib/config'
+import { CONTACT, GOOGLE_REVIEWS, getOfficesForStatePage } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 import LocationRichContent from '@/components/sections/LocationRichContent'
@@ -72,7 +72,7 @@ export default async function StateSEOPage({
 
   const localBusinessSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
+    '@type': 'LocalBusiness',
     '@id': `https://www.silbarsecurity.in/security-services/${state}`,
     name: primaryOffice?.placeName || `Silbar Security Services Pvt. Ltd. — ${location.name}`,
     legalName: 'Silbar Security Services Pvt. Ltd.',
@@ -80,6 +80,9 @@ export default async function StateSEOPage({
     url: `https://www.silbarsecurity.in/security-services/${state}`,
     telephone: primaryOffice?.phone || CONTACT.phone,
     email: CONTACT.email,
+    parentOrganization: {
+      '@id': 'https://www.silbarsecurity.in/#organization',
+    },
     ...(primaryOffice?.address && primaryOffice?.region === location.name
       ? {
           address: {
@@ -104,7 +107,9 @@ export default async function StateSEOPage({
             longitude: GEO_COORDINATES[capitalKey]?.lng || 78.9629,
           },
         }),
-    sameAs: [`https://www.silbarsecurity.in/security-services/${state}`],
+    sameAs: [
+      ...(primaryOffice?.mapUrl ? [primaryOffice.mapUrl] : []),
+    ],
     image: 'https://www.silbarsecurity.in/og-image.jpg',
     openingHoursSpecification: [
       {
@@ -117,6 +122,13 @@ export default async function StateSEOPage({
     areaServed: {
       '@type': 'State',
       name: location.name,
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: String(GOOGLE_REVIEWS.rating),
+      reviewCount: String(GOOGLE_REVIEWS.reviewCountNumber),
+      bestRating: '5',
+      worstRating: '1',
     },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',

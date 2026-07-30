@@ -6,6 +6,7 @@ export type BlogPost = {
   content: string // HTML string
   coverImage: string
   author: string
+  role?: string
   publishedAt: string
   modifiedAt: string
   category: string
@@ -44,10 +45,10 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>Why Clients Should Demand Certified Agencies</h2>
       <p>Partnering with a non-certified, unorganized agency often leads to compliance risks, high attrition rates, and ultimately, security breaches. A certified agency like Silbar Security Services Pvt. Ltd. ensures that our processes are audited by third-party experts annually, guaranteeing that our commitment to quality isn't just a promise—it's a proven practice.</p>
     `,
-    coverImage: '/images/blog/iso-security.jpg',
-    author: 'Silbar Security Expert',
+    coverImage: '/images/blog/importance-of-iso-9001-in-security-cover.svg',
+    author: 'Rohit Sharma',
+    role: 'Senior Security Consultant',
     publishedAt: '2026-06-15',
-
     modifiedAt: '2026-06-15',
     category: 'Compliance',
     readTime: '4 min read'
@@ -73,10 +74,10 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
       <p>By blending licensed, trained manpower with modern technology, businesses achieve a robust security posture that is both cost-effective and highly responsive.</p>
     `,
-    coverImage: '/images/blog/cctv-guard.jpg',
-    author: 'Operations Head',
+    coverImage: '/images/blog/cctv-vs-manned-guarding-cover.svg',
+    author: 'Vikram Singh',
+    role: 'Operations Head',
     publishedAt: '2026-06-28',
-
     modifiedAt: '2026-06-28',
     category: 'Security Tips',
     readTime: '5 min read'
@@ -100,10 +101,10 @@ export const BLOG_POSTS: BlogPost[] = [
       </ol>
       <p>Silbar Security Services Pvt. Ltd. provides short-term deployment services tailored for the festive season, ensuring your business operations continue smoothly without compromising on safety.</p>
     `,
-    coverImage: '/images/blog/festive-security.jpg',
-    author: 'Silbar Security Expert',
+    coverImage: '/images/blog/preparing-facility-for-festive-season-cover.svg',
+    author: 'Arun Kumar',
+    role: 'Security Consultant',
     publishedAt: '2026-07-05',
-
     modifiedAt: '2026-07-05',
     category: 'Industry News',
     readTime: '3 min read'
@@ -128,10 +129,10 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>Ask for a sample site instruction document, escalation matrix, and a clear commercial breakup. If answers are vague, risk usually shows up after mobilisation — not before.</p>
       <p>Silbar Security Services Pvt. Ltd. structures proposals with transparent scope so clients in Jaipur, Delhi NCR, Ahmedabad, and pan-India multi-site networks can compare value — not just headcount rates.</p>
     `,
-    coverImage: '/images/blog/choose-agency.jpg',
-    author: 'Silbar Security Expert',
+    coverImage: '/images/blog/how-to-choose-security-agency-india-cover.svg',
+    author: 'Rohit Sharma',
+    role: 'Senior Security Consultant',
     publishedAt: '2026-07-08',
-
     modifiedAt: '2026-07-08',
     category: 'Security Tips',
     readTime: '5 min read',
@@ -154,10 +155,10 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>How Silbar Approaches Industrial Sites</h2>
       <p>Our industrial deployments emphasise gate discipline, perimeter awareness, and clear escalation. Combined with optional CCTV support and MIS reporting, plants get a security layer that supports operations — not just a uniform at the barrier.</p>
     `,
-    coverImage: '/images/blog/industrial-gate.jpg',
-    author: 'Operations Head',
+    coverImage: '/images/blog/industrial-security-gate-management-cover.svg',
+    author: 'Vikram Singh',
+    role: 'Operations Head',
     publishedAt: '2026-07-10',
-
     modifiedAt: '2026-07-10',
     category: 'Industry News',
     readTime: '4 min read',
@@ -180,10 +181,10 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>Working With a Professional Agency</h2>
       <p>Silbar Security Services Pvt. Ltd. supports residential communities with trained guards, lady guards where required, and supervisor oversight. Clear commercial terms and replacement backup help committees avoid service gaps during festivals and peak seasons.</p>
     `,
-    coverImage: '/images/blog/residential-security.jpg',
-    author: 'Silbar Security Expert',
+    coverImage: '/images/blog/residential-society-security-best-practices-cover.svg',
+    author: 'Priya Patel',
+    role: 'Compliance Analyst',
     publishedAt: '2026-07-11',
-
     modifiedAt: '2026-07-11',
     category: 'Security Tips',
     readTime: '4 min read',
@@ -211,10 +212,10 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>Factory inspectors frequently flag blocked fire exits, expired extinguishers, lack of evacuation drills, and absence of a trained fire warden. These violations can lead to closure notices, heavy penalties, or worse — loss of lives during an actual emergency.</p>
       <p>Silbar Security Services Pvt. Ltd. offers fire audit services as part of our integrated safety solutions, helping factory owners identify gaps and implement corrective measures before the inspector arrives.</p>
     `,
-    coverImage: '/images/blog/fire-safety.jpg',
-    author: 'Compliance Team',
+    coverImage: '/images/blog/fire-safety-audit-factory-owners-cover.svg',
+    author: 'Amit Verma',
+    role: 'Compliance Manager',
     publishedAt: '2026-07-18',
-
     modifiedAt: '2026-07-18',
     category: 'Compliance',
     readTime: '5 min read',
@@ -240,10 +241,10 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>Why PSARA Compliance Matters to Clients</h2>
       <p>When hiring a security agency, clients must verify that the agency holds a valid PSARA license for the state of deployment. If an unlicensed agency's guard is involved in an incident, the client can face serious legal liability for engaging an illegal security provider. Always ask for the PSARA license number and verify it with the state's Controlling Authority.</p>
     `,
-    coverImage: '/images/blog/psara-license.jpg',
-    author: 'Compliance Team',
+    coverImage: '/images/blog/psara-license-requirements-private-security-cover.svg',
+    author: 'Amit Verma',
+    role: 'Compliance Manager',
     publishedAt: '2026-07-25',
-
     modifiedAt: '2026-07-25',
     category: 'Compliance',
     readTime: '6 min read',
@@ -269,10 +270,10 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>The Human + AI Balance</h2>
       <p>Despite these advances, AI is a force multiplier, not a replacement. A security operations centre (SOC) still requires trained personnel to interpret alerts, exercise judgment, and coordinate physical response. The future belongs to integrated teams where AI handles the monitoring load and humans handle the decisions. Silbar Security Services Pvt. Ltd. is investing in AI-assisted remote monitoring for clients who want smart surveillance without replacing their security team.</p>
     `,
-    coverImage: '/images/blog/ai-surveillance.jpg',
-    author: 'Silbar Security Expert',
+    coverImage: '/images/blog/role-of-ai-in-modern-security-surveillance-cover.svg',
+    author: 'Arun Kumar',
+    role: 'Security Consultant',
     publishedAt: '2026-08-02',
-
     modifiedAt: '2026-08-02',
     category: 'Industry News',
     readTime: '5 min read',
@@ -304,10 +305,10 @@ export const BLOG_POSTS: BlogPost[] = [
       </ol>
       <p>Silbar Security Services Pvt. Ltd. specializes in warehouse security deployments with trained personnel, CCTV integration, and daily MIS reporting to keep your inventory safe.</p>
     `,
-    coverImage: '/images/blog/warehouse-theft.jpg',
-    author: 'Operations Head',
+    coverImage: '/images/blog/warehouse-theft-prevention-complete-guide-cover.svg',
+    author: 'Vikram Singh',
+    role: 'Operations Head',
     publishedAt: '2026-08-10',
-
     modifiedAt: '2026-08-10',
     category: 'Security Tips',
     readTime: '6 min read',
@@ -334,7 +335,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>Who Should Conduct the Assessment?</h2>
       <p>While internal security teams can perform basic assessments, an independent third-party SVA often reveals blind spots that internal teams miss due to familiarity. Silbar Security Services Pvt. Ltd. offers vulnerability assessment services conducted by trained field officers with checklists customized for your industry and facility size.</p>
     `,
-    coverImage: '/images/blog/vulnerability-assessment.jpg',
+    coverImage: '/images/blog/security-vulnerability-assessment-guide-cover.svg',
     author: 'Silbar Security Expert',
     publishedAt: '2026-08-18',
 
@@ -362,7 +363,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>Coordination With Local Authorities</h2>
       <p>For events exceeding 500 attendees, organisers should coordinate with the local police, fire brigade, and ambulance services in advance. Obtain necessary permissions under the local police act and share your security plan with authorities. Silbar Security Services Pvt. Ltd. provides end-to-end event security management, including liaison with local authorities, manpower deployment, and CCTV setup — so you can focus on the event, not the logistics.</p>
     `,
-    coverImage: '/images/blog/event-security.jpg',
+    coverImage: '/images/blog/corporate-event-security-planning-cover.svg',
     author: 'Operations Head',
     publishedAt: '2026-08-25',
 
@@ -390,7 +391,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>The industry still faces challenges in recruiting and retaining women — including safety concerns during late-night commutes, lack of women-friendly facilities at deployment sites, and societal biases. Progressive agencies like Silbar Security Services Pvt. Ltd. are addressing these issues through women-only training batches, safe transport policies, and sensitization programs for male colleagues.</p>
       <p>We actively recruit and train female security guards across our service areas, and we encourage our clients to consider mixed-gender security teams for better overall outcomes.</p>
     `,
-    coverImage: '/images/blog/women-security.jpg',
+    coverImage: '/images/blog/rise-of-women-in-private-security-cover.svg',
     author: 'Silbar Security Expert',
     publishedAt: '2026-09-01',
 
@@ -423,7 +424,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>Recommendation: Hybrid Approach</h2>
       <p>For most facilities, a layered approach works best — RFID for low-security perimeter gates, biometrics for high-security zones like server rooms and cash handling areas, and smart cards for general office access. Silbar Security Services Pvt. Ltd. can help design and implement a customized access control plan for your facility.</p>
     `,
-    coverImage: '/images/blog/access-control.jpg',
+    coverImage: '/images/blog/access-control-rfid-vs-biometric-vs-smart-card-cover.svg',
     author: 'Silbar Security Expert',
     publishedAt: '2026-09-08',
 
@@ -453,7 +454,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>The Ground Reality</h2>
       <p>While the standards are well-defined, enforcement is uneven. Many small agencies cut corners on training to reduce costs, deploying untrained personnel and exposing clients to liability. At Silbar Security Services Pvt. Ltd., training is not a checkbox — we maintain an in-house training facility where every guard undergoes refresher training every six months, and we maintain detailed training records for client inspection.</p>
     `,
-    coverImage: '/images/blog/training-standards.jpg',
+    coverImage: '/images/blog/security-guard-training-standards-india-cover.svg',
     author: 'Operations Head',
     publishedAt: '2026-09-15',
 
@@ -482,7 +483,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>Why Choose a Specialist Agency</h2>
       <p>Bank security is not generic guarding. It requires personnel who understand RBI compliance, discreet observation, and the specific protocols of financial institutions. Silbar Security Services Pvt. Ltd. provides trained and PSARA-licensed guards for banking clients, with armed and unarmed options tailored to each branch's risk profile.</p>
     `,
-    coverImage: '/images/blog/bank-security.jpg',
+    coverImage: '/images/blog/bank-branch-security-beyond-armed-guard-cover.svg',
     author: 'Silbar Security Expert',
     publishedAt: '2026-09-22',
 
@@ -516,7 +517,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ol>
       <p>Silbar Security Services Pvt. Ltd. provides construction site security across India, with trained personnel experienced in the unique challenges of active project sites.</p>
     `,
-    coverImage: '/images/blog/construction-site.jpg',
+    coverImage: '/images/blog/construction-site-theft-prevention-cover.svg',
     author: 'Operations Head',
     publishedAt: '2026-09-29',
 
@@ -545,7 +546,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>Technology for Hotel Security</h2>
       <p>Modern hotels benefit from integrated security systems — key cards that log every door open event, CCTV analytics that detect loitering in restricted areas, and panic buttons at front desk and concierge stations. Silbar Security Services Pvt. Ltd. partners with hotels to provide trained personnel who understand hospitality etiquette while maintaining firm security standards.</p>
     `,
-    coverImage: '/images/blog/hotel-security.jpg',
+    coverImage: '/images/blog/hotel-security-best-practices-guest-safety-cover.svg',
     author: 'Silbar Security Expert',
     publishedAt: '2026-10-05',
 
@@ -574,7 +575,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>Building a Safety Culture</h2>
       <p>Safety is not just the security team's responsibility. Teachers, administrative staff, and even students must be part of the safety framework through training and regular drills. Silbar Security Services Pvt. Ltd. provides school safety audits and trained personnel who specialize in educational environments.</p>
     `,
-    coverImage: '/images/blog/school-safety.jpg',
+    coverImage: '/images/blog/school-safety-beyond-perimeter-cover.svg',
     author: 'Silbar Security Expert',
     publishedAt: '2026-10-12',
 
@@ -604,7 +605,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>Why Preparedness Pays</h2>
       <p>Every rupee spent on monsoon preparedness saves ten in potential losses from production downtime, equipment damage, and accident claims. Silbar Security Services Pvt. Ltd. includes monsoon safety in our guard training curriculum and provides facility safety audits to help industrial clients prepare for the season.</p>
     `,
-    coverImage: '/images/blog/monsoon-safety.jpg',
+    coverImage: '/images/blog/industrial-safety-during-monsoon-cover.svg',
     author: 'Operations Head',
     publishedAt: '2026-10-19',
 
@@ -632,7 +633,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>Measuring Performance Across Locations</h2>
       <p>Key metrics to track include: incident response time, false alarm rate, attrition of security personnel, and compliance score from random audits. Weekly dashboards help retail security managers identify underperforming locations before losses accumulate. Silbar Security Services Pvt. Ltd. provides multi-site security solutions with centralized reporting and dedicated account management for retail chains across India.</p>
     `,
-    coverImage: '/images/blog/retail-security.jpg',
+    coverImage: '/images/blog/managing-security-multi-site-retail-chains-cover.svg',
     author: 'Operations Head',
     publishedAt: '2026-10-26',
 
@@ -660,7 +661,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>Preparing for the Shift</h2>
       <p>Agencies that invest in training, technology, and compliance today will dominate the market of 2030. Silbar Security Services Pvt. Ltd. is already investing in these pillars to ensure we remain at the forefront of India's private security evolution.</p>
     `,
-    coverImage: '/images/blog/future-security.jpg',
+    coverImage: '/images/blog/future-of-private-security-india-2026-2030-cover.svg',
     author: 'Silbar Security Expert',
     publishedAt: '2026-11-02',
 
@@ -695,7 +696,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ol>
       <p>Silbar Security Services Pvt. Ltd. provides specialized healthcare security personnel who understand the unique protocols and sensitivities of hospital environments.</p>
     `,
-    coverImage: '/images/blog/hospital-security.jpg',
+    coverImage: '/images/blog/security-for-hospital-emergency-rooms-cover.svg',
     author: 'Operations Head',
     publishedAt: '2026-11-08',
 
@@ -733,7 +734,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
       <p>Silbar Security Services Pvt. Ltd. offers temporary festive season security deployments for factories, malls, residential societies, and corporate offices across all our service locations.</p>
     `,
-    coverImage: '/images/blog/festive-checklist.jpg',
+    coverImage: '/images/blog/festive-season-security-checklist-cover.svg',
     author: 'Silbar Security Expert',
     publishedAt: '2026-11-15',
 
@@ -763,7 +764,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>Ongoing Compliance Monitoring</h2>
       <p>Compliance verification should not be a one-time event. Insist on quarterly compliance reports from your agency, including proof of statutory remittances, training attendance records, and incident logs. Silbar Security Services Pvt. Ltd. provides full statutory compliance documentation to all our clients as a standard practice, not as an add-on.</p>
     `,
-    coverImage: '/images/blog/compliance-check.jpg',
+    coverImage: '/images/blog/verify-security-agency-compliance-cover.svg',
     author: 'Compliance Team',
     publishedAt: '2026-11-22',
 
@@ -798,7 +799,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
       <p>Silbar Security Services Pvt. Ltd. provides integrated security solutions for solar farms, combining electronic surveillance with trained personnel and rapid response protocols.</p>
     `,
-    coverImage: '/images/blog/solar-farm.jpg',
+    coverImage: '/images/blog/solar-farm-security-remote-renewable-assets-cover.svg',
     author: 'Silbar Security Expert',
     publishedAt: '2026-11-29',
 
@@ -827,7 +828,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>Adopting an EMS framework helps agencies reduce operating costs through energy and fuel efficiency, enhance their reputation with environmentally conscious clients, and comply with increasingly stringent environmental regulations. Silbar Security Services Pvt. Ltd. is committed to sustainable operations and is pursuing ISO 14001 certification as part of our continuous improvement journey.</p>
       <p>For clients in the renewable energy, green building, and ESG-conscious sectors, partnering with an ISO 14001-certified security agency aligns with their own environmental commitments.</p>
     `,
-    coverImage: '/images/blog/iso-14001.jpg',
+    coverImage: '/images/blog/iso-14001-environmental-management-security-cover.svg',
     author: 'Compliance Team',
     publishedAt: '2026-12-03',
 

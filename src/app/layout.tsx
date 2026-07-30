@@ -155,6 +155,12 @@ export default function RootLayout({
           <a href="/security-services">Locations</a>
           <a href="/contact">Get a Quote</a>
           <a href="/franchise">Franchise</a>
+          <a href="/certification">Certifications</a>
+          <a href="/csr">CSR</a>
+          <a href="/emergency">Emergency</a>
+          <a href="/google">Google</a>
+          <a href="/disclaimer">Disclaimer</a>
+          <a href="/terms">Terms of Use</a>
           <a href="/privacy-policy">Privacy Policy</a>
         </nav>
 
@@ -303,33 +309,20 @@ export default function RootLayout({
             }),
           }}
         />
-        {/* ProfessionalService schema for GEO answer engines */}
+        {/* Service schema — describes what Silbar actually does (merged from former separate ProfessionalService) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'ProfessionalService',
+              '@type': 'Service',
               '@id': 'https://www.silbarsecurity.in/#security-service',
               name: 'Silbar Security Services Pvt. Ltd.',
+              description: 'Manned guarding, industrial security, event security, facility management, CCTV surveillance, and VIP protection services across India.',
+              provider: { '@id': 'https://www.silbarsecurity.in/#organization' },
               image: 'https://www.silbarsecurity.in/og-image.jpg',
               url: 'https://www.silbarsecurity.in',
               telephone: CONTACT.phone,
-              priceRange: '$$',
-              address: {
-                '@type': 'PostalAddress',
-                streetAddress: '5th Floor, Statesman House, Plot No. 148, Barakhamba Road, Connaught Place',
-                addressLocality: 'New Delhi',
-                addressRegion: 'Delhi',
-                postalCode: '110001',
-                addressCountry: 'IN',
-              },
-              openingHoursSpecification: {
-                '@type': 'OpeningHoursSpecification',
-                dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-                opens: '09:00',
-                closes: '19:00',
-              },
               areaServed: 'IN',
               serviceType: [
                 'Manned Guarding',

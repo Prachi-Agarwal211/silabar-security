@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { BLOG_POSTS } from '@/data/blog'
-import { Calendar, Clock, ArrowLeft, User } from 'lucide-react'
+import { Calendar, Clock, ArrowLeft, User, ChevronRight } from 'lucide-react'
 import PageHero from '@/components/layout/PageHero'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import ScrollReveal from '@/components/animations/ScrollReveal'
@@ -25,7 +25,7 @@ export async function generateMetadata({
   return {
     title: `${post.title}`,
     description: post.excerpt,
-    ...ogMetadata(`${post.title}`, post.excerpt, `/blog/${slug}`),
+    ...ogMetadata(`${post.title}`, post.excerpt, `/blog/${slug}`, `/images/og/${slug}-og.svg`),
     openGraph: {
       type: 'article' as const,
       publishedTime: post.publishedAt,
@@ -63,6 +63,7 @@ export default async function BlogPostPage({
           '@type': 'BlogPosting',
           headline: post.title,
           description: post.excerpt,
+          image: post.coverImage ? `https://www.silbarsecurity.in${post.coverImage}` : undefined,
           author: {
             '@type': 'Person',
             name: post.author
@@ -119,6 +120,17 @@ export default async function BlogPostPage({
             />
           </ScrollReveal>
 
+          {post.coverImage && (
+            <div style={{ marginBottom: '2rem', borderRadius: '12px', overflow: 'hidden' }}>
+              <img 
+                src={post.coverImage} 
+                alt={`Cover image for ${post.title}`}
+                style={{ width: '100%', height: 'auto', display: 'block' }}
+                loading="lazy"
+              />
+            </div>
+          )}
+
           <footer style={{ marginTop: '4rem', paddingTop: '2rem', borderTop: '1px solid rgba(191, 149, 63, 0.2)' }}>
             <Link href="/blog" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontFamily: 'var(--font-display)', fontWeight: 700, color: 'var(--color-cherry)', textDecoration: 'none' }}>
               <ArrowLeft size={16} /> Back to All Articles
@@ -126,6 +138,47 @@ export default async function BlogPostPage({
           </footer>
         </article>
       </section>
+
+      {/* Related Posts Section */}
+      {(() => {
+        const related = BLOG_POSTS
+          .filter(p => p.slug !== post.slug && p.category === post.category)
+          .slice(0, 3)
+        if (related.length === 0) return null
+        return (
+          <section style={{ padding: '0 1.5rem 5rem 1.5rem', background: 'var(--color-paper)' }}>
+            <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+              <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.75rem', fontWeight: 700, marginBottom: '2rem', color: 'var(--color-midnight)' }}>
+                Related Articles
+              </h2>
+              <div style={{ display: 'grid', gap: '1.25rem' }}>
+                {related.map(r => (
+                  <Link 
+                    key={r.slug}
+                    href={`/blog/${r.slug}`}
+                    className="related-card"
+                    style={{
+                      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                      padding: '1.25rem 1.5rem', background: 'white', borderRadius: '10px',
+                      boxShadow: '0 4px 12px rgba(0,0,0,0.06)', textDecoration: 'none',
+                      transition: 'transform 0.2s, box-shadow 0.2s'
+                    }}
+                  >
+                    <div>
+                      <span style={{ fontSize: '0.75rem', color: 'var(--color-cherry)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{r.category}</span>
+                      <h3 style={{ margin: '0.25rem 0 0', fontSize: '1rem', fontWeight: 600, color: 'var(--color-midnight)' }}>{r.title}</h3>
+                      <span style={{ fontSize: '0.8rem', color: 'rgba(10,10,10,0.5)' }}>{r.readTime} · {r.author}</span>
+                    </div>
+                    <ChevronRight size={20} color="var(--color-cherry)" style={{ flexShrink: 0 }} />
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )
+      })()}
+
+      <style>{`.related-card:hover{transform:translateX(4px);box-shadow:0 6px 20px rgba(0,0,0,0.1)}`}</style>
     
       <PageLeadSection
         title="Protect Your Facility with Silbar"
