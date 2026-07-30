@@ -9,27 +9,15 @@ import { CAREERS } from '@/data/careers'
 const BASE_URL = 'https://www.silbarsecurity.in'
 const BUILD_DATE = new Date()
 
-// ─── Sitemap Index Segments ───────────────────────────────────────────
+/**
+ * Flat sitemap — under 50 000 URLs so no sitemap index needed.
+ * All 546+ pages are listed here so Google discovers everything.
+ */
+export default function sitemap(): MetadataRoute.Sitemap {
+  const urls: MetadataRoute.Sitemap = []
 
-type SitemapSegment = { id: string }
-
-export async function generateSitemaps(): Promise<SitemapSegment[]> {
-  return [
-    { id: 'core' },
-    { id: 'services' },
-    { id: 'industries' },
-    { id: 'states' },
-    { id: 'cities' },
-    { id: 'blog' },
-    { id: 'case-studies' },
-    { id: 'careers' },
-  ]
-}
-
-// ─── Individual Segment Generators ────────────────────────────────────
-
-function corePages(): MetadataRoute.Sitemap {
-  const routes: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[0]['changeFrequency'] }[] = [
+  // ── Core pages ──
+  const coreRoutes: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[0]['changeFrequency'] }[] = [
     { path: '', priority: 1.0, changeFrequency: 'weekly' },
     { path: '/about', priority: 0.9, changeFrequency: 'monthly' },
     { path: '/services', priority: 0.9, changeFrequency: 'weekly' },
@@ -49,107 +37,88 @@ function corePages(): MetadataRoute.Sitemap {
     { path: '/google', priority: 0.5, changeFrequency: 'monthly' },
   ]
 
-  return routes.map((r) => ({
-    url: `${BASE_URL}${r.path}`,
-    lastModified: BUILD_DATE,
-    changeFrequency: r.changeFrequency,
-    priority: r.priority,
-  }))
-}
-
-function servicePages(): MetadataRoute.Sitemap {
-  // Services: lastmod derived from the service data (all share BUILD_DATE since static)
-  return SERVICES.map((s) => ({
-    url: `${BASE_URL}/services/${s.slug}`,
-    lastModified: BUILD_DATE,
-    changeFrequency: 'monthly' as const,
-    priority: 0.75,
-  }))
-}
-
-function industryPages(): MetadataRoute.Sitemap {
-  return INDUSTRIES.map((i) => ({
-    url: `${BASE_URL}/industries/${i.slug}`,
-    lastModified: BUILD_DATE,
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }))
-}
-
-function statePages(): MetadataRoute.Sitemap {
-  return STATES.map((st) => ({
-    url: `${BASE_URL}/security-services/${st.slug}`,
-    lastModified: BUILD_DATE,
-    changeFrequency: 'monthly' as const,
-    priority: 0.65,
-  }))
-}
-
-function cityPages(): MetadataRoute.Sitemap {
-  return CITIES.map((c) => ({
-    url: `${BASE_URL}/security-services/city/${c.slug}`,
-    lastModified: BUILD_DATE,
-    changeFrequency: 'monthly' as const,
-    priority: c.tier === 1 ? 0.7 : 0.55,
-  }))
-}
-
-function blogPages(): MetadataRoute.Sitemap {
-  return BLOG_POSTS.map((b) => ({
-    url: `${BASE_URL}/blog/${b.slug}`,
-    lastModified: b.modifiedAt
-      ? new Date(b.modifiedAt)
-      : b.publishedAt
-        ? new Date(b.publishedAt)
-        : BUILD_DATE,
-    changeFrequency: 'monthly' as const,
-    priority: 0.55,
-  }))
-}
-
-function caseStudyPages(): MetadataRoute.Sitemap {
-  return CASE_STUDIES.map((cs) => ({
-    url: `${BASE_URL}/case-studies/${cs.slug}`,
-    lastModified: BUILD_DATE,
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }))
-}
-
-function careerPages(): MetadataRoute.Sitemap {
-  return CAREERS.map((job) => ({
-    url: `${BASE_URL}/careers/${job.slug}`,
-    lastModified: BUILD_DATE,
-    changeFrequency: 'weekly' as const,
-    priority: 0.5,
-  }))
-}
-
-// ─── Default export — dispatches by segment id ────────────────────────
-
-export default function sitemap({
-  id,
-}: {
-  id: string
-}): MetadataRoute.Sitemap {
-  switch (id) {
-    case 'core':
-      return corePages()
-    case 'services':
-      return servicePages()
-    case 'industries':
-      return industryPages()
-    case 'states':
-      return statePages()
-    case 'cities':
-      return cityPages()
-    case 'blog':
-      return blogPages()
-    case 'case-studies':
-      return caseStudyPages()
-    case 'careers':
-      return careerPages()
-    default:
-      return []
+  for (const r of coreRoutes) {
+    urls.push({
+      url: `${BASE_URL}${r.path}`,
+      lastModified: BUILD_DATE,
+      changeFrequency: r.changeFrequency,
+      priority: r.priority,
+    })
   }
+
+  // ── Service pages ──
+  for (const s of SERVICES) {
+    urls.push({
+      url: `${BASE_URL}/services/${s.slug}`,
+      lastModified: BUILD_DATE,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    })
+  }
+
+  // ── Industry pages ──
+  for (const i of INDUSTRIES) {
+    urls.push({
+      url: `${BASE_URL}/industries/${i.slug}`,
+      lastModified: BUILD_DATE,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    })
+  }
+
+  // ── State pages ──
+  for (const st of STATES) {
+    urls.push({
+      url: `${BASE_URL}/security-services/${st.slug}`,
+      lastModified: BUILD_DATE,
+      changeFrequency: 'monthly',
+      priority: 0.65,
+    })
+  }
+
+  // ── City pages (334+) ──
+  for (const c of CITIES) {
+    urls.push({
+      url: `${BASE_URL}/security-services/city/${c.slug}`,
+      lastModified: BUILD_DATE,
+      changeFrequency: 'monthly',
+      priority: c.tier === 1 ? 0.7 : 0.55,
+    })
+  }
+
+  // ── Blog posts (with actual lastmod dates) ──
+  for (const b of BLOG_POSTS) {
+    urls.push({
+      url: `${BASE_URL}/blog/${b.slug}`,
+      lastModified: b.modifiedAt
+        ? new Date(b.modifiedAt)
+        : b.publishedAt
+          ? new Date(b.publishedAt)
+          : BUILD_DATE,
+      changeFrequency: 'monthly',
+      priority: 0.55,
+    })
+  }
+
+  // ── Case studies ──
+  for (const cs of CASE_STUDIES) {
+    urls.push({
+      url: `${BASE_URL}/case-studies/${cs.slug}`,
+      lastModified: BUILD_DATE,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    })
+  }
+
+  // ── Career posts ──
+  for (const job of CAREERS) {
+    urls.push({
+      url: `${BASE_URL}/careers/${job.slug}`,
+      lastModified: BUILD_DATE,
+      changeFrequency: 'weekly',
+      priority: 0.5,
+    })
+  }
+
+  return urls
 }
