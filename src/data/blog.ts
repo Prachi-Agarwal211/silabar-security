@@ -44,8 +44,7 @@ export const BLOG_POSTS: BlogPost[] = [
 
       <h2>Why Clients Should Demand Certified Agencies</h2>
       <p>Partnering with a non-certified, unorganized agency often leads to compliance risks, high attrition rates, and ultimately, security breaches. A certified agency like Silbar Security Services Pvt. Ltd. ensures that our processes are audited by third-party experts annually, guaranteeing that our commitment to quality isn't just a promise—it's a proven practice.</p>
-    `,
-    coverImage: '/images/blog/importance-of-iso-9001-in-security-cover.svg',
+    `,    coverImage: '/why-silbar-bg.webp',
     author: 'Rohit Sharma',
     role: 'Senior Security Consultant',
     publishedAt: '2026-06-15',
@@ -74,7 +73,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
       <p>By blending licensed, trained manpower with modern technology, businesses achieve a security posture that is both cost-effective and highly responsive.</p>
     `,
-    coverImage: '/images/blog/cctv-vs-manned-guarding-cover.svg',
+    coverImage: '/images/blog/cctv-vs-manned-guarding.png',
     author: 'Vikram Singh',
     role: 'Operations Head',
     publishedAt: '2026-06-28',
@@ -98,10 +97,10 @@ export const BLOG_POSTS: BlogPost[] = [
         <li><strong>Deploy Additional Manpower:</strong> Request temporary deployment of additional guards from your security partner for crowd control and parking management.</li>
         <li><strong>Verify Temporary Staff:</strong> Ensure all seasonal workers undergo strict ID verification and are issued temporary passes.</li>
         <li><strong>Test Fire Safety Systems:</strong> With the increased use of electrical decorations and firecrackers, ensuring fire extinguishers and alarms are functional is critical.</li>
-      </ol>
+        </ol>
       <p>Silbar Security Services Pvt. Ltd. provides short-term deployment services tailored for the festive season, ensuring your business operations continue smoothly without compromising on safety.</p>
     `,
-    coverImage: '/images/blog/preparing-facility-for-festive-season-cover.svg',
+    coverImage: '/hero-guard.webp',
     author: 'Arun Kumar',
     role: 'Security Consultant',
     publishedAt: '2026-07-05',

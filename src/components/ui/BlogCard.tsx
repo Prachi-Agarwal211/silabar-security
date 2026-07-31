@@ -1,10 +1,34 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, Calendar, Clock, ExternalLink } from 'lucide-react'
+import {
+  ArrowRight,
+  Calendar,
+  Clock,
+  ExternalLink,
+  Shield,
+  ShieldCheck,
+  Eye,
+  Building2,
+  Flame,
+  Warehouse,
+  Users,
+} from 'lucide-react'
 import type { BlogPost } from '@/data/blog'
 
 interface BlogCardProps {
   post: BlogPost
+}
+
+function getCategoryIcon(category: string = '', title: string = '') {
+  const cat = category.toLowerCase()
+  const t = title.toLowerCase()
+  if (t.includes('fire') || cat.includes('fire')) return Flame
+  if (t.includes('cctv') || t.includes('ai') || t.includes('surveillance')) return Eye
+  if (t.includes('warehouse') || t.includes('theft')) return Warehouse
+  if (t.includes('iso') || t.includes('certif') || t.includes('psara') || cat.includes('compliance')) return ShieldCheck
+  if (t.includes('hotel') || t.includes('school') || t.includes('event') || t.includes('bank')) return Building2
+  if (t.includes('women')) return Users
+  return Shield
 }
 
 export default function BlogCard({ post }: BlogCardProps) {
@@ -17,11 +41,15 @@ export default function BlogCard({ post }: BlogCardProps) {
 
   const href = post.externalUrl || `/blog/${post.slug}`
   const isExternal = Boolean(post.externalUrl)
+  const isSvgImage = post.coverImage?.endsWith('.svg')
+  const isPhoto = Boolean(post.coverImage && !isSvgImage)
+
+  const CategoryIcon = getCategoryIcon(post.category, post.title)
 
   const inner = (
     <>
       <div className="blog-card__image-placeholder">
-        {post.coverImage ? (
+        {isPhoto ? (
           <Image
             src={post.coverImage}
             alt={post.title}
@@ -29,7 +57,14 @@ export default function BlogCard({ post }: BlogCardProps) {
             sizes="(max-width: 640px) 100vw, 400px"
             className="blog-card__cover"
           />
-        ) : null}
+        ) : (
+          <div className="blog-card__graphic-cover">
+            <div className="blog-card__graphic-badge">
+              <CategoryIcon size={26} />
+            </div>
+            <div className="blog-card__graphic-title">{post.title}</div>
+          </div>
+        )}
         <div className="blog-card__category">{post.category}</div>
         {isExternal ? (
           <span className="blog-card__source">WordPress</span>

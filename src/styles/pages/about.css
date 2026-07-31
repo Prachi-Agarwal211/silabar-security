@@ -596,25 +596,6 @@
   box-shadow: 0 12px 40px rgba(11, 14, 20, 0.04);
 }
 
-.about-mv__card--accent {
-  background: linear-gradient(155deg, var(--color-midnight) 0%, #1a1014 100%);
-  border-color: rgba(212, 175, 55, 0.2);
-  color: var(--color-cream);
-}
-
-.about-mv__card--accent h3 {
-  color: var(--color-cream);
-}
-
-.about-mv__card--accent p {
-  color: rgba(250, 248, 244, 0.72);
-}
-
-.about-mv__card--accent .about-mv__icon {
-  background: rgba(212, 175, 55, 0.12);
-  color: var(--color-gold-light);
-}
-
 .about-mv__icon {
   width: 56px;
   height: 56px;
@@ -642,6 +623,27 @@
   line-height: 1.75;
   color: var(--color-horizon-600);
   margin: 0;
+}
+
+.about-mv__card--accent {
+  background: linear-gradient(155deg, var(--color-midnight) 0%, #1a1014 100%);
+  border-color: rgba(212, 175, 55, 0.2);
+  color: var(--color-cream);
+}
+
+.about-mv__card.about-mv__card--accent h3,
+.about-mv__card--accent h3 {
+  color: var(--color-cream) !important;
+}
+
+.about-mv__card.about-mv__card--accent p,
+.about-mv__card--accent p {
+  color: rgba(250, 248, 244, 0.88) !important;
+}
+
+.about-mv__card--accent .about-mv__icon {
+  background: rgba(212, 175, 55, 0.12);
+  color: var(--color-gold-light);
 }
 
 /* ─── Values ─── */
