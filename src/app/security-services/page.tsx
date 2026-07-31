@@ -78,7 +78,6 @@ export default function LocationsIndexPage() {
       {/* ─── Page inventory (client-visible proof) ─── */}
       <section className="locations-inventory" aria-label="Website page inventory">
         <div className="locations-inventory__inner">
-          <span className="section-eyebrow section-eyebrow--light">FULL WEBSITE INVENTORY</span>
           <p className="locations-inventory__total">{SITE_STATS.total}</p>
           <p className="locations-inventory__label">Live public pages on this website</p>
           <div className="locations-inventory__grid">
@@ -121,7 +120,6 @@ export default function LocationsIndexPage() {
       <section className="section-pad" aria-labelledby="coverage-title">
         <div className="shell">
           <ScrollReveal>
-            <span className="section-eyebrow section-eyebrow--red">OUR COVERAGE PHILOSOPHY</span>
             <h2 id="coverage-title" className="section-heading" style={{ marginBottom: '1rem' }}>
               Security Without <em>Boundaries.</em>
             </h2>
@@ -155,7 +153,6 @@ export default function LocationsIndexPage() {
       <section className="locations-section" aria-labelledby="hubs-heading">
         <div className="locations-section__inner">
           <div className="locations-section__header">
-            <span className="section-eyebrow section-eyebrow--red">OUR HUBS</span>
             <h2 id="hubs-heading" className="section-heading">
               Regional <em>Presence.</em>
             </h2>
@@ -178,7 +175,6 @@ export default function LocationsIndexPage() {
       <section className="locations-section locations-section--alt" id="top-cities" aria-labelledby="cities-heading">
         <div className="locations-section__inner">
           <ScrollReveal className="locations-section__header">
-            <span className="section-eyebrow section-eyebrow--red">TOP CITIES</span>
             <h2 id="cities-heading" className="section-heading">
               Major Economic <em>Hubs.</em>
             </h2>

@@ -125,10 +125,8 @@
 }
 
 .about-hero__badge-card {
-  background: rgba(250, 248, 244, 0.06);
+  background: rgba(250, 248, 244, 0.12);
   border: 1px solid rgba(212, 175, 55, 0.28);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -483,7 +481,7 @@
   bottom: 0;
   left: 24px;
   width: 2px;
-  background: linear-gradient(to bottom, transparent, rgba(212, 175, 55, 0.45), transparent);
+  background: color-mix(in srgb, var(--color-gold-light) 45%, transparent);
 }
 
 .timeline-item {
@@ -566,7 +564,7 @@
 /* ─── Mission / Vision ─── */
 .about-mv {
   padding: clamp(4rem, 8vh, 6rem) 0;
-  background: linear-gradient(180deg, var(--color-champagne) 0%, var(--color-paper) 100%);
+  background: var(--color-paper);
 }
 
 .about-mv__inner {
@@ -752,10 +750,8 @@
 }
 
 .about-leader-card {
-  background: rgba(11, 14, 20, 0.55);
+  background: rgba(11, 14, 20, 0.85);
   border: 1px solid rgba(212, 175, 55, 0.22);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   padding: clamp(1.75rem, 3vw, 2.5rem);
 }
 

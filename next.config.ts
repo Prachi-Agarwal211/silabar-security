@@ -34,6 +34,10 @@ const csp = [
 const nextConfig: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
+    // Blog covers are a mix of SVG + JPG; SVG needs explicit opt-in with a
+    // locked-down CSP (SVG can embed scripts, so sandbox + no scripts).
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     deviceSizes: [640, 750, 828, 1080, 1200, 1440, 1728, 1920, 2048, 2560],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 60 * 60 * 24 * 30,

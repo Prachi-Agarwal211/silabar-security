@@ -20,7 +20,7 @@ export const CAREERS: Career[] = [
     department: 'Operations',
     locations: ['Jaipur', 'Delhi', 'Mumbai', 'Ahmedabad', 'Bengaluru'],
     description: `<h3>About the Role</h3>
-<p>Silbar Security Services Pvt. Ltd. is seeking trained and dedicated security guards for armed and unarmed deployment across corporate offices, factories, hospitals, residential societies, banks, hotels, retail stores, and government facilities. As India's most trusted security force with 7,000+ professionals deployed across 200+ cities, we offer unmatched career stability and growth opportunities in the security industry.</p>
+<p>Silbar Security Services Pvt. Ltd. is seeking trained and dedicated security guards for armed and unarmed deployment across corporate offices, factories, hospitals, residential societies, banks, hotels, retail stores, and government facilities. As India's 7,000-strong security force deployed across 200+ cities, we offer unmatched career stability and growth opportunities in the security industry.</p>
 <h3>What You'll Do</h3>
 <p>As a Security Guard at Silbar, you will be responsible for access control at entry and exit points, conducting regular patrol rounds of the assigned premises, monitoring CCTV cameras and security systems, verifying visitor identification and maintaining visitor logs, preventing unauthorized access and theft, responding to security alarms and emergency situations, managing crowd control during events or peak hours, and coordinating with local law enforcement when required. You will be the first line of defence for our clients' assets, people, and property.</p>
 <h3>Why Join Silbar Security Services Pvt. Ltd.</h3>
@@ -40,7 +40,7 @@ export const CAREERS: Career[] = [
       'Height: 165 cm (male) / 155 cm (female) minimum; Physically fit with no major health issues',
       'Age: 21–45 years (relaxable for ex-servicemen and candidates with prior security experience)',
       'Armed guard candidates must possess a valid arms license or be eligible to apply for one',
-      'Prior security experience preferred but not mandatory — we provide comprehensive training to freshers',
+      'Prior security experience preferred but not mandatory — we provide training to freshers',
       'Police verification clearance and clean criminal record are mandatory before deployment',
       'Basic English and local language literacy for report writing and visitor communication',
       'Willingness to work in rotating shifts including night shifts, weekends, and public holidays'
@@ -108,7 +108,7 @@ export const CAREERS: Career[] = [
     responsibilities: [
       'Serve as the primary point of contact for 5–10 key client accounts across security operations',
       'Conduct monthly site audits to assess guard performance, compliance, and site-specific security risks',
-      'Manage end-to-end account P&L including manpower budgeting, billing, invoicing, and cost optimization',
+      'Manage account P&L including manpower budgeting, billing, invoicing, and cost optimization',
       'Lead and mentor a team of supervisors through regular reviews, training, and performance feedback',
       'Prepare and present detailed MIS reports, incident analyses, and improvement plans to client stakeholders',
       'Coordinate with HR, training, and operations teams to ensure adequate staffing and skill development'
@@ -142,7 +142,7 @@ export const CAREERS: Career[] = [
 <h3>What You'll Do</h3>
 <p>As a Lady Security Guard at Silbar, you will be responsible for access control and visitor verification at client premises, performing lady frisking duties at events, hospitals, and corporate offices where female screening is required, monitoring CCTV feeds and responding to security incidents, managing entry and exit of female staff, students, or guests with professionalism, conducting patrols of assigned areas with attention to gender-sensitive zones, assisting in emergency evacuation procedures with special attention to women and children, and preparing daily shift reports and incident documentation. You will be a role model for women in the security profession.</p>
 <h3>Why Join Silbar Security Services Pvt. Ltd.</h3>
-<p>Silbar Security Services Pvt. Ltd. is committed to gender diversity in the security workforce. We provide equal pay for equal work, full statutory benefits including ESI, PF, and gratuity, and a safe and respectful work environment. Our lady guards are covered under 24/7 insurance and receive free training at our dedicated training center. We offer flexible shift options where possible and clear career progression to Lady Supervisor and Assistant Account Manager roles. Join India's most trusted security company and build a career that commands respect.</p>`,
+<p>Silbar Security Services Pvt. Ltd. is committed to gender diversity in the security workforce. We provide equal pay for equal work, full statutory benefits including ESI, PF, and gratuity, and a safe and respectful work environment. Our lady guards are covered under 24/7 insurance and receive free training at our dedicated training center. We offer flexible shift options where possible and clear career progression to Lady Supervisor and Assistant Account Manager roles. Join Silbar's 7,000-strong team and build a career that commands respect.</p>`,
     responsibilities: [
       'Manage access control and visitor verification at designated entry points with professional demeanour',
       'Conduct lady frisking at events, hospitals, schools, and corporate offices requiring female screening',
@@ -155,7 +155,7 @@ export const CAREERS: Career[] = [
       'Minimum 10th pass; 12th pass preferred for corporate and hospital deployments',
       'Height: 152 cm minimum; Physically fit with ability to stand for extended periods',
       'Age: 21–40 years (relaxable for ex-police personnel and experienced candidates)',
-      'Prior security experience preferred but not mandatory — comprehensive training provided',
+      'Prior security experience preferred but not mandatory — training provided',
       'Police verification clearance and clean criminal record are mandatory requirements',
       'Basic communication skills in Hindi and local language; English preferred for corporate sites'
     ],
@@ -178,9 +178,9 @@ export const CAREERS: Career[] = [
     description: `<h3>About the Role</h3>
 <p>Silbar Security Services Pvt. Ltd. is looking for a dynamic and target-driven Business Development Executive to drive our growth in Rajasthan and the Delhi NCR region. As a BDE, you will be responsible for generating new business across all our service lines — manned guarding, electronic surveillance, facility management, fire safety, and security consulting. This is a field sales role that requires a hunter mindset, strong presentation skills, and the ability to navigate complex B2B sales cycles involving facility managers, procurement teams, and CXO-level decision makers.</p>
 <h3>What You'll Do</h3>
-<p>As a Business Development Executive, you will identify and prospect potential clients across industries including manufacturing, healthcare, hospitality, retail, education, and banking, conduct client meetings and site visits to understand security requirements and pitch tailored solutions, prepare and present professional proposals, quotations, and service presentations, negotiate contracts and pricing within approval authority, manage the complete sales cycle from lead generation to contract signing and onboarding, maintain a robust pipeline using CRM tools and report weekly sales forecasts, coordinate with the operations team for smooth handover of signed accounts, and represent Silbar at industry events, trade shows, and networking forums.</p>
+<p>As a Business Development Executive, you will identify and prospect potential clients across industries including manufacturing, healthcare, hospitality, retail, education, and banking, conduct client meetings and site visits to understand security requirements and pitch tailored solutions, prepare and present professional proposals, quotations, and service presentations, negotiate contracts and pricing within approval authority, manage the complete sales cycle from lead generation to contract signing and onboarding, maintain a pipeline using CRM tools and report weekly sales forecasts, coordinate with the operations team for smooth handover of signed accounts, and represent Silbar at industry events, trade shows, and networking forums.</p>
 <h3>Why Join Silbar Security Services Pvt. Ltd.</h3>
-<p>The Indian private security industry is growing at 15–20% annually, and Silbar Security Services Pvt. Ltd. is positioned as one of the fastest-growing players in this space. As a BDE, you will have the opportunity to sell a comprehensive portfolio of services backed by ISO certifications, a 3-acre training center, and a 7,000+ workforce across 200+ cities. We offer an attractive compensation structure with a competitive base salary, uncapped incentives, travel allowance, and fast-track promotion based on performance.</p>`,
+<p>The Indian private security industry is growing at 15–20% annually, and Silbar Security Services Pvt. Ltd. is positioned as one of the fastest-growing players in this space. As a BDE, you will have the opportunity to sell a portfolio of services backed by ISO certifications, a 3-acre training center, and a 7,000+ workforce across 200+ cities. We offer an attractive compensation structure with a competitive base salary, uncapped incentives, travel allowance, and fast-track promotion based on performance.</p>`,
     responsibilities: [
       'Identify and prospect potential B2B clients across multiple industries requiring security and facility services',
       'Conduct client meetings, site visits, and security need assessments to pitch tailored Silbar solutions',
@@ -256,7 +256,7 @@ export const CAREERS: Career[] = [
 <h3>What You'll Do</h3>
 <p>As a Control Room Operator, you will monitor live CCTV feeds from multiple client sites across the city and region, respond to intrusion alarms, fire alarms, and panic alerts by verifying the cause and dispatching the nearest response team, maintain radio and phone communication with field guards and supervisors across all shifts, log all incidents, alarms, and actions taken in the incident management system with precise timestamps, escalate critical incidents to the account manager and senior management immediately, manage access control systems remotely including granting or denying entry for after-hours access, and prepare shift-wise incident summary reports for client review.</p>
 <h3>Why Join Silbar Security Services Pvt. Ltd.</h3>
-<p>The control room is the nerve centre of Silbar's security operations. Working as a Control Room Operator gives you exposure to advanced security technology — CCTV systems, video management software (VMS), access control platforms (ACS), fire alarm systems, and incident management tools. Silbar provides comprehensive training on all systems. We offer competitive salaries, shift allowances for night duty, and career growth to Senior Operator, Control Room Manager, and Technical Operations roles within the organization.</p>`,
+<p>The control room is the nerve centre of Silbar's security operations. Working as a Control Room Operator gives you exposure to advanced security technology — CCTV systems, video management software (VMS), access control platforms (ACS), fire alarm systems, and incident management tools. Silbar provides training on all systems. We offer competitive salaries, shift allowances for night duty, and career growth to Senior Operator, Control Room Manager, and Technical Operations roles within the organization.</p>`,
     responsibilities: [
       'Monitor live CCTV feeds from multiple client sites and identify suspicious activities or security breaches',
       'Respond to intrusion alarms, fire alarms, and panic alerts by verifying cause and dispatching response teams',
@@ -275,7 +275,7 @@ export const CAREERS: Career[] = [
     ],
     benefits: [
       'Competitive salary with night shift allowance and weekend duty benefits',
-      'Comprehensive training on all surveillance and monitoring systems used across Silbar client sites',
+      'Training on all surveillance and monitoring systems used across Silbar client sites',
       '24/7 accident and life insurance coverage for all control room personnel',
       'Statutory benefits including ESI, PF, and gratuity from the date of joining',
       'Career growth to Senior Control Room Operator, Control Room Manager, and Technical Operations roles'
@@ -330,11 +330,11 @@ export const CAREERS: Career[] = [
     description: `<h3>About the Role</h3>
 <p>Silbar Security Services Pvt. Ltd. is looking for an experienced HR & Compliance Executive to join our Human Resources team at the Jaipur headquarters. Given the labour-intensive nature of the security industry with 7,000+ employees across 200+ cities, this role is critical for managing the complete employee lifecycle — from recruitment and onboarding to payroll, statutory compliance, and grievance handling. The HR & Compliance Executive ensures that Silbar remains a compliant and employee-friendly organization.</p>
 <h3>What You'll Do</h3>
-<p>As an HR & Compliance Executive, you will manage end-to-end recruitment for field and corporate positions including job postings, screening, interviews, and offer letters, coordinate onboarding and induction programs for new hires including documentation, uniform issuance, and training scheduling, maintain and update employee records in the HRMS system including attendance, leaves, and personal information, process monthly payroll inputs for assigned regions including overtime, deductions, and incentives, ensure statutory compliance with ESI, PF, Gratuity, Bonus Act, Minimum Wages Act, Contract Labour Act, and PSARA requirements across all states of operation, handle employee grievances, disciplinary matters, and exit formalities with confidentiality and professionalism, prepare compliance reports for audits, client requirements, and government submissions, and coordinate with operations and training teams for skill gap identification and training programs.</p>
+<p>As an HR & Compliance Executive, you will manage recruitment for field and corporate positions including job postings, screening, interviews, and offer letters, coordinate onboarding and induction programs for new hires including documentation, uniform issuance, and training scheduling, maintain and update employee records in the HRMS system including attendance, leaves, and personal information, process monthly payroll inputs for assigned regions including overtime, deductions, and incentives, ensure statutory compliance with ESI, PF, Gratuity, Bonus Act, Minimum Wages Act, Contract Labour Act, and PSARA requirements across all states of operation, handle employee grievances, disciplinary matters, and exit formalities with confidentiality and professionalism, prepare compliance reports for audits, client requirements, and government submissions, and coordinate with operations and training teams for skill gap identification and training programs.</p>
 <h3>Why Join Silbar Security Services Pvt. Ltd.</h3>
 <p>Silbar Security Services Pvt. Ltd. is a PSARA-licensed organization operating across 19+ states, making this role a rich learning opportunity for HR professionals interested in multi-state labour law compliance. You will gain hands-on experience managing a large, distributed workforce in one of India's most regulated industries. We offer a professional work environment, competitive salary, and opportunities for growth to Senior HR and HR Manager roles.</p>`,
     responsibilities: [
-      'Manage end-to-end recruitment for field and corporate positions from job posting to offer letter issuance',
+      'Manage recruitment for field and corporate positions from job posting to offer letter issuance',
       'Coordinate employee onboarding, induction programs, documentation, and HRMS data management',
       'Process monthly payroll inputs for assigned regions including attendance, OT, deductions, and incentives',
       'Ensure statutory compliance with ESI, PF, Gratuity, Bonus Act, Minimum Wages Act, and Contract Labour Act',

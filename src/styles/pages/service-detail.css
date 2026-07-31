@@ -263,7 +263,7 @@
 .service-detail-bottom-cta {
   text-align: center;
   padding: clamp(4rem, 8vh, 7rem) clamp(1.5rem, 5vw, 6rem);
-  background: linear-gradient(180deg, transparent, rgba(140, 31, 50, 0.02) 50%, transparent);
+  background: transparent;
   border-top: 1px solid rgba(140, 31, 50, 0.08);
 }
 

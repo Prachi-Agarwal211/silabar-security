@@ -1,0 +1,80 @@
+# ai.txt — AI crawler access policy
+# Silbar Security Services Pvt. Ltd. — https://www.silbarsecurity.in
+# Last updated: 2026-07-31
+#
+# This file tells AI / answer-engine crawlers (ChatGPT, Perplexity,
+# Google AI Overviews, Claude, Grok, DeepSeek, etc.) what they may index.
+# Policy mirrors robots.ts: allow everything public, block private paths.
+
+User-Agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /private/
+
+# ── Explicit allow for major AI / answer-engine crawlers ──
+User-Agent: GPTBot
+Allow: /
+
+User-Agent: ChatGPT-User
+Allow: /
+
+User-Agent: OAI-SearchBot
+Allow: /
+
+User-Agent: Google-Extended
+Allow: /
+
+User-Agent: PerplexityBot
+Allow: /
+
+User-Agent: Claude-Web
+Allow: /
+
+User-Agent: ClaudeBot
+Allow: /
+
+User-Agent: Claude-SearchBot
+Allow: /
+
+User-Agent: Claude-User
+Allow: /
+
+User-Agent: Applebot-Extended
+Allow: /
+
+User-Agent: Amazonbot
+Allow: /
+
+User-Agent: Bytespider
+Allow: /
+
+User-Agent: CCBot
+Allow: /
+
+User-Agent: cohere-ai
+Allow: /
+
+User-Agent: Grokbot
+Allow: /
+
+User-Agent: Google-InspectionTool
+Allow: /
+
+# ── Key entry points for AI crawlers ──
+Site: https://www.silbarsecurity.in/
+Site: https://www.silbarsecurity.in/about
+Site: https://www.silbarsecurity.in/services
+Site: https://www.silbarsecurity.in/industries
+Site: https://www.silbarsecurity.in/security-services
+Site: https://www.silbarsecurity.in/faq
+Site: https://www.silbarsecurity.in/blog
+Site: https://www.silbarsecurity.in/case-studies
+Site: https://www.silbarsecurity.in/certification
+Site: https://www.silbarsecurity.in/contact
+
+# ── Optional: human-readable context for AI consumption ──
+# Full LLM context is available at: https://www.silbarsecurity.in/llms.txt
+# ISO 9001:14001:45001:27001 certified PAN India security agency.
+# PSARA licensed in 19 states · 7,000+ professionals · 200+ cities.

@@ -47,7 +47,6 @@ export default function GoogleReviews({ variant = 'full', className = '' }: Prop
     return (
       <section className={`google-reviews-section ${className}`.trim()} aria-labelledby="reviews-title">
         <div className="shell">
-          <span className="section-eyebrow">SOCIAL PROOF</span>
           <h2 id="reviews-title" className="section-heading">
             What Our <em>Clients Say</em>
           </h2>
@@ -71,7 +70,6 @@ export default function GoogleReviews({ variant = 'full', className = '' }: Prop
       aria-labelledby="reviews-title"
     >
       <div className="shell">
-        <span className="section-eyebrow">SOCIAL PROOF</span>
         <h2 id="reviews-title" className="section-heading">
           What Our <em>Clients Say</em>
         </h2>

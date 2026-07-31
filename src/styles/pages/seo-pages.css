@@ -344,7 +344,7 @@
 }
 
 .seo-about-section {
-  background: linear-gradient(180deg, var(--color-champagne) 0%, var(--color-paper) 100%);
+  background: var(--color-paper);
 }
 
 .seo-about-content p {
@@ -633,4 +633,39 @@
   color: var(--color-horizon-600);
   margin: 0 0 1rem;
   max-width: 820px;
+}
+
+/* ─── Local facts block — real, verifiable place data surfaced prominently ───
+   Uses the site's own brand-card pattern (gold corner ticks) — NOT a left-border
+   callout, which is an AI-tell the anti-slop scanner flags (group 17). */
+.seo-local-facts {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 0.85rem;
+  padding: 1.5rem 1.75rem;
+  background: var(--color-paper);
+  border: 1px solid rgba(191, 149, 63, 0.28);
+  border-radius: 6px;
+  box-shadow: 0 8px 28px rgba(11, 14, 20, 0.07);
+  max-width: 820px;
+}
+.seo-local-facts.brand-card::before,
+.seo-local-facts.brand-card::after {
+  opacity: 0.55;
+}
+
+.seo-local-fact {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--color-horizon-700);
+}
+
+.seo-local-fact__icon {
+  flex-shrink: 0;
+  margin-top: 0.3rem;
+  color: var(--color-cherry);
 }

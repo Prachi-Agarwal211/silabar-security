@@ -44,11 +44,11 @@ export const SERVICES: Service[] = [
     faqs: [
       {
         q: 'Are your security guards licensed and trained?',
-        a: 'Yes. All our security personnel are professionally trained, background-verified, and covered under full statutory compliance including ESI, PF, and insurance.',
+        a: 'All our security personnel are professionally trained, background-verified, and covered under full statutory compliance including ESI, PF, and insurance.',
       },
       {
         q: 'Do you provide armed security guards?',
-        a: 'Yes. We deploy armed guards where required, with all necessary government authorizations for licensed weapons and trained armed personnel.',
+        a: 'We deploy armed guards where required, with all necessary government authorizations for licensed weapons and trained armed personnel.',
       },
       {
         q: 'What training do your guards receive?',
@@ -56,7 +56,7 @@ export const SERVICES: Service[] = [
       },
       {
         q: 'Can you deploy lady guards?',
-        a: 'Yes. We have a dedicated force of trained lady security guards for hospitals, malls, schools, hotels, and corporate offices that require gender-sensitive security.',
+        a: 'We have a dedicated force of trained lady security guards for hospitals, malls, schools, hotels, and corporate offices that require gender-sensitive security.',
       },
     ],
     schema: {
@@ -71,7 +71,7 @@ export const SERVICES: Service[] = [
     shortTitle: 'Industrial Security',
     icon: 'factory',
     description:
-      'Comprehensive security solutions for manufacturing plants, factories, warehouses, and logistics facilities. Perimeter control, access management, and shift supervision.',
+      'Security solutions for manufacturing plants, factories, warehouses, and logistics facilities. Perimeter control, access management, and shift supervision.',
     longDescription:
       'Industrial facilities face unique security challenges — high-value inventory, machinery, shift workers, and multiple entry points. Silbar Security Services Pvt. Ltd. provides dedicated industrial security teams trained in perimeter surveillance, access control systems, material movement monitoring, and emergency response. We work with ISO-certified factories, SEZ units, auto ancillaries, textile mills, and pharmaceutical plants.',
     features: [
@@ -92,11 +92,11 @@ export const SERVICES: Service[] = [
     faqs: [
       {
         q: 'Do you provide security for 24/7 factory operations?',
-        a: 'Yes. We structure deployments in 8-hour or 12-hour shifts to ensure continuous coverage for round-the-clock manufacturing operations.',
+        a: 'We structure deployments in 8-hour or 12-hour shifts to ensure continuous coverage for round-the-clock manufacturing operations.',
       },
       {
         q: 'Can you manage material gate entry and exit logging?',
-        a: 'Yes. Our gate management teams maintain vehicle entry logs, material movement records, and visitor registers as per your company\'s compliance requirements.',
+        a: 'Our gate management teams maintain vehicle entry logs, material movement records, and visitor registers as per your company\'s compliance requirements.',
       },
       {
         q: 'What security measures do you recommend for factory perimeters?',
@@ -104,7 +104,7 @@ export const SERVICES: Service[] = [
       },
       {
         q: 'Do you handle contractor and vendor verification at factory gates?',
-        a: 'Yes. Our teams verify contractor IDs, vehicle documents, and material movement challans at entry points, maintaining digital logs for audit trails.',
+        a: 'Our teams verify contractor IDs, vehicle documents, and material movement challans at entry points, maintaining digital logs for audit trails.',
       },
     ],
     schema: {
@@ -140,7 +140,7 @@ export const SERVICES: Service[] = [
     faqs: [
       {
         q: 'Do you provide security for high-profile political events?',
-        a: 'Yes. We have experience securing political rallies, government functions, and ministerial visits. Our teams coordinate with local law enforcement for seamless security.',
+        a: 'We have experience securing political rallies, government functions, and ministerial visits. Our teams coordinate with local law enforcement for security.',
       },
       {
         q: 'How far in advance should we book event security?',
@@ -148,15 +148,15 @@ export const SERVICES: Service[] = [
       },
       {
         q: 'Do you provide VIP lounge and green room security?',
-        a: 'Yes. We deploy dedicated teams for VIP lounges, green rooms, and backstage areas with controlled access and close protection as required.',
+        a: 'We deploy dedicated teams for VIP lounges, green rooms, and backstage areas with controlled access and close protection as required.',
       },
       {
         q: 'Can you manage parking and traffic for large events?',
-        a: 'Yes. Our traffic management teams handle vehicle flow, VIP escort parking, and emergency vehicle access routes for events of all sizes.',
+        a: 'Our traffic management teams handle vehicle flow, VIP escort parking, and emergency vehicle access routes for events of all sizes.',
       },
       {
         q: 'Do you provide metal detectors and baggage screening?',
-        a: 'Yes. We deploy walk-through metal detectors, hand-held scanners, and baggage X-ray screening at entry points based on the event risk profile.',
+        a: 'We deploy walk-through metal detectors, hand-held scanners, and baggage X-ray screening at entry points based on the event risk profile.',
       },
     ],
     schema: {
@@ -192,19 +192,19 @@ export const SERVICES: Service[] = [
     faqs: [
       {
         q: 'Are your guards trained specifically for bank security?',
-        a: 'Yes. Our bank security personnel receive specialized training in RBI security guidelines, cash handling protocols, threat response, and bank-specific emergency procedures.',
+        a: 'Our bank security personnel receive specialized training in RBI security guidelines, cash handling protocols, threat response, and bank-specific emergency procedures.',
       },
       {
         q: 'Do you cover rural and semi-urban ATM locations?',
-        a: 'Yes. We deploy security across metro, tier-2, and tier-3 cities. Our PAN India network covers rural banking infrastructure as well.',
+        a: 'We deploy security across metro, tier-2, and tier-3 cities. Our PAN India network covers rural banking infrastructure as well.',
       },
       {
         q: 'Can you provide armed guards for cash-in-transit?',
-        a: 'Yes. Our armed guards are licensed and specially trained for cash van escort, bullion transport, and currency chest protection operations.',
+        a: 'Our armed guards are licensed and specially trained for cash van escort, bullion transport, and currency chest protection operations.',
       },
       {
         q: 'Do you conduct periodic mock drills for bank security?',
-        a: 'Yes. We conduct unannounced mock drills to test response times, alarm systems, and staff preparedness for robbery and emergency scenarios.',
+        a: 'We conduct unannounced mock drills to test response times, alarm systems, and staff preparedness for robbery and emergency scenarios.',
       },
     ],
     schema: {
@@ -221,7 +221,7 @@ export const SERVICES: Service[] = [
     description:
       'CCTV installation, remote monitoring, access control, fire alarm systems, GPS vehicle tracking, and integrated security technology solutions.',
     longDescription:
-      'Modern security is technology-powered. Silbar Security Services Pvt. Ltd. provides end-to-end electronic surveillance solutions including CCTV design and installation, remote monitoring centers, access control systems (biometric, RFID), video analytics, fire detection and alarm systems, and GPS fleet tracking. We integrate hardware with software for a complete digital security picture.',
+      'Modern security is technology-powered. Silbar Security Services Pvt. Ltd. provides electronic surveillance solutions including CCTV design and installation, remote monitoring centers, access control systems (biometric, RFID), video analytics, fire detection and alarm systems, and GPS fleet tracking. We integrate hardware with software for a complete digital security picture.',
     features: [
       'CCTV design, supply, and installation',
       'Remote 24/7 monitoring center',
@@ -240,15 +240,15 @@ export const SERVICES: Service[] = [
     faqs: [
       {
         q: 'Do you offer remote monitoring services?',
-        a: 'Yes. We operate 24/7 remote monitoring centers that can monitor CCTV feeds, trigger alerts, and coordinate response teams for any security incident.',
+        a: 'We operate 24/7 remote monitoring centers that can monitor CCTV feeds, trigger alerts, and coordinate response teams for any security incident.',
       },
       {
         q: 'Can you integrate CCTV with our existing access control system?',
-        a: 'Yes. We integrate all major CCTV brands with access control systems, HR software, and building management systems for a unified security platform.',
+        a: 'We integrate all major CCTV brands with access control systems, HR software, and building management systems for a unified security platform.',
       },
       {
         q: 'Do you provide video analytics for retail?',
-        a: 'Yes. Our AI-based video analytics can detect shoplifting behavior, loitering, tailgating, and unauthorized zone entry with real-time alerts to the control room.',
+        a: 'Our AI-based video analytics can detect shoplifting behavior, loitering, tailgating, and unauthorized zone entry with real-time alerts to the control room.',
       },
       {
         q: 'What CCTV brands do you work with?',
@@ -256,7 +256,7 @@ export const SERVICES: Service[] = [
       },
       {
         q: 'Do you provide cloud-based CCTV storage?',
-        a: 'Yes. We offer cloud video storage solutions with configurable retention periods, secure access, and mobile viewing capabilities for site managers.',
+        a: 'We offer cloud video storage solutions with configurable retention periods, secure access, and mobile viewing capabilities for site managers.',
       },
     ],
     schema: {
@@ -275,7 +275,7 @@ export const SERVICES: Service[] = [
     longDescription:
       'Before deploying security, you need to understand your risks. Silbar Security Services Pvt. Ltd.\'s risk assessment team conducts on-site security audits, identifies vulnerabilities in perimeter security, access control, and emergency response, and delivers a detailed remediation plan. We also develop disaster management and business continuity plans for industrial facilities, hospitals, and large commercial properties.',
     features: [
-      'Comprehensive security audit',
+      'Security audit',
       'Vulnerability and threat assessment',
       'Gap analysis and remediation plan',
       'Emergency evacuation planning',
@@ -300,11 +300,11 @@ export const SERVICES: Service[] = [
       },
       {
         q: 'Do you provide BCP and disaster recovery planning?',
-        a: 'Yes. Our team develops business continuity and disaster recovery plans customized to your facility, including crisis communication trees, alternate site strategies, and recovery timelines.',
+        a: 'Our team develops business continuity and disaster recovery plans customized to your facility, including crisis communication trees, alternate site strategies, and recovery timelines.',
       },
       {
         q: 'Can you audit our existing security contractor?',
-        a: 'Yes. We conduct independent third-party performance audits of your current security vendor, covering guard performance, compliance, equipment condition, and contract adherence.',
+        a: 'We conduct independent third-party performance audits of your current security vendor, covering guard performance, compliance, equipment condition, and contract adherence.',
       },
       {
         q: 'What certifications do your auditors hold?',
@@ -344,15 +344,15 @@ export const SERVICES: Service[] = [
     faqs: [
       {
         q: 'Can you handle both security and housekeeping for our facility?',
-        a: 'Yes. This is one of our most popular service combinations. A single contract, one point of contact, and unified billing simplifies your vendor management significantly.',
+        a: 'This is one of our most popular service combinations. A single contract, one point of contact, and unified billing simplifies your vendor management significantly.',
       },
       {
         q: 'Do you provide facility management for multi-site enterprises?',
-        a: 'Yes. We manage multi-location facilities for corporate groups, hospital chains, and retail networks. Our regional supervisors ensure consistent service quality across all sites.',
+        a: 'We manage multi-location facilities for corporate groups, hospital chains, and retail networks. Our regional supervisors ensure consistent service quality across all sites.',
       },
       {
         q: 'Can you manage front desk and reception services?',
-        a: 'Yes. Our trained front desk personnel handle visitor check-in, phone transfers, meeting coordination, and badge issuance, presenting a professional image for your organization.',
+        a: 'Our trained front desk personnel handle visitor check-in, phone transfers, meeting coordination, and badge issuance, presenting a professional image for your organization.',
       },
       {
         q: 'What is included in your housekeeping service?',
@@ -375,7 +375,7 @@ export const SERVICES: Service[] = [
     longDescription:
       'Quality security starts with quality training. Silbar Security Services Pvt. Ltd. operates a dedicated 3-acre training center where security personnel receive certified instruction in unarmed combat, weapons handling (for armed guards), first aid and CPR, fire safety and evacuation, access control procedures, report writing, and professional conduct. We also offer in-house training programs for corporate security teams.',
     features: [
-      'Comprehensive security training',
+      'Security training',
       'Weapons handling and safety',
       'First aid and CPR certification',
       'Fire safety and evacuation drills',
@@ -392,11 +392,11 @@ export const SERVICES: Service[] = [
     faqs: [
       {
         q: 'Do you provide training certificates?',
-        a: 'Yes. All trainees receive training completion certificates. We maintain training records for audit and compliance purposes.',
+        a: 'All trainees receive training completion certificates. We maintain training records for audit and compliance purposes.',
       },
       {
         q: 'Can you train our existing security team?',
-        a: 'Yes. We offer refresher training and specialized modules for existing in-house security teams at your premises or at our training centers.',
+        a: 'We offer refresher training and specialized modules for existing in-house security teams at your premises or at our training centers.',
       },
       {
         q: 'How long is your standard training program?',
@@ -404,11 +404,11 @@ export const SERVICES: Service[] = [
       },
       {
         q: 'Do you provide training for corporate employees on security awareness?',
-        a: 'Yes. We conduct security awareness sessions for non-security staff covering topics like emergency evacuation, cyber hygiene, phishing prevention, and personal safety.',
+        a: 'We conduct security awareness sessions for non-security staff covering topics like emergency evacuation, cyber hygiene, phishing prevention, and personal safety.',
       },
       {
         q: 'Is your training center certified?',
-        a: 'Yes. Our 3-acre dedicated training center is equipped with mock guard rooms, CCTV labs, fire safety training zones, and physical training facilities with certified instructors.',
+        a: 'Our 3-acre dedicated training center is equipped with mock guard rooms, CCTV labs, fire safety training zones, and physical training facilities with certified instructors.',
       },
     ],
     schema: {
@@ -423,11 +423,11 @@ export const SERVICES: Service[] = [
     shortTitle: 'Manpower Solutions',
     icon: 'users-round',
     description:
-      'End-to-end manpower deployment for security, facility, and support roles with payroll, compliance, and statutory management handled by Silbar.',
+      'Manpower deployment for security, facility, and support roles with payroll, compliance, and statutory management handled by Silbar.',
     longDescription:
       'Hiring and managing contract staff is complex — compliance, payroll, ESI, PF, and attrition are constant challenges. Silbar Security Services Pvt. Ltd. takes complete ownership of manpower deployment: recruitment, training, deployment, payroll processing, ESI/PF filing, gratuity management, and replacement. We operate as a compliant labour contractor so you can focus on your core business.',
     features: [
-      'End-to-end recruitment and screening',
+      'Recruitment and screening',
       'Payroll processing and disbursement',
       'ESI, PF, and statutory compliance',
       'Replacement guarantee within 24 hours',
@@ -448,7 +448,7 @@ export const SERVICES: Service[] = [
       },
       {
         q: 'Do you handle all labour law compliance?',
-        a: 'Yes. We manage ESI, PF, Gratuity, Minimum Wages Act compliance, and provide all necessary documents for your audits. We indemnify you from labour disputes arising from our deployed staff.',
+        a: 'We manage ESI, PF, Gratuity, Minimum Wages Act compliance, and provide all necessary documents for your audits. We indemnify you from labour disputes arising from our deployed staff.',
       },
       {
         q: 'What is your replacement guarantee policy?',
@@ -456,7 +456,7 @@ export const SERVICES: Service[] = [
       },
       {
         q: 'Do you provide MIS reports on manpower deployment?',
-        a: 'Yes. We provide monthly MIS reports including attendance summaries, overtime records, replacement history, and compliance status for complete transparency.',
+        a: 'We provide monthly MIS reports including attendance summaries, overtime records, replacement history, and compliance status for complete transparency.',
       },
     ],
     schema: {
@@ -473,7 +473,7 @@ export const SERVICES: Service[] = [
     description:
       'Pre-employment verification, address checks, criminal record screening, and KYC documentation for vendor and employee onboarding.',
     longDescription:
-      'Knowing who you hire is the first line of security. Silbar Security Services Pvt. Ltd. offers comprehensive background verification services including address verification, identity document authentication, criminal record checks through police verification, previous employment verification, educational certificate verification, and credit history checks for sensitive financial roles.',
+      'Knowing who you hire is the first line of security. Silbar Security Services Pvt. Ltd. offers background verification services including address verification, identity document authentication, criminal record checks through police verification, previous employment verification, educational certificate verification, and credit history checks for sensitive financial roles.',
     features: [
       'Address and identity verification',
       'Police verification and criminal record check',
@@ -496,15 +496,15 @@ export const SERVICES: Service[] = [
       },
       {
         q: 'Can you verify employees in rural areas?',
-        a: 'Yes. We have field verification teams across urban and rural India to conduct physical address verification even in remote locations.',
+        a: 'We have field verification teams across urban and rural India to conduct physical address verification even in remote locations.',
       },
       {
         q: 'Do you verify educational certificates?',
-        a: 'Yes. We verify educational qualifications directly with the issuing institution or through recognized verification databases to confirm authenticity.',
+        a: 'We verify educational qualifications directly with the issuing institution or through recognized verification databases to confirm authenticity.',
       },
       {
         q: 'Can you provide ongoing employee monitoring?',
-        a: 'Yes. Our continuous monitoring service alerts you if a verified employee has new criminal records, adverse credit events, or other red flags post-hiring.',
+        a: 'Our continuous monitoring service alerts you if a verified employee has new criminal records, adverse credit events, or other red flags post-hiring.',
       },
       {
         q: 'What documents are required for verification?',
@@ -548,7 +548,7 @@ export const SERVICES: Service[] = [
       },
       {
         q: 'Can you help with fire NOC compliance for a new facility?',
-        a: 'Yes. Our team can review your current fire safety setup against local fire department NOC requirements and flag gaps before your inspection.',
+        a: 'Our team can review your current fire safety setup against local fire department NOC requirements and flag gaps before your inspection.',
       },
       {
         q: 'How often do you conduct fire mock drills?',
@@ -556,11 +556,11 @@ export const SERVICES: Service[] = [
       },
       {
         q: 'Do you provide AMC for fire extinguishers?',
-        a: 'Yes. We offer annual maintenance contracts for fire extinguishers covering monthly checks, refilling, hydrostatic testing, and replacement of expired units.',
+        a: 'We offer annual maintenance contracts for fire extinguishers covering monthly checks, refilling, hydrostatic testing, and replacement of expired units.',
       },
       {
         q: 'Can you train our staff in fire safety?',
-        a: 'Yes. We conduct fire safety training sessions covering use of fire extinguishers, emergency evacuation procedures, assembly point discipline, and first aid for burns.',
+        a: 'We conduct fire safety training sessions covering use of fire extinguishers, emergency evacuation procedures, assembly point discipline, and first aid for burns.',
       },
     ],
     schema: {
@@ -603,7 +603,7 @@ export const SERVICES: Service[] = [
       },
       {
         q: 'Do you provide patrol services for residential societies?',
-        a: 'Yes. Our mobile patrol service is particularly popular for residential societies that want night-time deterrence between guard shifts, with random timing to prevent pattern prediction.',
+        a: 'Our mobile patrol service is particularly popular for residential societies that want night-time deterrence between guard shifts, with random timing to prevent pattern prediction.',
       },
       {
         q: 'How do we get patrol reports?',
@@ -626,11 +626,11 @@ export const SERVICES: Service[] = [
     features: ['Licensed armed guards', 'Arms licensing support', 'Threat assessment', 'Critical infrastructure protection', 'Cash transportation security', 'VIP armed escort', 'Enhanced background verification', 'Annual weapons proficiency testing', 'Use-of-force legal training', 'Psychological fitness screening', 'Coordination with local police', 'Armory management support'],
     industries: ['Banks', 'Jewellery', 'Government', 'Mining', 'Oil & Gas', 'Infrastructure', 'Pharma', 'Data Centers'],
     faqs: [
-      { q: 'Are your armed guards licensed?', a: 'Yes. All armed guards hold valid arms licenses issued by the respective state government and undergo annual revalidation and proficiency testing.' },
-      { q: 'What training do armed guards receive?', a: 'They receive comprehensive training in weapons handling, marksmanship, use-of-force laws, threat assessment, emergency response, and de-escalation techniques.' },
-      { q: 'Can you deploy armed guards for cash-in-transit?', a: 'Yes. Our armed guards are specifically trained for CIT operations including cash van escort, loading bay security, and route threat assessment.' },
+      { q: 'Are your armed guards licensed?', a: 'All armed guards hold valid arms licenses issued by the respective state government and undergo annual revalidation and proficiency testing.' },
+      { q: 'What training do armed guards receive?', a: 'They receive training in weapons handling, marksmanship, use-of-force laws, threat assessment, emergency response, and de-escalation techniques.' },
+      { q: 'Can you deploy armed guards for cash-in-transit?', a: 'Our armed guards are specifically trained for CIT operations including cash van escort, loading bay security, and route threat assessment.' },
       { q: 'What is the deployment process for armed guards?', a: 'We conduct a site risk assessment, obtain necessary police and arms department permissions, deploy licensed guards, and maintain ongoing compliance and revalidation records.' },
-      { q: 'Do you provide arms licensing support?', a: 'Yes. We assist clients with arms license applications, renewals, and compliance documentation required for deployment of armed security personnel.' },
+      { q: 'Do you provide arms licensing support?', a: 'We assist clients with arms license applications, renewals, and compliance documentation required for deployment of armed security personnel.' },
     ],
     schema: { name: 'Armed Security Services', serviceType: 'SecurityService', areaServed: 'India' },
   },
@@ -639,16 +639,16 @@ export const SERVICES: Service[] = [
     title: 'Corporate Security Services',
     shortTitle: 'Corporate Security',
     icon: 'building-2',
-    description: 'Comprehensive security solutions for corporate offices, IT parks, and business centers including access control, visitor management, and executive protection.',
-    longDescription: 'Corporate environments require a balance between robust security and a positive employee experience. Silbar provides trained corporate security teams that manage access control systems, visitor verification and badge issuance, CCTV monitoring, reception security, executive floor protection, emergency response, and after-hours building security while maintaining a professional, welcoming atmosphere. Our personnel are trained in corporate etiquette, communication skills, and crisis management to represent your brand positively.',
+    description: 'Security solutions for corporate offices, IT parks, and business centers including access control, visitor management, and executive protection.',
+    longDescription: 'Corporate environments require a balance between security and a positive employee experience. Silbar provides trained corporate security teams that manage access control systems, visitor verification and badge issuance, CCTV monitoring, reception security, executive floor protection, emergency response, and after-hours building security while maintaining a professional, welcoming atmosphere. Our personnel are trained in corporate etiquette, communication skills, and crisis management to represent your brand positively.',
     features: ['Access control management', 'Visitor verification systems', 'CCTV monitoring', 'Executive floor security', 'Emergency response', 'Package screening', 'After-hours security', 'Reception and front desk security', 'Employee ID card management', 'Fire warden coordination', 'Parking lot security', 'Liaison with local police'],
     industries: ['Corporate', 'IT Parks', 'Data Centers', 'Banks', 'NBFC', 'Insurance', 'Educational Institutions', 'Government'],
     faqs: [
-      { q: 'Do you provide corporate security for IT parks?', a: 'Yes. We specialize in IT park security with trained personnel who understand technology sector requirements including data center protection, visitor access protocols, and 24/7 operations support.' },
-      { q: 'Can your guards handle reception duties?', a: 'Yes. Our corporate security personnel are trained in reception management, visitor check-in, phone handling, and badge issuance alongside their security responsibilities.' },
-      { q: 'Do you provide executive floor security?', a: 'Yes. We deploy dedicated security for executive floors, boardrooms, and C-suite offices with controlled access and enhanced privacy protocols.' },
+      { q: 'Do you provide corporate security for IT parks?', a: 'We specialize in IT park security with trained personnel who understand technology sector requirements including data center protection, visitor access protocols, and 24/7 operations support.' },
+      { q: 'Can your guards handle reception duties?', a: 'Our corporate security personnel are trained in reception management, visitor check-in, phone handling, and badge issuance alongside their security responsibilities.' },
+      { q: 'Do you provide executive floor security?', a: 'We deploy dedicated security for executive floors, boardrooms, and C-suite offices with controlled access and enhanced privacy protocols.' },
       { q: 'How do you manage after-hours security?', a: 'After-hours security includes building patrol, access monitoring for late-working employees, coordination with cleaning staff, and alarm response.' },
-      { q: 'Can you integrate with our existing building management system?', a: 'Yes. We integrate our security operations with your BMS, HR systems, and visitor management platforms for seamless access control and visitor tracking.' },
+      { q: 'Can you integrate with our existing building management system?', a: 'We integrate our security operations with your BMS, HR systems, and visitor management platforms for access control and visitor tracking.' },
     ],
     schema: { name: 'Corporate Security Services', serviceType: 'SecurityService', areaServed: 'India' },
   },
@@ -658,15 +658,15 @@ export const SERVICES: Service[] = [
     shortTitle: 'Logistics Security',
     icon: 'car',
     description: 'Security for logistics hubs, distribution centers, and supply chain facilities. Gate management, cargo protection, and fleet security.',
-    longDescription: 'The logistics sector faces unique security challenges including cargo theft, unauthorized access, inventory pilferage, and supply chain integrity risks. Silbar provides specialized logistics security teams trained in gate management, cargo verification, vehicle tracking, loading dock supervision, inventory protection, night patrol, and supply chain integrity monitoring. Our personnel are trained to handle high-volume vehicle movements, verify seals and documentation, and coordinate with warehouse management systems for comprehensive security coverage.',
+    longDescription: 'The logistics sector faces unique security challenges including cargo theft, unauthorized access, inventory pilferage, and supply chain integrity risks. Silbar provides specialized logistics security teams trained in gate management, cargo verification, vehicle tracking, loading dock supervision, inventory protection, night patrol, and supply chain integrity monitoring. Our personnel are trained to handle high-volume vehicle movements, verify seals and documentation, and coordinate with warehouse management systems for security coverage.',
     features: ['Gate management and vehicle logging', 'Cargo verification', 'Fleet security', 'Inventory protection', 'Loading dock security', 'Night patrol', 'Supply chain integrity', 'Seal verification at entry/exit', 'Driver identification and verification', 'Warehouse management system integration', 'CCTV coverage for dock areas', 'Fleet GPS tracking support'],
     industries: ['Logistics', 'Warehouses', 'E-commerce', 'Manufacturing', 'Automotive', 'FMCG', 'Retail', 'Cold Storage'],
     faqs: [
-      { q: 'Can you secure multi-warehouse complexes?', a: 'Yes. We provide end-to-end security for logistics parks with multiple warehouses, including centralized CCTV monitoring and coordinated patrol routes.' },
+      { q: 'Can you secure multi-warehouse complexes?', a: 'We provide security for logistics parks with multiple warehouses, including centralized CCTV monitoring and coordinated patrol routes.' },
       { q: 'How do you prevent cargo theft during loading/unloading?', a: 'We deploy loading dock supervisors who verify cargo manifests, check vehicle seals, monitor loading/unloading through CCTV, and maintain digital logs of all movement.' },
-      { q: 'Do you integrate with WMS?', a: 'Yes. Our team can coordinate with your warehouse management system for automated vehicle scheduling, dock assignment, and real-time cargo tracking.' },
+      { q: 'Do you integrate with WMS?', a: 'Our team can coordinate with your warehouse management system for automated vehicle scheduling, dock assignment, and real-time cargo tracking.' },
       { q: 'What security measures do you recommend for cold storage?', a: 'Cold storage security includes temperature alarm monitoring, access control for restricted zones, vehicle dock seal verification, and 24/7 CCTV coverage with remote access for facility managers.' },
-      { q: 'Can you provide armed security for high-value cargo?', a: 'Yes. For high-value or sensitive cargo, we deploy armed escorts with GPS tracking and real-time communication to the command center throughout transit.' },
+      { q: 'Can you provide armed security for high-value cargo?', a: 'For high-value or sensitive cargo, we deploy armed escorts with GPS tracking and real-time communication to the command center throughout transit.' },
     ],
     schema: { name: 'Logistics Security Services', serviceType: 'SecurityService', areaServed: 'India' },
   },
@@ -681,9 +681,9 @@ export const SERVICES: Service[] = [
     industries: ['Infrastructure', 'Construction', 'Real Estate', 'Mining', 'Government Projects'],
     faqs: [
       { q: 'How do you secure large construction sites?', a: 'We deploy perimeter guards, mobile patrol units, and CCTV monitoring tailored to the site layout and risk profile, with additional focus on material storage areas and equipment yards.' },
-      { q: 'Do you provide security for under-construction high-rises?', a: 'Yes. We secure multi-floor construction sites with floor-wise patrol, elevator and stairwell access control, and material hoist security during active construction phases.' },
+      { q: 'Do you provide security for under-construction high-rises?', a: 'We secure multi-floor construction sites with floor-wise patrol, elevator and stairwell access control, and material hoist security during active construction phases.' },
       { q: 'How do you manage worker entry and exit?', a: 'We implement biometric or token-based worker identification systems, maintain attendance records, and screen for unauthorized personnel entering the site.' },
-      { q: 'Can you prevent theft of heavy equipment?', a: 'Yes. We secure heavy equipment with immobilization checks, equipment tagging, and dedicated night patrols focused on high-value machinery and vehicle parking areas.' },
+      { q: 'Can you prevent theft of heavy equipment?', a: 'We secure heavy equipment with immobilization checks, equipment tagging, and dedicated night patrols focused on high-value machinery and vehicle parking areas.' },
       { q: 'What happens when the site perimeter changes during construction?', a: 'We conduct weekly perimeter reviews with the project team and adjust guard posts, patrol routes, and CCTV coverage as the construction progresses and site boundaries shift.' },
     ],
     schema: { name: 'Construction Site Security', serviceType: 'SecurityService', areaServed: 'India' },
@@ -698,10 +698,10 @@ export const SERVICES: Service[] = [
     features: ['Gate management', 'Visitor verification', 'Common area patrol', 'Parking management', 'Emergency response', 'Night security', 'Community event support', 'CCTV monitoring', 'Delivery personnel screening', 'Intercom and buzzer management', 'Fire safety coordination', 'Guest parking management'],
     industries: ['Residential', 'Housing Societies', 'Gated Communities', 'Senior Living Facilities', 'Staff Quarters'],
     faqs: [
-      { q: 'Do you provide lady guards for residential societies?', a: 'Yes. We deploy lady security guards for residential societies that require gender-sensitive security at entrance points.' },
+      { q: 'Do you provide lady guards for residential societies?', a: 'We deploy lady security guards for residential societies that require gender-sensitive security at entrance points.' },
       { q: 'How do you manage visitor access?', a: 'Visitors are verified through intercom or phone with the resident, issued a visitor pass, and logged in the register. Delivery personnel undergo additional verification.' },
-      { q: 'Can you manage parking for residential societies?', a: 'Yes. We manage resident parking allocation, visitor parking, two-wheeler parking, and ensure emergency vehicle access routes are always clear.' },
-      { q: 'Do you provide security for community events?', a: 'Yes. We provide additional security coverage for society events like festivals, clubhouse gatherings, and annual general meetings with crowd management support.' },
+      { q: 'Can you manage parking for residential societies?', a: 'We manage resident parking allocation, visitor parking, two-wheeler parking, and ensure emergency vehicle access routes are always clear.' },
+      { q: 'Do you provide security for community events?', a: 'We provide additional security coverage for society events like festivals, clubhouse gatherings, and annual general meetings with crowd management support.' },
       { q: 'How do you handle night security?', a: 'Night security includes periodic common area patrols, gate monitoring, CCTV review, and emergency response protocols with designated point of contact for the society secretary.' },
     ],
     schema: { name: 'Residential Society Security', serviceType: 'SecurityService', areaServed: 'India' },
@@ -716,11 +716,11 @@ export const SERVICES: Service[] = [
     features: ['Patient safety monitoring', 'Emergency response', 'Conflict de-escalation', 'Pharmacy security', 'OPD crowd management', 'OT floor security', 'Ambulance bay security', 'ICU and NICU access control', 'Narcotic storage monitoring', 'Mortuary security', 'Visitor management system', 'Bio-waste disposal monitoring'],
     industries: ['Hospitals', 'Healthcare', 'Clinics', 'Diagnostic Centers', 'Nursing Homes', 'Blood Banks', 'Research Labs'],
     faqs: [
-      { q: 'Do your guards receive healthcare-specific training?', a: 'Yes. Our hospital security guards receive specialized training in patient interaction, emergency protocols, and healthcare facility regulations.' },
+      { q: 'Do your guards receive healthcare-specific training?', a: 'Our hospital security guards receive specialized training in patient interaction, emergency protocols, and healthcare facility regulations.' },
       { q: 'How do you control access to sensitive areas like OT and ICU?', a: 'We deploy biometric or card-based access control systems for sensitive areas, with security personnel at entry points to verify authorized personnel and manage visitor access.' },
-      { q: 'Can you manage crowd control in OPD areas?', a: 'Yes. Our teams manage patient queues, attendant waiting areas, and ensure smooth flow in OPD corridors while preventing overcrowding at consultation rooms.' },
+      { q: 'Can you manage crowd control in OPD areas?', a: 'Our teams manage patient queues, attendant waiting areas, and ensure smooth flow in OPD corridors while preventing overcrowding at consultation rooms.' },
       { q: 'How do you secure hospital pharmacies?', a: 'Pharmacy security includes controlled access, CCTV monitoring, visitor protocols, and after-hours lock-down procedures with periodic patrols.' },
-      { q: 'Do you provide ambulance bay security?', a: 'Yes. Ambulance bay security ensures emergency vehicle access is always clear, coordinates patient handover, and manages crowd control during emergency arrivals.' },
+      { q: 'Do you provide ambulance bay security?', a: 'Ambulance bay security ensures emergency vehicle access is always clear, coordinates patient handover, and manages crowd control during emergency arrivals.' },
     ],
     schema: { name: 'Hospital Security Services', serviceType: 'SecurityService', areaServed: 'India' },
   },
@@ -734,11 +734,11 @@ export const SERVICES: Service[] = [
     features: ['Campus perimeter security', 'Visitor management', 'Student safety monitoring', 'Emergency lockdown drills', 'Event security', 'Transport security', 'Anti-bullying support', 'Parent-teacher meeting security', 'Playground and sports area monitoring', 'School bus boarding supervision', 'Lost child protocol management', 'CCTV surveillance system'],
     industries: ['Education', 'Schools', 'Colleges', 'Universities', 'Coaching Centers', 'Hostels'],
     faqs: [
-      { q: 'Do you provide security for school transport?', a: 'Yes. We provide security guards for school buses and transport vehicles to ensure student safety during commute, including boarding and alighting supervision.' },
-      { q: 'Are your guards trained to work with children?', a: 'Yes. All school security personnel undergo child safety training, background verification, and regular workshops on age-appropriate interaction with students.' },
+      { q: 'Do you provide security for school transport?', a: 'We provide security guards for school buses and transport vehicles to ensure student safety during commute, including boarding and alighting supervision.' },
+      { q: 'Are your guards trained to work with children?', a: 'All school security personnel undergo child safety training, background verification, and regular workshops on age-appropriate interaction with students.' },
       { q: 'How do you handle emergency lockdowns?', a: 'We coordinate with school administration to conduct regular lockdown drills, establish clear protocols, and train staff and students on emergency response procedures.' },
-      { q: 'Do you provide security for college events and fests?', a: 'Yes. We provide crowd management, entry-exit control, and VIP security for college festivals, sports meets, and cultural events.' },
-      { q: 'Can you manage visitor access at school gates?', a: 'Yes. Our visitor management system includes identity verification, purpose recording, badge issuance, and escort to the destination within the campus.' },
+      { q: 'Do you provide security for college events and fests?', a: 'We provide crowd management, entry-exit control, and VIP security for college festivals, sports meets, and cultural events.' },
+      { q: 'Can you manage visitor access at school gates?', a: 'Our visitor management system includes identity verification, purpose recording, badge issuance, and escort to the destination within the campus.' },
     ],
     schema: { name: 'School Security Services', serviceType: 'SecurityService', areaServed: 'India' },
   },
@@ -752,11 +752,11 @@ export const SERVICES: Service[] = [
     features: ['Guest safety monitoring', 'VIP guest protection', 'Banquet and event security', 'Parking security', 'Night audit security', 'Loss prevention', 'Emergency response', 'Lobby and common area surveillance', 'Baggage handling support', 'Key card access management', 'Pool and recreation area security', 'Coordination with local police'],
     industries: ['Hotels', 'Resorts', 'Hospitality', 'Homestays', 'Convention Centers'],
     faqs: [
-      { q: 'Can you provide discrete security for luxury hotels?', a: 'Yes. Our hospitality security teams are trained to provide effective security while maintaining a discreet, professional presence that does not disturb guest experience.' },
-      { q: 'How do you handle VIP guest security?', a: 'We conduct advance security planning, secure VIP floors and suites, provide discreet close protection, and coordinate with hotel management for seamless service.' },
-      { q: 'Do you provide banquet and event security?', a: 'Yes. We manage entry-exit control, guest verification, and crowd management for weddings, corporate events, and social gatherings at hotel banquet halls.' },
+      { q: 'Can you provide discrete security for luxury hotels?', a: 'Our hospitality security teams are trained to provide effective security while maintaining a discreet, professional presence that does not disturb guest experience.' },
+      { q: 'How do you handle VIP guest security?', a: 'We conduct advance security planning, secure VIP floors and suites, provide discreet close protection, and coordinate with hotel management for service.' },
+      { q: 'Do you provide banquet and event security?', a: 'We manage entry-exit control, guest verification, and crowd management for weddings, corporate events, and social gatherings at hotel banquet halls.' },
       { q: 'How do you prevent room theft?', a: 'We implement key card audit trails, floor patrols, CCTV coverage on guest floors, and strict access control for housekeeping and room service staff.' },
-      { q: 'Can you secure hotel parking?', a: 'Yes. We manage valet security, vehicle entry-exit logs, parking patrol, and surveillance to prevent vehicle theft and vandalism.' },
+      { q: 'Can you secure hotel parking?', a: 'We manage valet security, vehicle entry-exit logs, parking patrol, and surveillance to prevent vehicle theft and vandalism.' },
     ],
     schema: { name: 'Hotel Security Services', serviceType: 'SecurityService', areaServed: 'India' },
   },
@@ -770,11 +770,11 @@ export const SERVICES: Service[] = [
     features: ['Crowd management', 'Loss prevention', 'CCTV monitoring', 'Customer safety', 'Emergency evacuation', 'Anchor store security', 'Parking management', 'Plain-clothes surveillance officers', 'Food court security', 'Escalator and elevator safety', 'Mall opening and closing procedures', 'Lost child and lost property management'],
     industries: ['Retail', 'Malls', 'Commercial Complexes', 'Shopping Centers', 'Entertainment Zones'],
     faqs: [
-      { q: 'Do you provide plain-clothes security for malls?', a: 'Yes. We deploy plain-clothes loss prevention officers alongside uniformed guards for comprehensive mall security and shoplifting prevention.' },
+      { q: 'Do you provide plain-clothes security for malls?', a: 'We deploy plain-clothes loss prevention officers alongside uniformed guards for mall security and shoplifting prevention.' },
       { q: 'How do you manage crowd during sales and festivals?', a: 'We increase guard deployment at entry points, manage queue systems, control floor occupancy, and coordinate with anchor stores for synchronized crowd management.' },
-      { q: 'Do you provide security for mall parking?', a: 'Yes. We manage multi-level parking with entry-exit control, vehicle verification, CCTV coverage, and patrol attendants for theft prevention.' },
+      { q: 'Do you provide security for mall parking?', a: 'We manage multi-level parking with entry-exit control, vehicle verification, CCTV coverage, and patrol attendants for theft prevention.' },
       { q: 'How do you handle emergencies in malls?', a: 'We have emergency response protocols including fire evacuation, medical emergency response, bomb threat procedures, and active shooter training for security teams.' },
-      { q: 'Can you integrate with tenant security systems?', a: 'Yes. We work with individual store security teams to ensure seamless coverage, coordinate incident response, and maintain common area security standards.' },
+      { q: 'Can you integrate with tenant security systems?', a: 'We work with individual store security teams to ensure coverage, coordinate incident response, and maintain common area security standards.' },
     ],
     schema: { name: 'Mall Security Services', serviceType: 'SecurityService', areaServed: 'India' },
   },
@@ -788,10 +788,10 @@ export const SERVICES: Service[] = [
     features: ['Shoplifting prevention', 'Customer safety', 'Cash handling security', 'CCTV monitoring', 'Inventory protection', 'Staff safety', 'Emergency response', 'POS and cash counter monitoring', 'Dressing room surveillance protocols', 'Delivery and stock receipt security', 'Store opening and closing procedures', 'Plain-clothes loss prevention'],
     industries: ['Retail', 'Showrooms', 'Chain Outlets', 'Luxury Stores', 'Department Stores', 'Electronics Retail'],
     faqs: [
-      { q: 'Can you reduce shoplifting losses?', a: 'Yes. Our retail security teams use a combination of visible deterrence, CCTV monitoring, and plain-clothes officers to significantly reduce shoplifting incidents.' },
+      { q: 'Can you reduce shoplifting losses?', a: 'Our retail security teams use a combination of visible deterrence, CCTV monitoring, and plain-clothes officers to significantly reduce shoplifting incidents.' },
       { q: 'How do you protect cash counters?', a: 'We secure POS areas with CCTV coverage, cash drop protocols, restricted access, and trained guards to deter snatching and internal theft.' },
-      { q: 'Do you provide security for stock receiving areas?', a: 'Yes. Stock receiving security includes vendor verification, material tallying, documentation checks, and secure transfer to the storage area.' },
-      { q: 'Can you handle security for multi-chain stores?', a: 'Yes. We deploy consistent security protocols across all chain outlets with centralized supervision, standardized reporting, and regional manager oversight.' },
+      { q: 'Do you provide security for stock receiving areas?', a: 'Stock receiving security includes vendor verification, material tallying, documentation checks, and secure transfer to the storage area.' },
+      { q: 'Can you handle security for multi-chain stores?', a: 'We deploy consistent security protocols across all chain outlets with centralized supervision, standardized reporting, and regional manager oversight.' },
       { q: 'How do you handle after-hours store security?', a: 'After-hours security includes alarm system monitoring, periodic patrols, CCTV remote monitoring, and rapid response to intrusion alerts.' },
     ],
     schema: { name: 'Retail Store Security', serviceType: 'SecurityService', areaServed: 'India' },
@@ -807,10 +807,10 @@ export const SERVICES: Service[] = [
     industries: ['Corporate', 'Entertainment', 'Government', 'Banking', 'Sports', 'High-Net-Worth Individuals'],
     faqs: [
       { q: 'What qualifications do your VIP protection officers have?', a: 'Our VIP protection officers have backgrounds in law enforcement, military, or certified close protection training with valid licenses.' },
-      { q: 'Do you provide advance security for travel?', a: 'Yes. Our teams conduct advance route surveys, secure hotel accommodations, coordinate with local security, and provide discreet protection throughout domestic and international travel.' },
+      { q: 'Do you provide advance security for travel?', a: 'Our teams conduct advance route surveys, secure hotel accommodations, coordinate with local security, and provide discreet protection throughout domestic and international travel.' },
       { q: 'How do you assess threat levels?', a: 'We use a structured threat assessment framework considering client profile, recent incidents, location risks, and intelligence inputs to determine the appropriate security posture.' },
-      { q: 'Can you provide both armed and unarmed protection?', a: 'Yes. We determine the appropriate level based on risk assessment — from discreet unarmed officers for low-profile protection to armed teams for high-risk environments.' },
-      { q: 'Do you handle event security for VIPs?', a: 'Yes. We manage venue advance security, crowd control, entry screening, and emergency evacuation planning for public appearances and private events.' },
+      { q: 'Can you provide both armed and unarmed protection?', a: 'We determine the appropriate level based on risk assessment — from discreet unarmed officers for low-profile protection to armed teams for high-risk environments.' },
+      { q: 'Do you handle event security for VIPs?', a: 'We manage venue advance security, crowd control, entry screening, and emergency evacuation planning for public appearances and private events.' },
     ],
     schema: { name: 'VIP Protection Services', serviceType: 'SecurityService', areaServed: 'India' },
   },
@@ -819,15 +819,15 @@ export const SERVICES: Service[] = [
     title: 'Executive Protection Services',
     shortTitle: 'Executive Protection',
     icon: 'shield-half',
-    description: 'Comprehensive protection for C-suite executives, board members, and senior leadership. Residential, travel, and workplace security.',
-    longDescription: 'Executive protection goes beyond bodyguard services — it encompasses comprehensive security planning for the executive\'s home, workplace, travel, and family. Silbar provides end-to-end executive protection solutions including residential security systems, secure transportation, workplace protection, family safety protocols, threat assessment, and 24/7 availability. Our executive protection officers are trained to maintain professional discretion while providing robust security coverage.',
+    description: 'Protection for C-suite executives, board members, and senior leadership. Residential, travel, and workplace security.',
+    longDescription: 'Executive protection goes beyond bodyguard services — it encompasses security planning for the executive\'s home, workplace, travel, and family. Silbar provides executive protection solutions including residential security systems, secure transportation, workplace protection, family safety protocols, threat assessment, and 24/7 availability. Our executive protection officers are trained to maintain professional discretion while providing security coverage.',
     features: ['Residential security', 'Travel security', 'Workplace protection', 'Family safety', 'Threat assessment', 'Secure transportation', '24/7 availability', 'Home security system integration', 'Executive office floor security', 'Travel itinerary security review', 'Social media threat monitoring', 'Crisis management planning'],
     industries: ['Corporate', 'Banking', 'Manufacturing', 'Entertainment', 'Technology'],
     faqs: [
-      { q: 'Do you provide 24/7 executive protection?', a: 'Yes. Our executive protection services are available 24/7 with dedicated teams assigned to each executive.' },
+      { q: 'Do you provide 24/7 executive protection?', a: 'Our executive protection services are available 24/7 with dedicated teams assigned to each executive.' },
       { q: 'How do you secure executive residences?', a: 'We conduct residential security assessments, install alarm and CCTV systems, provide guard deployment, and establish access control protocols for the residence.' },
-      { q: 'Do you provide secure transportation?', a: 'Yes. We provide armored vehicles with trained drivers, route planning, and advance route surveys for daily commutes and special travel.' },
-      { q: 'Can you protect executive family members?', a: 'Yes. Our family protection services cover spouse, children, and elderly family members including school transport security for children and accompaniment for family travel.' },
+      { q: 'Do you provide secure transportation?', a: 'We provide armored vehicles with trained drivers, route planning, and advance route surveys for daily commutes and special travel.' },
+      { q: 'Can you protect executive family members?', a: 'Our family protection services cover spouse, children, and elderly family members including school transport security for children and accompaniment for family travel.' },
       { q: 'How do you handle threat intelligence?', a: 'We monitor social media, news, and intelligence channels for threats against the principal, assess credibility, and adjust security measures accordingly.' },
     ],
     schema: { name: 'Executive Protection Services', serviceType: 'SecurityService', areaServed: 'India' },
@@ -842,10 +842,10 @@ export const SERVICES: Service[] = [
     features: ['Personal close protection', 'Defensive driving', 'Threat neutralization', 'First aid certified', 'Discreet operation', 'Family protection', 'Event accompaniment', 'Surveillance detection', 'Travel advance planning', 'Secure vehicle management', 'Real-time threat monitoring', 'Confidentiality agreements'],
     industries: ['Corporate', 'Entertainment', 'Government', 'Sports', 'High-Net-Worth Individuals'],
     faqs: [
-      { q: 'Can bodyguards travel with executives?', a: 'Yes. Our bodyguards accompany executives on domestic and international travel with advance security planning and coordination with local security.' },
-      { q: 'Are your bodyguards trained in defensive driving?', a: 'Yes. All our personal protection officers complete defensive driving training including evasive maneuvers, route planning, and anti-ambush driving techniques.' },
+      { q: 'Can bodyguards travel with executives?', a: 'Our bodyguards accompany executives on domestic and international travel with advance security planning and coordination with local security.' },
+      { q: 'Are your bodyguards trained in defensive driving?', a: 'All our personal protection officers complete defensive driving training including evasive maneuvers, route planning, and anti-ambush driving techniques.' },
       { q: 'How do you ensure discretion?', a: 'Our bodyguards are trained in low-profile protection techniques — plain attire, distance management, and situational awareness that minimizes disruption to the client\'s daily life.' },
-      { q: 'Can bodyguards protect children and families?', a: 'Yes. We provide family protection services with officers trained in child safety protocols, school accompaniment, and family travel security.' },
+      { q: 'Can bodyguards protect children and families?', a: 'We provide family protection services with officers trained in child safety protocols, school accompaniment, and family travel security.' },
       { q: 'What is the typical deployment ratio?', a: 'Depending on risk assessment, we deploy single officer or team-based protection (2–4 officers rotating shifts) to ensure continuous coverage without fatigue.' },
     ],
     schema: { name: 'Personal Bodyguard Services', serviceType: 'SecurityService', areaServed: 'India' },
@@ -856,15 +856,15 @@ export const SERVICES: Service[] = [
     shortTitle: 'Lady Guards',
     icon: 'users',
     description: 'Trained lady security guards for gender-sensitive environments including hospitals, schools, malls, hotels, and corporate offices.',
-    longDescription: 'Many environments require female security personnel for cultural, legal, or practical reasons — women-only facilities, schools, hospital wards, and events requiring female frisking. Silbar provides trained lady security guards who combine professional security skills with sensitivity to gender-specific requirements. Our lady guards receive the same comprehensive security training as male personnel plus additional modules in gender sensitivity, women\'s safety issues, and communication skills for diverse environments.',
+    longDescription: 'Many environments require female security personnel for cultural, legal, or practical reasons — women-only facilities, schools, hospital wards, and events requiring female frisking. Silbar provides trained lady security guards who combine professional security skills with sensitivity to gender-specific requirements. Our lady guards receive the same security training as male personnel plus additional modules in gender sensitivity, women\'s safety issues, and communication skills for diverse environments.',
     features: ['Female security personnel', 'Gender-sensitive security', 'Lady frisking at events', 'Hospital ward security', 'School campus security', 'Mall entrance security', 'Full compliance coverage', 'Corporate reception security', 'Women\'s hostel security', 'Spa and wellness center security', 'Gym and fitness center security', 'Personal security for women'],
     industries: ['Hospitals', 'Schools', 'Malls', 'Hotels', 'Corporate', 'Residential', 'Women\'s Hostels', 'Spas'],
     faqs: [
-      { q: 'Are lady guards trained differently?', a: 'Our lady guards receive the same comprehensive security training as male guards, plus additional training in gender-sensitive security protocols.' },
-      { q: 'Can lady guards carry out frisking at events?', a: 'Yes. Our lady guards are trained in professional frisking techniques for female attendees at events, airports, and secured premises where gender-sensitive screening is required.' },
-      { q: 'Do you deploy lady guards for night shifts?', a: 'Yes. We deploy lady guards for night shifts with proper security arrangements including reliable transport, emergency contacts, and supervisor support.' },
-      { q: 'Are your lady guards PSARA licensed?', a: 'Yes. All our security personnel including lady guards are PSARA licensed and compliant with all statutory requirements.' },
-      { q: 'Can we request only female security for our facility?', a: 'Yes. We can deploy an all-female security team for facilities that require gender-specific security personnel as per organizational policy or cultural requirements.' },
+      { q: 'Are lady guards trained differently?', a: 'Our lady guards receive the same security training as male guards, plus additional training in gender-sensitive security protocols.' },
+      { q: 'Can lady guards carry out frisking at events?', a: 'Our lady guards are trained in professional frisking techniques for female attendees at events, airports, and secured premises where gender-sensitive screening is required.' },
+      { q: 'Do you deploy lady guards for night shifts?', a: 'We deploy lady guards for night shifts with proper security arrangements including reliable transport, emergency contacts, and supervisor support.' },
+      { q: 'Are your lady guards PSARA licensed?', a: 'All our security personnel including lady guards are PSARA licensed and compliant with all statutory requirements.' },
+      { q: 'Can we request only female security for our facility?', a: 'We can deploy an all-female security team for facilities that require gender-specific security personnel as per organizational policy or cultural requirements.' },
     ],
     schema: { name: 'Lady Security Guards', serviceType: 'SecurityService', areaServed: 'India' },
   },
@@ -878,11 +878,11 @@ export const SERVICES: Service[] = [
     features: ['Crowd control', 'Entry management', 'ID verification', 'Conflict de-escalation', 'VIP area security', 'Event protection', 'Legal compliance', 'Queue management', 'Patron screening', 'Intoxicated person handling', 'Emergency evacuation support', 'Coordination with venue management'],
     industries: ['Entertainment', 'Hospitality', 'Events', 'Pubs and Bars', 'Nightclubs', 'Private Parties'],
     faqs: [
-      { q: 'Are your bouncers licensed?', a: 'Yes. All our bouncers hold valid security licenses and receive specialized training in crowd management and conflict resolution.' },
-      { q: 'Do you provide bouncers for private events?', a: 'Yes. We provide bouncer services for private parties, corporate events, weddings, and special gatherings requiring crowd management and entry control.' },
+      { q: 'Are your bouncers licensed?', a: 'All our bouncers hold valid security licenses and receive specialized training in crowd management and conflict resolution.' },
+      { q: 'Do you provide bouncers for private events?', a: 'We provide bouncer services for private parties, corporate events, weddings, and special gatherings requiring crowd management and entry control.' },
       { q: 'How do your bouncers handle intoxicated patrons?', a: 'Our bouncers are trained in de-escalation techniques specifically for handling intoxicated individuals — firm but respectful communication, refusal of service protocols, and safe removal if necessary.' },
-      { q: 'Can bouncers also manage entry and ID checks?', a: 'Yes. Our bouncers are trained in ID verification, age checks, guest list management, and ticket scanning for event entry points.' },
-      { q: 'Are your bouncers covered by insurance?', a: 'Yes. All our deployed personnel including bouncers are covered under our comprehensive liability insurance policy.' },
+      { q: 'Can bouncers also manage entry and ID checks?', a: 'Our bouncers are trained in ID verification, age checks, guest list management, and ticket scanning for event entry points.' },
+      { q: 'Are your bouncers covered by insurance?', a: 'All our deployed personnel including bouncers are covered under our liability insurance policy.' },
     ],
     schema: { name: 'Bouncer Services', serviceType: 'SecurityService', areaServed: 'India' },
   },
@@ -898,9 +898,9 @@ export const SERVICES: Service[] = [
     faqs: [
       { q: 'What weapons do your gunmen carry?', a: 'Our gunmen are trained and licensed for firearms appropriate to the security requirement, in compliance with local arms acts.' },
       { q: 'How often are gunmen re-certified?', a: 'All gunmen undergo annual weapons proficiency testing, license revalidation, and refresher training on use-of-force laws and emergency protocols.' },
-      { q: 'Do you provide gunmen for cash van escort?', a: 'Yes. Our armed gunmen are specifically trained for cash-in-transit operations with armored vehicle protocols and route security procedures.' },
+      { q: 'Do you provide gunmen for cash van escort?', a: 'Our armed gunmen are specifically trained for cash-in-transit operations with armored vehicle protocols and route security procedures.' },
       { q: 'What is the difference between gunman and armed guard services?', a: 'Gunman services are typically for standalone armed deployment focused on specific high-risk assets, while armed guard services include broader security responsibilities including access control and patrolling.' },
-      { q: 'Do you assist with arms licensing?', a: 'Yes. We assist clients and personnel with arms license applications, renewals, and compliance documentation required under the Arms Act.' },
+      { q: 'Do you assist with arms licensing?', a: 'We assist clients and personnel with arms license applications, renewals, and compliance documentation required under the Arms Act.' },
     ],
     schema: { name: 'Gunman Services', serviceType: 'SecurityService', areaServed: 'India' },
   },
@@ -916,9 +916,9 @@ export const SERVICES: Service[] = [
     faqs: [
       { q: 'What breeds do you use for security dogs?', a: 'We use German Shepherds, Labradors, and Belgian Malinois breeds that are specifically trained for security operations.' },
       { q: 'How are the dogs trained?', a: 'Our dogs undergo 12–16 weeks of intensive training with professional handlers, covering obedience, aggression control, detection work, and operational deployment scenarios.' },
-      { q: 'Do you provide dog squads for event security?', a: 'Yes. Dog squads are highly effective for large events — they provide visible deterrence and can sweep venues for explosives before and during events.' },
-      { q: 'Can dog squads be used for warehouse security?', a: 'Yes. Dogs are excellent for warehouse night patrol and detection of narcotics or contraband in logistics and storage facilities.' },
-      { q: 'Are the dogs insured?', a: 'Yes. All our security dogs are insured, regularly vaccinated, and receive ongoing veterinary care to ensure their health and fitness for duty.' },
+      { q: 'Do you provide dog squads for event security?', a: 'Dog squads are highly effective for large events — they provide visible deterrence and can sweep venues for explosives before and during events.' },
+      { q: 'Can dog squads be used for warehouse security?', a: 'Dogs are excellent for warehouse night patrol and detection of narcotics or contraband in logistics and storage facilities.' },
+      { q: 'Are the dogs insured?', a: 'All our security dogs are insured, regularly vaccinated, and receive ongoing veterinary care to ensure their health and fitness for duty.' },
     ],
     schema: { name: 'Dog Squad Services', serviceType: 'SecurityService', areaServed: 'India' },
   },
@@ -928,15 +928,15 @@ export const SERVICES: Service[] = [
     shortTitle: 'Cash Van Security',
     icon: 'car',
     description: 'Armored cash van security for banks, ATMs, and financial institutions. Cash-in-transit, ATM replenishment, and bullion escort services.',
-    longDescription: 'Cash transportation requires specialized security with armored vehicles, armed guards, and real-time GPS tracking. Silbar provides end-to-end cash van security for banks, ATMs, and financial institutions including armored cash vans built to BIS standards, licensed armed guards, GPS tracking with route monitoring, ATM replenishment services, bullion escort, currency chest management, and real-time command center monitoring with police coordination.',
+    longDescription: 'Cash transportation requires specialized security with armored vehicles, armed guards, and real-time GPS tracking. Silbar provides cash van security for banks, ATMs, and financial institutions including armored cash vans built to BIS standards, licensed armed guards, GPS tracking with route monitoring, ATM replenishment services, bullion escort, currency chest management, and real-time command center monitoring with police coordination.',
     features: ['Armored cash vans', 'Armed guards', 'GPS tracking', 'ATM replenishment', 'Bullion escort', 'Route optimization', 'Real-time monitoring', 'BIS-standard armored vehicles', 'Cash loading/unloading security', 'ATM first-line maintenance', 'Currency chest security', 'Insurance-covered transit'],
     industries: ['Banks', 'NBFC', 'Jewellery', 'Retail', 'Post Offices', 'Corporate Treasury'],
     faqs: [
-      { q: 'Are your cash vans armored?', a: 'Yes. Our cash transportation vehicles are armored to BIS standards with GPS tracking and communication systems.' },
+      { q: 'Are your cash vans armored?', a: 'Our cash transportation vehicles are armored to BIS standards with GPS tracking and communication systems.' },
       { q: 'How many armed guards accompany each van?', a: 'Typically 2 armed guards per van plus the driver. Higher-value consignments may have additional guards and escort vehicles.' },
-      { q: 'Do you provide ATM replenishment services?', a: 'Yes. Our teams handle ATM cash replenishment, first-line maintenance, and site security during the replenishment process.' },
-      { q: 'Is the cash insured during transit?', a: 'Yes. All cash in transit is covered under our comprehensive insurance policy. We provide insurance certificates upon request.' },
-      { q: 'Do you provide bullion and precious metal escort?', a: 'Yes. We provide specialized bullion escort services with additional security layers including armed escort vehicles, route diversification, and real-time command center monitoring.' },
+      { q: 'Do you provide ATM replenishment services?', a: 'Our teams handle ATM cash replenishment, first-line maintenance, and site security during the replenishment process.' },
+      { q: 'Is the cash insured during transit?', a: 'All cash in transit is covered under our insurance policy. We provide insurance certificates upon request.' },
+      { q: 'Do you provide bullion and precious metal escort?', a: 'We provide specialized bullion escort services with additional security layers including armed escort vehicles, route diversification, and real-time command center monitoring.' },
     ],
     schema: { name: 'Cash Van Security', serviceType: 'SecurityService', areaServed: 'India' },
   },
@@ -946,15 +946,15 @@ export const SERVICES: Service[] = [
     shortTitle: 'PSU Security',
     icon: 'landmark',
     description: 'Security for Public Sector Undertakings including government offices, PSUs, and public infrastructure with full compliance to government norms.',
-    longDescription: 'PSU security requires strict compliance with government regulations, PSU-specific SOPs, and seamless coordination with local law enforcement. Silbar provides PSU security teams trained in government security protocols, access control, perimeter security, CCTV monitoring, incident reporting, and protocol-driven visitor management. We are empaneled with multiple PSUs and maintain the documentation and compliance standards required for government sector engagements.',
+    longDescription: 'PSU security requires strict compliance with government regulations, PSU-specific SOPs, and coordination with local law enforcement. Silbar provides PSU security teams trained in government security protocols, access control, perimeter security, CCTV monitoring, incident reporting, and protocol-driven visitor management. We are empaneled with multiple PSUs and maintain the documentation and compliance standards required for government sector engagements.',
     features: ['Government compliance', 'PSU-specific SOPs', 'Law enforcement coordination', 'Access control', 'Perimeter security', 'CCTV monitoring', 'Incident reporting', 'VIP visitor protocol', 'Document security', 'Audit documentation support', 'Confidentiality and non-disclosure', 'PSAR licensing across states'],
     industries: ['Government', 'PSU', 'Infrastructure', 'Energy', 'Defense', 'Public Sector Banks'],
     faqs: [
-      { q: 'Do you comply with PSU security norms?', a: 'Yes. We are empaneled with multiple PSUs and comply with all government security regulations and PSU-specific requirements.' },
-      { q: 'Are you PSARA licensed for PSU contracts?', a: 'Yes. We hold PSARA licenses across 19 states, which is a mandatory requirement for PSU security contracts.' },
-      { q: 'Do you provide security for PSU energy facilities?', a: 'Yes. We secure power plants, oil depots, gas facilities, and renewable energy installations for PSU clients with specialized training for each environment.' },
+      { q: 'Do you comply with PSU security norms?', a: 'We are empaneled with multiple PSUs and comply with all government security regulations and PSU-specific requirements.' },
+      { q: 'Are you PSARA licensed for PSU contracts?', a: 'We hold PSARA licenses across 19 states, which is a mandatory requirement for PSU security contracts.' },
+      { q: 'Do you provide security for PSU energy facilities?', a: 'We secure power plants, oil depots, gas facilities, and renewable energy installations for PSU clients with specialized training for each environment.' },
       { q: 'How do you handle classified information in government facilities?', a: 'Our personnel sign strict NDAs, undergo confidentiality training, and follow document handling protocols for classified and sensitive material.' },
-      { q: 'Can you manage multi-site PSU contracts?', a: 'Yes. We manage large-scale multi-site contracts for PSUs with centralized supervision, consistent SOPs, and dedicated account management teams.' },
+      { q: 'Can you manage multi-site PSU contracts?', a: 'We manage large-scale multi-site contracts for PSUs with centralized supervision, consistent SOPs, and dedicated account management teams.' },
     ],
     schema: { name: 'PSU Security Services', serviceType: 'SecurityService', areaServed: 'India' },
   },
@@ -964,15 +964,15 @@ export const SERVICES: Service[] = [
     shortTitle: 'Airport Security',
     icon: 'shield-half',
     description: 'Support security services for airports including access control, passenger screening support, and terminal security operations.',
-    longDescription: 'Airport security requires seamless coordination with CISF, BCAS, and airport authorities while maintaining strict compliance with aviation security regulations. Silbar provides support security personnel trained in airport operations, baggage screening, terminal access control, passenger flow management, cargo security, and perimeter surveillance. Our staff undergo aviation-specific training and background checks meeting BCAS standards for airport security deployment.',
+    longDescription: 'Airport security requires coordination with CISF, BCAS, and airport authorities while maintaining strict compliance with aviation security regulations. Silbar provides support security personnel trained in airport operations, baggage screening, terminal access control, passenger flow management, cargo security, and perimeter surveillance. Our staff undergo aviation-specific training and background checks meeting BCAS standards for airport security deployment.',
     features: ['Terminal security', 'Access control support', 'Baggage screening', 'Passenger flow management', 'Perimeter security', 'Cargo security', 'Coordination with CISF', 'Staff entrance monitoring', 'Vehicle gate management', 'Lost baggage coordination', 'Terminal patrol services', 'BCAS compliance support'],
     industries: ['Aviation', 'Government', 'Infrastructure', 'Logistics'],
     faqs: [
-      { q: 'Do you work with CISF at airports?', a: 'Yes. Our airport support security teams coordinate with CISF and airport authorities for seamless security operations.' },
-      { q: 'Are your airport security personnel BCAS certified?', a: 'Yes. Our personnel deployed at airports undergo BCAS-compliant training and background verification as required by aviation security regulations.' },
-      { q: 'Do you provide cargo security at airports?', a: 'Yes. We secure cargo handling areas, verify documentation, screen cargo vehicles, and manage access control for freight terminals.' },
-      { q: 'Can you manage employee access at airport staff entry points?', a: 'Yes. We manage staff entry with biometric verification, ID checks, and bag screening for airport employees and contractors.' },
-      { q: 'Do you provide perimeter security for airports?', a: 'Yes. We deploy perimeter patrol teams, monitor fence-line intrusion detection systems, and coordinate with CISF for perimeter security incidents.' },
+      { q: 'Do you work with CISF at airports?', a: 'Our airport support security teams coordinate with CISF and airport authorities for security operations.' },
+      { q: 'Are your airport security personnel BCAS certified?', a: 'Our personnel deployed at airports undergo BCAS-compliant training and background verification as required by aviation security regulations.' },
+      { q: 'Do you provide cargo security at airports?', a: 'We secure cargo handling areas, verify documentation, screen cargo vehicles, and manage access control for freight terminals.' },
+      { q: 'Can you manage employee access at airport staff entry points?', a: 'We manage staff entry with biometric verification, ID checks, and bag screening for airport employees and contractors.' },
+      { q: 'Do you provide perimeter security for airports?', a: 'We deploy perimeter patrol teams, monitor fence-line intrusion detection systems, and coordinate with CISF for perimeter security incidents.' },
     ],
     schema: { name: 'Airport Support Security', serviceType: 'SecurityService', areaServed: 'India' },
   },
@@ -982,15 +982,15 @@ export const SERVICES: Service[] = [
     shortTitle: 'Railway Security',
     icon: 'shield-half',
     description: 'Security support for railway stations, platforms, and railway infrastructure. Crowd management, platform security, and passenger safety.',
-    longDescription: 'Railway security requires managing massive crowds, ensuring platform and track safety, and protecting railway infrastructure. Silbar provides railway security support teams trained in crowd management, emergency evacuation, passenger safety, parcel and baggage screening, parking security, and night patrol of station premises and yards. Our personnel coordinate with Government Railway Police (GRP) and Railway Protection Force (RPF) for comprehensive security coverage.',
+    longDescription: 'Railway security requires managing massive crowds, ensuring platform and track safety, and protecting railway infrastructure. Silbar provides railway security support teams trained in crowd management, emergency evacuation, passenger safety, parcel and baggage screening, parking security, and night patrol of station premises and yards. Our personnel coordinate with Government Railway Police (GRP) and Railway Protection Force (RPF) for security coverage.',
     features: ['Platform security', 'Crowd management', 'Passenger safety', 'Emergency evacuation', 'Parcel screening', 'Parking security', 'Night patrol', 'Coordination with GRP/RPF', 'Ticket checking support', 'Lost and found management', 'Foot-over bridge security', 'Train arrival/departure crowd control'],
     industries: ['Railways', 'Government', 'Infrastructure', 'Transportation'],
     faqs: [
-      { q: 'Do you provide security for railway stations?', a: 'Yes. We provide support security for railway stations including platform security, crowd management, and emergency response.' },
+      { q: 'Do you provide security for railway stations?', a: 'We provide support security for railway stations including platform security, crowd management, and emergency response.' },
       { q: 'How do you manage crowds during peak hours and festivals?', a: 'We deploy additional personnel at peak times, manage queue systems at ticketing and platform entry points, and coordinate with railway authorities for crowd flow management.' },
-      { q: 'Do you provide parcel and baggage screening?', a: 'Yes. Our teams screen parcels and baggage at station entry points using X-ray scanners and manual checks where required.' },
-      { q: 'Can you secure railway parking areas?', a: 'Yes. We manage station parking lots with vehicle entry logs, token-based security, CCTV coverage, and regular patrols.' },
-      { q: 'Do you coordinate with RPF and GRP?', a: 'Yes. We maintain close coordination with Railway Protection Force and Government Railway Police for incident response and routine security operations.' },
+      { q: 'Do you provide parcel and baggage screening?', a: 'Our teams screen parcels and baggage at station entry points using X-ray scanners and manual checks where required.' },
+      { q: 'Can you secure railway parking areas?', a: 'We manage station parking lots with vehicle entry logs, token-based security, CCTV coverage, and regular patrols.' },
+      { q: 'Do you coordinate with RPF and GRP?', a: 'We maintain close coordination with Railway Protection Force and Government Railway Police for incident response and routine security operations.' },
     ],
     schema: { name: 'Railway Security Support', serviceType: 'SecurityService', areaServed: 'India' },
   },
@@ -1004,10 +1004,10 @@ export const SERVICES: Service[] = [
     features: ['Employee background checks', 'Fraud investigation', 'Vendor due diligence', 'Internal security audit', 'Competitive intelligence', 'Litigation support', 'Missing person investigation', 'Surveillance and counter-surveillance', 'Asset tracing', 'Forensic document examination', 'Witness interviews', 'Court-admissible evidence documentation'],
     industries: ['Corporate', 'Banks', 'Manufacturing', 'IT', 'Insurance', 'Legal Firms'],
     faqs: [
-      { q: 'Are your investigations legally compliant?', a: 'Yes. All our investigations are conducted within legal boundaries with proper documentation suitable for court proceedings.' },
+      { q: 'Are your investigations legally compliant?', a: 'All our investigations are conducted within legal boundaries with proper documentation suitable for court proceedings.' },
       { q: 'How do you handle internal fraud investigations?', a: 'Our investigators follow a structured methodology — evidence preservation, digital and physical evidence collection, suspect and witness interviews, and detailed reporting with actionable recommendations.' },
-      { q: 'Do you provide litigation support?', a: 'Yes. We provide investigation reports, evidence documentation, and expert witness testimony for legal proceedings related to security and fraud cases.' },
-      { q: 'Can you investigate vendor fraud?', a: 'Yes. We conduct vendor due diligence, verify credentials, investigate kickback allegations, and audit vendor performance and billing integrity.' },
+      { q: 'Do you provide litigation support?', a: 'We provide investigation reports, evidence documentation, and expert witness testimony for legal proceedings related to security and fraud cases.' },
+      { q: 'Can you investigate vendor fraud?', a: 'We conduct vendor due diligence, verify credentials, investigate kickback allegations, and audit vendor performance and billing integrity.' },
       { q: 'What is the typical timeline for a fraud investigation?', a: 'Timelines depend on the scope — a focused internal investigation takes 2–4 weeks, while complex multi-party fraud investigations may take 6–12 weeks.' },
     ],
     schema: { name: 'Corporate Investigation Support', serviceType: 'InvestigativeService', areaServed: 'India' },
@@ -1018,15 +1018,15 @@ export const SERVICES: Service[] = [
     shortTitle: 'Government Security',
     icon: 'landmark',
     description: 'Security for government buildings, offices, and public institutions. VVIP protection, access control, and emergency response with full protocol compliance.',
-    longDescription: 'Government security requires strict adherence to protocol, seamless coordination with law enforcement, and extensive experience with VVIP movements and public events. Silbar provides government security teams trained in official protocols, access control, emergency procedures, document security, and law enforcement liaison. Our teams are well-versed in government security classifications, visitor verification standards, and the specific compliance requirements of different government departments and ministries.',
+    longDescription: 'Government security requires strict adherence to protocol, coordination with law enforcement, and extensive experience with VVIP movements and public events. Silbar provides government security teams trained in official protocols, access control, emergency procedures, document security, and law enforcement liaison. Our teams are well-versed in government security classifications, visitor verification standards, and the specific compliance requirements of different government departments and ministries.',
     features: ['Government building security', 'VVIP movement support', 'Protocol compliance', 'Access control', 'Emergency response', 'Law enforcement coordination', 'Document security', 'Visitor verification systems', 'Classified area access control', 'Public grievance desk security', 'Government event security', 'Multi-department coordination'],
     industries: ['Government', 'PSU', 'Public Sector', 'Judiciary', 'Defense', 'Embassies'],
     faqs: [
-      { q: 'Do you handle VVIP security?', a: 'Yes. Our government security teams are trained in VVIP protocol, movement planning, and coordination with local law enforcement.' },
-      { q: 'Can you secure classified government areas?', a: 'Yes. We deploy enhanced access control protocols, multi-factor authentication, and restricted area management for classified and sensitive government zones.' },
-      { q: 'Do you provide security for government events?', a: 'Yes. We manage security for government functions, official ceremonies, public meetings, and ministerial events with full protocol compliance.' },
+      { q: 'Do you handle VVIP security?', a: 'Our government security teams are trained in VVIP protocol, movement planning, and coordination with local law enforcement.' },
+      { q: 'Can you secure classified government areas?', a: 'We deploy enhanced access control protocols, multi-factor authentication, and restricted area management for classified and sensitive government zones.' },
+      { q: 'Do you provide security for government events?', a: 'We manage security for government functions, official ceremonies, public meetings, and ministerial events with full protocol compliance.' },
       { q: 'How do you coordinate with local police?', a: 'We maintain formal liaison with local police stations, share intelligence inputs, coordinate patrolling schedules, and establish emergency communication channels for rapid response.' },
-      { q: 'Are your government security personnel background verified?', a: 'Yes. All personnel deployed at government facilities undergo enhanced background verification including police verification, social verification, and security clearance as required by the client.' },
+      { q: 'Are your government security personnel background verified?', a: 'All personnel deployed at government facilities undergo enhanced background verification including police verification, social verification, and security clearance as required by the client.' },
     ],
     schema: { name: 'Government Security Services', serviceType: 'SecurityService', areaServed: 'India' },
   },
@@ -1038,7 +1038,7 @@ export const SERVICES: Service[] = [
     description:
       'Strategic security consulting and advisory services including risk management, policy development, compliance audits, and security program design for enterprises across India.',
     longDescription:
-      'Silbar Security Services Pvt. Ltd. provides strategic consulting services for organizations that need expert guidance on security architecture, policy frameworks, and risk management. Our consultants bring decades of combined experience across defense, law enforcement, and corporate security. We conduct comprehensive security assessments, design bespoke security programs, develop crisis management plans, and advise on regulatory compliance. Our consulting engagements range from single-site gap analysis to enterprise-wide security transformation programs covering multiple states and facilities.',
+      'Silbar Security Services Pvt. Ltd. provides strategic consulting services for organizations that need expert guidance on security architecture, policy frameworks, and risk management. Our consultants bring decades of combined experience across defense, law enforcement, and corporate security. We conduct security assessments, design bespoke security programs, develop crisis management plans, and advise on regulatory compliance. Our consulting engagements range from single-site gap analysis to enterprise-wide security transformation programs covering multiple states and facilities.',
     features: [
       'Security program design and architecture',
       'Security policy and SOP development',
@@ -1061,15 +1061,15 @@ export const SERVICES: Service[] = [
       },
       {
         q: 'Do you provide consulting for regulatory compliance like PSARA or ISO 27001?',
-        a: 'Yes. Our consultants have deep expertise in PSARA licensing, ISO 27001 / 45001 compliance, government security directives, and industry-specific regulations for banking, pharma, and critical infrastructure.',
+        a: 'Our consultants have deep expertise in PSARA licensing, ISO 27001 / 45001 compliance, government security directives, and industry-specific regulations for banking, pharma, and critical infrastructure.',
       },
       {
         q: 'Can you help us design a security department from scratch?',
-        a: 'Yes. We help organizations design security org structures, define roles and responsibilities, create SOPs, select technology platforms, and establish KPIs for security performance.',
+        a: 'We help organizations design security org structures, define roles and responsibilities, create SOPs, select technology platforms, and establish KPIs for security performance.',
       },
       {
         q: 'Do you conduct security due diligence for M&A?',
-        a: 'Yes. We conduct security due diligence for mergers and acquisitions, assessing target company\'s security infrastructure, compliance status, liabilities, and integration requirements.',
+        a: 'We conduct security due diligence for mergers and acquisitions, assessing target company\'s security infrastructure, compliance status, liabilities, and integration requirements.',
       },
       {
         q: 'How long does a typical consulting engagement last?',
@@ -1117,11 +1117,11 @@ export const SERVICES: Service[] = [
       },
       {
         q: 'Can the program reduce crime in our society?',
-        a: 'Yes. Societies with active neighbourhood watch programs typically see 30–50% reduction in petty crime within 6 months due to increased vigilance and faster reporting.',
+        a: 'Societies with active neighbourhood watch programs typically see 30–50% reduction in petty crime within 6 months due to increased vigilance and faster reporting.',
       },
       {
         q: 'Do you provide self-defence workshops?', 
-        a: 'Yes. We conduct self-defence and personal safety workshops for residents, particularly women and senior citizens, as part of our community safety awareness program.',
+        a: 'We conduct self-defence and personal safety workshops for residents, particularly women and senior citizens, as part of our community safety awareness program.',
       },
     ],
     schema: { name: 'Neighbourhood Watch Coordination', serviceType: 'SecurityService', areaServed: 'India' },
@@ -1153,11 +1153,11 @@ export const SERVICES: Service[] = [
     faqs: [
       {
         q: 'Are your guards trained for hazardous environments?',
-        a: 'Yes. All petrochemical security personnel complete HAZMAT awareness training, fire prevention protocols, and site-specific process safety induction before deployment.',
+        a: 'All petrochemical security personnel complete HAZMAT awareness training, fire prevention protocols, and site-specific process safety induction before deployment.',
       },
       {
         q: 'Do you comply with OISD standards?',
-        a: 'Yes. Our deployments are designed to meet OISD (Oil Industry Safety Directorate) guidelines and major accident hazard (MAH) site requirements.',
+        a: 'Our deployments are designed to meet OISD (Oil Industry Safety Directorate) guidelines and major accident hazard (MAH) site requirements.',
       },
       {
         q: 'Can your guards respond to HAZMAT incidents?',
@@ -1165,11 +1165,11 @@ export const SERVICES: Service[] = [
       },
       {
         q: 'Do you provide pipeline security?',
-        a: 'Yes. We conduct regular pipeline route patrols, monitor for theft or tampering, check right-of-way encroachment, and coordinate with local authorities for pipeline integrity.',
+        a: 'We conduct regular pipeline route patrols, monitor for theft or tampering, check right-of-way encroachment, and coordinate with local authorities for pipeline integrity.',
       },
       {
         q: 'Can you integrate with existing process safety systems?',
-        a: 'Yes. Our security operations integrate with your DCS and process safety systems for coordinated response during plant upsets, gas leaks, or emergency shutdowns.',
+        a: 'Our security operations integrate with your DCS and process safety systems for coordinated response during plant upsets, gas leaks, or emergency shutdowns.',
       },
     ],
     schema: { name: 'Petrochemical & Refinery Security Services', serviceType: 'SecurityService', areaServed: 'India' },
@@ -1201,7 +1201,7 @@ export const SERVICES: Service[] = [
     faqs: [
       {
         q: 'Can your security integrate with our existing pharma compliance systems?',
-        a: 'Yes. We work with your quality assurance team to align our security protocols with WHO-GMP, Schedule M, and internal audit requirements, including electronic logging for batch record traceability.',
+        a: 'We work with your quality assurance team to align our security protocols with WHO-GMP, Schedule M, and internal audit requirements, including electronic logging for batch record traceability.',
       },
       {
         q: 'How do you secure R&D and sensitive formulation areas?',
@@ -1213,11 +1213,11 @@ export const SERVICES: Service[] = [
       },
       {
         q: 'Can you secure cold storage and temperature-sensitive materials?',
-        a: 'Yes. We monitor cold storage area access, log entries, and coordinate with facility management for temperature alarm alerts to prevent loss of sensitive materials.',
+        a: 'We monitor cold storage area access, log entries, and coordinate with facility management for temperature alarm alerts to prevent loss of sensitive materials.',
       },
       {
         q: 'Do you conduct background checks for pharma staff?',
-        a: 'Yes. We provide enhanced background verification for pharma employees including education verification, previous employment checks, and police verification as per industry standards.',
+        a: 'We provide enhanced background verification for pharma employees including education verification, previous employment checks, and police verification as per industry standards.',
       },
     ],
     schema: { name: 'Pharmaceutical Security Services', serviceType: 'SecurityService', areaServed: 'India' },
@@ -1249,11 +1249,11 @@ export const SERVICES: Service[] = [
     faqs: [
       {
         q: 'Can your guards operate mantrap entry systems?',
-        a: 'Yes. All data center security personnel are trained in mantrap operation, tailgating prevention, biometric enrollment verification, and emergency override procedures.',
+        a: 'All data center security personnel are trained in mantrap operation, tailgating prevention, biometric enrollment verification, and emergency override procedures.',
       },
       {
         q: 'Do you provide access audit trails for compliance?',
-        a: 'Yes. We maintain electronic logs of every entry and exit event, including time, identity, and purpose, suitable for SOC 2, ISO 27001, and HIPAA compliance audits.',
+        a: 'We maintain electronic logs of every entry and exit event, including time, identity, and purpose, suitable for SOC 2, ISO 27001, and HIPAA compliance audits.',
       },
       {
         q: 'How do you prevent tailgating in data centers?',
@@ -1261,11 +1261,11 @@ export const SERVICES: Service[] = [
       },
       {
         q: 'Can you monitor environmental conditions?',
-        a: 'Yes. Our guards monitor temperature, humidity, and water leak sensor alerts in coordination with your building management system to prevent equipment damage.',
+        a: 'Our guards monitor temperature, humidity, and water leak sensor alerts in coordination with your building management system to prevent equipment damage.',
       },
       {
         q: 'Do you manage visitor escort for data centers?',
-        a: 'Yes. All visitors, contractors, and vendors are escorted by our security personnel at all times within the data center, with strict badge enforcement and time-bound access.',
+        a: 'All visitors, contractors, and vendors are escorted by our security personnel at all times within the data center, with strict badge enforcement and time-bound access.',
       },
     ],
     schema: { name: 'Data Center Physical Security', serviceType: 'SecurityService', areaServed: 'India' },
@@ -1301,11 +1301,11 @@ export const SERVICES: Service[] = [
       },
       {
         q: 'Do you provide valet security?',
-        a: 'Yes. Our valet security service includes key management protocols, driver identity verification, and a vehicle condition documentation process to prevent disputes.',
+        a: 'Our valet security service includes key management protocols, driver identity verification, and a vehicle condition documentation process to prevent disputes.',
       },
       {
         q: 'Can you manage multi-level parking security?',
-        a: 'Yes. We deploy floor-wise patrol attendants, CCTV coverage on every level, and emergency call points for multi-level parking facilities.',
+        a: 'We deploy floor-wise patrol attendants, CCTV coverage on every level, and emergency call points for multi-level parking facilities.',
       },
       {
         q: 'How do you handle traffic congestion at entry/exit?',
@@ -1313,7 +1313,7 @@ export const SERVICES: Service[] = [
       },
       {
         q: 'Do you provide EV charging station monitoring?',
-        a: 'Yes. We monitor EV charging stations for unauthorized use, cable theft prevention, and coordinate emergency response for charging-related incidents.',
+        a: 'We monitor EV charging stations for unauthorized use, cable theft prevention, and coordinate emergency response for charging-related incidents.',
       },
     ],
     schema: { name: 'Parking Lot & Valet Security Services', serviceType: 'SecurityService', areaServed: 'India' },
@@ -1324,9 +1324,9 @@ export const SERVICES: Service[] = [
     shortTitle: 'Transport Security',
     icon: 'truck',
     description:
-      'End-to-end fleet and transport security including GPS tracking, cargo escorts, driver verification, and supply chain integrity monitoring across India.',
+      'Fleet and transport security including GPS tracking, cargo escorts, driver verification, and supply chain integrity monitoring across India.',
     longDescription:
-      'Transport and fleet operations face risks from hijacking, cargo theft, pilferage during transit, and driver fraud. Silbar Security Services Pvt. Ltd. provides comprehensive fleet security services including GPS-enabled vehicle tracking with real-time monitoring, armed cargo escorts for high-value shipments, driver background verification, seal integrity checks at every loading and unloading point, and a 24/7 response center that can coordinate with local police in case of route deviation or emergency. Our system covers everything from last-mile delivery fleets to long-haul trucking operations.',
+      'Transport and fleet operations face risks from hijacking, cargo theft, pilferage during transit, and driver fraud. Silbar Security Services Pvt. Ltd. provides fleet security services including GPS-enabled vehicle tracking with real-time monitoring, armed cargo escorts for high-value shipments, driver background verification, seal integrity checks at every loading and unloading point, and a 24/7 response center that can coordinate with local police in case of route deviation or emergency. Our system covers everything from last-mile delivery fleets to long-haul trucking operations.',
     features: [
       'GPS vehicle tracking and route monitoring',
       'Armed cargo escort for high-value shipments',
@@ -1345,7 +1345,7 @@ export const SERVICES: Service[] = [
     faqs: [
       {
         q: 'Can you track our fleet in real time?',
-        a: 'Yes. Our GPS tracking platform provides real-time location, route history, geofence alerts, and deviation notifications accessible via web dashboard or mobile app.',
+        a: 'Our GPS tracking platform provides real-time location, route history, geofence alerts, and deviation notifications accessible via web dashboard or mobile app.',
       },
       {
         q: 'What happens if a vehicle deviates from its route?',
@@ -1353,11 +1353,11 @@ export const SERVICES: Service[] = [
       },
       {
         q: 'Do you provide armed cargo escort?',
-        a: 'Yes. For high-value cargo, we deploy armed escort vehicles with trained security personnel, GPS tracking, and real-time communication with our command center.',
+        a: 'For high-value cargo, we deploy armed escort vehicles with trained security personnel, GPS tracking, and real-time communication with our command center.',
       },
       {
         q: 'Can you monitor temperature-controlled transport?',
-        a: 'Yes. We monitor temperature logs and geo-fence compliance for cold chain and pharmaceutical transports, alerting stakeholders if conditions deviate from specified ranges.',
+        a: 'We monitor temperature logs and geo-fence compliance for cold chain and pharmaceutical transports, alerting stakeholders if conditions deviate from specified ranges.',
       },
       {
         q: 'How do you prevent fuel theft?',
@@ -1393,15 +1393,15 @@ export const SERVICES: Service[] = [
     faqs: [
       {
         q: 'Are your marine security personnel trained in port operations?',
-        a: 'Yes. All marine security personnel undergo port-specific training including vessel boarding procedures, documentation verification, and waterfront safety protocols.',
+        a: 'All marine security personnel undergo port-specific training including vessel boarding procedures, documentation verification, and waterfront safety protocols.',
       },
       {
         q: 'Do you provide ISPS compliance support?',
-        a: 'Yes. Our teams are trained to support PFSOs (Port Facility Security Officers) with ISPS code implementation, drills, documentation, and audit readiness.',
+        a: 'Our teams are trained to support PFSOs (Port Facility Security Officers) with ISPS code implementation, drills, documentation, and audit readiness.',
       },
       {
         q: 'Can you provide security boat patrols?',
-        a: 'Yes. For waterfront and large port facilities, we deploy security boats with trained crews for waterborne patrol and response to maritime security incidents.',
+        a: 'For waterfront and large port facilities, we deploy security boats with trained crews for waterborne patrol and response to maritime security incidents.',
       },
       {
         q: 'How do you secure container yards?',
@@ -1409,7 +1409,7 @@ export const SERVICES: Service[] = [
       },
       {
         q: 'Do you coordinate with port authorities?',
-        a: 'Yes. We maintain close coordination with port trusts, coast guard, customs, and local marine police for comprehensive security coverage.',
+        a: 'We maintain close coordination with port trusts, coast guard, customs, and local marine police for security coverage.',
       },
     ],
     schema: { name: 'Marine & Port Security Services', serviceType: 'SecurityService', areaServed: 'India' },
@@ -1420,7 +1420,7 @@ export const SERVICES: Service[] = [
     shortTitle: 'Security Audit',
     icon: 'scan-eye',
     description:
-      'Independent third-party security audits for enterprises, government facilities, and commercial properties. Comprehensive vulnerability assessment with actionable remediation plans.',
+      'Independent third-party security audits for enterprises, government facilities, and commercial properties. Vulnerability assessment with actionable remediation plans.',
     longDescription:
       'An objective third-party security audit reveals gaps your internal team might miss. Silbar Security Services Pvt. Ltd. conducts independent audits covering physical security, access control systems, CCTV coverage analysis, fire safety compliance, security personnel performance, emergency preparedness, and documentation review. Our auditors are certified professionals who do not operate at the audited site, ensuring unbiased findings. Every audit delivers a detailed report with risk-rated findings, photographic evidence, and a prioritised remediation roadmap with estimated costs.',
     features: [
@@ -1453,11 +1453,11 @@ export const SERVICES: Service[] = [
       },
       {
         q: 'Do you provide audit reports suitable for insurance compliance?',
-        a: 'Yes. Our audit reports are designed to meet insurance risk assessment requirements and can support premium negotiations with documented security improvements.',
+        a: 'Our audit reports are designed to meet insurance risk assessment requirements and can support premium negotiations with documented security improvements.',
       },
       {
         q: 'Can you audit our security guard performance?',
-        a: 'Yes. We conduct unannounced guard performance assessments including knowledge tests, procedure adherence checks, physical fitness evaluation, and documentation review.',
+        a: 'We conduct unannounced guard performance assessments including knowledge tests, procedure adherence checks, physical fitness evaluation, and documentation review.',
       },
     ],
     schema: { name: 'Third-Party Security Audit Services', serviceType: 'SecurityService', areaServed: 'India' },
@@ -1497,7 +1497,7 @@ export const SERVICES: Service[] = [
       },
       {
         q: 'Can you help with e-commerce fraud prevention?',
-        a: 'Yes. Our consulting covers e-commerce returns fraud, payment fraud detection, warehouse inventory control, and last-mile delivery theft prevention.',
+        a: 'Our consulting covers e-commerce returns fraud, payment fraud detection, warehouse inventory control, and last-mile delivery theft prevention.',
       },
       {
         q: 'How do you measure the success of loss prevention programs?',
@@ -1505,7 +1505,7 @@ export const SERVICES: Service[] = [
       },
       {
         q: 'Do you provide EAS (Electronic Article Surveillance) integration?',
-        a: 'Yes. We recommend and help implement EAS systems including hard tags, soft tags, deactivation pads, and alarm systems integrated with your POS and CCTV systems.',
+        a: 'We recommend and help implement EAS systems including hard tags, soft tags, deactivation pads, and alarm systems integrated with your POS and CCTV systems.',
       },
     ],
     schema: { name: 'Retail Loss Prevention Consulting', serviceType: 'SecurityService', areaServed: 'India' },
@@ -1533,11 +1533,11 @@ export const SERVICES: Service[] = [
     ],
     industries: ['Residential', 'Housing Societies'],
     faqs: [
-      { q: 'Can I monitor my home security from my phone?', a: 'Yes. Our smart home app provides real-time notifications, live video streaming, and control of all connected devices from anywhere via your smartphone.' },
-      { q: 'Do you provide installation and setup?', a: 'Yes. We handle complete installation, device pairing, network configuration, and staff training on the monitoring app as part of the package.' },
-      { q: 'Is the system compatible with existing smart home devices?', a: 'Yes. Our solutions work with most smart home ecosystems including Alexa, Google Home, and Apple HomeKit for voice control and automation.' },
+      { q: 'Can I monitor my home security from my phone?', a: 'Our smart home app provides real-time notifications, live video streaming, and control of all connected devices from anywhere via your smartphone.' },
+      { q: 'Do you provide installation and setup?', a: 'We handle complete installation, device pairing, network configuration, and staff training on the monitoring app as part of the package.' },
+      { q: 'Is the system compatible with existing smart home devices?', a: 'Our solutions work with most smart home ecosystems including Alexa, Google Home, and Apple HomeKit for voice control and automation.' },
       { q: 'What happens when the internet is down?', a: 'The system continues to operate locally — sensors trigger alarms and video is recorded on local storage. Alerts are sent once connectivity is restored.' },
-      { q: 'Can I add more sensors later?', a: 'Yes. Our systems are modular and expandable. You can add additional sensors, cameras, or smart locks at any time without replacing the base system.' },
+      { q: 'Can I add more sensors later?', a: 'Our systems are modular and expandable. You can add additional sensors, cameras, or smart locks at any time without replacing the base system.' },
     ],
     schema: { name: 'Smart Home Security Solutions', serviceType: 'SecurityService', areaServed: 'India' },
   },
@@ -1565,9 +1565,9 @@ export const SERVICES: Service[] = [
     industries: ['Corporate', 'IT Parks'],
     faqs: [
       { q: 'How do you manage 24/7 access for members?', a: 'We implement biometric or RFID-based access control with time-restricted permissions, allowing members to access the space 24/7 while restricting non-members after hours.' },
-      { q: 'Can you secure hot desks and common areas?', a: 'Yes. We deploy discreet CCTV coverage in common areas, hot desks, and lounges to deter theft while maintaining the open, collaborative feel of the space.' },
-      { q: 'Do you handle visitor management?', a: 'Yes. Visitors are verified against member invitations, issued temporary passes, and logged in the system with time-stamped entry and exit records.' },
-      { q: 'Can your security scale with our membership growth?', a: 'Yes. Our modular deployment model scales from a single guard to a full team as your membership grows, without requiring you to change vendors.' },
+      { q: 'Can you secure hot desks and common areas?', a: 'We deploy discreet CCTV coverage in common areas, hot desks, and lounges to deter theft while maintaining the open, collaborative feel of the space.' },
+      { q: 'Do you handle visitor management?', a: 'Visitors are verified against member invitations, issued temporary passes, and logged in the system with time-stamped entry and exit records.' },
+      { q: 'Can your security scale with our membership growth?', a: 'Our modular deployment model scales from a single guard to a full team as your membership grows, without requiring you to change vendors.' },
       { q: 'How do you protect server rooms and IT infrastructure?', a: 'We deploy restricted access control with biometric authentication, environmental monitoring, and CCTV coverage for server rooms and network cabinets.' },
     ],
     schema: { name: 'Co-Working Space Security', serviceType: 'SecurityService', areaServed: 'India' },
@@ -1596,10 +1596,10 @@ export const SERVICES: Service[] = [
     industries: ['Government', 'Entertainment'],
     faqs: [
       { q: 'How do you protect valuable artworks from theft?', a: 'We deploy a multi-layered approach — proximity alarms on high-value pieces, CCTV coverage with motion detection, glass-break sensors on display cases, and trained gallery attendants.' },
-      { q: 'Can you monitor environmental conditions for artifact preservation?', a: 'Yes. Our environmental monitoring tracks temperature, humidity, and UV light levels, alerting curators if conditions fall outside preservation ranges.' },
-      { q: 'Do you provide security for temporary exhibitions?', a: 'Yes. We provide end-to-end security for temporary exhibitions including transport security, installation monitoring, display case security, and de-installation supervision.' },
+      { q: 'Can you monitor environmental conditions for artifact preservation?', a: 'Our environmental monitoring tracks temperature, humidity, and UV light levels, alerting curators if conditions fall outside preservation ranges.' },
+      { q: 'Do you provide security for temporary exhibitions?', a: 'We provide security for temporary exhibitions including transport security, installation monitoring, display case security, and de-installation supervision.' },
       { q: 'How do you balance security with visitor experience?', a: 'Our guards are trained to provide discreet, unobtrusive security. CCTV cameras are positioned to minimize visual impact while maximizing coverage of sensitive areas.' },
-      { q: 'Can you integrate with existing museum security systems?', a: 'Yes. We integrate with existing alarm systems, environmental monitoring, and access control systems to provide a unified security platform.' },
+      { q: 'Can you integrate with existing museum security systems?', a: 'We integrate with existing alarm systems, environmental monitoring, and access control systems to provide a unified security platform.' },
     ],
     schema: { name: 'Museum & Gallery Security', serviceType: 'SecurityService', areaServed: 'India' },
   },
@@ -1628,9 +1628,9 @@ export const SERVICES: Service[] = [
     faqs: [
       { q: 'How do you prevent illegal recording in theatres?', a: 'We deploy trained anti-piracy attendants who monitor auditoriums for recording devices, coordinate with cinema management for enforcement, and follow legal protocols for evidence collection.' },
       { q: 'How do you handle emergency evacuation in a dark theatre?', a: 'Our teams conduct regular evacuation drills, are trained in emergency lighting operation, and guide patrons to exits with clear communication during power failures or emergencies.' },
-      { q: 'Do you provide security for movie premieres and celebrity events?', a: 'Yes. We manage red carpet security, crowd control, media management, and VIP protection for premiere events and celebrity appearances.' },
-      { q: 'Can you manage large crowds on opening weekends?', a: 'Yes. We deploy additional personnel on opening weekends, manage queue systems, control floor occupancy, and coordinate with mall security for larger venues.' },
-      { q: 'Do you provide parking security for multiplexes?', a: 'Yes. We secure multi-level parking areas with entry-exit control, vehicle patrol, CCTV coverage, and traffic management during peak show times.' },
+      { q: 'Do you provide security for movie premieres and celebrity events?', a: 'We manage red carpet security, crowd control, media management, and VIP protection for premiere events and celebrity appearances.' },
+      { q: 'Can you manage large crowds on opening weekends?', a: 'We deploy additional personnel on opening weekends, manage queue systems, control floor occupancy, and coordinate with mall security for larger venues.' },
+      { q: 'Do you provide parking security for multiplexes?', a: 'We secure multi-level parking areas with entry-exit control, vehicle patrol, CCTV coverage, and traffic management during peak show times.' },
     ],
     schema: { name: 'Cinema & Theatre Security', serviceType: 'SecurityService', areaServed: 'India' },
   },
@@ -1659,9 +1659,9 @@ export const SERVICES: Service[] = [
     faqs: [
       { q: 'What safety regulations apply to warehouses?', a: 'Warehouses must comply with the Factories Act, state fire safety regulations, ESI Act, and insurance-mandated safety requirements. We help you navigate all applicable regulations.' },
       { q: 'How do you inspect racking safety?', a: 'Our trained inspectors check rack alignment, beam locks, load capacity markings, damage to uprights, and overall structural integrity to prevent collapse hazards.' },
-      { q: 'Do you provide fire safety compliance for warehouses?', a: 'Yes. We audit fire extinguisher placement and condition, hydrant systems, sprinkler coverage, fire alarms, emergency exits, and evacuation plans for warehouse compliance.' },
-      { q: 'Can you conduct staff safety training at our warehouse?', a: 'Yes. We conduct on-site training sessions covering fire safety, material handling safety, PPE usage, emergency response, and accident reporting procedures.' },
-      { q: 'Do your audits satisfy insurance requirements?', a: 'Yes. Our safety audit reports are designed to meet insurance company risk assessment requirements and can support premium reduction negotiations.' },
+      { q: 'Do you provide fire safety compliance for warehouses?', a: 'We audit fire extinguisher placement and condition, hydrant systems, sprinkler coverage, fire alarms, emergency exits, and evacuation plans for warehouse compliance.' },
+      { q: 'Can you conduct staff safety training at our warehouse?', a: 'We conduct on-site training sessions covering fire safety, material handling safety, PPE usage, emergency response, and accident reporting procedures.' },
+      { q: 'Do your audits satisfy insurance requirements?', a: 'Our safety audit reports are designed to meet insurance company risk assessment requirements and can support premium reduction negotiations.' },
     ],
     schema: { name: 'Warehouse Safety Compliance', serviceType: 'SafetyService', areaServed: 'India' },
   },
@@ -1689,10 +1689,10 @@ export const SERVICES: Service[] = [
     industries: ['Hotels', 'Hospitality'],
     faqs: [
       { q: 'How quickly can you deploy hospitality staff?', a: 'We can deploy standard positions like housekeeping or stewarding within 48 hours. Specialized roles may require 5–7 days for proper screening and training.' },
-      { q: 'Do you provide temporary staff for events and banquets?', a: 'Yes. We provide event-based temporary staffing for banquets, conferences, weddings, and special events with as little as 24 hours notice.' },
-      { q: 'Are your hospitality staff trained in hygiene standards?', a: 'Yes. All staff receive hygiene and food safety training as per FSSAI and HACCP standards, with certification documentation provided to clients.' },
-      { q: 'Do you handle payroll and compliance for deployed staff?', a: 'Yes. We manage complete payroll, ESI/PF compliance, and statutory documentation for all deployed staff, providing a compliant and hassle-free solution.' },
-      { q: 'Can we interview staff before deployment?', a: 'Yes. We arrange candidate interviews as per your requirements and only deploy staff approved by your management team.' },
+      { q: 'Do you provide temporary staff for events and banquets?', a: 'We provide event-based temporary staffing for banquets, conferences, weddings, and special events with as little as 24 hours notice.' },
+      { q: 'Are your hospitality staff trained in hygiene standards?', a: 'All staff receive hygiene and food safety training as per FSSAI and HACCP standards, with certification documentation provided to clients.' },
+      { q: 'Do you handle payroll and compliance for deployed staff?', a: 'We manage complete payroll, ESI/PF compliance, and statutory documentation for all deployed staff, providing a compliant and hassle-free solution.' },
+      { q: 'Can we interview staff before deployment?', a: 'We arrange candidate interviews as per your requirements and only deploy staff approved by your management team.' },
     ],
     schema: { name: 'Hospitality Staff Solutions', serviceType: 'EmploymentAgency', areaServed: 'India' },
   },
@@ -1719,10 +1719,10 @@ export const SERVICES: Service[] = [
     ],
     industries: ['Manufacturing', 'Pharma'],
     faqs: [
-      { q: 'Are your cleaning staff trained for industrial environments?', a: 'Yes. All industrial cleaning staff receive training in chemical handling, equipment operation, PPE usage, and safety protocols specific to industrial environments.' },
-      { q: 'Do you provide cleanroom cleaning for pharma facilities?', a: 'Yes. We provide ISO-class cleanroom cleaning services with trained personnel, specialized equipment, and GMP-compliant cleaning protocols.' },
-      { q: 'Can you handle hazardous waste cleanup?', a: 'Yes. Our teams are trained in hazardous material handling, spill containment, and coordinate with authorized waste disposal vendors for proper disposal.' },
-      { q: 'Do you provide regular maintenance cleaning contracts?', a: 'Yes. We offer daily, weekly, and monthly cleaning contracts with KPIs, quality inspections, and quarterly performance reviews.' },
+      { q: 'Are your cleaning staff trained for industrial environments?', a: 'All industrial cleaning staff receive training in chemical handling, equipment operation, PPE usage, and safety protocols specific to industrial environments.' },
+      { q: 'Do you provide cleanroom cleaning for pharma facilities?', a: 'We provide ISO-class cleanroom cleaning services with trained personnel, specialized equipment, and GMP-compliant cleaning protocols.' },
+      { q: 'Can you handle hazardous waste cleanup?', a: 'Our teams are trained in hazardous material handling, spill containment, and coordinate with authorized waste disposal vendors for proper disposal.' },
+      { q: 'Do you provide regular maintenance cleaning contracts?', a: 'We offer daily, weekly, and monthly cleaning contracts with KPIs, quality inspections, and quarterly performance reviews.' },
       { q: 'What safety measures do you follow?', a: 'Our teams follow strict safety protocols including PPE compliance, MSDS review before chemical use, work permits for confined spaces, and incident reporting procedures.' },
     ],
     schema: { name: 'Industrial Cleaning Services', serviceType: 'CleaningService', areaServed: 'India' },
@@ -1732,7 +1732,7 @@ export const SERVICES: Service[] = [
     title: 'Emergency Response Training',
     shortTitle: 'Emergency Training',
     icon: 'graduation-cap',
-    description: 'Comprehensive emergency response training for corporate teams including fire safety, first aid, CPR, disaster response, and crisis management drills.',
+    description: 'Emergency response training for corporate teams including fire safety, first aid, CPR, disaster response, and crisis management drills.',
     longDescription: 'Preparedness saves lives. Silbar provides emergency response training programs for corporate employees, facility teams, and safety committees covering fire safety and extinguisher use, first aid and CPR/AED certification, earthquake response, bomb threat management, active shooter awareness, chemical spill response, and crisis communication. Our certified instructors conduct classroom sessions, hands-on drills, and full-scale mock exercises. Training programs are customizable for specific industry risks and facility layouts, with certification recognized for regulatory compliance.',
     features: [
       'Fire safety and extinguisher training',
@@ -1750,10 +1750,10 @@ export const SERVICES: Service[] = [
     ],
     industries: ['All Industries'],
     faqs: [
-      { q: 'How long are your training programs?', a: 'Programs range from 2-hour awareness sessions to 2-day comprehensive certification courses, depending on the depth of training required.' },
-      { q: 'Do you provide internationally recognized first aid certification?', a: 'Yes. Our first aid and CPR training follows international guidelines and provides certification valid for 2 years.' },
-      { q: 'Can you conduct training at our facility?', a: 'Yes. We conduct on-site training at your facility using your equipment and emergency systems for realistic scenario-based training.' },
-      { q: 'Do you provide train-the-trainer programs?', a: 'Yes. We train your in-house safety team to conduct emergency response training independently, ensuring sustainable preparedness.' },
+      { q: 'How long are your training programs?', a: 'Programs range from 2-hour awareness sessions to 2-day certification courses, depending on the depth of training required.' },
+      { q: 'Do you provide internationally recognized first aid certification?', a: 'Our first aid and CPR training follows international guidelines and provides certification valid for 2 years.' },
+      { q: 'Can you conduct training at our facility?', a: 'We conduct on-site training at your facility using your equipment and emergency systems for realistic scenario-based training.' },
+      { q: 'Do you provide train-the-trainer programs?', a: 'We train your in-house safety team to conduct emergency response training independently, ensuring sustainable preparedness.' },
       { q: 'How often should emergency response training be refreshed?', a: 'We recommend annual refresher training for most programs, with semi-annual drills to test skills and identify areas for improvement.' },
     ],
     schema: { name: 'Emergency Response Training', serviceType: 'EducationalService', areaServed: 'India' },
@@ -1764,7 +1764,7 @@ export const SERVICES: Service[] = [
     shortTitle: 'Drone Surveillance',
     icon: 'plane',
     description: 'Aerial surveillance and monitoring using drones for large facilities, infrastructure projects, events, and agricultural land. Real-time video feed with advanced analytics.',
-    longDescription: 'Drone surveillance provides a comprehensive aerial view that ground-based security cannot match — monitoring large perimeters, tracking movement across vast areas, and providing real-time situational awareness. Silbar provides drone surveillance services for infrastructure projects, industrial facilities, large events, agricultural monitoring, and critical infrastructure inspection. Our drones are equipped with high-resolution cameras, thermal imaging, and real-time video transmission. All operations comply with DGCA regulations for commercial drone operations in India.',
+    longDescription: 'Drone surveillance provides a aerial view that ground-based security cannot match — monitoring large perimeters, tracking movement across vast areas, and providing real-time situational awareness. Silbar provides drone surveillance services for infrastructure projects, industrial facilities, large events, agricultural monitoring, and critical infrastructure inspection. Our drones are equipped with high-resolution cameras, thermal imaging, and real-time video transmission. All operations comply with DGCA regulations for commercial drone operations in India.',
     features: [
       'Aerial perimeter surveillance',
       'Real-time video feed to command center',
@@ -1781,11 +1781,11 @@ export const SERVICES: Service[] = [
     ],
     industries: ['Infrastructure', 'Agriculture', 'Events'],
     faqs: [
-      { q: 'Are your drone operations DGCA compliant?', a: 'Yes. All our drone operations comply with DGCA (Directorate General of Civil Aviation) regulations including pilot licensing, drone registration, and operational permits.' },
-      { q: 'Can drones operate at night?', a: 'Yes. Our drones are equipped with thermal and night vision cameras for effective surveillance in low-light and nighttime conditions.' },
+      { q: 'Are your drone operations DGCA compliant?', a: 'All our drone operations comply with DGCA (Directorate General of Civil Aviation) regulations including pilot licensing, drone registration, and operational permits.' },
+      { q: 'Can drones operate at night?', a: 'Our drones are equipped with thermal and night vision cameras for effective surveillance in low-light and nighttime conditions.' },
       { q: 'How large of an area can a drone cover?', a: 'A single drone can cover up to 5–10 km radius per flight depending on terrain and regulatory clearances, with battery life of 25–40 minutes per sortie.' },
-      { q: 'Do you provide drone surveillance for events?', a: 'Yes. Drones provide excellent crowd monitoring and situational awareness for large events, helping security teams identify congestion points and potential incidents.' },
-      { q: 'Can drones be used for pipeline and perimeter inspection?', a: 'Yes. Drones are highly effective for pipeline route surveillance, perimeter fence inspection, and detecting encroachment or tampering across long distances.' },
+      { q: 'Do you provide drone surveillance for events?', a: 'Drones provide excellent crowd monitoring and situational awareness for large events, helping security teams identify congestion points and potential incidents.' },
+      { q: 'Can drones be used for pipeline and perimeter inspection?', a: 'Drones are highly effective for pipeline route surveillance, perimeter fence inspection, and detecting encroachment or tampering across long distances.' },
     ],
     schema: { name: 'Drone Surveillance Services', serviceType: 'SecurityService', areaServed: 'India' },
   },
@@ -1813,10 +1813,10 @@ export const SERVICES: Service[] = [
     industries: ['Malls', 'Retail'],
     faqs: [
       { q: 'How does your integrated model work?', a: 'We manage all mall operations — security, cleaning, maintenance, parking — under a single contract with one dedicated account manager and one monthly invoice.' },
-      { q: 'Can you take over existing operations mid-contract?', a: 'Yes. We conduct a smooth transition process with overlap periods to ensure no disruption to mall operations during vendor changeover.' },
-      { q: 'Do you manage mall maintenance?', a: 'Yes. We coordinate HVAC, electrical, plumbing, and civil maintenance with qualified technicians and track work orders through a centralized system.' },
+      { q: 'Can you take over existing operations mid-contract?', a: 'We conduct a smooth transition process with overlap periods to ensure no disruption to mall operations during vendor changeover.' },
+      { q: 'Do you manage mall maintenance?', a: 'We coordinate HVAC, electrical, plumbing, and civil maintenance with qualified technicians and track work orders through a centralized system.' },
       { q: 'How do you ensure quality across all operations?', a: 'We use a quality management system with daily checklists, weekly supervisor inspections, monthly client reviews, and quarterly satisfaction surveys.' },
-      { q: 'Can you support mall events and promotions?', a: 'Yes. We provide additional staffing for events, set-up and breakdown support, crowd management, and after-hours cleaning for promotional activities.' },
+      { q: 'Can you support mall events and promotions?', a: 'We provide additional staffing for events, set-up and breakdown support, crowd management, and after-hours cleaning for promotional activities.' },
     ],
     schema: { name: 'Mall Operations Management', serviceType: 'FacilityManagementService', areaServed: 'India' },
   },

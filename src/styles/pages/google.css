@@ -1,0 +1,225 @@
+/* ─── /google — dark GBP landing page (extracted from inline styles) ─── */
+
+.google-main {
+  background: var(--color-midnight);
+  min-height: 100vh;
+}
+
+.google-hero {
+  padding: 4rem 2rem 3rem;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.google-logo {
+  margin: 0 auto 1.5rem;
+  border-radius: 12px;
+}
+
+.google-h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4.5vw, 2.75rem);
+  font-weight: 800;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.google-h1__accent {
+  color: var(--color-cherry);
+}
+
+.google-hero-sub {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.google-cta-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.google-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: var(--color-cherry);
+  color: white;
+  border-radius: 8px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.google-cta--whatsapp {
+  background: #25d366;
+}
+
+.google-trust-band {
+  padding: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.google-trust-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.google-trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(191, 149, 63, 0.1);
+  border-radius: 999px;
+  color: var(--color-gold-light);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.google-services {
+  padding: 4rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.google-section-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.google-section-title__accent {
+  color: var(--color-gold);
+}
+
+.google-services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.google-service-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.google-service-card__text {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.google-center-link {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.google-view-all {
+  color: var(--color-gold);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.google-contact {
+  padding: 4rem 2rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.google-contact-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.google-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.google-contact-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+}
+
+.google-contact-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgba(140, 31, 50, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.google-contact-label {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.google-contact-value {
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.google-contact-value--sm {
+  font-size: 0.85rem;
+}
+
+.google-bottom {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.google-bottom-note {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.google-bottom-cta-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.google-cta--gold {
+  background: var(--color-gold);
+  color: var(--color-midnight);
+}
+
+.google-cta--outline {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}

@@ -11,12 +11,12 @@ export const FAQS: FAQ[] = [
   {
     category: 'General',
     q: 'What services does Silbar Security Services Pvt. Ltd. provide?',
-    a: 'Silbar Security Services Pvt. Ltd. provides comprehensive security solutions including Industrial Security, Corporate Security, Factory Security, Warehouse Security, Commercial Security, Government Security Services, Hospital Security, Educational Institution Security, Residential Security, Event Security, Fire & Safety Personnel, and customized security solutions across India.'
+    a: 'Silbar Security Services Pvt. Ltd. provides security solutions including Industrial Security, Corporate Security, Factory Security, Warehouse Security, Commercial Security, Government Security Services, Hospital Security, Educational Institution Security, Residential Security, Event Security, Fire & Safety Personnel, and customized security solutions across India.'
   },
   {
     category: 'General',
     q: 'Is Silbar Security Services Pvt. Ltd. a PSARA licensed security company?',
-    a: 'Yes. Silbar Security Services Pvt. Ltd. has obtained PSARA licences across 19 states and Union Territories including Rajasthan, Delhi, Haryana, Uttar Pradesh, Madhya Pradesh, Gujarat, Punjab, Chandigarh, Uttarakhand, Maharashtra, Chhattisgarh, Odisha, Jharkhand, West Bengal, Karnataka, Tamil Nadu, and Telangana, with expansion into additional states continuing as part of our PAN India growth strategy.'
+    a: 'Silbar Security Services Pvt. Ltd. has obtained PSARA licences across 19 states and Union Territories including Rajasthan, Delhi, Haryana, Uttar Pradesh, Madhya Pradesh, Gujarat, Punjab, Chandigarh, Uttarakhand, Maharashtra, Chhattisgarh, Odisha, Jharkhand, West Bengal, Karnataka, Tamil Nadu, and Telangana, with expansion into additional states continuing as part of our PAN India growth strategy.'
   },
   {
     category: 'General',
@@ -26,7 +26,7 @@ export const FAQS: FAQ[] = [
   {
     category: 'General',
     q: 'Are your security guards professionally trained?',
-    a: 'Yes. Our security personnel undergo structured recruitment, document verification, background checks, police verification, physical fitness tests, and job-specific training before deployment. We also provide site-specific induction and continuous supervision to ensure professional performance and discipline.'
+    a: 'Our security personnel undergo structured recruitment, document verification, background checks, police verification, physical fitness tests, and job-specific training before deployment. We also provide site-specific induction and continuous supervision to ensure professional performance and discipline.'
   },
   {
     category: 'General',
@@ -36,7 +36,7 @@ export const FAQS: FAQ[] = [
   {
     category: 'General',
     q: 'Is your company ISO certified?',
-    a: 'Yes. We are certified for ISO 9001:2015 (Quality Management System), ISO 14001:2015 (Environmental Management System), ISO 45001:2018 (Occupational Health & Safety Management System), and ISO 27001 (Information Security Management System) — all IAF accredited, reflecting our commitment to quality, environmental responsibility, occupational health & safety, and information security.'
+    a: 'We are certified for ISO 9001:2015 (Quality Management System), ISO 14001:2015 (Environmental Management System), ISO 45001:2018 (Occupational Health & Safety Management System), and ISO 27001 (Information Security Management System) — all IAF accredited, reflecting our commitment to quality, environmental responsibility, occupational health & safety, and information security.'
   },
   {
     category: 'General',
@@ -46,7 +46,7 @@ export const FAQS: FAQ[] = [
   {
     category: 'General',
     q: 'Is Silbar Security Services Pvt. Ltd. registered with Startup India, MSME, GST, EPF and ESIC?',
-    a: 'Yes. Our company is registered under Startup India (DPIIT recognized), MSME, MCA, GST, and fully complies with EPF and ESIC requirements, enabling us to deliver legally compliant and transparent security services to all our clients.'
+    a: 'Our company is registered under Startup India (DPIIT recognized), MSME, MCA, GST, and fully complies with EPF and ESIC requirements, enabling us to deliver legally compliant and transparent security services to all our clients.'
   },
   {
     category: 'General',
@@ -61,7 +61,7 @@ export const FAQS: FAQ[] = [
   {
     category: 'General',
     q: 'Do you provide security services in semi-urban and rural areas?',
-    a: 'Yes, we provide security services across metropolitan cities, semi-urban towns, and rural locations within our operational states. Our branch network and mobile deployment capabilities allow us to reach remote industrial sites, factory locations in rural belts, and infrastructure projects in偏远 areas with the same service standards as our urban deployments.'
+    a: 'We provide security services across metropolitan cities, semi-urban towns, and rural locations within our operational states. Our branch network and mobile deployment capabilities allow us to reach remote industrial sites, factory locations in rural belts, and infrastructure projects in remote areas with the same service standards as our urban deployments.'
   },
   {
     category: 'General',
@@ -93,7 +93,7 @@ export const FAQS: FAQ[] = [
   {
     category: 'Compliance',
     q: 'Are you a PSARA licensed security agency?',
-    a: 'Yes, Silbar Security Services Pvt. Ltd. operates in strict compliance with the Private Security Agencies Regulation Act (PSARA) 2005. We hold valid PSARA licenses across 19 states and Union Territories in India, with additional state licenses under process as part of our nationwide expansion strategy.'
+    a: 'Silbar Security Services Pvt. Ltd. operates in strict compliance with the Private Security Agencies Regulation Act (PSARA) 2005. We hold valid PSARA licenses across 19 states and Union Territories in India, with additional state licenses under process as part of our nationwide expansion strategy.'
   },
   {
     category: 'Compliance',
@@ -103,7 +103,7 @@ export const FAQS: FAQ[] = [
   {
     category: 'Compliance',
     q: 'Are all your security guards police verified?',
-    a: 'Yes, police verification is a mandatory pre-requisite for employment at Silbar Security Services Pvt. Ltd. No guard is deployed without a cleared police verification report. We follow strict recruitment and verification procedures as required by law, client policy, and contract requirements.'
+    a: 'Police verification is a mandatory pre-requisite for employment at Silbar Security Services Pvt. Ltd. No guard is deployed without a cleared police verification report. We follow strict recruitment and verification procedures as required by law, client policy, and contract requirements.'
   },
   {
     category: 'Compliance',
@@ -113,7 +113,7 @@ export const FAQS: FAQ[] = [
   {
     category: 'Compliance',
     q: 'Are your guards trained as per PSARA guidelines?',
-    a: 'Yes, all our guards undergo mandatory training covering physical fitness, fire safety, first aid, crowd control, legal protocols, and security procedures as mandated by PSARA and state-specific regulations.'
+    a: 'All our guards undergo mandatory training covering physical fitness, fire safety, first aid, crowd control, legal protocols, and security procedures as mandated by PSARA and state-specific regulations.'
   },
   {
     category: 'Compliance',
@@ -123,7 +123,7 @@ export const FAQS: FAQ[] = [
   {
     category: 'Compliance',
     q: 'Do you provide compliance documentation to clients?',
-    a: 'Yes, we provide applicable statutory and operational documents as required under the service agreement, including monthly MIS reports containing PF/ESI challans, attendance sheets, wage registers, and invoices to help clients maintain transparency and compliance.'
+    a: 'We provide applicable statutory and operational documents as required under the service agreement, including monthly MIS reports containing PF/ESI challans, attendance sheets, wage registers, and invoices to help clients maintain transparency and compliance.'
   },
   {
     category: 'Compliance',
@@ -143,27 +143,27 @@ export const FAQS: FAQ[] = [
   {
     category: 'Compliance',
     q: 'Are our guards eligible for gratuity benefits under your employment?',
-    a: 'Yes, all guards who complete 5 years of continuous service with Silbar Security Services Pvt. Ltd. are eligible for gratuity as per the Payment of Gratuity Act, 1972. We are registered under the act and maintain a gratuity fund. The gratuity amount is calculated at 15 days of last drawn wages for every completed year of service or part thereof exceeding six months.'
+    a: 'All guards who complete 5 years of continuous service with Silbar Security Services Pvt. Ltd. are eligible for gratuity as per the Payment of Gratuity Act, 1972. We are registered under the act and maintain a gratuity fund. The gratuity amount is calculated at 15 days of last drawn wages for every completed year of service or part thereof exceeding six months.'
   },
   {
     category: 'Compliance',
     q: 'Do you pay statutory bonus to guards as per the Payment of Bonus Act?',
-    a: 'Yes, we comply with the Payment of Bonus Act, 1965 and pay annual statutory bonus to eligible guards earning less than the prescribed wage ceiling. The bonus is calculated on the allocable surplus and paid within the statutory timeline each year. We maintain proper bonus registers and submit returns as required under the Act.'
+    a: 'We comply with the Payment of Bonus Act, 1965 and pay annual statutory bonus to eligible guards earning less than the prescribed wage ceiling. The bonus is calculated on the allocable surplus and paid within the statutory timeline each year. We maintain proper bonus registers and submit returns as required under the Act.'
   },
   {
     category: 'Compliance',
     q: 'Do you maintain registers and records as required under the Contract Labour Act?',
-    a: 'Yes, we maintain all mandatory registers including the Register of Contract Labour (Form XII), Muster Roll, Wage Register, Deduction Register, Register of Overtime, Register of Fines, Register of Advances, and Combined Annual Return. All records are digitized and available for client and government inspection at any time.'
+    a: 'We maintain all mandatory registers including the Register of Contract Labour (Form XII), Muster Roll, Wage Register, Deduction Register, Register of Overtime, Register of Fines, Register of Advances, and Combined Annual Return. All records are digitized and available for client and government inspection at any time.'
   },
   {
     category: 'Compliance',
     q: 'Does your company have a POSH (Prevention of Sexual Harassment) policy?',
-    a: 'Yes, we have a comprehensive POSH policy aligned with the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013. We have constituted an Internal Complaints Committee (ICC) across our branches, conduct annual POSH awareness training for all employees, and maintain a strict zero-tolerance approach towards any form of harassment.'
+    a: 'We have a POSH policy aligned with the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013. We have constituted an Internal Complaints Committee (ICC) across our branches, conduct annual POSH awareness training for all employees, and maintain a strict zero-tolerance approach towards any form of harassment.'
   },
   {
     category: 'Compliance',
     q: 'What insurance coverage do you provide for your guards and third-party liabilities?',
-    a: 'We maintain comprehensive insurance including Workmen\'s Compensation Insurance as per the Employees\' Compensation Act for all guards, Public Liability Insurance covering third-party property damage or bodily injury arising from our operations, and Group Personal Accident Insurance for guards on duty. Insurance certificates are shared with clients upon request.'
+    a: 'We maintain insurance including Workmen\'s Compensation Insurance as per the Employees\' Compensation Act for all guards, Public Liability Insurance covering third-party property damage or bodily injury arising from our operations, and Group Personal Accident Insurance for guards on duty. Insurance certificates are shared with clients upon request.'
   },
   {
     category: 'Compliance',
@@ -180,12 +180,12 @@ export const FAQS: FAQ[] = [
   {
     category: 'Services',
     q: 'Do you provide Armed Security Guards?',
-    a: 'Yes, we provide licensed Armed Security Guards (Gunmen) for banks, cash-in-transit, VIP protection, and high-risk industrial sites where legally permissible and contractually required.'
+    a: 'We provide licensed Armed Security Guards (Gunmen) for banks, cash-in-transit, VIP protection, and high-risk industrial sites where legally permissible and contractually required.'
   },
   {
     category: 'Services',
     q: 'Do you offer Electronic Surveillance solutions?',
-    a: 'Yes, we provide end-to-end electronic security solutions including CCTV installation, biometric access control, boom barriers, video analytics, and remote monitoring integrated with our manned guarding services.'
+    a: 'We provide electronic security solutions including CCTV installation, biometric access control, boom barriers, video analytics, and remote monitoring integrated with our manned guarding services.'
   },
   {
     category: 'Services',
@@ -200,17 +200,17 @@ export const FAQS: FAQ[] = [
   {
     category: 'Services',
     q: 'Do you offer security audits and risk assessments?',
-    a: 'Yes, our senior security consultants conduct comprehensive security audits and risk assessments to identify vulnerabilities in your premises, evaluate operational risks, and recommend customized security solutions tailored to your specific requirements.'
+    a: 'Our senior security consultants conduct security audits and risk assessments to identify vulnerabilities in your premises, evaluate operational risks, and recommend customized security solutions tailored to your specific requirements.'
   },
   {
     category: 'Services',
     q: 'Can you provide security services for newly established factories?',
-    a: 'Yes. We regularly support newly established factories, manufacturing plants, warehouses, and commercial projects by providing security solutions from the commencement of operations, including perimeter security, access control, and material movement monitoring.'
+    a: 'We regularly support newly established factories, manufacturing plants, warehouses, and commercial projects by providing security solutions from the commencement of operations, including perimeter security, access control, and material movement monitoring.'
   },
   {
     category: 'Services',
     q: 'Do you provide facility management services alongside security?',
-    a: 'Yes, alongside security, we offer comprehensive facility management services including housekeeping, pantry management, maintenance staff, and integrated facility management solutions for clients seeking a single-vendor partner.'
+    a: 'Alongside security, we offer facility management services including housekeeping, pantry management, maintenance staff, and integrated facility management solutions for clients seeking a single-vendor partner.'
   },
   {
     category: 'Services',
@@ -230,12 +230,12 @@ export const FAQS: FAQ[] = [
   {
     category: 'Services',
     q: 'Do you offer combined pricing for security and housekeeping services?',
-    a: 'Yes, we offer integrated service contracts where security and housekeeping services are bundled under a single agreement at a discounted rate compared to separate contracts. This single-vendor approach simplifies billing, reduces administrative overhead, ensures coordinated operations, and provides consistent service quality across both functions.'
+    a: 'We offer integrated service contracts where security and housekeeping services are bundled under a single agreement at a discounted rate compared to separate contracts. This single-vendor approach simplifies billing, reduces administrative overhead, ensures coordinated operations, and provides consistent service quality across both functions.'
   },
   {
     category: 'Services',
     q: 'Can you provide security for one-time events or temporary requirements?',
-    a: 'Yes, we specialize in temporary and event security solutions including corporate events, exhibitions, conferences, concerts, festivals, political rallies, film shoots, and sporting events. We deploy the required number of guards, supervisors, and QRT vehicles for the event duration. Temporary contracts can be arranged with as little as 24 to 48 hours of notice, subject to manpower availability.'
+    a: 'We specialize in temporary and event security solutions including corporate events, exhibitions, conferences, concerts, festivals, political rallies, film shoots, and sporting events. We deploy the required number of guards, supervisors, and QRT vehicles for the event duration. Temporary contracts can be arranged with as little as 24 to 48 hours of notice, subject to manpower availability.'
   },
   {
     category: 'Services',
@@ -257,7 +257,7 @@ export const FAQS: FAQ[] = [
   {
     category: 'Industries',
     q: 'Do you have experience securing manufacturing plants?',
-    a: 'Yes, industrial security is one of our core strengths. We secure numerous manufacturing plants, factories, and industrial units. Our guards are trained in material movement checking, gate pass systems, weighing scale operations, labor frisking, and perimeter surveillance.'
+    a: 'Industrial security is one of our core strengths. We secure numerous manufacturing plants, factories, and industrial units. Our guards are trained in material movement checking, gate pass systems, weighing scale operations, labor frisking, and perimeter surveillance.'
   },
   {
     category: 'Industries',
@@ -267,12 +267,12 @@ export const FAQS: FAQ[] = [
   {
     category: 'Industries',
     q: 'Can you secure large construction sites?',
-    a: 'Yes, construction sites require specialized perimeter security and material theft prevention. We deploy strict access control, material movement documentation, night-vision equipped patrolling teams, and round-the-clock surveillance.'
+    a: 'Construction sites require specialized perimeter security and material theft prevention. We deploy strict access control, material movement documentation, night-vision equipped patrolling teams, and round-the-clock surveillance.'
   },
   {
     category: 'Industries',
     q: 'Do you provide security for educational institutions?',
-    a: 'Yes, we secure schools, colleges, and universities with a focus on child safety, anti-ragging measures, traffic management during peak hours, strict visitor control, and surveillance of campus perimeters.'
+    a: 'We secure schools, colleges, and universities with a focus on child safety, anti-ragging measures, traffic management during peak hours, strict visitor control, and surveillance of campus perimeters.'
   },
   {
     category: 'Industries',
@@ -282,7 +282,7 @@ export const FAQS: FAQ[] = [
   {
     category: 'Industries',
     q: 'Do you secure retail malls and showrooms?',
-    a: 'Yes, we provide loss prevention officers, CCTV operators, and floor guards trained to identify shoplifting, manage crowd flow, handle parking, and maintain a welcoming yet secure environment for shoppers.'
+    a: 'We provide loss prevention officers, CCTV operators, and floor guards trained to identify shoplifting, manage crowd flow, handle parking, and maintain a welcoming yet secure environment for shoppers.'
   },
   {
     category: 'Industries',
@@ -292,12 +292,12 @@ export const FAQS: FAQ[] = [
   {
     category: 'Industries',
     q: 'Do you provide security for government departments and PSUs?',
-    a: 'Yes. Silbar Security Services Pvt. Ltd. actively participates in government and public sector opportunities and provides security manpower for eligible government departments, public sector organizations, and infrastructure projects, subject to applicable tender requirements and PSARA compliance.'
+    a: 'Silbar Security Services Pvt. Ltd. actively participates in government and public sector opportunities and provides security manpower for eligible government departments, public sector organizations, and infrastructure projects, subject to applicable tender requirements and PSARA compliance.'
   },
   {
     category: 'Industries',
     q: 'Do you implement lockdown drills and emergency response plans in schools?',
-    a: 'Yes, we work closely with school administrations to develop and implement comprehensive lockdown procedures for threats such as intruders, natural disasters, or medical emergencies. Our guards are trained to execute lockdown protocols including securing entry and exit points, coordinating with local law enforcement, managing parent reunification areas, and conducting periodic lockdown drills at least once per quarter. Detailed incident response plans are documented and shared with the school management.'
+    a: 'We work closely with school administrations to develop and implement lockdown procedures for threats such as intruders, natural disasters, or medical emergencies. Our guards are trained to execute lockdown protocols including securing entry and exit points, coordinating with local law enforcement, managing parent reunification areas, and conducting periodic lockdown drills at least once per quarter. Detailed incident response plans are documented and shared with the school management.'
   },
   {
     category: 'Industries',
@@ -317,12 +317,12 @@ export const FAQS: FAQ[] = [
   {
     category: 'Industries',
     q: 'Do you provide cab checking and vehicle inspection services for IT parks?',
-    a: 'Yes, we provide comprehensive vehicle inspection services for IT parks including employee cab checking at entry gates for unauthorized occupants, under-vehicle scanning using mirrors or cameras, verification of cab credentials against pre-approved vendor lists, random baggage checks for outgoing vehicles, and maintaining digital logs of all vehicle entries and exits. For large IT parks, we deploy dedicated traffic management personnel for peak hour vehicle flow.'
+    a: 'We provide vehicle inspection services for IT parks including employee cab checking at entry gates for unauthorized occupants, under-vehicle scanning using mirrors or cameras, verification of cab credentials against pre-approved vendor lists, random baggage checks for outgoing vehicles, and maintaining digital logs of all vehicle entries and exits. For large IT parks, we deploy dedicated traffic management personnel for peak hour vehicle flow.'
   },
   {
     category: 'Industries',
     q: 'Can you secure solar farms and remote energy installations with minimal on-site staff?',
-    a: 'Yes, for remote solar farms and energy installations, we deploy a hybrid security model combining a small on-site guard presence with extensive technology. This includes solar-powered CCTV cameras with cellular transmission, motion sensors, drone-based perimeter surveillance on schedule, and alarm systems directly linked to our 24/7 control room. A mobile patrol team visits the site at random intervals. This model reduces manpower costs while maintaining 24/7 security coverage.'
+    a: 'For remote solar farms and energy installations, we deploy a hybrid security model combining a small on-site guard presence with extensive technology. This includes solar-powered CCTV cameras with cellular transmission, motion sensors, drone-based perimeter surveillance on schedule, and alarm systems directly linked to our 24/7 control room. A mobile patrol team visits the site at random intervals. This model reduces manpower costs while maintaining 24/7 security coverage.'
   },
   {
     category: 'Industries',
@@ -359,7 +359,7 @@ export const FAQS: FAQ[] = [
   {
     category: 'Operations',
     q: 'Do your guards carry communication equipment?',
-    a: 'Yes, depending on the site size and requirements, we equip our guards with Walkie-Talkies, smartphones with reporting apps, and emergency communication devices to ensure seamless coordination.'
+    a: 'Depending on the site size and requirements, we equip our guards with Walkie-Talkies, smartphones with reporting apps, and emergency communication devices to ensure coordination.'
   },
   {
     category: 'Operations',

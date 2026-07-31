@@ -24,7 +24,7 @@ export async function generateMetadata({
 
   return {
     title: `${career.title} — Careers`,
-    description: `Apply for ${career.title} at Silbar Security Services Pvt. Ltd.. ${career.locations.join(', ')}. ${career.type}. ${career.department}. Join India's most trusted security force.`,
+    description: `Apply for ${career.title} at Silbar Security Services Pvt. Ltd.. ${career.locations.join(', ')}. ${career.type}. ${career.department}. Join India's 7,000-strong security force.`,
     ...ogMetadata(`${career.title} — Careers`, `Apply for ${career.title} at Silbar Security Services Pvt. Ltd.. ${career.locations.join(', ')}.`, `/careers/${slug}`),
   }
 }
@@ -178,7 +178,7 @@ export default async function CareerDetailPage({
           <section className="career-detail-section career-detail-section--apply">
             <h2 className="career-detail-section__title">Apply for this Position</h2>
             <p className="career-detail-apply__sub">
-              Ready to join India&apos;s most trusted security force? Apply now and our HR team will reach out within 48 hours.
+              Ready to join India&apos;s 7,000-strong security force? Apply now and our HR team will reach out within 48 hours.
             </p>
             <div className="service-detail-ctas service-detail-ctas--centered">
               <a

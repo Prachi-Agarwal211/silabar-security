@@ -32,7 +32,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: 'Discover how quality management systems transform security operations from reactive guarding to proactive risk management.',
     content: `
       <h2>The Shift in Private Security</h2>
-      <p>The private security industry in India has evolved significantly over the last decade. It's no longer just about deploying guards at a gate; it's about comprehensive risk management, standardized procedures, and measurable quality. This is where ISO 9001:2015 certification becomes a crucial differentiator.</p>
+      <p>The private security industry in India has evolved significantly over the last decade. It's no longer just about deploying guards at a gate; it's about risk management, standardized procedures, and measurable quality. This is where ISO 9001:2015 certification becomes a crucial differentiator.</p>
       
       <h2>What Does ISO 9001:2015 Mean for Security?</h2>
       <p>ISO 9001:2015 is the international standard for Quality Management Systems (QMS). When a security agency achieves this certification, it means they have established a systematic approach to:</p>
@@ -72,7 +72,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <li><strong>Immediate Response:</strong> When a perimeter breach alarm triggers, the Quick Response Team (QRT) is deployed instantly.</li>
         <li><strong>Human Judgement:</strong> Technology can detect movement, but human guards are required to assess intent and context.</li>
       </ul>
-      <p>By blending licensed, trained manpower with modern technology, businesses achieve a robust security posture that is both cost-effective and highly responsive.</p>
+      <p>By blending licensed, trained manpower with modern technology, businesses achieve a security posture that is both cost-effective and highly responsive.</p>
     `,
     coverImage: '/images/blog/cctv-vs-manned-guarding-cover.svg',
     author: 'Vikram Singh',
@@ -199,7 +199,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>In India, nearly 20,000 fire-related deaths occur annually, with industrial fires accounting for a significant share. For factory owners, a fire safety audit is not merely a compliance formality under the Factories Act, 1948 — it is a critical risk management tool that can prevent catastrophic loss of life and property.</p>
 
       <h2>What a Fire Audit Covers</h2>
-      <p>A comprehensive fire safety audit evaluates the following areas:</p>
+      <p>A fire safety audit evaluates the following areas:</p>
       <ul>
         <li><strong>Fire Detection Systems:</strong> Are smoke detectors, heat sensors, and manual call points installed and functional across all zones?</li>
         <li><strong>Fire Extinguishment Equipment:</strong> Are extinguishers of the correct type (ABC, CO2, foam) placed at identified hazard points and within their expiry dates?</li>
@@ -361,7 +361,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
 
       <h2>Coordination With Local Authorities</h2>
-      <p>For events exceeding 500 attendees, organisers should coordinate with the local police, fire brigade, and ambulance services in advance. Obtain necessary permissions under the local police act and share your security plan with authorities. Silbar Security Services Pvt. Ltd. provides end-to-end event security management, including liaison with local authorities, manpower deployment, and CCTV setup — so you can focus on the event, not the logistics.</p>
+      <p>For events exceeding 500 attendees, organisers should coordinate with the local police, fire brigade, and ambulance services in advance. Obtain necessary permissions under the local police act and share your security plan with authorities. Silbar Security Services Pvt. Ltd. provides event security management, including liaison with local authorities, manpower deployment, and CCTV setup — so you can focus on the event, not the logistics.</p>
     `,
     coverImage: '/images/blog/corporate-event-security-planning-cover.svg',
     author: 'Operations Head',
@@ -466,7 +466,7 @@ export const BLOG_POSTS: BlogPost[] = [
     id: 'post-16',
     slug: 'bank-branch-security-beyond-armed-guard',
     title: 'Bank Branch Security: Beyond the Armed Guard',
-    excerpt: 'Modern bank security requires more than a guard with a gun. From ATM monitoring to cash-in-transit protocols, here is what comprehensive bank security looks like.',
+    excerpt: 'Modern bank security requires more than a guard with a gun. From ATM monitoring to cash-in-transit protocols, here is what bank security looks like.',
     content: `
       <h2>Evolving Threat Landscape</h2>
       <p>While armed robbery of bank branches has declined with the shift to digital transactions, other threats have emerged — ATM skimming, cash-in-transit ambushes, internal fraud, and social engineering attacks targeting elderly customers. The Reserve Bank of India (RBI) mandates specific security standards for bank branches, and compliance is non-negotiable.</p>
@@ -532,7 +532,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: 'From check-in to checkout, hotels face unique security challenges. Learn how to protect your guests and your reputation.',
     content: `
       <h2>Hospitality Security Is Different</h2>
-      <p>Hotels are open-access environments by design — guests, visitors, delivery personnel, and service providers enter and exit throughout the day. Balancing a welcoming atmosphere with robust security is a delicate challenge. A single security incident in a hotel can go viral instantly, causing irreparable damage to the brand.</p>
+      <p>Hotels are open-access environments by design — guests, visitors, delivery personnel, and service providers enter and exit throughout the day. Balancing a welcoming atmosphere with security is a delicate challenge. A single security incident in a hotel can go viral instantly, causing irreparable damage to the brand.</p>
 
       <h2>Critical Security Areas in Hotels</h2>
       <ul>
@@ -558,7 +558,7 @@ export const BLOG_POSTS: BlogPost[] = [
     id: 'post-19',
     slug: 'school-safety-beyond-perimeter',
     title: 'School Safety: Beyond Perimeter Security',
-    excerpt: 'Comprehensive school safety must address bullying, cyber threats, fire safety, and transportation — not just the main gate.',
+    excerpt: 'School safety must address bullying, cyber threats, fire safety, and transportation — not just the main gate.',
     content: `
       <h2>A Broader View of School Safety</h2>
       <p>Following the tragic incidents at schools in recent years, safety has become the top priority for parents and school administrators. While most schools have installed CCTV cameras and deployed guards at the gate, a truly safe school must address a wider range of threats — from classroom bullying and online harassment to fire safety and school bus security.</p>
@@ -707,8 +707,8 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     id: 'post-24',
     slug: 'festive-season-security-checklist',
-    title: 'Festive Season Security: A Comprehensive Checklist',
-    excerpt: 'Diwali, Christmas, and New Year bring increased risks. Use this comprehensive security checklist to keep your facility safe during the festive season.',
+    title: 'Festive Season Security: A Checklist',
+    excerpt: 'Diwali, Christmas, and New Year bring increased risks. Use this security checklist to keep your facility safe during the festive season.',
     content: `
       <h2>Why Festive Season Requires Extra Vigilance</h2>
       <p>The festive period in India — from Dussehra through Diwali and into the New Year — is a high-risk window for security incidents. Commercial theft increases by 30-40% during this period, fire incidents spike due to electrical decorations and firecrackers, and crowded venues become targets for petty crime. A proactive approach during this period can prevent what could otherwise be a devastating incident.</p>
@@ -930,7 +930,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: 'Eight years of growth, service, and commitment to safety. A message from the founders on our journey and what lies ahead.',
     content: `
       <h2>A Milestone Worth Celebrating</h2>
-      <p>Silbar Security Services Pvt. Ltd. is proud to announce the completion of eight successful years in the private security industry. Since our founding in 2018, we have grown from a team of 15 security personnel serving a handful of clients in Jaipur to a trusted security partner operating across multiple states with over hundreds of trained professionals.</p>
+      <p>Silbar Security Services Pvt. Ltd. is proud to announce the completion of eight successful years in the private security industry. Since our founding in 2018, we have grown from a team of 15 security personnel serving a handful of clients in Jaipur to a security partner operating across multiple states with over hundreds of trained professionals.</p>
 
       <h2>Our Journey in Numbers</h2>
       <ul>

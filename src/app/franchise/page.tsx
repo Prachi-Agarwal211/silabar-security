@@ -14,9 +14,9 @@ export const metadata: Metadata = {
 }
 
 const WHY_FRANCHISE = [
-  { icon: Shield, title: 'Trusted Brand', desc: '20+ years of operational excellence with ISO 9001:2015 certification' },
+  { icon: Shield, title: 'Proven Track Record', desc: '20+ years of operational excellence with ISO 9001:2015 certification' },
   { icon: TrendingUp, title: 'High ROI', desc: 'Proven business model with consistent revenue growth for partners' },
-  { icon: Users, title: 'Full Support', desc: 'End-to-end training, operations support, and marketing assistance' },
+  { icon: Users, title: 'Full Support', desc: 'Training, operations support, and marketing assistance' },
   { icon: MapPin, title: '200+ Cities', desc: 'Expansion opportunities across PAN India in tier-1, tier-2, and tier-3 cities' },
 ]
 
@@ -34,7 +34,7 @@ const INVESTMENTFAQ = [
   },
   {
     q: 'What training is provided?',
-    a: 'Comprehensive training at our 3-acre facility covering security operations, client management, technology systems, and business operations.',
+    a: 'Training at our 3-acre facility covering security operations, client management, technology systems, and business operations.',
   },
   {
     q: 'What is the expected ROI?',
@@ -52,7 +52,7 @@ export default function FranchisePage() {
       <PageHero
         eyebrow="Franchise Opportunities"
         title={<>Partner with <em>India&apos;s Fastest-Growing</em> Security Company</>}
-        subtitle="Join 200+ franchise partners across India. Low investment, high returns, and full operational support from a 20-year trusted brand."
+        subtitle="Join 200+ franchise partners across India. Low investment, high returns, and full operational support from a brand with 20+ years of operations."
         bottomContent={
           <div className="franchise-hero-ctas">
             <a href="#franchise-form" className="service-detail-cta service-detail-cta--primary">
@@ -68,7 +68,6 @@ export default function FranchisePage() {
       <section className="franchise-section">
         <div className="franchise-section__inner">
           <ScrollReveal>
-            <span className="section-eyebrow section-eyebrow--red">Why Partner With Us</span>
             <h2 className="section-heading franchise-section__heading">
               Built for <em>Growth.</em>
             </h2>
@@ -92,7 +91,6 @@ export default function FranchisePage() {
       <section className="franchise-section franchise-section--dark">
         <div className="franchise-section__inner franchise-section__inner--narrow">
           <ScrollReveal>
-            <span className="section-eyebrow section-eyebrow--red">How It Works</span>
             <h2 className="section-heading franchise-section__heading--light">
               Four Steps to <em>Partnership.</em>
             </h2>
@@ -114,7 +112,6 @@ export default function FranchisePage() {
       <section className="franchise-section">
         <div className="franchise-section__inner franchise-section__inner--narrow">
           <ScrollReveal>
-            <span className="section-eyebrow section-eyebrow--red">Frequently Asked</span>
             <h2 className="section-heading franchise-section__heading">
               Franchise <em>Questions.</em>
             </h2>

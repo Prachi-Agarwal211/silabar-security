@@ -1,11 +1,11 @@
 import { useMemo } from 'react'
 import type { LocationSEOContent } from '@/lib/seo-content-generator'
 import ScrollReveal from '@/components/animations/ScrollReveal'
-import { CheckCircle2 } from 'lucide-react'
+import { CheckCircle2, MapPin } from 'lucide-react'
 
 /** Named section renderers for seed-based reordering */
 const SECTION_IDS = [
-  'intro', 'marketOverview', 'challenges', 'sectors', 'deliverables',
+  'intro', 'localFacts', 'marketOverview', 'challenges', 'sectors', 'deliverables',
   'packages', 'whoNeeds', 'training', 'operations', 'why', 'process', 'faqs',
 ] as const
 
@@ -17,10 +17,10 @@ const SECTION_IDS = [
 export default function LocationRichContent({ content, seed }: { content: LocationSEOContent; seed: number }) {
   // Deterministic shuffle of mid-content sections based on seed
   const shuffled = useMemo(() => {
-    // Fixed positions: intro (0), operations (8), why (9), process (10), faqs (11)
-    // Shufflable: marketOverview (1), challenges (2), sectors (3), deliverables (4), packages (5), whoNeeds (6), training (7)
-    const movable = SECTION_IDS.slice(1, 8) // marketOverview through training
-    const fixed = [...SECTION_IDS.slice(0, 1), ...SECTION_IDS.slice(8)] // intro, operations, why, process, faqs
+    // Fixed positions: intro (0), localFacts (1), operations (9), why (10), process (11), faqs (12)
+    // Shufflable: marketOverview (2), challenges (3), sectors (4), deliverables (5), packages (6), whoNeeds (7), training (8)
+    const movable = SECTION_IDS.slice(2, 9) // marketOverview through training
+    const fixed = [...SECTION_IDS.slice(0, 2), ...SECTION_IDS.slice(9)] // intro, localFacts, operations, why, process, faqs
 
     // Fisher-Yates shuffle seeded by the city/state seed
     const arr = [...movable]
@@ -48,6 +48,31 @@ export default function LocationRichContent({ content, seed }: { content: Locati
               <div className="seo-about-content">
                 {content.intro.map((p, i) => (
                   <p key={`intro-${i}`}>{p}</p>
+                ))}
+              </div>
+            </div>
+          </section>
+        )
+
+      case 'localFacts':
+        return (
+          <section
+            key={`lf-${idx}`}
+            className="seo-about-section"
+            aria-label={`Local presence in ${content.placeName}`}
+          >
+            <div className="service-detail-section-inner">
+              <ScrollReveal>
+                <h2 className="service-detail-section-title">
+                  On the ground in {content.placeName}
+                </h2>
+              </ScrollReveal>
+              <div className="seo-local-facts brand-card">
+                {content.localFacts.map((fact) => (
+                  <p key={fact} className="seo-local-fact">
+                    <MapPin size={16} aria-hidden="true" className="seo-local-fact__icon" />
+                    <span>{fact}</span>
+                  </p>
                 ))}
               </div>
             </div>
@@ -228,7 +253,7 @@ export default function LocationRichContent({ content, seed }: { content: Locati
           <section key={`why-${idx}`} className="seo-about-section">
             <div className="service-detail-section-inner">
               <ScrollReveal>
-                <h2 className="service-detail-section-title">{content.whyHeading}</h2>
+                <h2 className="service-detail-section-title">Why organisations choose Silbar</h2>
               </ScrollReveal>
               <ul className="seo-why-grid">
                 {content.whyPoints.map((point) => (

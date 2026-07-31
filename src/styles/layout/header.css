@@ -14,8 +14,7 @@
   transition:
     background 0.35s var(--ease-smooth),
     border-color 0.35s var(--ease-smooth),
-    box-shadow 0.35s var(--ease-smooth),
-    backdrop-filter 0.35s var(--ease-smooth);
+    box-shadow 0.35s var(--ease-smooth);
   /* Default = solid (safe for light pages before JS) */
   background: rgba(11, 14, 20, 0.94);
   border-bottom: 1px solid rgba(191, 149, 63, 0.18);
@@ -45,8 +44,6 @@
   );
   border-bottom-color: transparent;
   box-shadow: none;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
 }
 
 /* ── Solid bar (light pages + scrolled dark heroes) ── */
@@ -54,8 +51,6 @@
   background: rgba(11, 14, 20, 0.96);
   border-bottom-color: rgba(191, 149, 63, 0.22);
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
 }
 
 .site-header--menu-open {
@@ -246,7 +241,6 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.35s var(--ease-smooth);
-  backdrop-filter: blur(2px);
 }
 
 .site-nav-overlay.is-open {

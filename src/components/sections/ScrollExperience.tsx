@@ -104,7 +104,7 @@ export default function ScrollExperience() {
         </h1>
 
         <p className="hero-cinematic-subcopy">
-          End-to-end security solutions for India&apos;s leading enterprises.
+          Security solutions for India&apos;s leading enterprises.
         </p>
 
         <div className="hero-cta-group hero-cta-group--cinematic">

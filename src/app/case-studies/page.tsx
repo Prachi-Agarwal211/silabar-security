@@ -8,10 +8,10 @@ import PageLeadSection from '@/components/sections/PageLeadSection'
 import { CASE_STUDIES } from '@/data/case-studies'
 
 export const metadata: Metadata = {
-  title: 'Case Studies',
+  title: 'Case Studies — Real Security Solutions Delivered | Silbar Security Services Pvt. Ltd.',
   description: 'Real-world security solutions delivered by Silbar Security Services Pvt. Ltd.. See how we protect India\'s leading enterprises across manufacturing, healthcare, and corporate sectors.',
   ...ogMetadata(
-    'Case Studies',
+    'Case Studies — Real Security Solutions Delivered | Silbar Security Services Pvt. Ltd.',
     'Real-world security solutions delivered by Silbar Security Services Pvt. Ltd.. See how we protect India\'s leading enterprises across manufacturing, healthcare, and corporate sectors.',
     '/case-studies'
   ),

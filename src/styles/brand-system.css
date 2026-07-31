@@ -85,14 +85,7 @@
   top: 15%;
   bottom: 15%;
   width: 2px;
-  background: linear-gradient(
-    180deg,
-    transparent,
-    var(--color-cherry) 20%,
-    var(--color-gold) 50%,
-    var(--color-cherry) 80%,
-    transparent
-  );
+  background: var(--color-gold);
   opacity: 0.35;
   pointer-events: none;
 }
@@ -108,15 +101,6 @@
   overflow: hidden;
   background: var(--color-midnight);
   color: var(--color-cream);
-}
-.brand-band::before {
-  content: '';
-  position: absolute;
-  inset: -20% -10%;
-  background:
-    radial-gradient(ellipse 50% 60% at 15% 40%, rgba(140, 31, 50, 0.35), transparent 60%),
-    radial-gradient(ellipse 40% 50% at 85% 60%, rgba(191, 149, 63, 0.12), transparent 55%);
-  pointer-events: none;
 }
 .brand-band__inner {
   position: relative;
@@ -283,11 +267,9 @@
   box-shadow: inset 0 0 0 4px rgba(140, 31, 50, 0.2);
 }
 
-/* ─── Glass card utility ─── */
+/* ─── Solid dark surface (replaces glass) ─── */
 .glass {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(11, 14, 20, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 .glass--gold {

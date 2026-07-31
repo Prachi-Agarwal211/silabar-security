@@ -18,10 +18,10 @@ function groupFaqsByCategory() {
 }
 
 export const metadata: Metadata = {
-  title: 'Frequently Asked Questions',
+  title: 'FAQs — Security Services, PSARA Licensing & Pricing | Silbar Security Services Pvt. Ltd.',
   description: 'Find answers about Silbar Security Services Pvt. Ltd. services, PSARA licensing, ISO certifications, pricing, coverage areas, and security solutions across India.',
   ...ogMetadata(
-    'FAQs',
+    'FAQs — Security Services, PSARA Licensing & Pricing | Silbar Security Services Pvt. Ltd.',
     'Find answers to common questions about Silbar Security Services Pvt. Ltd. services, PSARA licensing, ISO certifications, pricing, coverage areas.',
     '/faq'
   ),
@@ -44,7 +44,6 @@ export default function FAQPage() {
     <main id="main-content">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <PageHero
-        eyebrow="FAQs"
         title={
           <>
             <SplitTextReveal text="Frequently" />
@@ -71,7 +70,7 @@ export default function FAQPage() {
           <ScrollReveal>
             <div className="faq-section__header">
               <p className="faq-section__lead">
-                Browse through our most commonly asked questions. Can't find what you're looking for? Scroll down to send us a direct inquiry.
+                Browse through our most commonly asked questions. Can&apos;t find what you&apos;re looking for? Scroll down to send us a direct inquiry.
               </p>
             </div>
           </ScrollReveal>

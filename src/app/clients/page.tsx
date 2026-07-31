@@ -63,7 +63,7 @@ export default function ClientsPage() {
                 <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', fontWeight: 700, color: 'var(--color-paper-ink)' }}>Request Site Survey</h2>
               </div>
               <p style={{ color: 'var(--color-horizon-700)', fontSize: '0.85rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
-                Our security experts will visit your facility for a comprehensive risk assessment and security audit. Free of charge.
+                Our security experts will visit your facility for a risk assessment and security audit. Free of charge.
               </p>
               <SurveyForm />
             </div>

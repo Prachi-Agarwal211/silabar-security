@@ -23,7 +23,7 @@ const ISO_CERTS = [
   { name: 'ISO 9001:2015', desc: 'Quality Management System — IAF Accredited', detail: 'Demonstrates our ability to consistently provide services that meet customer and regulatory requirements through effective quality management processes.' },
   { name: 'ISO 14001:2015', desc: 'Environmental Management System — IAF Accredited', detail: 'Reflects our commitment to environmental responsibility, sustainable operations, and minimizing our ecological footprint across all deployments.' },
   { name: 'ISO 45001:2018', desc: 'Occupational Health & Safety — IAF Accredited', detail: 'Ensures a safe working environment for our 7,000+ professionals through systematic hazard identification, risk assessment, and safety protocols.' },
-  { name: 'ISO/IEC 27001:2022', desc: 'Information Security Management — IAF Accredited', detail: 'Guarantees the security of client data, confidential information, and operational records through robust information security controls.' },
+  { name: 'ISO/IEC 27001:2022', desc: 'Information Security Management — IAF Accredited', detail: 'Guarantees the security of client data, confidential information, and operational records through information security controls.' },
 ]
 
 const REGULATORY = [
@@ -69,7 +69,7 @@ export default function CertificationPage() {
             </span>
           </>
         }
-        subtitle="Silbar Security Services Pvt. Ltd. holds 4 ISO certifications (IAF accredited), PSARA licenses across 19 states, and full statutory compliance — making us a trusted partner for organizations seeking professionally managed security services."
+        subtitle="Silbar Security Services Pvt. Ltd. holds 4 ISO certifications (IAF accredited), PSARA licenses across 19 states, and full statutory compliance — making us a certified partner for organizations seeking professionally managed security services."
         size="tall"
         topContent={
           <nav className="breadcrumb" aria-label="Breadcrumb">
@@ -281,7 +281,6 @@ export default function CertificationPage() {
       <section className="cert-section--light">
         <div className="cert-section__inner--narrow">
           <ScrollReveal>
-            <span className="section-eyebrow section-eyebrow--red">CERTIFICATE GALLERY</span>
             <h2 className="section-heading cert-heading-mb">
               Our <em>Certificates.</em>
             </h2>

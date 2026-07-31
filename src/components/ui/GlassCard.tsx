@@ -10,7 +10,7 @@ interface GlassCardProps {
   opacity?: number
   borderOpacity?: number
   tilt?: boolean
-  as?: any
+  as?: React.ElementType
   href?: string
   target?: string
   rel?: string

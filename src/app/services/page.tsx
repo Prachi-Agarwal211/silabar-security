@@ -135,7 +135,7 @@ export default function ServicesPage() {
       {/* GEO Answer Block — visible direct answer callout */}
       <section className="svc-answer-card brand-card shell" aria-label="At a glance">
         <p className="svc-answer-card__text">
-          Silbar Security Services Pvt. Ltd. offers {SERVICES.length} comprehensive security service verticals — including manned guarding, industrial and factory security, event security, CCTV surveillance support, VIP close protection, bank and ATM security, fire safety, and facility management — across 200+ cities in India. All services are ISO 9001:2015 certified and backed by PSARA licensed operations.
+          Silbar Security Services Pvt. Ltd. offers {SERVICES.length} security service verticals — including manned guarding, industrial and factory security, event security, CCTV surveillance support, VIP close protection, bank and ATM security, fire safety, and facility management — across 200+ cities in India. All services are ISO 9001:2015 certified and backed by PSARA licensed operations.
         </p>
       </section>
 
@@ -179,7 +179,6 @@ export default function ServicesPage() {
       <section className="svc-pillars section-pad" aria-labelledby="pillars-heading">
         <div className="shell">
           <ScrollReveal>
-            <span className="section-eyebrow section-eyebrow--red">HOW WE DELIVER</span>
             <h2 id="pillars-heading" className="section-heading" style={{ marginBottom: '0.75rem' }}>
               Not Just Headcount. <em>Control.</em>
             </h2>
@@ -210,7 +209,6 @@ export default function ServicesPage() {
         </div>
         <div className="shell svc-feature-band__inner">
           <ScrollReveal>
-            <span className="section-eyebrow section-eyebrow--light">FEATURED PATHS</span>
             <h2 id="featured-heading" className="section-heading section-heading--on-dark">
               Start With Your <em>Highest-Risk</em> Post.
             </h2>
@@ -236,7 +234,6 @@ export default function ServicesPage() {
       <section className="svc-process section-pad brand-rail" aria-labelledby="process-heading">
         <div className="shell">
           <ScrollReveal>
-            <span className="section-eyebrow section-eyebrow--red">ENGAGEMENT</span>
             <h2 id="process-heading" className="section-heading" style={{ marginBottom: '1.5rem' }}>
               From Brief to <em>Go-Live.</em>
             </h2>
@@ -259,7 +256,6 @@ export default function ServicesPage() {
       <div id="all-services" className="svc-all-wrap">
         <div className="shell svc-all-header">
           <ScrollReveal>
-            <span className="section-eyebrow section-eyebrow--red">COMPLETE CATALOGUE</span>
             <h2 className="section-heading">
               All {SERVICES.length} <em>Services.</em>
             </h2>
@@ -275,7 +271,6 @@ export default function ServicesPage() {
       <section className="svc-copy-block section-pad" aria-labelledby="copy-heading">
         <div className="shell brand-split">
           <ScrollReveal>
-            <span className="section-eyebrow section-eyebrow--red">WHY SILBAR SERVICES</span>
             <h2 id="copy-heading" className="section-heading" style={{ marginBottom: '1rem' }}>
               Built for Indian Sites. <em>Not Templates.</em>
             </h2>
@@ -350,7 +345,6 @@ export default function ServicesPage() {
       <section className="section-pad brand-rail" aria-labelledby="svc-faq-title">
         <div className="shell" style={{ maxWidth: '900px' }}>
           <ScrollReveal>
-            <span className="section-eyebrow section-eyebrow--red">FAQ</span>
             <h2 id="svc-faq-title" className="section-heading" style={{ marginBottom: '0.75rem' }}>
               Common Questions About <em>Our Services.</em>
             </h2>
@@ -362,7 +356,7 @@ export default function ServicesPage() {
             {[
               { q: 'How quickly can Silbar deploy security guards at my facility?', a: 'We typically deploy trained, verified guards within 48\u201372 hours of proposal acceptance. For emergency requirements, we can mobilise a Quick Response Team within 24 hours from our nearest regional hub. Deployment includes site induction, uniform issue, and SOP briefing before the guard assumes duty.' },
               { q: 'Do you provide security services in tier-2 and tier-3 cities?', a: 'Yes. Silbar Security operates across 200+ cities in India, including tier-2 and tier-3 locations. Our regional offices in Rajasthan, Delhi NCR, Uttar Pradesh, Madhya Pradesh, Gujarat, Punjab, Haryana, Maharashtra, and other states ensure we can deploy and supervise guards even in smaller cities with the same quality standards as our metro operations.' },
-              { q: 'Are your security guards insured and compliant with labour laws?', a: 'Absolutely. All our guards are enrolled in EPF, ESIC, and covered under comprehensive insurance policies. We strictly adhere to Minimum Wages Act, Contract Labour Act, and all applicable state-specific labour regulations. Our compliance-first approach means zero statutory risk for our clients.' },
+              { q: 'Are your security guards insured and compliant with labour laws?', a: 'Absolutely. All our guards are enrolled in EPF, ESIC, and covered under insurance policies. We strictly adhere to Minimum Wages Act, Contract Labour Act, and all applicable state-specific labour regulations. Our compliance-first approach means zero statutory risk for our clients.' },
               { q: 'What is the typical cost of hiring a security guard from Silbar?', a: 'Costs vary based on location, post type (armed/unarmed), shift duration, and any special requirements. We provide transparent, category-wise pricing with no hidden charges. Contact us via WhatsApp or phone for a custom quote tailored to your facility and city.' },
               { q: 'Can Silbar manage security across multiple locations for a single client?', a: 'Yes. Multi-site deployment is one of our core strengths. We provide centralised billing, standardised SOPs, consistent supervision, and a single account manager for all locations. This ensures uniform security standards whether you have 2 sites or 200.' },
             ].map((faq) => (
@@ -389,7 +383,6 @@ export default function ServicesPage() {
       {/* Bottom CTA */}
       <section className="services-bottom-cta" aria-label="Contact for services">
         <div className="services-bottom-cta__inner">
-          <span className="section-eyebrow section-eyebrow--light">READY TO SECURE?</span>
           <h2 className="section-heading section-heading--on-dark">
             Ready to Secure Your <em>Operations?</em>
           </h2>

@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next'
+import Link from 'next/link'
 import { Space_Grotesk, Manrope } from 'next/font/google'
 import './globals.css'
 import NavigationWrapper from '@/components/layout/NavigationWrapper'
@@ -27,7 +28,7 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.silbarsecurity.in'),
   title: {
-    default: 'Silbar Security Services Pvt. Ltd. | Trusted Security Agency',
+    default: 'Silbar Security Services Pvt. Ltd. | PSARA-Licensed Security Agency',
     template: '%s | Silbar Security Services Pvt. Ltd.',
   },
   description:
@@ -61,7 +62,7 @@ export const metadata: Metadata = {
     locale: 'en_IN',
     url: 'https://www.silbarsecurity.in',
     siteName: 'Silbar Security Services Pvt. Ltd.',
-    title: 'Silbar Security Services Pvt. Ltd. | Trusted Security Agency',
+    title: 'Silbar Security Services Pvt. Ltd. | PSARA-Licensed Security Agency',
     description:
       'ISO 9001:2015 certified. 7,000+ professionals. Manned guarding, VIP protection, surveillance, and facility management across India.',
     images: [
@@ -75,7 +76,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Silbar Security Services Pvt. Ltd. | Trusted Security Agency',
+    title: 'Silbar Security Services Pvt. Ltd. | PSARA-Licensed Security Agency',
     description:
       'ISO 9001:2015 certified. 7,000+ professionals. Security services across PAN India.',
     images: ['https://www.silbarsecurity.in/og-image.jpg'],
@@ -83,7 +84,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.silbarsecurity.in',
     types: {
-      'text/plain': [{ url: '/llms.txt', title: 'llms.txt' }],
+      'text/plain': [
+        { url: '/llms.txt', title: 'llms.txt' },
+        { url: '/ai.txt', title: 'ai.txt' },
+      ],
     },
   },
   other: {
@@ -136,32 +140,32 @@ export default function RootLayout({
 
         {/* Server-rendered nav for search engine crawlability */}
         <nav aria-label="Site navigation" className="sr-only">
-          <a href="/">Home</a>
-          <a href="/about">About Us</a>
-          <a href="/security-services">Security Services</a>
-          <a href="/services/industrial-security">Industrial Security</a>
-          <a href="/services/security-guard-services">Security Guard Services</a>
-          <a href="/services/event-security">Event Security</a>
-          <a href="/services/cctv-surveillance-systems">CCTV Surveillance</a>
-          <a href="/industries">Industries We Serve</a>
-          <a href="/industries/manufacturing">Manufacturing Security</a>
-          <a href="/industries/hospitality">Hospitality Security</a>
-          <a href="/case-studies">Case Studies</a>
-          <a href="/careers">Careers</a>
-          <a href="/blog">Blog</a>
-          <a href="/faq">FAQ</a>
-          <a href="/gallery">Gallery</a>
-          <a href="/contact">Contact Us</a>
-          <a href="/security-services">Locations</a>
-          <a href="/contact">Get a Quote</a>
-          <a href="/franchise">Franchise</a>
-          <a href="/certification">Certifications</a>
-          <a href="/csr">CSR</a>
-          <a href="/emergency">Emergency</a>
-          <a href="/google">Google</a>
-          <a href="/disclaimer">Disclaimer</a>
-          <a href="/terms">Terms of Use</a>
-          <a href="/privacy-policy">Privacy Policy</a>
+          <Link href="/">Home</Link>
+          <Link href="/about">About Us</Link>
+          <Link href="/security-services">Security Services</Link>
+          <Link href="/services/industrial-security">Industrial Security</Link>
+          <Link href="/services/security-guard-services">Security Guard Services</Link>
+          <Link href="/services/event-security">Event Security</Link>
+          <Link href="/services/cctv-surveillance-systems">CCTV Surveillance</Link>
+          <Link href="/industries">Industries We Serve</Link>
+          <Link href="/industries/manufacturing">Manufacturing Security</Link>
+          <Link href="/industries/hospitality">Hospitality Security</Link>
+          <Link href="/case-studies">Case Studies</Link>
+          <Link href="/careers">Careers</Link>
+          <Link href="/blog">Blog</Link>
+          <Link href="/faq">FAQ</Link>
+          <Link href="/gallery">Gallery</Link>
+          <Link href="/contact">Contact Us</Link>
+          <Link href="/security-services">Locations</Link>
+          <Link href="/contact">Get a Quote</Link>
+          <Link href="/franchise">Franchise</Link>
+          <Link href="/certification">Certifications</Link>
+          <Link href="/csr">CSR</Link>
+          <Link href="/emergency">Emergency</Link>
+          <Link href="/google">Google</Link>
+          <Link href="/disclaimer">Disclaimer</Link>
+          <Link href="/terms">Terms of Use</Link>
+          <Link href="/privacy-policy">Privacy Policy</Link>
         </nav>
 
         {/* Organization schema — injected globally */}
@@ -226,7 +230,7 @@ export default function RootLayout({
                 GOOGLE_REVIEWS.profileUrl,
                 'https://www.wikidata.org/wiki/Q140635640',
                 ...GOOGLE_REVIEWS.offices.map((o) => o.profileUrl),
-                ...(CONTACT.officeLocations as unknown as any[]).map((o: any) => o.mapUrl).filter(Boolean),
+                ...CONTACT.officeLocations.map((o) => o.mapUrl).filter(Boolean),
               ],
               actionableFeedbackPolicy: 'https://www.silbarsecurity.in/contact',
               correctionsPolicy: 'https://www.silbarsecurity.in/contact',

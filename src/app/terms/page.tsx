@@ -33,7 +33,7 @@ const sections = [
   },
   {
     title: 'Limitation of Liability',
-    content: 'Silbar Security Services Pvt. Ltd. shall not be liable for any indirect, incidental, special, or consequential damages arising from the use of our website or services. Our total liability for any claim shall not exceed the total amount paid by the client for the specific service giving rise to the claim. We maintain comprehensive insurance coverage as required by PSARA regulations.',
+    content: 'Silbar Security Services Pvt. Ltd. shall not be liable for any indirect, incidental, special, or consequential damages arising from the use of our website or services. Our total liability for any claim shall not exceed the total amount paid by the client for the specific service giving rise to the claim. We maintain insurance coverage as required by PSARA regulations.',
   },
   {
     title: 'Indemnification',

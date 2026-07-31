@@ -65,7 +65,7 @@ export default function Footer() {
             <Image src="/icon-512.png" alt="Silbar Security Services Pvt. Ltd." width={44} height={44} className="footer-logo-img" />
             <div>
               <div className="footer-brand">Silbar Security Services Pvt. Ltd.</div>
-              <p className="footer-tagline">India&apos;s trusted PAN India security company.</p>
+              <p className="footer-tagline">India&apos;s PSARA-licensed PAN India security company.</p>
             </div>
           </div>
           <div className="footer-contact-list">
@@ -75,7 +75,7 @@ export default function Footer() {
             <a href={`mailto:${CONTACT.email}`} className="footer-contact-item">
               <Mail size={13} /> {CONTACT.email}
             </a>
-            {(CONTACT.officeLocations as unknown as any[]).map((office: any) => (
+            {CONTACT.officeLocations.map((office) => (
               <a key={office.city} href={office.mapUrl} target="_blank" rel="noopener noreferrer" className="footer-contact-item footer-contact-item--location">
                 <MapPin size={13} /> {office.badge}: {office.city.replace(/\s*\(.*?\)\s*/g, '')}
               </a>

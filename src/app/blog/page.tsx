@@ -44,7 +44,6 @@ export default async function BlogListingPage() {
   return (
     <main className="blog-listing-page" id="main-content">
       <PageHero
-        eyebrow="INSIGHTS & NEWS"
         title={
           <>
             <SplitTextReveal text="Security" />

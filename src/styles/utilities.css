@@ -158,30 +158,6 @@
 
 .mesh-bg {
   background-color: var(--color-midnight);
-  background-image: 
-    radial-gradient(at 0% 0%, rgba(18, 22, 31, 1) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(11, 14, 20, 1) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(20, 20, 20, 1) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, rgba(5, 5, 5, 1) 0px, transparent 50%);
-}
-
-.mesh-bg-animated {
-  background: linear-gradient(120deg, var(--color-midnight), var(--color-midnight-900), var(--color-midnight));
-  background-size: 200% 200%;
-  animation: meshPan 15s ease infinite;
-}
-
-@keyframes meshPan {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@media (max-width: 767px) {
-  .mesh-bg-animated {
-    animation: none;
-    background-size: 100% 100%;
-  }
 }
 
 .glass-panel {
@@ -437,7 +413,6 @@
   inset: 0;
   z-index: 9998;
   background: rgba(10, 10, 10, 0.7);
-  backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;

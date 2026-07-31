@@ -11,10 +11,10 @@ import PageLeadSection from '@/components/sections/PageLeadSection'
 import { CAREERS } from '@/data/careers'
 
 export const metadata: Metadata = {
-  title: 'Careers — Join India\'s Most Trusted Security Team',
+  title: 'Careers — Join India\'s 7,000-Strong Security Team',
   description:
     'Build your career with Silbar Security. Security guards, supervisors, account managers & corporate staff. Professional training, growth guaranteed. PAN India.',
-  ...ogMetadata('Careers — Join India\'s Most Trusted Security Team', 'Build your career with Silbar Security. Security guards, supervisors, account managers & corporate staff. Professional training, growth guaranteed. PAN India.', '/careers'),
+  ...ogMetadata('Careers — Join India\'s 7,000-Strong Security Team', 'Build your career with Silbar Security. Security guards, supervisors, account managers & corporate staff. Professional training, growth guaranteed. PAN India.', '/careers'),
 }
 
 const WHY_JOIN = [
@@ -53,7 +53,6 @@ export default function CareersPage() {
           })))
         }} />
       <PageHero
-        eyebrow="JOIN THE FORCE"
         title={
           <>
             <SplitTextReveal text="CAREERS AT" />
@@ -64,7 +63,7 @@ export default function CareersPage() {
           </>
         }
         subtitle={
-          <>Be part of India&apos;s trusted security force. 7,000+ professionals. 200+ cities. One standard.</>
+          <>Be part of India&apos;s security force. 7,000+ professionals. 200+ cities. One standard.</>
         }
         size="compact"
         topContent={

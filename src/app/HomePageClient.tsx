@@ -173,9 +173,8 @@ export default function HomePageClient() {
       {/* ─── HOW WE WORK (Process) ────────────────────── */}
       <section className="process-section brand-rail" aria-labelledby="process-title">
         <div className="shell">
-          <span className="section-eyebrow">HOW WE WORK</span>
           <h2 id="process-title" className="section-heading">
-            Simple Process. <em>Trusted</em> Protection.
+            Simple Process. <em>Measured</em> Protection.
           </h2>
           <p className="section-subtitle">
             From assessment to deployment — a transparent, step-by-step approach that puts your safety first.
@@ -201,7 +200,6 @@ export default function HomePageClient() {
       <section className="brand-band section-pad--tight" aria-label="Brand promise">
         <div className="brand-band__inner shell brand-split">
           <div>
-            <span className="section-eyebrow section-eyebrow--light">SILBAR PROMISE</span>
             <h2 className="section-heading section-heading--on-dark heading-mb-sm">
               Security You Can <em className="brand-shimmer-text">Measure.</em>
             </h2>
@@ -224,12 +222,11 @@ export default function HomePageClient() {
 
         <div className="why-silbar-inner">
           <div className="why-silbar-copy">
-            <span className="section-eyebrow section-eyebrow--light">WHY SILBAR</span>
             <h2 id="why-silbar-title" className="section-heading section-heading--on-dark heading-mb-lg">
               Protection is our <em>Promise.</em><br />Integrity is our Foundation.
             </h2>
             <p className="why-silbar-body">
-               Since 2018, Silbar Security Services Pvt. Ltd. has grown into a trusted PAN India security partner for enterprises,
+               Since 2018, Silbar Security Services Pvt. Ltd. has grown into a PSARA-licensed PAN India security partner for enterprises,
               institutions, and communities across India. With PSARA licenses in 19 states, 4 ISO certifications,
               and a team of 7,000+ trained professionals, we combine compliance, people, and technology
               to deliver unmatched protection.
@@ -314,7 +311,6 @@ export default function HomePageClient() {
       {/* ─── COVERAGE ─────────────────────────────────── */}
       <section className="section-pad brand-rail" aria-labelledby="coverage-title">
         <div className="shell">
-          <span className="section-eyebrow section-eyebrow--red">PAN INDIA COVERAGE</span>
           <h2 id="coverage-title" className="section-heading">
             Security Across <em>India.</em>
           </h2>
@@ -360,7 +356,6 @@ export default function HomePageClient() {
       <section className="industries-protect-section" ref={industriesRef} aria-labelledby="industries-strip-title">
         <div className="industries-protect-inner">
           <div className="industries-protect-content">
-            <span className="section-eyebrow">INDUSTRIES WE PROTECT</span>
             <h2 id="industries-strip-title" className="section-heading">
               Securing What <em>Matters</em> Most.
             </h2>
@@ -418,7 +413,6 @@ export default function HomePageClient() {
       {/* ─── CERTIFICATIONS SHOWCASE ───────────────────── */}
       <section className="certs-showcase brand-rail" aria-labelledby="certs-title">
         <div className="shell">
-          <span className="section-eyebrow section-eyebrow--light">CERTIFIED EXCELLENCE</span>
           <h2 id="certs-title" className="section-heading section-heading--on-dark">
             ISO Certified. <em>IAF Accredited.</em>
           </h2>
@@ -449,7 +443,6 @@ export default function HomePageClient() {
       <section className="stats-testimonial-section section-transition-diagonal" ref={statsRef} aria-labelledby="stats-section-title">
         <div className="stats-testimonial-inner">
           <div className="stats-testimonial-header">
-            <span className="section-eyebrow section-eyebrow--light">OUR COMMITMENT IN NUMBERS</span>
             <h2 id="stats-section-title" className="section-heading section-heading--on-dark">
               Explore <em>More</em>
               <Link href="/about" className="stats-explore-link">
@@ -530,7 +523,6 @@ export default function HomePageClient() {
           }}
         />
         <div className="shell">
-          <span className="section-eyebrow">FAQ</span>
           <h2 id="home-faq-title" className="section-heading" style={{ marginBottom: '0.75rem' }}>
             Frequently Asked <em>Questions.</em>
           </h2>

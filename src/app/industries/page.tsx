@@ -63,7 +63,6 @@ export default function IndustriesPage() {
             <span className="breadcrumb__sep">›</span>
             <span className="breadcrumb__current">Industries</span>
           </nav>
-          <span className="section-eyebrow section-eyebrow--light">WHERE WE OPERATE</span>
           <h1 id="industries-heading" className="industries-hero__title">
             Solutions Crafted for <em>Every</em> Industry.
           </h1>
@@ -121,7 +120,6 @@ export default function IndustriesPage() {
       <section className="industries-card-section" aria-labelledby="industries-grid-heading">
         <div className="industries-card-inner">
           <div className="industries-card-header">
-            <span className="section-eyebrow section-eyebrow--red">SECTOR EXPERTISE</span>
             <h2 id="industries-grid-heading" className="section-heading">
               Explore Security by <em>Industry.</em>
             </h2>
@@ -140,7 +138,6 @@ export default function IndustriesPage() {
           <div className="industries-band__scrim" />
         </div>
         <div className="industries-band__inner">
-          <span className="section-eyebrow section-eyebrow--light">WHY SECTOR FOCUS MATTERS</span>
           <h2 className="section-heading section-heading--on-dark">
             Guards Trained for <em>Your</em> Risk Profile.
           </h2>
@@ -165,7 +162,6 @@ export default function IndustriesPage() {
       {/* ─── FAQ ─── */}
       <section className="section-pad brand-rail" aria-labelledby="ind-faq-title">
         <div className="shell" style={{ maxWidth: '900px' }}>
-          <span className="section-eyebrow section-eyebrow--red">FAQ</span>
           <h2 id="ind-faq-title" className="section-heading" style={{ marginBottom: '0.75rem' }}>
             Industry-Specific Security <em>Questions.</em>
           </h2>
@@ -200,7 +196,6 @@ export default function IndustriesPage() {
       {/* ─── Bottom CTA ─── */}
       <section className="industries-bottom-cta" aria-label="Contact for industry security">
         <div className="industries-bottom-cta__inner">
-          <span className="section-eyebrow section-eyebrow--light">TAILORED SOLUTIONS</span>
           <h2 className="section-heading section-heading--on-dark">
             Ready for Sector-Ready <em>Security?</em>
           </h2>

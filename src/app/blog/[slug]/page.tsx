@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import Image from 'next/image'
 import Link from 'next/link'
 import { BLOG_POSTS } from '@/data/blog'
 import { Calendar, Clock, ArrowLeft, User, ChevronRight } from 'lucide-react'
@@ -89,25 +90,24 @@ export default async function BlogPostPage({
             <span className="breadcrumb__sep">›</span>
             <Link href="/blog" className="breadcrumb__link">Blog</Link>
             <span className="breadcrumb__sep">›</span>
-            <span className="breadcrumb__current" style={{ maxWidth: '200px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', display: 'inline-block', verticalAlign: 'bottom' }}>
+            <span className="breadcrumb__current breadcrumb__current--truncate">
               {post.title}
             </span>
           </nav>
         }
       />
 
-      <section style={{ padding: '0 1.5rem 5rem 1.5rem', background: 'var(--color-paper)' }}>
-        <article style={{ maxWidth: '800px', margin: '0 auto', background: 'var(--color-paper)', borderRadius: '12px', padding: 'clamp(2rem, 5vw, 4rem)', boxShadow: '0 20px 40px rgba(0,0,0,0.05)', marginTop: '-4rem', position: 'relative', zIndex: 10 }}>
-          
-          <header style={{ marginBottom: '3rem', paddingBottom: '2rem', borderBottom: '1px solid rgba(191, 149, 63, 0.2)' }}>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.5rem', color: 'rgba(10,10,10,0.6)', fontFamily: 'var(--font-body)', fontSize: '0.9rem', fontWeight: 600 }}>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+      <section className="blog-post-shell">
+        <article className="blog-post-article">
+          <header className="blog-post-header">
+            <div className="blog-post-meta">
+              <span className="blog-post-meta__item">
                 <Calendar size={16} color="var(--color-cherry)" /> {formattedDate}
               </span>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+              <span className="blog-post-meta__item">
                 <Clock size={16} color="var(--color-cherry)" /> {post.readTime}
               </span>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+              <span className="blog-post-meta__item">
                 <User size={16} color="var(--color-cherry)" /> {post.author}
               </span>
             </div>
@@ -121,18 +121,20 @@ export default async function BlogPostPage({
           </ScrollReveal>
 
           {post.coverImage && (
-            <div style={{ marginBottom: '2rem', borderRadius: '12px', overflow: 'hidden' }}>
-              <img 
-                src={post.coverImage} 
+            <div className="blog-post-cover">
+              <Image
+                src={post.coverImage}
                 alt={`Cover image for ${post.title}`}
-                style={{ width: '100%', height: 'auto', display: 'block' }}
+                width={1600}
+                height={900}
+                className="blog-post-cover__img"
                 loading="lazy"
               />
             </div>
           )}
 
-          <footer style={{ marginTop: '4rem', paddingTop: '2rem', borderTop: '1px solid rgba(191, 149, 63, 0.2)' }}>
-            <Link href="/blog" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontFamily: 'var(--font-display)', fontWeight: 700, color: 'var(--color-cherry)', textDecoration: 'none' }}>
+          <footer className="blog-post-footer">
+            <Link href="/blog" className="blog-post-back">
               <ArrowLeft size={16} /> Back to All Articles
             </Link>
           </footer>
@@ -146,30 +148,24 @@ export default async function BlogPostPage({
           .slice(0, 3)
         if (related.length === 0) return null
         return (
-          <section style={{ padding: '0 1.5rem 5rem 1.5rem', background: 'var(--color-paper)' }}>
-            <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-              <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.75rem', fontWeight: 700, marginBottom: '2rem', color: 'var(--color-midnight)' }}>
+          <section className="blog-post-shell">
+            <div className="blog-post-related-inner">
+              <h2 className="blog-post-related-title">
                 Related Articles
               </h2>
-              <div style={{ display: 'grid', gap: '1.25rem' }}>
+              <div className="blog-post-related-list">
                 {related.map(r => (
                   <Link 
                     key={r.slug}
                     href={`/blog/${r.slug}`}
                     className="related-card"
-                    style={{
-                      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                      padding: '1.25rem 1.5rem', background: 'white', borderRadius: '10px',
-                      boxShadow: '0 4px 12px rgba(0,0,0,0.06)', textDecoration: 'none',
-                      transition: 'transform 0.2s, box-shadow 0.2s'
-                    }}
                   >
                     <div>
-                      <span style={{ fontSize: '0.75rem', color: 'var(--color-cherry)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{r.category}</span>
-                      <h3 style={{ margin: '0.25rem 0 0', fontSize: '1rem', fontWeight: 600, color: 'var(--color-midnight)' }}>{r.title}</h3>
-                      <span style={{ fontSize: '0.8rem', color: 'rgba(10,10,10,0.5)' }}>{r.readTime} · {r.author}</span>
+                      <span className="related-card__cat">{r.category}</span>
+                      <h3 className="related-card__title">{r.title}</h3>
+                      <span className="related-card__meta">{r.readTime} · {r.author}</span>
                     </div>
-                    <ChevronRight size={20} color="var(--color-cherry)" style={{ flexShrink: 0 }} />
+                    <ChevronRight size={20} color="var(--color-cherry)" className="related-card__arrow" />
                   </Link>
                 ))}
               </div>
@@ -177,8 +173,6 @@ export default async function BlogPostPage({
           </section>
         )
       })()}
-
-      <style>{`.related-card:hover{transform:translateX(4px);box-shadow:0 6px 20px rgba(0,0,0,0.1)}`}</style>
     
       <PageLeadSection
         title="Protect Your Facility with Silbar"

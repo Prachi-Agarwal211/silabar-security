@@ -42,11 +42,13 @@ export default function Header() {
   const wasMenuOpen = useRef(false)
   const ticking = useRef(false)
 
-  // Reset menu + scroll state on route change
-  useEffect(() => {
+  // Close the menu on route change — adjust state during render (React-recommended pattern).
+  // The scroll state is handled by the scroll listener effect below, which runs on pathname change.
+  const [prevPathname, setPrevPathname] = useState(pathname)
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname)
     setMenuOpen(false)
-    setScrolled(typeof window !== 'undefined' ? window.scrollY > 24 : false)
-  }, [pathname])
+  }
 
   useEffect(() => {
     const onScroll = () => {

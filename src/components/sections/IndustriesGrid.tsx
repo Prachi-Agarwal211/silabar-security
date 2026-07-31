@@ -30,29 +30,6 @@ const INDUSTRY_ICONS: Record<string, React.ElementType> = {
   'commercial-buildings': Building2,
 }
 
-// Industry gradient backgrounds
-const INDUSTRY_GRADIENTS: Record<string, string> = {
-  'manufacturing': 'linear-gradient(135deg, #1a0e08 0%, #3d2210 100%)',
-  'hospitals':     'linear-gradient(135deg, #0a0d1a 0%, #111630 100%)',
-  'hotels':        'linear-gradient(135deg, #08120a 0%, #122018 100%)',
-  'warehouses':    'linear-gradient(135deg, #0d0808 0%, #251010 100%)',
-  'banks':         'linear-gradient(135deg, #080a0d 0%, #141824 100%)',
-  'corporate':     'linear-gradient(135deg, #0d0a12 0%, #1c1530 100%)',
-  'education':     'linear-gradient(135deg, #0a0d0a 0%, #121f12 100%)',
-  'retail':        'linear-gradient(135deg, #12080a 0%, #2a1015 100%)',
-  'data-centers':  'linear-gradient(135deg, #050810 0%, #0a1020 100%)',
-  'government':    'linear-gradient(135deg, #100800 0%, #251a00 100%)',
-  'residential':   'linear-gradient(135deg, #080d10 0%, #101820 100%)',
-  'infrastructure':'linear-gradient(135deg, #0d0808 0%, #201010 100%)',
-  'automobile':    'linear-gradient(135deg, #0a0d12 0%, #152030 100%)',
-  'pharma':        'linear-gradient(135deg, #0a120a 0%, #152a15 100%)',
-  'textile':       'linear-gradient(135deg, #120a10 0%, #2a1520 100%)',
-  'solar-plants':  'linear-gradient(135deg, #12100a 0%, #2a2515 100%)',
-  'mining':        'linear-gradient(135deg, #120a05 0%, #2a1508 100%)',
-  'e-commerce':    'linear-gradient(135deg, #0a0a12 0%, #151530 100%)',
-  'commercial-buildings': 'linear-gradient(135deg, #0d0a0d 0%, #1c151c 100%)',
-}
-
 const DEFAULT_ICON = Building2
 
 interface IndustriesGridProps {
@@ -108,13 +85,12 @@ export default function IndustriesGrid({ industries }: IndustriesGridProps) {
     <div className="industries-card-grid" ref={containerRef}>
       {industries.map((industry, i) => {
         const Icon = INDUSTRY_ICONS[industry.slug] || DEFAULT_ICON
-        const gradient = INDUSTRY_GRADIENTS[industry.slug] || 'linear-gradient(135deg, #0d0808 0%, #201010 100%)'
         return (
           <Link
             key={industry.slug}
             href={`/industries/${industry.slug}`}
             className="industry-photo-card"
-            style={{ background: gradient }}
+            style={{ background: 'var(--color-midnight-900)' }}
             aria-label={`${industry.shortTitle || industry.title} security solutions`}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}

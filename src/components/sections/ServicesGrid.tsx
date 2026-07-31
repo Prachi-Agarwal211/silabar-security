@@ -166,12 +166,11 @@ export default function ServicesGrid({ services }: ServicesGridProps) {
       <div className="sv-inner">
         {/* Header */}
         <div className="sv-section-header">
-          <span className="section-eyebrow section-eyebrow--red">OUR SERVICES</span>
           <h2 id="sv-heading" className="sv-heading">
-            COMPREHENSIVE SECURITY <em>SOLUTIONS</em> FOR EVERY NEED.
+            SECURITY <em>SOLUTIONS</em> FOR EVERY NEED.
           </h2>
           <p className="sv-subtitle">
-            Delivering trusted, technology-driven, and professional security
+            Delivering professional, technology-driven security
             services tailored to protect what matters most.
           </p>
         </div>

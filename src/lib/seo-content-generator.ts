@@ -1,5 +1,5 @@
 import { CityLocation, StateLocation } from '@/data/locations'
-import { CONTACT } from '@/lib/config'
+import { CONTACT, getOfficeForCitySlug } from '@/lib/config'
 
 function stringToHash(str: string): number {
   let hash = 0
@@ -912,7 +912,7 @@ const CHALLENGES_POOL = [
   },
   {
     title: 'Vendor & contractor access management',
-    desc: 'Contractors, AMC technicians, and delivery personnel enter and exit throughout the day. Without a robust contractor pass system and time-bound clearance, sites risk tailgating and unescorted movement.',
+    desc: 'Contractors, AMC technicians, and delivery personnel enter and exit throughout the day. Without a contractor pass system and time-bound clearance, sites risk tailgating and unescorted movement.',
   },
   {
     title: 'Cargo theft during transit & loading',
@@ -984,7 +984,7 @@ const CHALLENGES_POOL = [
   },
   {
     title: 'VIP movement security coordination',
-    desc: 'Unscheduled VIP visits create scramble. Pre-planned route security, room sweeps, elevator holds, and discrete cordon protocols ensure seamless protection without disrupting facility operations.',
+    desc: 'Unscheduled VIP visits create scramble. Pre-planned route security, room sweeps, elevator holds, and discrete cordon protocols ensure protection without disrupting facility operations.',
   },
   {
     title: 'Lone women employee night safety',
@@ -1058,7 +1058,7 @@ const DELIVERABLES_POOL = [
   'Visitor management app integration where required by client',
   'Real-time incident dashboard with SMS/WhatsApp alert notifications',
   'Monthly security performance scorecard with key metrics and trend analysis',
-  'Annual comprehensive security audit report with vulnerability assessment',
+  'Annual security audit report with vulnerability assessment',
   'Digital visitor log with photo capture and ID card scanning',
   'GPS-enabled guard tour tracking system with checkpoint violation alerts',
   'Fire drill execution reports with timestamped photos and attendance logs',
@@ -1205,7 +1205,7 @@ const WHY_POINTS_POOL = [
   'Monthly MIS reports with incident trend analytics, attendance summaries, and compliance dashboards',
   'Police-verified manpower with court record background checks and periodic reverification cycles',
   'ISO 14001:2015 environmental management compliance for eco-conscious facility operations',
-  'Comprehensive insurance coverage — public liability, employee compensation, and third-party property damage',
+  'Insurance coverage — public liability, employee compensation, and third-party property damage',
   'Local expertise across 19 PSARA-licensed states with native-language guards and regional team presence',
   'Real-time GPS-based attendance and patrol tracking with supervisor verification alerts',
   'In-house training facility with structured curriculum, certified trainers, and periodic skill assessments',
@@ -1217,7 +1217,7 @@ const WHY_POINTS_POOL = [
   '24/7 emergency helpline for client escalation — single-point contact for after-hours security concerns',
   'Annual third-party security audit with vulnerability assessment, gap analysis, and remediation roadmap',
   'Customised post order books tailored to each facility layout, risk matrix, and client-specific SOPs',
-  'Partnership network of PSARA-certified agencies enabling seamless pan-India scalability',
+  'Partnership network of PSARA-certified agencies enabling pan-India scalability',
   'Employee welfare programmes — medical insurance, skill development, and recognition initiatives for guard retention',
   'Compliance with Sexual Harassment of Women at Workplace Act for lady guard deployment protocols',
   'Bi-annual client satisfaction surveys with published results and documented action plans for improvement',
@@ -1263,7 +1263,8 @@ export type LocationSEOContent = {
   trainingBlurb: string
   operations: string[]
   compliance: string[]
-  whyHeading: string
+  /** Real, verifiable local facts — never pooled templates. Rendered prominently near the top. */
+  localFacts: string[]
   whyPoints: string[]
   processHeading: string
   process: ProcessStep[]
@@ -1438,7 +1439,7 @@ function buildFaqs(place: string, region: string, seed: number, isCity: boolean)
   const base: FAQItem[] = [
     {
       q: `Do you provide security guard services in ${place}?`,
-      a: `Yes. Silbar Security Services Pvt. Ltd. deploys professional security manpower and related services in ${place}${isCity ? `, ${region}` : ''}. Share your site details for a tailored proposal and mobilisation timeline.`,
+      a: `Silbar Security Services Pvt. Ltd. deploys professional security manpower and related services in ${place}${isCity ? `, ${region}` : ''}. Share your site details for a tailored proposal and mobilisation timeline.`,
     },
     {
       q: `What security services can I hire in ${place}?`,
@@ -1446,7 +1447,7 @@ function buildFaqs(place: string, region: string, seed: number, isCity: boolean)
     },
     {
       q: `Are security guards in ${place} background verified?`,
-      a: `Yes. Personnel are background-verified as part of our recruitment process and inducted on site instructions before taking full charge of posts in ${place}.`,
+      a: `Personnel are background-verified as part of our recruitment process and inducted on site instructions before taking full charge of posts in ${place}.`,
     },
     {
       q: `How quickly can Silbar deploy guards in ${place}?`,
@@ -1462,11 +1463,11 @@ function buildFaqs(place: string, region: string, seed: number, isCity: boolean)
     },
     {
       q: `Can you secure factories and warehouses in ${place}?`,
-      a: `Yes. Industrial and logistics sites are a core use-case — gate control, material movement discipline, perimeter awareness, and shift supervision as scoped for ${place}.`,
+      a: `Industrial and logistics sites are a core use-case — gate control, material movement discipline, perimeter awareness, and shift supervision as scoped for ${place}.`,
     },
     {
       q: `Do you provide lady security guards in ${place}?`,
-      a: `Yes, where the site requires gender-sensitive coverage (hospitals, schools, certain corporate floors, societies). Availability is confirmed at proposal stage for ${place}.`,
+      a: `Where the site requires gender-sensitive coverage (hospitals, schools, certain corporate floors, societies). Availability is confirmed at proposal stage for ${place}.`,
     },
     {
       q: `What supervision do clients get in ${place}?`,
@@ -1474,7 +1475,7 @@ function buildFaqs(place: string, region: string, seed: number, isCity: boolean)
     },
     {
       q: `Can Silbar handle multi-location security including ${place}?`,
-      a: `Yes. Multi-site clients can consolidate under one partner model with local deployment in ${place} and central coordination from our operating team.`,
+      a: `Multi-site clients can consolidate under one partner model with local deployment in ${place} and central coordination from our operating team.`,
     },
     {
       q: `What documents should I prepare for onboarding in ${place}?`,
@@ -1501,12 +1502,32 @@ export function generateCityContent(city: CityLocation): LocationSEOContent {
   const landmarkAreas = landmarks.length >= 3 ? landmarks.slice(0, 3).join(', ') : ''
   const landmarkSuffix = landmarkAreas ? ` Key locations include ${landmarkAreas}.` : ''
 
+  // REAL local facts — verifiable, place-specific data surfaced prominently near the top of the
+  // page (landmarks + office presence). Never pooled template paragraphs.
+  const localFacts: string[] = []
+  if (landmarks.length > 0) {
+    localFacts.push(
+      `Active coverage across ${place} — including ${landmarks.slice(0, 3).join(', ')}${landmarks.length > 3 ? ' and surrounding zones' : ''}.`
+    )
+  }
+  const office = getOfficeForCitySlug(city.slug)
+  if (office) {
+    const officeCity = office.city.replace(/\s*\(.*?\)\s*$/, '') // strip "(Regional Office)" suffix
+    localFacts.push(
+      `${office.badge} — ${officeCity} (${office.pin}), with local mobilisation and account support for ${place} sites.`
+    )
+  } else {
+    localFacts.push(
+      `Deployments in ${place} are coordinated from Silbar's offices in New Delhi, Gurugram, Jaipur, Noida and Ahmedabad — with local mobilisation and account management for ${place} sites.`
+    )
+  }
+
   const intro = [
     pick(seed, 1, [
       `Silbar Security Services Pvt. Ltd. provides professional security guard services in ${place}, ${region}. We deploy trained, background-verified manpower for factories, offices, hospitals, warehouses, retail sites, residential communities, and institutional campuses across the city.${landmarkSuffix}`,
       `If you are searching for a reliable security agency in ${place}, Silbar Security Services Pvt. Ltd. delivers manned guarding and facility protection with ISO-certified processes, PSARA compliance, clear commercials, and responsive coordination for clients across ${region}.`,
       `Businesses and institutions in ${place} need more than a uniform at the gate. Silbar Security Services Pvt. Ltd. focuses on disciplined posts, site-specific duty instructions, supervisor oversight, monthly compliance reporting, and measurable service standards tailored to local operating conditions in ${region}.`,
-      `Looking for trusted security guards in ${place}? Silbar Security Services Pvt. Ltd. provides end-to-end security deployment — from gate management and night patrols to visitor control and incident reporting — across ${region}.`,
+      `Looking for security guards in ${place}? Silbar Security Services Pvt. Ltd. provides security deployment — from gate management and night patrols to visitor control and incident reporting — across ${region}.`,
       `Silbar Security Services Pvt. Ltd. is your ${tierLabel} security partner in ${place}, ${region}. We bring ISO-certified processes and PSARA-licensed manpower to factories, offices, hospitals, residential societies, and commercial establishments across the city.`,
       `${place} businesses trust Silbar Security Services Pvt. Ltd. for reliable, compliance-driven security solutions. From ${sectors.slice(0, 2).join(' to ')} — our ${tierLabel} team in ${region} delivers site-specific guarding, supervision, and reporting.`,
       `Need security in ${place}? Silbar Security Services Pvt. Ltd. combines PSARA licensing, 4 ISO certifications, and local expertise in ${region} to protect your facility — whether a factory gate, a corporate lobby, or a residential township.`,
@@ -1591,10 +1612,10 @@ export function generateCityContent(city: CityLocation): LocationSEOContent {
     whoNeeds,
     trainingHeading: `Guard training for ${place} deployments`,
     trainingTopics,
-    trainingBlurb: `Beyond standard guarding skills, personnel assigned to your ${place} site receive comprehensive induction covering your specific facility layout, emergency contact numbers, visitor management rules, restricted area protocols, and shift handover procedures — ensuring day-one readiness.`,
+    trainingBlurb: `Beyond standard guarding skills, personnel assigned to your ${place} site receive induction covering your specific facility layout, emergency contact numbers, visitor management rules, restricted area protocols, and shift handover procedures — ensuring day-one readiness.`,
     operations,
     compliance,
-    whyHeading: `Why organisations choose Silbar in ${place}`,
+    localFacts,
     whyPoints,
     processHeading: `How Silbar deploys security in ${place}`,
     process,
@@ -1602,7 +1623,7 @@ export function generateCityContent(city: CityLocation): LocationSEOContent {
     closingCta: `Ready to secure your facility in ${place}? Call ${CONTACT.phone}, WhatsApp via the form below, or email ${CONTACT.email}. Share your facility type, number of posts, and shift requirements for a fast, transparent proposal.`,
     metaDescription: pick(seed, 20, [
       `Security guard company in ${place}, ${region}. Tier-${city.tier}, population ${city.population}. Serving ${sectors.slice(0, 3).join(', ')}. PSARA licensed, ISO certified. Call ${CONTACT.phone}.`,
-      `Trusted security agency in ${place}, ${region}. ${sectors.slice(0, 2).join(' and ')} security. PSARA licensed, ISO 9001:2015 certified. Get a free quote.`,
+      `Security agency in ${place}, ${region}. ${sectors.slice(0, 2).join(' and ')} security. PSARA licensed, ISO 9001:2015 certified. Get a free quote.`,
       `${place} security guard services — ${sectors.slice(0, 2).join(', ')} protection. Verified manpower, PSARA licensed, PAN India deployments. Call ${CONTACT.phone}.`,
       `Professional security company serving ${place}, ${region}. Manned guarding, industrial security, and facility protection. ISO & PSARA certified. Enquire now.`,
       `Looking for security guards in ${place}? Silbar Security Services Pvt. Ltd. — Tier-${city.tier} security partner with PSARA license and 4 ISO certifications serving ${sectors.slice(0, 2).join(', ')} clients.`,
@@ -1621,13 +1642,29 @@ export function generateStateContent(state: StateLocation): LocationSEOContent {
   const citiesList = state.majorCities.slice(0, 6).join(', ')
   const sectors = sectorsForState(state.slug, seed)
 
+  // REAL local facts — verifiable state data (capital, districts, major cities, capital landmarks).
+  // capitalKey falls back to the first major city's slug when the capital isn't in CITY_LANDMARKS
+  // (e.g. 'New Delhi' → key 'delhi').
+  const capitalKey = state.capital.toLowerCase().replace(/\s+/g, '-')
+  const fallbackCityKey = state.majorCities[0]?.toLowerCase().replace(/\s+/g, '-') ?? ''
+  const capitalLandmarks = getLandmarks(capitalKey)
+  const effectiveLandmarks =
+    capitalLandmarks.length > 0 ? capitalLandmarks : getLandmarks(fallbackCityKey)
+  const localFacts: string[] = [
+    `Statewide coverage in ${place} — deployments coordinated from the capital, ${state.capital}, across ${state.districts} districts.`,
+    `Major cities served in ${place}: ${citiesList}.`,
+  ]
+  if (effectiveLandmarks.length > 0) {
+    localFacts.push(`Key zones around ${state.capital}: ${effectiveLandmarks.slice(0, 3).join(', ')}.`)
+  }
+
   const intro = [
     `Silbar Security Services Pvt. Ltd. provides professional security solutions across ${place}, covering major cities including ${citiesList} and client sites across ${state.districts} districts with trained, background-verified manpower.`,
     `With a state population of about ${state.population}, ${place} has diverse security demand spanning ${sectors.slice(0, 5).join(', ')} and more. Each sector requires a tailored approach to manpower deployment, supervision intensity, and compliance management.`,
     `Silbar Security Services Pvt. Ltd. is PSARA licensed and operates with 4 ISO certifications (IAF accredited), bringing national standards to every deployment in ${place} — from single society desks to multi-plant industrial contracts.`,
     pick(seed, 2, [
       `Our approach in ${place} prioritises verified guards with police background checks, clear site-specific duty instructions, regular supervisor oversight, and statutory-aware commercial structures so clients can scale posts without losing quality control.`,
-      `Whether you need a society gate in ${state.capital} or comprehensive industrial security across multiple cities in ${place}, Silbar designs manpower, shifts, and reporting to match your operational reality.`,
+      `Whether you need a society gate in ${state.capital} or industrial security across multiple cities in ${place}, Silbar designs manpower, shifts, and reporting to match your operational reality.`,
       `Businesses expanding across ${place} benefit from a single security partner model: consistent training standards, dedicated account management, monthly compliance documentation, and transparent proposals for each site.`,
     ]),
     `Silbar Security Services Pvt. Ltd. operates from New Delhi (Registered Office), Gurugram (Corporate Office), and regional offices in Jaipur, Noida, and Ahmedabad. For ${place} enquiries, call ${CONTACT.phone}, email ${CONTACT.email}, or submit the WhatsApp form on this page.`,
@@ -1675,7 +1712,7 @@ export function generateStateContent(state: StateLocation): LocationSEOContent {
       `Monthly compliance documentation — attendance records, wage registers, PF/ESIC challans — is provided to clients for complete transparency and audit readiness.`,
       `Silbar Security Services Pvt. Ltd. holds 4 ISO certifications (IAF accredited) and PSARA licenses across 19 states. Our process discipline is ISO-certified; site delivery excellence depends on clear client instructions and structured joint onboarding at every ${place} location.`,
     ],
-    whyHeading: `Why choose Silbar Security Services Pvt. Ltd. in ${place}`,
+    localFacts,
     whyPoints: pickN(seed, WHY_POINTS_POOL, 10),
     processHeading: `How Silbar deploys security for ${place} sites`,
     process: PROCESS_STEPS.map((s) => ({

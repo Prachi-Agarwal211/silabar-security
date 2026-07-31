@@ -40,10 +40,10 @@
   opacity: 0.8;
 }
 
-/* Main grid — 4 columns */
+/* Main grid — 5 columns */
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
   gap: clamp(1.5rem, 3vw, 3rem);
   max-width: 1200px;
   margin: 0 auto;
@@ -234,11 +234,11 @@
 /* ─── Responsive ─── */
 @media (max-width: 1024px) {
   .footer-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
   }
   .footer-brand-col {
-    grid-column: span 2;
+    grid-column: span 3;
   }
   .footer-brand-row {
     margin-bottom: 0.5rem;

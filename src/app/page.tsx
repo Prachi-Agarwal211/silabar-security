@@ -6,8 +6,8 @@ export const metadata: Metadata = {
   description: 'Silbar Security Services Pvt. Ltd. — 4 ISO certified, PSARA licensed across 19 states. Manned guarding, CCTV, facility management, VIP protection across India.',
   alternates: { canonical: 'https://www.silbarsecurity.in' },
   openGraph: {
-    title: 'Silbar Security Services Pvt. Ltd. | Trusted Security Agency India',
-    description: 'India\'s trusted security agency with PSARA licenses across 19 states and 4 ISO certifications.',
+    title: 'Silbar Security Services Pvt. Ltd. | PSARA-Licensed Security Agency India',
+    description: 'India\'s PSARA-licensed security agency serving 19 states with 4 ISO certifications.',
   },
 }
 

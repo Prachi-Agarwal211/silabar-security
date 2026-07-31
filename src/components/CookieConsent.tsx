@@ -43,7 +43,7 @@ export default function CookieConsent() {
       style={{ bottom: "max(16px, env(safe-area-inset-bottom))" }}
     >
       <div className="max-w-3xl mx-auto pointer-events-auto">
-        <div className="relative rounded-2xl bg-[#0B0E14]/95 backdrop-blur-2xl border border-white/10 shadow-[0_20px_80px_rgba(0,0,0,0.8)] overflow-hidden">
+        <div className="relative rounded-2xl bg-[#0B0E14] border border-white/10 shadow-[0_20px_80px_rgba(0,0,0,0.8)] overflow-hidden">
           {/* Accent bar — Silbar gold/red */}
           <div className="h-[2px] w-full bg-gradient-to-r from-[#8C1F32] via-[#C49B4A] to-[#8C1F32] opacity-60" />
 
@@ -198,7 +198,7 @@ export function ConsentRevokeWidget() {
         revokeConsent();
         window.location.reload();
       }}
-      className="fixed bottom-4 left-4 z-[100] w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/20 transition-all backdrop-blur-md"
+      className="fixed bottom-4 left-4 z-[100] w-10 h-10 rounded-full bg-[#0B0E14] border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/20 transition-all"
       aria-label="Change cookie preferences"
       title="Cookie Settings"
     >

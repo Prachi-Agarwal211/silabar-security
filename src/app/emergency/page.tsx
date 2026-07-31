@@ -8,10 +8,10 @@ import { CONTACT } from '@/lib/config'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
-  title: 'Emergency Contact',
+  title: '24/7 Emergency Security Contact — Immediate Response | Silbar Security Services Pvt. Ltd.',
   description: '24/7 emergency security contact for Silbar Security Services Pvt. Ltd. clients. Immediate response for security incidents, fire emergencies, and critical situations.',
   ...ogMetadata(
-    'Emergency Contact',
+    '24/7 Emergency Security Contact — Immediate Response | Silbar Security Services Pvt. Ltd.',
     '24/7 emergency security contact for Silbar Security Services Pvt. Ltd. clients. Immediate response for security incidents, fire emergencies, and critical situations.',
     '/emergency'
   ),
@@ -21,7 +21,6 @@ export default function EmergencyPage() {
   return (
     <main id="main-content">
       <PageHero
-        eyebrow="EMERGENCY"
         title={
           <>
             <SplitTextReveal text="24/7 EMERGENCY" />

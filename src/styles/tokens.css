@@ -32,12 +32,6 @@
   --color-whatsapp: #25D366;
   --color-whatsapp-dark: #128C7E;
 
-  /* Gradient Presets */
-  --gradient-cherry: linear-gradient(135deg, #8C1F32 0%, #5C1220 100%);
-  --gradient-cherry-gold: linear-gradient(135deg, #8C1F32 0%, #BF953F 100%);
-  --gradient-gold: linear-gradient(90deg, #BF953F 0%, #D4AF37 50%, #BF953F 100%);
-  --gradient-dark: linear-gradient(180deg, #0B0E14 0%, #12161F 100%);
-  --gradient-mesh: radial-gradient(ellipse at 20% 50%, rgba(191, 149, 63, 0.1) 0%, transparent 50%);
   --color-cream-dark: #E0D8CA;
 
   --color-champagne: #E8DFC8;     /* pale gold-white for the gold/white-mix zone */

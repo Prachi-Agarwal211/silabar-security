@@ -82,7 +82,7 @@ const LEADERS = [
   {
     name: 'Mr. Nakul Singh Jadaun',
     role: 'Director',
-    bio: 'Mr. Nakul Singh Jadaun brings valuable experience from the security services industry along with operational and management expertise. Having worked with organizations including Bajaj and BSS Security, he plays a key role in strengthening operational efficiency, quality control, manpower deployment, and customer satisfaction across the organization. His focus on disciplined field execution, client servicing, and operational planning has been instrumental in Silbar Security\'s growth as a trusted PAN India security partner.',
+    bio: 'Mr. Nakul Singh Jadaun brings valuable experience from the security services industry along with operational and management expertise. Having worked with organizations including Bajaj and BSS Security, he plays a key role in strengthening operational efficiency, quality control, manpower deployment, and customer satisfaction across the organization. His focus on disciplined field execution, client servicing, and operational planning has been instrumental in Silbar Security\'s growth as a PSARA-licensed PAN India security partner.',
   },
 ]
 
@@ -109,7 +109,6 @@ export default function AboutPage() {
               <span className="breadcrumb__sep">›</span>
               <span className="breadcrumb__current">About</span>
             </nav>
-            <span className="section-eyebrow section-eyebrow--light">ABOUT SILBAR SECURITY</span>
             <h1 id="about-page-heading" className="about-hero__title">
               Building Trust Through{' '}
               <em>Professional</em> Security &amp; Compliance
@@ -179,7 +178,6 @@ export default function AboutPage() {
       <section className="about-story" id="our-story">
         <div className="about-story__layout">
           <ScrollReveal className="about-story__text">
-            <span className="section-eyebrow section-eyebrow--red">OUR STORY</span>
             <h2 className="section-heading about-story-heading">
               A Journey of <em>Excellence.</em>
             </h2>
@@ -246,7 +244,6 @@ export default function AboutPage() {
       <section className="about-timeline" aria-labelledby="timeline-heading">
         <div className="about-timeline__inner">
           <ScrollReveal>
-            <span className="section-eyebrow section-eyebrow--light">MILESTONES</span>
             <h2 id="timeline-heading" className="section-heading section-heading--on-dark about-timeline__title">
               How We <em>Grew.</em>
             </h2>
@@ -271,7 +268,6 @@ export default function AboutPage() {
       <section className="about-mv" aria-labelledby="mv-heading">
         <div className="about-mv__inner">
           <ScrollReveal className="about-mv__header">
-            <span className="section-eyebrow section-eyebrow--red">PURPOSE</span>
             <h2 id="mv-heading" className="section-heading">
               Mission &amp; <em>Vision.</em>
             </h2>
@@ -295,7 +291,7 @@ export default function AboutPage() {
               </div>
               <h3>Our Vision</h3>
               <p>
-                To become one of India&apos;s most respected and trusted Security Guard Companies,
+                To become one of India&apos;s most respected Security Guard Companies,
                 recognized for professionalism, compliance, innovation, operational excellence,
                 and long-term customer relationships while setting new benchmarks for the
                 private security industry.
@@ -309,7 +305,6 @@ export default function AboutPage() {
       <section className="about-values" aria-labelledby="values-heading">
         <div className="about-values__inner">
           <ScrollReveal>
-            <span className="section-eyebrow section-eyebrow--red">WHAT WE STAND FOR</span>
             <h2 id="values-heading" className="section-heading">
               Principles That <em>Guide</em> Every Deployment.
             </h2>
@@ -333,7 +328,6 @@ export default function AboutPage() {
         </div>
         <div className="about-leadership__inner">
           <ScrollReveal>
-            <span className="section-eyebrow section-eyebrow--light">LEADERSHIP</span>
             <h2 id="leadership-heading" className="section-heading section-heading--on-dark">
               Experienced <em>Leadership.</em>
             </h2>
@@ -357,7 +351,6 @@ export default function AboutPage() {
       <section className="about-certs" aria-labelledby="certs-heading">
         <div className="about-certs__inner">
           <ScrollReveal>
-            <span className="section-eyebrow section-eyebrow--red">TRUST &amp; COMPLIANCE</span>
             <h2 id="certs-heading" className="section-heading about-certs__title">
               Certified. Compliant. <em>Accountable.</em>
             </h2>
@@ -394,7 +387,6 @@ export default function AboutPage() {
       <section className="section-pad" aria-labelledby="commitments-heading">
         <div className="shell" style={{ maxWidth: '900px' }}>
           <ScrollReveal>
-            <span className="section-eyebrow section-eyebrow--red">OUR COMMITMENTS</span>
             <h2 id="commitments-heading" className="section-heading" style={{ marginBottom: '1rem' }}>
               What We Stand <em>For.</em>
             </h2>
@@ -427,7 +419,6 @@ export default function AboutPage() {
       <section className="section-pad brand-rail" aria-labelledby="about-faq-title">
         <div className="shell" style={{ maxWidth: '900px' }}>
           <ScrollReveal>
-            <span className="section-eyebrow section-eyebrow--red">FAQ</span>
             <h2 id="about-faq-title" className="section-heading" style={{ marginBottom: '0.75rem' }}>
               Questions About <em>Silbar Security.</em>
             </h2>
@@ -466,9 +457,8 @@ export default function AboutPage() {
       {/* ─── Bottom CTA ─── */}
       <section className="about-cta-section">
         <div className="about-cta-inner">
-          <span className="section-eyebrow section-eyebrow--light">PAN INDIA OPERATIONS</span>
           <h2 className="section-heading section-heading--on-dark">
-            Ready to Work with India&apos;s <em>Trusted</em> Security Force?
+            Ready to Work with India&apos;s <em>7,000-Strong</em> Security Force?
           </h2>
           <p className="about-cta__sub">
             Registered Office: Statesman House, Barakhamba Road, Connaught Place, New Delhi.

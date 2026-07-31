@@ -6,7 +6,7 @@ interface MagneticButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEleme
   children: React.ReactNode
   strength?: number
   className?: string
-  as?: string | React.ComponentType<any>
+  as?: React.ElementType
   href?: string
   target?: string
   rel?: string

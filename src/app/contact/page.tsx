@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Phone, Mail, MapPin, Clock, MessageCircle, ArrowRight, Map } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import QueryForm from '@/components/sections/QueryForm'
-import { CONTACT, GOOGLE_REVIEWS } from '@/lib/config'
+import { CONTACT, GOOGLE_REVIEWS, type OfficeLocation } from '@/lib/config'
 import { ogMetadata } from '@/lib/metadata'
 import { GEO_COORDINATES } from '@/lib/geo-coordinates'
 
@@ -26,8 +26,10 @@ export default function ContactPage() {
         })
       }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{
-        __html: JSON.stringify((CONTACT.officeLocations as unknown as any[]).map((office: any, i: number) => {
-          const key = office.city.toLowerCase().includes('delhi') ? 'delhi-office'
+        __html: JSON.stringify(CONTACT.officeLocations.map((office: OfficeLocation, i: number) => {
+          // Read primitives before any control-flow narrowing (placeName is an always-truthy literal)
+          const city = office.city
+          const key = city.toLowerCase().includes('delhi') ? 'delhi-office'
             : office.city.toLowerCase().includes('gurugram') ? 'gurugram-office'
             : office.city.toLowerCase().includes('jaipur') ? 'jaipur-office'
             : office.city.toLowerCase().includes('noida') ? 'noida-office'
@@ -35,11 +37,11 @@ export default function ContactPage() {
             : ''
           const geo = (office.lat && office.lng)
             ? { lat: office.lat, lng: office.lng }
-            : key ? (GEO_COORDINATES as any)[key] : null
+            : key ? (GEO_COORDINATES[key] ?? null) : null
           return {
             '@context': 'https://schema.org',
             '@type': 'LocalBusiness',
-            name: office.placeName || `Silbar Security Services Pvt. Ltd. — ${office.city}`,
+            name: office.placeName || `Silbar Security Services Pvt. Ltd. — ${city}`,
             legalName: 'Silbar Security Services Pvt. Ltd.',
             telephone: office.phoneRaw,
             email: CONTACT.email,
@@ -47,8 +49,8 @@ export default function ContactPage() {
             hasMap: office.mapUrl,
             address: {
               '@type': 'PostalAddress',
-              streetAddress: office.address.split(',')[0].trim(),
-              addressLocality: office.city.replace(/\s*\(.*?\)\s*/g, '').trim(),
+              streetAddress: (office.address.split(',')[0] ?? '').trim(),
+              addressLocality: city.replace(/\s*\(.*?\)\s*/g, '').trim(),
               addressRegion: office.region,
               postalCode: office.pin || undefined,
               addressCountry: 'IN',
@@ -82,7 +84,6 @@ export default function ContactPage() {
               <span className="breadcrumb__sep">›</span>
               <span className="breadcrumb__current">Contact</span>
             </nav>
-            <span className="section-eyebrow section-eyebrow--red">GET IN TOUCH</span>
             <p className="contact-reg-office">
               Offices in Delhi, Gurugram, Jaipur, Noida &amp; Ahmedabad
             </p>
@@ -120,15 +121,15 @@ export default function ContactPage() {
                 </span>
                 <ArrowRight size={14} aria-hidden="true" className="contact-info-row__arrow" />
               </a>
-              {CONTACT.officeLocations.map((office) => (
-                <div key={(office as any).city} className="contact-info-row contact-info-row--static">
+              {CONTACT.officeLocations.map((office: OfficeLocation) => (
+                <div key={office.city} className="contact-info-row contact-info-row--static">
                   <span className="contact-info-row__icon" aria-hidden="true"><MapPin size={18} /></span>
                   <span className="contact-info-row__body">
-                    <span className="contact-info-row__label">{(office as any).badge}</span>
-                    <span className="contact-info-row__value">{(office as any).address}</span>
+                    <span className="contact-info-row__label">{office.badge}</span>
+                    <span className="contact-info-row__value">{office.address}</span>
                   </span>
-                  {(office as any).mapUrl && (
-                    <a href={(office as any).mapUrl} target="_blank" rel="noopener noreferrer" className="contact-info-row__map" aria-label={`View ${(office as any).city} on map`}>
+                  {office.mapUrl && (
+                    <a href={office.mapUrl} target="_blank" rel="noopener noreferrer" className="contact-info-row__map" aria-label={`View ${office.city} on map`}>
                       <Map size={14} />
                     </a>
                   )}
@@ -206,17 +207,18 @@ export default function ContactPage() {
 
           {/* Office locations */}
           <ScrollReveal delay={0.1} className="contact-offices">
-            <span className="section-eyebrow section-eyebrow--red u-block u-mb-1">OUR OFFICES</span>
             <h2 className="section-heading contact-offices-heading">
               Find Us <em>Nearby.</em>
             </h2>
             <div className="contact-offices-grid">
-              {CONTACT.officeLocations.map((office) => (
-                <div key={office.city} className="office-card">
+              {CONTACT.officeLocations.map((office: OfficeLocation) => {
+                const city = office.city
+                return (
+                <div key={city} className="office-card">
                   <div className="office-card__badge">{office.badge}</div>
                   <div className="office-card__header">
                     <MapPin size={18} aria-hidden="true" />
-                    {(office as any).placeName || office.city}
+                    {office.placeName || city}
                   </div>
                   <p className="office-card__address">{office.address}</p>
                   <a href={`tel:${office.phoneRaw}`} className="office-card__phone">
@@ -231,7 +233,8 @@ export default function ContactPage() {
                     </a>
                   )}
                 </div>
-              ))}
+                )
+              })}
             </div>
           </ScrollReveal>
 

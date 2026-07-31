@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useSyncExternalStore } from "react";
 import Script from "next/script";
 import { hasAnalyticsConsent } from "@/lib/cookie-consent";
 
@@ -9,16 +9,17 @@ import { hasAnalyticsConsent } from "@/lib/cookie-consent";
  * Remains hidden until cookie consent (analytics) is granted.
  * Re-checks when a 'silbar-consent-change' custom event fires.
  */
+function subscribeToConsent(onStoreChange: () => void) {
+  window.addEventListener("silbar-consent-change", onStoreChange);
+  return () => window.removeEventListener("silbar-consent-change", onStoreChange);
+}
+
 export default function AnalyticsScripts() {
-  const [consented, setConsented] = useState(false);
-
-  useEffect(() => {
-    setConsented(hasAnalyticsConsent());
-
-    const handle = () => setConsented(hasAnalyticsConsent());
-    window.addEventListener("silbar-consent-change", handle);
-    return () => window.removeEventListener("silbar-consent-change", handle);
-  }, []);
+  const consented = useSyncExternalStore(
+    subscribeToConsent,
+    () => hasAnalyticsConsent(),
+    () => false // server snapshot — never render analytics during SSR/hydration
+  );
 
   if (!consented) return null;
 

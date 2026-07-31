@@ -97,7 +97,7 @@
 }
 
 .locations-section--alt {
-  background: linear-gradient(180deg, var(--color-champagne) 0%, var(--color-paper) 100%);
+  background: var(--color-paper);
 }
 
 .locations-section__inner {
