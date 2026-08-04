@@ -95,7 +95,7 @@ export default function ScrollExperience() {
       <div className="hero-content-layer">
         <div className="trust-eyebrow trust-eyebrow--dark">
           <span className="trust-eyebrow__rule trust-eyebrow__rule--dark" />
-          INTEGRATED · RELIABLE · RESPONSIBLE
+          SILBAR SECURITY SERVICES PVT. LTD.
         </div>
 
         <h1 className="hero-cinematic-heading">
@@ -104,7 +104,8 @@ export default function ScrollExperience() {
         </h1>
 
         <p className="hero-cinematic-subcopy">
-          Security solutions for India&apos;s leading enterprises.
+          Silbar Security Services Pvt. Ltd. — PSARA-licensed, ISO-certified
+          security solutions for India&apos;s leading enterprises.
         </p>
 
         <div className="hero-cta-group hero-cta-group--cinematic">

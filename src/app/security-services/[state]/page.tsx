@@ -5,7 +5,7 @@ import { STATES, CITIES } from '@/data/locations'
 import { SERVICES } from '@/data/services'
 import { GEO_COORDINATES } from '@/lib/geo-coordinates'
 import { generateStateContent } from '@/lib/seo-content-generator'
-import { ArrowRight, Phone, MapPin } from 'lucide-react'
+import { ArrowRight, Phone, MapPin, ShieldCheck, Clock, BadgeCheck, IndianRupee } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import PageHero from '@/components/layout/PageHero'
@@ -14,6 +14,10 @@ import { ogMetadata } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 import LocationRichContent from '@/components/sections/LocationRichContent'
 import GbpOfficeSection from '@/components/sections/GbpOfficeSection'
+import QuoteCalculator from '@/components/sections/QuoteCalculator'
+import { getQuoteRate } from '@/data/quote-rates'
+import { locationHeroImage } from '@/lib/location-images'
+import Image from 'next/image'
 
 export const revalidate = 86400
 
@@ -69,6 +73,13 @@ export default async function StateSEOPage({
   const citiesInState = CITIES.filter((c) => c.stateSlug === location.slug)
   const gbpOffices = getOfficesForStatePage(location.slug)
   const primaryOffice = gbpOffices[0]
+  const stateRate = getQuoteRate(location.slug)
+
+  // Cycle the landing-page hero imagery across all states so every state page
+  // gets its own visual identity (reuses existing /public assets — no new files).
+  const stateIndex = STATES.findIndex((s) => s.slug === location.slug)
+  const heroImage = locationHeroImage(stateIndex, 1)
+  const rateImage = locationHeroImage(stateIndex, 0)
 
   const localBusinessSchema = {
     '@context': 'https://schema.org',
@@ -161,7 +172,7 @@ export default async function StateSEOPage({
       <main className="seo-page" id="main-content">
         <PageHero
           variant="image"
-          imageSrc="/industries-bg.webp"
+          imageSrc={heroImage}
           eyebrow={`${location.name.toUpperCase()} · PAN INDIA`}
           title={<SplitTextReveal text={`Security Guard Services in ${location.name}`} mode="words" />}
           subtitle={
@@ -262,6 +273,68 @@ export default async function StateSEOPage({
         />
 
         <LocationRichContent content={content} seed={content.seed} />
+
+        {/* State guard cost calculator — pre-selected to this state */}
+        <section className="quote-calculator-section section-pad" aria-labelledby={`quote-calc-${location.slug}`}>
+          <div className="shell">
+            <ScrollReveal>
+              <span className="section-eyebrow section-eyebrow--red">TRANSPARENT PRICING</span>
+              <h2 id={`quote-calc-${location.slug}`} className="section-heading" style={{ marginBottom: '0.6rem' }}>
+                Security Guard Cost in <em>{location.name}.</em>
+              </h2>
+              <p className="section-subtitle" style={{ marginBottom: '2rem', maxWidth: '760px' }}>
+                {stateRate
+                  ? `Estimated from ${location.name}'s notified minimum wages (₹${stateRate.guardBasic.toLocaleString('en-IN')}/month basic for guards). Includes wages, PF, ESI, bonus, leave, uniform, relieving and service charges.`
+                  : `State-wise minimum-wage-linked estimate for ${location.name}. Includes wages, PF, ESI, bonus, leave, uniform, relieving and service charges.`}
+              </p>
+            </ScrollReveal>
+            <QuoteCalculator defaultState={location.slug} compact />
+          </div>
+        </section>
+
+        {/* Image band — why choose us for this state */}
+        <section className="seo-image-band" aria-labelledby={`why-${location.slug}`}>
+          <div className="seo-image-band__media" aria-hidden="true">
+            <Image
+              src={rateImage}
+              alt={`Security deployment in ${location.name}`}
+              fill
+              sizes="100vw"
+              className="seo-image-band__img"
+            />
+            <div className="seo-image-band__scrim" />
+          </div>
+          <div className="seo-image-band__inner">
+            <div className="seo-image-band__grid">
+              <div className="seo-image-band__copy">
+                <span className="section-eyebrow section-eyebrow--light">WHY SILBAR IN {location.name.toUpperCase()}</span>
+                <h2 id={`why-${location.slug}`}>
+                  Trained Guards. <em>Real</em> Compliance.
+                </h2>
+                <p>
+                  Every deployment in {location.name} runs on the same PAN India standard — background-verified
+                  manpower, documented SOPs, statutory wage compliance and a dedicated account manager.
+                </p>
+              </div>
+              <ul className="seo-image-band__points">
+                {[
+                  { icon: ShieldCheck, t: 'PSARA Licensed', d: `Fully licensed operations across ${location.name}.` },
+                  { icon: BadgeCheck, t: 'ISO Certified Processes', d: '9001 · 14001 · 45001 · 27001 (IAF accredited).' },
+                  { icon: Clock, t: '24/7 Support & Replacement', d: 'Rapid backup deployment, dedicated supervisor.' },
+                  { icon: IndianRupee, t: 'Transparent Billing', d: 'Statutory-aware, minimum-wage-linked commercials.' },
+                ].map((pt) => (
+                  <li key={pt.t} className="seo-image-band__point">
+                    <span className="seo-image-band__icon"><pt.icon size={20} aria-hidden="true" /></span>
+                    <div>
+                      <strong>{pt.t}</strong>
+                      <span>{pt.d}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
 
         <section className="seo-services-section">
           <div className="service-detail-section-inner">

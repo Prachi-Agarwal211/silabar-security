@@ -758,16 +758,24 @@
 }
 
 .about-leader-card__avatar {
-  width: 64px;
-  height: 64px;
+  position: relative;
+  width: 132px;
+  height: 132px;
   border-radius: 50%;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   background: rgba(212, 175, 55, 0.12);
   color: var(--color-gold-light);
   margin-bottom: 1.1rem;
-  border: 1px solid rgba(212, 175, 55, 0.25);
+  border: 2px solid rgba(212, 175, 55, 0.4);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.about-leader-card__photo {
+  object-fit: cover;
+  object-position: center 20%;
 }
 
 .about-leader-card h3 {

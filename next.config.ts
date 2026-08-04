@@ -74,9 +74,9 @@ const nextConfig: NextConfig = {
       { source: '/get-a-security-quote', destination: '/contact', permanent: true },
       { source: '/industries-we-serve', destination: '/industries', permanent: true },
       { source: '/industries-we-serve/:slug', destination: '/industries/:slug', permanent: true },
-      { source: '/security-services/vehicle-patrol', destination: '/services/mobile-patrol-security', permanent: true },
-      { source: '/security-services/professional-security', destination: '/services/security-guard-services', permanent: true },
-      { source: '/security-services/remote-video-monitoring', destination: '/services/cctv-surveillance-systems', permanent: true },
+      { source: '/security-services/vehicle-patrol', destination: '/services/mobile-patrol-quick-response', permanent: true },
+      { source: '/security-services/professional-security', destination: '/services/manned-guarding', permanent: true },
+      { source: '/security-services/remote-video-monitoring', destination: '/services/electronic-surveillance', permanent: true },
     ]
   },
   async headers() {

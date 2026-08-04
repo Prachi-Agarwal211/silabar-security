@@ -14,6 +14,9 @@ import { ogMetadata } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 import LocationRichContent from '@/components/sections/LocationRichContent'
 import GbpOfficeSection from '@/components/sections/GbpOfficeSection'
+import QuoteCalculator from '@/components/sections/QuoteCalculator'
+import { getQuoteRate } from '@/data/quote-rates'
+import { locationHeroImage } from '@/lib/location-images'
 
 function citySlugFromName(name: string) {
   return name.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and')
@@ -68,9 +71,30 @@ export default async function CitySEOPage({
     ? state.majorCities.filter((c) => c.toLowerCase() !== city.name.toLowerCase()).slice(0, 6)
     : []
 
+  // Cycle the landing-page hero imagery per state so every city page in the same
+  // state shares its state's visual identity (reuses existing /public assets).
+  const stateIndex = Math.max(0, STATES.findIndex((s) => s.slug === city.stateSlug))
+  const heroImage = locationHeroImage(stateIndex)
+
   const office = getOfficeForCitySlug(slug)
   const gbpOffices = getOfficesForCityPage(slug, city.stateSlug)
+  // Effective office for the schema: the city's own GBP listing when one exists, else the state hub office.
   const schemaOffice = office || gbpOffices[0]
+
+  // A street-level address is only emitted when a real office can be cited — the city's local
+  // listing, or the state-hub fallback. All fields come from that one office so street /
+  // locality / region / pin stay internally consistent (never a city name paired with a
+  // foreign street address). Omitted entirely if no office is known.
+  const schemaAddress = schemaOffice?.address
+    ? {
+        '@type': 'PostalAddress',
+        streetAddress: schemaOffice.address.split(',')[0]?.trim(),
+        addressLocality: schemaOffice.city.replace(/\s*\(.*?\)\s*/g, '').trim(),
+        addressRegion: schemaOffice.region,
+        postalCode: schemaOffice.pin,
+        addressCountry: 'IN',
+      }
+    : undefined
 
   const schema = {
     '@context': 'https://schema.org',
@@ -85,14 +109,7 @@ export default async function CitySEOPage({
     parentOrganization: {
       '@id': 'https://www.silbarsecurity.in/#organization',
     },
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: office?.address?.split(',')[0]?.trim(),
-      addressLocality: city.name,
-      addressRegion: city.state,
-      postalCode: office?.pin,
-      addressCountry: 'IN',
-    },
+    ...(schemaAddress ? { address: schemaAddress } : {}),
     geo: {
       '@type': 'GeoCoordinates',
       latitude: GEO_COORDINATES[slug]?.lat || schemaOffice?.lat || 20.5937,
@@ -145,7 +162,7 @@ export default async function CitySEOPage({
       <main className="seo-page" id="main-content">
         <PageHero
           variant="image"
-          imageSrc="/hero-guard.webp"
+          imageSrc={heroImage}
           eyebrow={`${city.name.toUpperCase()} · ${city.state.toUpperCase()}`}
           title={<SplitTextReveal text={`Security Guard Services in ${city.name}`} mode="words" />}
           subtitle={
@@ -248,6 +265,25 @@ export default async function CitySEOPage({
         />
 
         <LocationRichContent content={content} seed={content.seed} />
+
+        {/* Guard cost calculator — pre-selected to the state */}
+        {getQuoteRate(city.stateSlug) && (
+          <section className="quote-calculator-section section-pad" aria-labelledby={`quote-calc-${slug}`}>
+            <div className="shell">
+              <ScrollReveal>
+                <span className="section-eyebrow section-eyebrow--red">TRANSPARENT PRICING</span>
+                <h2 id={`quote-calc-${slug}`} className="section-heading" style={{ marginBottom: '0.6rem' }}>
+                  Security Guard Cost in <em>{city.name}.</em>
+                </h2>
+                <p className="section-subtitle" style={{ marginBottom: '2rem', maxWidth: '760px' }}>
+                  Instant estimate using {city.state}&apos;s notified minimum wages — wages, PF, ESI, bonus,
+                  leave, uniform, relieving and service charges included.
+                </p>
+              </ScrollReveal>
+              <QuoteCalculator defaultState={city.stateSlug} compact />
+            </div>
+          </section>
+        )}
 
         {/* Services links */}
         <section className="seo-services-section">

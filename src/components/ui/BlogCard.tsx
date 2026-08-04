@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import type { ReactNode } from 'react'
 import {
   ArrowRight,
   Calendar,
@@ -19,16 +20,18 @@ interface BlogCardProps {
   post: BlogPost
 }
 
-function getCategoryIcon(category: string = '', title: string = '') {
+// Returns a rendered icon element, not a component reference — keeps the
+// react-hooks/static-components rule happy (no JSX tag bound to a per-render value).
+function getCategoryIcon(category: string = '', title: string = '', size = 26): ReactNode {
   const cat = category.toLowerCase()
   const t = title.toLowerCase()
-  if (t.includes('fire') || cat.includes('fire')) return Flame
-  if (t.includes('cctv') || t.includes('ai') || t.includes('surveillance')) return Eye
-  if (t.includes('warehouse') || t.includes('theft')) return Warehouse
-  if (t.includes('iso') || t.includes('certif') || t.includes('psara') || cat.includes('compliance')) return ShieldCheck
-  if (t.includes('hotel') || t.includes('school') || t.includes('event') || t.includes('bank')) return Building2
-  if (t.includes('women')) return Users
-  return Shield
+  if (t.includes('fire') || cat.includes('fire')) return <Flame size={size} />
+  if (t.includes('cctv') || t.includes('ai') || t.includes('surveillance')) return <Eye size={size} />
+  if (t.includes('warehouse') || t.includes('theft')) return <Warehouse size={size} />
+  if (t.includes('iso') || t.includes('certif') || t.includes('psara') || cat.includes('compliance')) return <ShieldCheck size={size} />
+  if (t.includes('hotel') || t.includes('school') || t.includes('event') || t.includes('bank')) return <Building2 size={size} />
+  if (t.includes('women')) return <Users size={size} />
+  return <Shield size={size} />
 }
 
 export default function BlogCard({ post }: BlogCardProps) {
@@ -44,8 +47,6 @@ export default function BlogCard({ post }: BlogCardProps) {
   const isSvgImage = post.coverImage?.endsWith('.svg')
   const isPhoto = Boolean(post.coverImage && !isSvgImage)
 
-  const CategoryIcon = getCategoryIcon(post.category, post.title)
-
   const inner = (
     <>
       <div className="blog-card__image-placeholder">
@@ -60,7 +61,7 @@ export default function BlogCard({ post }: BlogCardProps) {
         ) : (
           <div className="blog-card__graphic-cover">
             <div className="blog-card__graphic-badge">
-              <CategoryIcon size={26} />
+              {getCategoryIcon(post.category, post.title)}
             </div>
             <div className="blog-card__graphic-title">{post.title}</div>
           </div>

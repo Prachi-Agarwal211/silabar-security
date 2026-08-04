@@ -399,6 +399,126 @@
   padding: 0.25rem 0.5rem;
 }
 
+/* ─── Image band — why choose us (state pages) ─── */
+.seo-image-band {
+  position: relative;
+  overflow: hidden;
+  color: var(--color-cream);
+}
+
+.seo-image-band__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.seo-image-band__img {
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.seo-image-band__scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(115deg, rgba(11, 14, 20, 0.94) 0%, rgba(11, 14, 20, 0.78) 45%, rgba(92, 18, 32, 0.55) 100%),
+    linear-gradient(to top, rgba(11, 14, 20, 0.85) 0%, transparent 55%);
+}
+
+.seo-image-band__inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--shell-max, 1400px);
+  margin: 0 auto;
+  padding: clamp(3.5rem, 7vh, 5.5rem) clamp(1.25rem, 4vw, 3rem);
+}
+
+.seo-image-band__grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .seo-image-band__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.seo-image-band__copy h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.8vw, 2.9rem);
+  font-weight: 800;
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: var(--color-cream);
+  margin: 0.4rem 0 1rem;
+}
+
+.seo-image-band__copy h2 em {
+  font-style: italic;
+  color: var(--color-gold-light);
+}
+
+.seo-image-band__copy p {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: rgba(250, 248, 244, 0.78);
+  max-width: 480px;
+  margin: 0;
+}
+
+.seo-image-band__points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.seo-image-band__point {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding: 1.1rem 1.25rem;
+  background: rgba(11, 14, 20, 0.72);
+  border: 1px solid rgba(212, 175, 55, 0.24);
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+}
+
+.seo-image-band__icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(212, 175, 55, 0.14);
+  color: var(--color-gold-light);
+}
+
+.seo-image-band__point strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--color-cream);
+  margin-bottom: 0.25rem;
+}
+
+.seo-image-band__point div span {
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: rgba(250, 248, 244, 0.68);
+}
+
 /* Rich SEO content blocks */
 .seo-sector-list {
   list-style: none;

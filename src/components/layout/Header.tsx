@@ -123,7 +123,10 @@ export default function Header() {
               priority
             />
             <span className="site-header__logo-text">
-              Silbar <span className="site-header__logo-accent">Security</span>
+              <span className="site-header__logo-brand">
+                Silbar <span className="site-header__logo-accent">Security</span>
+              </span>
+              <span className="site-header__logo-sub">Services Pvt. Ltd.</span>
             </span>
           </Link>
 
@@ -209,6 +212,7 @@ export default function Header() {
           ))}
         </nav>
         <div className="site-mobile-nav__footer">
+          <div className="site-mobile-nav__brand">Silbar Security Services Pvt. Ltd.</div>
           <a href={`tel:${CONTACT.phoneRaw}`} className="site-mobile-nav__phone" onClick={closeMenu}>
             <Phone size={18} /> {CONTACT.phone}
           </a>

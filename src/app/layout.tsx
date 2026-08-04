@@ -144,12 +144,12 @@ export default function RootLayout({
           <Link href="/about">About Us</Link>
           <Link href="/security-services">Security Services</Link>
           <Link href="/services/industrial-security">Industrial Security</Link>
-          <Link href="/services/security-guard-services">Security Guard Services</Link>
+          <Link href="/services/manned-guarding">Security Guard Services</Link>
           <Link href="/services/event-security">Event Security</Link>
-          <Link href="/services/cctv-surveillance-systems">CCTV Surveillance</Link>
+          <Link href="/services/electronic-surveillance">CCTV Surveillance</Link>
           <Link href="/industries">Industries We Serve</Link>
           <Link href="/industries/manufacturing">Manufacturing Security</Link>
-          <Link href="/industries/hospitality">Hospitality Security</Link>
+          <Link href="/industries/hotels">Hotel &amp; Hospitality Security</Link>
           <Link href="/case-studies">Case Studies</Link>
           <Link href="/careers">Careers</Link>
           <Link href="/blog">Blog</Link>
@@ -177,7 +177,15 @@ export default function RootLayout({
               '@type': 'Organization',
               '@id': 'https://www.silbarsecurity.in/#organization',
               name: 'Silbar Security Services Pvt. Ltd.',
-              alternateName: 'Silbar Security Services Pvt. Ltd.',
+              // Search variants people actually type — lets Google connect these phrases to the entity
+              // (and disambiguate from the US-based 'Silbar Security' franchise, silbarsecurity.com).
+              alternateName: [
+                'Silbar Security Services Pvt. Ltd.',
+                'Silbar Security Services Private Limited',
+                'Silbar Security Private Limited',
+                'Silbar Security',
+                'Silbar Security India',
+              ],
               url: 'https://www.silbarsecurity.in',
               logo: {
                 '@type': 'ImageObject',

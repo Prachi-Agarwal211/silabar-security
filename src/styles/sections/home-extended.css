@@ -597,3 +597,119 @@
   text-decoration: none;
 }
 .lead-social-proof__link:hover { text-decoration: underline; }
+
+/* ─── Home: Guard Cost Calculator ─── */
+.home-quote-section {
+  background: var(--color-paper);
+}
+
+.home-quote-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.home-quote-head .section-heading {
+  margin: 0;
+}
+
+.home-quote-head .section-subtitle {
+  max-width: 720px;
+  margin: 0;
+}
+
+.home-quote-note {
+  margin: 1.25rem 0 0;
+  font-size: 0.85rem;
+  color: var(--color-horizon-500);
+  text-align: center;
+}
+
+/* ─── Home: Leadership ─── */
+.home-leadership-section {
+  background: linear-gradient(165deg, var(--color-champagne) 0%, var(--color-paper) 45%, var(--color-paper) 100%);
+}
+
+.home-leadership-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 760px) {
+  .home-leadership-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.home-leader-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: clamp(1.75rem, 3vw, 2.5rem) clamp(1.25rem, 2.5vw, 2rem);
+  background: var(--color-paper);
+  border: 1px solid rgba(140, 31, 50, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 12px 40px rgba(11, 14, 20, 0.05);
+}
+
+.home-leader-card__avatar {
+  position: relative;
+  width: 168px;
+  height: 168px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(212, 175, 55, 0.55);
+  box-shadow: 0 14px 34px rgba(11, 14, 20, 0.28);
+  margin-bottom: 1.15rem;
+}
+
+.home-leader-card__photo {
+  object-fit: cover;
+  object-position: center 18%;
+}
+
+.home-leader-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--color-midnight);
+  margin: 0 0 0.3rem;
+}
+
+.home-leader-card__role {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-cherry);
+  margin: 0 0 0.85rem;
+}
+
+.home-leader-card__bio {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--color-horizon-600);
+  margin: 0 0 1.1rem;
+}
+
+.home-leader-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-cherry);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.home-leader-card__link:hover {
+  border-color: var(--color-cherry);
+}

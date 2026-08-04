@@ -77,11 +77,13 @@ const LEADERS = [
   {
     name: 'Mr. Sonu Singh',
     role: 'Director & Founder',
+    photo: '/images/team/sonu-singh-square.webp',
     bio: 'Mr. Sonu Singh has worked in senior positions with reputed organizations in the security and corporate sectors. His experience includes leadership responsibilities with well-known security and corporate brands such as SIS, SLV Security, Jaguar Security, ICICI, and Bajaj, providing him with practical expertise in industrial security operations, corporate security management, manpower deployment, risk assessment, client relationship management, compliance systems, and large-scale security deployment. His vision is to build a professionally managed Indian security company that competes with the highest industry standards through compliance, quality, innovation, and operational excellence.',
   },
   {
     name: 'Mr. Nakul Singh Jadaun',
     role: 'Director',
+    photo: '/images/team/nakul-singh-square.webp',
     bio: 'Mr. Nakul Singh Jadaun brings valuable experience from the security services industry along with operational and management expertise. Having worked with organizations including Bajaj and BSS Security, he plays a key role in strengthening operational efficiency, quality control, manpower deployment, and customer satisfaction across the organization. His focus on disciplined field execution, client servicing, and operational planning has been instrumental in Silbar Security\'s growth as a PSARA-licensed PAN India security partner.',
   },
 ]
@@ -336,7 +338,17 @@ export default function AboutPage() {
             {LEADERS.map((leader, i) => (
               <ScrollReveal key={leader.name} delay={i * 0.12} className="about-leader-card">
                 <div className="about-leader-card__avatar" aria-hidden="true">
-                  <Users size={32} />
+                  {leader.photo ? (
+                    <Image
+                      src={leader.photo}
+                      alt=""
+                      fill
+                      sizes="160px"
+                      className="about-leader-card__photo"
+                    />
+                  ) : (
+                    <Users size={32} />
+                  )}
                 </div>
                 <h3>{leader.name}</h3>
                 <p className="about-leader-card__role">{leader.role}</p>

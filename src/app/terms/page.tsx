@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 const sections = [
   {
     title: 'Acceptance of Terms',
-    content: 'By accessing or using the Silbar Security Services website (silbarsecurity.in), you agree to be bound by these Terms of Use. If you do not agree with any part of these terms, you must not use our website or services.',
+    content: 'By accessing or using the website of Silbar Security Services Pvt. Ltd. (also referred to as "Silbar Security Services Private Limited", "Silbar Security Private Limited", or "Silbar Security") — silbarsecurity.in — you agree to be bound by these Terms of Use. If you do not agree with any part of these terms, you must not use our website or services.',
   },
   {
     title: 'Services Description',
