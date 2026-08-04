@@ -28,7 +28,7 @@ export const QUOTE_DEFAULTS = {
   esiRate: 0.0325,
   bonusRate: 0.0833,
   leaveRate: 0.0833,
-  uniformCharge: 250,
+  uniformCharge: 500,
   relievingRate: 0.1667,
   serviceChargeRate: 0.1,
   gstRate: 0.18,
@@ -77,7 +77,6 @@ export interface QuoteBreakdown {
   net: number
   relieving: number
   subtotal: number
-  serviceCharge: number
   grand: number
   commission: number
   billedTotal: number
@@ -103,8 +102,7 @@ export function computeAdminQuote(input: AdminQuoteInput): QuoteBreakdown {
   const net = gross + pf + esi + bonus + leave + uniform
   const relieving = net * c.relievingRate
   const subtotal = net + relieving
-  const serviceCharge = subtotal * c.serviceChargeRate
-  const grand = subtotal + serviceCharge
+  const grand = subtotal
   const commission = grand * input.commissionPct
   const billedTotal = grand + commission
   const gst = input.includeGst ? billedTotal * c.gstRate : 0
@@ -123,7 +121,6 @@ export function computeAdminQuote(input: AdminQuoteInput): QuoteBreakdown {
     { label: 'Net Total', amount: round2(net) },
     { label: `Relieving charges (${(c.relievingRate * 100).toFixed(2)}%)`, amount: round2(relieving) },
     { label: 'Sub Total', amount: round2(subtotal) },
-    { label: `Service charges (${(c.serviceChargeRate * 100).toFixed(0)}%)`, amount: round2(serviceCharge) },
     { label: 'Grand Total (per guard / month)', amount: round2(grand), isTotal: true },
     { label: `Commission / Partner share (${(input.commissionPct * 100).toFixed(0)}%)`, amount: round2(commission), isCommission: true },
     ...(input.includeGst ? [{ label: `GST (${(c.gstRate * 100).toFixed(0)}%)`, amount: round2(gst) }] : []),
@@ -142,7 +139,6 @@ export function computeAdminQuote(input: AdminQuoteInput): QuoteBreakdown {
     net: round2(net),
     relieving: round2(relieving),
     subtotal: round2(subtotal),
-    serviceCharge: round2(serviceCharge),
     grand: round2(grand),
     commission: round2(commission),
     billedTotal: round2(billedTotal),
