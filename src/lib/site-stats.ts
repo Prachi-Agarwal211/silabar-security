@@ -15,7 +15,6 @@ export const CORE_PAGES = [
   { path: '/services', label: 'Services' },
   { path: '/industries', label: 'Industries' },
   { path: '/security-services', label: 'Locations' },
-  { path: '/quote-calculator', label: 'Quote Calculator' },
   { path: '/contact', label: 'Contact' },
   { path: '/blog', label: 'Blog' },
   { path: '/faq', label: 'FAQ' },

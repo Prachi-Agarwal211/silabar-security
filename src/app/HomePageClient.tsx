@@ -42,7 +42,6 @@ import { SERVICES } from '@/data/services'
 import Counter from '@/components/animations/Counter'
 const ServicesGrid = dynamic(() => import('@/components/sections/ServicesGrid'))
 const QueryForm = dynamic(() => import('@/components/sections/QueryForm'))
-const QuoteCalculator = dynamic(() => import('@/components/sections/QuoteCalculator'))
 import Image from 'next/image'
 
 const LEADERS = [
@@ -186,31 +185,6 @@ export default function HomePageClient() {
         <p className="svc-answer-card__text">
           Silbar Security Services Pvt. Ltd. provides professional security guard services, manned guarding, industrial security, CCTV surveillance, event security, VIP protection, and facility management across 200+ cities in India. The agency is ISO 9001:14001:45001:27001 certified, PSARA licensed in 19 states, and deploys 7,000+ trained professionals for corporate, industrial, residential, and government clients nationwide.
         </p>
-      </section>
-
-      {/* ─── GUARD COST CALCULATOR ───────────────────── */}
-      <section className="home-quote-section brand-rail" aria-labelledby="home-quote-title">
-        <div className="shell">
-          <div className="home-quote-head">
-            <div>
-              <span className="section-eyebrow section-eyebrow--red">TRANSPARENT PRICING</span>
-              <h2 id="home-quote-title" className="section-heading">
-                Know Your Guard Cost in <em>30 Seconds.</em>
-              </h2>
-            </div>
-            <p className="section-subtitle">
-              State-wise minimum-wage-linked estimates for all 35 states &amp; UTs — wages, PF, ESI,
-              uniform, relieving and service charges included. No hidden costs.
-            </p>
-          </div>
-          <QuoteCalculator />
-          <p className="home-quote-note">
-            <Link href="/quote-calculator" className="seo-cities-link">
-              Open the full cost calculator page
-            </Link>
-            {' '}· Estimates are indicative until confirmed by our team after site scoping.
-          </p>
-        </div>
       </section>
 
       {/* ─── LEADERSHIP ──────────────────────────────── */}

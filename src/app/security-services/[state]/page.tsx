@@ -14,8 +14,6 @@ import { ogMetadata } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 import LocationRichContent from '@/components/sections/LocationRichContent'
 import GbpOfficeSection from '@/components/sections/GbpOfficeSection'
-import QuoteCalculator from '@/components/sections/QuoteCalculator'
-import { getQuoteRate } from '@/data/quote-rates'
 import { locationHeroImage } from '@/lib/location-images'
 import Image from 'next/image'
 
@@ -73,7 +71,6 @@ export default async function StateSEOPage({
   const citiesInState = CITIES.filter((c) => c.stateSlug === location.slug)
   const gbpOffices = getOfficesForStatePage(location.slug)
   const primaryOffice = gbpOffices[0]
-  const stateRate = getQuoteRate(location.slug)
 
   // Cycle the landing-page hero imagery across all states so every state page
   // gets its own visual identity (reuses existing /public assets — no new files).
@@ -273,24 +270,6 @@ export default async function StateSEOPage({
         />
 
         <LocationRichContent content={content} seed={content.seed} />
-
-        {/* State guard cost calculator — pre-selected to this state */}
-        <section className="quote-calculator-section section-pad" aria-labelledby={`quote-calc-${location.slug}`}>
-          <div className="shell">
-            <ScrollReveal>
-              <span className="section-eyebrow section-eyebrow--red">TRANSPARENT PRICING</span>
-              <h2 id={`quote-calc-${location.slug}`} className="section-heading" style={{ marginBottom: '0.6rem' }}>
-                Security Guard Cost in <em>{location.name}.</em>
-              </h2>
-              <p className="section-subtitle" style={{ marginBottom: '2rem', maxWidth: '760px' }}>
-                {stateRate
-                  ? `Estimated from ${location.name}'s notified minimum wages (₹${stateRate.guardBasic.toLocaleString('en-IN')}/month basic for guards). Includes wages, PF, ESI, bonus, leave, uniform, relieving and service charges.`
-                  : `State-wise minimum-wage-linked estimate for ${location.name}. Includes wages, PF, ESI, bonus, leave, uniform, relieving and service charges.`}
-              </p>
-            </ScrollReveal>
-            <QuoteCalculator defaultState={location.slug} compact />
-          </div>
-        </section>
 
         {/* Image band — why choose us for this state */}
         <section className="seo-image-band" aria-labelledby={`why-${location.slug}`}>

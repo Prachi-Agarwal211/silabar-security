@@ -14,8 +14,6 @@ import { ogMetadata } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 import LocationRichContent from '@/components/sections/LocationRichContent'
 import GbpOfficeSection from '@/components/sections/GbpOfficeSection'
-import QuoteCalculator from '@/components/sections/QuoteCalculator'
-import { getQuoteRate } from '@/data/quote-rates'
 import { locationHeroImage } from '@/lib/location-images'
 
 function citySlugFromName(name: string) {
@@ -265,25 +263,6 @@ export default async function CitySEOPage({
         />
 
         <LocationRichContent content={content} seed={content.seed} />
-
-        {/* Guard cost calculator — pre-selected to the state */}
-        {getQuoteRate(city.stateSlug) && (
-          <section className="quote-calculator-section section-pad" aria-labelledby={`quote-calc-${slug}`}>
-            <div className="shell">
-              <ScrollReveal>
-                <span className="section-eyebrow section-eyebrow--red">TRANSPARENT PRICING</span>
-                <h2 id={`quote-calc-${slug}`} className="section-heading" style={{ marginBottom: '0.6rem' }}>
-                  Security Guard Cost in <em>{city.name}.</em>
-                </h2>
-                <p className="section-subtitle" style={{ marginBottom: '2rem', maxWidth: '760px' }}>
-                  Instant estimate using {city.state}&apos;s notified minimum wages — wages, PF, ESI, bonus,
-                  leave, uniform, relieving and service charges included.
-                </p>
-              </ScrollReveal>
-              <QuoteCalculator defaultState={city.stateSlug} compact />
-            </div>
-          </section>
-        )}
 
         {/* Services links */}
         <section className="seo-services-section">

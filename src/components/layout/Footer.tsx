@@ -40,7 +40,6 @@ const COMPANY_LINKS = [
   { label: 'Franchise', href: '/franchise' },
   { label: 'Careers', href: '/careers' },
   { label: 'Blog', href: '/blog' },
-  { label: 'Cost Calculator', href: '/quote-calculator' },
   { label: 'All Locations', href: '/security-services' },
   { label: 'FAQs', href: '/faq' },
   { label: 'Contact', href: '/contact' },
