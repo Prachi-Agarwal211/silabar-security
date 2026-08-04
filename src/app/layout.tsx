@@ -236,7 +236,9 @@ export default function RootLayout({
                 'https://www.instagram.com/silbar_security',
                 'https://x.com/silbarsecurity',
                 GOOGLE_REVIEWS.profileUrl,
-                'https://www.wikidata.org/wiki/Q140635640',
+                // NOTE: no Wikidata link yet — Q140635640 does not exist and a dead
+                // sameAs reference fragments entity resolution. Add the real Wikidata
+                // item here once it has been created (see docs/ENTITY-VISIBILITY-CHECKLIST.md).
                 ...GOOGLE_REVIEWS.offices.map((o) => o.profileUrl),
                 ...CONTACT.officeLocations.map((o) => o.mapUrl).filter(Boolean),
               ],
