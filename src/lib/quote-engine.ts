@@ -52,8 +52,10 @@ export interface AdminQuoteInput {
   /** Monthly basic wage (INR) after day math — pass dailyWage*days or direct monthly */
   monthlyBasic: number
   conveyance: number
-  /** Commission / partner share on top of the grand total (0.10 = 10%) */
-  commissionPct: number
+  /** Rent allowance % on grand total (0.10 = 10%) */
+  rentAllowancePct: number
+  /** Service charge % on grand total (0.10 = 10%) */
+  serviceChargePct: number
   includeGst: boolean
   /** Billing details for the PDF */
   clientName?: string
@@ -78,7 +80,8 @@ export interface QuoteBreakdown {
   relieving: number
   subtotal: number
   grand: number
-  commission: number
+  rentAllowance: number
+  serviceCharge: number
   billedTotal: number
   gst: number
   totalPerGuard: number
@@ -103,8 +106,9 @@ export function computeAdminQuote(input: AdminQuoteInput): QuoteBreakdown {
   const relieving = net * c.relievingRate
   const subtotal = net + relieving
   const grand = subtotal
-  const commission = grand * input.commissionPct
-  const billedTotal = grand + commission
+  const rentAllowance = grand * input.rentAllowancePct
+  const serviceCharge = grand * input.serviceChargePct
+  const billedTotal = grand + rentAllowance + serviceCharge
   const gst = input.includeGst ? billedTotal * c.gstRate : 0
   const totalPerGuard = billedTotal + gst
 
@@ -122,7 +126,8 @@ export function computeAdminQuote(input: AdminQuoteInput): QuoteBreakdown {
     { label: `Relieving charges (${(c.relievingRate * 100).toFixed(2)}%)`, amount: round2(relieving) },
     { label: 'Sub Total', amount: round2(subtotal) },
     { label: 'Grand Total (per guard / month)', amount: round2(grand), isTotal: true },
-    { label: `Service Charges (${(input.commissionPct * 100).toFixed(0)}%)`, amount: round2(commission), isCommission: true },
+    { label: `Rent Allowance (${(input.rentAllowancePct * 100).toFixed(0)}%)`, amount: round2(rentAllowance), isCommission: true },
+    { label: `Service Charges (${(input.serviceChargePct * 100).toFixed(0)}%)`, amount: round2(serviceCharge), isCommission: true },
     ...(input.includeGst ? [{ label: `GST (${(c.gstRate * 100).toFixed(0)}%)`, amount: round2(gst) }] : []),
   ]
 
@@ -140,7 +145,8 @@ export function computeAdminQuote(input: AdminQuoteInput): QuoteBreakdown {
     relieving: round2(relieving),
     subtotal: round2(subtotal),
     grand: round2(grand),
-    commission: round2(commission),
+    rentAllowance: round2(rentAllowance),
+    serviceCharge: round2(serviceCharge),
     billedTotal: round2(billedTotal),
     gst: round2(gst),
     totalPerGuard: round2(totalPerGuard),

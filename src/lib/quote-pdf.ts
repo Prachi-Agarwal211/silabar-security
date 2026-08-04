@@ -148,14 +148,15 @@ export async function generateQuotePdf(meta: PdfMeta): Promise<jsPDF> {
   y += boxH + 5
 
   // ── PARAMETERS SUMMARY TABLE (Single unified autoTable call) ──
-  const paramHeaders = ['Category', 'Guards', 'Basic Wage', 'Days/Month', 'Shift', 'Commission']
+  const paramHeaders = ['Category', 'Guards', 'Basic Wage', 'Days/Month', 'Shift', 'Rent Allow.', 'Service Ch.']
   const paramValues = [
     input.category === 'supervisor' ? 'Security Supervisor' : 'Security Guard / Lady Guard',
     String(guards),
     formatINR_PDF(input.monthlyBasic),
     String(input.daysPerMonth ?? 26),
     `${input.hoursPerShift ?? 8} hrs`,
-    `${(input.commissionPct * 100).toFixed(0)}%`,
+    `${(input.rentAllowancePct * 100).toFixed(0)}%`,
+    `${(input.serviceChargePct * 100).toFixed(0)}%`,
   ]
 
   autoTable(doc, {
@@ -194,7 +195,7 @@ export async function generateQuotePdf(meta: PdfMeta): Promise<jsPDF> {
       const label = Array.isArray(raw) ? String(raw[0] ?? '') : ''
       if (label.startsWith('Grand Total')) {
         data.cell.styles.fontStyle = 'bold'; data.cell.styles.fillColor = C.cherry; data.cell.styles.textColor = C.white
-      } else if (label.startsWith('Commission')) {
+      } else if (label.startsWith('Rent Allowance') || label.startsWith('Service Charges')) {
         data.cell.styles.fontStyle = 'bold'; data.cell.styles.fillColor = C.goldPale; data.cell.styles.textColor = C.cherryDeep
       } else if (label.startsWith('GST')) {
         data.cell.styles.fontStyle = 'bold'; data.cell.styles.textColor = C.cherry

@@ -35,7 +35,8 @@ export default function AdminQuoteCalculator() {
   const [monthlyBasic, setMonthlyBasic] = useState(6474)
   const [daysPerMonth, setDaysPerMonth] = useState<number>(QUOTE_DEFAULTS.defaultDays)
   const [hoursPerShift, setHoursPerShift] = useState<number>(QUOTE_DEFAULTS.defaultHours)
-  const [commissionPct, setCommissionPct] = useState(15)
+  const [rentAllowancePct, setRentAllowancePct] = useState(15)
+  const [serviceChargePct, setServiceChargePct] = useState(10)
   const [includeGst, setIncludeGst] = useState(true)
 
   // Billing details for the PDF
@@ -55,7 +56,8 @@ export default function AdminQuoteCalculator() {
       category,
       monthlyBasic: basic,
       conveyance: category === 'supervisor' ? QUOTE_DEFAULTS.conveyanceSupervisor : QUOTE_DEFAULTS.conveyanceGuard,
-      commissionPct: commissionPct / 100,
+      rentAllowancePct: rentAllowancePct / 100,
+      serviceChargePct: serviceChargePct / 100,
       includeGst,
       clientName,
       siteName,
@@ -64,7 +66,7 @@ export default function AdminQuoteCalculator() {
       daysPerMonth,
       hoursPerShift,
     }
-  }, [stateName, category, wageMode, dailyWage, monthlyBasic, daysPerMonth, hoursPerShift, commissionPct, includeGst, clientName, siteName, city, guards])
+  }, [stateName, category, wageMode, dailyWage, monthlyBasic, daysPerMonth, hoursPerShift, rentAllowancePct, serviceChargePct, includeGst, clientName, siteName, city, guards])
 
   const breakdown = useMemo(() => computeAdminQuote(input), [input])
   const guardsCount = Math.max(1, guards)
@@ -290,17 +292,31 @@ export default function AdminQuoteCalculator() {
             </Field>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
-              <Field label="Commission share (%)">
+              <Field label="Rent Allowance (%)">
                 <input
                   type="number"
-                  value={commissionPct}
+                  value={rentAllowancePct}
                   min={0}
                   max={100}
                   step={0.5}
-                  onChange={(e) => setCommissionPct(Math.max(0, Math.min(100, Number(e.target.value) || 0)))}
+                  onChange={(e) => setRentAllowancePct(Math.max(0, Math.min(100, Number(e.target.value) || 0)))}
                   style={inputStyle}
                 />
               </Field>
+              <Field label="Service Charges (%)">
+                <input
+                  type="number"
+                  value={serviceChargePct}
+                  min={0}
+                  max={100}
+                  step={0.5}
+                  onChange={(e) => setServiceChargePct(Math.max(0, Math.min(100, Number(e.target.value) || 0)))}
+                  style={inputStyle}
+                />
+              </Field>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
               <Field label="Number of guards">
                 <input
                   type="number"
