@@ -122,7 +122,7 @@ export function computeAdminQuote(input: AdminQuoteInput): QuoteBreakdown {
     { label: `Relieving charges (${(c.relievingRate * 100).toFixed(2)}%)`, amount: round2(relieving) },
     { label: 'Sub Total', amount: round2(subtotal) },
     { label: 'Grand Total (per guard / month)', amount: round2(grand), isTotal: true },
-    { label: `Commission / Partner share (${(input.commissionPct * 100).toFixed(0)}%)`, amount: round2(commission), isCommission: true },
+    { label: `Service Charges (${(input.commissionPct * 100).toFixed(0)}%)`, amount: round2(commission), isCommission: true },
     ...(input.includeGst ? [{ label: `GST (${(c.gstRate * 100).toFixed(0)}%)`, amount: round2(gst) }] : []),
   ]
 
