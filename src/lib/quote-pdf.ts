@@ -2,62 +2,67 @@ import { jsPDF } from 'jspdf'
 import autoTable from 'jspdf-autotable'
 import {
   computeAdminQuote,
-  formatINR,
-  guardsForCoverage,
   type AdminQuoteInput,
   type QuoteBreakdown,
 } from '@/lib/quote-engine'
 
 /**
- * Branded quotation PDF — Silbar Security Services Pvt. Ltd.
- * Logo, header band, cost-breakdown table, totals, notes and footer.
- * Runs fully client-side (jsPDF + jspdf-autotable).
+ * Single-page branded quotation PDF for Silbar Security Services.
+ * Clean, compact, professional layout with zero text overlaps.
  */
 
-const BRAND = {
+const C = {
   cherry: [140, 31, 50] as [number, number, number],
   cherryDeep: [92, 18, 32] as [number, number, number],
   midnight: [11, 14, 20] as [number, number, number],
-  goldLight: [230, 195, 90] as [number, number, number],
-  cream: [250, 248, 244] as [number, number, number],
+  gold: [191, 149, 63] as [number, number, number],
+  goldLight: [212, 175, 55] as [number, number, number],
+  goldPale: [245, 240, 220] as [number, number, number],
+  cream: [250, 246, 236] as [number, number, number],
+  paper: [250, 248, 244] as [number, number, number],
   ink: [45, 45, 45] as [number, number, number],
-  muted: [110, 110, 110] as [number, number, number],
+  muted: [100, 100, 100] as [number, number, number],
   line: [224, 218, 205] as [number, number, number],
+  white: [255, 255, 255] as [number, number, number],
 }
 
-const COMPANY = {
+const CO = {
   name: 'Silbar Security Services Pvt. Ltd.',
+  tagline: 'Building Trust Through Professional Security & Compliance',
   regOffice: 'Registered Office: 5th Floor, Statesman House, Plot No. 148, Barakhamba Road, Connaught Place, New Delhi – 110001',
   phone: '+91-99821-70555',
   email: 'info@silbarsecurity.in',
-  website: 'www.silbarsecurity.in',
+  web: 'www.silbarsecurity.in',
 }
 
-function hex(rgb: [number, number, number]): [number, number, number] {
-  return rgb
+function formatINR_PDF(n: number): string {
+  return `Rs. ${Math.round(n).toLocaleString('en-IN')}`
 }
 
-/** Final Y position of the last autoTable, with a safe fallback. */
-function lastTableY(doc: jsPDF): number {
+function lastY(doc: jsPDF): number {
   const t = (doc as unknown as { lastAutoTable?: { finalY: number } }).lastAutoTable
   return t ? t.finalY : 0
 }
 
-/** Load a local public image and return it as a data URL (for jsPDF embedding). */
-async function loadImageAsDataUrl(src: string): Promise<string | null> {
+async function loadImg(src: string): Promise<string | null> {
   try {
     const res = await fetch(src)
     if (!res.ok) return null
     const blob = await res.blob()
-    return await new Promise<string>((resolve, reject) => {
-      const reader = new FileReader()
-      reader.onload = () => resolve(String(reader.result))
-      reader.onerror = reject
-      reader.readAsDataURL(blob)
+    return await new Promise<string>((ok, fail) => {
+      const r = new FileReader()
+      r.onload = () => ok(String(r.result))
+      r.onerror = fail
+      r.readAsDataURL(blob)
     })
-  } catch {
-    return null
-  }
+  } catch { return null }
+}
+
+function goldCorners(doc: jsPDF, x: number, y: number, w: number, h: number, s = 4) {
+  doc.setDrawColor(...C.gold)
+  doc.setLineWidth(0.35)
+  doc.line(x, y + s, x, y); doc.line(x, y, x + s, y)
+  doc.line(x + w - s, y + h, x + w, y + h); doc.line(x + w, y + h - s, x + w, y + h)
 }
 
 interface PdfMeta {
@@ -69,259 +74,207 @@ interface PdfMeta {
 
 export async function generateQuotePdf(meta: PdfMeta): Promise<jsPDF> {
   const { input, breakdown, quoteNumber, issuedDate } = meta
-  const guards = guardsForCoverage(input.coverage ?? '12h', input.posts ?? 1)
-  const monthlyTotal = breakdown.totalPerGuard * guards
-  const annualTotal = monthlyTotal * 12
+  const guards = Math.max(1, input.guards ?? 1)
+  const monthly = breakdown.totalPerGuard * guards
+  const annual = monthly * 12
 
   const doc = new jsPDF({ unit: 'mm', format: 'a4' })
-  const pageW = doc.internal.pageSize.getWidth()
-  const pageH = doc.internal.pageSize.getHeight()
-  const margin = 14
+  const W = doc.internal.pageSize.getWidth()
+  const H = doc.internal.pageSize.getHeight()
+  const m = 14 // side margin
 
-  // ── Brand header band ──
-  doc.setFillColor(...BRAND.midnight)
-  doc.rect(0, 0, pageW, 30, 'F')
-  doc.setFillColor(...BRAND.cherry)
-  doc.rect(0, 30, pageW, 1.2, 'F')
+  // ── HEADER — midnight band 26mm ──
+  doc.setFillColor(...C.midnight)
+  doc.rect(0, 0, W, 26, 'F')
+  doc.setFillColor(...C.cherry)
+  doc.rect(0, 26, W, 0.8, 'F')
+  doc.setFillColor(...C.gold)
+  doc.rect(0, 26.8, W, 0.3, 'F')
 
-  // Logo (square) on the left of the band
-  const logoData = await loadImageAsDataUrl('/logo.png')
-  if (logoData) {
-    try {
-      doc.addImage(logoData, 'PNG', margin, 5, 20, 20)
-    } catch {
-      // fall through to text-only header if logo can't be embedded
-    }
-  }
-  // Brand title + tagline (shift right of the logo)
-  doc.setTextColor(...BRAND.cream)
-  doc.setFont('helvetica', 'bold')
-  doc.setFontSize(13)
-  doc.text('SILBAR SECURITY', margin + 23, 12)
-  doc.setFont('helvetica', 'normal')
-  doc.setFontSize(8.5)
-  doc.setTextColor(...BRAND.goldLight)
-  doc.text('SERVICES PVT. LTD.', margin + 23, 18)
+  const logo = await loadImg('/logo.png')
+  if (logo) { try { doc.addImage(logo, 'PNG', m, 4, 18, 18) } catch { /* */ } }
 
-  // Quote number + date on the right
-  doc.setFont('helvetica', 'bold')
-  doc.setFontSize(10)
-  doc.setTextColor(...BRAND.cream)
-  doc.text('QUOTATION', pageW - margin, 10, { align: 'right' })
-  doc.setFont('helvetica', 'normal')
-  doc.setFontSize(8)
-  doc.setTextColor(...BRAND.goldLight)
-  doc.text(quoteNumber, pageW - margin, 16, { align: 'right' })
-  doc.text(`Date: ${issuedDate}`, pageW - margin, 21, { align: 'right' })
+  const lx = m + (logo ? 21 : 0)
+  doc.setTextColor(...C.cream)
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(13)
+  doc.text('SILBAR SECURITY', lx, 10)
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5)
+  doc.setTextColor(...C.goldLight)
+  doc.text('SERVICES PVT. LTD.', lx, 15)
+  doc.setFontSize(6.5); doc.setTextColor(...C.muted)
+  doc.text(CO.tagline, lx, 20)
 
-  // ── Title + client block ──
-  let y = 40
-  doc.setFont('helvetica', 'bold')
-  doc.setFontSize(14)
-  doc.setTextColor(...BRAND.cherry)
-  doc.text(`Security Manpower Quotation — ${input.stateName}`, margin, y)
-  y += 7
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(11)
+  doc.setTextColor(...C.cream)
+  doc.text('QUOTATION', W - m, 9, { align: 'right' })
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(7)
+  doc.setTextColor(...C.goldLight)
+  doc.text(quoteNumber, W - m, 14, { align: 'right' })
+  doc.text(`Date: ${issuedDate}`, W - m, 18.5, { align: 'right' })
+  doc.text('Valid for 30 days', W - m, 23, { align: 'right' })
 
-  doc.setFillColor(248, 246, 241)
-  doc.roundedRect(margin, y, pageW - margin * 2, 26, 1.5, 1.5, 'F')
-  doc.setFont('helvetica', 'bold')
-  doc.setFontSize(9)
-  doc.setTextColor(...BRAND.midnight)
-  doc.text('Quotation To:', margin + 4, y + 7)
-  doc.setFont('helvetica', 'normal')
-  doc.setFontSize(10)
-  doc.text(input.clientName || '—', margin + 4, y + 13)
-  doc.text(input.siteName || input.stateName, margin + 4, y + 19)
-  doc.text(`${input.city ? input.city + ', ' : ''}${input.stateName}`, margin + 4, y + 25)
-  y += 34
+  // ── TITLE ──
+  let y = 33
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(11)
+  doc.setTextColor(...C.cherry)
+  doc.text(`Security Manpower Quotation — ${input.stateName}`, m, y)
+  doc.setDrawColor(...C.gold); doc.setLineWidth(0.25)
+  doc.line(m, y + 2, m + 65, y + 2)
+  y += 6
 
-  // ── Engagement summary ──
-  const summaryLeft: [string, string][] = [
-    ['Category', input.category === 'supervisor' ? 'Security Supervisor' : 'Security Guard / Lady Guard'],
-    ['Coverage', input.coverage === '24h' ? '24-hour (2 guards / post)' : '12-hour (1 guard / post)'],
-    ['Posts', String(input.posts ?? 1)],
-    ['Guards billed', String(guards)],
+  // ── CLIENT BOX — brand-card with gold corners ──
+  const boxW = W - m * 2, boxH = 20
+  doc.setFillColor(...C.paper)
+  doc.roundedRect(m, y, boxW, boxH, 1.2, 1.2, 'F')
+  doc.setDrawColor(...C.line); doc.setLineWidth(0.25)
+  doc.roundedRect(m, y, boxW, boxH, 1.2, 1.2, 'S')
+  goldCorners(doc, m, y, boxW, boxH)
+
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(7)
+  doc.setTextColor(...C.cherry)
+  doc.text('QUOTATION TO', m + 5, y + 5)
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(9)
+  doc.setTextColor(...C.midnight)
+  doc.text(input.clientName || '—', m + 5, y + 10)
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5); doc.setTextColor(...C.ink)
+  doc.text(`${input.siteName || input.stateName}  |  ${input.city ? input.city + ', ' : ''}${input.stateName}`, m + 5, y + 15.5)
+
+  const rx = W - m - 45
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(...C.muted)
+  doc.text('Quote No.', rx, y + 5); doc.text('Date', rx + 28, y + 5)
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(...C.midnight)
+  doc.text(quoteNumber, rx, y + 10)
+  doc.text(issuedDate, rx + 28, y + 10)
+  y += boxH + 5
+
+  // ── PARAMETERS SUMMARY TABLE (Single unified autoTable call) ──
+  const paramHeaders = ['Category', 'Guards', 'Basic Wage', 'Days/Month', 'Shift', 'Commission']
+  const paramValues = [
+    input.category === 'supervisor' ? 'Security Supervisor' : 'Security Guard / Lady Guard',
+    String(guards),
+    formatINR_PDF(input.monthlyBasic),
+    String(input.daysPerMonth ?? 26),
+    `${input.hoursPerShift ?? 8} hrs`,
+    `${(input.commissionPct * 100).toFixed(0)}%`,
   ]
-  const summaryRight: [string, string][] = [
-    ['Basic wage (month)', formatINR(input.monthlyBasic)],
-    ['Days / month', String(input.daysPerMonth ?? 26)],
-    ['Shift hours', String(input.hoursPerShift ?? 8) + ' hrs'],
-    ['Commission share', `${(input.commissionPct * 100).toFixed(0)}%`],
-  ]
 
   autoTable(doc, {
     startY: y,
-    margin: { left: margin, right: margin },
-    body: [
-      [...summaryLeft.map((pair) => pair[1]), ...summaryRight.map((pair) => pair[1])],
-    ],
-    head: [['', '', '', '', '', '', '', '']],
+    margin: { left: m, right: m },
+    head: [paramHeaders],
+    body: [paramValues],
     theme: 'plain',
-    styles: { fontSize: 8.5, cellPadding: 1.6, font: 'helvetica' },
+    headStyles: { fontSize: 6.5, fontStyle: 'bold', textColor: C.muted, cellPadding: 1, font: 'helvetica' },
+    bodyStyles: { fontSize: 8, fontStyle: 'bold', textColor: C.midnight, cellPadding: 1.5, font: 'helvetica' },
   })
-  // Overlay the summary labels above the row we just drew
-  autoTable(doc, {
-    startY: y,
-    margin: { left: margin, right: margin },
-    head: [[...summaryLeft.map(([k]) => k), ...summaryRight.map(([k]) => k)]],
-    theme: 'plain',
-    styles: { fontSize: 7.5, fontStyle: 'bold', textColor: hex(BRAND.muted) as [number, number, number], cellPadding: 1.2, font: 'helvetica' },
-    columnStyles: Object.fromEntries(Array.from({ length: 8 }, (_, i) => [i, { halign: 'left' }])),
-  })
-  // Merge the two tables visually: draw a hairline under labels
-  const afterSummary = lastTableY(doc)
-  doc.setDrawColor(...BRAND.line)
-  doc.setLineWidth(0.3)
-  doc.line(margin, afterSummary, pageW - margin, afterSummary)
-  y = afterSummary + 6
 
-  // ── Breakdown table ──
-  doc.setFont('helvetica', 'bold')
-  doc.setFontSize(11)
-  doc.setTextColor(...BRAND.cherry)
-  doc.text('Cost Breakdown (per guard / month)', margin, y)
-  y += 2
+  y = lastY(doc) + 2
+  doc.setDrawColor(...C.gold); doc.setLineWidth(0.25)
+  doc.line(m, y, W - m, y)
+  y += 5
 
-  const rows = breakdown.lines.map((l) => [l.label, formatINR(l.amount)])
+  // ── BREAKDOWN TABLE ──
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(9.5)
+  doc.setTextColor(...C.cherry)
+  doc.text('Cost Breakdown (per guard / month)', m, y)
+  y += 3
+
+  const rows = breakdown.lines.map((l) => [l.label, formatINR_PDF(l.amount)])
   autoTable(doc, {
-    startY: y,
-    margin: { left: margin, right: margin },
-    head: [['Particulars', 'Amount (₹)']],
+    startY: y, margin: { left: m, right: m },
+    head: [['Particulars', 'Amount (INR)']],
     body: rows,
     theme: 'grid',
-    headStyles: {
-      fillColor: BRAND.midnight,
-      textColor: [255, 255, 255],
-      fontSize: 9,
-      fontStyle: 'bold',
-      halign: 'left',
-    },
-    styles: {
-      fontSize: 8.5,
-      cellPadding: 1.8,
-      textColor: BRAND.ink,
-      lineColor: BRAND.line,
-      lineWidth: 0.2,
-    },
-    columnStyles: {
-      0: { cellWidth: 'auto' },
-      1: { cellWidth: 45, halign: 'right', fontStyle: 'bold' },
-    },
+    headStyles: { fillColor: C.midnight, textColor: C.white, fontSize: 8, fontStyle: 'bold', halign: 'left', cellPadding: 1.2 },
+    styles: { fontSize: 7.5, cellPadding: 1.2, textColor: C.ink, lineColor: C.line, lineWidth: 0.12, font: 'helvetica' },
+    alternateRowStyles: { fillColor: [252, 250, 246] },
+    columnStyles: { 0: { cellWidth: 'auto' }, 1: { cellWidth: 42, halign: 'right', fontStyle: 'bold' } },
     didParseCell: (data) => {
-      const cell = data.cell
-      const raw = cell.raw
+      const raw = data.cell.raw
       const label = Array.isArray(raw) ? String(raw[0] ?? '') : ''
       if (label.startsWith('Grand Total')) {
-        cell.styles.fontStyle = 'bold'
-        cell.styles.fillColor = BRAND.cherry
-        cell.styles.textColor = [255, 255, 255]
+        data.cell.styles.fontStyle = 'bold'; data.cell.styles.fillColor = C.cherry; data.cell.styles.textColor = C.white
       } else if (label.startsWith('Commission')) {
-        cell.styles.fontStyle = 'bold'
-        cell.styles.fillColor = [245, 240, 220]
-        cell.styles.textColor = BRAND.cherryDeep
+        data.cell.styles.fontStyle = 'bold'; data.cell.styles.fillColor = C.goldPale; data.cell.styles.textColor = C.cherryDeep
       } else if (label.startsWith('GST')) {
-        cell.styles.fontStyle = 'bold'
-        cell.styles.textColor = BRAND.cherry
+        data.cell.styles.fontStyle = 'bold'; data.cell.styles.textColor = C.cherry
       }
     },
   })
-  const afterTable = lastTableY(doc)
-  y = afterTable + 7
+  y = lastY(doc) + 4
 
-  // ── Totals block ──
+  // ── TOTALS BOX — right-aligned ──
   const totals = [
-    { label: `Total per guard / month`, value: formatINR(breakdown.totalPerGuard) },
-    { label: `Monthly estimate (${guards} guards)`, value: formatINR(monthlyTotal) },
-    { label: 'Annual estimate', value: formatINR(annualTotal) },
+    ['Total per guard / month', formatINR_PDF(breakdown.totalPerGuard)],
+    [`Monthly estimate (${guards} guards)`, formatINR_PDF(monthly)],
+    ['Annual estimate', formatINR_PDF(annual)],
   ]
-
-  const totalBoxW = 85
-  const totalBoxX = pageW - margin - totalBoxW
+  const tw = 88, tx = W - m - tw
   autoTable(doc, {
-    startY: y,
-    margin: { left: totalBoxX, right: margin },
-    head: [[{ content: 'TOTAL BILLING', colSpan: 2, styles: { halign: 'center' } }]],
-    body: totals.map((t) => [t.label, t.value]),
+    startY: y, margin: { left: tx, right: m },
+    head: [[{ content: 'TOTAL BILLING ESTIMATE', colSpan: 2, styles: { halign: 'center' } }]],
+    body: totals,
     theme: 'grid',
-    headStyles: { fillColor: BRAND.cherry, textColor: [255, 255, 255], fontSize: 9.5, fontStyle: 'bold' },
-    styles: { fontSize: 8.5, cellPadding: 2.2, textColor: BRAND.ink, lineColor: BRAND.line, lineWidth: 0.2 },
-    columnStyles: {
-      0: { cellWidth: 'auto' },
-      1: { cellWidth: 38, halign: 'right', fontStyle: 'bold', textColor: BRAND.cherry },
-    },
+    headStyles: { fillColor: C.cherry, textColor: C.white, fontSize: 8, fontStyle: 'bold', cellPadding: 1.5 },
+    styles: { fontSize: 7.5, cellPadding: 1.5, textColor: C.ink, lineColor: C.line, lineWidth: 0.12, font: 'helvetica' },
+    columnStyles: { 0: { cellWidth: 'auto' }, 1: { cellWidth: 40, halign: 'right', fontStyle: 'bold', textColor: C.cherry } },
     didParseCell: (data) => {
       if (data.section === 'body' && data.row.index === 0) {
-        data.cell.styles.fontStyle = 'bold'
-        data.cell.styles.fillColor = [252, 248, 240]
+        data.cell.styles.fillColor = [252, 248, 240]; data.cell.styles.fontStyle = 'bold'
       }
     },
   })
-  const afterTotals = lastTableY(doc)
+  y = lastY(doc) + 5
 
-  // ── Notes ──
-  // Flow naturally; if the notes + signature (~36mm) can't fit on the page,
-  // continue on a fresh page instead of clamping over earlier content.
-  let notesTop = afterTotals + 8
-  if (notesTop + 36 > pageH - 12) {
-    doc.addPage()
-    notesTop = 22
-  }
-  y = notesTop
-  doc.setFont('helvetica', 'bold')
-  doc.setFontSize(9)
-  doc.setTextColor(...BRAND.midnight)
-  doc.text('Notes:', margin, y)
-  y += 5
-  doc.setFont('helvetica', 'normal')
-  doc.setFontSize(8)
-  doc.setTextColor(...BRAND.muted)
+  // ── NOTES — compact ──
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(7.5)
+  doc.setTextColor(...C.midnight)
+  doc.text('Notes & Terms', m, y)
+  doc.setDrawColor(...C.gold); doc.setLineWidth(0.2)
+  doc.line(m + 18, y, m + 28, y)
+  y += 3.5
+
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(6.2); doc.setTextColor(...C.muted)
   const notes = [
     '1) GST shall be charged extra as applicable on the total billing.',
-    '2) Rates are linked to minimum wages. Variation in MW will attract a pro rata increase.',
-    '3) Leave as applicable would be claimed as actuals.',
-    '4) This quotation is indicative until site scoping and confirmation by our team.',
+    '2) Rates are linked to statutory minimum wages. Revision in MW will attract pro-rata adjustment.',
+    '3) Statutory contributions (PF, ESI, Bonus, Leave) comply fully with Central & State Labor Regulations.',
+    '4) Quotation is valid for 30 days and subject to final site survey & agreement execution.',
   ]
-  for (const n of notes) {
-    doc.text(n, margin, y)
-    y += 4.5
-  }
+  for (const n of notes) { doc.text(n, m, y); y += 3.0 }
 
-  // ── Signature block ──
-  const sigY = y + 12
-  doc.setDrawColor(...BRAND.line)
-  doc.setLineWidth(0.3)
-  doc.line(margin, sigY, pageW - margin, sigY)
-  doc.setFont('helvetica', 'bold')
-  doc.setFontSize(8.5)
-  doc.setTextColor(...BRAND.midnight)
-  doc.text('For Silbar Security Services Pvt. Ltd.', margin, sigY + 6)
-  doc.text('Authorised Signatory', pageW - margin - 40, sigY + 6, { align: 'right' })
+  // ── SIGNATURE ──
+  y += 3
+  doc.setDrawColor(...C.line); doc.setLineWidth(0.25)
+  doc.line(m, y, W - m, y)
+  y += 4
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(7)
+  doc.setTextColor(...C.midnight)
+  doc.text('For Silbar Security Services Pvt. Ltd.', m, y)
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5)
+  doc.setTextColor(...C.muted)
+  doc.text('Authorised Signatory', W - m, y, { align: 'right' })
 
-  // ── Footer (every page) ──
-  const addFooter = () => {
-    const pages = doc.getNumberOfPages()
-    for (let i = 1; i <= pages; i++) {
-      doc.setPage(i)
-      const h = doc.internal.pageSize.getHeight()
-      doc.setFont('helvetica', 'normal')
-      doc.setFontSize(7)
-      doc.setTextColor(...BRAND.muted)
-      doc.text(`${COMPANY.name} · ${COMPANY.phone} · ${COMPANY.email} · ${COMPANY.website}`, pageW / 2, h - 8, { align: 'center' })
-      doc.text(`${COMPANY.regOffice}`, pageW / 2, h - 4.5, { align: 'center' })
-      doc.setFontSize(6.5)
-      doc.text(`Page ${i} of ${pages}`, pageW - margin, h - 8, { align: 'right' })
-    }
+  // ── FOOTER — every page ──
+  const pages = doc.getNumberOfPages()
+  for (let i = 1; i <= pages; i++) {
+    doc.setPage(i)
+    doc.setDrawColor(...C.gold); doc.setLineWidth(0.2)
+    doc.line(m, H - 12, W - m, H - 12)
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(6); doc.setTextColor(...C.muted)
+    doc.text(`${CO.name}  ·  ${CO.phone}  ·  ${CO.email}  ·  ${CO.web}`, W / 2, H - 9, { align: 'center' })
+    doc.setFontSize(5.5)
+    doc.text(CO.regOffice, W / 2, H - 6, { align: 'center' })
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(6); doc.setTextColor(...C.cherry)
+    doc.text(`${i} / ${pages}`, W - m, H - 9, { align: 'right' })
   }
-  addFooter()
 
   return doc
 }
 
-/** Build a human-readable quote number like SILBAR/QT/2026/0042 */
 export function buildQuoteNumber(): string {
-  const now = new Date()
-  const yy = String(now.getFullYear())
-  const seq = Math.floor(1000 + Math.random() * 9000)
+  const yy = new Date().getFullYear()
+  const seq = String(Math.floor(1000 + Math.random() * 9000))
   return `SILBAR/QT/${yy}/${seq}`
 }
 
@@ -329,7 +282,6 @@ export function todayISO(): string {
   return new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })
 }
 
-/** Convenience wrapper: generate + download in one call. */
 export async function downloadQuotePdf(input: AdminQuoteInput, quoteNumber: string, issuedDate: string) {
   const breakdown = computeAdminQuote(input)
   const doc = await generateQuotePdf({ input, breakdown, quoteNumber, issuedDate })

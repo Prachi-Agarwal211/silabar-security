@@ -41,10 +41,10 @@ const b = computeAdminQuote({
   hoursPerShift: 8,
 })
 console.log('=== MATH CHECK (Rajasthan guard 249x26) ===')
-console.log('grand (expect ≈ ₹15,653):', formatINR(b.grand))
+console.log('grand (expect ₹15,653):', formatINR(b.grand))
 console.log('total/guard with 15% comm + GST:', formatINR(b.totalPerGuard))
-if (Math.abs(b.grand - 15653) > 2) {
-  console.error('FAIL: grand total does not match Excel-derived ₹15,653')
+if (b.grand !== 15653) {
+  console.error('FAIL: grand total', b.grand, 'does not match Excel ₹15,653')
   process.exit(1)
 }
 console.log('MATH-OK ✓')
@@ -66,8 +66,7 @@ try {
     clientName: 'Test Client Pvt. Ltd.',
     siteName: 'Plant 2 — Neemrana',
     city: 'Jaipur',
-    posts: 3,
-    coverage: '24h',
+    guards: 6,
     daysPerMonth: 26,
     hoursPerShift: 8,
   }

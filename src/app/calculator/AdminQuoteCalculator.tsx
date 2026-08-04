@@ -5,7 +5,6 @@ import Link from 'next/link'
 import {
   Shield,
   Calculator,
-  Lock,
   FileDown,
   RotateCcw,
   Building2,
@@ -16,7 +15,6 @@ import {
 import {
   computeAdminQuote,
   formatINR,
-  guardsForCoverage,
   QUOTE_DEFAULTS,
   type AdminQuoteInput,
   type QuoteCategory,
@@ -28,41 +26,7 @@ import {
 } from '@/lib/quote-pdf'
 import { STATES } from '@/data/locations'
 
-/**
- * Admin PIN. Read from env so it can be rotated without a code change;
- * the committed value is the default fallback. Set NEXT_PUBLIC_ADMIN_PIN
- * in Vercel to override. Note: client-side PIN is obfuscation — the page
- * is noindex and never linked publicly.
- */
-const ADMIN_PIN = process.env.NEXT_PUBLIC_ADMIN_PIN || 'silbar2026'
-const PIN_KEY = 'silbar-admin-authed'
-
-function useAuth() {
-  const [authed, setAuthed] = useState(() => {
-    if (typeof window === 'undefined') return false
-    return window.sessionStorage.getItem(PIN_KEY) === '1'
-  })
-  const [pin, setPin] = useState('')
-  const [error, setError] = useState(false)
-
-  const submit = () => {
-    if (pin.trim() === ADMIN_PIN) {
-      window.sessionStorage.setItem(PIN_KEY, '1')
-      setAuthed(true)
-      setError(false)
-    } else {
-      setError(true)
-    }
-  }
-
-  const clearError = () => setError(false)
-
-  return { authed, pin, setPin, error, submit, clearError }
-}
-
 export default function AdminQuoteCalculator() {
-  const auth = useAuth()
-
   // ── Manual inputs ──
   const [stateName, setStateName] = useState('Rajasthan')
   const [category, setCategory] = useState<QuoteCategory>('guard')
@@ -78,8 +42,7 @@ export default function AdminQuoteCalculator() {
   const [clientName, setClientName] = useState('')
   const [siteName, setSiteName] = useState('')
   const [city, setCity] = useState('')
-  const [posts, setPosts] = useState(1)
-  const [coverage, setCoverage] = useState<'12h' | '24h'>('12h')
+  const [guards, setGuards] = useState(1)
 
   const [quoteNumber] = useState(() => buildQuoteNumber())
   const [issuedDate] = useState(() => todayISO())
@@ -97,16 +60,15 @@ export default function AdminQuoteCalculator() {
       clientName,
       siteName,
       city,
-      posts,
-      coverage,
+      guards,
       daysPerMonth,
       hoursPerShift,
     }
-  }, [stateName, category, wageMode, dailyWage, monthlyBasic, daysPerMonth, hoursPerShift, commissionPct, includeGst, clientName, siteName, city, posts, coverage])
+  }, [stateName, category, wageMode, dailyWage, monthlyBasic, daysPerMonth, hoursPerShift, commissionPct, includeGst, clientName, siteName, city, guards])
 
   const breakdown = useMemo(() => computeAdminQuote(input), [input])
-  const guards = guardsForCoverage(coverage, posts)
-  const monthlyTotal = breakdown.totalPerGuard * guards
+  const guardsCount = Math.max(1, guards)
+  const monthlyTotal = breakdown.totalPerGuard * guardsCount
   const annualTotal = monthlyTotal * 12
 
   const doDownload = async () => {
@@ -116,80 +78,6 @@ export default function AdminQuoteCalculator() {
     } finally {
       setDownloading(false)
     }
-  }
-
-  if (!auth.authed) {
-    return (
-      <main
-        className="admin-login"
-        style={{
-          minHeight: '100vh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          background: 'linear-gradient(135deg, #0B0E14 0%, #1a1014 60%, #5C1220 100%)',
-          padding: '1.5rem',
-        }}
-      >
-        <form
-          onSubmit={(e) => {
-            e.preventDefault()
-            auth.submit()
-          }}
-          style={{
-            width: '100%',
-            maxWidth: 380,
-            background: '#fff',
-            borderRadius: 16,
-            padding: '2.2rem 2rem',
-            boxShadow: '0 24px 60px rgba(0,0,0,0.35)',
-          }}
-        >
-          <div style={{ textAlign: 'center', marginBottom: '1.4rem' }}>
-            <div
-              style={{
-                width: 56,
-                height: 56,
-                margin: '0 auto 0.9rem',
-                borderRadius: 14,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: 'rgba(140,31,50,0.1)',
-                color: '#8C1F32',
-              }}
-            >
-              <Lock size={24} />
-            </div>
-            <h1 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#0B0E14', marginBottom: '0.25rem' }}>
-              Silbar Quote Tool
-            </h1>
-            <p style={{ fontSize: '0.82rem', color: '#7a7a7a' }}>
-              Admin access only — internal quotation generator.
-            </p>
-          </div>
-          <input
-            type="password"
-            value={auth.pin}
-            onChange={(e) => {
-              auth.setPin(e.target.value)
-              if (auth.error) auth.clearError()
-            }}
-            placeholder="Enter PIN"
-            autoFocus
-            style={inputStyle}
-          />
-          {auth.error && (
-            <p style={{ color: '#c0392b', fontSize: '0.8rem', margin: '0.4rem 0 0' }}>
-              Incorrect PIN. Please try again.
-            </p>
-          )}
-          <button type="submit" style={{ ...btnPrimary, marginTop: '1.1rem', width: '100%' }}>
-            Unlock
-          </button>
-        </form>
-      </main>
-    )
   }
 
   return (
@@ -232,7 +120,7 @@ export default function AdminQuoteCalculator() {
                 Silbar Quote Tool
               </h1>
               <p style={{ fontSize: '0.78rem', color: '#8a8a8a', margin: 0 }}>
-                Internal — not visible to the public · PIN protected
+                Internal quotation generator
               </p>
             </div>
           </div>
@@ -263,7 +151,7 @@ export default function AdminQuoteCalculator() {
         >
           <Meta label="Quote No." value={quoteNumber} />
           <Meta label="Date" value={issuedDate} />
-          <Meta label="Guards billed" value={String(guards)} />
+          <Meta label="Guards" value={String(guardsCount)} />
           <Meta label="Total / month" value={formatINR(monthlyTotal)} highlight />
         </div>
 
@@ -413,41 +301,17 @@ export default function AdminQuoteCalculator() {
                   style={inputStyle}
                 />
               </Field>
-              <Field label="Posts">
+              <Field label="Number of guards">
                 <input
                   type="number"
-                  value={posts}
+                  value={guards}
                   min={1}
                   max={500}
-                  onChange={(e) => setPosts(Math.max(1, Math.min(500, Number(e.target.value) || 1)))}
+                  onChange={(e) => setGuards(Math.max(1, Math.min(500, Number(e.target.value) || 1)))}
                   style={inputStyle}
                 />
               </Field>
             </div>
-
-            <Field label="Coverage">
-              <div style={{ display: 'flex', gap: '0.5rem' }}>
-                {(['12h', '24h'] as const).map((c) => (
-                  <button
-                    key={c}
-                    onClick={() => setCoverage(c)}
-                    style={{
-                      flex: 1,
-                      padding: '0.5rem',
-                      borderRadius: 8,
-                      border: `1px solid ${coverage === c ? '#8C1F32' : '#d8d2c6'}`,
-                      background: coverage === c ? '#8C1F32' : '#fff',
-                      color: coverage === c ? '#fff' : '#444',
-                      fontWeight: 600,
-                      fontSize: '0.8rem',
-                      cursor: 'pointer',
-                    }}
-                  >
-                    {c === '12h' ? '12-hour (1 guard/post)' : '24-hour (2 guards/post)'}
-                  </button>
-                ))}
-              </div>
-            </Field>
 
             <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.6rem', cursor: 'pointer' }}>
               <input type="checkbox" checked={includeGst} onChange={(e) => setIncludeGst(e.target.checked)} style={{ width: 16, height: 16 }} />
@@ -534,7 +398,7 @@ export default function AdminQuoteCalculator() {
                 <div style={{ color: '#E6C35A', fontWeight: 800, fontSize: '1.3rem' }}>{formatINR(breakdown.totalPerGuard)}</div>
               </div>
               <div style={{ textAlign: 'right' }}>
-                <div style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{guards} guards / mo</div>
+                <div style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{guardsCount} guards / mo</div>
                 <div style={{ color: '#fff', fontWeight: 800, fontSize: '1.3rem' }}>{formatINR(monthlyTotal)}</div>
               </div>
               <div style={{ textAlign: 'right' }}>

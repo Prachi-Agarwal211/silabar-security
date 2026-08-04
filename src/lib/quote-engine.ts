@@ -59,8 +59,7 @@ export interface AdminQuoteInput {
   clientName?: string
   siteName?: string
   city?: string
-  posts?: number
-  coverage?: '12h' | '24h'
+  guards?: number
   daysPerMonth?: number
   hoursPerShift?: number
 }
@@ -87,7 +86,8 @@ export interface QuoteBreakdown {
   lines: QuoteLine[]
 }
 
-const round2 = (n: number) => Math.round(n * 100) / 100
+// ponytail: Excel rounds each line to whole numbers (Math.round), not 2 decimals.
+const round2 = (n: number) => Math.round(n)
 
 export function computeAdminQuote(input: AdminQuoteInput): QuoteBreakdown {
   const c = QUOTE_DEFAULTS
@@ -150,11 +150,6 @@ export function computeAdminQuote(input: AdminQuoteInput): QuoteBreakdown {
     totalPerGuard: round2(totalPerGuard),
     lines,
   }
-}
-
-/** Number of guards billed for the selected coverage across all posts. */
-export function guardsForCoverage(coverage: '12h' | '24h', posts: number): number {
-  return Math.max(1, posts) * (coverage === '24h' ? 2 : 1)
 }
 
 export function formatINR(n: number): string {
