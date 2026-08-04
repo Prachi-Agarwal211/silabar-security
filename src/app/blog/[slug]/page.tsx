@@ -8,6 +8,7 @@ import PageHero from '@/components/layout/PageHero'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import { ogMetadata } from '@/lib/metadata'
+import { clampToToday } from '@/lib/content-dates'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export async function generateStaticParams() {
@@ -23,13 +24,17 @@ export async function generateMetadata({
   const post = BLOG_POSTS.find((p) => p.slug === slug)
   if (!post) return {}
 
+  // Never expose future dates to Google (future datePublished is a trust signal
+  // that suppresses indexing). Clamp defensively even though data is clean.
+  const publishedAt = clampToToday(post.publishedAt)
+
   return {
     title: `${post.title}`,
     description: post.excerpt,
     ...ogMetadata(`${post.title}`, post.excerpt, `/blog/${slug}`, `/images/og/${slug}-og.svg`),
     openGraph: {
       type: 'article' as const,
-      publishedTime: post.publishedAt,
+      publishedTime: publishedAt,
       authors: [post.author],
       section: post.category,
       title: post.title,
@@ -47,8 +52,8 @@ export default async function BlogPostPage({
   const post = BLOG_POSTS.find((p) => p.slug === slug)
   if (!post) notFound()
 
-  // Format the date
-  const dateObj = new Date(post.publishedAt)
+  // Format the date (clamped so a future date can never render)
+  const dateObj = new Date(`${clampToToday(post.publishedAt)}T00:00:00.000Z`)
   const formattedDate = dateObj.toLocaleDateString('en-IN', {
     month: 'long',
     day: 'numeric',
@@ -69,8 +74,8 @@ export default async function BlogPostPage({
             '@type': 'Person',
             name: post.author
           },
-          datePublished: post.publishedAt,
-          dateModified: post.modifiedAt,
+          datePublished: clampToToday(post.publishedAt),
+          dateModified: clampToToday(post.modifiedAt),
           publisher: {
             '@type': 'Organization',
             name: 'Silbar Security Services Pvt. Ltd.',

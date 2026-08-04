@@ -5,9 +5,18 @@ import { STATES, CITIES } from '@/data/locations'
 import { BLOG_POSTS } from '@/data/blog'
 import { CASE_STUDIES } from '@/data/case-studies'
 import { CAREERS } from '@/data/careers'
+import { clampToToday } from '@/lib/content-dates'
 
 const BASE_URL = 'https://www.silbarsecurity.in'
-const BUILD_DATE = new Date()
+
+/**
+ * Stable sitemap date. Google distrusts <lastmod> that changes on every
+ * deploy (build-time `new Date()`) — it looks like artificial churn and can
+ * keep pages stuck as "Discovered / crawled — currently not indexed".
+ * Use a fixed launch date for templated pages so the sitemap stays honest:
+ * only blog posts carry their real publication dates.
+ */
+const SITE_LAUNCH_DATE = new Date('2026-08-04T00:00:00.000Z')
 
 /**
  * Flat sitemap — under 50 000 URLs so no sitemap index needed.
@@ -41,7 +50,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const r of coreRoutes) {
     urls.push({
       url: `${BASE_URL}${r.path}`,
-      lastModified: BUILD_DATE,
+      lastModified: SITE_LAUNCH_DATE,
       changeFrequency: r.changeFrequency,
       priority: r.priority,
     })
@@ -51,7 +60,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const s of SERVICES) {
     urls.push({
       url: `${BASE_URL}/services/${s.slug}`,
-      lastModified: BUILD_DATE,
+      lastModified: SITE_LAUNCH_DATE,
       changeFrequency: 'monthly',
       priority: 0.75,
     })
@@ -61,7 +70,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const i of INDUSTRIES) {
     urls.push({
       url: `${BASE_URL}/industries/${i.slug}`,
-      lastModified: BUILD_DATE,
+      lastModified: SITE_LAUNCH_DATE,
       changeFrequency: 'monthly',
       priority: 0.7,
     })
@@ -71,7 +80,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const st of STATES) {
     urls.push({
       url: `${BASE_URL}/security-services/${st.slug}`,
-      lastModified: BUILD_DATE,
+      lastModified: SITE_LAUNCH_DATE,
       changeFrequency: 'monthly',
       priority: 0.65,
     })
@@ -81,21 +90,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const c of CITIES) {
     urls.push({
       url: `${BASE_URL}/security-services/city/${c.slug}`,
-      lastModified: BUILD_DATE,
+      lastModified: SITE_LAUNCH_DATE,
       changeFrequency: 'monthly',
       priority: c.tier === 1 ? 0.7 : 0.55,
     })
   }
 
-  // ── Blog posts (with actual lastmod dates) ──
+  // ── Blog posts (real publication dates — never future) ──
   for (const b of BLOG_POSTS) {
+    // Safety net: never emit a future lastmod (clamp handles it upstream too).
+    const lastModified = new Date(`${clampToToday(b.publishedAt)}T00:00:00.000Z`)
     urls.push({
       url: `${BASE_URL}/blog/${b.slug}`,
-      lastModified: b.modifiedAt
-        ? new Date(b.modifiedAt)
-        : b.publishedAt
-          ? new Date(b.publishedAt)
-          : BUILD_DATE,
+      lastModified,
       changeFrequency: 'monthly',
       priority: 0.55,
     })
@@ -105,7 +112,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const cs of CASE_STUDIES) {
     urls.push({
       url: `${BASE_URL}/case-studies/${cs.slug}`,
-      lastModified: BUILD_DATE,
+      lastModified: SITE_LAUNCH_DATE,
       changeFrequency: 'monthly',
       priority: 0.6,
     })
@@ -115,7 +122,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const job of CAREERS) {
     urls.push({
       url: `${BASE_URL}/careers/${job.slug}`,
-      lastModified: BUILD_DATE,
+      lastModified: SITE_LAUNCH_DATE,
       changeFrequency: 'weekly',
       priority: 0.5,
     })
