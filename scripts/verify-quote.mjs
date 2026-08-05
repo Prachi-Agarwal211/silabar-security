@@ -42,10 +42,10 @@ const b = computeAdminQuote({
   hoursPerShift: 8,
 })
 console.log('=== MATH CHECK (Rajasthan guard 249x26, uniform ₹500, no service charge) ===')
-console.log('grand (expect ₹14,522):', formatINR(b.grand))
+console.log('grand (expect ₹14,885):', formatINR(b.grand))
 console.log('total/guard with 15% comm + GST:', formatINR(b.totalPerGuard))
-if (b.grand !== 14522) {
-  console.error('FAIL: grand total', b.grand, 'does not match expected ₹14,522')
+if (b.grand !== 14885) {
+  console.error('FAIL: grand total', b.grand, 'does not match expected ₹14,885')
   process.exit(1)
 }
 console.log('MATH-OK ✓')

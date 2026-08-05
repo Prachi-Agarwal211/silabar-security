@@ -148,7 +148,7 @@ export async function generateQuotePdf(meta: PdfMeta): Promise<jsPDF> {
   y += boxH + 5
 
   // ── PARAMETERS SUMMARY TABLE (Single unified autoTable call) ──
-  const paramHeaders = ['Category', 'Guards', 'Basic Wage', 'Days/Month', 'Shift', 'Rent Allow.', 'Service Ch.']
+  const paramHeaders = ['Category', 'Guards', 'Basic Wage', 'Days/Month', 'Shift', 'Allowance', 'Admin Charges']
   const paramValues = [
     input.category === 'supervisor' ? 'Security Supervisor' : 'Security Guard / Lady Guard',
     String(guards),
@@ -193,9 +193,9 @@ export async function generateQuotePdf(meta: PdfMeta): Promise<jsPDF> {
     didParseCell: (data) => {
       const raw = data.cell.raw
       const label = Array.isArray(raw) ? String(raw[0] ?? '') : ''
-      if (label.startsWith('Grand Total')) {
+      if (label.startsWith('Total Service Value')) {
         data.cell.styles.fontStyle = 'bold'; data.cell.styles.fillColor = C.cherry; data.cell.styles.textColor = C.white
-      } else if (label.startsWith('Rent Allowance') || label.startsWith('Service Charges')) {
+      } else if (label.startsWith('Allowance') || label.startsWith('Management')) {
         data.cell.styles.fontStyle = 'bold'; data.cell.styles.fillColor = C.goldPale; data.cell.styles.textColor = C.cherryDeep
       } else if (label.startsWith('GST')) {
         data.cell.styles.fontStyle = 'bold'; data.cell.styles.textColor = C.cherry
@@ -206,14 +206,14 @@ export async function generateQuotePdf(meta: PdfMeta): Promise<jsPDF> {
 
   // ── TOTALS BOX — right-aligned ──
   const totals = [
-    ['Total per guard / month', formatINR_PDF(breakdown.totalPerGuard)],
-    [`Monthly estimate (${guards} guards)`, formatINR_PDF(monthly)],
-    ['Annual estimate', formatINR_PDF(annual)],
+    ['Monthly Billing Per Security Guard', formatINR_PDF(breakdown.totalPerGuard)],
+    [`Total Monthly Contract Value (${guards} guards)`, formatINR_PDF(monthly)],
+    ['Estimated Annual Contract Value', formatINR_PDF(annual)],
   ]
   const tw = 88, tx = W - m - tw
   autoTable(doc, {
     startY: y, margin: { left: tx, right: m },
-    head: [[{ content: 'TOTAL BILLING ESTIMATE', colSpan: 2, styles: { halign: 'center' } }]],
+    head: [[{ content: 'ESTIMATED CONTRACT VALUE', colSpan: 2, styles: { halign: 'center' } }]],
     body: totals,
     theme: 'grid',
     headStyles: { fillColor: C.cherry, textColor: C.white, fontSize: 8, fontStyle: 'bold', cellPadding: 1.5 },
@@ -237,12 +237,37 @@ export async function generateQuotePdf(meta: PdfMeta): Promise<jsPDF> {
 
   doc.setFont('helvetica', 'normal'); doc.setFontSize(6.2); doc.setTextColor(...C.muted)
   const notes = [
-    '1) GST shall be charged extra as applicable on the total billing.',
-    '2) Rates are linked to statutory minimum wages. Revision in MW will attract pro-rata adjustment.',
-    '3) Statutory contributions (PF, ESI, Bonus, Leave) comply fully with Central & State Labor Regulations.',
-    '4) Quotation is valid for 30 days and subject to final site survey & agreement execution.',
+    '1) GST shall be levied as per applicable Government regulations.',
+    '2) Rates are based on prevailing statutory Minimum Wages and are subject to revision in accordance with Government notifications.',
+    '3) Statutory liabilities including PF, ESI, Bonus, Leave Wages and Gratuity (where applicable) are considered as per applicable labour laws.',
+    '4) This quotation is valid for 30 days from the date of issue and is subject to final agreement and deployment requirements.',
+    '5) Any revision in statutory wages, taxes or labour law provisions shall be recoverable from the Client with effect from the applicable date.',
   ]
-  for (const n of notes) { doc.text(n, m, y); y += 3.0 }
+  for (const n of notes) {
+    const lines = doc.splitTextToSize(n, W - m * 2)
+    doc.text(lines, m, y)
+    y += lines.length * 2.6 + 0.4
+  }
+
+  // ── PAYMENT TERMS ──
+  y += 1.5
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(7.5)
+  doc.setTextColor(...C.midnight)
+  doc.text('Payment Terms', m, y)
+  doc.setDrawColor(...C.gold); doc.setLineWidth(0.2)
+  doc.line(m + 20, y, m + 30, y)
+  y += 3.5
+
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(6.2); doc.setTextColor(...C.muted)
+  const paymentTerms = [
+    '1) The Client shall ensure that the monthly invoice is paid before the end of each month, as employee salaries are processed on or before the last working day in compliance with applicable labour laws.',
+    '2) In case of delayed payments, the Client shall be required to maintain one month\u2019s advance payment throughout the contract period.',
+  ]
+  for (const t of paymentTerms) {
+    const lines = doc.splitTextToSize(t, W - m * 2)
+    doc.text(lines, m, y)
+    y += lines.length * 2.6 + 0.4
+  }
 
   // ── SIGNATURE ──
   y += 3

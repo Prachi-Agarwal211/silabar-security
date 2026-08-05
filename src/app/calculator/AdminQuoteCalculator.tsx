@@ -292,7 +292,7 @@ export default function AdminQuoteCalculator() {
             </Field>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
-              <Field label="Rent Allowance (%)">
+              <Field label="Allowance (%)">
                 <input
                   type="number"
                   value={rentAllowancePct}
@@ -303,7 +303,7 @@ export default function AdminQuoteCalculator() {
                   style={inputStyle}
                 />
               </Field>
-              <Field label="Service Charges (%)">
+              <Field label="Admin / Management Charges (%)">
                 <input
                   type="number"
                   value={serviceChargePct}
@@ -372,7 +372,7 @@ export default function AdminQuoteCalculator() {
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.35rem', color: '#0B0E14', fontWeight: 700 }}>
                 <CheckCircle2 size={14} /> How the PDF is built
               </div>
-              Excel rate-sheet formula: basic → HRA 50% → gross → PF 13% · ESI 3.25% · Bonus · Leave · Uniform ₹250 → Net → Relieving 16.67% → Service 10% → Grand → +Commission → +GST. Rounded per line like the client&apos;s sheet.
+              Excel rate-sheet formula: basic → HRA 50% → gross → PF 13% · ESI 3.25% · Bonus · Leave · Gratuity 4.81% · Uniform ₹500 → Net → Relieving 16.67% → Manpower Cost → +Allowance · +Admin → GST. Rounded per line like the client&apos;s sheet.
             </div>
             <button
               onClick={doDownload}

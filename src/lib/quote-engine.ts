@@ -7,14 +7,15 @@
  *   ESI      = 3.25% of gross
  *   Bonus    = 8.33% of basic
  *   Leave    = 8.33% of basic
- *   Uniform  = ₹250 fixed
- *   net      = gross + PF + ESI + Bonus + Leave + Uniform
+ *   Gratuity = 4.81% of basic
+ *   Uniform  = ₹500 fixed
+ *   net      = gross + PF + ESI + Bonus + Leave + Gratuity + Uniform
  *   relieving= 16.67% of net
  *   subtotal = net + relieving
- *   service  = 10% of subtotal
- *   grand    = subtotal + service
- *   commission = commissionPct% of grand   ← admin-entered (typically 10–20%)
- *   GST      = 18% on (grand + commission), optional
+ *   service  = serviceChargePct% of subtotal
+ *   allowance= rentAllowancePct% of subtotal
+ *   billed   = subtotal + allowance + service
+ *   GST      = 18% on billed, optional
  *
  * The admin enters the state minimum wage manually (daily wage × 26 days or a
  * direct monthly basic), so this engine takes raw inputs instead of a rate table.
@@ -28,6 +29,7 @@ export const QUOTE_DEFAULTS = {
   esiRate: 0.0325,
   bonusRate: 0.0833,
   leaveRate: 0.0833,
+  gratuityRate: 0.0481,
   uniformCharge: 500,
   relievingRate: 0.1667,
   serviceChargeRate: 0.1,
@@ -75,6 +77,7 @@ export interface QuoteBreakdown {
   esi: number
   bonus: number
   leave: number
+  gratuity: number
   uniform: number
   net: number
   relieving: number
@@ -101,8 +104,9 @@ export function computeAdminQuote(input: AdminQuoteInput): QuoteBreakdown {
   const esi = gross * c.esiRate
   const bonus = basic * c.bonusRate
   const leave = basic * c.leaveRate
+  const gratuity = basic * c.gratuityRate
   const uniform = c.uniformCharge
-  const net = gross + pf + esi + bonus + leave + uniform
+  const net = gross + pf + esi + bonus + leave + gratuity + uniform
   const relieving = net * c.relievingRate
   const subtotal = net + relieving
   const grand = subtotal
@@ -113,22 +117,23 @@ export function computeAdminQuote(input: AdminQuoteInput): QuoteBreakdown {
   const totalPerGuard = billedTotal + gst
 
   const lines: QuoteLine[] = [
-    { label: 'Minimum / Basic Wage', amount: round2(basic) },
-    { label: `HRA (${(c.hraRate * 100).toFixed(0)}% of basic)`, amount: round2(hra) },
+    { label: 'Basic Monthly Wage', amount: round2(basic) },
+    { label: 'House Rent Allowance (HRA)', amount: round2(hra) },
     ...(conveyance ? [{ label: 'Conveyance', amount: round2(conveyance) }] : []),
-    { label: 'Gross Total', amount: round2(gross) },
-    { label: `PF (${(c.pfRate * 100).toFixed(0)}% of basic)`, amount: round2(pf) },
-    { label: `ESI (${(c.esiRate * 100).toFixed(2)}% of gross)`, amount: round2(esi) },
-    { label: `Bonus (${(c.bonusRate * 100).toFixed(2)}% of basic)`, amount: round2(bonus) },
-    { label: `Leave (${(c.leaveRate * 100).toFixed(2)}% of basic)`, amount: round2(leave) },
-    { label: 'Uniform charges', amount: round2(uniform) },
-    { label: 'Net Total', amount: round2(net) },
-    { label: `Relieving charges (${(c.relievingRate * 100).toFixed(2)}%)`, amount: round2(relieving) },
-    { label: 'Sub Total', amount: round2(subtotal) },
-    { label: 'Grand Total (per guard / month)', amount: round2(grand), isTotal: true },
-    { label: `Rent Allowance (${(input.rentAllowancePct * 100).toFixed(0)}%)`, amount: round2(rentAllowance), isCommission: true },
-    { label: `Service Charges (${(input.serviceChargePct * 100).toFixed(0)}%)`, amount: round2(serviceCharge), isCommission: true },
-    ...(input.includeGst ? [{ label: `GST (${(c.gstRate * 100).toFixed(0)}%)`, amount: round2(gst) }] : []),
+    { label: 'Gross Monthly Wages', amount: round2(gross) },
+    { label: 'Employer Provident Fund Contribution', amount: round2(pf) },
+    { label: 'Employer ESI Contribution', amount: round2(esi) },
+    { label: 'Statutory Bonus Provision', amount: round2(bonus) },
+    { label: 'Leave Wages Provision', amount: round2(leave) },
+    { label: 'Gratuity Provision', amount: round2(gratuity) },
+    { label: 'Uniform, ID Card & Safety Equipment', amount: round2(uniform) },
+    { label: 'Statutory Employment Cost', amount: round2(net) },
+    { label: 'Reliever / Weekly Off Provision', amount: round2(relieving) },
+    { label: 'Total Manpower Cost', amount: round2(subtotal) },
+    { label: 'Total Service Value (Before GST)', amount: round2(grand), isTotal: true },
+    { label: `Allowance (${(input.rentAllowancePct * 100).toFixed(0)}%)`, amount: round2(rentAllowance), isCommission: true },
+    { label: `Management & Administrative Charges (${(input.serviceChargePct * 100).toFixed(0)}%)`, amount: round2(serviceCharge), isCommission: true },
+    ...(input.includeGst ? [{ label: 'GST @18% (Applicable)', amount: round2(gst) }] : []),
   ]
 
   return {
@@ -140,6 +145,7 @@ export function computeAdminQuote(input: AdminQuoteInput): QuoteBreakdown {
     esi: round2(esi),
     bonus: round2(bonus),
     leave: round2(leave),
+    gratuity: round2(gratuity),
     uniform: round2(uniform),
     net: round2(net),
     relieving: round2(relieving),
