@@ -148,9 +148,24 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="footer-bottom">
-        <span className="footer-copyright">
-          © {year} Silbar Security Services Pvt. Ltd. · {SITE_STATS.total} pages · {SITE_STATS.cities} cities · {SITE_STATS.states} states
-        </span>
+        <div className="flex flex-col gap-1">
+          <span className="footer-copyright">
+            © {year} Silbar Security Services Pvt. Ltd. · {SITE_STATS.total} pages · {SITE_STATS.cities} cities · {SITE_STATS.states} states
+          </span>
+          <span className="text-[11px] text-white/60 inline-flex items-center gap-1.5">
+            <span>Designed &amp; Engineered by</span>
+            <a
+              href="https://reverbex.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#e0b84a] font-semibold hover:underline inline-flex items-center gap-1.5"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/reverbex-logo.png" alt="Reverbex Technology" className="w-4 h-4 rounded object-contain" />
+              <span>Reverbex Technology</span>
+            </a>
+          </span>
+        </div>
         <div className="footer-legal-links">
           <Link href="/security-services" className="footer-legal-link">Locations</Link>
           <Link href="/sitemap.xml" className="footer-legal-link">Sitemap</Link>

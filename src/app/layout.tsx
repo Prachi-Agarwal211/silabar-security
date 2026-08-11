@@ -28,8 +28,8 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.silbarsecurity.in'),
   title: {
-    default: 'Silbar Security Services Pvt. Ltd. | PSARA-Licensed Security Agency',
-    template: '%s | Silbar Security Services Pvt. Ltd.',
+    default: 'Silbar Security — PSARA-Licensed Security Agency India',
+    template: '%s | Silbar Security Services',
   },
   description:
     'Silbar Security Services Pvt. Ltd. — ISO 9001:2015 certified security agency with 7,000+ guards. Manned guarding, CCTV, facility management, VIP protection across India.',
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     locale: 'en_IN',
     url: 'https://www.silbarsecurity.in',
     siteName: 'Silbar Security Services Pvt. Ltd.',
-    title: 'Silbar Security Services Pvt. Ltd. | PSARA-Licensed Security Agency',
+    title: 'Silbar Security — PSARA-Licensed Security Agency India',
     description:
       'ISO 9001:2015 certified. 7,000+ professionals. Manned guarding, VIP protection, surveillance, and facility management across India.',
     images: [
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Silbar Security Services Pvt. Ltd. | PSARA-Licensed Security Agency',
+    title: 'Silbar Security — PSARA-Licensed Security Agency India',
     description:
       'ISO 9001:2015 certified. 7,000+ professionals. Security services across PAN India.',
     images: ['https://www.silbarsecurity.in/og-image.jpg'],
@@ -195,6 +195,12 @@ export default function RootLayout({
               },
               description:
                 'ISO 9001:14001:45001:27001 certified PAN India security agency with PSARA licenses across 19 states. Manned guarding, electronic surveillance, facility management, VIP protection across India.',
+              creator: {
+                '@type': 'Organization',
+                name: 'Reverbex Technology',
+                url: 'https://reverbex.in',
+                description: 'Elite Software Engineering, AI Automations, and Web Systems.',
+              },
               telephone: '+91-9982170555',
               email: CONTACT.email,
               foundingDate: '2018',
