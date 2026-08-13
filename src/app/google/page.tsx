@@ -4,11 +4,11 @@ import Image from 'next/image'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import { Phone, Mail, MapPin, Clock, Shield, CheckCircle } from 'lucide-react'
 import { CONTACT } from '@/lib/config'
-import { ogMetadata } from '@/lib/metadata'
+import { ogMetadata, seoTitle } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
-  title: 'Silbar Security Services Pvt. Ltd. — ISO-Certified Security Agency | Jaipur, Delhi, Ahmedabad',
+  title: seoTitle('Silbar Security — ISO-Certified Security Agency | Jaipur, Delhi, Ahmedabad'),
   description:
     'ISO 9001:2015 certified Indian security agency. 7,000+ professionals. Manned guarding, CCTV, facility management across India. Call for a free quote.',
   ...ogMetadata('Silbar Security Services Pvt. Ltd. — ISO-Certified Security Agency', 'ISO 9001:2015 certified. 7,000+ professionals. Manned guarding, CCTV, facility management across India.', '/google'),

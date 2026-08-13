@@ -19,7 +19,7 @@ const TOP_INDUSTRIES = [
   { label: 'Warehouses', href: '/industries/warehouses' },
   { label: 'IT Parks', href: '/industries/it-parks' },
   { label: 'Retail', href: '/industries/retail' },
-  { label: 'Banks & ATMs', href: '/industries/banks-atms' },
+  { label: 'Banks & ATMs', href: '/industries/banks' },
 ]
 
 const TOP_STATES = [

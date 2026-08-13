@@ -28,8 +28,8 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.silbarsecurity.in'),
   title: {
-    default: 'Silbar Security — PSARA-Licensed Security Agency India',
-    template: '%s | Silbar Security Services',
+    default: 'Silbar Security Services Pvt. Ltd. | PSARA Security Agency India',
+    template: '%s | Silbar Security Services Pvt. Ltd.',
   },
   description:
     'Silbar Security Services Pvt. Ltd. — ISO 9001:2015 certified security agency with 7,000+ guards. Manned guarding, CCTV, facility management, VIP protection across India.',

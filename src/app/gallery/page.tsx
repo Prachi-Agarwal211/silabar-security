@@ -2,11 +2,11 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import PageHero from '@/components/layout/PageHero'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
-import { ogMetadata } from '@/lib/metadata'
+import { ogMetadata, seoTitle } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
-  title: 'Gallery — Security Operations & Training | Silbar Security Services Pvt. Ltd.',
+  title: seoTitle('Gallery — Security Operations & Training'),
   description: 'Visual gallery of Silbar Security Services Pvt. Ltd. operations, training facilities, team deployments, and events across India.',
   ...ogMetadata(
     'Gallery — Security Operations & Training | Silbar Security Services Pvt. Ltd.',
@@ -61,7 +61,7 @@ export default function GalleryPage() {
             {GALLERY_ITEMS.map((item, i) => (
               <div key={i} className="gallery-item" style={{ background: item.color }}>
                 <span className="gallery-item__cat">{item.category}</span>
-                <h3 className="gallery-item__title">{item.title}</h3>
+                <h2 className="gallery-item__title">{item.title}</h2>
               </div>
             ))}
           </div>

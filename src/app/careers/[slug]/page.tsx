@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { CAREERS, CAREER_SLUGS } from '@/data/careers'
 import { CONTACT } from '@/lib/config'
-import { ogMetadata } from '@/lib/metadata'
+import { ogMetadata, seoTitle } from '@/lib/metadata'
 import { Phone, Mail, CheckCircle, MapPin, Briefcase, Building2 } from 'lucide-react'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import PageLeadSection from '@/components/sections/PageLeadSection'
@@ -23,7 +23,7 @@ export async function generateMetadata({
   if (!career) return {}
 
   return {
-    title: `${career.title} — Careers`,
+    title: seoTitle(`${career.title} — Careers`),
     description: `Apply for ${career.title} at Silbar Security Services Pvt. Ltd.. ${career.locations.join(', ')}. ${career.type}. ${career.department}. Join India's 7,000-strong security force.`,
     ...ogMetadata(`${career.title} — Careers`, `Apply for ${career.title} at Silbar Security Services Pvt. Ltd.. ${career.locations.join(', ')}.`, `/careers/${slug}`),
   }

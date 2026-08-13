@@ -6,11 +6,11 @@ import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import ProposalForm from '@/components/forms/ProposalForm'
 import SurveyForm from '@/components/forms/SurveyForm'
 import { CONTACT } from '@/lib/config'
-import { ogMetadata } from '@/lib/metadata'
+import { ogMetadata, seoTitle } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
-  title: 'Client Services — Silbar Security Services Pvt. Ltd.',
+  title: seoTitle('Client Services — Silbar Security'),
   description: 'Request proposals, site surveys, and instant quotes from Silbar Security Services Pvt. Ltd. Existing clients can access documents and raise service requests.',
   ...ogMetadata('Client Services', 'Request proposals, site surveys, and instant quotes from Silbar Security Services Pvt. Ltd. Existing clients can access documents and raise service requests.', '/clients'),
 }

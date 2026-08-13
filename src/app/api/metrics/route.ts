@@ -108,7 +108,7 @@ function authenticate(request: NextRequest): { authenticated: boolean; ip: strin
 }
 
 export async function GET(request: NextRequest) {
-  const { authenticated, ip } = authenticate(request);
+  const { authenticated } = authenticate(request);
   
   if (!authenticated) {
     return NextResponse.json(
@@ -118,8 +118,8 @@ export async function GET(request: NextRequest) {
   }
   
   const data = loadData();
-  // Don't expose access logs to client
-  const { accessLog, ...safeData } = data;
+  const safeData = { ...data };
+  delete (safeData as Record<string, unknown>).accessLog;
   
   return NextResponse.json(safeData);
 }
@@ -166,8 +166,8 @@ export async function POST(request: NextRequest) {
   } else if (body.type === "metric") {
     const idx = data.metrics.findIndex(m => m.id === body.id);
     if (idx >= 0) {
-      data.metrics[idx].clicks += 1;
-      data.metrics[idx].lastActive = "Just now";
+      data.metrics[idx]!.clicks += 1;
+      data.metrics[idx]!.lastActive = "Just now";
     } else {
       data.metrics.push({
         id: body.id,

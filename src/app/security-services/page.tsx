@@ -4,13 +4,13 @@ import Image from 'next/image'
 import { STATES, CITIES } from '@/data/locations'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import { MapPin, ArrowRight, Phone } from 'lucide-react'
-import { ogMetadata } from '@/lib/metadata'
+import { ogMetadata, seoTitle } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 import { CONTACT } from '@/lib/config'
 import { SITE_STATS } from '@/lib/site-stats'
 
 export const metadata: Metadata = {
-  title: 'Security Services Across India | 200+ Cities & All States',
+  title: seoTitle('Security Services Across India | 200+ Cities & All States'),
   description: `Silbar Security Services Pvt. Ltd. — ${SITE_STATS.cities} city pages, ${SITE_STATS.states} state pages, professional security guard services across India. Offices in Delhi, Gurugram, Jaipur, Noida & Ahmedabad · PAN India deployment.`,
   ...ogMetadata(
     'Security Services Across India | Cities & States',

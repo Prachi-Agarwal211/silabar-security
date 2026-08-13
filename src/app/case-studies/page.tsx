@@ -3,13 +3,13 @@ import Link from 'next/link'
 import PageHero from '@/components/layout/PageHero'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import ScrollReveal from '@/components/animations/ScrollReveal'
-import { ogMetadata } from '@/lib/metadata'
+import { ogMetadata, seoDescription, seoTitle } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 import { CASE_STUDIES } from '@/data/case-studies'
 
 export const metadata: Metadata = {
-  title: 'Case Studies — Real Security Solutions Delivered | Silbar Security Services Pvt. Ltd.',
-  description: 'Real-world security solutions delivered by Silbar Security Services Pvt. Ltd.. See how we protect India\'s leading enterprises across manufacturing, healthcare, and corporate sectors.',
+  title: seoTitle('Case Studies — Real Security Solutions Delivered'),
+  description: seoDescription('Real-world security solutions delivered by Silbar Security Services Pvt. Ltd.. See how we protect India\'s leading enterprises across manufacturing, healthcare, and corporate sectors.'),
   ...ogMetadata(
     'Case Studies — Real Security Solutions Delivered | Silbar Security Services Pvt. Ltd.',
     'Real-world security solutions delivered by Silbar Security Services Pvt. Ltd.. See how we protect India\'s leading enterprises across manufacturing, healthcare, and corporate sectors.',

@@ -137,22 +137,24 @@ export default function ServicesGrid({ services }: ServicesGridProps) {
       }
 
       const cards = cardsRef.current!.querySelectorAll('.sv-card')
-      gsap.fromTo(
-        cards,
-        { opacity: 0, y: 32 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          stagger: 0.06,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: cardsRef.current,
-            start: 'top 80%',
-            once: true,
-          },
-        }
-      )
+      if (cards.length > 0) {
+        gsap.fromTo(
+          cards,
+          { opacity: 0, y: 32 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.06,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: cardsRef.current,
+              start: 'top 80%',
+              once: true,
+            },
+          }
+        )
+      }
     })
 
     return () => mm.revert()

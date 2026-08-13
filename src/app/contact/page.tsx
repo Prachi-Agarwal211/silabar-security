@@ -4,11 +4,11 @@ import { Phone, Mail, MapPin, Clock, MessageCircle, ArrowRight, Map } from 'luci
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import QueryForm from '@/components/sections/QueryForm'
 import { CONTACT, GOOGLE_REVIEWS, type OfficeLocation } from '@/lib/config'
-import { ogMetadata } from '@/lib/metadata'
+import { ogMetadata, seoTitle } from '@/lib/metadata'
 import { GEO_COORDINATES } from '@/lib/geo-coordinates'
 
 export const metadata: Metadata = {
-  title: 'Contact Us — Call or WhatsApp Silbar Security Services Pvt. Ltd.',
+  title: seoTitle('Contact Us — Call or WhatsApp Silbar Security'),
   description:
     'Contact Silbar Security Services Pvt. Ltd. for a free security consultation and quote. Call ' + CONTACT.phone + ' or email ' + CONTACT.email + '. Offices in Delhi, Gurugram, Jaipur, Noida & Ahmedabad.',
   ...ogMetadata('Contact Us — Call or WhatsApp Silbar Security Services Pvt. Ltd.', 'Contact Silbar Security Services Pvt. Ltd. for a free security consultation and quote. Call ' + CONTACT.phone + ' or email ' + CONTACT.email + '. Offices in Delhi, Gurugram, Jaipur, Noida & Ahmedabad.', '/contact'),

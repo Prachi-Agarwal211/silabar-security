@@ -11,7 +11,7 @@ import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import PageHero from '@/components/layout/PageHero'
 import QueryForm from '@/components/sections/QueryForm'
 import { CONTACT } from '@/lib/config'
-import { ogMetadata } from '@/lib/metadata'
+import { ogMetadata, seoDescription, seoTitle } from '@/lib/metadata'
 
 export async function generateStaticParams() {
   return INDUSTRY_SLUGS.map((slug) => ({ slug }))
@@ -25,10 +25,10 @@ export async function generateMetadata({
   const { slug } = await params
   const industry = INDUSTRIES.find((i) => i.slug === slug)
   if (!industry) return {}
-  const desc = industry.description.length > 157 ? industry.description.slice(0, 157) + '...' : industry.description
+  const desc = seoDescription(industry.description)
   const shortTitle = industry.shortTitle.length > 55 ? industry.shortTitle.slice(0, 52) + '...' : industry.shortTitle
   return {
-    title: `${shortTitle} Security`,
+    title: seoTitle(`${shortTitle} Security`),
     description: desc,
     ...ogMetadata(`${industry.title}`, desc, `/industries/${slug}`),
   }

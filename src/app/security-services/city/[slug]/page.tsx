@@ -10,7 +10,7 @@ import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import PageHero from '@/components/layout/PageHero'
 import { CONTACT, getOfficeForCitySlug, getOfficesForCityPage } from '@/lib/config'
-import { ogMetadata } from '@/lib/metadata'
+import { ogMetadata, seoDescription, seoTitle } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 import LocationRichContent from '@/components/sections/LocationRichContent'
 import GbpOfficeSection from '@/components/sections/GbpOfficeSection'
@@ -37,8 +37,8 @@ export async function generateMetadata({
   // Truncate to 40 chars max — layout template adds ' | Silbar Security Services Pvt. Ltd. India' (~20 chars)
   // Final title must stay under ~60 chars for SEO
   const shortTitle = `Security Services ${city.name}, ${city.state}`
-  const title = shortTitle.length > 40 ? shortTitle.slice(0, 37) + '...' : shortTitle
-  const description = content.metaDescription.length > 157 ? content.metaDescription.slice(0, 157) + '...' : content.metaDescription
+  const title = seoTitle(shortTitle)
+  const description = seoDescription(content.metaDescription)
 
   return {
     title,

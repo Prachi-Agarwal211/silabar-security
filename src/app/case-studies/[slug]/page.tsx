@@ -8,7 +8,7 @@ import ScrollReveal from '@/components/animations/ScrollReveal'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import PageHero from '@/components/layout/PageHero'
 import PageLeadSection from '@/components/sections/PageLeadSection'
-import { ogMetadata } from '@/lib/metadata'
+import { ogMetadata, seoTitle } from '@/lib/metadata'
 
 export async function generateStaticParams() {
   return CASE_STUDY_SLUGS.map((slug) => ({ slug }))
@@ -28,7 +28,7 @@ export async function generateMetadata({
   const ogDesc = `Case study: ${study.client} – ${study.results[0]}`
   const ogDescShort = ogDesc.length > 157 ? ogDesc.slice(0, 157) + '...' : ogDesc
   return {
-    title: `${study.title} Case Study`,
+    title: seoTitle(`${study.title} Case Study`),
     description: descShort,
     ...ogMetadata(`${study.title}`, ogDescShort, `/case-studies/${slug}`),
   }

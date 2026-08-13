@@ -43,20 +43,22 @@ export default function IndustriesGrid({ industries }: IndustriesGridProps) {
     if (!containerRef.current) return
     const cards = containerRef.current.querySelectorAll('.industry-photo-card')
     
-    gsap.fromTo(cards, 
-      { opacity: 0, y: 50 },
-      { 
-        opacity: 1, 
-        y: 0, 
-        duration: 0.8, 
-        stagger: 0.08, 
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 80%'
+    if (cards.length > 0) {
+      gsap.fromTo(cards, 
+        { opacity: 0, y: 50 },
+        { 
+          opacity: 1, 
+          y: 0, 
+          duration: 0.8, 
+          stagger: 0.08, 
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top 80%'
+          }
         }
-      }
-    )
+      )
+    }
   }, { scope: containerRef })
 
   const handleMouseMove = (e: MouseEvent<HTMLAnchorElement>) => {

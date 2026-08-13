@@ -6,10 +6,10 @@ import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import PageHero from '@/components/layout/PageHero'
 import QueryForm from '@/components/sections/QueryForm'
 import { CONTACT } from '@/lib/config'
-import { ogMetadata } from '@/lib/metadata'
+import { ogMetadata, seoTitle } from '@/lib/metadata'
 
 export const metadata: Metadata = {
-  title: 'Certifications — ISO, PSARA & Regulatory Compliance',
+  title: seoTitle('Certifications — ISO, PSARA & Regulatory Compliance'),
     description:
       'Certifications of Silbar Security Services Pvt. Ltd. — 4 ISO (IAF accredited), PSARA licenses across 19 states, Startup India, MSME, CAPSI member.',
     ...ogMetadata(

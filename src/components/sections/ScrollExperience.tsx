@@ -19,58 +19,57 @@ export default function ScrollExperience() {
   }, [])
 
   useGSAP(() => {
+    if (!containerRef.current) return
     const tl = gsap.timeline({ defaults: { ease: 'power4.out' } })
     const mm = gsap.matchMedia()
 
-    gsap.set('.trust-eyebrow', { y: 40, opacity: 0 })
-    gsap.set('.hero-heading-line', { clipPath: 'inset(0 100% 0 0)', y: 60, opacity: 0 })
-    gsap.set('.hero-cinematic-subcopy', { y: 40, opacity: 0 })
-    gsap.set('.hero-cta-group--cinematic', { y: 40, opacity: 0 })
-    gsap.set('.hero-floating-badges', { y: 40, opacity: 0 })
-    gsap.set('.hero-scroll-arrow', { opacity: 0 })
+    const eyebrow = containerRef.current.querySelectorAll('.trust-eyebrow')
+    const heading = containerRef.current.querySelectorAll('.hero-heading-line')
+    const subcopy = containerRef.current.querySelectorAll('.hero-cinematic-subcopy')
+    const cta = containerRef.current.querySelectorAll('.hero-cta-group--cinematic')
+    const badges = containerRef.current.querySelectorAll('.hero-floating-badges')
+    const arrow = containerRef.current.querySelectorAll('.hero-scroll-arrow')
+    const videoWrapper = containerRef.current.querySelectorAll('.hero-video-wrapper')
+    const videoOverlay = containerRef.current.querySelectorAll('.hero-video-overlay')
 
-    tl.to('.trust-eyebrow', {
-      y: 0, opacity: 1, duration: 0.8, delay: 0.15,
-    })
-      .to('.hero-heading-line', {
-        clipPath: 'inset(0 0% 0 0)',
-        y: 0, opacity: 1,
-        duration: 1,
-        stagger: 0.15,
-      }, '-=0.3')
-      .to('.hero-cinematic-subcopy', {
-        y: 0, opacity: 1, duration: 0.8,
-      }, '-=0.5')
-      .to('.hero-cta-group--cinematic', {
-        y: 0, opacity: 1, duration: 0.8,
-      }, '-=0.3')
-      .to('.hero-floating-badges', {
-        y: 0, opacity: 1, duration: 0.8,
-      }, '-=0.4')
-      .to('.hero-scroll-arrow', {
-        opacity: 0.6, duration: 1,
-      }, '-=0.4')
+    if (eyebrow.length) gsap.set(eyebrow, { y: 40, opacity: 0 })
+    if (heading.length) gsap.set(heading, { clipPath: 'inset(0 100% 0 0)', y: 60, opacity: 0 })
+    if (subcopy.length) gsap.set(subcopy, { y: 40, opacity: 0 })
+    if (cta.length) gsap.set(cta, { y: 40, opacity: 0 })
+    if (badges.length) gsap.set(badges, { y: 40, opacity: 0 })
+    if (arrow.length) gsap.set(arrow, { opacity: 0 })
+
+    if (eyebrow.length) tl.to(eyebrow, { y: 0, opacity: 1, duration: 0.8, delay: 0.15 })
+    if (heading.length) tl.to(heading, { clipPath: 'inset(0 0% 0 0)', y: 0, opacity: 1, duration: 1, stagger: 0.15 }, '-=0.3')
+    if (subcopy.length) tl.to(subcopy, { y: 0, opacity: 1, duration: 0.8 }, '-=0.5')
+    if (cta.length) tl.to(cta, { y: 0, opacity: 1, duration: 0.8 }, '-=0.3')
+    if (badges.length) tl.to(badges, { y: 0, opacity: 1, duration: 0.8 }, '-=0.4')
+    if (arrow.length) tl.to(arrow, { opacity: 0.6, duration: 1 }, '-=0.4')
 
     // Scroll parallax on video
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap.to('.hero-video-wrapper', {
-        scale: 1.08,
-        scrollTrigger: {
-          trigger: '.scroll-hero-container',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 1,
-        },
-      })
-      gsap.to('.hero-video-overlay', {
-        opacity: 0.6, // ponytail: overlay darkens on scroll
-        scrollTrigger: {
-          trigger: '.scroll-hero-container',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 1,
-        },
-      })
+      if (videoWrapper.length) {
+        gsap.to(videoWrapper, {
+          scale: 1.08,
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1,
+          },
+        })
+      }
+      if (videoOverlay.length) {
+        gsap.to(videoOverlay, {
+          opacity: 0.6,
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1,
+          },
+        })
+      }
     })
     return () => mm.revert()
   }, { scope: containerRef })
@@ -99,8 +98,11 @@ export default function ScrollExperience() {
         </div>
 
         <h1 className="hero-cinematic-heading">
-          <span className="hero-heading-line">SECURITY YOU</span>
-          <span className="hero-heading-line hero-heading-line--accent">CAN TRUST.®</span>
+          <span className="sr-only">SECURITY YOU CAN TRUST.®</span>
+          <span aria-hidden="true">
+            <span className="hero-heading-line">SECURITY YOU</span>
+            <span className="hero-heading-line hero-heading-line--accent">CAN TRUST.®</span>
+          </span>
         </h1>
 
         <p className="hero-cinematic-subcopy">

@@ -3,11 +3,11 @@ import Link from 'next/link'
 import { Heart, Users, GraduationCap, Shield } from 'lucide-react'
 import PageHero from '@/components/layout/PageHero'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
-import { ogMetadata } from '@/lib/metadata'
+import { ogMetadata, seoTitle } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
-  title: 'CSR — Community Safety & Social Responsibility | Silbar Security Services Pvt. Ltd.',
+  title: seoTitle('CSR — Community Safety & Social Responsibility'),
   description: 'Silbar Security Services Pvt. Ltd.\'s CSR initiatives — community safety programs, security training for youth, and women empowerment through employment.',
   ...ogMetadata(
     'CSR — Community Safety & Social Responsibility | Silbar Security Services Pvt. Ltd.',
@@ -76,7 +76,7 @@ export default function CSRPage() {
   return (
     <div key={i} className="bento-cell glass-panel csr-card">
       <Icon size={28} color="var(--color-gold)" className="csr-card__icon" />
-      <h3 className="csr-card__title">{initiative.title}</h3>
+      <h2 className="csr-card__title">{initiative.title}</h2>
       <p className="csr-card__desc">{initiative.description}</p>
       <span className="csr-card__impact">{initiative.impact}</span>
     </div>

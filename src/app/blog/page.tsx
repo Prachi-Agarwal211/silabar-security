@@ -4,7 +4,7 @@ import { ExternalLink, Rss } from 'lucide-react'
 import PageHero from '@/components/layout/PageHero'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import BlogFilter from '@/components/sections/BlogFilter'
-import { ogMetadata } from '@/lib/metadata'
+import { ogMetadata, seoTitle } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 import { BLOG_POSTS } from '@/data/blog'
 import { fetchWordPressPosts } from '@/lib/wordpress'
@@ -13,7 +13,7 @@ import { WORDPRESS_BLOG } from '@/lib/config'
 export const revalidate = 300 // refresh WP posts every 5 min
 
 export const metadata: Metadata = {
-  title: 'Blog | Security Insights — Silbar Security Services Pvt. Ltd.',
+  title: seoTitle('Blog | Security Insights — Silbar Security'),
   description:
     'Security tips, compliance guides, and company updates from Silbar Security Services Pvt. Ltd.. Live posts from blog.silbarsecurity.in plus curated insights.',
   ...ogMetadata(

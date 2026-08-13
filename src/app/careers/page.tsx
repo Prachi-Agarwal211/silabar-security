@@ -6,12 +6,12 @@ import ResumeForm from '@/components/forms/ResumeForm'
 import PageHero from '@/components/layout/PageHero'
 import { Phone, Mail, CheckCircle } from 'lucide-react'
 import { CONTACT } from '@/lib/config'
-import { ogMetadata } from '@/lib/metadata'
+import { ogMetadata, seoTitle } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 import { CAREERS } from '@/data/careers'
 
 export const metadata: Metadata = {
-  title: 'Careers — Join India\'s 7,000-Strong Security Team',
+  title: seoTitle('Careers — Join India\'s 7,000-Strong Security Team'),
   description:
     'Build your career with Silbar Security. Security guards, supervisors, account managers & corporate staff. Professional training, growth guaranteed. PAN India.',
   ...ogMetadata('Careers — Join India\'s 7,000-Strong Security Team', 'Build your career with Silbar Security. Security guards, supervisors, account managers & corporate staff. Professional training, growth guaranteed. PAN India.', '/careers'),

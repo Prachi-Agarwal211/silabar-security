@@ -118,13 +118,17 @@ export default function HomePageClient() {
       const tl = gsap.timeline({
         scrollTrigger: { trigger: whySilbarRef.current, start: 'top 65%' },
       })
-      tl.fromTo(copy, { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out' })
-        .fromTo(
+      if (copy) {
+        tl.fromTo(copy, { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out' })
+      }
+      if (tiles.length) {
+        tl.fromTo(
           tiles,
           { opacity: 0, scale: 0.92, rotate: 0 },
           { opacity: 1, scale: 1, duration: 0.65, stagger: 0.1, ease: 'back.out(1.2)' },
           '-=0.5'
         )
+      }
     })
     return () => mm.revert()
   }, { scope: whySilbarRef })
@@ -135,14 +139,16 @@ export default function HomePageClient() {
     const mm = gsap.matchMedia()
     mm.add('(prefers-reduced-motion: no-preference)', () => {
       const items = industriesRef.current!.querySelectorAll('.industry-icon-item')
-      gsap.fromTo(
-        items,
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: 'power2.out',
-          scrollTrigger: { trigger: industriesRef.current, start: 'top 75%' },
-        }
-      )
+      if (items.length) {
+        gsap.fromTo(
+          items,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: 'power2.out',
+            scrollTrigger: { trigger: industriesRef.current, start: 'top 75%' },
+          }
+        )
+      }
     })
     return () => mm.revert()
   }, { scope: industriesRef })
@@ -159,18 +165,22 @@ export default function HomePageClient() {
         scrollTrigger: { trigger: statsRef.current, start: 'top 75%' }
       })
 
-      tl.fromTo(
-        cards,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out' }
-      )
+      if (cards.length) {
+        tl.fromTo(
+          cards,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out' }
+        )
+      }
       
-      tl.fromTo(
-        testimonialItems,
-        { opacity: 0, y: 40, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.8, stagger: 0.15, ease: 'power2.out' },
-        '-=0.4'
-      )
+      if (testimonialItems.length) {
+        tl.fromTo(
+          testimonialItems,
+          { opacity: 0, y: 40, scale: 0.95 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.8, stagger: 0.15, ease: 'power2.out' },
+          '-=0.4'
+        )
+      }
     })
     return () => mm.revert()
   }, { scope: statsRef })

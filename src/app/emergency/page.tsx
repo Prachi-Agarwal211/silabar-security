@@ -3,13 +3,13 @@ import Link from 'next/link'
 import { Phone, MessageSquare, AlertTriangle } from 'lucide-react'
 import PageHero from '@/components/layout/PageHero'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
-import { ogMetadata } from '@/lib/metadata'
+import { ogMetadata, seoDescription, seoTitle } from '@/lib/metadata'
 import { CONTACT } from '@/lib/config'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
-  title: '24/7 Emergency Security Contact — Immediate Response | Silbar Security Services Pvt. Ltd.',
-  description: '24/7 emergency security contact for Silbar Security Services Pvt. Ltd. clients. Immediate response for security incidents, fire emergencies, and critical situations.',
+  title: seoTitle('24/7 Emergency Security Contact — Immediate Response'),
+  description: seoDescription('24/7 emergency security contact for Silbar Security Services Pvt. Ltd. clients. Immediate response for security incidents, fire emergencies, and critical situations.'),
   ...ogMetadata(
     '24/7 Emergency Security Contact — Immediate Response | Silbar Security Services Pvt. Ltd.',
     '24/7 emergency security contact for Silbar Security Services Pvt. Ltd. clients. Immediate response for security incidents, fire emergencies, and critical situations.',
@@ -84,7 +84,7 @@ export default function EmergencyPage() {
                 <div key={item.step} className="emergency-step">
                   <span className="emergency-step__num">{item.step}</span>
                   <div>
-                    <h4 className="emergency-step__title">{item.title}</h4>
+                    <h3 className="emergency-step__title">{item.title}</h3>
                     <p className="emergency-step__desc">{item.desc}</p>
                   </div>
                 </div>

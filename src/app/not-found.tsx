@@ -1,9 +1,10 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { Shield, ArrowLeft } from 'lucide-react'
+import { seoTitle } from '@/lib/metadata'
 
 export const metadata: Metadata = {
-  title: 'Page Not Found | Silbar Security Services Pvt. Ltd.',
+  title: seoTitle('Page Not Found | Silbar Security Services Pvt. Ltd.'),
   description: 'The page you are looking for does not exist or has been moved. Return to Silbar Security Services Pvt. Ltd. home.',
   robots: { index: false },
 }

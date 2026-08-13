@@ -9,7 +9,7 @@ import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import PageHero from '@/components/layout/PageHero'
 import QueryForm from '@/components/sections/QueryForm'
 import { CONTACT } from '@/lib/config'
-import { ogMetadata } from '@/lib/metadata'
+import { ogMetadata, seoDescription, seoTitle } from '@/lib/metadata'
 import { generateServiceExtraContent } from '@/lib/seo-content-generator'
 
 export async function generateStaticParams() {
@@ -25,9 +25,9 @@ export async function generateMetadata({
   const service = SERVICES.find((s) => s.slug === slug)
   if (!service) return {}
 
-  const desc = service.description.length > 157 ? service.description.slice(0, 157) + '...' : service.description
+  const desc = seoDescription(service.description)
   return {
-    title: `${service.title} in India`,
+    title: seoTitle(`${service.title} in India`),
     description: desc,
     ...ogMetadata(`${service.title} in India`, desc, `/services/${slug}`),
   }

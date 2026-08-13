@@ -3,7 +3,7 @@ import Link from 'next/link'
 import PageHero from '@/components/layout/PageHero'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import ScrollReveal from '@/components/animations/ScrollReveal'
-import { ogMetadata } from '@/lib/metadata'
+import { ogMetadata, seoDescription, seoTitle } from '@/lib/metadata'
 import { FAQS } from '@/data/faq'
 import QueryForm from '@/components/sections/QueryForm'
 
@@ -18,8 +18,8 @@ function groupFaqsByCategory() {
 }
 
 export const metadata: Metadata = {
-  title: 'FAQs — Security Services, PSARA Licensing & Pricing | Silbar Security Services Pvt. Ltd.',
-  description: 'Find answers about Silbar Security Services Pvt. Ltd. services, PSARA licensing, ISO certifications, pricing, coverage areas, and security solutions across India.',
+  title: seoTitle('FAQs — Security Services, PSARA Licensing & Pricing'),
+  description: seoDescription('Find answers about Silbar Security Services Pvt. Ltd. services, PSARA licensing, ISO certifications, pricing, coverage areas, and security solutions across India.'),
   ...ogMetadata(
     'FAQs — Security Services, PSARA Licensing & Pricing | Silbar Security Services Pvt. Ltd.',
     'Find answers to common questions about Silbar Security Services Pvt. Ltd. services, PSARA licensing, ISO certifications, pricing, coverage areas.',

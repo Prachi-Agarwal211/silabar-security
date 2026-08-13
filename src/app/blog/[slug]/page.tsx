@@ -7,7 +7,7 @@ import { Calendar, Clock, ArrowLeft, User, ChevronRight } from 'lucide-react'
 import PageHero from '@/components/layout/PageHero'
 import SplitTextReveal from '@/components/animations/SplitTextReveal'
 import ScrollReveal from '@/components/animations/ScrollReveal'
-import { ogMetadata } from '@/lib/metadata'
+import { ogMetadata, seoTitle } from '@/lib/metadata'
 import { clampToToday } from '@/lib/content-dates'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 
@@ -29,7 +29,7 @@ export async function generateMetadata({
   const publishedAt = clampToToday(post.publishedAt)
 
   return {
-    title: `${post.title}`,
+    title: seoTitle(`${post.title}`),
     description: post.excerpt,
     ...ogMetadata(`${post.title}`, post.excerpt, `/blog/${slug}`, `/images/og/${slug}-og.svg`),
     openGraph: {
@@ -37,7 +37,7 @@ export async function generateMetadata({
       publishedTime: publishedAt,
       authors: [post.author],
       section: post.category,
-      title: post.title,
+      title: seoTitle(post.title),
       description: post.excerpt,
     },
   }

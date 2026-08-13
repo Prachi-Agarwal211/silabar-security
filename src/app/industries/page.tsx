@@ -2,14 +2,14 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { CONTACT } from '@/lib/config'
-import { ogMetadata } from '@/lib/metadata'
+import { ogMetadata, seoTitle } from '@/lib/metadata'
 import IndustriesGrid from '@/components/sections/IndustriesGrid'
 import QueryForm from '@/components/sections/QueryForm'
 import { INDUSTRIES } from '@/data/industries'
 import { Phone, ArrowRight, Shield, Factory, Building2 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Industries We Serve — Security for Every Sector',
+  title: seoTitle('Industries We Serve — Security for Every Sector'),
   description:
     'Specialized security for manufacturing, hospitals, hotels, warehouses, banks, corporate offices, data centres, government and more sectors.',
   ...ogMetadata(

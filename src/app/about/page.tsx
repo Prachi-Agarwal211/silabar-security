@@ -17,12 +17,13 @@ import { CONTACT } from '@/lib/config'
 import Counter from '@/components/animations/Counter'
 import { MagneticButton } from '@/components/ui/MagneticButton'
 import QueryForm from '@/components/sections/QueryForm'
-import { ogMetadata } from '@/lib/metadata'
+import { ogMetadata, seoDescription, seoTitle } from '@/lib/metadata'
 
 export const metadata: Metadata = {
-  title: 'About Silbar Security Services Pvt. Ltd. — ISO & PSARA Certified PAN India Security Agency',
-    description:
-      'Silbar Security Services Pvt. Ltd. — ISO & PSARA certified PAN India security company. Founded in Jaipur. 4 ISO certifications, 19 state PSARA licenses. Compliance-driven guarding.',
+  title: seoTitle('About Silbar Security — ISO & PSARA Certified PAN India Security Agency'),
+    description: seoDescription(
+      'Silbar Security Services Pvt. Ltd. — ISO & PSARA certified PAN India security company. Founded in Jaipur. 4 ISO certifications, 19 state PSARA licenses. Compliance-driven guarding.'
+    ),
   ...ogMetadata(
     'About Silbar Security Services Pvt. Ltd. — ISO & PSARA Certified PAN India Security Agency',
     'Silbar Security Services Pvt. Ltd. — ISO & PSARA certified PAN India security company. Founded in Jaipur. PSARA licensed across 19 states.',

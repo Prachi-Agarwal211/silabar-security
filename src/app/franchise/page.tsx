@@ -3,11 +3,11 @@ import ScrollReveal from '@/components/animations/ScrollReveal'
 import PageHero from '@/components/layout/PageHero'
 import { Phone, MapPin, TrendingUp, Users, Shield } from 'lucide-react'
 import { CONTACT } from '@/lib/config'
-import { ogMetadata } from '@/lib/metadata'
+import { ogMetadata, seoTitle } from '@/lib/metadata'
 import PageLeadSection from '@/components/sections/PageLeadSection'
 
 export const metadata: Metadata = {
-  title: 'Franchise Opportunities — Partner with Silbar Security Services Pvt. Ltd. | PAN India',
+  title: seoTitle('Franchise Opportunities — Partner with Silbar Security | PAN India'),
   description:
     'Become a Silbar Security Services Pvt. Ltd. franchise partner. Low investment, high returns. Training, brand support, 200+ cities available. Apply now.',
   ...ogMetadata('Franchise Opportunities — Partner with Silbar Security Services Pvt. Ltd.', 'Become a Silbar Security Services Pvt. Ltd. franchise partner. Low investment, high returns. Training, brand support, 200+ cities available. Apply now.', '/franchise'),
