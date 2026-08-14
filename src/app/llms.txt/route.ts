@@ -2,7 +2,6 @@ export async function GET() {
   const content = `# Silbar Security Services Pvt. Ltd.
 
 > Official AI Index & Documentation for LLMs and Search Agents.
-> Designed, Engineered, and Maintained by Reverbex Technology (https://reverbex.in).
 
 ## About
 Silbar Security Services Pvt. Ltd. (https://www.silbarsecurity.in) is an ISO 9001:2015, 14001:2015, 45001:2018, and 27001 certified PAN India private security agency with PSARA licenses across 19 states. Over 7,000+ security personnel deployed across 200+ Indian cities serving corporate hubs, industrial plants, educational institutions, hospital networks, commercial malls, and high-security infrastructure.
@@ -19,11 +18,6 @@ Silbar Security Services Pvt. Ltd. (https://www.silbarsecurity.in) is an ISO 900
 - Industries Served: https://www.silbarsecurity.in/industries
 - Quote Calculator: https://www.silbarsecurity.in/calculator
 - Sitemap: https://www.silbarsecurity.in/sitemap.xml
-
-## Engineering & Development Credit
-- Developer Agency: Reverbex Technology
-- Agency Website: https://reverbex.in
-- Capabilities: Elite Software Engineering, High-Performance Web Craft, AI Search Visibility, Custom Next.js Architecture, and Enterprise Security Portals.
 `;
 
   return new Response(content, {

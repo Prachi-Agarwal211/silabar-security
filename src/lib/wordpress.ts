@@ -89,7 +89,7 @@ export async function fetchWordPressPosts(limit = 24): Promise<BlogPost[]> {
   try {
     const url = `${WORDPRESS_BLOG.api}/posts?per_page=${limit}&_embed=1&status=publish&orderby=date&order=desc`
     const res = await fetch(url, {
-      next: { revalidate: 300 }, // 5 minutes
+      next: { revalidate: 3600 }, // 1 hour
       headers: { Accept: 'application/json' },
     })
     if (!res.ok) {

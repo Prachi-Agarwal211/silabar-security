@@ -76,8 +76,9 @@ export default async function CitySEOPage({
 
   const office = getOfficeForCitySlug(slug)
   const gbpOffices = getOfficesForCityPage(slug, city.stateSlug)
-  // Effective office for the schema: the city's own GBP listing when one exists, else the state hub office.
-  const schemaOffice = office || gbpOffices[0]
+  // A city service-area page must not present a state-hub address as a local
+  // branch. Only a verified city office may receive address/geo schema.
+  const schemaOffice = office
 
   // A street-level address is only emitted when a real office can be cited — the city's local
   // listing, or the state-hub fallback. All fields come from that one office so street /
@@ -96,7 +97,7 @@ export default async function CitySEOPage({
 
   const schema = {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
+    '@type': schemaOffice ? 'LocalBusiness' : 'ProfessionalService',
     '@id': `https://www.silbarsecurity.in/security-services/city/${slug}`,
     name: office?.placeName || `Silbar Security Services Pvt. Ltd. — ${city.name}`,
     legalName: 'Silbar Security Services Pvt. Ltd.',
@@ -108,11 +109,15 @@ export default async function CitySEOPage({
       '@id': 'https://www.silbarsecurity.in/#organization',
     },
     ...(schemaAddress ? { address: schemaAddress } : {}),
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: GEO_COORDINATES[slug]?.lat || schemaOffice?.lat || 20.5937,
-      longitude: GEO_COORDINATES[slug]?.lng || schemaOffice?.lng || 78.9629,
-    },
+    ...(schemaOffice && GEO_COORDINATES[slug]
+      ? {
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: schemaOffice.lat || GEO_COORDINATES[slug].lat,
+            longitude: schemaOffice.lng || GEO_COORDINATES[slug].lng,
+          },
+        }
+      : {}),
     ...(schemaOffice?.mapUrl ? { hasMap: schemaOffice.mapUrl } : {}),
     sameAs: [
       ...(schemaOffice?.mapUrl ? [schemaOffice.mapUrl] : []),

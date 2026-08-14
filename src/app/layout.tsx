@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next'
 import Link from 'next/link'
-import { Space_Grotesk, Manrope } from 'next/font/google'
 import './globals.css'
 import NavigationWrapper from '@/components/layout/NavigationWrapper'
 import StickyCta from '@/components/layout/StickyCta'
@@ -9,21 +8,6 @@ import ExitIntentPopup from '@/components/ui/ExitIntentPopup'
 import AnalyticsScripts from '@/components/AnalyticsScripts'
 import CookieConsentWrapper from '@/components/CookieConsentWrapper'
 import { CONTACT, GOOGLE_REVIEWS } from '@/lib/config'
-
-// Fewer weights = faster first paint on MacBook / 4G
-const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  variable: '--font-space-grotesk',
-  display: 'swap',
-  weight: ['500', '600', '700'],
-})
-
-const manrope = Manrope({
-  subsets: ['latin'],
-  variable: '--font-manrope',
-  display: 'swap',
-  weight: ['400', '500', '600', '700'],
-})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.silbarsecurity.in'),
@@ -127,10 +111,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en-IN" className={`${spaceGrotesk.variable} ${manrope.variable}`}>
+    <html lang="en-IN">
       <body>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[9999] focus:bg-gold focus:text-midnight focus:px-4 focus:py-2 focus:font-body focus:font-semibold"
@@ -162,7 +144,6 @@ export default function RootLayout({
           <Link href="/certification">Certifications</Link>
           <Link href="/csr">CSR</Link>
           <Link href="/emergency">Emergency</Link>
-          <Link href="/google">Google</Link>
           <Link href="/disclaimer">Disclaimer</Link>
           <Link href="/terms">Terms of Use</Link>
           <Link href="/privacy-policy">Privacy Policy</Link>
@@ -195,12 +176,6 @@ export default function RootLayout({
               },
               description:
                 'ISO 9001:14001:45001:27001 certified PAN India security agency with PSARA licenses across 19 states. Manned guarding, electronic surveillance, facility management, VIP protection across India.',
-              creator: {
-                '@type': 'Organization',
-                name: 'Reverbex Technology',
-                url: 'https://reverbex.in',
-                description: 'Elite Software Engineering, AI Automations, and Web Systems.',
-              },
               telephone: '+91-9982170555',
               email: CONTACT.email,
               foundingDate: '2018',
@@ -236,9 +211,9 @@ export default function RootLayout({
                   availableLanguage: ['English', 'Hindi'],
                 },
               ],
-              sameAs: [
+              sameAs: Array.from(new Set([
                 'https://www.linkedin.com/company/silbar-security-services-private-limited/',
-                'https://www.facebook.com/share/1GtattxqNp/',
+                CONTACT.social.facebook,
                 'https://www.instagram.com/silbar_security',
                 'https://x.com/silbarsecurity',
                 GOOGLE_REVIEWS.profileUrl,
@@ -247,7 +222,7 @@ export default function RootLayout({
                 // item here once it has been created (see docs/ENTITY-VISIBILITY-CHECKLIST.md).
                 ...GOOGLE_REVIEWS.offices.map((o) => o.profileUrl),
                 ...CONTACT.officeLocations.map((o) => o.mapUrl).filter(Boolean),
-              ],
+              ])),
               actionableFeedbackPolicy: 'https://www.silbarsecurity.in/contact',
               correctionsPolicy: 'https://www.silbarsecurity.in/contact',
               ethicsPolicy: 'https://www.silbarsecurity.in/about',

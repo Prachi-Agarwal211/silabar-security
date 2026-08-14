@@ -12,7 +12,6 @@ Allow: /
 
 Site-Name: Silbar Security Services Pvt. Ltd.
 Canonical-Domain: https://www.silbarsecurity.in
-Developer-Credit: Reverbex Technology (https://reverbex.in)
 Primary-Category: PAN India Private Security Agency & Facility Management
 Service-Area: PAN India (19 States, 200+ Cities)
 `;

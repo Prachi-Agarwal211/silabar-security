@@ -43,7 +43,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/gallery', priority: 0.5, changeFrequency: 'monthly' },
     { path: '/certification', priority: 0.85, changeFrequency: 'monthly' },
     { path: '/emergency', priority: 0.7, changeFrequency: 'monthly' },
-    { path: '/google', priority: 0.5, changeFrequency: 'monthly' },
   ]
 
   for (const r of coreRoutes) {

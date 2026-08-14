@@ -10,7 +10,7 @@ import { BLOG_POSTS } from '@/data/blog'
 import { fetchWordPressPosts } from '@/lib/wordpress'
 import { WORDPRESS_BLOG } from '@/lib/config'
 
-export const revalidate = 300 // refresh WP posts every 5 min
+export const revalidate = 3600 // refresh WP posts every 1 hour
 
 export const metadata: Metadata = {
   title: seoTitle('Blog | Security Insights — Silbar Security'),

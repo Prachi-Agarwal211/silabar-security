@@ -71,6 +71,9 @@ export default async function StateSEOPage({
   const citiesInState = CITIES.filter((c) => c.stateSlug === location.slug)
   const gbpOffices = getOfficesForStatePage(location.slug)
   const primaryOffice = gbpOffices[0]
+  const verifiedStateOffice = primaryOffice?.address && primaryOffice.region === location.name
+    ? primaryOffice
+    : undefined
 
   // Cycle the landing-page hero imagery across all states so every state page
   // gets its own visual identity (reuses existing /public assets — no new files).
@@ -80,7 +83,7 @@ export default async function StateSEOPage({
 
   const localBusinessSchema = {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
+    '@type': verifiedStateOffice ? 'LocalBusiness' : 'ProfessionalService',
     '@id': `https://www.silbarsecurity.in/security-services/${state}`,
     name: primaryOffice?.placeName || `Silbar Security Services Pvt. Ltd. — ${location.name}`,
     legalName: 'Silbar Security Services Pvt. Ltd.',
@@ -91,30 +94,24 @@ export default async function StateSEOPage({
     parentOrganization: {
       '@id': 'https://www.silbarsecurity.in/#organization',
     },
-    ...(primaryOffice?.address && primaryOffice?.region === location.name
+    ...(verifiedStateOffice
       ? {
           address: {
             '@type': 'PostalAddress',
-            streetAddress: primaryOffice.address.split(',')[0]?.trim(),
-            addressLocality: primaryOffice.city?.replace(/\s*\(.*?\)\s*/g, '').trim(),
+            streetAddress: verifiedStateOffice.address.split(',')[0]?.trim(),
+            addressLocality: verifiedStateOffice.city?.replace(/\s*\(.*?\)\s*/g, '').trim(),
             addressRegion: location.name,
-            postalCode: primaryOffice.pin,
+            postalCode: verifiedStateOffice.pin,
             addressCountry: 'IN',
           },
           geo: {
             '@type': 'GeoCoordinates',
-            latitude: primaryOffice.lat || GEO_COORDINATES[capitalKey]?.lat || 20.5937,
-            longitude: primaryOffice.lng || GEO_COORDINATES[capitalKey]?.lng || 78.9629,
+            latitude: verifiedStateOffice.lat || GEO_COORDINATES[capitalKey]?.lat,
+            longitude: verifiedStateOffice.lng || GEO_COORDINATES[capitalKey]?.lng,
           },
-          ...(primaryOffice.mapUrl ? { hasMap: primaryOffice.mapUrl } : {}),
+          ...(verifiedStateOffice.mapUrl ? { hasMap: verifiedStateOffice.mapUrl } : {}),
         }
-      : {
-          geo: {
-            '@type': 'GeoCoordinates',
-            latitude: GEO_COORDINATES[capitalKey]?.lat || 20.5937,
-            longitude: GEO_COORDINATES[capitalKey]?.lng || 78.9629,
-          },
-        }),
+      : {}),
     sameAs: [
       ...(primaryOffice?.mapUrl ? [primaryOffice.mapUrl] : []),
     ],

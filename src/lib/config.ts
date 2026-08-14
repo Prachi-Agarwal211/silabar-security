@@ -34,7 +34,8 @@ export const CONTACT = {
   },
   hours: 'Mon–Sat 9:00 AM – 7:00 PM · Emergency: 24/7',
   social: {
-    facebook: 'https://www.facebook.com/share/1GtattxqNp/',
+    // Stable public company page, not a temporary Facebook share URL.
+    facebook: 'https://www.facebook.com/Silbar01',
     instagram: 'https://instagram.com/silbar_security',
     linkedin: 'https://www.linkedin.com/company/silbar-security-services-private-limited/',
     /** Primary Google Business Profile (Registered Office) */
