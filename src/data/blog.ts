@@ -856,7 +856,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>Why Data Center Security Requires Specialist Guards</h2>
       <p>Data center guards must understand the sensitivity of the environment. They must be trained to identify social engineering attempts (someone posing as a technician to gain access), manage visitor access in strict compliance with the access policy, and respond to environmental alarms (temperature rise, water leak, fire). Silbar Security Services Pvt. Ltd. provides trained personnel for data center security who understand ISO 27001 requirements and can integrate with your existing ISMS team.</p>
     `,
-    coverImage: '/images/blog/data-center.jpg',
+    coverImage: '/images/blog/data-center-physical-security-iso-27001.png',
     author: 'Compliance Team',
     publishedAt: '2026-07-30',
 
@@ -885,7 +885,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>Discretion and Professionalism</h2>
       <p>The hallmark of professional executive protection is that the principal barely notices the security presence while being fully protected. Silbar Security Services Pvt. Ltd. provides executive protection services with trained personnel who combine physical security skills with the discretion and professionalism that high-profile clients require.</p>
     `,
-    coverImage: '/images/blog/executive-protection.jpg',
+    coverImage: '/images/blog/executive-protection-high-net-worth-individuals.png',
     author: 'Silbar Security Expert',
     publishedAt: '2026-07-31',
 
@@ -914,7 +914,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>Cost-Effective Security Strategies</h2>
       <p>You don't need to spend lavishly to achieve effective security. A risk-based approach allocates resources where they matter most — high-value asset areas, vulnerable entry points, and high-risk time windows. Silbar Security Services Pvt. Ltd. works with clients to design cost-effective security plans that maximize protection while respecting budget constraints.</p>
     `,
-    coverImage: '/images/blog/economics-security.jpg',
+    coverImage: '/images/blog/economics-of-private-security-investment-vs-loss-prevention.png',
     author: 'Silbar Security Expert',
     publishedAt: '2026-08-01',
 
@@ -946,7 +946,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>Looking Ahead</h2>
       <p>As we enter our ninth year, our focus remains on expanding our geographic footprint, deepening our technological capabilities, and continuing to provide the highest standard of security services to every client. We thank our clients, our team members, and our partners for their trust and support over these eight years. The journey ahead is exciting, and we invite you to be part of it.</p>
     `,
-    coverImage: '/images/blog/8-years.jpg',
+    coverImage: '/images/blog/silbar-security-completes-8-years-operations.png',
     author: 'Operations Head',
     publishedAt: '2026-08-03',
 
@@ -960,41 +960,72 @@ export const BLOG_POSTS: BlogPost[] = [
     title: 'Security Services in Jaipur: A Complete Guide for Safer Properties',
     excerpt: 'How residential communities, offices, and commercial properties in Jaipur can plan dependable security services around their actual risks.',
     content: `
-      <p>Jaipur’s homes, residential communities, offices, warehouses, hotels, and commercial properties each face different security challenges. A dependable security plan starts by understanding the property, its people, its access points, and the moments when risk is highest. Professional security services in Jaipur can then combine trained guards, clear procedures, and the right supporting technology.</p>
+      <p>Modern properties require dependable protection because different risks can appear unexpectedly. Therefore, suitable security measures should be selected according to property requirements. Professional guards can provide support while safety standards are maintained daily.</p>
 
-      <h2>Why Security Services in Jaipur Matter</h2>
-      <p>Properties need more than a visible presence at the gate. Visitor movement, deliveries, staff access, vehicle entry, emergency response, and incident reporting all need to work together. Local conditions, busy traffic periods, festivals, construction activity, and the type of neighbourhood can change the risk profile, which is why a site assessment is more valuable than a one-size-fits-all deployment.</p>
+      <h2>Why Security Services in Jaipur Are Important</h2>
+      <p>Security Services in Jaipur are designed to protect people, property, and assets. Moreover, trained guards can be assigned according to specific security needs. Therefore, daily activities can be managed with greater safety and confidence.</p>
 
       <h2>Security Guards for Residential Properties</h2>
-      <p>Residential societies and independent properties commonly need controlled entry, visitor verification, delivery management, vehicle checks, patrols, and support during emergencies. Guards should be trained to follow resident-approved procedures while remaining respectful and alert. A daily handover log and a clear escalation process help the association or property manager identify patterns before they become incidents.</p>
+      <p>Residential properties can be protected through properly trained security personnel. Additionally, visitors can be checked before property access is provided. Therefore, homes can remain safer while unwanted entry is reduced.</p>
 
       <h2>Security Support for Offices and Businesses</h2>
-      <p>Offices, retail premises, hotels, factories, and warehouses require a more operational approach. Security teams may manage employee and contractor access, loading bays, keys, sensitive areas, fire and safety observations, CCTV monitoring, and after-hours response. Post orders should be written for the site, explained during induction, and reviewed whenever the layout or business process changes.</p>
+      <p>Offices can be protected through guards trained for workplace security needs. Moreover, employee movement can be monitored while visitor access is controlled. Important areas can also be watched throughout different working hours.</p>
 
-      <h2>Benefits of Professional Security Services</h2>
-      <ul>
-        <li>Consistent access-control and visitor-management procedures.</li>
-        <li>Visible deterrence supported by documented patrols and shift handovers.</li>
-        <li>Faster escalation when an incident, fire, medical issue, or safety concern appears.</li>
-        <li>Better coordination between guards, facility managers, residents, and emergency contacts.</li>
-        <li>Clear incident reports that help management improve the site’s security plan.</li>
-      </ul>
+      <h2>Key Benefits of Professional Security Services</h2>
+      <p>Better protection can be provided when trained guards are properly deployed. Furthermore, suspicious activities can be noticed before serious problems develop. Emergency situations can also be handled through planned security procedures. Therefore, valuable assets can be protected with greater consistency daily.</p>
 
       <h2>How Professional Guards Improve Safety</h2>
-      <p>Good guarding is proactive. Teams observe unusual behaviour, challenge unauthorised access, keep entry records accurate, protect restricted areas, and communicate clearly at shift change. Regular briefings and refresher training ensure that guards understand the client’s expectations instead of relying on assumptions.</p>
+      <p>Security guards are trained to observe surroundings and identify unusual activities. Additionally, entry points can be monitored while visitors are carefully checked. Regular patrols can also be conducted around important property areas. Moreover, quick assistance can be provided when unexpected situations occur.</p>
 
-      <h2>Choosing a Security Company in Jaipur</h2>
-      <p>Before appointing a provider, ask how it recruits and trains guards, verifies personnel, supervises posts, handles relievers, records incidents, and responds to complaints. Confirm that the company operates with the required statutory permissions and can provide a written deployment plan. A transparent provider should be able to explain the scope, staffing, reporting, and review process before the contract begins.</p>
+      <h2>Choosing the Right Security Company</h2>
+      <p>A security company should be selected after its services are carefully reviewed. Therefore, guard training and experience should be properly considered beforehand. Moreover, security plans should be created according to each property's requirements. At Silbar Security, professional security support is provided for various properties. Additionally, trained personnel can be deployed according to specific security needs.</p>
 
-      <h2>Build a Safer Property With the Right Plan</h2>
-      <p>The most effective security arrangement is practical, measurable, and reviewed as the property changes. Silbar Security Services Pvt. Ltd. helps properties in Jaipur plan trained guarding and site-specific security support. Speak with our team for an assessment of your property, coverage requirements, and next steps.</p>
+      <h2>Build Safer Properties With Trusted Protection</h2>
+      <p>Safety can be improved when professional security services are properly arranged. Therefore, reliable protection should be considered for homes, offices, and businesses. With suitable support, risks can be reduced and confidence can increase. Choose Security Services in Jaipur for dependable protection and professional support. Moreover, your property can be secured through trained and responsible personnel.</p>
     `,
-    coverImage: '/images/blog/residential-society-security-best-practices-cover.svg',
+    coverImage: '/images/blog/security-services-in-jaipur-guide-cover.png',
     author: 'Silbar Security Services',
     role: 'Security Operations Team',
     publishedAt: '2026-08-15',
     modifiedAt: '2026-08-15',
     category: 'Security Tips',
+    readTime: '5 min read',
+  },
+  {
+    id: 'post-33',
+    slug: 'independence-day-protecting-people-and-communities',
+    title: 'Independence Day 2026: Silbar Security Services Protecting India',
+    excerpt: 'Silbar Security Services Pvt. Ltd. reflects on how trained security teams help protect Indian homes, workplaces, and communities.',
+    content: `
+      <p>Independence Day 2026 is a time to celebrate the values of responsibility, service, and collective strength. For Silbar Security Services Pvt. Ltd., those values are reflected in the everyday work of protecting people, workplaces, property, and communities across India.</p>
+
+      <h2>Safety Is Built Through Everyday Discipline</h2>
+      <p>Security is not limited to responding when something goes wrong. It is built through alert guards, controlled entry, regular patrols, accurate records, clear communication, and a calm response to unusual situations. Small, consistent actions help properties remain prepared.</p>
+
+      <h2>The Role of Trained Security Teams</h2>
+      <p>Security personnel are often the first point of contact at a residential society, office, factory, warehouse, hospital, hotel, or commercial property. Their conduct matters. Proper induction, site-specific post orders, supervision, and refresher training help teams protect people while treating residents, employees, visitors, and vendors with respect.</p>
+
+      <h2>Protecting Modern Indian Workplaces</h2>
+      <p>Today’s properties need coordinated support for visitor management, vehicle movement, access control, deliveries, emergency escalation, and incident reporting. A professional security plan connects these responsibilities to the client’s actual layout and risks instead of relying on a generic deployment.</p>
+
+      <h2>Our Commitment to Responsible Protection</h2>
+      <ul>
+        <li>Deploy personnel according to the property’s requirements.</li>
+        <li>Maintain clear communication between guards, supervisors, and facility teams.</li>
+        <li>Use documented procedures for access, patrols, handovers, and incidents.</li>
+        <li>Support clients with a security plan that can be reviewed as needs change.</li>
+        <li>Keep professional conduct and statutory compliance at the centre of service.</li>
+      </ul>
+
+      <h2>A Safer Future, Together</h2>
+      <p>Independence is strengthened when people can live, work, and build with confidence. Silbar Security Services Pvt. Ltd. is committed to supporting safer properties through trained security guards, dependable supervision, and practical security operations. We wish our clients, teams, and communities a safe and proud Independence Day 2026.</p>
+    `,
+    coverImage: '/images/blog/independence-day-security-protection-cover.png',
+    author: 'Silbar Security Services',
+    role: 'Security Operations Team',
+    publishedAt: '2026-08-15',
+    modifiedAt: '2026-08-15',
+    category: 'Company Updates',
     readTime: '5 min read',
   },
 ]

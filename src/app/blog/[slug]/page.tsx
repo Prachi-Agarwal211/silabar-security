@@ -129,12 +129,16 @@ export default async function BlogPostPage({
             <div className="blog-post-cover">
               <Image
                 src={post.coverImage}
-                alt={`Cover image for ${post.title}`}
+                alt={`${post.title} — Silbar Security Services Pvt. Ltd. blog cover`}
                 width={1600}
                 height={900}
                 className="blog-post-cover__img"
                 loading="lazy"
               />
+              <div className="blog-post-cover__brand" aria-label="Silbar Security Services Pvt. Ltd.">
+                <Image src="/logo.png" alt="Silbar Security Services Pvt. Ltd." width={44} height={44} />
+                <span>Silbar Security Services Pvt. Ltd.</span>
+              </div>
             </div>
           )}
 
