@@ -118,13 +118,6 @@ export default async function BlogPostPage({
             </div>
           </header>
 
-          <ScrollReveal>
-            <div 
-              className="blog-post-content" 
-              dangerouslySetInnerHTML={{ __html: post.content }} 
-            />
-          </ScrollReveal>
-
           {post.coverImage && (
             <div className="blog-post-cover">
               <Image
@@ -133,14 +126,22 @@ export default async function BlogPostPage({
                 width={1600}
                 height={900}
                 className="blog-post-cover__img"
-                loading="lazy"
+                priority
               />
+              <div className="blog-post-cover__scrim" />
               <div className="blog-post-cover__brand" aria-label="Silbar Security Services Pvt. Ltd.">
                 <Image src="/logo.png" alt="Silbar Security Services Pvt. Ltd." width={44} height={44} />
                 <span>Silbar Security Services Pvt. Ltd.</span>
               </div>
             </div>
           )}
+
+          <ScrollReveal>
+            <div 
+              className="blog-post-content" 
+              dangerouslySetInnerHTML={{ __html: post.content }} 
+            />
+          </ScrollReveal>
 
           <footer className="blog-post-footer">
             <Link href="/blog" className="blog-post-back">
