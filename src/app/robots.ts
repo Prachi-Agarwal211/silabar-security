@@ -13,6 +13,7 @@ export default function robots(): MetadataRoute.Robots {
           '/_next/',
           '/admin/',
           '/private/',
+          '/metrics/',
         ],
       },
       // Explicit allow for major AI / answer-engine crawlers (GEO)
